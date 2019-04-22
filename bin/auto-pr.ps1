@@ -1,6 +1,6 @@
 param(
     # overwrite upstream param
-    [String]$upstream = "scoopinstaller/scoop-core:master"
+    [String]$upstream = "scoopinstaller/scoop-main:master"
 )
 
 if(!$env:SCOOP_HOME) { $env:SCOOP_HOME = resolve-path (split-path (split-path (scoop which scoop))) }
