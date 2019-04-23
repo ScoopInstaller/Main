@@ -1,8 +1,9 @@
 {
     "homepage": "https://www.python.org/",
+    "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "license": "Python-2.0",
     "version": "3.7.3",
-    "depends": "dark",
+    "depends": "main/dark",
     "architecture": {
         "64bit": {
             "url": "https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe",
@@ -16,17 +17,25 @@
     "installer": {
         "script": [
             "&(file_path dark dark.exe) -nologo -x \"$dir\\_tmp\" \"$dir\\$fname\" | Out-Null",
-            "Remove-Item \"$dir\\_tmp\\AttachedContainer\\launcher.msi\" | Out-Null",
-            "Remove-Item \"$dir\\_tmp\\AttachedContainer\\path.msi\" | Out-Null",
-            "Remove-Item \"$dir\\_tmp\\AttachedContainer\\pip.msi\" | Out-Null",
+            "@('launcher.msi', 'path.msi', 'pip.msi') | ForEach-Object {",
+            "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
+            "}",
             "Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\" | ForEach-Object { extract_msi $_ $dir }",
             "Remove-Item \"$dir\\_tmp\", \"$dir\\*.msi\", \"$dir\\$fname\" -Force -Recurse",
             "&(\"$dir\\python.exe\") -E -s -m ensurepip -U --default-pip | Out-Null",
-            "if ($global) { $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''; env 'PATHEXT' $true \"$pathext;.PY;.PYW\" }"
+            "if ($global) {",
+            "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
+            "    env 'PATHEXT' $true \"$pathext;.PY;.PYW\"",
+            "}"
         ]
     },
     "uninstaller": {
-        "script": "if ($global) { $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''; env 'PATHEXT' $true \"$pathext\" }"
+        "script": [
+            "if ($global) {",
+            "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
+            "    env 'PATHEXT' $true \"$pathext\"",
+            "}"
+        ]
     },
     "bin": [
         "python.exe",
