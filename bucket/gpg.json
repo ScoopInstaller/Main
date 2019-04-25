@@ -5,7 +5,22 @@
     "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-2.2.15_20190326.exe#/dl.7z",
     "hash": "sha1:f5f7eeadfdf6ad971b5313f045083b4f95ace07b",
     "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
-    "env_add_path": "bin",
+    "bin": [
+        "gpg.exe",
+        "gpgv.exe",
+        "gpgconf.exe",
+        "gpg-agent.exe",
+        "gpg-connect-agent.exe",
+        "gpgme-w32spawn.exe",
+        "gpg-preset-passphrase.exe",
+        "gpgsm.exe",
+        "gpgtar.exe",
+        "gpg-wks-client.exe",
+        "dirmngr.exe",
+        "dirmngr_ldap.exe",
+        "pinentry-basic.exe",
+        "scdaemon.exe"
+    ],
     "checkver": {
         "url": "https://www.gnupg.org/download/index.html",
         "re": "gnupg-w32-(?<version>[\\d.]+)_(?<date>[\\d]{8}).exe"
