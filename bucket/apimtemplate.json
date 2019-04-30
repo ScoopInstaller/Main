@@ -9,12 +9,14 @@
     "bin": [
         "apimtemplate.exe"
     ],
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/Azure/azure-api-management-devops-resource-kit/releases/download/v$version/azure-api-management-devops-example-win-x64-v$version.zip"
+    "checkver": {
+        "url": "https://github.com/Azure/azure-api-management-devops-resource-kit/releases",
+        "regex": "tag/(?:v)?([\\w.-]+)"
     },
-    "notes": [
-        "Run the apimtemplate tool with the following command to extract: 'apimtemplate extract' (include arguments, check docs, az login required)",
-        "Run the apimtemplate tool with the following command to create: 'apimtemplate create' (include arguments, check docs)"
-    ]
+    "autoupdate": {
+        "url": "https://github.com/Azure/azure-api-management-devops-resource-kit/releases/download/v$version/azure-api-management-devops-example-win-x64-v$version.zip",
+        "hash": {
+            "url": "$url.sha2"
+        }
+    }
 }
