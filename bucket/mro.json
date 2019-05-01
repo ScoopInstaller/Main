@@ -9,18 +9,18 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://mran.blob.core.windows.net/install/mro/3.5.2/microsoft-r-open-3.5.2.exe#/mro.exe",
+            "url": "https://mran.blob.core.windows.net/install/mro/3.5.2/windows/microsoft-r-open-3.5.2.exe",
             "hash": "296ff6358d3d9db6723cc7643778b1bf0cf6a3a7492438db4d3a31037391db56",
             "installer": {
                 "script": [
-                    "&(file_path dark dark.exe) -nologo -x \"$dir\\tmp\" \"$dir\\mro.exe\" | Out-Null",
-                    "extract_msi \"$dir\\tmp\\AttachedContainer\\ROpen.msi\" \"$dir\\tmp\" | Out-Null",
-                    "movedir \"$dir\\tmp\\Microsoft\\MRO-$version.0\" \"$dir\" | Out-Null",
-                    "extract_7zip \"$dir\\Setup\\*.cab\" \"$dir\\Setup\"",
+                    "&(file_path dark dark.exe) -nologo -x \"$dir\\_tmp\" \"$dir\\$fname\" | Out-Null",
+                    "Expand-MSIArchive \"$dir\\_tmp\\AttachedContainer\\ROpen.msi\" \"$dir\\_tmp\" | Out-Null",
+                    "movedir \"$dir\\_tmp\\Microsoft\\MRO-$version.0\" \"$dir\" | Out-Null",
+                    "Expand-7ZipArchive \"$dir\\Setup\\*.cab\" \"$dir\\Setup\"",
                     "Remove-Item \"$dir\\bin\\x64\\Rblas.dll\", \"$dir\\bin\\x64\\Rlapack.dll\" -Force",
                     "movedir \"$dir\\Setup\\bin\\x64\" \"$dir\\bin\\x64\" | Out-Null",
                     "movedir \"$dir\\Setup\\library\" \"$dir\\library\" | Out-Null",
-                    "Remove-Item \"$dir\\tmp\", \"$dir\\Setup\", \"$dir\\mro.exe\" -Force -Recurse"
+                    "Remove-Item \"$dir\\_tmp\", \"$dir\\Setup\", \"$dir\\$fname\" -Force -Recurse"
                 ]
             },
             "bin": [
@@ -47,7 +47,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mran.blob.core.windows.net/install/mro/$version/microsoft-r-open-$version.exe#/mro.exe",
+                "url": "https://mran.blob.core.windows.net/install/mro/$version/windows/microsoft-r-open-$version.exe",
                 "hash": {
                     "mode": "json",
                     "jsonpath": "$..versions[?(@.downloadText == '$basename')].sha256",
