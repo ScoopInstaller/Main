@@ -1,0 +1,48 @@
+{
+    "homepage": "https://mlocati.github.io/articles/gettext-iconv-windows.html",
+    "description": "Gettext is an internationalization and localization (i18n) system commonly used for writing multilingual programs on Unix-like computer operating systems.",
+    "license": "Freeware",
+    "version": "0.20-v1.16",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.20-v1.16/gettext0.20-iconv1.16-shared-64.zip",
+            "hash": "42507c9fdf8eb50e8ed58935effbb896af36acb553c1f44016ac5926f3cb4a8f"
+        },
+        "32bit": {
+            "url": "https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.20-v1.16/gettext0.20-iconv1.16-shared-32.zip",
+            "hash": "6918834395717641f0eecfb89d8b86f2c9e5079b093ff0ed32e033f138981fb8"
+        }
+    },
+    "bin": [
+        "bin\\iconv.exe",
+        "bin\\msgattrib.exe",
+        "bin\\msgcat.exe",
+        "bin\\msgcmp.exe",
+        "bin\\msgcomm.exe",
+        "bin\\msgconv.exe",
+        "bin\\msgen.exe",
+        "bin\\msgexec.exe",
+        "bin\\msgfilter.exe",
+        "bin\\msgfmt.exe",
+        "bin\\msggrep.exe",
+        "bin\\msginit.exe",
+        "bin\\msgmerge.exe",
+        "bin\\msgunfmt.exe",
+        "bin\\msguniq.exe",
+        "bin\\xgettext.exe"
+    ],
+    "checkver": {
+        "url": "https://github.com/mlocati/gettext-iconv-windows/releases",
+        "re": "/releases/tag/v((?<gettext>[\\d.]+)-v(?<iconv>[\\d.]+))"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mlocati/gettext-iconv-windows/releases/download/v$version/gettext$matchGettext-iconv$matchIconv-shared-64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/mlocati/gettext-iconv-windows/releases/download/v$version/gettext$matchGettext-iconv$matchIconv-shared-32.zip"
+            }
+        }
+    }
+}
