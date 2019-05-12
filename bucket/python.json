@@ -3,7 +3,6 @@
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "license": "Python-2.0",
     "version": "3.7.3",
-    "depends": "dark",
     "architecture": {
         "64bit": {
             "url": "https://www.python.org/ftp/python/3.7.3/python-3.7.3-amd64.exe",
@@ -16,11 +15,11 @@
     },
     "installer": {
         "script": [
-            "&(file_path dark dark.exe) -nologo -x \"$dir\\_tmp\" \"$dir\\$fname\" | Out-Null",
+            "Expand-DarkArchive \"$dir\\_tmp\" \"$dir\\$fname\" | Out-Null",
             "@('launcher.msi', 'path.msi', 'pip.msi') | ForEach-Object {",
             "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
             "}",
-            "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object { Expand-MSIArchive $_ \"$dir\" }",
+            "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
             "Remove-Item \"$dir\\_tmp\", \"$dir\\$fname\" -Force -Recurse",
             "& \"$dir\\python.exe\" -E -s -m ensurepip -U --default-pip | Out-Null",
             "if ($global) {",
