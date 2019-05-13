@@ -1,6 +1,7 @@
 {
     "homepage": "https://www.ghostscript.com",
     "version": "9.27",
+    "description": "An interpreter for the PostScript language and for PDF.",
     "license": "AGPL-3.0",
     "architecture": {
         "64bit": {
@@ -8,7 +9,11 @@
             "hash": "sha512:49fc973bfae12f366a837bcc39d93e3d8e3c88359f7d45279df899f0b2941c264efc47815966867d332b32e87ca8d88697edf7792b162645ed7a549cecc373b2",
             "bin": [
                 "bin\\gswin64.exe",
-                "bin\\gswin64c.exe"
+                "bin\\gswin64c.exe",
+                [
+                    "bin\\gswin64c.exe",
+                    "gs"
+                ]
             ]
         },
         "32bit": {
@@ -16,14 +21,15 @@
             "hash": "sha512:ef18548c62a5107f951d839d7c83ea5e03b35b2b85fd2c820b95687fb28e9ebfc799c2efe87d6db16879a8d9d995fe56f0b6a1248df0d6ee41d5851edfce9f83",
             "bin": [
                 "bin\\gswin32.exe",
-                "bin\\gswin32c.exe"
+                "bin\\gswin32c.exe",
+                [
+                    "bin\\gswin32c.exe",
+                    "gs"
+                ]
             ]
         }
     },
-    "env_add_path": [
-        "bin",
-        "lib"
-    ],
+    "env_add_path": "lib",
     "checkver": {
         "github": "https://github.com/ArtifexSoftware/ghostpdl-downloads/",
         "regex": "Ghostscript/GhostPDL ([\\d.]+)"
