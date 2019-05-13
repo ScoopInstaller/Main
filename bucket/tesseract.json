@@ -35,6 +35,12 @@
         "TESSDATA_PREFIX": "$persist_dir\\tessdata"
     },
     "persist": "tessdata",
+    "post_install": [
+        "$langdir = versiondir tesseract-languages current $global",
+        "if (Test-Path $langdir) {",
+        "   env \"TESSDATA_PREFIX\" $global $langdir",
+        "}"
+    ],
     "notes": [
         "Recognition data files can be installed via \"scoop install tesseract-languages\"",
         "or downloaded manually from https://github.com/tesseract-ocr/tessdata_fast"
