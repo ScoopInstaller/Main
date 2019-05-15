@@ -1,0 +1,53 @@
+{
+    "version": "2.2.0",
+    "description": "Apache Kafka. A distributed streaming platform.",
+    "homepage": "https://kafka.apache.org/",
+    "license": "Apache-2.0",
+    "url": "https://www.apache.org/dist/kafka/2.2.0/kafka_2.12-2.2.0.tgz",
+    "hash": "sha1:360b39bd5b7cd259a47dd277966c33140efffb8c",
+    "extract_dir": "kafka_2.12-2.2.0",
+    "bin": [
+        "bin\\windows\\connect-distributed.bat",
+        "bin\\windows\\connect-standalone.bat",
+        "bin\\windows\\kafka-acls.bat",
+        "bin\\windows\\kafka-broker-api-versions.bat",
+        "bin\\windows\\kafka-configs.bat",
+        "bin\\windows\\kafka-console-consumer.bat",
+        "bin\\windows\\kafka-console-producer.bat",
+        "bin\\windows\\kafka-consumer-groups.bat",
+        "bin\\windows\\kafka-consumer-perf-test.bat",
+        "bin\\windows\\kafka-delegation-tokens.bat",
+        "bin\\windows\\kafka-dump-log.bat",
+        "bin\\windows\\kafka-mirror-maker.bat",
+        "bin\\windows\\kafka-preferred-replica-election.bat",
+        "bin\\windows\\kafka-producer-perf-test.bat",
+        "bin\\windows\\kafka-reassign-partitions.bat",
+        "bin\\windows\\kafka-replica-verification.bat",
+        "bin\\windows\\kafka-run-class.bat",
+        "bin\\windows\\kafka-server-start.bat",
+        "bin\\windows\\kafka-server-stop.bat",
+        "bin\\windows\\kafka-topics.bat",
+        "bin\\windows\\zookeeper-server-start.bat",
+        "bin\\windows\\zookeeper-server-stop.bat",
+        "bin\\windows\\zookeeper-shell.bat"
+    ],
+    "persist": "config",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "checkver": {
+        "url": "https://kafka.apache.org/downloads",
+        "regex": "current stable version is ([\\d.]+)\\."
+    },
+    "autoupdate": {
+        "url": "https://www.apache.org/dist/kafka/$version/kafka_2.12-$version.tgz",
+        "hash": {
+            "url": "$url.sha1",
+            "regex": "$basename:[\\x20\\t]+([a-fA-F0-9\\s]+)\\n+"
+        },
+        "extract_dir": "kafka_2.12-$version"
+    }
+}
