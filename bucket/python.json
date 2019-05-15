@@ -15,7 +15,7 @@
     },
     "installer": {
         "script": [
-            "Expand-DarkArchive \"$dir\\_tmp\" \"$dir\\$fname\" | Out-Null",
+            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\"",
             "@('launcher.msi', 'path.msi', 'pip.msi') | ForEach-Object {",
             "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
             "}",
