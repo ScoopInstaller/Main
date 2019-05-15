@@ -1,0 +1,36 @@
+{
+    "homepage": "https://hshrzd.wordpress.com/pe-sieve/",
+    "description": "Scans all running processes. Recognizes and dumps a variety of potentially malicious implants (replaced/injected PEs, shellcodes, hooks, in-memory patches).",
+    "license": "BSD-2-Clause",
+    "version": "0.2",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/hasherezade/hollows_hunter/releases/download/v0.2/hollows_hunter64.zip",
+            "hash": "556636092ce71dbd6a4d825a88c4f2d460b3f6f6157282d09af8c4fce882491b"
+        },
+        "32bit": {
+            "url": "https://github.com/hasherezade/hollows_hunter/releases/download/v0.2/hollows_hunter32.zip",
+            "hash": "1bc1337c30d1bdd00fa6b8f931f25eb17cc2f425a560e9e3323748e4393e7efc"
+        }
+    },
+    "bin": [
+        "hollows_hunter.exe",
+        [
+            "hollows_hunter.exe",
+            "hollows-hunter"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/hasherezade/hollows_hunter"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/hasherezade/hollows_hunter/releases/download/v$version/hollows_hunter64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/hasherezade/hollows_hunter/releases/download/v$version/hollows_hunter32.zip"
+            }
+        }
+    }
+}
