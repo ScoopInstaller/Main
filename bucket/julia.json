@@ -13,28 +13,12 @@
         }
     },
     "installer": {
-        "file": "julia-installer.exe",
-        "args": [
-            "/S",
-            "/D=$dir"
+        "script": [
+            "Expand-7zipArchive \"$dir\\julia-installer.exe\" \"$dir\" -Removal",
+            "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Recurse -Force"
         ]
     },
-    "uninstaller": {
-        "file": "uninstall.exe",
-        "args": "/S"
-    },
-    "env_set": {
-        "JULIA_HOME": "$dir\\bin",
-        "JULIA_EXE": "julia.exe",
-        "JULIA": "$dir\\bin\\julia.exe",
-        "JL_PRIVATE_LIB_DIR": "bin"
-    },
-    "bin": [
-        [
-            "bin\\julia.exe",
-            "julia"
-        ]
-    ],
+    "bin": "bin\\julia.exe",
     "checkver": {
         "url": "https://julialang.org/downloads/",
         "re": "Current stable release: v([\\d.]+)"
