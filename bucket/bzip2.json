@@ -1,15 +1,16 @@
 {
-    "version": "1.0.6",
+    "version": "1.0.6.1",
     "homepage": "https://github.com/philr/bzip2-windows",
     "description": "Freely available, patent free, high-quality data compressor",
+    "license": "MIT",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/philr/bzip2-windows/releases/download/v1.0.6/bzip2-1.0.6-win-x86.zip",
-            "hash": "e9a6d5908e219def07ae6be73383112c5a571b74fbde9bed42ee7eb1523fd727"
+            "url": "https://github.com/philr/bzip2-windows/releases/download/v1.0.6.1/bzip2-1.0.6.1-win-x86.zip",
+            "hash": "db63a8628df0e30e3d15bfdc372ebf2dbbdf5925c29793f2cc4d734b72cadf96"
         },
         "64bit": {
-            "url": "https://github.com/philr/bzip2-windows/releases/download/v1.0.6/bzip2-1.0.6-win-x64.zip",
-            "hash": "f5feefa49e7d3e87ba0ba731ed22b4b0e269f635bec2839827127a98d0a2e192"
+            "url": "https://github.com/philr/bzip2-windows/releases/download/v1.0.6.1/bzip2-1.0.6.1-win-x64.zip",
+            "hash": "d3ea564e6a5e3c39fe09e755eb050734a7fe8377c354c024fef69ef6f2c15b4f"
         }
     },
     "bin": [
@@ -21,5 +22,15 @@
     "pre_install": "cp \"$dir\\bzip2.exe\" \"$dir\\bunzip2.exe\"; cp \"$dir\\bzip2.exe\" \"$dir\\bzcat.exe\"",
     "checkver": {
         "github": "https://github.com/philr/bzip2-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/philr/bzip2-windows/releases/download/v$version/bzip2-$version-win-x86.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/philr/bzip2-windows/releases/download/v$version/bzip2-$version-win-x64.zip"
+            }
+        }
     }
 }
