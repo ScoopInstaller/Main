@@ -14,13 +14,48 @@
             "hash": "sha1:ff86c3e4ef8777074fd394510b95943d0c943956"
         }
     },
+    "pre_install": [
+        "if ($architecture -eq '32bit') {",
+        "   $manifest.bin += ,@('autorebase.bat', 'autorebase')",
+        "}"
+    ],
     "bin": [
         [
             "msys2_shell.cmd",
-            "msys2"
+            "msys2",
+            "-msys2 -defterm -here -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "mingw",
+            "-mingw -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "mingw32",
+            "-mingw32 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "mingw64",
+            "-mingw64 -defterm -here -full-path -no-start"
         ]
     ],
-    "env_add_path": ".",
+    "shortcuts": [
+        [
+            "msys2.exe",
+            "MSYS2"
+        ],
+        [
+            "mingw32.exe",
+            "MinGW32"
+        ],
+        [
+            "mingw64.exe",
+            "MinGW64"
+        ]
+    ],
+    "persist": "home",
     "notes": "Please run 'msys2' now for the MSYS2 setup to complete!",
     "checkver": {
         "url": "https://sourceforge.net/projects/msys2/files/Base/x86_64/",
@@ -29,12 +64,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/msys2/Base/x86_64/msys2-base-x86_64-$version.tar.xz",
-                "extract_dir": "msys64"
+                "url": "https://downloads.sourceforge.net/project/msys2/Base/x86_64/msys2-base-x86_64-$version.tar.xz"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/msys2/Base/i686/msys2-base-i686-$version.tar.xz",
-                "extract_dir": "msys32"
+                "url": "https://downloads.sourceforge.net/project/msys2/Base/i686/msys2-base-i686-$version.tar.xz"
             }
         }
     }
