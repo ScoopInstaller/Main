@@ -3,7 +3,7 @@
     "homepage": "https://developer.android.com/studio/releases/platform-tools.html",
     "description": "Android SDK platform-tools includes tools that interface with the Android platform, such as adb, fastboot, and systrace",
     "url": "https://dl.google.com/android/repository/platform-tools_r28.0.3-windows.zip",
-    "hash": "0fdbc4bcbfcc2b9437f36d7c17cf7bb318532221de54c7e71fc980f05f51bcbf",
+    "hash": "sha1:6d2db43c69a71bcd7b897b5386e065dfa713b340",
     "bin": [
         "platform-tools\\adb.exe",
         "platform-tools\\dmtracedump.exe",
@@ -16,6 +16,10 @@
         "re": "platform-tools_r(?<version>[\\d.]+)-windows.zip"
     },
     "autoupdate": {
-        "url": "https://dl.google.com/android/repository/platform-tools_r$version-windows.zip"
+        "url": "https://dl.google.com/android/repository/platform-tools_r$version-windows.zip",
+        "hash": {
+            "url": "https://dl.google.com/android/repository/repository2-1.xml",
+            "find": "<checksum>([a-fA-F0-9]{40})</checksum>[\\n\\t.]+<url>platform-tools_r$version-windows.zip"
+        }
     }
 }
