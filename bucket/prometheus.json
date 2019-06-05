@@ -1,5 +1,6 @@
 {
     "homepage": "https://prometheus.io/",
+    "description": "Power your metrics and alerting with a leading open-source monitoring solution.",
     "license": "Apache-2.0",
     "version": "2.10.0",
     "architecture": {
@@ -15,8 +16,16 @@
         }
     },
     "bin": [
-        "prometheus.exe",
+        [
+            "prometheus.exe",
+            "prometheus",
+            "--config.file $persist_dir/prometheus.yml"
+        ],
         "promtool.exe"
+    ],
+    "persist": [
+        "data",
+        "prometheus.yml"
     ],
     "checkver": {
         "github": "https://github.com/prometheus/prometheus"
