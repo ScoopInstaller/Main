@@ -1,6 +1,6 @@
 {
     "version": "3.5.27-4.11",
-    "description": "DjVu library.",
+    "description": "Web-centric format and software platform for distributing documents and images.",
     "homepage": "http://djvu.sourceforge.net",
     "license": "GPL-3.0-or-later",
     "url": "https://downloads.sourceforge.net/project/djvu/DjVuLibre_Windows/3.5.27+4.11/DjVuLibre-3.5.27_DjView-4.11_Setup.exe#/dl.7z",
@@ -33,7 +33,7 @@
     "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse -Force",
     "checkver": {
         "url": "https://sourceforge.net/projects/djvu/rss?path=/DjVuLibre_Windows",
-        "regex": "/(?<lib>[0-9.]+)(?:\\+(?<viewer>[0-9.]+))?/DjVuLibre",
+        "regex": "/(?<lib>[\\d.]+)(?:\\+(?<viewer>[\\d.]+))?/DjVuLibre",
         "replace": "${1}-${2}"
     },
     "autoupdate": {
