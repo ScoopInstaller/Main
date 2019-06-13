@@ -1,0 +1,42 @@
+{
+    "version": "3.5.27-4.11",
+    "description": "Web-centric format and software platform for distributing documents and images.",
+    "homepage": "http://djvu.sourceforge.net",
+    "license": "GPL-3.0-or-later",
+    "url": "https://downloads.sourceforge.net/project/djvu/DjVuLibre_Windows/3.5.27+4.11/DjVuLibre-3.5.27_DjView-4.11_Setup.exe#/dl.7z",
+    "hash": "sha1:9008de073e0755aab85665ceb06f73a5d12bf202",
+    "bin": [
+        "bzz.exe",
+        "c44.exe",
+        "cjb2.exe",
+        "cpaldjvu.exe",
+        "csepdjvu.exe",
+        "ddjvu.exe",
+        "djview.exe",
+        "djvm.exe",
+        "djvmcvt.exe",
+        "djvudump.exe",
+        "djvuextract.exe",
+        "djvumake.exe",
+        "djvups.exe",
+        "djvused.exe",
+        "djvutoxml.exe",
+        "djvutxt.exe",
+        "djvuxmlparser.exe"
+    ],
+    "shortcuts": [
+        [
+            "djview.exe",
+            "DjView"
+        ]
+    ],
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse -Force",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/djvu/rss?path=/DjVuLibre_Windows",
+        "regex": "/(?<lib>[\\d.]+)(?:\\+(?<viewer>[\\d.]+))?/DjVuLibre",
+        "replace": "${1}-${2}"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/djvu/DjVuLibre_Windows/$matchLib+$matchViewer/DjVuLibre-$matchLib_DjView-$matchViewer_Setup.exe#/dl.7z"
+    }
+}
