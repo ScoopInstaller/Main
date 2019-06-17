@@ -16,7 +16,7 @@
     "bin": "gdrive.exe",
     "checkver": {
         "url": "https://raw.githubusercontent.com/prasmussen/gdrive/master/README.md",
-        "regex": "(?sm)gdrive-windows-386.exe\\].+\\?id=(?<id32>[A-Za-z\\d]{28}).*gdrive-windows-x64.exe\\].+\\?id=(?<id64>[A-Za-z\\d]{28})&export=download\\)\\s+\\|\\s+([\\d\\.]+)\\s+\\|\\s+Windows 64-bit"
+        "regex": "(?sm)gdrive-windows-386.exe\\].+\\?id=(?<id32>[A-Za-z\\d]+)&\\D*([\\d\\.]+).*gdrive-windows-x64.exe\\].+\\?id=(?<id64>[A-Za-z\\d]+)&"
     },
     "autoupdate": {
         "architecture": {
@@ -24,14 +24,14 @@
                 "url": "https://drive.google.com/uc?id=$matchId64&export=download#/gdrive.exe",
                 "hash": {
                     "url": "https://raw.githubusercontent.com/prasmussen/gdrive/master/README.md",
-                    "find": "Windows 64-bit\\s+\\|\\s+([A-Fa-f\\d]{40})"
+                    "find": "Window(?:s)?\\s+64-bit\\s*\\|\\s*([A-Fa-f\\d]{40})"
                 }
             },
             "32bit": {
                 "url": "https://drive.google.com/uc?id=$matchId32&export=download#/gdrive.exe",
                 "hash": {
                     "url": "https://raw.githubusercontent.com/prasmussen/gdrive/master/README.md",
-                    "find": "Window(?:s)? 32-bit\\s+\\|\\s+([A-Fa-f\\d]{40})"
+                    "find": "Window(?:s)?\\s+32-bit\\s*\\|\\s*([A-Fa-f\\d]{40})"
                 }
             }
         }
