@@ -9,12 +9,38 @@
     "url": "https://www.autoitscript.com/files/autoit3/autoit-v3.zip",
     "hash": "df9a20022998c7ac11af23fc69f5d42698ed187b4d03b75fa911570c648d9642",
     "extract_dir": "install",
+    "suggest": {
+        "AutoIt Script Editor": "extras/autoit-script-editor"
+    },
     "architecture": {
         "64bit": {
             "bin": [
                 [
                     "AutoIt3_x64.exe",
-                    "autoit"
+                    "AutoIt"
+                ],
+                [
+                    "Aut2Exe\\Aut2exe_x64.exe",
+                    "Aut2exe"
+                ],
+                "Au3Check.exe"
+            ],
+            "shortcuts": [
+                [
+                    "AutoIt3_x64.exe",
+                    "AutoIt"
+                ],
+                [
+                    "Au3Info_x64.exe",
+                    "AutoIt Window Info Tool"
+                ],
+                [
+                    "Aut2Exe\\Aut2exe_x64.exe",
+                    "AutoIt Script Compiler"
+                ],
+                [
+                    "SciTe\\SciTE.exe",
+                    "AutoIt Script Editor"
                 ]
             ]
         },
@@ -22,11 +48,38 @@
             "bin": [
                 [
                     "AutoIt3.exe",
-                    "autoit"
+                    "AutoIt"
+                ],
+                "Aut2Exe\\Aut2exe.exe",
+                "Au3Check.exe"
+            ],
+            "shortcuts": [
+                [
+                    "AutoIt3.exe",
+                    "AutoIt"
+                ],
+                [
+                    "Au3Info.exe",
+                    "AutoIt Window Info Tool"
+                ],
+                [
+                    "Aut2Exe\\Aut2exe.exe",
+                    "AutoIt Script Compiler"
+                ],
+                [
+                    "SciTe\\SciTE.exe",
+                    "AutoIt Script Editor"
                 ]
             ]
         }
     },
+    "post_install": [
+        "$editor = versiondir 'autoit-script-editor' 'current'",
+        "if (Test-Path $editor) {",
+        "   Remove-Item \"$dir\\SciTe\" -Recurse -Force",
+        "   New-Item -Path \"$dir\\SciTE\" -Value \"$editor\" -ItemType Junction | Out-Null",
+        "}"
+    ],
     "checkver": {
         "url": "https://www.autoitscript.com/site/autoit/downloads/",
         "re": "<td>v([\\d.]+)</td>"
