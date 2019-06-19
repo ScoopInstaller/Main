@@ -6,21 +6,16 @@
     "architecture": {
         "64bit": {
             "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.7/3.7.2.0/WinPython64-3.7.2.0Zero.exe",
-            "hash": "33060b8180e7ce536256874ddf97e383cae22cc3f3b1de3e1b000d899c140b31"
+            "hash": "33060b8180e7ce536256874ddf97e383cae22cc3f3b1de3e1b000d899c140b31",
+            "extract_dir": "python-3.7.2.amd64"
         },
         "32bit": {
             "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.7/3.7.2.0/WinPython32-3.7.2.0Zero.exe",
-            "hash": "e24c4d4f183f478cba9104ddeac9b44a4908642c7ddab80fe452323e22c7ac75"
+            "hash": "e24c4d4f183f478cba9104ddeac9b44a4908642c7ddab80fe452323e22c7ac75",
+            "extract_dir": "python-3.7.2"
         }
     },
     "innosetup": true,
-    "installer": {
-        "script": [
-            "Get-ChildItem \"$dir\" -Exclude 'python-*' | Remove-Item -Force -Recurse",
-            "Move-Item \"$dir\\python-*\\*\" \"$dir\" -Force",
-            "Remove-Item \"$dir\\python-*\""
-        ]
-    },
     "bin": [
         "python.exe",
         "pythonw.exe",
@@ -38,10 +33,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython64-$versionZero.exe"
+                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython64-$versionZero.exe",
+                "extract_dir": "python-$majorVersion.$minorVersion.$patchVersion.amd64"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython32-$versionZero.exe"
+                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython32-$versionZero.exe",
+                "extract_dir": "python-$majorVersion.$minorVersion.$patchVersion"
             }
         },
         "hash": {
