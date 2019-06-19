@@ -26,7 +26,7 @@
     "pre_install": [
         "function CopyFile ($name) {",
         "    if (!(Test-Path \"$persist_dir\\$name\")) {",
-        "        Copy-Item \"$dir\\example-$name\" \"$dir\\$name\"",
+        "        Copy-Item \"$dir\\example-$name\" \"$dir\\$name\" | Out-Null",
         "    }",
         "}",
         "'blacklist.txt', 'cloaking-rules.txt', 'dnscrypt-proxy.toml', 'forwarding-rules.txt', 'whitelist.txt' | ForEach-Object {",
