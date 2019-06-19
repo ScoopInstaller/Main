@@ -29,7 +29,9 @@
         "        Copy-Item \"$dir\\example-$name\" \"$dir\\$name\"",
         "    }",
         "}",
-        "'blacklist.txt', 'cloaking-rules.txt', 'dnscrypt-proxy.toml', 'forwarding-rules.txt', 'whitelist.txt' | % {CopyFile $_} | Out-Null"
+        "'blacklist.txt', 'cloaking-rules.txt', 'dnscrypt-proxy.toml', 'forwarding-rules.txt', 'whitelist.txt' | ForEach-Object {",
+        "    CopyFile $_",
+        "}"
     ],
     "checkver": {
         "github": "https://github.com/jedisct1/dnscrypt-proxy"
