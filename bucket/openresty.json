@@ -1,0 +1,48 @@
+{
+    "homepage": "https://openresty.org",
+    "version": "1.15.8.1",
+    "license": "BSD-2-Clause",
+    "description": "Dynamic web platform based on NGINX and LuaJIT.",
+    "architecture": {
+        "64bit": {
+            "url": "https://openresty.org/download/openresty-1.15.8.1-win64.zip",
+            "hash": "aa03642154ae963b1e4844c9e5d7d3705531071522a566cfcd304089e2172921",
+            "extract_dir": "openresty-1.15.8.1-win64"
+        },
+        "32bit": {
+            "url": "https://openresty.org/download/openresty-1.15.8.1-win32.zip",
+            "hash": "0be75026a3c26e3e905671f61bd8e9c66648bf9351be501e7fd2907131c590d0",
+            "extract_dir": "openresty-1.15.8.1-win32"
+        }
+    },
+    "bin": [
+        [
+            "nginx.exe",
+            "openresty"
+        ],
+        "resty.bat",
+        "restydoc.bat",
+        "restydoc-index.bat"
+    ],
+    "notes": [
+        "Use '-p $PWD' to specify current directory when running OpenResty.",
+        "(Alternately, see documentation by running 'scoop home openresty'.)",
+        "'resty' and 'restydoc' command-line utilities require 'perl'"
+    ],
+    "suggest": {
+        "Perl": "perl"
+    },
+    "checkver": "OpenResty ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://openresty.org/download/openresty-$version-win64.zip",
+                "extract_dir": "openresty-$version-win64"
+            },
+            "32bit": {
+                "url": "https://openresty.org/download/openresty-$version-win32.zip",
+                "extract_dir": "openresty-$version-win32"
+            }
+        }
+    }
+}
