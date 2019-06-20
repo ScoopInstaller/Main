@@ -1,0 +1,38 @@
+{
+    "homepage": "http://www.nongnu.org/gsl-shell/",
+    "version": "2.3.2",
+    "license": "GPL-3.0-or-later",
+    "description": "GSL library shell based on LuaJIT2",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/franko/gsl-shell/releases/download/v2.3.2/gsl-shell-2.3.2-windows-x86_64.zip",
+            "hash": "dfc6c32dbf21701b5181e693253c0136c9cc631a07088b5264a0856421523674"
+        },
+        "32bit": {
+            "url": "https://github.com/franko/gsl-shell/releases/download/v2.3.2/gsl-shell-2.3.2-win-x86.zip",
+            "hash": "87973c5a752f2b1ee5fe6dd8b44b3a25d4865887181671c4f98d0e1e9c89dde2"
+        }
+    },
+    "extract_dir": "gsl-shell-2.3.2",
+    "bin": "gsl-shell.exe",
+    "shortcuts": [
+        [
+            "gsl-shell-gui.exe",
+            "GSL Shell"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/franko/gsl-shell"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/franko/gsl-shell/releases/download/v$version/gsl-shell-$version-windows-x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/franko/gsl-shell/releases/download/v$version/gsl-shell-$version-win-x86.zip"
+            }
+        },
+        "extract_dir": "gsl-shell-$version"
+    }
+}
