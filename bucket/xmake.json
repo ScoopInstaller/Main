@@ -13,6 +13,7 @@
             "hash": "2c48fb07441593a474e157b43a3bf63a7130bbdd6b78219b396b511ba9ca43ca"
         }
     },
+    "extract_dir": "xmake",
     "bin": "xmake.exe",
     "checkver": {
         "github": "https://github.com/xmake-io/xmake"
@@ -20,10 +21,18 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.win64.zip"
+                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.win64.zip",
+                "hash": {
+                    "url": "$baseurl/xmake-v$version.win64.sha256",
+                    "regex": "$sha256.*?zip"
+                }
             },
             "32bit": {
-                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.win32.zip"
+                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.win32.zip",
+                "hash": {
+                    "url": "$baseurl/xmake-v$version.win32.sha256",
+                    "regex": "$sha256.*?zip"
+                }
             }
         }
     }
