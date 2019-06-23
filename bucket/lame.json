@@ -16,7 +16,8 @@
     "bin": "lame.exe",
     "checkver": {
         "url": "http://www.rarewares.org/mp3-lame-bundle.php",
-        "re": "http://www\\.rarewares\\.org/files/mp3/lame(?<prefix>[\\d.]+)(?<suffix>[^.]*)\\.zip",
+        "regex": "/files/mp3/lame(?<prefix>[\\d.]+)-(?<suffix>[^.]*)\\.zip",
+        "replace": "${prefix}-{$suffix}"
         "replace": "${1}${2}"
     },
     "autoupdate": {
