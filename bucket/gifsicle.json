@@ -17,5 +17,21 @@
     "bin": [
         "gifsicle.exe",
         "gifdiff.exe"
-    ]
+    ],
+    "checkver": {
+        "url": "https://eternallybored.org/misc/gifsicle/",
+        "regex": "Gifsicle ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://eternallybored.org/misc/gifsicle/releases/gifsicle-$version-win64.zip",
+                "extract_dir": "gifsicle-$version"
+            },
+            "32bit": {
+                "url": "https://eternallybored.org/misc/gifsicle/releases/gifsicle-$version-win32.zip",
+                "extract_dir": "gifsicle-$version"
+            }
+        }
+    }
 }
