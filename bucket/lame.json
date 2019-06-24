@@ -16,13 +16,13 @@
     "bin": "lame.exe",
     "checkver": {
         "url": "http://www.rarewares.org/mp3-lame-bundle.php",
-        "regex": "/files/mp3/lame(?<prefix>[\\d.]+)-(?<suffix>[^.]*)\\.zip",
-        "replace": "${prefix}-${suffix}"
+        "regex": "/files/mp3/lame(?<prefix>[\\d.]+)(?<suffix>[^.]*)\\.zip",
+        "replace": "${prefix}${suffix}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://www.rarewares.org/files/mp3/lame$matchPrefix-64-$matchSuffix.zip"
+                "url": "http://www.rarewares.org/files/mp3/lame$matchPrefix-64$matchSuffix.zip"
             },
             "32bit": {
                 "url": "http://www.rarewares.org/files/mp3/lame$version.zip"
