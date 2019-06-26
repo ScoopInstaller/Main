@@ -2,20 +2,24 @@
     "homepage": "http://potrace.sourceforge.net/",
     "version": "1.15",
     "license": "GPL-2.0-or-later",
+    "description": "Transforming bitmaps into vector graphics.",
     "architecture": {
         "64bit": {
             "url": "http://potrace.sourceforge.net/download/1.15/potrace-1.15.win64.zip",
-            "hash": "d7d4cdf7e61eec711522e7f4868d3ea4f1f95eeff0824f12c2bbf645b82f2614",
+            "hash": "sha1:86745c57d4b193b71a8a17005534445e727d8f7d",
             "extract_dir": "potrace-1.15.win64"
         },
         "32bit": {
             "url": "http://potrace.sourceforge.net/download/1.15/potrace-1.15.win32.zip",
-            "hash": "05e671a23117198a2e23ad0bfd7eeefe80147c02c985830d8fc9b9969ad3d99e",
+            "hash": "sha1:b434f3de999b00d634efc7979b172e60483c252e",
             "extract_dir": "potrace-1.15.win32"
         }
     },
-    "bin": "potrace.exe",
-    "checkver": "potrace-([\\d.]+)\\.win64\\.zip",
+    "bin": [
+        "potrace.exe",
+        "mkbitmap.exe"
+    ],
+    "checkver": "Release ([\\d.]+)\\.",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -26,6 +30,9 @@
                 "url": "http://potrace.sourceforge.net/download/$version/potrace-$version.win32.zip",
                 "extract_dir": "potrace-$version.win32"
             }
+        },
+        "hash": {
+            "url": "http://potrace.sourceforge.net/download/SHA1SUMS"
         }
     }
 }
