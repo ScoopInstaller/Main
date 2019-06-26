@@ -1,22 +1,22 @@
 {
-    "description": "GitLab Runner is the open source project that is used to run your jobs and send the results back to GitLab",
     "homepage": "https://docs.gitlab.com/runner/",
     "license": "MIT",
-    "version": "12.0.0",
+    "version": "12.0.1",
+    "description": "Run your jobs and send the results back to GitLab",
+    "architecture": {
+        "64bit": {
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v12.0.1/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
+            "hash": "0663b0d4326e525ad489c2c4f35bc2e648744d18c85da7ee75b6c87b5b5dde20"
+        },
+        "32bit": {
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v12.0.1/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
+            "hash": "761b3a2c1331615d4b5638023a639f776c5dafd0b6fc9e609d32693a7e637bb7"
+        }
+    },
     "bin": "gitlab-runner.exe",
     "checkver": {
         "url": "https://gitlab.com/gitlab-org/gitlab-runner/tags?format=atom",
         "regex": "/tags/v([\\d.]+)<"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v12.0.0/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
-            "hash": "21df7223ca8fc009d6de8a87a4864561392f8e26d613076ef9c0758353c2ebe3"
-        },
-        "32bit": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v12.0.0/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
-            "hash": "0cf5c22cb79d4383f88fddf73485b48b26c606b815b12a95f7374c5fd0d9679a"
-        }
     },
     "autoupdate": {
         "architecture": {
@@ -26,6 +26,9 @@
             "32bit": {
                 "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe"
             }
+        },
+        "hash": {
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/release.sha256"
         }
     },
     "notes": "Run 'gitlab-runner register' and 'gitlab-runner install' from an elevated prompt to set it up"
