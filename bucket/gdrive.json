@@ -5,18 +5,18 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://drive.google.com/uc?id=0B3X9GlR6EmbnbnBsTXlfS1J5UjQ&export=download#/gdrive.exe",
-            "hash": "sha1:17f692a027a049385af2576503cd376593cc87b7"
+            "url": "https://drive.google.com/uc?id=1zEaLExCMQnwftSYCF7GTONHX-lV7SlTe&export=download#/gdrive.exe",
+            "hash": "sha1:53780f9a4168c71fd9f3d429932207069d1dcf03"
         },
         "32bit": {
-            "url": "https://drive.google.com/uc?id=0B3X9GlR6EmbnV3RNeFVUQjZvS2c&export=download#/gdrive.exe",
-            "hash": "sha1:1429200631b598543eddc3df3487117cad95adbb"
+            "url": "https://drive.google.com/uc?id=1nbwcqKI1ohhjbUKLH2NcPSRKvYdBwfEI&export=download#/gdrive.exe",
+            "hash": "sha1:4974290122f635d9c71875bc2c760e46b943c5ab"
         }
     },
     "bin": "gdrive.exe",
     "checkver": {
         "url": "https://raw.githubusercontent.com/prasmussen/gdrive/master/README.md",
-        "regex": "(?sm)gdrive-windows-386.exe\\].+\\?id=(?<id32>[A-Za-z\\d]{28}).*gdrive-windows-x64.exe\\].+\\?id=(?<id64>[A-Za-z\\d]{28})&export=download\\)\\s+\\|\\s+([\\d\\.]+)\\s+\\|\\s+Windows 64-bit"
+        "regex": "(?sm)windows-386.*?id=(?<id32>[^&]+).*?([\\d.]+).*?id=(?<id64>[^&]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -24,14 +24,14 @@
                 "url": "https://drive.google.com/uc?id=$matchId64&export=download#/gdrive.exe",
                 "hash": {
                     "url": "https://raw.githubusercontent.com/prasmussen/gdrive/master/README.md",
-                    "find": "Windows 64-bit\\s+\\|\\s+([A-Fa-f\\d]{40})"
+                    "regex": "windows-x64.*?$sha1"
                 }
             },
             "32bit": {
                 "url": "https://drive.google.com/uc?id=$matchId32&export=download#/gdrive.exe",
                 "hash": {
                     "url": "https://raw.githubusercontent.com/prasmussen/gdrive/master/README.md",
-                    "find": "Window(?:s)? 32-bit\\s+\\|\\s+([A-Fa-f\\d]{40})"
+                    "regex": "windows-386.*?$sha1"
                 }
             }
         }
