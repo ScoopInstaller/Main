@@ -1,13 +1,8 @@
 {
-    "description": "GitLab Runner is the open source project that is used to run your jobs and send the results back to GitLab",
     "homepage": "https://docs.gitlab.com/runner/",
     "license": "MIT",
     "version": "12.0.1",
-    "bin": "gitlab-runner.exe",
-    "checkver": {
-        "url": "https://gitlab.com/gitlab-org/gitlab-runner/tags?format=atom",
-        "regex": "/tags/v([\\d.]+)<"
-    },
+    "description": "Run your jobs and send the results back to GitLab",
     "architecture": {
         "64bit": {
             "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v12.0.1/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
@@ -18,6 +13,11 @@
             "hash": "761b3a2c1331615d4b5638023a639f776c5dafd0b6fc9e609d32693a7e637bb7"
         }
     },
+    "bin": "gitlab-runner.exe",
+    "checkver": {
+        "url": "https://gitlab.com/gitlab-org/gitlab-runner/tags?format=atom",
+        "regex": "/tags/v([\\d.]+)<"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -26,6 +26,9 @@
             "32bit": {
                 "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe"
             }
+        },
+        "hash": {
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/release.sha256"
         }
     },
     "notes": "Run 'gitlab-runner register' and 'gitlab-runner install' from an elevated prompt to set it up"
