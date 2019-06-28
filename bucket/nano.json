@@ -7,7 +7,7 @@
     "hash": "5eaf0fa60fb2ad88f728332054940b42d632ca9149c685c8adb2eedcd55ece04",
     "post_install": [
         "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
-        "   Copy-Item \"$dir\\.nanorc\" ~/.nanorc",
+        "   Copy-Item \"$dir\\.nanorc\" \"$env:USERPROFILE\\.nanorc\"",
         "}"
     ],
     "checkver": {
