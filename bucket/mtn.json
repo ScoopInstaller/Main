@@ -1,0 +1,21 @@
+{
+    "version": "3.3.1",
+    "license": "MIT",
+    "description": "Movie Thumbnailer - saves thumbnails of video files",
+    "url": "https://bitbucket.org/wahibre/mtn/downloads/mtn-3.3.1.FFmpeg4.1-win32.zip",
+    "homepage": "https://gitlab.com/movie_thumbnailer/mtn/wikis/home",
+    "hash": "685e6d054e4a05488f32bbeaa7e09c2373eba6beca18b2296259393d8b5c4ea0",
+    "extract_dir": "mtn-3.3.1",
+    "bin": "bin\\mtn.exe",
+    "checkver": {
+        "url": "https://bitbucket.org/wahibre/mtn/downloads/?tab=downloads",
+        "re": "(?<filename>mtn-(?<version>[\\d.]+\\d)[.\\-\\w\\d]*win32\\.zip)"
+    },
+    "autoupdate": {
+        "url": "https://bitbucket.org/wahibre/mtn/downloads/$matchFilename",
+        "extract_dir": "mtn-$version"
+    },
+    "suggest": {
+        "ffmpeg is a dependency - make sure it's on path": "ffmpeg"
+    }
+}
