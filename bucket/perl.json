@@ -2,14 +2,15 @@
     "homepage": "http://strawberryperl.com",
     "version": "5.30.0.1",
     "license": "Artistic-1.0-Perl|GPL-1.0-only",
+    "description": "A programming language suitable for writing simple scripts as well as complex applications.",
     "architecture": {
         "32bit": {
             "url": "http://strawberryperl.com/download/5.30.0.1/strawberry-perl-5.30.0.1-32bit-portable.zip",
-            "hash": "a1d77821c77b7a3298cf3fe381e57cba43f89b9859204398f36d85f33b287837"
+            "hash": "sha1:bd02ad814c690dbbabfdb621ab7c7640e0849d18"
         },
         "64bit": {
             "url": "http://strawberryperl.com/download/5.30.0.1/strawberry-perl-5.30.0.1-64bit-portable.zip",
-            "hash": "9367a64ac1451b21804a224bb6235fe6848dd42f5fa1871583821ac3dfabf013"
+            "hash": "sha1:cda71445c20f4e0be0a9e07f65dcc10a047a8097"
         }
     },
     "post_install": [
@@ -23,7 +24,7 @@
         "perl\\bin",
         "c\\bin"
     ],
-    "checkver": "Recommended version:</b></p>\\s*<a href=\"\\/download\\/([^\\/]+)\\/strawberry-perl-[\\d.]+-64bit.msi",
+    "checkver": "Strawberry Perl ([\\d.]+)",
     "autoupdate": {
         "architecture": {
             "32bit": {
@@ -32,6 +33,10 @@
             "64bit": {
                 "url": "http://strawberryperl.com/download/$version/strawberry-perl-$version-64bit-portable.zip"
             }
+        },
+        "hash": {
+            "url": "http://strawberryperl.com/releases.html",
+            "find": "(?sm)$basename\" onclick.*?Portable edition.*?$sha1"
         }
     }
 }
