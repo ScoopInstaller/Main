@@ -6,7 +6,7 @@
     "url": "https://files.lhmouse.com/nano-win/nano-win_8080_v4.2-243-g2f22373f.7z",
     "hash": "5eaf0fa60fb2ad88f728332054940b42d632ca9149c685c8adb2eedcd55ece04",
     "post_install": [
-        "if (-not (Test-Path ~/.nanorc)) {",
+        "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
         "   Copy-Item \"$dir\\.nanorc\" ~/.nanorc",
         "}"
     ],
