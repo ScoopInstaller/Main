@@ -28,8 +28,8 @@
     "post_install": "gem install rake",
     "notes": "Install MSYS2 via 'scoop install msys2' and then run 'ridk install' to install the toolchain!",
     "checkver": {
-        "github": "https://github.com/oneclick/rubyinstaller2",
-        "re": "/releases/tag/(?:v|RubyInstaller-)?([\\d.]+(?:-[\\d])?)"
+        "url": "https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
+        "regex": "Ruby (\\S+)"
     },
     "autoupdate": {
         "architecture": {
@@ -41,6 +41,10 @@
                 "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x86.7z",
                 "extract_dir": "rubyinstaller-$version-x86"
             }
+        },
+        "hash": {
+            "url": "https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
+            "regex": "(?sm)$basename[^.].*?$sha256"
         }
     }
 }
