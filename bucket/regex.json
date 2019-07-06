@@ -1,0 +1,18 @@
+{
+    "version": "2.7",
+    "description": "Regex DLL library (from GNUWin32)",
+    "homepage": "http://gnuwin32.sourceforge.net/packages/regex.htm",
+    "license": "GPL-2.0-only",
+    "url": "https://jaist.dl.sourceforge.net/project/gnuwin32/regex/2.7/regex-2.7-bin.zip",
+    "hash": "sha1:0532975f880a6d6dea71a48968709ee36b934b32",
+    "installer": {
+        "script": "New-Item -ItemType HardLink -Path \"$scoopdir\\shims\" -Name regex2.dll -Target \"$dir\\bin\\regex2.dll\""
+    },
+    "uninstaller": {
+        "script": "Remove-Item \"$scoopdir\\shims\\regex2.dll\""
+    },
+    "checkver": "(?smi)Version</a></h2>\\s+<p>([\\d.]+)",
+    "autoupdate": {
+        "url": "https://jaist.dl.sourceforge.net/project/gnuwin32/regex/$version/regex-$version-bin.zip"
+    }
+}
