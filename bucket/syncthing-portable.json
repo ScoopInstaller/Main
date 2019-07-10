@@ -15,7 +15,14 @@
             "extract_dir": "syncthing-windows-386-v1.2.0"
         }
     },
-    "bin": "syncthing.exe",
+    "bin": [
+        [
+            "syncthing.exe",
+            "syncthing",
+            "-home \"$dir\\config\""
+        ]
+    ],
+    "persist": "config",
     "checkver": {
         "github": "https://github.com/syncthing/syncthing"
     },
