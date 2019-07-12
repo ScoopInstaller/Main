@@ -1,6 +1,7 @@
 {
     "version": "1.12.7",
     "homepage": "https://golang.org",
+    "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "license": "BSD-3-Clause",
     "extract_dir": "go",
     "env_set": {
@@ -27,7 +28,10 @@
             "hash": "bf55b97f5fd9f2fd9e4f0b182e296ee531262d1f8458169f8b42d989c2370e5c"
         }
     },
-    "checkver": "Build version go([\\d\\.]+)\\.",
+    "checkver": {
+        "url": "https://golang.org/dl/",
+        "regex": "go([\\d.]+)\\."
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
