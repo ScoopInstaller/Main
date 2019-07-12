@@ -24,7 +24,7 @@
     ],
     "persist": "config",
     "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config\")) {",
+        "if (!(Test-Path \"$persist_dir\\config\") -and (Test-Path \"$Env:LocalAppdata\\Syncthing\")) {",
         "    New-Item \"$dir\\config\" -ItemType 'Directory' -Force | Out-Null",
         "    Copy-Item \"$Env:LocalAppdata\\Syncthing\\*\" \"$dir\\config\" -Exclude LOCK -Recurse -Force",
         "}"
