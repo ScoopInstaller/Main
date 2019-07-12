@@ -23,6 +23,12 @@
         ]
     ],
     "persist": "config",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config\")) {",
+        "    New-Item \"$dir\\config\" -ItemType 'Directory' -Force | Out-Null",
+        "    Copy-Item \"$Env:LocalAppdata\\Syncthing\\*\" \"$dir\\config\" -Exclude LOCK -Recurse -Force",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/syncthing/syncthing"
     },
