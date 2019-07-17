@@ -26,10 +26,11 @@
         "torrc"
     ],
     "pre_install": [
+        "$current = current_dir $dir",
         "$content = @(",
-        "    \"DataDirectory `\"$dir\\Data\\Data`\"\"",
-        "    \"GeoIPFile `\"$dir\\Data\\Tor\\geoip`\"\"",
-        "    \"GeoIPv6File `\"$dir\\Data\\Tor\\geoip6`\"\"",
+        "    \"DataDirectory `\"$current\\Data\\Data`\"\"",
+        "    \"GeoIPFile `\"$current\\Data\\Tor\\geoip`\"\"",
+        "    \"GeoIPv6File `\"$current\\Data\\Tor\\geoip6`\"\"",
         ")",
         "if (!(Test-Path \"$persist_dir\\torrc\")) {",
         "    New-Item -Force -Path \"$dir\" -Name torrc | Out-Null",
