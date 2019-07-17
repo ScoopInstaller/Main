@@ -15,11 +15,11 @@
     },
     "bin": [
         [
-            "Tor\\tor.exe",
+            "Tor/tor.exe",
             "tor",
             "-f \"$dir\\torrc\""
         ],
-        "Tor\\tor-gencert.exe"
+        "Tor/tor-gencert.exe"
     ],
     "persist": [
         "Data\\Data",
@@ -33,8 +33,7 @@
         "    \"GeoIPv6File `\"$current\\Data\\Tor\\geoip6`\"\"",
         ")",
         "if (!(Test-Path \"$persist_dir\\torrc\")) {",
-        "    New-Item -Force -Path \"$dir\" -Name torrc | Out-Null",
-        "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII",
+        "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
         "}"
     ],
     "checkver": {
