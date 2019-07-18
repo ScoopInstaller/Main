@@ -1,7 +1,8 @@
 {
+    "version": "1.2.0",
+    "description": "Open Source Continuous File Synchronization.",
     "homepage": "https://syncthing.net/",
     "license": "MPL-2.0",
-    "version": "1.2.0",
     "architecture": {
         "64bit": {
             "url": "https://github.com/syncthing/syncthing/releases/download/v1.2.0/syncthing-windows-amd64-v1.2.0.zip",
@@ -14,7 +15,21 @@
             "extract_dir": "syncthing-windows-386-v1.2.0"
         }
     },
-    "bin": "syncthing.exe",
+    "bin": [
+        [
+            "syncthing.exe",
+            "syncthing",
+            "-home \"$dir\\config\""
+        ]
+    ],
+    "persist": "config",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config\") -and (Test-Path \"$Env:LocalAppdata\\Syncthing\")) {",
+        "    Write-Host -F yellow \"Copying old '$Env:LocalAppdata\\Syncthing' to '$persist_dir\\config'\"",
+        "    New-Item \"$dir\\config\" -ItemType 'Directory' -Force | Out-Null",
+        "    Copy-Item \"$Env:LocalAppdata\\Syncthing\\*\" \"$dir\\config\" -Exclude LOCK -Recurse -Force",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/syncthing/syncthing"
     },
@@ -31,7 +46,7 @@
             }
         },
         "hash": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v$version/sha256sum.txt.asc"
+            "url": "$baseurl/sha256sum.txt.asc"
         }
     }
 }
