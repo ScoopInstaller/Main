@@ -19,10 +19,9 @@
         "## NOTE: conversion to byte[] avoids adding an extra trailing newline to the output file",
         "[System.IO.File]::WriteAllBytes(\"$dir\\portable.perl\", ([byte[]][char[]]((Get-Content -Raw \"$dir\\portable.perl\") -replace \"(?ms)^HomeDir:.*?^(?=\\S)\",\"\")))"
     ],
-    "env_add_path": [
-        "perl\\site\\bin",
-        "perl\\bin",
-        "c\\bin"
+    "bin": [
+        "perl\\bin\\perl.exe",
+        "perl\\bin\\wperl.exe"
     ],
     "checkver": "Strawberry Perl ([\\d.]+)",
     "autoupdate": {
