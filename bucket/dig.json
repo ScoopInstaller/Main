@@ -1,22 +1,22 @@
 {
-    "homepage": "https://www.isc.org/",
+    "version": "9.14.3",
+    "homepage": "https://www.isc.org/bind/",
     "description": "dig (domain information groper) is a flexible tool for interrogating DNS name servers",
     "license": "MPL-2.0",
-    "version": "9.14.4",
     "architecture": {
         "64bit": {
-            "url": "https://ftp.isc.org/isc/bind9/9.14.4/BIND9.14.4.x64.zip",
-            "hash": "80ab8173cd86828e42bceaf2bf15e78a4a012cac232f11ac15c8642558e76c1e"
+            "url": "https://ftp.isc.org/isc/bind9/9.14.3/BIND9.14.3.x64.zip",
+            "hash": "9182c6593d11581909d12706e663252c357696def102b260da02c98ec1ac7b86"
         },
         "32bit": {
-            "url": "https://ftp.isc.org/isc/bind9/9.14.4/BIND9.14.4.x86.zip",
-            "hash": "618adda78c04c5891a778381d87d78f81d1d8ae9849dec200a5ce66b516bd3d2"
+            "url": "https://ftp.isc.org/isc/bind9/9.14.3/BIND9.14.3.x86.zip",
+            "hash": "1ded768b090e633b1930f99e457c1f73b3955614aff621ec13ea12c186884472"
         }
     },
     "bin": "dig.exe",
     "checkver": {
         "url": "https://www.isc.org/downloads/",
-        "re": "Current-Stable[\\S\\s]*?BIND(.+)\\.x64\\.zip\""
+        "regex": "Current-Stable[\\S\\s]*?BIND(.+)\\.x64\\.zip\""
     },
     "autoupdate": {
         "architecture": {
@@ -30,5 +30,9 @@
     },
     "suggest": {
         "vcredist": "extras/vcredist2012"
-    }
+    },
+    "notes": [
+        "The dig package has been deprecated, and will be removed in the future.",
+        "Please use the bind package instead."
+    ]
 }
