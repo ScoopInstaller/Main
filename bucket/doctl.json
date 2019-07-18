@@ -1,31 +1,29 @@
 {
-    "description": "A command line tool for Digital Ocean services",
     "homepage": "https://github.com/digitalocean/doctl",
-    "version": "1.20.1",
+    "version": "1.21.1",
     "license": "Apache-2.0",
+    "description": "A command line tool for DigitalOcean services",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/digitalocean/doctl/releases/download/v1.20.1/doctl-1.20.1-windows-4.0-amd64.zip",
-            "hash": "23e92b714f5c76f18b5ad32a88f3618a392a9d7c36b9eb900c7e361188bea18d"
+            "url": "https://github.com/digitalocean/doctl/releases/download/v1.21.1/doctl-1.21.1-windows-amd64.zip",
+            "hash": "a8ed685dda99d8c4c06e571e8d9b660475c912ac99488d069768ed7a8fb54790"
         },
         "32bit": {
-            "url": "https://github.com/digitalocean/doctl/releases/download/v1.20.1/doctl-1.20.1-windows-4.0-386.zip",
-            "hash": "f4b479bfc2be4beab2b307dae592d1271403745e64bd0687a617befb13baa068"
+            "url": "https://github.com/digitalocean/doctl/releases/download/v1.21.1/doctl-1.21.1-windows-386.zip",
+            "hash": "5f45dbb7c30d7a6a11857012927930ff0097a1edd68c948c578342fd63f9037f"
         }
     },
+    "pre_install": "Rename-Item \"$dir\\doctl\" 'doctl.exe'",
     "bin": "doctl.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/digitalocean/doctl/releases/download/v$version/doctl-$version-windows-4.0-amd64.zip"
+                "url": "https://github.com/digitalocean/doctl/releases/download/v$version/doctl-$version-windows-amd64.zip"
             },
             "32bit": {
-                "url": "https://github.com/digitalocean/doctl/releases/download/v$version/doctl-$version-windows-4.0-386.zip"
+                "url": "https://github.com/digitalocean/doctl/releases/download/v$version/doctl-$version-windows-386.zip"
             }
-        },
-        "hash": {
-            "url": "$url.sha256"
         }
     }
 }
