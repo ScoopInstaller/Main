@@ -1,0 +1,60 @@
+{
+    "version": "0.4.0.5",
+    "description": "Enables anonymous communication over the onion network (expert mode).",
+    "homepage": "https://www.torproject.org",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://dist.torproject.org/torbrowser/8.5.4/tor-win64-0.4.0.5.zip",
+            "hash": "76761d916772f6c5c3c43dbe4d9ca846fe6526fcbe8974b88b11a00a196e609d"
+        },
+        "32bit": {
+            "url": "https://dist.torproject.org/torbrowser/8.5.4/tor-win32-0.4.0.5.zip",
+            "hash": "8d411a394597bab5ec6fe446a2cda21279c830c5fdd19c3de82aa1028ffd7e96"
+        }
+    },
+    "bin": [
+        [
+            "Tor\\tor.exe",
+            "tor",
+            "-f \"$dir\\torrc\""
+        ],
+        "Tor\\tor-gencert.exe"
+    ],
+    "persist": [
+        "Data\\Data",
+        "torrc"
+    ],
+    "pre_install": [
+        "$current = current_dir $dir",
+        "$content = @(",
+        "    \"DataDirectory `\"$current\\Data\\Data`\"\"",
+        "    \"GeoIPFile `\"$current\\Data\\Tor\\geoip`\"\"",
+        "    \"GeoIPv6File `\"$current\\Data\\Tor\\geoip6`\"\"",
+        ")",
+        "if (!(Test-Path \"$persist_dir\\torrc\")) {",
+        "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://www.torproject.org/download/tor/",
+        "regex": "torbrowser/(?<browser>[\\d.]+)/tor-win32-(?<version>[\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win64-$version.zip"
+            },
+            "32bit": {
+                "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win32-$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums-signed-build.txt"
+        }
+    },
+    "notes": [
+        "NOTE: You will need to configure tor before using it, as it does not come pre-configured.",
+        "Please see https://www.torproject.org/docs/tor-manual.html.en for configuration details."
+    ]
+}
