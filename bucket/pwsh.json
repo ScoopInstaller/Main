@@ -1,6 +1,7 @@
 {
-    "homepage": "https://github.com/PowerShell/PowerShell",
     "version": "6.2.2",
+    "description": "An automation and configuration tool/framework.",
+    "homepage": "https://github.com/PowerShell/PowerShell",
     "license": "MIT",
     "architecture": {
         "64bit": {
@@ -12,7 +13,13 @@
             "hash": "cf492e43fd5a75ee5c542f6b45b6611382f80b362aca46fd8be6f95154791ea0"
         }
     },
-    "bin": "pwsh.exe",
+    "bin": [
+        "pwsh.exe",
+        [
+            "pwsh.exe",
+            "powershellcore"
+        ]
+    ],
     "shortcuts": [
         [
             "pwsh.exe",
@@ -31,7 +38,7 @@
         },
         "hash": {
             "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
-            "find": "$basename\\s*<ul>\\s*<li>([A-Fa-f\\d]{64})"
+            "regex": "$basename\\s*<ul>\\s*<li>$sha256"
         }
     }
 }
