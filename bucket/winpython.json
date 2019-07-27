@@ -1,21 +1,20 @@
 {
-    "description": "Free, open-source and portable Python distribution for Windows",
     "version": "3.7.4.0",
-    "license": "MIT",
+    "description": "Free, open-source and portable Python distribution for Windows",
     "homepage": "https://winpython.github.io/",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.7/3.7.4.0/WinPython64-3.7.4.0Zero.exe",
+            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.7/3.7.4.0/WinPython64-3.7.4.0Zero.exe#/dl.7z",
             "hash": "2e92da91ddbbb739cf1d21ea670bc53d1f599ea5d1a690422af93b796e590aa9",
-            "extract_dir": "python-3.7.4.amd64"
+            "extract_dir": "WPy64-3740\\python-3.7.4.amd64"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.7/3.7.4.0/WinPython32-3.7.4.0Zero.exe",
+            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.7/3.7.4.0/WinPython32-3.7.4.0Zero.exe#/dl.7z",
             "hash": "c49459e3b397192df7e613c55860604c8470a53c068b037478d9ebfd992c7856",
-            "extract_dir": "python-3.7.4"
+            "extract_dir": "WPy32-3740\\python-3.7.4"
         }
     },
-    "innosetup": true,
     "bin": [
         "python.exe",
         "pythonw.exe",
@@ -33,17 +32,17 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython64-$versionZero.exe",
-                "extract_dir": "python-$majorVersion.$minorVersion.$patchVersion.amd64"
+                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython64-$versionZero.exe#/dl.7z",
+                "extract_dir": "WPy64-$cleanVersion\\python-$majorVersion.$minorVersion.$patchVersion.amd64"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython32-$versionZero.exe",
-                "extract_dir": "python-$majorVersion.$minorVersion.$patchVersion"
+                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython32-$versionZero.exe#/dl.7z",
+                "extract_dir": "WPy32-$cleanVersion\\python-$majorVersion.$minorVersion.$patchVersion"
             }
         },
         "hash": {
             "url": "https://winpython.github.io/md5_sha1.txt",
-            "find": "([a-fA-F\\d]{64})\\s\\|\\s$basename"
+            "regex": "$sha256\\s+\\|\\s+$basename"
         }
     }
 }
