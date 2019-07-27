@@ -1,0 +1,42 @@
+{
+    "version": "16.26",
+    "description": "Advanced tool to see processes tree - debugging tool for ops, devs, testers",
+    "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer",
+    "license": "Sysinternals Software License",
+    "architecture": {
+        "64bit": {
+            "url": "https://live.sysinternals.com/procexp64.exe",
+            "hash": "46699e25d70986baae9e5c23d16054d4391e522661946186c1d417924f7962b4",
+            "bin": [
+                [
+                    "procexp64.exe",
+                    "procexp"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://live.sysinternals.com/procexp.exe",
+            "hash": "93d6fce4ceddf5866db3af80994e46725b9d58fe10102671ce575a18a085c325",
+            "bin": [
+                [
+                    "procexp.exe",
+                    "procexp"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer/",
+        "regex": "Process Explorer v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://live.sysinternals.com/procexp64.exe"
+            },
+            "32bit": {
+                "url": "https://live.sysinternals.com/procexp.exe"
+            }
+        }
+    }
+}
