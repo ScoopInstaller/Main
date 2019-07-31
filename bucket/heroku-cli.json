@@ -1,40 +1,40 @@
 {
-    "version": "7.26.2",
+    "version": "7.27.1",
     "homepage": "https://devcenter.heroku.com/articles/heroku-cli",
     "description": "An essential part of using Heroku, which can perform nearly any Heroku-related task right from your terminal.",
     "license": "ISC",
     "architecture": {
         "64bit": {
-            "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl",
-            "hash": "b552e8c121df572b25a7c96e7272c6eeacdfa49dac0af085ee78b03710b28739"
+            "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz",
+            "hash": "6374c4484ff861f56c889cd495a3c05d1a9584bb7ad67da09575e924956d8ab4"
         },
         "32bit": {
-            "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl",
-            "hash": "b9cab430271936f58f8fc5b4da663307ad6292ab10b6d5a24dfbe642c686518c"
+            "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz",
+            "hash": "5b01e3576caa4af94e2cb147cb2795153edad272c46c9d6090adb58c502e8444"
         }
     },
-    "bin": "bin\\heroku.cmd",
+    "depends": "sudo",
+    "bin": "bin/heroku.cmd",
     "checkver": {
         "url": "https://cli-assets.heroku.com/version",
         "jsonpath": "$.version"
     },
     "pre_install": [
-        "& (scoop which 7z) x \"$dir\\dl\" -o\"$dir\" | Out-Null",
-        "Invoke-ExternalCommand -FilePath (scoop which 7z) -ArgumentList \"x `\"$dir\\dl~`\" -o`\"$dir\\dlo`\" -bso0 -bd\" -RunAs | Out-Null",
+        "Invoke-ExternalCommand -FilePath (Get-HelperPath 7zip) -ArgumentList \"x `\"$dir\\dl`\" -o`\"$dir\\dlo`\" -bso0 -bd\" -RunAs | Out-Null",
         "Move-Item \"$dir\\dlo\\heroku\\*\" \"$dir\"",
         "Remove-Item \"$dir\\dl*\" -Recurse"
     ],
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl",
+                "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz",
                 "hash": {
                     "url": "https://cli-assets.heroku.com/win32-x64",
                     "jsonpath": "$.sha256xz"
                 }
             },
             "32bit": {
-                "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl",
+                "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz",
                 "hash": {
                     "url": "https://cli-assets.heroku.com/win32-x86",
                     "jsonpath": "$.sha256xz"
