@@ -1,10 +1,10 @@
 {
     "homepage": "https://github.com/PKISharp/win-acme",
-    "version": "2.0.8.356",
+    "version": "2.0.9.386",
     "license": "Apache-2.0",
     "description": "A Simple ACME Client for Windows",
-    "url": "https://github.com/PKISharp/win-acme/releases/download/v2.0.8/win-acme.v2.0.8.356.zip",
-    "hash": "cc150c7cd0cea57bb02bff24cb9cb70a90bae1ac350af63387824b7a6b6a7e53",
+    "url": "https://github.com/PKISharp/win-acme/releases/download/v2.0.9/win-acme.v2.0.9.386.zip",
+    "hash": "14905b432aa324f301632e8715f9f7cb6d28f4cfd322e533afb4c532b734d8e1",
     "bin": "wacs.exe",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\settings.config\")) {",
@@ -14,9 +14,9 @@
     "persist": "settings.config",
     "checkver": {
         "github": "https://github.com/PKISharp/win-acme",
-        "regex": "download/(?<release>v?[\\d.]+)/win-acme\\.v([\\d.]+)\\.zip"
+        "regex": "win-acme\\.v([\\d.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://github.com/PKISharp/win-acme/releases/download/v$matchRelease/win-acme.v$version.zip"
+        "url": "https://github.com/PKISharp/win-acme/releases/download/v$matchHead/win-acme.v$version.zip"
     }
 }
