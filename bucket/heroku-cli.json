@@ -21,7 +21,7 @@
         "    '-bso0'",
         "    '-bd'",
         "    '-bse0'",
-        ") -ContinueExitCodes @{ 2 = 'Can't creat symlink. Ignored.'}",
+        ") -ContinueExitCodes @{ 2 = 'Can not create symlink while running from un-elevated prompt. Installation is not affected.'} | Out-Null",
         "Move-Item \"$dir\\dlo\\heroku\\*\" \"$dir\"",
         "Remove-Item \"$dir\\dl*\" -Recurse"
     ],
