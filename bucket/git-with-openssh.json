@@ -1,7 +1,7 @@
 {
     "##": "Maintainers: when updating this manifest to a new version, you might like to also update git.json",
     "homepage": "https://git-for-windows.github.io/",
-    "license": "GPL-2.0",
+    "license": "GPL-2.0-only",
     "version": "2.22.0.windows.1",
     "architecture": {
         "64bit": {
@@ -40,6 +40,9 @@
     "checkver": {
         "url": "https://github.com/git-for-windows/git/releases/latest",
         "re": "v(?<version>[\\d\\w.]+)/PortableGit-(?<short>[\\d.]+).*\\.exe"
+    },
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
     },
     "autoupdate": {
         "architecture": {
