@@ -2,14 +2,15 @@
     "homepage": "https://mariadb.org",
     "version": "10.4.7",
     "license": "GPL-2.0-only",
+    "description": "Community developed fork of MySQL server.",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.netcologne.de/mariadb/mariadb-10.4.7/winx64-packages/mariadb-10.4.7-winx64.zip",
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.4.7/winx64-packages/mariadb-10.4.7-winx64.zip",
             "hash": "849f28b41a86564fdd7e4ea3d60838108a957960531f90ee17b027c372286041",
             "extract_dir": "mariadb-10.4.7-winx64"
         },
         "32bit": {
-            "url": "https://mirror.netcologne.de/mariadb/mariadb-10.4.7/win32-packages/mariadb-10.4.7-win32.zip",
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.4.7/win32-packages/mariadb-10.4.7-win32.zip",
             "hash": "91531208c4748f448701bc818232de0d72b0ea372e78fdfb5a228ce441354eb3",
             "extract_dir": "mariadb-10.4.7-win32"
         }
@@ -52,24 +53,21 @@
     ],
     "checkver": {
         "url": "https://downloads.mariadb.org/",
-        "re": "Download ([\\d.]+) Stable"
+        "regex": "Download ([\\d.]+) Stable"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.netcologne.de/mariadb/mariadb-$version/winx64-packages/mariadb-$version-winx64.zip",
-                "extract_dir": "mariadb-$version-winx64",
-                "hash": {
-                    "url": "https://mirror.netcologne.de/mariadb/mariadb-$version/winx64-packages/sha256sums.txt"
-                }
+                "url": "https://downloads.mariadb.com/MariaDB/mariadb-$version/winx64-packages/mariadb-$version-winx64.zip",
+                "extract_dir": "mariadb-$version-winx64"
             },
             "32bit": {
-                "url": "https://mirror.netcologne.de/mariadb/mariadb-$version/win32-packages/mariadb-$version-win32.zip",
-                "extract_dir": "mariadb-$version-win32",
-                "hash": {
-                    "url": "https://mirror.netcologne.de/mariadb/mariadb-$version/win32-packages/sha256sums.txt"
-                }
+                "url": "https://downloads.mariadb.com/MariaDB/mariadb-$version/win32-packages/mariadb-$version-win32.zip",
+                "extract_dir": "mariadb-$version-win32"
             }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums.txt"
         }
     }
 }
