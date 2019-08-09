@@ -1,0 +1,33 @@
+{
+    "homepage": "https://mega.nz/cmd",
+    "description": "Command line tools to access MEGA(mega.nz)",
+    "version": "1.1.0",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/meganz/MEGAcmd/blob/master/build/installer/terms.txt"
+    },
+    "url": "https://mega.nz/MEGAcmdSetup.exe#/dl.7z",
+    "hash": "9a7ddc65cc6a792af2d5f54d69b2e08a5a48db050c8d3131011805b508a2f20d",
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse",
+            "Get-ChildItem \"$dir\" 'mega-*.bat' | ForEach-Object {",
+            "    Add-Content -Path \"$scoopdir\\shims\\$_\" -Value \"@echo off `n`\"$dir\\$_`\" %*\"",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Get-ChildItem \"$dir\" 'mega-*.bat' | ForEach-Object {",
+            "    Remove-Item \"$scoopdir\\shims\\$_\"",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://github.com/meganz/MEGAcmd/releases",
+        "regex": "tag/([\\d.]+)_Win"
+    },
+    "autoupdate": {
+        "url": "https://mega.nz/MEGAcmdSetup.exe#/dl.7z"
+    }
+}
