@@ -1,0 +1,32 @@
+{
+    "homepage": "https://etcd.io/",
+    "description": "A distributed, reliable key-value store for the most critical data of a distributed system",
+    "license": "Apache-2.0",
+    "version": "3.3.13",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/etcd-io/etcd/releases/download/v3.3.13/etcd-v3.3.13-windows-amd64.zip",
+            "hash": "718953a44005b2f53075699204c63e2d0a8227a52060eff178c7047d42bc3cb1",
+            "extract_dir": "etcd-v3.3.13-windows-amd64"
+        }
+    },
+    "bin": [
+        "etcd.exe",
+        "etcdctl.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/etcd-io/etcd"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/etcd-io/etcd/releases/download/v$version/etcd-v$version-windows-amd64.zip",
+                "extract_dir": "etcd-v$version-windows-amd64",
+                "hash": {
+                    "url": "$baseurl/SHA256SUMS",
+                    "regex": "^$sha256\\s+$url$"
+                }
+            }
+        }
+    }
+}

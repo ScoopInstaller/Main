@@ -1,16 +1,16 @@
 {
-    "version": "8.0.0",
+    "version": "8.0.1",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org/",
     "license": "NCSA",
     "architecture": {
         "32bit": {
-            "url": "https://releases.llvm.org/8.0.0/LLVM-8.0.0-win32.exe#/llvm.7z",
-            "hash": "43ff5543c02873f41b87508c90509946293fe613fdbc57f8d19349e931aad6da"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/LLVM-8.0.1-win32.exe#/dl.7z",
+            "hash": "5d992a41f1ff6296659e66eabbcbaec34f5533fe9d1376fc94fba7450383fe69"
         },
         "64bit": {
-            "url": "https://releases.llvm.org/8.0.0/LLVM-8.0.0-win64.exe#/llvm.7z",
-            "hash": "56d582eed2d5def6accaedabbe11ae368186600798e2a6a7eb86a727fa7bb20c"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/LLVM-8.0.1-win64.exe#/dl.7z",
+            "hash": "e3af139c2f93075c13dcbc4091c1311f66fc6e4e8705649fcaf9bef8b3368f41"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\" -Recurse",
@@ -58,10 +58,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://releases.llvm.org/$version/LLVM-$version-win64.exe#/llvm.7z"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://releases.llvm.org/$version/LLVM-$version-win32.exe#/llvm.7z"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
             }
         }
     }
