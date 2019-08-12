@@ -13,6 +13,10 @@
             "hash": "md5:2641d07ea5f6e723d56457a5d2ba82c2"
         }
     },
+    "installer": {
+        "file": "Install.exe",
+        "args": "-sasl"
+    },
     "bin": [
         "bin\\erl.exe",
         "bin\\erlc.exe",
@@ -27,10 +31,6 @@
             "Erlang"
         ]
     ],
-    "installer": {
-        "file": "Install.exe",
-        "args": "-sasl"
-    },
     "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
     "checkver": {
         "url": "https://www.erlang.org/downloads",
