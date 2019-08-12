@@ -13,7 +13,11 @@
             "hash": "6aab12fce6d919a474d4f46a909d5ea1399b8e20c2fd38173d0dd2b3ed87860f"
         }
     },
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe.nsis\" -Recurse -Force",
+    "bin": [
+        "bin\\coqtop.exe",
+        "bin\\coqc.exe",
+        "bin\\coqchk.exe"
+    ],
     "env_set": {
         "COQBIN": "bin"
     },
@@ -23,6 +27,7 @@
             "CoqIDE"
         ]
     ],
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe.nsis\" -Recurse -Force",
     "checkver": {
         "github": "https://github.com/coq/coq"
     },
