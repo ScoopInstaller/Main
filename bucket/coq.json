@@ -14,7 +14,9 @@
         }
     },
     "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe.nsis\" -Recurse -Force",
-    "env_add_path": "bin",
+    "env_set": {
+        "COQBIN": "bin"
+    },
     "shortcuts": [
         [
             "bin\\coqide.exe",
