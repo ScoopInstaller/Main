@@ -11,9 +11,10 @@
     },
     "post_install": "if (Test-Path \"$(appdir curl $global)\") {cp \"$dir\\cacert.pem\" \"$(appdir curl $global)\\current\\bin\\curl-ca-bundle.crt\"}",
     "autoupdate": {
-        "url": "https://curl.haxx.se/ca/cacert.pem",
+        "url": "https://curl.haxx.se/ca/cacert-$version.pem#/cacert.pem",
         "hash": {
-            "url": "$url.sha256"
+            "url": "$baseurl/cacert.pem.sha256",
+            "regex": "$sha256"
         }
     }
 }
