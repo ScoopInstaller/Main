@@ -1,5 +1,6 @@
 {
     "homepage": "https://portainer.io/",
+    "description": "Simple management solution for Docker.",
     "license": "Zlib",
     "version": "1.22.0",
     "architecture": {
@@ -16,7 +17,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/portainer/portainer/releases/download/$version/portainer-$version-windows-amd64.tar.gz"
+                "url": "https://github.com/portainer/portainer/releases/download/$version/portainer-$version-windows-amd64.tar.gz",
+                "hash": {
+                    "url": "$baseurl/portainer-$version-windows-amd64-checksum.txt",
+                    "regex": "$sha256"
+                }
             }
         }
     }
