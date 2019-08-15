@@ -7,13 +7,12 @@
     "hash": "c9dff69d092bdec14dee64df6677e7430163509798895fbd54891c166c5c0875",
     "pre_install": [
         "@(",
-        "    'if($args.length -eq 1 -and ($args -eq \"selfupdate\" -or $args -eq \"self-update\")) { & scoop update composer }'",
-        "    'else { & php (join-path $psscriptroot \"composer.phar\") @args }'",
+        "    'if ($args.length -eq 1 -and ($args -eq \"selfupdate\" -or $args -eq \"self-update\")) { & scoop update composer }'",
+        "    'else { & php (Join-Path $psscriptroot \"composer.phar\") @args }'",
         ") | Add-Content -Path \"$dir\\composer.ps1\"",
-        "$och = \"$env:APPDATA\\Composer\"",
-        "if (!(Test-Path \"$persist_dir\\home\") -and (Test-Path $och)) {",
+        "if (!(Test-Path \"$persist_dir\\home\") -and (Test-Path \"$env:Appdata\\Composer\")) {",
         "    Write-Host -F yellow \"Moving old 'COMPOSER_HOME' to '$persist_dir\\home'\"",
-        "    Move-Item \"$och\" \"$persist_dir\\home\" -Force",
+        "    Move-Item \"$env:Appdata\\Composer\" \"$persist_dir\\home\" -Force",
         "}"
     ],
     "bin": "composer.ps1",
