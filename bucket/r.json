@@ -8,10 +8,22 @@
     "innosetup": true,
     "architecture": {
         "64bit": {
-            "pre_install": "Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'"
+            "pre_install": "Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'",
+            "shortcuts": [
+                [
+                    "bin\\x64\\Rgui.exe",
+                    "R"
+                ]
+            ]
         },
         "32bit": {
-            "pre_install": "Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'"
+            "pre_install": "Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'",
+            "shortcuts": [
+                [
+                    "bin\\i386\\Rgui.exe",
+                    "R"
+                ]
+            ]
         }
     },
     "installer": {
@@ -26,12 +38,6 @@
         [
             "bin\\R.exe",
             "rterm"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "bin\\R.exe",
-            "R"
         ]
     ],
     "notes": [
