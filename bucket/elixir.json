@@ -1,15 +1,20 @@
 {
     "homepage": "https://elixir-lang.org/",
+    "description": "A dynamic and functional programming language designed for building scalable and maintainable applications.",
     "version": "1.9.1",
     "license": "Apache-2.0",
     "depends": "erlang",
     "url": "https://github.com/elixir-lang/elixir/releases/download/v1.9.1/Precompiled.zip",
-    "hash": "17e43cb1627a0fa5625bc370cec0964ad6471ef242f1549e316db73c0d94fcc6",
+    "hash": "sha512:14826fe295c19c9e331f2777f70a13ae55bf107ce043d0aeb747b5235de82bd6175c915f0bea63ffe0f87136357d76522c67bdd54fc61dd1f167afb4879a3845",
     "env_add_path": "bin",
     "checkver": {
         "github": "https://github.com/elixir-lang/elixir"
     },
     "autoupdate": {
-        "url": "https://github.com/elixir-lang/elixir/releases/download/v$version/Precompiled.zip"
+        "url": "https://github.com/elixir-lang/elixir/releases/download/v$version/Precompiled.zip",
+        "hash": {
+            "url": "https://github.com/elixir-lang/elixir/releases/tag/v$version/",
+            "regex": "$basename SHA512: $sha512"
+        }
     }
 }
