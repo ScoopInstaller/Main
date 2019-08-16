@@ -1,11 +1,12 @@
 {
     "homepage": "https://www.openfaas.com/",
+    "description": "A framework for building serverless functions with Docker and Kubernetes which has first class support for metrics. (CLI)",
     "license": "MIT",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/openfaas/faas-cli/releases/download/0.9.0/faas-cli.exe",
-            "hash": "2bb9fa145d5db4d190f7828d6bb7b22d49e8c02dcbd3587b0838a3ec10605ab4"
+            "url": "https://github.com/openfaas/faas-cli/releases/download/0.9.1/faas-cli.exe",
+            "hash": "a4cc326a90d540c9277dfc7a4a02065f91c217bfa343ee4ca82273d0841483c2"
         }
     },
     "bin": [
@@ -16,7 +17,6 @@
         ]
     ],
     "post_install": "faas-cli version",
-    "notes": "OpenFaas @ https://www.openfaas.com/",
     "checkver": {
         "github": "https://github.com/openfaas/faas-cli"
     },
@@ -25,6 +25,9 @@
             "64bit": {
                 "url": "https://github.com/openfaas/faas-cli/releases/download/$version/faas-cli.exe"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
