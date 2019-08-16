@@ -4,7 +4,7 @@
     "version": "3.29.0",
     "license": "Public Domain",
     "url": "https://www.sqlite.org/2019/sqlite-tools-win32-x86-3290000.zip",
-    "hash": "6eae0b3e87bc146aeb0f130f3814faa0e93e394876f3710a537a00a6dccdbd19",
+    "hash": "sha1:f009ff42b8c22886675005e3e57c94d62bca12b3",
     "extract_dir": "sqlite-tools-win32-x86-3290000",
     "bin": [
         "sqlite3.exe",
@@ -13,10 +13,14 @@
     ],
     "checkver": {
         "url": "https://www.sqlite.org/download.html",
-        "re": "sqlite-tools-win32-x86-(?<number>[\\d]+).zip[\\s\\S]+for SQLite version (?<version>[\\d.]+)\\."
+        "regex": "sqlite-tools-win32-x86-(?<number>[\\d]+).zip.*?for SQLite version ([\\d.]+)\\."
     },
     "autoupdate": {
         "url": "https://www.sqlite.org/2019/sqlite-tools-win32-x86-$matchNumber.zip",
+        "hash": {
+            "url": "https://www.sqlite.org/download.html",
+            "regex": "(?sm)$basename.*?$sha1"
+        },
         "extract_dir": "sqlite-tools-win32-x86-$matchNumber"
     }
 }
