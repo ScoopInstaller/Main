@@ -9,6 +9,13 @@
     "architecture": {
         "64bit": {
             "pre_install": "Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'",
+            "bin": [
+                "bin\\x64\\R.exe",
+                "bin\\x64\\Rcmd.exe",
+                "bin\\x64\\Rgui.exe",
+                "bin\\x64\\Rscript.exe",
+                "bin\\x64\\Rterm.exe"
+            ],
             "shortcuts": [
                 [
                     "bin\\x64\\Rgui.exe",
@@ -18,6 +25,13 @@
         },
         "32bit": {
             "pre_install": "Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'",
+            "bin": [
+                "bin\\i386\\R.exe",
+                "bin\\i386\\Rcmd.exe",
+                "bin\\i386\\Rgui.exe",
+                "bin\\i386\\Rscript.exe",
+                "bin\\i386\\Rterm.exe"
+            ],
             "shortcuts": [
                 [
                     "bin\\i386\\Rgui.exe",
@@ -32,14 +46,6 @@
             "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\""
         ]
     },
-    "bin": [
-        "bin\\R.exe",
-        "bin\\Rscript.exe",
-        [
-            "bin\\R.exe",
-            "rterm"
-        ]
-    ],
     "notes": [
         "You'll need to type 'r.ps1' or 'r.cmd' to run R, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
         "",
