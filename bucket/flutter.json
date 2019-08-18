@@ -1,25 +1,19 @@
 {
     "homepage": "https://flutter.dev/",
     "description": "Google’s mobile app SDK for crafting high-quality native interfaces on iOS and Android in record time. ",
-    "version": "1.5.4-hotfix.2",
+    "version": "1.7.8+hotfix.4",
     "license": "BSD-3-Clause",
     "url": [
-        "https://storage.googleapis.com/flutter_infra/releases/stable/windows/flutter_windows_v1.5.4-hotfix.2-stable.zip",
+        "https://storage.googleapis.com/flutter_infra/releases/stable/windows/flutter_windows_v1.7.8+hotfix.4-stable.zip",
         "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/flutter-dev-setup.ps1"
     ],
     "hash": [
-        "1d5e1779430be6bbb4fa49f4bccc7c5d24a76f3d2a100129e09b4b8eef33b1b4",
+        "d2488e0744b8c59216cf4be0dc5d19364ed72d70f6101c392125207b8328accf",
         "bbd8dd269dd70d97e0224025281e55b7e2e32364d5c47e082ca7f45e33d1a613"
     ],
-    "depends": [
-        "android-sdk",
-        "java/adopt8-hotspot"
-    ],
+    "depends": "android-sdk",
     "extract_dir": "flutter",
-    "bin": [
-        "bin\\flutter.bat",
-        "flutter-dev-setup.ps1"
-    ],
+    "bin": "bin\\flutter.bat",
     "env_add_path": "bin\\cache\\dart-sdk",
     "post_install": [
         "& \"$dir\\flutter-dev-setup.ps1\"",
@@ -28,7 +22,8 @@
     ],
     "checkver": {
         "url": "https://storage.googleapis.com/flutter_infra/releases/releases_windows.json",
-        "regex": "windows_v([\\w-.]+)-stable"
+        "jsonpath": "$.releases[?(@.hash == $.current_release.stable && @.channel == 'stable')].version",
+        "regex": "v(.+)"
     },
     "autoupdate": {
         "url": "https://storage.googleapis.com/flutter_infra/releases/stable/windows/flutter_windows_v$version-stable.zip",
@@ -41,6 +36,7 @@
         "Visual Studio Code with Flutter Extension": [
             "vscode",
             "vscode-portable"
-        ]
+        ],
+        "Android Studio with Flutter Extension": "android-studio"
     }
 }
