@@ -7,7 +7,7 @@
         "url": "https://developer.android.com/studio/releases/platform-tools.html#downloads"
     },
     "url": "https://dl.google.com/android/repository/platform-tools_r29.0.2-windows.zip",
-    "hash": "d78f02e5e2c9c4c1d046dcd4e6fbdf586e5f57ef66eb0da5c2b49d745d85d5ee",
+    "hash": "sha1:8d67f715bf800d7f477749320fff32022a1891e1",
     "extract_dir": "platform-tools",
     "bin": [
         "adb.exe",
@@ -18,6 +18,10 @@
     ],
     "checkver": "<h4.*>([\\d.]+) \\(.*\\)</h4>",
     "autoupdate": {
-        "url": "https://dl.google.com/android/repository/platform-tools_r$version-windows.zip"
+        "url": "https://dl.google.com/android/repository/platform-tools_r$version-windows.zip",
+        "hash": {
+            "url": "https://dl.google.com/android/repository/repository2-1.xml",
+            "xpath": "/sdk:sdk-repository/remotePackage/archives/archive/complete[url='$basename']/checksum"
+        }
     }
 }
