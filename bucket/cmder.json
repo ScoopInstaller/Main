@@ -5,7 +5,11 @@
     "license": "MIT",
     "url": "https://github.com/cmderdev/cmder/releases/download/v1.3.11/cmder_mini.zip",
     "hash": "23c938b2495ef620de816747dfb2c0d9ad7884aec1d9923dbb7a94e6c91df849",
-    "pre_install": "if (!(Test-Path \"$dir\\vendor\\conemu-maximus5\\ConEmu.xml\")) {Copy-Item \"$dir\\vendor\\ConEmu.xml.default\" \"$dir\\vendor\\conemu-maximus5\\ConEmu.xml\"}",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\vendor\\conemu-maximus5\\ConEmu.xml\")) {\",
+        "    Copy-Item \"$dir\\vendor\\ConEmu.xml.default\" \"$dir\\vendor\\conemu-maximus5\\ConEmu.xml\"",
+        "}",
+    ],
     "bin": "Cmder.exe",
     "shortcuts": [
         [
