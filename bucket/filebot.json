@@ -1,0 +1,28 @@
+{
+    "homepage": "https://www.filebot.net/",
+    "description": "FileBot is the ultimate tool for organizing and renaming your Movies, TV Shows and Anime as well as fetching subtitles and artwork. It's smart and just works.",
+    "version": "4.8.5",
+    "license": "Proprietary",
+    "url": "https://get.filebot.net/filebot/FileBot_4.8.5/FileBot_4.8.5-portable.zip",
+    "hash": "e0fe1f435f43113991454f0784af2ceb6acc94846b3852d39375576bab40befa",
+    "bin": "filebot.exe",
+    "persist": [
+        "data"
+    ],
+    "checkver": {
+        "url": "https://app.filebot.net/update.xml",
+        "re": "FileBot ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://get.filebot.net/filebot/FileBot_$version/FileBot_$version-portable.zip",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "shortcuts": [
+        [
+            "filebot.launcher.exe",
+            "FileBot"
+        ]
+    ]
+}
