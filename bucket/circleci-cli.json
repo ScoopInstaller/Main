@@ -1,0 +1,28 @@
+{
+    "version": "0.1.5830",
+    "description": "Leverage many of CircleCI’s advanced and powerful tools from terminal.",
+    "homepage": "https://circleci-public.github.io/circleci-cli/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.5830/circleci-cli_0.1.5830_windows_amd64.zip",
+            "hash": "98bdf6c36d9823ba7661dafc4d628cbb6446d5ecc3cf3443cac6351dbcd33a20",
+            "extract_dir": "circleci-cli_0.1.5830_windows_amd64"
+        }
+    },
+    "bin": "circleci.exe",
+    "checkver": {
+        "github": "https://github.com/CircleCI-Public/circleci-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/CircleCI-Public/circleci-cli/releases/download/v$version/circleci-cli_$version_windows_amd64.zip",
+                "extract_dir": "circleci-cli_$version_windows_amd64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/circleci-cli_$version_checksums.txt"
+        }
+    }
+}
