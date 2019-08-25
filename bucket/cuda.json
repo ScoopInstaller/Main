@@ -1,5 +1,5 @@
 {
-    "version": "10.1.168_425.25",
+    "version": "10.1.243_426.00",
     "description": "A parallel computing platform and programming model invented by NVIDIA",
     "homepage": "https://developer.nvidia.com/cuda-toolkit",
     "license": {
@@ -8,12 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.168_425.25_win10.exe#/dl.7z",
-            "hash": "md5:d4b3cfd0ef47573350840dd31cb399ae"
+            "url": "https://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_426.00_win10.exe#/dl.7z",
+            "hash": "md5:b54cf32683f93e787321dcc2e692ff69"
         }
     },
     "installer": {
-        "script":[
+        "script": [
             "$names = @('bin', 'extras', 'include', 'jre', 'lib', 'libnvvp', 'nvml', 'nvvm')",
             "foreach ($name in $names) {",
             "    Copy-Item \"$dir\\*\\$name\" \"$dir\" -Recurse -Force",
@@ -35,11 +35,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://developer.nvidia.com/compute/cuda/$majorVersion.$minorVersion/Prod/local_installers/cuda_$version_win10.exe#/dl.7z"
+                "url": "https://developer.download.nvidia.com/compute/cuda/$majorVersion.$minorVersion/Prod/local_installers/cuda_$version_win10.exe#/dl.7z"
             }
         },
         "hash": {
-            "url": "https://developer.download.nvidia.com/compute/cuda/$majorVersion.$minorVersion/Prod/docs2/sidebar/md5sum.txt"
+            "url": "https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal",
+            "regex": "$md5.*?$basename"
         }
     }
 }
