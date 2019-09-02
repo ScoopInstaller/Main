@@ -5,20 +5,22 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://nim-lang.org/download/nim-0.20.2_x64.zip",
+            "url": "https://nim-lang.org/download/nim-0.20.2_x64.zip#/dl.7z",
             "hash": "ccd258ae90d2af2eb1042830f1204920e8d44b6947aedb56458110cf9a714207"
         },
         "32bit": {
-            "url": "https://nim-lang.org/download/nim-0.20.2_x32.zip",
+            "url": "https://nim-lang.org/download/nim-0.20.2_x32.zip#/dl.7z",
             "hash": "4a01f826dec15943fff3a0783f52436576c4c583ef92108c8ec8db1b89363469"
         }
     },
     "depends": "gcc",
     "extract_dir": "nim-0.20.2",
-    "post_install": [
-        "# Copy Nimble package",
-        "Copy-Item -Recurse \"$dir\\dist\\nimble\\src\\nimblepkg\" \"$dir\\bin\""
-    ],
+    "installer": {
+        "script": "add_first_in_path \"$env:USERPROFILE\\.nimble\\bin\" $global"
+    },
+    "uninstaller": {
+        "script": "remove_from_path \"$env:USERPROFILE\\.nimble\\bin\" $global"
+    },
     "bin": [
         "bin\\nim.exe",
         "bin\\nimble.exe",
@@ -27,28 +29,23 @@
         "bin\\nimsuggest.exe",
         "bin\\vccexe.exe"
     ],
+    "post_install": "Copy-Item \"$dir\\dist\\nimble\\src\\nimblepkg\" \"$dir\\bin\" -Recurse",
     "checkver": {
         "url": "https://nim-lang.org/install_windows.html",
-        "re": "nim-([\\d.]+)_x64"
+        "regex": "nim-([\\d.]+)_x64"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nim-lang.org/download/nim-$version_x64.zip"
+                "url": "https://nim-lang.org/download/nim-$version_x64.zip#/dl.7z"
             },
             "32bit": {
-                "url": "https://nim-lang.org/download/nim-$version_x32.zip"
+                "url": "https://nim-lang.org/download/nim-$version_x32.zip#/dl.7z"
             }
         },
-        "extract_dir": "nim-$version",
         "hash": {
             "url": "$url.sha256"
-        }
-    },
-    "installer": {
-        "script": "add_first_in_path \"$env:USERPROFILE\\.nimble\\bin\" $global"
-    },
-    "uninstaller": {
-        "script": "remove_from_path \"$env:USERPROFILE\\.nimble\\bin\" $global"
+        },
+        "extract_dir": "nim-$version"
     }
 }
