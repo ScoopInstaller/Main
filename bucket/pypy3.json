@@ -1,0 +1,24 @@
+{
+    "version": "7.1.1",
+    "homepage": "https://pypy.org",
+    "description": "A fast, compliant alternative implementation of the Python language.",
+    "license": "MIT",
+    "url": "https://bitbucket.org/pypy/pypy/downloads/pypy3.6-v7.1.1-win32.zip",
+    "hash": "8b513b254de5f31890f5956569de9aec3a0a91d7aba72fc89d66901f4a8ccf49",
+    "extract_dir": "pypy3.6-v7.1.1-win32",
+    "bin": [
+        "pypy3.exe",
+        "pypy3w.exe"
+    ],
+    "checkver": {
+        "url": "https://pypy.org/download.html",
+        "regex": "PyPy(?<py>3[\\d.]+) v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://bitbucket.org/pypy/pypy/downloads/pypy$matchPy-v$version-win32.zip",
+        "extract_dir": "pypy$matchPy-v$version-win32",
+        "hash": {
+            "url": "https://pypy.org/download.html"
+        }
+    }
+}
