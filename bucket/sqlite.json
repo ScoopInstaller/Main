@@ -13,14 +13,14 @@
     ],
     "checkver": {
         "url": "https://www.sqlite.org/download.html",
-        "regex": "sqlite-tools-win32-x86-(?<number>[\\d]+).zip.*?for SQLite version ([\\d.]+)\\."
+        "regex": "(?sm)64-bit DLL \\(x64\\) for SQLite version ([\\d.]+)\\..*?(?<year>\\d+)/sqlite-tools-win32-x86-(?<clean>\\d+)"
     },
     "autoupdate": {
-        "url": "https://www.sqlite.org/2019/sqlite-tools-win32-x86-$matchNumber.zip",
+        "url": "https://www.sqlite.org/$matchYear/sqlite-tools-win32-x86-$matchClean.zip",
         "hash": {
             "url": "https://www.sqlite.org/download.html",
             "regex": "(?sm)$basename.*?$sha1"
         },
-        "extract_dir": "sqlite-tools-win32-x86-$matchNumber"
+        "extract_dir": "sqlite-tools-win32-x86-$matchClean"
     }
 }
