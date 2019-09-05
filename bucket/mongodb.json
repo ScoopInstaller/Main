@@ -1,18 +1,26 @@
 {
     "homepage": "https://www.mongodb.org",
     "description": "A document database with the scalability and flexibility.",
-    "version": "4.0.12",
+    "version": "4.2.0",
     "license": {
         "identifier": "SSPL-1.0",
         "url": "https://www.mongodb.com/licensing/server-side-public-license"
     },
     "architecture": {
         "64bit": {
-            "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-4.0.12-signed.msi",
-            "hash": "381bdcdce1d81eef0e44cfa05101a580d831310390821fb943a72780ef4023c9",
-            "extract_dir": "MongoDB\\Server\\4.0"
+            "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2012plus-4.2.0-signed.msi",
+            "hash": "f1a4f3771563a747a26d8a22990483dcfb6a0f68026672edd5996fdbee35cbcc",
+            "extract_dir": "MongoDB\\Server\\4.2"
         }
     },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\bin\\mongod.cfg\")) {",
+        "    $cfg = Get-Content \"$dir\\bin\\mongod.cfg\"",
+        "    $cfg = $cfg -replace '%MONGO_DATA_PATH%', \"$dir\\data\"",
+        "    $cfg = $cfg -replace '%MONGO_LOG_PATH%', \"$dir\\log\"",
+        "    Set-Content \"$dir\\bin\\mongod.cfg\" $cfg -Encoding Ascii -Force",
+        "}"
+    ],
     "bin": [
         "bin\\bsondump.exe",
         "bin\\mongo.exe",
@@ -30,13 +38,6 @@
         "bin\\mongostat.exe",
         "bin\\mongotop.exe"
     ],
-    "post_install": [
-        "$file = \"$dir\\bin\\mongod.cfg\"",
-        "$cfg = (Get-Content $file)",
-        "$cfg = $cfg -replace '%MONGO_DATA_PATH%', \"$dir\\data\"",
-        "$cfg = $cfg -replace '%MONGO_LOG_PATH%', \"$dir\\log\"",
-        "Set-Content $file ($cfg -join \"`n\") -Encoding Ascii -Force"
-    ],
     "persist": [
         "bin\\mongod.cfg",
         "data",
@@ -44,12 +45,12 @@
     ],
     "checkver": {
         "url": "https://www.mongodb.com/download-center/community",
-        "re": "([\\d.]+) \\(current release\\)"
+        "regex": "win32/mongodb-win32-x86_64-(?<target>[\\w-]+)-([\\d.]+)-signed"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-$version-signed.msi",
+                "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-$matchTarget-$version-signed.msi",
                 "hash": {
                     "url": "$url.sha256"
                 },
@@ -58,7 +59,7 @@
         }
     },
     "suggest": {
-        "vcredist": "extras/vcredist2017"
+        "Visual C/C++ Redistributable 2017": "extras/vcredist2017"
     },
     "notes": [
         "Windows server 2012/2008 and Windows 7/8/8.1 need KB2999226 to provide Universal C Runtime support for Windows.",
