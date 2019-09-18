@@ -1,0 +1,18 @@
+{
+    "version": "5.5.1",
+    "description": "Command-line tool used to control Concourse CI/CD",
+    "license": "Apache-2.0",
+    "homepage": "https://concourse-ci.org/",
+    "url": "https://github.com/concourse/concourse/releases/download/v5.5.1/fly-5.5.1-windows-amd64.zip",
+    "hash": "sha1:03ce4740d5111d2b63358ef44312f88a0d822851",
+    "bin": "fly.exe",
+    "checkver": {
+        "github": "https://github.com/concourse/concourse"
+    },
+    "autoupdate": {
+        "url": "https://github.com/concourse/concourse/releases/download/v$version/fly-$version-windows-amd64.zip",
+        "hash": {
+            "url": "$url.sha1"
+        }
+    }
+}
