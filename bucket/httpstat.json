@@ -1,0 +1,28 @@
+{
+    "homepage": "https://github.com/davecheney/httpstat",
+    "description": "curl(1) statistics visualizer.",
+    "version": "1.0.0",
+    "license": "MIT", 
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/davecheney/httpstat/releases/download/v1.0.0/httpstat-windows-386-v1.0.0.exe#/httpstat.exe",
+            "hash": "9B43886614830830A84FAE87CBBB2F8EF01B09B1986A3A4F4AA77978887BAEE3"
+        },
+        "64bit": {
+            "url": "https://github.com/davecheney/httpstat/releases/download/v1.0.0/httpstat-windows-amd64-v1.0.0.exe#/httpstat.exe",
+            "hash": "7CF510C8927A23DB19E0D579BF44C3C325ABE0760E34FEA20567461759B794E9"
+        }
+    },
+    "bin": "httpstat.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/davecheney/httpstat/releases/download/v$version/httpstat-windows-386-v$version.exe#/httpstat.exe"
+            },
+            "64bit": {
+                "url": "https://github.com/davecheney/httpstat/releases/download/v$version/httpstat-windows-amd64-v$version.exe#/httpstat.exe"
+            }
+        }
+    }
+}
