@@ -13,5 +13,20 @@
             "hash": "7CF510C8927A23DB19E0D579BF44C3C325ABE0760E34FEA20567461759B794E9"
         }
     },
+    "checkver": {
+        "url": "https://api.github.com/repos/davecheney/httpstat/releases/latest",
+        "jp": "$.tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/davecheney/httpstat/releases/download/v$version/httpstat-windows-386-v$version.exe#/httpstat.exe"
+            },
+            "64bit": {
+                "url": "https://github.com/davecheney/httpstat/releases/download/v$version/httpstat-windows-amd64-v$version.exe#/httpstat.exe"
+            }
+        }
+    },
     "bin": "httpstat.exe"
 }
