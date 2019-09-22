@@ -22,7 +22,7 @@
     "post_install": "(Get-Content \"$dir\\buck.bat\") -replace 'C:\\\\Python27', \"$(versiondir 'python27' 'current')\" | Set-Content \"$dir\\buck.bat\"",
     "checkver": {
         "url": "https://chocolatey.org/packages/buck",
-        "regex": "Chocolatey.*?([\\d.]+)\\r"
+        "regex": "\\s+([\\d.]+)</title>"
     },
     "autoupdate": {
         "url": "https://packages.chocolatey.org/buck.$version.nupkg",
