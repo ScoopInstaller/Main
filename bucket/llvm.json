@@ -1,16 +1,16 @@
 {
-    "version": "8.0.1",
+    "version": "9.0.0",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org/",
     "license": "NCSA",
     "architecture": {
-        "32bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/LLVM-8.0.1-win32.exe#/dl.7z",
-            "hash": "5d992a41f1ff6296659e66eabbcbaec34f5533fe9d1376fc94fba7450383fe69"
-        },
         "64bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/LLVM-8.0.1-win64.exe#/dl.7z",
-            "hash": "e3af139c2f93075c13dcbc4091c1311f66fc6e4e8705649fcaf9bef8b3368f41"
+            "url": "https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe#/dl.7z",
+            "hash": "71ed99a6720945d76b6772584735f2ed472f12719dff184a0b1a6a35047b8863"
+        },
+        "32bit": {
+            "url": "https://releases.llvm.org/9.0.0/LLVM-9.0.0-win32.exe#/dl.7z",
+            "hash": "089e226dc0d3ecb292f344cdbed96c5d9a705564cc578957a955b4ed71c70cae"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\" -Recurse",
@@ -54,14 +54,14 @@
         "bin\\scan-build.bat",
         "bin\\wasm-ld.exe"
     ],
-    "checkver": "\\/releases\\/download.html#([\\d.]+)",
+    "checkver": "releases/download.html#([\\d.]+)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.exe#/dl.7z"
+                "url": "https://releases.llvm.org/$version/LLVM-$version-win64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
+                "url": "https://releases.llvm.org/$version/LLVM-$version-win32.exe#/dl.7z"
             }
         }
     }
