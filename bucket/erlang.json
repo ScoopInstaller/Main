@@ -31,7 +31,7 @@
             "Erlang"
         ]
     ],
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\", \"$dir\\vcredist*\" -Force -Recurse",
     "checkver": {
         "url": "https://www.erlang.org/downloads",
         "regex": "DOWNLOAD\\s+OTP ([\\d.]+)"
@@ -49,5 +49,8 @@
             "url": "$baseurl/MD5",
             "regex": "MD5\\($basename\\)= $md5"
         }
+    },
+    "suggest": {
+        "Visual C/C++ Redistributable 2013": "extras/vcredist2013"
     }
 }
