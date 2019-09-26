@@ -21,6 +21,16 @@
     ],
     "checkver": {
         "url": "https://waterlan.home.xs4all.nl/dos2unix.html",
-        "re": "Latest version: (?<version>[\\d.]+) \\([\\d\\-]+\\)"
+        "re": "Latest version: ([\\d.]+) \\([\\d\\-]+\\)"
+    },
+    "autoupdate":
+        "architecture": {
+            "64bit": {
+                "url": "https://waterlan.home.xs4all.nl/dos2unix/dos2unix-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://waterlan.home.xs4all.nl/dos2unix/dos2unix-$version-win32.zip"
+            }
+        }
     }
 }
