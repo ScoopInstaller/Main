@@ -5,6 +5,7 @@
     "version": "0.4.0",
     "url": "https://github.com/genotrance/px/releases/download/v0.4.0/px.exe",
     "hash": "93b54b5b6154c536f7ec0a85ed90ea25aa5ed66c7f61d2acbc37cab8a9231440",
+    "pre_install": "if (-not (Test-Path \"$persist_dir\\px.ini\")) { New-Item \"$dir\\px.ini\" -ItemType File | Out-Null }",
     "bin": "px.exe",
     "persist": "px.ini",
     "checkver": "github",
