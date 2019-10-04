@@ -1,14 +1,13 @@
 {
     "homepage": "https://nmap.org",
-    "description": "Network exploration and security auditing utility.",
+    "description": "Network exploration and security auditing utility. (includes Npcap)",
     "version": "7.80",
     "license": {
         "identifier": "GPL-2.0-only",
-        "url": "https://svn.nmap.org/nmap/COPYING"
+        "url": "https://github.com/nmap/nmap/blob/master/COPYING"
     },
     "url": "https://nmap.org/dist/nmap-7.80-setup.exe",
     "hash": "3b4d726bd366e7439367fa78a186dfa9b641d3b2ad354fd915581b6567480f94",
-    "extract_dir": "nmap",
     "installer": {
         "args": [
             "/S",
@@ -19,7 +18,6 @@
         "file": "Uninstall.exe",
         "args": "/S"
     },
-    "env_add_path": "bin",
     "bin": [
         "nmap.exe",
         "ncat.exe",
@@ -30,12 +28,13 @@
     "shortcuts": [
         [
             "zenmap.exe",
-            "Zenmap"
+            "Nmap - Zenmap GUI"
         ]
     ],
+    "notes": "'Npcap' has been installed automatically.",
     "checkver": {
         "url": "https://nmap.org/download.html",
-        "re": "nmap-([\\d.]+)-setup.exe"
+        "regex": "nmap-([\\d.]+)-setup.exe"
     },
     "autoupdate": {
         "url": "https://nmap.org/dist/nmap-$version-setup.exe"
