@@ -1,0 +1,30 @@
+{
+    "homepage": "https://emitter.io/",
+    "description": "Is a real-time communication service for connecting online devices.",
+    "license": "AGPL-3.0-or-later",
+    "version": "2.678",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/emitter-io/emitter/releases/download/v2.678/emitter-windows-386.exe#/emitter.exe",
+            "hash": "03db85c2fdb2ba6324c2605eaf496c2147e5877955dd46a48f1828a6b79f06db"
+        },
+        "64bit": {
+            "url": "https://github.com/emitter-io/emitter/releases/download/v2.678/emitter-windows-amd64.exe#/emitter.exe",
+            "hash": "6e17b399f8b8770f04a5447efa32663ad9e12b25df793b8ee80bef1d57587a2d"
+        }
+    },
+    "bin": "emitter.exe",
+    "checkver": {
+        "github": "https://github.com/emitter-io/emitter"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/emitter-io/emitter/releases/download/v$version/emitter-windows-386.exe#/emitter.exe"
+            },
+            "64bit": {
+                "url": "https://github.com/emitter-io/emitter/releases/download/v$version/emitter-windows-amd64.exe#/emitter.exe"
+            }
+        }
+    }
+}
