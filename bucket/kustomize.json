@@ -1,24 +1,28 @@
 {
-	"homepage": "https://github.com/kubernetes-sigs/kustomize",
-	"description": "Customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.",
-	"license": "Apache-2.0",
-	"version": "3.2.1",
-	"architecture": {
-		"64bit": {
-			"url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v3.2.1/kustomize_kustomize.v3.2.1_windows_amd64.exe#/kustomize.exe",
-			"hash": "73b0dbc3457d48717628ceea65dc3f1ee9b51b41cdeb4d70c793374446b3e6b1"
-		}
-	},
-	"bin": "kustomize.exe",
-	"checkver": "github",
-	"autoupdate": {
-		"architecture": {
-			"64bit": {
-				"url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v$version/kustomize_v$version_windows_amd64.exe#/kustomize.exe"
-			}
-		},
-		"hash": {
-			"url": "$baseurl/checksums.txt"
-		}
-	}
+    "homepage": "https://github.com/kubernetes-sigs/kustomize",
+    "description": "Customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.",
+    "license": "Apache-2.0",
+    "version": "3.2.1",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.2.1/kustomize_kustomize.v3.2.1_windows_amd64.exe#/kustomize.exe",
+            "hash": "73b0dbc3457d48717628ceea65dc3f1ee9b51b41cdeb4d70c793374446b3e6b1"
+        }
+    },
+    "bin": "kustomize.exe",
+    "checkver": {
+        "github": "https://github.com/kubernetes-sigs/kustomize",
+        "regex": "kustomize/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$version/kustomize_kustomize.v$version_windows_amd64.exe#/kustomize.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "$sha256\\s+kustomize_kustomize/v$version_windows_amd64.exe"
+        }
+    }
 }
