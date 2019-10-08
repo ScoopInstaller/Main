@@ -1,17 +1,29 @@
 {
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "description": "Launch processes with TrustedInstaller privilege.",
     "homepage": "https://github.com/jschicht/RunAsTI",
     "license": "MIT",
     "architecture": {
         "64bit": {
             "url": "https://raw.githubusercontent.com/jschicht/RunAsTI/master/RunAsTI64.exe#/RunAsTI.exe",
-            "hash": "118a1ce43c532ba8ca3173007ce7a8f80d7e8d48d76f339440ce2213d83867fb"
+            "hash": "bf365d7d5bc3076e5a7f41bb9f0b9e9beb58ae900bffcb3bbb10b575c08d66db"
         },
         "32bit": {
-            "url": "https://raw.githubusercontent.com/jschicht/RunAsTI/master/RunAsTI.exe",
-            "hash": "249fb225b07be1941fafc26354bb27bcdaf6d024a75df759462930da21d4f8d0"
+            "url": "https://raw.githubusercontent.com/jschicht/RunAsTI/master/RunAsTI32.exe#/RunAsTI.exe",
+            "hash": "07e1fa6a80739c9939eafb80c4d575ff1cd9a5680b7cee401636f9afd856887f"
         }
     },
-    "bin": "RunAsTI.exe"
+    "bin": "RunAsTI.exe",
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/jschicht/RunAsTI/master/RunAsTI.au3",
+        "regex": "#AutoIt3Wrapper_Res_Fileversion=([\\d.]+)"
+    },
+    "autoupdate": {
+        "64bit": {
+            "url": "https://raw.githubusercontent.com/jschicht/RunAsTI/master/RunAsTI64.exe#/RunAsTI.exe"
+        },
+        "32bit": {
+            "url": "https://raw.githubusercontent.com/jschicht/RunAsTI/master/RunAsTI32.exe#/RunAsTI.exe"
+        }
+    }
 }
