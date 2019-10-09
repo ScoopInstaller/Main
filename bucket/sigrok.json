@@ -1,0 +1,38 @@
+{
+    "homepage": "https://sigrok.org/",
+    "description": "A command line utility for the sigrok software.",
+    "license": "GPL-3.0-or-later",
+    "version": "0.7.1",
+    "architecture": {
+        "64bit": {
+            "url": "https://sigrok.org/download/binary/sigrok-cli/sigrok-cli-0.7.1-x86_64-installer.exe#/dl.7z",
+            "hash": "efbb078edf342f48f36c3b68c180c7a1cdcec9f8ad6bf6237cc8175e3763e651"
+        },
+        "32bit": {
+            "url": "https://sigrok.org/download/binary/sigrok-cli/sigrok-cli-0.7.1-i686-installer.exe#/dl.7z",
+            "hash": "fb97eef3f3b68758e0c9fb471bf1daee5771530ac244dcf4e01e1acdcce64208"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Force -Recurse",
+    "bin": [
+        "sigrok-cli.exe",
+        [
+            "sigrok-cli.exe",
+            "sigrok"
+        ]
+    ],
+    "checkver": {
+        "url": "https://sigrok.org/download/binary/sigrok-cli/?C=M;O=D",
+        "regex": "sigrok-cli-([\\d.]+)-x86_64-installer.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://sigrok.org/download/binary/sigrok-cli/sigrok-cli-$version-x86_64-installer.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://sigrok.org/download/binary/sigrok-cli/sigrok-cli-$version-i686-installer.exe#/dl.7z"
+            }
+        }
+    }
+}
