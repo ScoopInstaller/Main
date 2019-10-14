@@ -1,8 +1,8 @@
 {
     "homepage": "https://www.python.org/",
-    "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "license": "Python-2.0",
     "version": "3.7.4",
+    "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "architecture": {
         "64bit": {
             "url": "https://www.python.org/ftp/python/3.7.4/python-3.7.4-amd64.exe",
@@ -14,13 +14,13 @@
         }
     },
     "installer": {
+        "type": "wix",
+        "exclude": [
+            "launcher.msi",
+            "path.msi",
+            "pip.msi"
+        ],
         "script": [
-            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\"",
-            "@('launcher.msi', 'path.msi', 'pip.msi') | ForEach-Object {",
-            "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
-            "}",
-            "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
-            "Remove-Item \"$dir\\_tmp\", \"$dir\\$fname\" -Force -Recurse",
             "& \"$dir\\python.exe\" -E -s -m ensurepip -U --default-pip | Out-Null",
             "if ($global) {",
             "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",

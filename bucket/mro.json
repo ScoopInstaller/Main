@@ -11,15 +11,14 @@
             "url": "https://mran.blob.core.windows.net/install/mro/3.5.3/windows/microsoft-r-open-3.5.3.exe",
             "hash": "a2ef254a63f60234996e6eafe9686fddf99b5835732ff52d6ae0f4bcd547d14b",
             "installer": {
+                "type": "wix",
                 "script": [
-                    "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\"",
-                    "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\ROpen.msi\" \"$dir\\_tmp\"",
-                    "movedir \"$dir\\_tmp\\Microsoft\\MRO-$version.0\" \"$dir\" | Out-Null",
-                    "Expand-7zipArchive \"$dir\\Setup\\*.cab\" \"$dir\\Setup\"",
+                    "movedir \"$dir\\Microsoft\\MRO-$version.0\" \"$dir\" | Out-Null",
+                    "Expand-7zipArchive \"$dir\\Setup\\*.cab\"",
                     "Remove-Item \"$dir\\bin\\x64\\Rblas.dll\", \"$dir\\bin\\x64\\Rlapack.dll\" -Force",
                     "movedir \"$dir\\Setup\\bin\\x64\" \"$dir\\bin\\x64\" | Out-Null",
                     "movedir \"$dir\\Setup\\library\" \"$dir\\library\" | Out-Null",
-                    "Remove-Item \"$dir\\_tmp\", \"$dir\\Setup\", \"$dir\\$fname\" -Force -Recurse"
+                    "Remove-Item \"$dir\\Setup\", \"$dir\\Microsoft\" -Force -Recurse"
                 ]
             },
             "bin": [
