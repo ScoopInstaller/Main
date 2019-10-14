@@ -1,0 +1,45 @@
+{
+    "version":  "2.9.7215",
+    "license":  "https://miktex.org/copying",
+    "extract_dir":  "",
+    "url":  "https://miktex.org/download/win/miktexsetup-x64.zip",
+    "homepage":  "https://miktex.org",
+    "hash":  "deab9efa4f71910daa69ea04c0f0ca32347a534c0e10f02d5807a2caf27e514d",
+    "pre_install": [
+        "mkdir -EV Err -EA SilentlyContinue ${persist_dir}\\repository",
+        "echo \"Downloading setup, this could take a while...\"",
+        ".\\miktexsetup.exe --local-package-repository=${persist_dir}\\repository --package-set=basic  download"
+    ],
+    "env_add_path": "miktex\\bin\\x64",
+    "installer": {
+        "file": "miktexsetup.exe",
+        "keep": true,
+        "args": [
+            "--verbose",
+            "--local-package-repository=\"${persist_dir}\\repository\"",
+            "--package-set=basic",
+            "--user-config=\"${persist_dir}\\config\"",
+            "--user-data=\"${persist_dir}\\data\"",
+            "--user-install=\"${dir}\"",
+            "install"
+        ]
+    },
+    "uninstaller": {
+        "file": "miktexsetup.exe",
+        "keep": true,
+        "args": [
+            "--local-package-repository=\"${persist_dir}\\repository\"",
+            "--package-set=basic",
+            "--user-config=\"${persist_dir}\"\\config",
+            "--user-data=\"${persist_dir}\"\\data",
+            "--user-install=\"${dir}\"",
+            "uninstall"
+        ]
+    },
+    "bin": [
+        "miktexsetup.exe"
+    ],
+    "shortcuts":[
+        ["miktex\\bin\\x64\\miktex-console.exe", "MiKTeX Console"]
+    ]
+}
