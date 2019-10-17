@@ -44,12 +44,19 @@
     ],
     "persist": "data",
     "post_install": [
-        "# Initialize data directory (without generating root password)",
-        "if (!(Test-Path \"$dir\\data\\auto.cnf\")) { mysqld --initialize-insecure }"
+        "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
+        "    warn 'Initializing data directory ...'",
+        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList @(\"--datadir=`\"$dir\\data`\"\")",
+        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "}"
     ],
     "notes": [
-        "Run following command as administrator to run MariaDB as a service.",
-        "mysqld --install \"[Service Name(default:MySQL)]\""
+        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
+        "or run following command as administrator to register MariaDB as a service. See: https://mariadb.com/kb/en/library/mysql_install_dbexe/",
+        "",
+        "mysql_install_db --service=MariaDB --password=NewRootPassword",
+        "",
+        "To stop and/or delete the Service run 'sc stop MariaDB' and 'sc delete MariaDB'."
     ],
     "checkver": {
         "url": "https://downloads.mariadb.org/",
