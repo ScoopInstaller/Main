@@ -6,7 +6,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/dthpham/butterflow/releases/download/0.2.4.alpha2/butterflow-0.2.4a4-win64.zip",
-            "hash": "a77fbbdbdd0d85bb31feac30e53378a36ff4fb2a8a98ba15a6fa06def4b36ad1",
+            "hash": "856ad05bafaeb9d084d6b1cbf0bdec17defeef438e610f6a3a772087acea301b",
             "extract_dir": "butterflow-0.2.4a4-win64"
         }
     },
@@ -20,12 +20,12 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/dthpham/butterflow/releases/download/$matchRel/butterflow-$version-win64.zip",
-                "hash": {
-                    "url": "https://raw.githubusercontent.com/dthpham/butterflow/master/README.md",
-                    "find": "$basename[\\S\\s]+\\* Sha256: $sha256"
-                },
                 "extract_dir": "butterflow-$version-win64"
             }
+        },
+        "hash": {
+            "url": "https://raw.githubusercontent.com/dthpham/butterflow/master/README.md",
+            "regex": "(?sm)$basename.*?\\*\\s+Sha256:\\s+$sha256"
         }
     }
 }
