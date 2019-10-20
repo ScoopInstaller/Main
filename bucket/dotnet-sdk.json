@@ -1,21 +1,22 @@
 {
-    "version": "2.2.301",
+    "version": "3.0.100",
     "homepage": "https://www.microsoft.com/net/",
     "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/2.2.301/dotnet-sdk-2.2.301-win-x64.zip",
-            "hash": "sha512:2f7baaa7ca994a0f6550879da66dab67b4799dc634354c2ce746f2e107f35fb931536e8b19c85620a1a400a33e71b6b1b03bf373632a1d338c6b737a2a9cc81b"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.0.100/dotnet-sdk-3.0.100-win-x64.zip",
+            "hash": "faf8a92a523558e1659a6f9750c86610fe8430430f58099ccc659b83e3eee1bf"
         },
         "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/2.2.301/dotnet-sdk-2.2.301-win-x86.zip",
-            "hash": "sha512:9f01b6eb1185d3136ab787ae9cbc79527b009bff92f4c2ebb82804b10cd2156002365f06adcf0eee9101bde1ca3f403fa3a4ff16e44eb0d3fd20c8c0fbd19a77"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.0.100/dotnet-sdk-3.0.100-win-x86.zip",
+            "hash": "7c91cf9df9afe866d242e373154d1efab0ad88fbc38d0d1e76ce59abfdb6124c"
         }
     },
     "bin": "dotnet.exe",
     "env_set": {
-        "DOTNET_ROOT": "$dir"
+        "DOTNET_ROOT": "$dir",
+        "MSBuildSDKsPath": "$dir\\sdk\\$version\\Sdks"
     },
     "checkver": {
         "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",

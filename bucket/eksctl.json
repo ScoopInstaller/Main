@@ -1,0 +1,27 @@
+{
+    "version": "0.7.0",
+    "license": "Apache-2.0",
+    "homepage": "https://eksctl.io/",
+    "description": "A simple CLI tool for creating clusters on EKS - Amazon’s new managed Kubernetes service for EC2.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/weaveworks/eksctl/releases/download/0.7.0/eksctl_Windows_amd64.zip",
+            "hash": "d86672b3f3e78f44160b902f1cbdf3eba3d1f527d6f7fb32291fd65841fae3e4"
+        }
+    },
+    "bin": "eksctl.exe",
+    "checkver": {
+        "url": "https://github.com/weaveworks/eksctl/releases/tag/latest_release",
+        "regex": "eksctl ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/weaveworks/eksctl/releases/download/$version/eksctl_Windows_amd64.zip",
+                "hash": {
+                    "url": "$baseurl/eksctl_checksums.txt"
+                }
+            }
+        }
+    }
+}

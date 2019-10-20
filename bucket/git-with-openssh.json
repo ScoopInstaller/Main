@@ -1,16 +1,17 @@
 {
     "##": "Maintainers: when updating this manifest to a new version, you might like to also update git.json",
     "homepage": "https://git-for-windows.github.io/",
-    "license": "GPL-2.0",
-    "version": "2.22.0.windows.1",
+    "description": "A free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. (w/ built-in OpenSSH)",
+    "license": "GPL-2.0-only",
+    "version": "2.23.0.windows.1",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/PortableGit-2.22.0-64-bit.7z.exe#/dl.7z",
-            "hash": "2d935dc309568a9694711ac080967388c98b69907fb015f6536a4a0920084e0c"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/PortableGit-2.23.0-64-bit.7z.exe#/dl.7z",
+            "hash": "501d8be861ebb8694df3f47f1f673996b1d1672e12559d4a07fae7a2eca3afc7"
         },
         "32bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/PortableGit-2.22.0-32-bit.7z.exe#/dl.7z",
-            "hash": "dee3d963c218b5f7fb0925c5984070f7373abc4c44cf36050fde10bfd3d9bc2e"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.23.0.windows.1/PortableGit-2.23.0-32-bit.7z.exe#/dl.7z",
+            "hash": "33388028d45c685201490b0c621d2dbfde89d902a7257771f18de9bb37ae1b9a"
         }
     },
     "bin": [
@@ -40,6 +41,9 @@
     "checkver": {
         "url": "https://github.com/git-for-windows/git/releases/latest",
         "re": "v(?<version>[\\d\\w.]+)/PortableGit-(?<short>[\\d.]+).*\\.exe"
+    },
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
     },
     "autoupdate": {
         "architecture": {

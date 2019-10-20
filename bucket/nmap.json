@@ -1,13 +1,13 @@
 {
-    "version": "7.70",
-    "description": "A free and open source utility for network discovery and security auditing.",
     "homepage": "https://nmap.org",
+    "description": "Network exploration and security auditing utility. (includes Npcap)",
+    "version": "7.80",
     "license": {
         "identifier": "GPL-2.0-only",
         "url": "https://svn.nmap.org/nmap/COPYING"
     },
-    "url": "https://nmap.org/dist/nmap-7.70-setup.exe#/dl.7z",
-    "hash": "7828197e66f5f6efb0c89d21cdf3c34769da525437147eea72cf713a6d4e7a11",
+    "url": "https://nmap.org/dist/nmap-7.80-setup.exe",
+    "hash": "3b4d726bd366e7439367fa78a186dfa9b641d3b2ad354fd915581b6567480f94",
     "pre_install": [
         "Move-Item \"$dir\\npcap*.exe\" \"$dir\\npcap.exe\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\", \"$dir\\vcredist*\" -Recurse -Force"
@@ -18,7 +18,6 @@
     "uninstaller": {
         "script": "Invoke-ExternalCommand -FilePath \"$dir\\npcap\\Uninstall.exe\" -ArgumentList \"/S\" -RunAs | Out-Null"
     },
-    "env_add_path": "bin",
     "bin": [
         "nmap.exe",
         "ncat.exe",
@@ -29,9 +28,10 @@
     "shortcuts": [
         [
             "zenmap.exe",
-            "Zenmap"
+            "Nmap - Zenmap GUI"
         ]
     ],
+    "notes": "'Npcap' has been installed automatically.",
     "checkver": {
         "url": "https://nmap.org/download.html",
         "regex": "nmap-([\\d.]+)-setup"

@@ -1,38 +1,31 @@
 {
-    "version": "0.2.12",
+    "version": "0.4.2",
     "homepage": "https://github.com/labstack/tunnel-client",
+    "description": "Expose local servers to the internet securely.",
     "license": "MIT",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/labstack/tunnel-client/releases/download/v0.2.12/tunnel-client_0.2.12_windows_32-bit.zip",
-            "hash": "bb5af7de73e6636f3e1cfe07af8be251f562248f9dac21eb886079d20893c10c"
+            "url": "https://github.com/labstack/tunnel-client/releases/download/v0.4.2/tunnel_0.4.2_windows_32-bit.zip",
+            "hash": "fe58ec4fe2d7847564925b2e3835cf0fbfbcf737a028190e9e579d25dfaf9b7d"
         },
         "64bit": {
-            "url": "https://github.com/labstack/tunnel-client/releases/download/v0.2.12/tunnel-client_0.2.12_windows_64-bit.zip",
-            "hash": "0923cb853726b9d62ab1b9cf9a1b18b2e5e0705fd3896143e1da948b0a8cf6eb"
+            "url": "https://github.com/labstack/tunnel-client/releases/download/v0.4.2/tunnel_0.4.2_windows_64-bit.zip",
+            "hash": "91884d2e2220c9946f385ea995086df69a4abff89212a8f59047b9311dd88f0d"
         }
     },
-    "bin": [
-        [
-            "tunnel-client.exe",
-            "tunnel"
-        ],
-        "tunnel-client.exe"
-    ],
-    "checkver": {
-        "github": "https://github.com/labstack/tunnel-client"
-    },
+    "bin": "tunnel.exe",
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://github.com/labstack/tunnel-client/releases/download/v$version/tunnel-client_$version_windows_32-bit.zip"
+                "url": "https://github.com/labstack/tunnel-client/releases/download/v$version/tunnel_$version_windows_32-bit.zip"
             },
             "64bit": {
-                "url": "https://github.com/labstack/tunnel-client/releases/download/v$version/tunnel-client_$version_windows_64-bit.zip"
+                "url": "https://github.com/labstack/tunnel-client/releases/download/v$version/tunnel_$version_windows_64-bit.zip"
             }
         },
         "hash": {
-            "url": "https://github.com/labstack/tunnel-client/releases/download/v$version/tunnel-client_checksum.txt"
+            "url": "$baseurl/checksum.txt"
         }
     }
 }

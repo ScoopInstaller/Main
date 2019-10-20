@@ -1,7 +1,9 @@
 {
+    "##": "Duplicate of the gpg package",
     "homepage": "https://www.gnupg.org/",
+    "description": "A complete and free implementation of the OpenPGP standard.",
     "version": "2.2.17",
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-2.2.17_20190709.exe#/dl.7z",
     "hash": "e5c99867591c1f72190f5540040ba027233f8cf5acc9ed627dba89a2461b57e0",
     "env_add_path": "bin",
@@ -10,6 +12,10 @@
         "re": "gnupg-w32-(?<version>[\\d.]+)_(?<date>[\\d]{8}).exe"
     },
     "autoupdate": {
-        "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-$version_$matchDate.exe#/dl.7z"
+        "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-$version_$matchDate.exe#/dl.7z",
+        "hash": {
+            "url": "https://www.gnupg.org/download/integrity_check.html",
+            "regex": "$sha1\\s+$basename"
+        }
     }
 }

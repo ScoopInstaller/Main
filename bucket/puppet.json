@@ -1,14 +1,16 @@
 {
     "homepage": "https://puppetlabs.com",
-    "version": "5.5.8",
+    "description": "An open-core software configuration management tool.",
+    "version": "6.10.1",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.5.8-x64.msi",
-            "hash": "1bf365194ee0f14dee6daff22ce79ec95696945c4141aed7c8ae0143a62c390d"
+            "url": "https://downloads.puppetlabs.com/windows/puppet/puppet-agent-6.10.1-x64.msi",
+            "hash": "167a58bef2af7a07190d6e4796e45a3ff01c613a954e3572fa7fa631cc2f6572"
         },
         "32bit": {
-            "url": "https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-5.5.8-x86.msi",
-            "hash": "84f78320b1c225b93482e432179727672344eab3a71a77e2015e55a96785a150"
+            "url": "https://downloads.puppetlabs.com/windows/puppet/puppet-agent-6.10.1-x86.msi",
+            "hash": "9b29eb5054f3bffdf569dd72f5071e3420c4a28cc3310094a0a262408fea56fd"
         }
     },
     "bin": [
@@ -19,16 +21,16 @@
         "Puppet Labs\\Puppet\\bin\\puppet_interactive.bat"
     ],
     "checkver": {
-        "url": "https://downloads.puppetlabs.com/windows/puppet5/index_by_name_reverse.html",
-        "re": "puppet-agent-([\\d.]+)-x64.msi"
+        "url": "https://downloads.puppetlabs.com/windows/puppet/index_by_lastModified_reverse.html",
+        "regex": "puppet-agent-([\\d.]+)-x64\\.msi"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-$version-x64.msi"
+                "url": "https://downloads.puppetlabs.com/windows/puppet/puppet-agent-$version-x64.msi"
             },
             "32bit": {
-                "url": "https://downloads.puppetlabs.com/windows/puppet5/puppet-agent-$version-x86.msi"
+                "url": "https://downloads.puppetlabs.com/windows/puppet/puppet-agent-$version-x86.msi"
             }
         }
     }

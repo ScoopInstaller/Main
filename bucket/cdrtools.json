@@ -1,4 +1,13 @@
 {
+    "version": "3.02a09",
+    "description": "Burn and read CDs, DVDs, and Blu-ray discs",
+    "homepage": "https://sourceforge.net/projects/tumagcc/",
+    "license": {
+        "identifier": "CDDL-1.0,GPL-2.0-only,LGPL-2.1-only",
+        "url": "https://github.com/jobermayr/cdrtools/blob/master/COPYING"
+    },
+    "url": "https://downloads.sourceforge.net/project/tumagcc/schily-cdrtools-3.02a09.7z",
+    "hash": "sha1:f1b6a74e8963a97acd66e166064ab4f907e5237a",
     "architecture": {
         "32bit": {
             "extract_dir": "win32"
@@ -6,9 +15,6 @@
         "64bit": {
             "extract_dir": "win64"
         }
-    },
-    "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/tumagcc/schily-cdrtools-$version.7z"
     },
     "bin": [
         "btcflash.exe",
@@ -26,13 +32,11 @@
         "scgcheck.exe",
         "scgskeleton.exe"
     ],
-    "description": "Burn and read CDs, DVDs, and Blu-ray discs",
-    "hash": "f534062cab7585b82bd764f02bc65fb0c7c27ac1615786bfc81c35880ce4acc6",
-    "homepage": "https://sourceforge.net/projects/tumagcc/",
-    "license": {
-        "identifier": "CDDL-1.0,GPL-2.0,LGPL-2.1",
-        "url": "https://github.com/jobermayr/cdrtools/blob/master/COPYING"
+    "checkver": {
+        "url": "https://sourceforge.net/projects/tumagcc/files/",
+        "regex": "schily-cdrtools-([\\w.]+)\\.7z"
     },
-    "url": "https://downloads.sourceforge.net/project/tumagcc/schily-cdrtools-3.01.7z",
-    "version": "3.01"
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/tumagcc/schily-cdrtools-$version.7z"
+    }
 }

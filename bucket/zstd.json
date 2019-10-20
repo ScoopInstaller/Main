@@ -2,34 +2,32 @@
     "homepage": "http://www.zstd.net/",
     "license": "BSD-3-Clause",
     "description": "Zstandard is a real-time compression algorithm, providing high compression ratios.",
-    "version": "1.4.1",
+    "version": "1.4.3",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/facebook/zstd/releases/download/v1.4.1/zstd-v1.4.1-win64.zip",
-            "hash": "be5d10b94702e8fc48bf3c9ed6fec19cab556a1c00bc905f8473bc8a128d3abf"
+            "url": "https://github.com/facebook/zstd/releases/download/v1.4.3/zstd-v1.4.3-win64.zip",
+            "hash": "9b83d744245f23a45f4276b92f8b61358cfb8d83cd2b4f0e910d6f27de4f7269",
+            "extract_dir": "zstd-v1.4.3-win64"
         },
         "32bit": {
-            "url": "https://github.com/facebook/zstd/releases/download/v1.4.1/zstd-v1.4.1-win32.zip",
-            "hash": "1fa75edad0e3a97c0f0d32dc20be73d08c908eb245bc9c318dcfc8301028959a"
+            "url": "https://github.com/facebook/zstd/releases/download/v1.4.3/zstd-v1.4.3-win32.zip",
+            "hash": "55a7a2e92d1663750cdc8b0ab378482a5116b8fc86764d12ed441e37cbe3b811",
+            "extract_dir": "zstd-v1.4.3-win32"
         }
     },
     "bin": "zstd.exe",
-    "shortcuts": [
-        [
-            "zstd.exe",
-            "zstd"
-        ]
-    ],
     "checkver": {
         "github": "https://github.com/facebook/zstd"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip"
+                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip",
+                "extract_dir": "zstd-v$version-win64"
             },
             "32bit": {
-                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win32.zip"
+                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win32.zip",
+                "extract_dir": "zstd-v$version-win32"
             }
         }
     }

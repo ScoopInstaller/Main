@@ -1,35 +1,33 @@
 {
     "homepage": "https://miktex.org",
-    "version": "2.9.7100",
+    "version": "2.9.7219",
+    "description": "MikTeX is an up-to-date implementation of TeX/LaTeX and related programs.",
     "license": {
-        "identifier": "Freeware",
+        "identifier": "LPPL1.3c,GPL-3.0-or-later,Public Domain,...",
         "url": "https://miktex.org/copying"
     },
-    "description": "An up-to-date implementation of TeX/LaTeX and related programs.",
     "architecture": {
         "64bit": {
-            "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-2.9.7100-x64.exe",
-            "hash": "9aa26669c0cdf1b964829058d74aec2561270b22e4cc7ac43b1baa77cee8f26d",
+            "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-2.9.7219-x64.exe",
+            "hash": "fd73fa0118eb2a265fd603ab43f7c4182b4a772ed24738ba4f68ca195407b289",
             "bin": [
                 [
                     "texmfs\\install\\miktex\\bin\\x64\\miktex-console.exe",
                     "miktex",
                     "--hide --mkmaps"
                 ]
-            ],
-            "env_add_path": "texmfs\\install\\miktex\\bin\\x64"
+            ]
         },
         "32bit": {
-            "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x86/basic-miktex-2.9.7100.exe",
-            "hash": "893505ea259a77a8a3744b64a1975a20abc57e4d270edc2d03affad36b3427dd",
+            "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x86/basic-miktex-2.9.7219.exe",
+            "hash": "49e7eb6ff964a197970f89f50b0a4a566a0b67d9f0c5253315f52ae1155cc33e",
             "bin": [
                 [
                     "texmfs\\install\\miktex\\bin\\miktex-console.exe",
                     "miktex",
                     "--hide --mkmaps"
                 ]
-            ],
-            "env_add_path": "texmfs\\install\\miktex\\bin"
+            ]
         }
     },
     "installer": {
@@ -39,6 +37,10 @@
             "--private"
         ]
     },
+    "env_add_path": [
+        "texmfs\\install\\miktex\\bin",
+        "texmfs\\install\\miktex\\bin\\x64"
+    ],
     "persist": "texmfs\\config",
     "checkver": {
         "url": "https://miktex.org/download",
