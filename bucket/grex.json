@@ -1,0 +1,26 @@
+{
+    "homepage": "https://github.com/pemistahl/grex",
+    "description": "A command-line tool for generating regular expressions from user-provided input strings",
+    "license": "Apache-2.0",
+    "version": "0.2.0",
+    "bin": "grex.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/pemistahl/grex/releases/download/v0.2.0/grex-v0.2.0-x86_64-pc-windows-msvc.zip",
+            "hash": "560980de96722ec23684170628e1f318378f906659c2e3786a76545e142a203a"
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/pemistahl/grex"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pemistahl/grex/releases/download/v$version/grex-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
