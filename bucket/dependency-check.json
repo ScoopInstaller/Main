@@ -1,0 +1,26 @@
+{
+    "homepage": "https://www.owasp.org/index.php/OWASP_Dependency_Check",
+    "description": "Software composition analysis utility that identifies project dependencies and checks if there are any known, publicly disclosed, vulnerabilities.",
+    "license": "Apache-2.0",
+    "version": "5.2.2",
+    "url": "https://dl.bintray.com/jeremy-long/owasp/dependency-check-5.2.2-release.zip",
+    "hash": "a0bb0e041db4a22ae0a1db83ff962b960aaf9cd0205d99d64e872361ccfcaa34",
+    "extract_dir": "dependency-check",
+    "bin": "bin\\dependency-check.bat",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "checkver": {
+        "url": "https://jeremylong.github.io/DependencyCheck/current.txt",
+        "re": "(.+)"
+    },
+    "autoupdate": {
+        "url": "https://dl.bintray.com/jeremy-long/owasp/dependency-check-$version-release.zip",
+        "hash": {
+            "url": "$url.asc"
+        }
+    }
+}
