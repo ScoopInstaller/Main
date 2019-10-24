@@ -6,14 +6,11 @@
         "identifier": "GPL-2.0-only",
         "url": "https://svn.nmap.org/nmap/COPYING"
     },
-    "url": "https://nmap.org/dist/nmap-7.80-setup.exe",
+    "url": "https://nmap.org/dist/nmap-7.80-setup.exe#/dl.7z",
     "hash": "3b4d726bd366e7439367fa78a186dfa9b641d3b2ad354fd915581b6567480f94",
-    "pre_install": [
-        "Move-Item \"$dir\\npcap*.exe\" \"$dir\\npcap.exe\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\", \"$dir\\vcredist*\" -Recurse -Force"
-    ],
+    "pre_install": "Move-Item \"$dir\\`$PLUGINSDIR\\npcap*.exe\" \"$dir\\`$PLUGINSDIR\\npcap.exe\"",
     "installer": {
-        "script": "Invoke-ExternalCommand -FilePath \"$dir\\npcap.exe\" -ArgumentList \"/S /D=$dir\\npcap\" -RunAs | Out-Null"
+        "script": "Invoke-ExternalCommand -FilePath \"$dir\\`$PLUGINSDIR\\npcap.exe\" -ArgumentList \"/S /D=$dir\\npcap\" -RunAs | Out-Null"
     },
     "uninstaller": {
         "script": "Invoke-ExternalCommand -FilePath \"$dir\\npcap\\Uninstall.exe\" -ArgumentList '/S' -RunAs | Out-Null"
@@ -31,6 +28,7 @@
             "Nmap - Zenmap GUI"
         ]
     ],
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Recurse -Force",
     "notes": "'Npcap' has been installed automatically.",
     "checkver": {
         "url": "https://nmap.org/download.html",
