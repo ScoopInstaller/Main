@@ -1,19 +1,16 @@
 {
     "homepage": "https://slproweb.com/products/Win32OpenSSL.html",
     "version": "1.1.1d",
-    "license": {
-        "identifier": "OpenSSL|Freeware",
-        "url": "https://www.openssl.org/source/license-openssl-ssleay.txt"
-    },
-    "description": "TLS/SSL toolkit",
+    "description": "TLS/SSL toolkit.",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
             "url": "https://slproweb.com/download/Win64OpenSSL-1_1_1d.exe",
-            "hash": "6afa17d0768cf91b6f69f31fbc67cab1ac2e3f40ccaaadb7a9d6c7fc37b38492"
+            "hash": "sha512:9e7d41fdf524cffa2b37b09abf34f84297516b17a20fd3446536c09835a64ab76daead98e4fd8fc2b4ff4369cca57208fd4600ad167666baa4092eab31379074"
         },
         "32bit": {
             "url": "https://slproweb.com/download/Win32OpenSSL-1_1_1d.exe",
-            "hash": "414fb64197a60b4167b367a5b7975511231c439b9d0237625450cb87d47550ab"
+            "hash": "sha512:6f7e7e2838846893eae2f18019459ebf81da55e590b2c746a4fc34609f58e0e1bb705ee2dbea01c6e8dd59ff0c2c084bbeca3ffc73a8d1afd58a03871eb9d066"
         }
     },
     "innosetup": true,
@@ -32,9 +29,8 @@
             }
         },
         "hash": {
-            "mode": "json",
-            "jp": "$.files.['$basename'].sha256",
-            "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json"
+            "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
+            "jsonpath": "$.files.['$basename'].sha512"
         }
     }
 }
