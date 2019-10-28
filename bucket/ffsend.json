@@ -1,15 +1,16 @@
 {
-    "homepage": "https://github.com/timvisee/ffsend",
-    "description": "Easily and securely share files from the command line. A fully featured Firefox Send client.",
-    "license": "GPL-3.0-only",
     "version": "0.2.54",
+    "homepage": "https://github.com/timvisee/ffsend",
+    "description": "Easily and securely share files with Firefox Send.",
+    "license": "GPL-3.0-only",
+    "depends": "version/openssl-light",
     "architecture": {
         "64bit": {
             "url": "https://github.com/timvisee/ffsend/releases/download/v0.2.54/ffsend-v0.2.54-windows-x64-static.exe#/ffsend.exe",
             "hash": "63dcd650bb0aa6dd3a13e35e7fa22424d7d3b8b0c49a940891885bbff394307d"
         }
     },
-    "depends": "openssl",
+    "pre_install": "'libcrypto-1_1-x64.dll', 'libssl-1_1-x64.dll' | Foreach-Object { New-Item -ItemType HardLink -Path \"$dir\" -Name $_ -Target \"$(appdir openssl-light $global)\\current\\$_\" | Out-Null }",
     "bin": "ffsend.exe",
     "checkver": "github",
     "autoupdate": {
