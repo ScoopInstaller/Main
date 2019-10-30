@@ -1,42 +1,46 @@
 {
     "_comment": "Version 2.8.3 was moved to https://github.com/ScoopInstaller/Versions/blob/master/bucket/lynx283.json",
     "version": "2.9.0dev.4",
-    "description": "Fully featured World-Wide Web browser.",
+    "description": "Text web browser.",
     "homepage": "https://invisible-island.net/lynx/lynx.html",
     "license": "GPL-2.0-only",
-    "url": "https://invisible-island.net/datafiles/current/lynx-newssl-setup.exe",
-    "hash": "0ef92b5cd543acecf6045cccb98c60593c8d0409e81f8a2759c2726383d6619e",
-    "bin": "lynx.cmd",
+    "depends": "cacert",
+    "url": [
+        "https://invisible-island.net/datafiles/current/lynx-newssl-setup.exe",
+        "https://slproweb.com/download/Win32OpenSSL_Light-1_1_0L.exe"
+    ],
+    "hash": [
+        "0ef92b5cd543acecf6045cccb98c60593c8d0409e81f8a2759c2726383d6619e",
+        "sha512:03b77c2613f60e397883a7497993608f0655df9fcbad93d64899dda161027816820f4e24c8300fa934300b1506a37134c1bc02faffc1b304cc89cb663c4feed1"
+    ],
     "innosetup": true,
-    "depends": [
-        "cacert",
-        "openssl"
+    "pre_install": "if (!(Test-Path \"$persist_dir\\lynx.cfg\")) { Add-Content \"$dir\\lynx.cfg\" -Value @(\"SSL_CERT_FILE:`\"$(appdir cacert $global)\\current\\cacert.pem`\"\", \"FORCE_SSL_PROMPT:PROMPT\") -Encoding Ascii }",
+    "bin": [
+        [
+            "lynx.exe",
+            "lynx",
+            "-cfg=\"$dir\\lynx.cfg\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "lynx.exe",
+            "lynx",
+            "-cfg=\"$dir\\lynx.cfg\""
+        ]
+    ],
+    "persist": [
+        "lynx.cfg",
+        "lynx.lss"
     ],
     "suggest": {
-        "vcredist": "extras/vcredist2012"
+        "Microsoft Visual C++ Redistributables 2013": "extras/vcredist2013"
     },
-    "persist": "$dir/lynx.cfg",
-    "pre_install": [
-        "$q = [char]34",
-        "add-content \"$dir/lynx.cfg\" -value \"SSL_CERT_FILE:$(appdir openssl $global)/current/cacert.pem`n\"",
-        "add-content \"$dir/lynx.cfg\" -value \"FORCE_SSL_PROMPT:PROMPT`n\"",
-        "set-content \"$dir/lynx.cmd\" -value \"@$q$dir\\lynx.exe$q --cfg=$q$dir\\lynx.cfg$q %*\""
-    ],
-    "post_install": [
-        "if (Test-Path \"$(appdir openssl $global)/current/libcrypto-1_1,1.dll\") {",
-        "   cp \"$(appdir openssl $global)/current/libcrypto-1_1,1.dll\" \"$dir/libcrypto-1_1,1.dll\"",
-        "   cp \"$(appdir openssl $global)/current/libssl-1_1,1.dll\" \"$dir/libssl-1_1,1.dll\"",
-        "} else {",
-        "   echo 'lynx requires the 32-bit version of openssl to be installed'",
-        "   exit 1",
-        "}"
-    ],
     "checkver": {
         "url": "https://lynx.invisible-island.net/current/CHANGES",
-        "re": "[\\d-]{10}\\s+\\(([\\w.]+)\\)"
+        "regex": "[\\d-]{10}\\s+\\(([\\w.]+)\\)"
     },
     "autoupdate": {
         "url": "https://invisible-island.net/datafiles/current/lynx-newssl-setup.exe"
-    },
-    "notes": "lynx requires the 32-bit version of openssl to be installed"
+    }
 }
