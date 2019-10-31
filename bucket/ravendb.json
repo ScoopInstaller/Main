@@ -21,7 +21,7 @@
     },
     "installer":{
         "script": [
-            "if(!(Test-Path $persist_dir\\Server\\settings.json)){",
+            "if(!(Test-Path \"$persist_dir\\Server\\settings.json\")){",
             "    Copy-Item \"$dir\\Server\\settings.default.json\" \"$dir\\Server\\settings.json\"",
             "}"
         ]
