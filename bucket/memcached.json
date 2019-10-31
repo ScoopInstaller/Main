@@ -1,53 +1,32 @@
 {
-    "homepage":"https://memcached.org/",
-    "description":"Distributed memory object caching system.",
-    "version":"1.5.19",
-    "license":"BSD-3-Clause",
-    "architecture":{
-        "32bit":{
-            "url":[
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x86/memcached.exe",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x86/cygevent-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x86/cygevent_core-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x86/cygevent_extra-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x86/cygevent_openssl-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x86/cygevent_pthreads-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x86/cygwin1.dll"
-            ],
-            "hash":[
-                "35397375fb659a3c0e1137bfd97f326cc51109a51df71fb75a63e23c76348601",
-                "70c83cea4fca8cfc25f5a3780c3077cb743818d623dcab9bb22a16eec0e8f913",
-                "f10a61e6ab9402dde87a54c23518254daed073e50f6e29113ca0ef351ac9e781",
-                "295003f427f82230319bf41776dbfef998cc0555df568760371bfe03c4f69410",
-                "65ea1b4c512dc26b2fde63c9add7505fbc2d894a670a6b4432eb167f02eb154e",
-                "b587943474b7cf65e7d92d6b2ab2763a0dbca7140139238d9ba8a505d1e2c69b",
-                "40ef6e70855f46239257aaf23e04273ef8bb10b0e22df0ed290d4419fbeacbbf"
-            ]
+    "homepage": "https://memcached.org/",
+    "description": "Distributed memory object caching system.",
+    "version": "1.5.19",
+    "license": "BSD-3-Clause",
+    "url": "https://github.com/nono303/memcached/archive/memcache-1.5.19.zip",
+    "hash": "5235a112045e0a9d641560d3959fa1f6e6d2f003b333c23bb8cb0cfd7413bee8",
+    "architecture": {
+        "32bit": {
+            "extract_dir": "memcached-memcache-1.5.19\\cygwin\\x86"
         },
-        "64bit":{
-            "url":[
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x64/memcached.exe",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x64/cygevent-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x64/cygevent_core-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x64/cygevent_extra-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x64/cygevent_openssl-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x64/cygevent_pthreads-2-0-5.dll",
-                "https://raw.githubusercontent.com/nono303/memcached/memcache-1.5.19/cygwin/x64/cygwin1.dll"
-            ],
-            "hash":[
-                "e50bcfd7fded9b99044de5721e09bd2daeecc7e36e3484a18f59c2d0ec30729d",
-                "1891749e3b4ff51dabf233204bd264f92b5be2cdbba5d7cff49de3fdc78c5bb9",
-                "ac30484d95de750500f3295c3d68761a93a78a82366d1de29ea18f6f685a23d4",
-                "4d7575a02a8e607940d7fab3499cd4d133df3bcf1ca531a6a23c8d6c2f56085e",
-                "f34b52e324ff51a6e07838f635a5cf69ad54266c75efcc71360bbae696a540e4",
-                "1e5ea0ad952a66c86a7e47c38112b1c9b097459447a1e8bba1b72fc56396dc05",
-                "f7c78dba07128af325d8da99138ebf78be163ecfb5da5b01fa6b65b96efecef1"
-            ]
+        "64bit": {
+            "extract_dir": "memcached-memcache-1.5.19\\cygwin\\x64"
         }
     },
-    "bin":"memcached.exe",
-    "checkver":{
-        "url":"https://github.com/nono303/memcached/tree/master/cygwin",
-        "regex":"memcache-([\\d.]+)</a>"
+    "bin": "memcached.exe",
+    "checkver": {
+        "url": "https://github.com/nono303/memcached/releases",
+        "regex": "tag/memcache-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/nono303/memcached/archive/memcache-$version.zip",
+        "architecture": {
+            "32bit": {
+                "extract_dir": "memcached-memcache-$version\\cygwin\\x86"
+            },
+            "64bit": {
+                "extract_dir": "memcached-memcache-$version\\cygwin\\x64"
+            }
+        }
     }
 }
