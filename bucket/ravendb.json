@@ -19,7 +19,13 @@
             "hash": "8e65f887a677e78a92e57faf71363c17a1b2bf54b0c490f5b2618b597117dd99"
         }
     },
-    "pre_install": "if(!(Test-Path $persist_dir\\Server\\settings.json)) {New-Item \"$dir\\Server\\settings.json\" -ItemType 'file' -Value $null}",
+    "installer":{
+        "script": [
+            "if(!(Test-Path $persist_dir\\Server\\settings.json)){",
+            "    Copy-Item \"$dir\\Server\\settings.default.json\" \"$dir\\Server\\settings.json\"",
+            "}"
+        ]
+    },
     "bin": [
         "Server\\rvn.exe",
         "Server\\Raven.Server.exe",
