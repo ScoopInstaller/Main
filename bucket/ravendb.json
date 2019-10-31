@@ -1,0 +1,53 @@
+{
+    "homepage": "https://ravendb.net/",
+    "description": "NoSQL database built on .NET Core.",
+    "version": "4.2.4",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://ravendb.net/terms"
+    },
+    "suggest": {
+        ".NET SDK": "dotnet-sdk"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-4.2.4-windows-x86.zip",
+            "hash": "e93516db0f8f37772de490068a655fc7b3794b6061b5c8abffaafa9dde4fd197"
+        },
+        "64bit": {
+            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-4.2.4-windows-x64.zip",
+            "hash": "8e65f887a677e78a92e57faf71363c17a1b2bf54b0c490f5b2618b597117dd99"
+        }
+    },
+    "bin": [
+        "Server\\rvn.exe",
+        "Server\\Raven.Server.exe",
+        "Server\\Raven.Debug.exe",
+        [
+            "run.ps1",
+            "raven-run"
+        ],
+        [
+            "setup-as-service.ps1",
+            "raven-setup-as-service"
+        ],
+        [
+            "uninstall-service.ps1",
+            "raven-uninstall-service"
+        ]
+    ],
+    "checkver": {
+        "url": "https://ravendb.net/download",
+        "regex": "Latest STABLE <span class=\"text-primary\">([\\d.]+)</span></h1>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x86.zip"
+            },
+            "64bit": {
+                "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x64.zip"
+            }
+        }
+    }
+}
