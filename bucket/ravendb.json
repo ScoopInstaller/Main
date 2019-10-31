@@ -19,7 +19,7 @@
             "hash": "8e65f887a677e78a92e57faf71363c17a1b2bf54b0c490f5b2618b597117dd99"
         }
     },
-    "pre_install": "if(!(Test-Path $persist_dir\\settings.json)) {Set-Content $dir\\settings.json -Value $null}",
+    "pre_install": "if(!(Test-Path $persist_dir\\Server\\settings.json)) {Set-Content $dir\\settings.json -Value $null}",
     "bin": [
         "Server\\rvn.exe",
         "Server\\Raven.Server.exe",
@@ -37,7 +37,7 @@
             "raven-uninstall-service"
         ]
     ],
-    "persist": "settings.json",
+    "persist": "Server\\settings.json",
     "checkver": {
         "url": "https://ravendb.net/download",
         "regex": "Latest STABLE <span class=\"text-primary\">([\\d.]+)</span></h1>"
