@@ -1,18 +1,40 @@
 {
-    "homepage": "https://nekovm.org/",
+    "homepage": "https://nekovm.org",
     "description": "A high-level dynamically typed programming language.",
-    "version": "2.2.0",
+    "version": "2.3.0",
     "license": "MIT",
-    "url": "https://nekovm.org/media/neko-2.2.0-win.zip",
-    "hash": "93d7ca96698a6825f38ca8eea49e2e6b691c0849270174f6c1bd531290db8d69",
-    "extract_dir": "neko-2.2.0-win",
-    "env_add_path": "./",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/HaxeFoundation/neko/releases/download/v2-3-0/neko-2.3.0-win64.zip",
+            "hash": "d09fdf362cd2e3274f6c8528be7211663260c3a5323ce893b7637c2818995f0b",
+            "extract_dir": "neko-2.3.0-win64"
+        },
+        "32bit": {
+            "url": "https://github.com/HaxeFoundation/neko/releases/download/v2-3-0/neko-2.3.0-win.zip",
+            "hash": "fe5a11350d2dd74338f971d62115f2bd21ec6912f193db04c5d28eb987a50485",
+            "extract_dir": "neko-2.3.0-win"
+        }
+    },
+    "bin": [
+        "neko.exe",
+        "nekoc.exe",
+        "nekoml.exe",
+        "nekotools.exe"
+    ],
     "checkver": {
-        "url": "https://nekovm.org/download/",
-        "re": "Neko ([\\d.]+)"
+        "github": "https://github.com/HaxeFoundation/neko",
+        "regex": "neko-([\\d.]+)-win64"
     },
     "autoupdate": {
-        "url": "https://nekovm.org/media/neko-$version-win.zip",
-        "extract_dir": "neko-$version-win"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/HaxeFoundation/neko/releases/download/v$dashVersion/neko-$version-win64.zip",
+                "extract_dir": "neko-$version-win64"
+            },
+            "32bit": {
+                "url": "https://github.com/HaxeFoundation/neko/releases/download/v$dashVersion/neko-$version-win.zip",
+                "extract_dir": "neko-$version-win"
+            }
+        }
     }
 }
