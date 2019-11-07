@@ -6,14 +6,24 @@
         "identifier": "Freeware",
         "url": "https://www.speedtest.net/about/eula"
     },
-    "url": "https://dl.bintray.com/ookla/download/ookla-speedtest-1.0.0-win64.zip",
-    "hash": "64054a021dd7d49e618799a35ddbc618dcfc7b3990e28e513a420741717ac1ad",
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.bintray.com/ookla/download/ookla-speedtest-1.0.0-win64.zip",
+            "hash": "64054a021dd7d49e618799a35ddbc618dcfc7b3990e28e513a420741717ac1ad"
+        }
+    },
     "bin": "speedtest.exe",
-    "checkver": "ookla-speedtest-([\\d.]+)-win64\\.zip",
+    "checkver": {
+        "regex": "speedtest-([\\d.]+)-win64.zip"
+    },
     "autoupdate": {
-        "url": "https://dl.bintray.com/ookla/download/ookla-speedtest-$version-win64.zip",
-        "hash": {
-            "url": "$url.sha256"
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.bintray.com/ookla/download/ookla-speedtest-$version-win64.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
         }
     }
 }
