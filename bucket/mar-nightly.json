@@ -1,0 +1,32 @@
+{
+    "version": "72.0a1.20191106215426",
+    "description": "Utility for managing mar files.",
+    "homepage": "https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central/mar-tools/",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/nightly/2019/11/2019-11-06-21-54-26-mozilla-central/mar-tools/win64/mar.exe",
+            "hash": "1e22a41766aadce0e9fdc09d28ab7e6f061e15708ac743dabb91d1d460818cb4"
+        },
+        "32bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/nightly/2019/11/2019-11-06-21-54-26-mozilla-central/mar-tools/win32/mar.exe",
+            "hash": "2fc03a2b028bf5606aba62aaaabf7dffe4f7ff7c46243cabb5aa51d67059a8dc"
+        }
+    },
+    "bin": "mar.exe",
+    "checkver": {
+        "url": "https://aus5.mozilla.org/update/6/Firefox/60.0/_/WINNT_x86_64-msvc-x64/en-US/nightly/_/_/_/_/update.xml",
+        "regex": "appVersion=\"([\\w.]+)\".*?buildID=\"((?<yyyy>\\d{4})(?<mm>\\d{2})(?<dd>\\d{2})(?<hr>\\d{2})(?<mi>\\d{2})(?<se>\\d{2}))",
+        "replace": "${1}.${2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/nightly/$matchYyyy/$matchMm/$matchYyyy-$matchMm-$matchDd-$matchHr-$matchMi-$matchSe-mozilla-central/mar-tools/win64/mar.exe"
+            },
+            "32bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/nightly/$matchYyyy/$matchMm/$matchYyyy-$matchMm-$matchDd-$matchHr-$matchMi-$matchSe-mozilla-central/mar-tools/win32/mar.exe"
+            }
+        }
+    }
+}
