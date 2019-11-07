@@ -1,9 +1,8 @@
 {
-    "##": "Maintainers: when updating this manifest to a new version, you might like to also update git-with-openssh.json and mingit.json",
-    "homepage": "https://git-for-windows.github.io/",
-    "description": "A free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.",
-    "license": "GPL-2.0-only",
     "version": "2.24.0.windows.2",
+    "homepage": "https://gitforwindows.org",
+    "description": "Distributed version control system.",
+    "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
             "url": "https://github.com/git-for-windows/git/releases/download/v2.24.0.windows.2/PortableGit-2.24.0.2-64-bit.7z.exe#/dl.7z",
@@ -25,22 +24,21 @@
         [
             "git-bash.exe",
             "Git Bash",
-            "--cd-to-home",
-            "usr\\share\\git\\git-for-windows.ico"
+            "--cd-to-home"
+        ],
+        [
+            "cmd\\git-gui.exe",
+            "Git Gui"
+        ],
+        [
+            "cmd\\gitk.exe",
+            "gitk"
         ]
     ],
     "post_install": "git config --global credential.helper manager",
-    "notes": [
-        "To get Git to recognise OpenSSH, you will need to run",
-        "",
-        "scoop install openssh",
-        "[environment]::setenvironmentvariable('GIT_SSH', (resolve-path (scoop which ssh)), 'USER')",
-        "",
-        "and then restart powershell."
-    ],
     "checkver": {
-        "url": "https://github.com/git-for-windows/git/releases/latest",
-        "re": "v(?<version>[\\d\\w.]+)/PortableGit-(?<short>[\\d.]+).*\\.exe"
+        "github": "https://github.com/git-for-windows/git",
+        "regex": "v([\\d\\w.]+)/PortableGit-(?<ver>[\\d\\w.]+)-64-bit"
     },
     "env_set": {
         "GIT_INSTALL_ROOT": "$dir"
@@ -48,15 +46,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$matchVersion/PortableGit-$matchShort-64-bit.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchVer-64-bit.7z.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$matchVersion/PortableGit-$matchShort-32-bit.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchVer-32-bit.7z.exe#/dl.7z"
             }
         },
         "hash": {
             "url": "https://github.com/git-for-windows/git/releases/latest",
-            "find": "<td>$basename<\\/td>\\s*<td>([0-9a-fA-F]+)<\\/td>"
+            "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
         }
     }
 }
