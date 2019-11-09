@@ -1,0 +1,31 @@
+{
+    "version": "0.1.0",
+    "description": "The GitHub Codeowners file validator",
+    "homepage": "https://github.com/mszostok/codeowners-validator",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mszostok/codeowners-validator/releases/download/v0.1.0/codeowners-validator_0.1.0_Windows_x86_64.zip",
+            "hash": "8d0d3d758e33f2d68f7f0713c1d29221842d9678e3733761fdebb7e1244b2330"
+        },
+        "32bit": {
+            "url": "https://github.com/mszostok/codeowners-validator/releases/download/v0.1.0/codeowners-validator_0.1.0_Windows_i386.zip",
+            "hash": "3c20b277192fdb9659ba339fe57be3a65436016032312df098eeee45d16140ed"
+        }
+    },
+    "bin": "codeowners-validator.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mszostok/codeowners-validator/releases/download/v$version/codeowners-validator_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/mszostok/codeowners-validator/releases/download/v$version/codeowners-validator_$version_Windows_i386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
