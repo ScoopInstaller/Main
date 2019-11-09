@@ -2,18 +2,34 @@
     "homepage": "https://www.vim.org",
     "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
     "license": "Vim",
-    "version": "8.1.1",
-    "url": [
-        "https://ftp.nluug.nl/pub/vim/pc/gvim81.exe#/dl.7z",
-        "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
-        "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/uninstall-context.reg"
-    ],
-    "hash": [
-        "md5:14391c74929552db62acc6bca9efbe1b",
-        "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
-        "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
-    ],
-    "extract_dir": "$0",
+    "version": "8.1.2260",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/vim/vim-win32-installer/releases/download/v8.1.2269/gvim_8.1.2269_x64.zip",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/uninstall-context.reg"
+            ],
+            "hash": [
+                "ed00cbf6c9e3c9bc14dfed025155f29877d37b86a08d62bcddba17ad7e678468",
+                "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
+                "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://github.com/vim/vim-win32-installer/releases/download/v8.1.2269/gvim_8.1.2269_x86.zip",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/master/scripts/vim/uninstall-context.reg"
+            ],
+            "hash": [
+                "59aafc968faa2bc766d53f48faac7378e5f8c1f620c696d936ff0f0650a64880",
+                "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
+                "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
+            ]
+        }
+    },
+    "extract_dir": "vim\\vim81",
     "pre_install": [
         "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\" -Recurse",
         "if (!(Test-Path \"$persist_dir\\_vimrc\")) {",
@@ -98,20 +114,24 @@
             "gVim"
         ]
     ],
-    "persist": [
+    "persist":[
         "_vimrc",
         "_gvimrc",
         "vimfiles"
     ],
     "checkver": {
-        "url": "https://ftp.nluug.nl/pub/vim/pc",
-        "regex": "gvim(?<ver>[\\d-]+)\\.exe\\s+V([\\d.]+)"
+        "github": "https://github.com/vim/vim-win32-installer"
     },
     "autoupdate": {
-        "url": "https://ftp.nluug.nl/pub/vim/pc/gvim$matchVer.exe#/dl.7z",
-        "hash": {
-            "url": "$baseurl/MD5SUMS"
-        }
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86.zip"
+            }
+        },
+        "extract_dir": "vim\\vim$majorVersion$minorVersion"
     },
     "suggest": {
         "vimtutor": "vimtutor"
