@@ -36,7 +36,7 @@
     ],
     "post_install": [
         "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
-        "(gc \"$dir\\cli\\php.ini\") | % { $_ -replace '; extension_dir = \"ext\"', 'extension_dir = \"ext\"' } | sc \"$dir\\cli\\php.ini\""
+        "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
     ],
     "checkver": {
         "url": "https://windows.php.net/download/",
