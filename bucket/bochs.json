@@ -5,22 +5,71 @@
     "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.6.9/bochs-2.6.9-win64.zip",
-            "hash": "sha1:35a590b30c13add8ff6d3271c6aadd293ee4d923",
+            "url": [
+                "https://downloads.sourceforge.net/project/bochs/bochs/2.6.9/bochs-2.6.9-win64.zip",
+                "https://downloads.sourceforge.net/project/bochs/bochs/2.6.9/Bochs-2.6.9.exe#/dl.7z"
+            ],
+            "hash": [
+                "sha1:35a590b30c13add8ff6d3271c6aadd293ee4d923",
+                "sha1:ad2d245b9f7d0492ec800df4b38b8893d8bb0642"
+            ],
             "bin": [
-                "bochs-win64.exe",
-                "bochsdbg-win64.exe"
+                [
+                    "bochs-win64.exe",
+                    "bochs"
+                ],
+                [
+                    "bochsdbg-win64.exe",
+                    "bochsdbg"
+                ],
+                "bxhub.exe",
+                "bximage.exe"
+            ],
+            "shortcuts": [
+                [
+                    "bochs-win64.exe",
+                    "Bochs"
+                ],
+                [
+                    "bochsdbg-win64.exe",
+                    "BochsDbg"
+                ]
             ]
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.6.9/bochs-p4-smp-2.6.9-win32.zip",
-            "hash": "sha1:bc2aa106890c649ca2a94e1c073151b1f42ef2bb",
+            "url": [
+                "https://downloads.sourceforge.net/project/bochs/bochs/2.6.9/bochs-p4-smp-2.6.9-win32.zip",
+                "https://downloads.sourceforge.net/project/bochs/bochs/2.6.9/Bochs-2.6.9.exe#/dl.7z"
+            ],
+            "hash": [
+                "sha1:bc2aa106890c649ca2a94e1c073151b1f42ef2bb",
+                "sha1:ad2d245b9f7d0492ec800df4b38b8893d8bb0642"
+            ],
             "bin": [
-                "bochs-p4-smp.exe",
-                "bochsdbg-p4-smp.exe"
+                [
+                    "bochs-p4-smp.exe",
+                    "bochs"
+                ],
+                [
+                    "bochsdbg-p4-smp.exe",
+                    "bochsdbg"
+                ],
+                "bxhub.exe",
+                "bximage.exe"
+            ],
+            "shortcuts": [
+                [
+                    "bochs-p4-smp.exe",
+                    "Bochs"
+                ],
+                [
+                    "bochsdbg-p4-smp.exe",
+                    "BochsDbg"
+                ]
             ]
         }
     },
+    "post_install": "Remove-Item -Recurse ($dir+'\\$PLUGINSDIR')",
     "checkver": {
         "url": "http://bochs.sourceforge.net/getcurrent.html",
         "re": "<b>Latest release:<\\/b> Bochs ([\\d.]+)"
@@ -28,10 +77,16 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/bochs-$version-win64.zip"
+                "url": [
+                    "https://downloads.sourceforge.net/project/bochs/bochs/$version/bochs-$version-win64.zip",
+                    "https://downloads.sourceforge.net/project/bochs/bochs/$version/Bochs-$version.exe#/dl.7z"
+                ]
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/bochs-p4-smp-$version-win32.zip"
+                "url": [
+                    "https://downloads.sourceforge.net/project/bochs/bochs/$version/bochs-p4-smp-$version-win32.zip",
+                    "https://downloads.sourceforge.net/project/bochs/bochs/$version/Bochs-$version.exe#/dl.7z"
+                ]
             }
         }
     }
