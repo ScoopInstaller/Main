@@ -1,7 +1,7 @@
 {
     "homepage": "https://miktex.org",
     "version": "2.9.7255",
-    "description": "MikTeX is an up-to-date implementation of TeX/LaTeX and related programs.",
+    "description": "MiKTeX is an up-to-date implementation of TeX/LaTeX and related programs.",
     "license": {
         "identifier": "LPPL1.3c,GPL-3.0-or-later,Public Domain,...",
         "url": "https://miktex.org/copying"
@@ -10,36 +10,90 @@
         "64bit": {
             "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-2.9.7255-x64.exe",
             "hash": "3e9946e0054e2b0b1116e483656e309b62ea9598b1cd7f6d38a375245816f419",
+            "installer": {
+                "file": "install\\miktex\\bin\\x64\\miktexsetup.exe",
+                "args": [
+                    "finish",
+                    "--user-config=\"$dir\\config\"",
+                    "--user-install=\"$dir\\install\"",
+                    "--user-data=\"$dir\\data\""
+                ],
+                "keep": true
+            },
             "bin": [
                 [
-                    "texmfs\\install\\miktex\\bin\\x64\\miktex-console.exe",
+                    "install\\miktex\\bin\\x64\\miktex-console.exe",
                     "miktex",
                     "--hide --mkmaps"
                 ]
             ],
-            "env_add_path": "texmfs\\install\\miktex\\bin\\x64"
+            "shortcuts": [
+                [
+                    "install\\miktex\\bin\\x64\\miktex-console.exe",
+                    "MiKTeX Console",
+                    "--hide --mkmaps"
+                ],
+                [
+                    "install\\miktex\\bin\\x64\\texworks.exe",
+                    "TeXworks"
+                ],
+                [
+                    "install\\miktex\\bin\\x64\\yap.exe",
+                    "Yap"
+                ]
+            ],
+            "env_add_path": "install\\miktex\\bin\\x64"
         },
         "32bit": {
             "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x86/basic-miktex-2.9.7255.exe",
             "hash": "e161f0fe424125a90e79e664b570a1847cb205e1863beb33e3c255fb85efe7dc",
+            "installer": {
+                "file": "install\\miktex\\bin\\miktexsetup.exe",
+                "args": [
+                    "finish",
+                    "--user-config=\"$dir\\config\"",
+                    "--user-install=\"$dir\\install\"",
+                    "--user-data=\"$dir\\data\""
+                ],
+                "keep": true
+            },
             "bin": [
                 [
-                    "texmfs\\install\\miktex\\bin\\miktex-console.exe",
+                    "install\\miktex\\bin\\miktex-console.exe",
                     "miktex",
                     "--hide --mkmaps"
                 ]
             ],
-            "env_add_path": "texmfs\\install\\miktex\\bin"
+            "shortcuts": [
+                [
+                    "install\\miktex\\bin\\miktex-console.exe",
+                    "MiKTeX Console",
+                    "--hide --mkmaps"
+                ],
+                [
+                    "install\\miktex\\bin\\texworks.exe",
+                    "TeXworks"
+                ],
+                [
+                    "install\\miktex\\bin\\yap.exe",
+                    "Yap"
+                ]
+            ],
+            "env_add_path": "install\\miktex\\bin"
         }
     },
-    "installer": {
-        "args": [
-            "--portable=\"$dir\"",
-            "--unattended",
-            "--private"
-        ]
-    },
-    "persist": "texmfs\\config",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\$fname\" -Switches \"-t#\" -Removal",
+        "Expand-7zipArchive \"$dir\\3.tar\" -Removal",
+        "Get-ChildItem \"$dir\\*.tar.lzma\", \"$dir\\*.cab\" | ForEach-Object { Expand-7zipArchive $_ -Removal }",
+        "Remove-Item \"$dir\\*\" -Exclude 'texmf' -Force",
+        "Move-Item \"$dir\\texmf\" \"$dir\\install\"",
+        "if (Test-Path \"$persist_dir\\texmfs\\config\") {",
+        "    Move-Item \"$persist_dir\\texmfs\\config\" \"$persist_dir\"",
+        "    Remove-Item \"$persist_dir\\texmfs\"",
+        "}"
+    ],
+    "persist": "config",
     "checkver": {
         "url": "https://miktex.org/download",
         "regex": "basic-miktex-([\\d.]+).exe"
