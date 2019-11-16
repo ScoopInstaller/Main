@@ -1,22 +1,37 @@
 {
-    "homepage": "https://github.com/PKISharp/win-acme",
-    "version": "2.0.10.444",
+    "homepage": "https://pkisharp.github.io/win-acme/",
+    "version": "2.1.0.539",
+    "description": "A Simple ACME Client",
     "license": "Apache-2.0",
-    "description": "A Simple ACME Client for Windows",
-    "url": "https://github.com/PKISharp/win-acme/releases/download/v2.0.10/win-acme.v2.0.10.444.zip",
-    "hash": "516b4a4c800ae95478da5118ade5b99569dda596b23ddbc3174fea2459d7a516",
-    "bin": "wacs.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PKISharp/win-acme/releases/download/v2.1.0/win-acme.v2.1.0.539.x64.trimmed.zip",
+            "hash": "2be3a8a1d931dbca3d418bffb1d04fb22225907eb52c7c55719a7a04761f7969"
+        },
+        "32bit": {
+            "url": "https://github.com/PKISharp/win-acme/releases/download/v2.1.0/win-acme.v2.1.0.539.x86.trimmed.zip",
+            "hash": "5fb17b81eefeb81c25e95320e0b30b225cc58cc1753146823e0526be0c36149a"
+        }
+    },
     "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\settings.config\")) {",
-        "   Copy-Item \"$dir\\settings_default.config\" \"$dir\\settings.config\"",
+        "if (!(Test-Path \"$persist_dir\\settings.json\")) {",
+        "   Copy-Item \"$dir\\settings_default.json\" \"$dir\\settings.json\"",
         "}"
     ],
-    "persist": "settings.config",
+    "bin": "wacs.exe",
+    "persist": "settings.json",
     "checkver": {
         "github": "https://github.com/PKISharp/win-acme",
-        "regex": "win-acme\\.v([\\d.]+)\\.zip"
+        "regex": "win-acme\\.v([\\d.]+)\\.x64.trimmed\\.zip"
     },
     "autoupdate": {
-        "url": "https://github.com/PKISharp/win-acme/releases/download/v$matchHead/win-acme.v$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PKISharp/win-acme/releases/download/v$matchHead/win-acme.v$version.x64.trimmed.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/PKISharp/win-acme/releases/download/v$matchHead/win-acme.v$version.x86.trimmed.zip"
+            }
+        }
     }
 }
