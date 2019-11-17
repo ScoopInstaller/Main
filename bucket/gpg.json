@@ -6,16 +6,26 @@
     "license": "GPL-3.0-or-later",
     "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-2.2.17_20190709.exe#/dl.7z",
     "hash": "sha1:82abfbc79d1a99b27f25ba92fe878cad07a31532",
+    "pre_install": [
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\gnupg-uninstall.exe.nsis\" -Force -Recurse",
+        "New-Item \"$dir\\bin\\gpgconf.ctl\" -Force | Out-Null",
+        "if (!(Test-Path \"$persist_dir\\home\") -and (Test-Path \"$env:Appdata\\gnupg\")) {",
+        "    Write-Host -F yellow \"Copying old '$env:Appdata\\gnupg' to '$persist_dir\\home'\"",
+        "    New-Item \"$dir\\home\" -ItemType Directory -Force | Out-Null",
+        "    Copy-Item \"$env:Appdata\\gnupg\\*\" \"$dir\\home\" -Recurse -Force",
+        "}"
+    ],
     "env_add_path": "bin",
+    "persist": "home",
     "checkver": {
         "url": "https://www.gnupg.org/download/index.html",
-        "re": "gnupg-w32-(?<version>[\\d.]+)_(?<date>[\\d]{8}).exe"
+        "regex": "gnupg-w32-([\\d.]+)_(?<date>\\d+)\\.exe"
     },
     "autoupdate": {
         "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-$version_$matchDate.exe#/dl.7z",
         "hash": {
             "url": "https://www.gnupg.org/download/integrity_check.html",
-            "regex": "$sha1.*$basename"
+            "regex": "$sha1\\s+$basename"
         }
     }
 }
