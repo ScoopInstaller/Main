@@ -15,20 +15,20 @@
             "extract_dir": "win32"
         }
     },
-    "persist": [
-        "blacklist.txt",
-        "cloaking-rules.txt",
-        "dnscrypt-proxy.toml",
-        "forwarding-rules.txt",
-        "whitelist.txt"
-    ],
-    "bin": "dnscrypt-proxy.exe",
     "pre_install": [
         "'blacklist.txt', 'cloaking-rules.txt', 'dnscrypt-proxy.toml', 'forwarding-rules.txt', 'whitelist.txt' | ForEach-Object {",
         "    if (!(Test-Path \"$persist_dir\\$_\")) {",
         "        Copy-Item \"$dir\\example-$_\" \"$dir\\$_\"",
         "    }",
         "}"
+    ],
+    "bin": "dnscrypt-proxy.exe",
+    "persist": [
+        "blacklist.txt",
+        "cloaking-rules.txt",
+        "dnscrypt-proxy.toml",
+        "forwarding-rules.txt",
+        "whitelist.txt"
     ],
     "checkver": {
         "github": "https://github.com/DNSCrypt/dnscrypt-proxy"
