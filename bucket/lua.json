@@ -1,0 +1,52 @@
+{
+    "homepage": "http://www.lua.org/",
+    "version": "5.3.5",
+    "license": "MIT",
+    "description": "A powerful, efficient, lightweight, embeddable scripting language",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.3.5_Win64_bin.zip",
+                "https://joedf.ahkscript.org/LuaBuilds/hdata/libgcc_s_dw2-1.dll.zip"
+            ],
+            "hash": [
+                "6a039e44a85ea7090d94e4a743ac627080f2d6d7ae1ca8bd3d70d471071cac04",
+                "546204ef8af80565b051b0d5dec2d885ae524cf060f99683e038e4b49b60d9e5"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.3.5_Win32_bin.zip",
+                "https://joedf.ahkscript.org/LuaBuilds/hdata/libgcc_s_dw2-1.dll.zip"
+            ],
+            "hash": [
+                "37afd9078a012e9021669f331fa71e34888833c59888b6758ba180774b7a3de6",
+                "546204ef8af80565b051b0d5dec2d885ae524cf060f99683e038e4b49b60d9e5"
+            ]
+        }
+    },
+    "bin": [
+        "lua.exe",
+        "luac.exe"
+    ],
+    "checkver": {
+        "url": "https://joedf.ahkscript.org/LuaBuilds/",
+        "regex": "Lua ([\\d.]+) for Windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-$version_Win64_bin.zip",
+                    "https://joedf.ahkscript.org/LuaBuilds/hdata/libgcc_s_dw2-1.dll.zip"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-$version_Win32_bin.zip",
+                    "https://joedf.ahkscript.org/LuaBuilds/hdata/libgcc_s_dw2-1.dll.zip"
+                ]
+            }
+        }
+    }
+}
