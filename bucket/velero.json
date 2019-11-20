@@ -1,0 +1,28 @@
+{
+    "homepage": "https://velero.io/",
+    "description": "Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes.",
+    "license": "Apache-2.0",
+    "version": "1.2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vmware-tanzu/velero/releases/download/v1.2.0/velero-v1.2.0-windows-amd64.tar.gz",
+            "hash": "b4c19a1def03a6d99a0601b49e05c777aab453be668ca5f4666d98cc47af5e7c",
+            "extract_dir": "velero-v1.2.0-windows-amd64"
+        }
+    },
+    "bin": "velero.exe",
+    "checkver": {
+        "github": "https://github.com/vmware-tanzu/velero"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vmware-tanzu/velero/releases/download/v$version/velero-v$version-windows-amd64.tar.gz",
+                "extract_dir": "velero-v$version-windows-amd64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/CHECKSUM"
+        }
+    }
+}
