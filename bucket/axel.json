@@ -1,9 +1,35 @@
 {
-    "version": "2.4",
-    "homepage": "https://github.com/ghuntley/cygwin-axel/",
-    "description": "Axel tries to accelerate HTTP/FTP downloading process by using multiple connections for one file",
+    "version": "2.16.1-1",
+    "homepage": "https://github.com/axel-download-accelerator/axel",
+    "description": "Lightweight download accelerator",
     "license": "GPL-2.0-or-later",
-    "url": "https://github.com/ghuntley/cygwin-axel/raw/master/release/axel-2.4.zip",
-    "hash": "3cce621da5f17ea03e4fcf51916dd4f8928759766f88b4ca5643131d2dd3fed2",
-    "bin": "axel.exe"
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/unix-utils/axel/2.16.1/axel-2.16.1-1-x86_64.zip",
+            "hash": "sha1:308ee956e3f886411ae7494037a0b0b8a87360aa",
+            "extract_dir": "axel-2.16.1-1-x86_64"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/unix-utils/axel/2.16.1/axel-2.16.1-1-i686.zip",
+            "hash": "sha1:cc139d906d177295f6c08fd9f282994fd0fe50d3",
+            "extract_dir": "axel-2.16.1-1-i686"
+        }
+    },
+    "bin": "axel.exe",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/unix-utils/rss?path=/axel",
+        "regex": "axel-([\\d.-]+)-x86_64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/unix-utils/axel/$matchHead/axel-$version-x86_64.zip",
+                "extract_dir": "axel-$version-x86_64"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/unix-utils/axel/$matchHead/axel-$version-i686.zip",
+                "extract_dir": "axel-$version-i686"
+            }
+        }
+    }
 }
