@@ -12,7 +12,7 @@
     },
     "checkver": {
         "url": "https://github.com/lukesampson/pshazz/commits/master.atom",
-        "re": "(\\d+)-(\\d+)-(\\d+)[\\S\\s]*?(?<sha>[0-9a-f]{40})",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
         "replace": "0.${1}.${2}.${3}"
     },
     "autoupdate": {
