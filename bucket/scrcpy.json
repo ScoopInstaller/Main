@@ -1,24 +1,21 @@
 {
+    "version": "1.11",
     "homepage": "https://github.com/Genymobile/scrcpy",
     "description": "Display and control your Android device",
     "license": "Apache-2.0",
-    "version": "1.10",
+    "depends": "adb",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.10/scrcpy-win64-v1.10.zip",
-            "hash": "95de34575d873c7e95dfcfb5e74d0f6af4f70b2a5bc6fde0f48d1a05480e3a44"
+            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.11/scrcpy-win64-v1.11.zip",
+            "hash": "3802c9ea0307d437947ff150ec65e53990b0beaacd0c8d0bed19c7650ce141bd"
         },
         "32bit": {
-            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.10/scrcpy-win32-v1.10.zip",
-            "hash": "f98b400b3764404b33b212e9762dd6f1593ddb766c1480fc2609c94768e4a8e1"
+            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.11/scrcpy-win32-v1.11.zip",
+            "hash": "f25ed46e6f3e81e0ff9b9b4df7fe1a4bbd13f8396b7391be0a488b64c675b41e"
         }
     },
-    "depends": "adb",
-    "post_install": "if(Test-Path(\"$dir\\adb.exe\")) { Remove-Item \"$dir\\adb.exe\" }",
+    "pre_install": "if (Test-Path \"$dir\\adb.exe\") { Remove-Item \"$dir\\adb.exe\" }",
     "bin": "scrcpy.exe",
-    "env_set": {
-        "SCRCPY_SERVER_PATH": "$dir\\scrcpy-server.jar"
-    },
     "shortcuts": [
         [
             "scrcpy-noconsole.exe",

@@ -2,14 +2,24 @@
     "##": "Duplicate of the gpg package",
     "homepage": "https://www.gnupg.org/",
     "description": "A complete and free implementation of the OpenPGP standard.",
-    "version": "2.2.17",
+    "version": "2.2.18",
     "license": "GPL-3.0-or-later",
-    "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-2.2.17_20190709.exe#/dl.7z",
-    "hash": "e5c99867591c1f72190f5540040ba027233f8cf5acc9ed627dba89a2461b57e0",
+    "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-2.2.18_20191125.exe#/dl.7z",
+    "hash": "sha1:62c369400da1ee0de7b0275ecd0bcc969805b9da",
+    "pre_install": [
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\gnupg-uninstall.exe.nsis\" -Force -Recurse",
+        "New-Item \"$dir\\bin\\gpgconf.ctl\" -Force | Out-Null",
+        "if (!(Test-Path \"$persist_dir\\home\") -and (Test-Path \"$env:Appdata\\gnupg\")) {",
+        "    Write-Host -F yellow \"Copying old '$env:Appdata\\gnupg' to '$persist_dir\\home'\"",
+        "    New-Item \"$dir\\home\" -ItemType Directory -Force | Out-Null",
+        "    Copy-Item \"$env:Appdata\\gnupg\\*\" \"$dir\\home\" -Recurse -Force",
+        "}"
+    ],
     "env_add_path": "bin",
+    "persist": "home",
     "checkver": {
         "url": "https://www.gnupg.org/download/index.html",
-        "re": "gnupg-w32-(?<version>[\\d.]+)_(?<date>[\\d]{8}).exe"
+        "regex": "gnupg-w32-([\\d.]+)_(?<date>\\d+)\\.exe"
     },
     "autoupdate": {
         "url": "https://www.gnupg.org/ftp/gcrypt/binary/gnupg-w32-$version_$matchDate.exe#/dl.7z",

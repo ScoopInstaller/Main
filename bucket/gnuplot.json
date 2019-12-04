@@ -1,0 +1,22 @@
+{
+    "version": "5.2.8",
+    "description": "Interactive function plotting utility",
+    "homepage": "http://www.gnuplot.info",
+    "license": "gnuplot",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/gnuplot/gnuplot/5.2.8/gp528-win64-mingw.7z",
+            "hash": "sha1:2b5fab4b06dbfb17d9edc9fc889a64a634c4f988"
+        }
+    },
+    "extract_dir": "gnuplot",
+    "bin": "bin\\gnuplot.exe",
+    "checkver": "(?sm)Version [\\d.]+ \\(current\\).*?Release ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/gnuplot/gnuplot/$version/gp$cleanVersion-win64-mingw.7z"
+            }
+        }
+    }
+}
