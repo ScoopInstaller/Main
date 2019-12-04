@@ -18,7 +18,7 @@
     },
     "extract_dir": "instantclient_19_3",
     "env_add_path": ".",
-    "pre_install": "mkdir $dir\\network\\admin",
+    "pre_install": "if (-not (Test-Path \"$dir\\network\\admin\")) { New-Item \"$dir\\network\\admin\" -ItemType Directory | Out-Null }",
     "persist": "network\\admin",
     "env_set": {
         "TNS_ADMIN": "$persist_dir\\network\\admin"
