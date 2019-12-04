@@ -1,8 +1,9 @@
 {
+    "version": "1.11",
     "homepage": "https://github.com/Genymobile/scrcpy",
     "description": "Display and control your Android device",
     "license": "Apache-2.0",
-    "version": "1.11",
+    "depends": "adb",
     "architecture": {
         "64bit": {
             "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.11/scrcpy-win64-v1.11.zip",
@@ -13,12 +14,8 @@
             "hash": "f25ed46e6f3e81e0ff9b9b4df7fe1a4bbd13f8396b7391be0a488b64c675b41e"
         }
     },
-    "depends": "adb",
-    "post_install": "if(Test-Path(\"$dir\\adb.exe\")) { Remove-Item \"$dir\\adb.exe\" }",
+    "pre_install": "if (Test-Path \"$dir\\adb.exe\") { Remove-Item \"$dir\\adb.exe\" }",
     "bin": "scrcpy.exe",
-    "env_set": {
-        "SCRCPY_SERVER_PATH": "$dir\\scrcpy-server.jar"
-    },
     "shortcuts": [
         [
             "scrcpy-noconsole.exe",
