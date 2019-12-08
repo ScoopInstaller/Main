@@ -1,20 +1,14 @@
 {
     "version": "1.11",
-    "homepage": "https://github.com/malxau/yori",
-    "description": "Yori is a CMD replacement shell that supports backquotes, job control, and improves tab completion, file matching, aliases, command history, and more.",
+    "description": "CMD replacement shell that supports backquotes, job control, improves tab completion, file matching, aliases, command history, and more.",
+    "homepage": "http://www.malsmith.net/yori/",
+    "license": "MIT",
     "url": "http://www.malsmith.net/download/?obj=yori/latest-stable/win32/ysetup.exe",
     "hash": "783aff8285d9e518a8be40f3bc600698fc9aed2c4ea6bf8edca845e823ce6bd5",
     "installer": {
-        "script": [
-            "$currentdir = (Get-Item -Path '.\\').FullName",
-            "cd $dir",
-            ".\\ysetup.exe \"$dir\"",
-            "cd $currentdir"
-        ]
+        "args": "\"$dir\""
     },
-    "bin": [
-        "yori.exe"
-    ],
+    "bin": "yori.exe",
     "shortcuts": [
         [
             "yori.exe",
@@ -22,8 +16,7 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/malxau/yori",
-        "regex": "v([\\d.]+)"
+        "github": "https://github.com/malxau/yori"
     },
     "autoupdate": {
         "url": "http://www.malsmith.net/download/?obj=yori/latest-stable/win32/ysetup.exe"
