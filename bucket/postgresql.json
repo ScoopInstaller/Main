@@ -21,8 +21,16 @@
     "env_set": {
         "PGDATA": "$dir\\data"
     },
-    "post_install": "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) { iex \"initdb --username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" }",
-    "notes": "To start/stop service, run `pg_ctl start`, `pg_ctl stop`.",
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
+        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList \"--username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" | Out-Null",
+        "}"
+    ],
+    "notes": [
+        "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
+        "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
+        "Default superuser login: postgres, password: <blank>"
+    ],
     "checkver": {
         "url": "https://www.enterprisedb.com/products-services-training/pgbindownload",
         "re": "<b>Version ([\\d.]+)"
