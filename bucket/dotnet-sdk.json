@@ -6,11 +6,11 @@
     "architecture": {
         "64bit": {
             "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.100/dotnet-sdk-3.1.100-win-x64.zip",
-            "hash": "abcd034b230365d9454459e271e118a851969d82516b1529ee0bfea07f7aae52"
+            "hash": "sha512:94ee575d6104058cdd31370fc686b5d1aa23bf4a54611843c1f93afc82cad3523217b5f2eaddd4b5c136bca252d2c9047092f7054052c8683fa0f363ca28ad11"
         },
         "32bit": {
             "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.100/dotnet-sdk-3.1.100-win-x86.zip",
-            "hash": "209e07a37c1049ba8652d6896a676f7fd7339f54a9928bb08ae448a065d65b38"
+            "hash": "sha512:51da4337cb56e997d120b738f92a896f081dd43fe557dec22c7f5b6224a1867031193bcddf10cb22f5fb8da4cba1286e54ce0ffa60023bb93f6975d3985dd19f"
         }
     },
     "bin": "dotnet.exe",
@@ -20,7 +20,7 @@
     },
     "checkver": {
         "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "jsonpath": "$..releases-index[?(@.support-phase == 'current')].latest-sdk"
+        "regex": "(?s)(?<rtv>[\\d.]+)[^\\d]*?([\\d.]+)[^\\d]*?(?:current|lts)"
     },
     "autoupdate": {
         "architecture": {
@@ -32,7 +32,7 @@
             }
         },
         "hash": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sdk-sha.txt"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$matchRtv-sha.txt"
         }
     }
 }
