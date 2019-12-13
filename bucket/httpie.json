@@ -1,0 +1,36 @@
+{
+    "homepage": "https://httpie.org/",
+    "description": "HTTPie: a CLI, cURL-like tool with wget-like downloads and more",
+    "version": "1.0.3",
+    "license": "BSD 3-Clause New or Revised",
+    "url": "https://github.com/jakubroztocil/httpie/archive/1.0.3.zip",
+    "hash": "5c51d78f65003c028e6b5699207ab5035731de8fd41b5b363a453f37d6cef2b5",
+    "depends": "main/python",
+    "post_install": [
+        "$currentdir = (Get-Item -Path \".\\\").FullName",
+        "Move-Item $dir\\httpie-$version\\* $dir",
+        "Remove-Item $dir\\httpie-$version",
+        "Set-Location $dir",
+        "python setup.py install",
+        "Set-Location $currentdir"
+    ],
+    "uninstaller": {
+        "script": [
+            "$pythonpath = scoop which python",
+            "$pythondir = $pythonpath -Replace \"python.exe$\", \"\"",
+            "Get-Childitem -path $pythondir\\lib\\site-packages -Filter *.egg -Recurse | where-object {$_.Name -ilike \"httpie*\"} | Remove-Item -Force",
+            "Remove-Item $pythondir\\Scripts\\http-script.py -Force",
+            "Remove-Item $pythondir\\Scripts\\http.exe -Force",
+            "Remove-Item $pythondir\\Scripts\\pygmentize-script.py -Force",
+            "Remove-Item $pythondir\\Scripts\\pygmentize.exe -Force",
+            "Remove-Item $pythondir\\Scripts\\chardetect-script.py -Force",
+            "Remove-Item $pythondir\\Scripts\\chardetect.exe -Force"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/jakubroztocil/httpie"
+    },
+    "autoupdate": {
+        "url": "https://github.com/jakubroztocil/httpie/archive/$version.zip"
+    }
+}
