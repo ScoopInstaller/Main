@@ -2,15 +2,15 @@
     "homepage": "https://windows.php.net/",
     "description": "A popular general-purpose scripting language that is especially suited to web development. (thread safe)",
     "license": "PHP-3.01",
-    "version": "7.3.11",
+    "version": "7.4.0",
     "architecture": {
         "64bit": {
-            "url": "https://windows.php.net/downloads/releases/php-7.3.11-Win32-VC15-x64.zip",
-            "hash": "0cdb6a7d9bdd6d79be6b98d4b3c29f32872f60cf64579ca13f19a1e614cf40e0"
+            "url": "https://windows.php.net/downloads/releases/php-7.4.0-Win32-VC15-x64.zip",
+            "hash": "e29fb3aa07a99ada30e013cb1d9f062e3360ca0b842201899cb5f4c658a7dbab"
         },
         "32bit": {
-            "url": "https://windows.php.net/downloads/releases/php-7.3.11-Win32-VC15-x86.zip",
-            "hash": "82bc949cd3d94f0e69ce298f5cac2d635bdad9e6864f55674a150d0d6748908d"
+            "url": "https://windows.php.net/downloads/releases/php-7.4.0-Win32-VC15-x86.zip",
+            "hash": "1141bf90b740708aa8a765382eb41b623467c84d6774dd04d9407fc756a9f71c"
         }
     },
     "bin": [
@@ -36,7 +36,7 @@
     ],
     "post_install": [
         "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
-        "(gc \"$dir\\cli\\php.ini\") | % { $_ -replace '; extension_dir = \"ext\"', 'extension_dir = \"ext\"' } | sc \"$dir\\cli\\php.ini\""
+        "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
     ],
     "checkver": {
         "url": "https://windows.php.net/download/",

@@ -1,0 +1,34 @@
+{
+    "##": "Check https://www.apachelounge.com/viewtopic.php?t=7919 for details about this pre-compiled binary package of memcached.",
+    "homepage": "https://memcached.org/",
+    "description": "Distributed memory object caching system.",
+    "version": "1.5.20",
+    "license": "BSD-3-Clause",
+    "url": "https://github.com/nono303/memcached/archive/memcache-1.5.20.zip",
+    "hash": "eb37fd2522adfe361541050540e0ef09ee7a9fce038670b2e3fa888ec39590ee",
+    "notes": "This package does not require Cygwin to run (all dependencies are included).",
+    "architecture": {
+        "32bit": {
+            "extract_dir": "memcached-memcache-1.5.20\\cygwin\\x86"
+        },
+        "64bit": {
+            "extract_dir": "memcached-memcache-1.5.20\\cygwin\\x64"
+        }
+    },
+    "bin": "memcached.exe",
+    "checkver": {
+        "url": "https://github.com/nono303/memcached/releases",
+        "regex": "tag/memcache-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/nono303/memcached/archive/memcache-$version.zip",
+        "architecture": {
+            "32bit": {
+                "extract_dir": "memcached-memcache-$version\\cygwin\\x86"
+            },
+            "64bit": {
+                "extract_dir": "memcached-memcache-$version\\cygwin\\x64"
+            }
+        }
+    }
+}
