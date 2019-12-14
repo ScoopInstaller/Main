@@ -19,7 +19,7 @@
         "if (!(Test-Path \"$persist_dir\\_vimrc\")) {",
         "    Copy-Item \"$dir\\vimrc_example.vim\" \"$dir\\_vimrc\"",
         "    Copy-Item \"$dir\\gvimrc_example.vim\" \"$dir\\_gvimrc\"",
-        "    \"set shell=$((Get-Command powershell).Path)\\ -ExecutionPolicy\\ Bypass\" | Add-Content \"$dir\\_vimrc\" -Encoding Ascii",
+        "    Add-Content \"$dir\\_vimrc\" \"set shell=$((Get-Command powershell).Path)\\ -ExecutionPolicy\\ Bypass\" -Encoding Ascii",
         "}",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
         "    $vimpath = \"$(current_dir $dir)\\gVim.exe\".Replace('\\', '\\\\')",
