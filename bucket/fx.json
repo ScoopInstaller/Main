@@ -1,0 +1,22 @@
+{
+    "homepage": "https://github.com/antonmedv/fx",
+    "version": "16.0.0",
+    "license": "MIT",
+    "description": "Command-line tool and terminal JSON viewer",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/antonmedv/fx/releases/download/16.0.0/fx-win.exe.zip",
+            "hash": "12160131e8d08be0b7ebd1e6ccd532148a358fd7b2204f374c31bd1cd886b5bf"
+        }
+    },
+    "pre_install": "Rename-Item \"$dir\\fx-win.exe\" 'fx.exe'",
+    "bin": "fx.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/antonmedv/fx/releases/download/$version/fx-win.exe.zip"
+            }
+        }
+    }
+}
