@@ -15,7 +15,7 @@
     ],
     "extract_dir": "$0",
     "pre_install": [
-        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\" -Recurse",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse",
         "if (!(Test-Path \"$persist_dir\\_vimrc\")) {",
         "    Copy-Item \"$dir\\vimrc_example.vim\" \"$dir\\_vimrc\"",
         "    Copy-Item \"$dir\\gvimrc_example.vim\" \"$dir\\_gvimrc\"",
