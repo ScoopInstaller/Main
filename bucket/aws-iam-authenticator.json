@@ -1,12 +1,15 @@
 {
-    "homepage": "https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html",
+    "homepage": "https://github.com/kubernetes-sigs/aws-iam-authenticator",
     "description": "A tool to use AWS IAM credentials to authenticate to a Kubernetes cluster",
     "license": "Apache-2.0",
     "version": "2019-08-22",
     "url": "https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/windows/amd64/aws-iam-authenticator.exe",
     "hash": "9014193536bc97b79bf8d5540954548704453648bba63d74ac63e0b0f32aab49",
     "bin": "aws-iam-authenticator.exe",
-    "checkver": "/(?<kubernetes>[\\d.]+)/(?<version>[\\d-]+)/bin/windows/amd64/aws-iam-authenticator.exe",
+    "checkver": {
+        "url": "https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.partial.html",
+        "regex": "/(?<kubernetes>[\\d.]+)/(?<version>[\\d-]+)/bin/windows/amd64/aws-iam-authenticator.exe"
+    },
     "autoupdate": {
         "url": "https://amazon-eks.s3-us-west-2.amazonaws.com/$matchKubernetes/$version/bin/windows/amd64/aws-iam-authenticator.exe",
         "hash": {
