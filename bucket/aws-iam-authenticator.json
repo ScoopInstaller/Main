@@ -5,17 +5,16 @@
     "version": "0.4.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.4.0/aws-iam-authenticator_0.4.0_windows_amd64.exe",
+            "url": "https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.4.0/aws-iam-authenticator_0.4.0_windows_amd64.exe#/aws-iam-authenticator.exe",
             "hash": "d26ccd0e83667f79dea88a72072371fd87c2023895417b54c2bd0e4c55d7d5fa"
         }
     },
-    "pre_install": "Get-ChildItem \"$dir\\aws-iam-authenticator_*.exe\" | Rename-Item -NewName \"$dir\\aws-iam-authenticator.exe\"",
     "bin": "aws-iam-authenticator.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v$version/aws-iam-authenticator_$version_windows_amd64.exe"
+                "url": "https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v$version/aws-iam-authenticator_$version_windows_amd64.exe#/aws-iam-authenticator.exe"
             }
         },
         "hash": {
