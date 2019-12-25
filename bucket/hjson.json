@@ -1,0 +1,36 @@
+{
+    "version": "3.0.0",
+    "description": "A user interface for JSON",
+    "homepage": "https://hjson.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/hjson/hjson-go/releases/download/v3.0.0/windows_amd64.zip",
+            "hash": "8f54f7364a30bd9aadc25a6fe841188dd9a89d690d157da01dede9035053e96a"
+        },
+        "32bit": {
+            "url": "https://github.com/hjson/hjson-go/releases/download/v3.0.0/windows_386.zip",
+            "hash": "0f48ad5f1e21b759d487b30561abdb8d3095a353b8e7aa18ce60fae7c22b87f5"
+        }
+    },
+    "bin": [
+        "hjson.exe",
+        [
+            "hjson.exe",
+            "hjson-cli"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/hjson/hjson-go"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/hjson/hjson-go/releases/download/v$version/windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/hjson/hjson-go/releases/download/v$version/windows_386.zip"
+            }
+        }
+    }
+}
