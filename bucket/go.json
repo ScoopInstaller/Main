@@ -4,19 +4,18 @@
     "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "license": "BSD-3-Clause",
     "extract_dir": "go",
+    "persist": [
+        ".gopath"
+    ],
+    "env_add_path": ".gopath\\bin",
     "env_set": {
-        "GOROOT": "$dir"
+        "GOROOT": "$dir",
+        "GOPATH": "$persist_dir\\.gopath"
     },
     "bin": [
         "bin/go.exe",
         "bin/gofmt.exe"
     ],
-    "installer": {
-        "script": "add_first_in_path \"$env:USERPROFILE\\go\\bin\" $global"
-    },
-    "uninstaller": {
-        "script": "remove_from_path \"$env:USERPROFILE\\go\\bin\" $global"
-    },
     "architecture": {
         "64bit": {
             "url": "https://dl.google.com/go/go1.13.5.windows-amd64.zip",
@@ -46,7 +45,6 @@
     },
     "notes": [
         "Your GOROOT has been set to: $dir",
-        "You can run 'go env GOROOT' to view this at any time.",
-        "\"$env:USERPROFILE\\go\\bin)\" has been added to your PATH."
+        "You can run 'go env GOROOT' to view this at any time."
     ]
 }
