@@ -1,37 +1,30 @@
 {
-    "description": "H.264/MPEG-4 AVC video encoder (8 bit)",
+    "description": "H.264/MPEG-4 AVC video encoder",
     "homepage": "https://www.videolan.org/developers/x264.html",
-    "license": "GPL-2.0-only",
-    "version": "2969",
+    "license": "GPL-2.0-or-later",
+    "version": "2991",
     "architecture": {
         "64bit": {
-            "hash": "ad51fdad190341da74315701edfc9a2b1937ae9d5666b04c98c194401610c9bf",
-            "url": "https://download.videolan.org/pub/x264/binaries/win64/x264-r2969-d4099dd.exe#/x264.exe"
+            "url": "https://artifacts.videolan.org/x264/release-win64/x264-r2991-1771b55.exe#/x264.exe",
+            "hash": "0cc1ddc8467bb8f40de4d0994e8c1b7d4d63e90239aef00f2b71ef417815000f"
         },
         "32bit": {
-            "hash": "7b8fb6e8a29511946aaf961a34848322e65ed5a4bd4b4e96434b355ded85b14b",
-            "url": "https://download.videolan.org/pub/x264/binaries/win32/x264-r2969-d4099dd.exe#/x264.exe"
+            "url": "https://artifacts.videolan.org/x264/release-win32/x264-r2991-1771b55.exe#/x264.exe",
+            "hash": "a9f71339dd8792a6a857358d324c2e5d688c4e7d37907a052daef728051338a4"
         }
     },
-    "bin": [
-        "x264.exe",
-        [
-            "x264.exe",
-            "x264-8b"
-        ]
-    ],
+    "bin": "x264.exe",
     "checkver": {
-        "url": "https://download.videolan.org/pub/videolan/x264/binaries/win64/",
-        "re": "x264-r(?<version>[\\d]+)-(?<commit>[a-fA-F0-9]{7}).exe",
-        "reverse": true
+        "url": "https://artifacts.videolan.org/x264/release-win64/",
+        "regex": "x264-r([\\d]+)-(?<commit>[a-fA-F0-9]{7}).exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.videolan.org/pub/x264/binaries/win64/x264-r$version-$matchCommit.exe#/x264.exe"
+                "url": "https://artifacts.videolan.org/x264/release-win64/x264-r$version-$matchCommit.exe#/x264.exe"
             },
             "32bit": {
-                "url": "https://download.videolan.org/pub/x264/binaries/win32/x264-r$version-$matchCommit.exe#/x264.exe"
+                "url": "https://artifacts.videolan.org/x264/release-win32/x264-r$version-$matchCommit.exe#/x264.exe"
             }
         }
     }

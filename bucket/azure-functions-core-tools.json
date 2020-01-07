@@ -1,16 +1,16 @@
 {
     "description": "Microsoft Azure Functions Core Tools",
     "homepage": "https://github.com/Azure/azure-functions-core-tools",
-    "version": "2.7.1812",
+    "version": "2.7.2045",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/2.7.1812/Azure.Functions.Cli.win-x64.2.7.1812.zip",
-            "hash": "e24c3cc40be419cd0583fa048dcb089ad3d39e36d641e5e5886497da65709d4f"
+            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/2.7.2045/Azure.Functions.Cli.win-x64.2.7.2045.zip#/dl.7z",
+            "hash": "9df663029e0390dd8179ec4fa36a053b25dada7ca093a7513a4bfadbe1cbeece"
         },
         "32bit": {
-            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/2.7.1812/Azure.Functions.Cli.win-x86.2.7.1812.zip",
-            "hash": "f96aeb50d4cec72b0a34ce2a87fbf0aaaddca717cfb9198170fb81c83694c083"
+            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/2.7.2045/Azure.Functions.Cli.win-x86.2.7.2045.zip#/dl.7z",
+            "hash": "3296805795364133caf952ab8d1ad624030e92c0c7838317d90349854c67a784"
         }
     },
     "bin": "func.exe",
@@ -18,11 +18,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-x64.$version.zip"
+                "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-x64.$version.zip#/dl.7z"
             },
             "32bit": {
-                "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-x86.$version.zip"
+                "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-x86.$version.zip#/dl.7z"
             }
         }
-    }
+    },
+    "##": "Rename download file because 7-zip can't decompress it as zip file."
 }

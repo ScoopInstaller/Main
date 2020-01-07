@@ -13,12 +13,11 @@
     "installer": {
         "script": [
             "Expand-7zipArchive -Path \"$dir\\HaskellPlatform-$version-core-x86_64-setup.exe\" -ExtractDir '$_15_' -Removal",
-            "Get-ChildItem -Path \"$dir\" | Convert-Path | ForEach-Object { Expand-7zipArchive -Path $_ -Removal }",
-            "Remove-Item -Path \"$dir\\`$PLUGINSDIR\", \"$dir\\*uninstall*\" -Recurse -Force"
+            "Get-ChildItem -Path \"$dir\" -Exclude 'stack*' | Convert-Path | ForEach-Object { Expand-7zipArchive -Path $_ -Removal }",
+            "Remove-Item -Path \"$dir\\`$PLUGINSDIR\", \"$dir\\*uninstall*\", \"$dir\\stack*\" -Recurse -Force"
         ]
     },
     "bin": [
-        "stack.exe",
         "bin\\ghc.exe",
         "bin\\ghci.exe",
         "bin\\ghc-pkg.exe",
@@ -36,6 +35,9 @@
         ]
     ],
     "env_add_path": "lib\\extralibs\\bin",
+    "suggest": {
+        "Stack": "stack"
+    },
     "checkver": {
         "url": "https://www.haskell.org/platform/windows.html",
         "regex": "<strong>([\\d.]+)</strong>"
@@ -51,5 +53,8 @@
             }
         }
     },
-    "notes": "For 32bit Haskell, please install 'versions/haskell863'."
+    "notes": [
+        "For Haskell Stack, please install 'stack'.",
+        "For 32bit Haskell, please install 'versions/haskell863'."
+    ]
 }

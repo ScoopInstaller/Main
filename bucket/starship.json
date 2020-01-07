@@ -1,0 +1,30 @@
+{
+    "version": "0.33.0",
+    "description": "The minimal, blazing fast, and extremely customizable prompt for any shell!",
+    "homepage": "https://starship.rs",
+    "license": "ISC",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/starship/starship/releases/download/v0.33.0/starship-x86_64-pc-windows-msvc.zip",
+            "hash": "5edb5e97305ce0fe283785c1a48cb0f04c9f3df1b8cc66ca5aa1b67e161f99cf"
+        }
+    },
+    "bin": "starship.exe",
+    "checkver": {
+        "github": "https://github.com/starship/starship"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/starship/starship/releases/download/v$version/starship-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "notes": [
+        "Usage: Add 'Invoke-Expression (&starship init powershell)' to the end of your PowerShell $PROFILE.",
+        "Prerequisites: A Powerline font installed and enabled in your terminal."
+    ]
+}
