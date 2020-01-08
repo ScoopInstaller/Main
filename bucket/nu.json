@@ -23,7 +23,11 @@
         "regex": "([\\d.]+) Release</a>"
     },
     "autoupdate": {
-        "url": "https://github.com/nushell/nushell/releases/download/$version/nu_$underscoreVersion_windows.zip",
-        "extract_dir": "nu_$underscoreVersion_windows\\nushell_$underscoreVersion"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nushell/nushell/releases/download/$version/nu_$underscoreVersion_windows.zip",
+        		"extract_dir": "nu_$underscoreVersion_windows\\nushell_$underscoreVersion"
+            }
+        }
     }
 }
