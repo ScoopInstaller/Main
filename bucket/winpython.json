@@ -1,48 +1,131 @@
 {
     "version": "3.8.1.0",
     "description": "Free, open-source and portable Python distribution for Windows",
-    "homepage": "https://winpython.github.io/",
+    "homepage": "https://winpython.github.io",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.8/3.8.1.0/WinPython64-3.8.1.0Zero.exe#/dl.7z",
-            "hash": "251a85b3bac687974f360d3796048c20ded3bf0bd69e0d1cfd1db23d013f89ed",
-            "extract_dir": "WPy64-3810\\python-3.8.1.amd64"
-        },
-        "32bit": {
-            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.8/3.8.1.0/WinPython32-3.8.1.0Zero.exe#/dl.7z",
-            "hash": "251a85b3bac687974f360d3796048c20ded3bf0bd69e0d1cfd1db23d013f89ed",
-            "extract_dir": "WPy32-3810\\python-3.8.1"
+            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.8/3.8.1.0/Winpython64-3.8.1.0.exe#/dl.7z",
+            "hash": "8fa6751fabbaef9a820516e0a6cfac7a10b1ad1a5db2d8d639f9cbba80afe8d1",
+            "extract_dir": "WPy64-3810"
         }
     },
     "bin": [
-        "python.exe",
-        "pythonw.exe",
+        "scripts\\idle.bat",
+        "scripts\\idlex.bat",
+        "scripts\\qtconsole.bat",
+        "scripts\\winjupyter_lab.bat",
         [
-            "python.exe",
+            "scripts\\winjupyter_lab.bat",
+            "jupyter_lab"
+        ],
+        "scripts\\ipython_notebook.bat",
+        "scripts\\winpyzo.bat",
+        [
+            "scripts\\winpyzo.bat",
+            "pyzo"
+        ],
+        "scripts\\qtdesigner.bat",
+        "scripts\\qtlinguist.bat",
+        "scripts\\spyder.bat",
+        "scripts\\spyder_reset.bat",
+        "scripts\\winvscode.bat",
+        [
+            "scripts\\winvscode.bat",
+            "vscode"
+        ],
+        "scripts\\python.bat",
+        [
+            "scripts\\python.bat",
             "python3"
+        ],
+        "scripts\\wpcp.bat",
+        "scripts\\winidle.bat",
+        "scripts\\winidlex.bat",
+        "scripts\\winpython.bat",
+        [
+            "scripts\\WinPython_PS_Prompt.ps1",
+            "winpython_prompt"
         ]
     ],
-    "env_add_path": "scripts",
+    "shortcuts": [
+        [
+            "IDLE (Python GUI).exe",
+            "WinPython\\IDLE (Python GUI)"
+        ],
+        [
+            "IDLEX.exe",
+            "WinPython\\IDLEX"
+        ],
+        [
+            "IPython Qt Console.exe",
+            "WinPython\\IPython Qt Console"
+        ],
+        [
+            "Jupyter Lab.exe",
+            "WinPython\\Jupyter Lab"
+        ],
+        [
+            "Jupyter Notebook.exe",
+            "WinPython\\Jupyter Notebook"
+        ],
+        [
+            "Pyzo.exe",
+            "WinPython\\Pyzo"
+        ],
+        [
+            "Qt Designer.exe",
+            "WinPython\\Qt Designer"
+        ],
+        [
+            "Qt Linguist.exe",
+            "WinPython\\Qt Linguist"
+        ],
+        [
+            "Spyder.exe",
+            "WinPython\\Spyder"
+        ],
+        [
+            "Spyder reset.exe",
+            "WinPython\\Spyder reset"
+        ],
+        [
+            "VS Code.exe",
+            "WinPython\\VS Code"
+        ],
+        [
+            "WinPython Command Prompt.exe",
+            "WinPython\\WinPython Command Prompt"
+        ],
+        [
+            "WinPython Control Panel.exe",
+            "WinPython\\WinPython Control Panel"
+        ],
+        [
+            "WinPython Interpreter.exe",
+            "WinPython\\WinPython Interpreter"
+        ],
+        [
+            "WinPython Powershell Prompt.exe",
+            "WinPython\\WinPython Powershell Prompt"
+        ]
+    ],
+    "persist": "settings",
     "checkver": {
-        "github": "https://github.com/winpython/winpython/",
-        "regex": "-([\\d.]+)\\.exe",
-        "reverse": true
+        "url": "https://winpython.github.io/md5_sha1.txt",
+        "regex": "(?i)WinPython64-(3\\.8[\\d.]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython64-$versionZero.exe#/dl.7z",
-                "extract_dir": "WPy64-$cleanVersion\\python-$majorVersion.$minorVersion.$patchVersion.amd64"
-            },
-            "32bit": {
-                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython32-$versionZero.exe#/dl.7z",
-                "extract_dir": "WPy32-$cleanVersion\\python-$majorVersion.$minorVersion.$patchVersion"
+                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/Winpython64-$version.exe#/dl.7z",
+                "extract_dir": "WPy64-$cleanVersion"
             }
         },
         "hash": {
             "url": "https://winpython.github.io/md5_sha1.txt",
             "regex": "$sha256\\s+\\|\\s+$basename"
         }
-    }
+    },
+    "notes": "For 32bit, please install 'versions/winpython3741'"
 }
