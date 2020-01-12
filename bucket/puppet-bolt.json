@@ -1,0 +1,26 @@
+{
+    "homepage": "https://puppet.com/open-source/bolt/",
+    "description": "Bolt is an open source orchestration tool that automates the manual work it takes to maintain your infrastructure.",
+    "version": "1.44.0",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.puppetlabs.com/windows/puppet6/puppet-bolt-1.44.0-x64.msi",
+            "hash": "E15C203C0A4270AC1ED9A689281844AE415338F1C484F78082420C9547AE0F19"
+        }
+    },
+    "bin": [
+        "Puppet Labs\\Bolt\\bin\\bolt.bat"
+    ],
+    "checkver": {
+        "url": "https://downloads.puppetlabs.com/windows/puppet/index_by_lastModified_reverse.html",
+        "regex": "puppet-bolt-([\\d.]+)-x64\\.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.puppetlabs.com/windows/puppet6/puppet-bolt-$version-x64.msi"
+            }
+        }
+    }
+}
