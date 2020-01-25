@@ -1,0 +1,39 @@
+{
+    "homepage": "https://github.com/vmware/govmomi",
+    "description": "A vSphere CLI built on top of govmomi.",
+    "version": "0.22.1",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "govc_windows_amd64.exe",
+                    "govc"
+                ]
+            ],
+            "url": "https://github.com/vmware/govmomi/releases/download/v0.22.1/govc_windows_amd64.exe.zip",
+            "hash": "081b0c66b82d5d633200881ba03783dd7973b9c89a81acba620167b7f9256d86"
+        },
+        "32bit": {
+            "bin": [
+                [
+                    "govc_windows_386.exe",
+                    "govc"
+                ]
+            ],
+            "url": "https://github.com/vmware/govmomi/releases/download/v0.22.1/govc_windows_386.exe.zip",
+            "hash": "031cb9cd22344610a24dd74940cf96369324e17f1d7099a14025469c74f54d9a"
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vmware/govmomi/releases/download/v$version/govc_windows_amd64.exe.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/vmware/govmomi/releases/download/v$version/govc_windows_386.exe.zip"
+            }
+        }
+    }
+}
