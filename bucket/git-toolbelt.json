@@ -1,31 +1,18 @@
 {
-    "homepage": "https://github.com/nvie/git-toolbelt",
-    "description": "Helper tools to make everyday life with Git much easier. Commands marked with ⭐️ are my personal favorites and are commands I use almost every day.",
     "version": "1.3.0",
-    "url": "https://github.com/nvie/git-toolbelt/archive/v1.3.0.zip",
-    "hash": "b599d4eca89b8bd07d42b819585659cf331bb444c5292ee77f33a5e189e775b8",
-    "extract_dir": "git-toolbelt-1.3.0",
+    "description": "Helper tools to make everyday life with Git much easier.",
+    "homepage": "https://github.com/nvie/git-toolbelt",
     "suggest": {
         "git": "git"
     },
+    "url": "https://github.com/nvie/git-toolbelt/archive/v1.3.0.zip",
+    "hash": "b599d4eca89b8bd07d42b819585659cf331bb444c5292ee77f33a5e189e775b8",
+    "extract_dir": "git-toolbelt-1.3.0",
+    "extract_to": "exe",
+    "env_add_path": "exe",
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/nvie/git-toolbelt/archive/v$version.zip",
         "extract_dir": "git-toolbelt-$version"
-    },
-    "installer": {
-        "_comment": "we cannot shim #!/bin/sh files that git needs to read",
-        "script": [
-            "Get-ChildItem $dir -filter 'git-*' | ForEach-Object {",
-            "    Copy-Item $_.FullName -destination \"$scoopdir\\shims\"",
-            "}"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "Get-ChildItem $dir -filter 'git-*' | ForEach-Object {",
-            "    Remove-Item \"$scoopdir\\shims\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
-            "}"
-        ]
     }
 }
