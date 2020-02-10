@@ -1,0 +1,31 @@
+{
+    "description": "Manage BareMetal Servers from Command Line (as easily as with Docker).",
+    "homepage": "https://github.com/scaleway/scaleway-cli",
+    "version": "1.20",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/scaleway/scaleway-cli/releases/download/v1.20/scw-windows-amd64.exe#/scw.exe",
+            "hash": "c50e3c498350a6eafdd84a241dfc2f2de00d39891de755e4c45ae514ec660df1"
+        },
+        "32bit": {
+            "url": "https://github.com/scaleway/scaleway-cli/releases/download/v1.20/scw-windows-i386.exe#/scw.exe",
+            "hash": "83aa97822ccec83d0c886d7f2894aaf9938a7703a99e716beb912a44d8a3e6cd"
+        }
+    },
+    "bin": "scw.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/scaleway/scaleway-cli/releases/download/v$version/scw-windows-amd64.exe#/scw.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/scaleway/scaleway-cli/releases/download/v$version/scw-windows-i386.exe#/scw.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
