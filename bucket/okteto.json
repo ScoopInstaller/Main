@@ -1,33 +1,26 @@
 {
-    "homepage": "https://okteto.com/",
-    "description": "Build better applications by developing and testing your code directly in Kubernetes",
-    "license": "Apache 2.0",
     "version": "1.7.1",
+    "description": "Development platform for Kubernetes applications",
+    "homepage": "https://okteto.com",
+    "license": "Apache-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/okteto/okteto/releases/download/1.7.1/okteto.exe",
-        "hash": "bd3af2b67bca47dcdcfc77af8ff3cbdc59a38435bf231615f1d0b7433e8828cb"
-      }
+        "64bit": {
+            "url": "https://github.com/okteto/okteto/releases/download/1.7.1/okteto.exe",
+            "hash": "bd3af2b67bca47dcdcfc77af8ff3cbdc59a38435bf231615f1d0b7433e8828cb"
+        }
     },
-    "bin": [
-      "okteto.exe",
-      [
-        "okteto.exe",
-        "okteto"
-      ]
-    ],
-    "post_install": "okteto version",
+    "bin": "okteto.exe",
     "checkver": {
-      "github": "https://github.com/okteto/okteto"
+        "github": "https://github.com/okteto/okteto"
     },
     "autoupdate": {
-      "architecture": {
-        "64bit": {
-          "url": "https://github.com/okteto/okteto/releases/download/$version/okteto.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/okteto/okteto/releases/download/$version/okteto.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
-      },
-      "hash": {
-        "url": "$url.sha256"
-      }
     }
-  }
+}
