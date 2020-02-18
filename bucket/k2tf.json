@@ -1,0 +1,24 @@
+{
+    "homepage": "https://github.com/sl1pm4t/k2tf",
+    "description": "Converts Kubernetes API Objects (in YAML format) into HashiCorp's Terraform configuration language.",
+    "license": "MPL-2.0",
+    "version": "0.4.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sl1pm4t/k2tf/releases/download/v0.4.0/k2tf_0.4.0_Windows_x86_64.tar.gz",
+            "hash": "89d12c36708e37ec59b1794c64bdb0a72f8381af9e6f524e0caa0bea66ea02f4"
+        }
+    },
+    "bin": "k2tf.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sl1pm4t/k2tf/releases/download/v$version/k2tf_$version_Windows_x86_64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

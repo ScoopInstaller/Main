@@ -1,21 +1,26 @@
 {
-    "homepage": "https://haxe.org/",
-    "description": "High-level, cross-platform, multi-paradigm programming language and compiler.",
-    "version": "4.0.3",
+    "homepage": "https://haxe.org",
+    "description": "High-level, cross-platform, multi-paradigm programming language and compiler",
+    "version": "4.0.5",
     "license": {
         "identifier": "MIT,Zlib,BSD-3-Clause,...",
         "url": "https://github.com/HaxeFoundation/neko/blob/master/LICENSE"
     },
+    "depends": "neko",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/HaxeFoundation/haxe/releases/download/4.0.3/haxe-4.0.3-win64.zip",
-            "hash": "80cff2d8fbfd46a5be79413411554eea4de81f5c3dbfe780546f59e12f536c24"
+            "url": "https://github.com/HaxeFoundation/haxe/releases/download/4.0.5/haxe-4.0.5-win64.zip",
+            "hash": "93130ae2b1083efbcd9b8911afe2ba00d5af995f016149fd7ec629fa439c6120"
         },
         "32bit": {
-            "url": "https://github.com/HaxeFoundation/haxe/releases/download/4.0.3/haxe-4.0.3-win.zip",
-            "hash": "aae6667d94ff45603df0757bea0762c871985f66e5d4755a039b7a4efbf4d70d"
+            "url": "https://github.com/HaxeFoundation/haxe/releases/download/4.0.5/haxe-4.0.5-win.zip",
+            "hash": "72c6015616bfec77c74b6402318b5cca667ef0010077d7db5b0210fa529ca7eb"
         }
     },
+    "pre_install": [
+        "Move-Item \"$dir\\haxe_*\\*\" \"$dir\"",
+        "Remove-Item \"$dir\\haxe_*\""
+    ],
     "bin": [
         "haxe.exe",
         "haxelib.exe"
@@ -23,14 +28,8 @@
     "env_set": {
         "HAXEPATH": "$dir"
     },
-    "env_add_path": "$dir",
+    "env_add_path": ".",
     "persist": "lib",
-    "depends": "neko",
-    "pre_install": [
-        "if(Test-Path \"$dir\\haxe_*\") {",
-        "    Move-Item -Force \"$dir\\haxe_*\\*\" \"$dir\"",
-        "}"
-    ],
     "checkver": {
         "github": "https://github.com/HaxeFoundation/haxe"
     },

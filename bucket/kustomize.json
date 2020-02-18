@@ -2,11 +2,11 @@
     "homepage": "https://github.com/kubernetes-sigs/kustomize",
     "description": "Customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.",
     "license": "Apache-2.0",
-    "version": "3.2.3",
+    "version": "3.5.4",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.2.3/kustomize_kustomize.v3.2.3_windows_amd64.exe#/kustomize.exe",
-            "hash": "015e3f9ca12e7a58681d5b4a03d3e67f6008f63a9bd86a1ead4f7766c8544d91"
+            "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v3.5.4/kustomize_v3.5.4_windows_amd64.tar.gz",
+            "hash": "97abf54fbec1d9503080abfafafa3e4feafe1c33309dff1a12a2520c78ba7a6b"
         }
     },
     "bin": "kustomize.exe",
@@ -17,12 +17,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$version/kustomize_kustomize.v$version_windows_amd64.exe#/kustomize.exe"
+                "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v$version/kustomize_v$version_windows_amd64.tar.gz"
             }
         },
         "hash": {
-            "url": "$baseurl/checksums.txt",
-            "regex": "$sha256\\s+kustomize_kustomize/v$version_windows_amd64.exe"
+            "url": "$baseurl/checksums.txt"
         }
     }
 }
