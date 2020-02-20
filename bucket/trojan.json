@@ -3,6 +3,9 @@
     "description": "An unidentifiable mechanism for bypassing GFW",
     "homepage": "https://trojan-gfw.github.io/trojan/",
     "license": "GPL-3.0-only",
+    "suggest": {
+        "vcredist": "extras/vcredist2019"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-win.zip",
@@ -10,6 +13,7 @@
         }
     },
     "extract_dir": "trojan",
+    "pre_install": "Remove-Item \"$dir\\VC_red*exe\"",
     "bin": "trojan.exe",
     "persist": "config.json",
     "checkver": {
