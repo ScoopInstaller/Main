@@ -2,15 +2,11 @@
     "homepage": "https://www.isc.org/bind/",
     "description": "Versatile, classic, complete name server software.",
     "license": "MPL-2.0",
-    "version": "9.14.8",
+    "version": "9.16.0",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x64.zip",
-            "hash": "2b28768b32cd4abe81cc83f1df041aba8d3d6531fc5fb1d85e31d1346029bf27"
-        },
-        "32bit": {
-            "url": "https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x86.zip",
-            "hash": "f23608dfe2d3fc91be0ebe4e380b9425f619e349863c0c18d9bec5a32a4475f5"
+            "url": "https://downloads.isc.org/isc/bind9/9.16.0/BIND9.16.0.x64.zip",
+            "hash": "bff615b16842e2dad97404b023694db281d06474ab89a71fc73ae2649b3763a8"
         }
     },
     "env_add_path": "bin",
@@ -23,14 +19,11 @@
             "Remove-Item \"$dir\\*\" -Exclude 'bin'"
         ]
     },
-    "checkver": "(?sm)Current-Stable<.*?\\/([\\d.]+)\\/",
+    "checkver": "(?sm)Current-Stable<.*?/([\\d.]+)/",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://downloads.isc.org/isc/bind$majorVersion/$version/BIND$version.x64.zip"
-            },
-            "32bit": {
-                "url": "https://downloads.isc.org/isc/bind$majorVersion/$version/BIND$version.x86.zip"
             }
         }
     },
