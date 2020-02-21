@@ -1,29 +1,30 @@
 {
-    "version": "1.13.5",
+    "version": "1.13.8",
     "homepage": "https://golang.org",
     "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "license": "BSD-3-Clause",
     "extract_dir": "go",
-    "persist": [
-        ".gopath"
-    ],
-    "env_add_path": ".gopath\\bin",
     "env_set": {
-        "GOROOT": "$dir",
-        "GOPATH": "$persist_dir\\.gopath"
+        "GOROOT": "$dir"
     },
     "bin": [
         "bin/go.exe",
         "bin/gofmt.exe"
     ],
+    "installer": {
+        "script": "add_first_in_path \"$env:USERPROFILE\\go\\bin\" $global"
+    },
+    "uninstaller": {
+        "script": "remove_from_path \"$env:USERPROFILE\\go\\bin\" $global"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://dl.google.com/go/go1.13.5.windows-amd64.zip",
-            "hash": "027275e04d795fbadc898ba7a50ed0ab2161ff4c5e613c94dbb066b2ca24ec11"
+            "url": "https://dl.google.com/go/go1.13.8.windows-amd64.zip",
+            "hash": "aaf0888907144ca7070c8dad03fcf1308f77a42d2f6e4d2a609e64e9ae73cf4f"
         },
         "32bit": {
-            "url": "https://dl.google.com/go/go1.13.5.windows-386.zip",
-            "hash": "5a9ace58c0fb487a07a3dec494a59957aa8425fbefd04d1a3fb1d0aa0d95fb8d"
+            "url": "https://dl.google.com/go/go1.13.8.windows-386.zip",
+            "hash": "00c765048392c78fd3681ea5279c408e21fc94f033a504a1158fc6279fb068e3"
         }
     },
     "checkver": {
@@ -45,6 +46,7 @@
     },
     "notes": [
         "Your GOROOT has been set to: $dir",
-        "You can run 'go env GOROOT' to view this at any time."
+        "You can run 'go env GOROOT' to view this at any time.",
+        "\"$env:USERPROFILE\\go\\bin)\" has been added to your PATH."
     ]
 }

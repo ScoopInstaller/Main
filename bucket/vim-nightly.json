@@ -2,28 +2,28 @@
     "homepage": "https://www.vim.org",
     "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
     "license": "Vim",
-    "version": "8.2.0090",
+    "version": "8.2.0292",
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/vim/vim-win32-installer/releases/download/v8.2.0090/gvim_8.2.0090_x64.zip",
+                "https://github.com/vim/vim-win32-installer/releases/download/v8.2.0292/gvim_8.2.0292_x64.zip",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/uninstall-context.reg"
             ],
             "hash": [
-                "253bed8bb753c5bad460f2f1d5d7c2fe14f9c0f2d7633b349ee3e12370297236",
+                "433c33fac3702a94fa88da4b1a62edfde66b67f35082c908192020002cda202e",
                 "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
                 "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
             ]
         },
         "32bit": {
             "url": [
-                "https://github.com/vim/vim-win32-installer/releases/download/v8.2.0090/gvim_8.2.0090_x86.zip",
+                "https://github.com/vim/vim-win32-installer/releases/download/v8.2.0292/gvim_8.2.0292_x86.zip",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/master/scripts/vim/uninstall-context.reg"
             ],
             "hash": [
-                "65bed1b510f12e33ad66cdc0b6d7877810fec993dafb5e935f7c4508cccee7e4",
+                "111f22164a54c7115bbc6ae505b5e125135ae7ff058685dd32568de2a84522ee",
                 "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
                 "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
             ]
@@ -42,7 +42,8 @@
         "    $content = (Get-Content \"$dir\\$_\").Replace('$vim', $vimpath)",
         "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "    Set-Content \"$dir\\$_\" $content",
-        "}"
+        "}",
+        "if (!(Test-Path \"$persist_dir\\vimrc\")) { New-Item \"$dir\\vimrc\" -ItemType File | Out-Null }"
     ],
     "bin": [
         "vim.exe",
@@ -117,7 +118,8 @@
     "persist": [
         "_vimrc",
         "_gvimrc",
-        "vimfiles"
+        "vimfiles",
+        "vimrc"
     ],
     "checkver": {
         "github": "https://github.com/vim/vim-win32-installer"

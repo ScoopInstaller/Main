@@ -19,24 +19,32 @@
     },
     "bin": [
         "dockerd.exe",
-        ["docker.exe", "docker", "-H :2375"]
+        "docker.exe"
     ],
-    "post_install": [
-        "sudo net localgroup docker /add",
-        "sudo net localgroup docker $(whoami) /add",
-        "sudo dockerd --register-service --experimental -H :2375 --data-root=\"$persist_dir\" --storage-opt lcow.kirdpath=\"$(scoop prefix lcow)\""
-    ],
-    "uninstaller": {
-        "script": [
-            "sudo Stop-Service docker",
-            "sudo dockerd --unregister-service",
-            "sudo net localgroup docker /del"
-        ]
-    },
     "notes": [
         "Make sure to have container features enabled (will need a restart afterwards):",
         "sudo Enable-WindowsOptionalFeature -Online -FeatureName containers -All -NoRestart",
         "sudo Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart",
+        "",
+        "To test run you can use:",
+        "sudo dockerd -D --experimental -H \"npipe:////./pipe//docker_lcow\"",
+        "",
+        "To install and run as a service (with linux containers support - lcow):",
+        "You do not have to create a docker group you can replace it with (whoami)",
+        "",
+        "sudo net localgroup docker /add",
+        "sudo net localgroup docker (whoami) /add",
+        "sudo dockerd.exe `",
+        "  --register-service `",
+        "  --experimental `",
+        "  --storage-opt lcow.kirdpath=\"$(scoop prefix lcow)\" `",
+        "  -G docker",
+        "sudo Start-Service docker",
+        "",
+        "To remove the service you can use:",
+        "sudo Stop-Service docker",
+        "sudo powershell",
+        "(gwmi win32_service -filter \"name='docker'\").delete()",
         "",
         "For help, see https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon"
     ]
