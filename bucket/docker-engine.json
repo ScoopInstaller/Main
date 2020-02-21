@@ -1,0 +1,45 @@
+{
+    "homepage": "https://master.dockerproject.org",
+    "license": "Apache-2.0",
+    "version": "19.03.5",
+    "description": "Run the latest master build of docker client and engine",
+    "url": "https://download.docker.com/components/engine/windows-server/19.03/docker-19.03.5.zip",
+    "hash": "4ce8e7df20cfa7bfc6e7733f79d5dda4fda7aec3606168adfc8ea3f50261fdab",
+    "extract_dir": "docker",
+    "depends": [
+        "lcow"
+    ],
+    "suggest": {
+        "Linux container support on Windows": "lcow",
+        "Docker Compose": "docker-compose",
+        "Docker Machine": "docker-machine",
+        "Kubernetes Standalone": "minikube",
+        "Kubernetes Client": "kubectl",
+        "compose.yml to kubernetes.yml": "kompose"
+    },
+    "bin": [
+        "dockerd.exe",
+        "docker.exe"
+    ],
+    "post_install": [
+        "$Command = \"net localgroup docker /add;\"",
+        "$Command += \"net localgroup docker $(whoami) /add;\"",
+        "$Command += \"dockerd -G docker --register-service --experimental --data-root='$persist_dir' --storage-opt lcow.kirdpath='$(scoop prefix lcow)';\"",
+        "Start-Process powershell.exe \"-noprofile -command $Command\" -Verb runas -Wait -WindowStyle Hidden"
+    ],
+    "uninstaller": {
+        "script": [
+            "$Command = 'Stop-Service docker;'",
+            "$Command += 'dockerd --unregister-service;'",
+            "$Command += 'net localgroup docker /del;'",
+            "Start-Process powershell.exe \"-noprofile -command $Command\" -Verb runas -Wait -WindowStyle Hidden"
+        ]
+    },
+    "notes": [
+        "Make sure to have container features enabled (will need a restart afterwards):",
+        "sudo Enable-WindowsOptionalFeature -Online -FeatureName containers -All -NoRestart",
+        "sudo Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All -NoRestart",
+        "",
+        "For help, see https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon"
+    ]
+}
