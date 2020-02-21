@@ -18,10 +18,18 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_amd64.exe#/symfony.exe"
+                "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_amd64.exe#/symfony.exe",
+                "hash": {
+                    "url": "https://symfony.com/download",
+                    "find": "windows_amd64:\\s+<code>([A-Fa-f\\d]{64})</code>"
+                }
             },
             "32bit": {
-                "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_386.exe#/symfony.exe"
+                "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_386.exe#/symfony.exe",
+                "hash": {
+                    "url": "https://symfony.com/download",
+                    "find": "windows_386:\\s+<code>([A-Fa-f\\d]{64})</code>"
+                }
             }
         }
     }
