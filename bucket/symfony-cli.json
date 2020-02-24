@@ -1,8 +1,8 @@
 {
     "version": "4.12.8",
-    "license": "MIT",
+    "description": "Wrapper for managing and deploying Symfony applications",
     "homepage": "https://github.com/symfony/cli",
-    "description": "The Symfony Command Line Interface (CLI) for developing Symfony applications.",
+    "license": "MIT",
     "architecture": {
         "64bit": {
             "url": "https://github.com/symfony/cli/releases/download/v4.12.8/symfony_windows_amd64.exe#/symfony.exe",
@@ -21,14 +21,14 @@
                 "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_amd64.exe#/symfony.exe",
                 "hash": {
                     "url": "https://symfony.com/download",
-                    "find": "windows_amd64:\\s+<code>([A-Fa-f\\d]{64})</code>"
+                    "regex": "windows_amd64:\\s+<code>$sha256</code>"
                 }
             },
             "32bit": {
                 "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_386.exe#/symfony.exe",
                 "hash": {
                     "url": "https://symfony.com/download",
-                    "find": "windows_386:\\s+<code>([A-Fa-f\\d]{64})</code>"
+                    "regex": "windows_386:\\s+<code>$sha256</code>"
                 }
             }
         }
