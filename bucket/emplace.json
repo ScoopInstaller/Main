@@ -1,0 +1,24 @@
+{
+    "homepage": "https://github.com/tversteeg/emplace",
+    "version": "0.2.11",
+    "description": "Synchronizes installed packages on multiple machines.",
+    "license": "AGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tversteeg/emplace/releases/download/v0.2.11/emplace-x86_64-pc-windows-msvc.zip",
+            "hash": "95de4ea734358e966891c2e117be3ff40f6e5d416b4f820423ea45ea15cc5b60"
+        }
+    },
+    "bin": "emplace.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tversteeg/emplace/releases/download/v$version/emplace-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
