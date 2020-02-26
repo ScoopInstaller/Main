@@ -1,0 +1,36 @@
+{
+    "version": "4.12.8",
+    "description": "Wrapper for managing and deploying Symfony applications",
+    "homepage": "https://github.com/symfony/cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/symfony/cli/releases/download/v4.12.8/symfony_windows_amd64.exe#/symfony.exe",
+            "hash": "f756d4a152bd559e7832db29475c4874dd949f3349dbb0d7fabe17ce4934a083"
+        },
+        "32bit": {
+            "url": "https://github.com/symfony/cli/releases/download/v4.12.8/symfony_windows_386.exe#/symfony.exe",
+            "hash": "06c649f438deac3de30a2952cbf6ba3b774494590173a987ac2f902cafdf16b9"
+        }
+    },
+    "bin": "symfony.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_amd64.exe#/symfony.exe",
+                "hash": {
+                    "url": "https://symfony.com/download",
+                    "regex": "windows_amd64:\\s+<code>$sha256</code>"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_386.exe#/symfony.exe",
+                "hash": {
+                    "url": "https://symfony.com/download",
+                    "regex": "windows_386:\\s+<code>$sha256</code>"
+                }
+            }
+        }
+    }
+}
