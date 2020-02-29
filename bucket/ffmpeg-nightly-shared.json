@@ -1,0 +1,36 @@
+{
+    "version": "20200227-9b22254",
+    "homepage": "https://ffmpeg.zeranoe.com/builds/",
+    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-20200227-9b22254-win64-shared.zip",
+            "hash": "6e04c292667247bd67aedb42987295418cfc0b9dfa6d1ed99e497d9cba47cd02",
+            "extract_dir": "ffmpeg-20200227-9b22254-win64-shared"
+        },
+        "32bit": {
+            "url": "https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-20200227-9b22254-win32-shared.zip",
+            "hash": "c0345e35437e41ed757a8c5fb3f739e1f7879dd471cd934c0a00672d7e60558f",
+            "extract_dir": "ffmpeg-20200227-9b22254-win32-shared"
+        }
+    },
+    "bin": [
+        "bin\\ffmpeg.exe",
+        "bin\\ffplay.exe",
+        "bin\\ffprobe.exe"
+    ],
+    "checkver": "value=\"([\\d]{8}-[\\d\\w]+)\"",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-$version-win64-shared.zip",
+                "extract_dir": "ffmpeg-$version-win64-shared"
+            },
+            "32bit": {
+                "url": "https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-$version-win32-shared.zip",
+                "extract_dir": "ffmpeg-$version-win32-shared"
+            }
+        }
+    }
+}
