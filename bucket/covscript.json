@@ -1,0 +1,51 @@
+{
+    "version": "3.3.2",
+    "description": "Covariant Script interpreter",
+    "homepage": "https://covscript.org/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/covscript/covscript/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/covscript/covscript/releases/download/3.3.2/covscript-win64.7z",
+            "hash": "c1b250bbc995982c33f1e33fefd62a794626d131e71c116145b23a1d2bd076f8",
+            "extract_dir": "build_x64"
+        },
+        "32bit": {
+            "url": "https://github.com/covscript/covscript/releases/download/3.3.2/covscript-win32.7z",
+            "hash": "ddc319251260bc3aab35c931c6e7761a1d8499839fb9965655653999c3de0f27",
+            "extract_dir": "build"
+        }
+    },
+    "pre_install": [
+        "Set-Content \"$dir\\bin\\csbuild.ps1\" 'if ($args) { $a=$args } else { $a=@() }; Start-Process \"$PSScriptRoot\\csbuild.bat\" $a' -Encoding Ascii",
+        "Set-Content \"$dir\\bin\\cspkg.ps1\" 'if ($args) { $a=$args } else { $a=@() }; Start-Process \"$PSScriptRoot\\cspkg.bat\" $a' -Encoding Ascii"
+    ],
+    "bin": [
+        "bin\\cs.exe",
+        "bin\\cs_dbg.exe",
+        "bin\\csbuild.ps1",
+        "bin\\cspkg.ps1"
+    ],
+    "shortcuts": [
+        [
+            "bin\\cs.exe",
+            "Covariant Script Interpreter"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/covscript/covscript/releases",
+        "regex": "download/([\\d.]+)/covscript-win64\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/covscript/covscript/releases/download/$version/covscript-win64.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/covscript/covscript/releases/download/$version/covscript-win32.7z"
+            }
+        }
+    }
+}
