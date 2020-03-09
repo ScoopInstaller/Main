@@ -1,10 +1,14 @@
 {
-    "homepage": "https://rakudo.org/",
     "version": "2020.01-01",
-    "license": "Artistic-2.0-Perl",
-    "description": "The most mature, production-ready implementation of the Raku language",
-    "url": "https://rakudo.org/dl/star/rakudo-star-2020.01-01-win-x86_64-(JIT).msi",
-    "hash": "A4A728FFF7C32D98790E4E12F145BFAB89CC4DAB56E268B2CED3C80F08BD4A30",
+    "description": "Raku compiler for the MoarVM and JVM",
+    "homepage": "https://rakudo.org",
+    "license": "Artistic-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://rakudo.org/dl/star/rakudo-star-2020.01-01-win-x86_64-(JIT).msi",
+            "hash": "a4a728fff7c32d98790e4e12f145bfab89cc4dab56e268b2ced3c80f08bd4a30"
+        }
+    },
     "extract_dir": "rakudo",
         "bin": [
         "bin\\perl6.exe",
@@ -13,9 +17,16 @@
     ],
     "checkver": {
         "url": "https://rakudo.org/downloads/star",
-        "regex": "rakudo-star-([\\d]{4}.[\\d]{2}-[\\d]{2})-win-x86_64-\\(JIT\\).msi"
+        "regex": "rakudo-star-([\\d.-]+)-win-x86_64-\\(JIT\\)\\.msi"
     },
     "autoupdate": {
-        "url": "https://rakudo.org/latest/star/win"
+        "architecture": {
+            "64bit": {
+                "url": "https://rakudo.org/dl/star/rakudo-star-$version-win-x86_64-(JIT).msi"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt"
+        }
     }
 }
