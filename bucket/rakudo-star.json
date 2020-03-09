@@ -20,6 +20,13 @@
         "regex": "rakudo-star-([\\d]{4}.[\\d]{2}-[\\d]{2})-win-x86_64-\\(JIT\\).msi"
     },
     "autoupdate": {
-        "url": "https://rakudo.org/latest/star/win"
+        "architecture": {
+            "64bit": {
+                "url": "https://rakudo.org/dl/star/rakudo-star-$version-win-x86_64-(JIT).msi"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt"
+        }
     }
 }
