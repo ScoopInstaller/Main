@@ -1,18 +1,22 @@
 {
     "homepage": "https://github.com/allure-framework/allure2",
-    "description": "A flexible lightweight multi-language test report tool",
-    "version": "2.12.1",
+    "description": "A flexible lightweight multi-language test report tool.",
+    "version": "2.13.2",
     "license": "Apache-2.0",
-    "url": "https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.12.1/allure-commandline-2.12.1.zip",
-    "hash": "b88cc0e6c5ab66e8845bb3236ea0c76ff44af44a596ef3b68d382b19d9736c1f",
-    "extract_dir": "allure-2.12.1",
+    "url": "https://dl.bintray.com/qameta/maven/io/qameta/allure/allure-commandline/2.13.2/allure-commandline-2.13.2.zip",
+    "hash": "72d5b232444201ed5a01326f663d4b01f012d27efdf8d32bb4c8667d963e429a",
+    "extract_dir": "allure-2.13.2",
     "bin": "bin\\allure.bat",
     "env_set": {
         "ALLURE_HOME": "$dir"
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/$version/allure-commandline-$version.zip",
+        "url": "https://dl.bintray.com/qameta/maven/io/qameta/allure/allure-commandline/$version/allure-commandline-$version.zip",
+        "hash": {
+            "url": "$url.sha256",
+            "regex": "$sha256"
+        },
         "extract_dir": "allure-$version"
     }
 }

@@ -1,18 +1,34 @@
 {
-    "homepage": "http://www.vim.org",
+    "homepage": "https://www.vim.org",
+    "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
     "license": "Vim",
-    "version": "8.1.1601",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v8.1.1601/gvim_8.1.1601_x64.zip",
-            "hash": "39fadfbbf639031f4176788f4d5dd66fd1696f0a79cb41460c3b51ab7b3653cd"
-        },
-        "32bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v8.1.1601/gvim_8.1.1601_x86.zip",
-            "hash": "b542ff1d298b99d5a2059c8a1dc4261c797c4500a824911fe24cc9f7332302aa"
-        }
-    },
-    "extract_dir": "vim\\vim81",
+    "version": "8.2",
+    "url": [
+        "https://ftp.nluug.nl/pub/vim/pc/gvim82.exe#/dl.7z",
+        "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
+        "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/uninstall-context.reg"
+    ],
+    "hash": [
+        "md5:aa84543492cd8260f44a5acf1ec35641",
+        "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
+        "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
+    ],
+    "extract_dir": "$0",
+    "pre_install": [
+        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse",
+        "if (!(Test-Path \"$persist_dir\\_vimrc\")) {",
+        "    Copy-Item \"$dir\\vimrc_example.vim\" \"$dir\\_vimrc\"",
+        "    Copy-Item \"$dir\\gvimrc_example.vim\" \"$dir\\_gvimrc\"",
+        "    Add-Content \"$dir\\_vimrc\" \"set shell=$((Get-Command powershell).Path)\\ -ExecutionPolicy\\ Bypass\" -Encoding Ascii",
+        "}",
+        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+        "    $vimpath = \"$(current_dir $dir)\\gVim.exe\".Replace('\\', '\\\\')",
+        "    $content = (Get-Content \"$dir\\$_\").Replace('$vim', $vimpath)",
+        "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "    Set-Content \"$dir\\$_\" $content",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\vimrc\")) { New-Item \"$dir\\vimrc\" -ItemType File | Out-Null }"
+    ],
     "bin": [
         "vim.exe",
         [
@@ -83,26 +99,21 @@
             "gVim"
         ]
     ],
-    "post_install": [
-        "if( !(test-path ~\\.vimrc) -and !(test-path ~\\_vimrc) -and !(test-path ~\\vimfiles\\vimrc) -and !(test-path $env:VIM\\_vimrc) ) {",
-        "    cp \"$dir\\vimrc_example.vim\" ~\\_vimrc",
-        "    \"set shell=$((gcm powershell).path)\\ -executionpolicy\\ bypass\" | out-file  ~\\_vimrc -append -encoding ascii",
-        "    echo 'Default vimrc file created in ~/_vimrc, with shell set to PowerShell.'",
-        "} else { echo 'Existing vimrc file found, no default configuration created' }"
+    "persist": [
+        "_vimrc",
+        "_gvimrc",
+        "vimfiles",
+        "vimrc"
     ],
     "checkver": {
-        "github": "https://github.com/vim/vim-win32-installer"
+        "url": "https://ftp.nluug.nl/pub/vim/pc",
+        "regex": "gvim(?<ver>[\\d-]+)\\.exe\\s+V([\\d.]+)"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86.zip"
-            }
-        },
-        "extract_dir": "vim\\vim$majorVersion$minorVersion"
+        "url": "https://ftp.nluug.nl/pub/vim/pc/gvim$matchVer.exe#/dl.7z",
+        "hash": {
+            "url": "$baseurl/MD5SUMS"
+        }
     },
     "suggest": {
         "vimtutor": "vimtutor"

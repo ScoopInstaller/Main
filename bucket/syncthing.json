@@ -1,20 +1,35 @@
 {
+    "version": "1.3.4",
+    "description": "Open Source Continuous File Synchronization.",
     "homepage": "https://syncthing.net/",
     "license": "MPL-2.0",
-    "version": "1.1.4",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v1.1.4/syncthing-windows-amd64-v1.1.4.zip",
-            "hash": "d23830f3ba75e2a1764bc1cd4a6b70f7b5b01ae121d543f22305bcb9dfa403d6",
-            "extract_dir": "syncthing-windows-amd64-v1.1.4"
+            "url": "https://github.com/syncthing/syncthing/releases/download/v1.3.4/syncthing-windows-amd64-v1.3.4.zip",
+            "hash": "f890d0b9cc939f22ffaa3a271459541cdfd13b18358ed0657065976684ff5f57",
+            "extract_dir": "syncthing-windows-amd64-v1.3.4"
         },
         "32bit": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v1.1.4/syncthing-windows-386-v1.1.4.zip",
-            "hash": "6d0312253a1fe59a723c789c5f4c378ab69757725334351f5e6c243b1c3c3827",
-            "extract_dir": "syncthing-windows-386-v1.1.4"
+            "url": "https://github.com/syncthing/syncthing/releases/download/v1.3.4/syncthing-windows-386-v1.3.4.zip",
+            "hash": "10699f42d49bb41df66fad44790c917d56d1905d49539a6055c0ab7af3d28fe6",
+            "extract_dir": "syncthing-windows-386-v1.3.4"
         }
     },
-    "bin": "syncthing.exe",
+    "bin": [
+        [
+            "syncthing.exe",
+            "syncthing",
+            "-home \"$dir\\config\""
+        ]
+    ],
+    "persist": "config",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config\") -and (Test-Path \"$Env:LocalAppdata\\Syncthing\")) {",
+        "    Write-Host -F yellow \"Copying old '$Env:LocalAppdata\\Syncthing' to '$persist_dir\\config'\"",
+        "    New-Item \"$dir\\config\" -ItemType 'Directory' -Force | Out-Null",
+        "    Copy-Item \"$Env:LocalAppdata\\Syncthing\\*\" \"$dir\\config\" -Exclude LOCK -Recurse -Force",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/syncthing/syncthing"
     },
@@ -31,7 +46,7 @@
             }
         },
         "hash": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v$version/sha256sum.txt.asc"
+            "url": "$baseurl/sha256sum.txt.asc"
         }
     }
 }

@@ -1,26 +1,26 @@
 {
     "homepage": "http://bochs.sourceforge.net/",
     "description": "Open source IA-32 (x86) PC emulator written in C++",
-    "version": "2.6.9",
-    "license": "LGPL-2.1",
+    "version": "2.6.11",
+    "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.6.9/bochs-2.6.9-win64.zip",
-            "hash": "sha1:35a590b30c13add8ff6d3271c6aadd293ee4d923",
-            "bin": [
-                "bochs-win64.exe",
-                "bochsdbg-win64.exe"
-            ]
+            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.6.11/Bochs-win64-2.6.11.exe#/dl.7z",
+            "hash": "sha1:4c3aa9d2bc67b7968633e888918f2593a535c2b1"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.6.9/bochs-p4-smp-2.6.9-win32.zip",
-            "hash": "sha1:bc2aa106890c649ca2a94e1c073151b1f42ef2bb",
-            "bin": [
-                "bochs-p4-smp.exe",
-                "bochsdbg-p4-smp.exe"
-            ]
+            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.6.11/Bochs-win32-2.6.11.exe#/dl.7z",
+            "hash": "sha1:493809db0ce1afd624a8e47c38edb5ee38b9fcbc"
         }
     },
+    "bin": [
+        "bochs.exe",
+        "bochsdbg.exe",
+        "bxhub.exe",
+        "bximage.exe",
+        "niclist.exe",
+        "sb16ctrl.exe"
+    ],
     "checkver": {
         "url": "http://bochs.sourceforge.net/getcurrent.html",
         "re": "<b>Latest release:<\\/b> Bochs ([\\d.]+)"
@@ -28,10 +28,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/bochs-$version-win64.zip"
+                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/Bochs-win64-$version.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/bochs-p4-smp-$version-win32.zip"
+                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/Bochs-win32-$version.exe#/dl.7z"
             }
         }
     }

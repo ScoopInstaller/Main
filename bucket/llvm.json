@@ -1,16 +1,16 @@
 {
-    "version": "8.0.0",
+    "version": "9.0.0",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org/",
     "license": "NCSA",
     "architecture": {
-        "32bit": {
-            "url": "https://releases.llvm.org/8.0.0/LLVM-8.0.0-win32.exe#/llvm.7z",
-            "hash": "43ff5543c02873f41b87508c90509946293fe613fdbc57f8d19349e931aad6da"
-        },
         "64bit": {
-            "url": "https://releases.llvm.org/8.0.0/LLVM-8.0.0-win64.exe#/llvm.7z",
-            "hash": "56d582eed2d5def6accaedabbe11ae368186600798e2a6a7eb86a727fa7bb20c"
+            "url": "https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe#/dl.7z",
+            "hash": "71ed99a6720945d76b6772584735f2ed472f12719dff184a0b1a6a35047b8863"
+        },
+        "32bit": {
+            "url": "https://releases.llvm.org/9.0.0/LLVM-9.0.0-win32.exe#/dl.7z",
+            "hash": "089e226dc0d3ecb292f344cdbed96c5d9a705564cc578957a955b4ed71c70cae"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\" -Recurse",
@@ -21,6 +21,7 @@
         "bin\\clang-check.exe",
         "bin\\clang-cl.exe",
         "bin\\clang-cpp.exe",
+        "bin\\clang-doc.exe",
         "bin\\clang-extdef-mapping.exe",
         "bin\\clang-format.exe",
         "bin\\clang-import-test.exe",
@@ -30,6 +31,7 @@
         "bin\\clang-refactor.exe",
         "bin\\clang-rename.exe",
         "bin\\clang-reorder-fields.exe",
+        "bin\\clang-scan-deps.exe",
         "bin\\clang-tidy.exe",
         "bin\\clang.exe",
         "bin\\clangd.exe",
@@ -41,27 +43,30 @@
         "bin\\lld-link.exe",
         "bin\\lld.exe",
         "bin\\lldb-argdumper.exe",
+        "bin\\lldb-instr.exe",
         "bin\\lldb-mi.exe",
-        "bin\\lldb-test.exe",
         "bin\\lldb-vscode.exe",
         "bin\\lldb.exe",
         "bin\\llvm-ar.exe",
         "bin\\llvm-lib.exe",
+        "bin\\llvm-nm.exe",
+        "bin\\llvm-objcopy.exe",
         "bin\\llvm-objdump.exe",
         "bin\\llvm-ranlib.exe",
         "bin\\llvm-rc.exe",
+        "bin\\llvm-symbolizer.exe",
         "bin\\modularize.exe",
         "bin\\scan-build.bat",
         "bin\\wasm-ld.exe"
     ],
-    "checkver": "\\/releases\\/download.html#([\\d.]+)",
+    "checkver": "releases/download.html#([\\d.]+)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://releases.llvm.org/$version/LLVM-$version-win64.exe#/llvm.7z"
+                "url": "https://releases.llvm.org/$version/LLVM-$version-win64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://releases.llvm.org/$version/LLVM-$version-win32.exe#/llvm.7z"
+                "url": "https://releases.llvm.org/$version/LLVM-$version-win32.exe#/dl.7z"
             }
         }
     }

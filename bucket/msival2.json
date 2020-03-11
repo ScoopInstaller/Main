@@ -1,7 +1,10 @@
 {
     "homepage": "https://docs.microsoft.com/en-us/windows/desktop/Msi/msival2-exe",
     "version": "5.0.18362.1",
-    "license": "Freeware(MS-EULA)",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
+    },
     "description": "MSI Database Validation Tool",
     "url": [
         "https://download.microsoft.com/download/4/2/2/42245968-6A79-4DA7-A5FB-08C0AD0AE661/windowssdk/Installers/MsiVal2-x86_en-us.msi",
@@ -16,8 +19,6 @@
         "26e3ca41c8bf2474bfa59ffe92f106b76d7c779ae834ccfbf12555943fd361c0"
     ],
     "extract_dir": "MsiVal2",
-    "post_install": [
-        "Remove-Item \"$dir\\*.cab\" -Force"
-    ],
+    "post_install": "Remove-Item \"$dir\\*.cab\" -Force",
     "bin": "MsiVal2.exe"
 }

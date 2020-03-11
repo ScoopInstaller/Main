@@ -1,16 +1,18 @@
 {
     "homepage": "https://github.com/lukesampson/pshazz",
-    "version": "0.2019.06.27",
-    "url": "https://github.com/lukesampson/pshazz/archive/870f7436f27aac3d663f1de5f325c07da50d4ec3.zip",
-    "extract_dir": "pshazz-870f7436f27aac3d663f1de5f325c07da50d4ec3",
-    "hash": "834abcb63fa31f244e8cf305580be99045f4e986a9448ae8b15106abf3b778c9",
+    "description": "Give your powershell some pizazz.",
+    "version": "0.2019.08.07",
+    "license": "Unlicense",
+    "url": "https://github.com/lukesampson/pshazz/archive/30609306103dd2988353e44596c6093c688b0ea5.zip",
+    "hash": "811cc62325a2140d47eecff15664aaa27e6d16d0e81eadfc5717ea47500d0cc7",
+    "extract_dir": "pshazz-30609306103dd2988353e44596c6093c688b0ea5",
     "bin": "bin\\pshazz.ps1",
     "installer": {
         "file": "bin\\install.ps1"
     },
     "checkver": {
         "url": "https://github.com/lukesampson/pshazz/commits/master.atom",
-        "re": "(\\d+)-(\\d+)-(\\d+)[\\S\\s]*?(?<sha>[0-9a-f]{40})",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
         "replace": "0.${1}.${2}.${3}"
     },
     "autoupdate": {

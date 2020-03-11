@@ -1,18 +1,18 @@
 {
     "homepage": "https://openresty.org",
-    "version": "1.15.8.1",
+    "version": "1.15.8.2",
     "license": "BSD-2-Clause",
     "description": "Dynamic web platform based on NGINX and LuaJIT.",
     "architecture": {
         "64bit": {
-            "url": "https://openresty.org/download/openresty-1.15.8.1-win64.zip",
-            "hash": "aa03642154ae963b1e4844c9e5d7d3705531071522a566cfcd304089e2172921",
-            "extract_dir": "openresty-1.15.8.1-win64"
+            "url": "https://openresty.org/download/openresty-1.15.8.2-win64.zip",
+            "hash": "95f63e554cbeaaf423bd73898c583712e923e4b68c173428a4b2f4e2fffdcd34",
+            "extract_dir": "openresty-1.15.8.2-win64"
         },
         "32bit": {
-            "url": "https://openresty.org/download/openresty-1.15.8.1-win32.zip",
-            "hash": "0be75026a3c26e3e905671f61bd8e9c66648bf9351be501e7fd2907131c590d0",
-            "extract_dir": "openresty-1.15.8.1-win32"
+            "url": "https://openresty.org/download/openresty-1.15.8.2-win32.zip",
+            "hash": "99f9ac0190b0810a36b507eae82ddba17b916aa95c707b6b5d79a17a74cbd3dc",
+            "extract_dir": "openresty-1.15.8.2-win32"
         }
     },
     "bin": [
@@ -23,6 +23,11 @@
         "resty.bat",
         "restydoc.bat",
         "restydoc-index.bat"
+    ],
+    "persist": [
+        "conf",
+        "html",
+        "logs"
     ],
     "notes": [
         "Use '-p $PWD' to specify current directory when running OpenResty.",

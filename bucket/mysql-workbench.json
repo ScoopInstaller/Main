@@ -1,24 +1,13 @@
 {
-    "version": "8.0.16",
-    "license": "GPL-2.0-only",
+    "version": "8.0.19",
+    "description": "Integrated tools environment for database design, modeling, development, administration, and migration.",
     "homepage": "https://dev.mysql.com/downloads/workbench/",
+    "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-8.0.16-winx64.msi",
+            "url": "https://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-8.0.19-winx64.msi",
             "extract_dir": "MySQL\\MySQL Workbench 8.0 CE",
-            "hash": "md5:6228c775ba5f7578e411dc221d6ceab6"
-        }
-    },
-    "checkver": "MySQL Workbench (?<version>(?<short>[\\d]+.[\\d]+).[\\d]+)",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-$version-winx64.msi",
-                "extract_dir": "MySQL\\MySQL Workbench $matchShort CE"
-            }
-        },
-        "hash": {
-            "url": "$url.md5"
+            "hash": "md5:3e802457a04c7e58c4abbb914630f510"
         }
     },
     "bin": [
@@ -31,5 +20,17 @@
             "MySQLWorkbench.exe",
             "MySQLWorkbench"
         ]
-    ]
+    ],
+    "checkver": "MySQL Workbench ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-$version-winx64.msi",
+                "extract_dir": "MySQL\\MySQL Workbench $majorVersion.$minorVersion CE"
+            }
+        },
+        "hash": {
+            "url": "$url.md5"
+        }
+    }
 }

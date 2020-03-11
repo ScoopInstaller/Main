@@ -1,21 +1,20 @@
 {
-    "description": "Manage files with git, without comitting them",
-    "homepage": "http://git-annex.branchable.com/",
-    "license": "GPL-3.0",
-    "version": "7.20190626",
-    "notes": "NOTE: Running `git-annex version` may report a slightly older version number",
+    "version": "8.20200227",
+    "description": "Manage files with git, without comitting them.",
+    "homepage": "https://git-annex.branchable.com/",
+    "license": "AGPL-3.0-or-later",
     "bin": "usr/bin/git-annex.exe",
     "url": "https://downloads.kitenet.net/git-annex/windows/current/git-annex-installer.exe#/dl.7z",
-    "hash": "e25d8ff4ad7a6f6d773078c541aff223e41c5ab5ef6fc7a304fb2f913c721666",
+    "hash": "6f9655b507e748aeb51911fdf0f8965ee6e8cdca690a215818acd6c30891201e",
     "checkver": {
-        "url": "https://hackage.haskell.org/package/git-annex",
-        "re": "/git-annex-([\\d.]+)\\.tar\\.gz"
+        "url": "https://downloads.kitenet.net/git-annex/windows/current/git-annex-installer.exe.info",
+        "regex": "distributionVersion = \"([\\d.]+)\""
     },
     "autoupdate": {
         "url": "https://downloads.kitenet.net/git-annex/windows/current/git-annex-installer.exe#/dl.7z",
         "hash": {
             "url": "$url.info",
-            "find": "$sha256.exe"
+            "regex": "$sha256\\.exe"
         }
     }
 }

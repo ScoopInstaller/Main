@@ -1,0 +1,141 @@
+{
+    "homepage": "https://www.vim.org",
+    "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
+    "license": "Vim",
+    "version": "8.2.0369",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/vim/vim-win32-installer/releases/download/v8.2.0369/gvim_8.2.0369_x64.zip",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/uninstall-context.reg"
+            ],
+            "hash": [
+                "f334b0f5b7069f08d13d645ef5e9b9aed89fd2d4340b5dd9ba2a0d2345639711",
+                "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
+                "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://github.com/vim/vim-win32-installer/releases/download/v8.2.0369/gvim_8.2.0369_x86.zip",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/master/scripts/vim/uninstall-context.reg"
+            ],
+            "hash": [
+                "a5c63a02c7a23f5f05df7a5efbf3c57f0a5114285dc5c0c9e189eaac98b6dc83",
+                "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
+                "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
+            ]
+        }
+    },
+    "extract_dir": "vim\\vim82",
+    "pre_install": [
+        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\" -Recurse",
+        "if (!(Test-Path \"$persist_dir\\_vimrc\")) {",
+        "    Copy-Item \"$dir\\vimrc_example.vim\" \"$dir\\_vimrc\"",
+        "    Copy-Item \"$dir\\gvimrc_example.vim\" \"$dir\\_gvimrc\"",
+        "    Add-Content \"$dir\\_vimrc\" \"set shell=$((Get-Command powershell).Path)\\ -ExecutionPolicy\\ Bypass\" -Encoding Ascii",
+        "}",
+        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+        "    $vimpath = \"$(current_dir $dir)\\gVim.exe\".Replace('\\', '\\\\')",
+        "    $content = (Get-Content \"$dir\\$_\").Replace('$vim', $vimpath)",
+        "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "    Set-Content \"$dir\\$_\" $content",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\vimrc\")) { New-Item \"$dir\\vimrc\" -ItemType File | Out-Null }"
+    ],
+    "bin": [
+        "vim.exe",
+        [
+            "vim.exe",
+            "vi"
+        ],
+        [
+            "vim.exe",
+            "ex",
+            "-e"
+        ],
+        [
+            "vim.exe",
+            "view",
+            "-R"
+        ],
+        [
+            "vim.exe",
+            "rvim",
+            "-Z"
+        ],
+        [
+            "vim.exe",
+            "rview",
+            "-RZ"
+        ],
+        [
+            "vim.exe",
+            "vimdiff",
+            "-d"
+        ],
+        "gvim.exe",
+        [
+            "gvim.exe",
+            "gview",
+            "-R"
+        ],
+        [
+            "gvim.exe",
+            "evim",
+            "-y"
+        ],
+        [
+            "gvim.exe",
+            "eview",
+            "-Ry"
+        ],
+        [
+            "gvim.exe",
+            "rgvim",
+            "-Z"
+        ],
+        [
+            "gvim.exe",
+            "rgview",
+            "-RZ"
+        ],
+        [
+            "gvim.exe",
+            "gvimdiff",
+            "-d"
+        ],
+        "xxd.exe"
+    ],
+    "shortcuts": [
+        [
+            "gvim.exe",
+            "gVim"
+        ]
+    ],
+    "persist": [
+        "_vimrc",
+        "_gvimrc",
+        "vimfiles",
+        "vimrc"
+    ],
+    "checkver": {
+        "github": "https://github.com/vim/vim-win32-installer"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86.zip"
+            }
+        },
+        "extract_dir": "vim\\vim$majorVersion$minorVersion"
+    },
+    "suggest": {
+        "vimtutor": "vimtutor"
+    }
+}

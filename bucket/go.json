@@ -1,6 +1,7 @@
 {
-    "version": "1.12.6",
+    "version": "1.14",
     "homepage": "https://golang.org",
+    "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "license": "BSD-3-Clause",
     "extract_dir": "go",
     "env_set": {
@@ -8,8 +9,7 @@
     },
     "bin": [
         "bin/go.exe",
-        "bin/gofmt.exe",
-        "bin/godoc.exe"
+        "bin/gofmt.exe"
     ],
     "installer": {
         "script": "add_first_in_path \"$env:USERPROFILE\\go\\bin\" $global"
@@ -19,22 +19,25 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://storage.googleapis.com/golang/go1.12.6.windows-amd64.zip",
-            "hash": "9badf7bbc0ed55f2db967434b033a2cddf2e46dbdc5bb8560d8fde019e8e19d3"
+            "url": "https://dl.google.com/go/go1.14.windows-amd64.zip",
+            "hash": "cc2f1e8d19744fe0b2e979bf9a4f9d224e416f4f54cb6cf3aa8b5e9c0865de37"
         },
         "32bit": {
-            "url": "https://storage.googleapis.com/golang/go1.12.6.windows-386.zip",
-            "hash": "9d5644ef8e94ad0853e1a86d5465a4600fe5b2cedc946fff80de46135eab2486"
+            "url": "https://dl.google.com/go/go1.14.windows-386.zip",
+            "hash": "adb634bedc4143b67c50b2e60f36a2cbcad6ab05ec41a972e2115701584170a2"
         }
     },
-    "checkver": "Build version go([\\d\\.]+)\\.",
+    "checkver": {
+        "url": "https://golang.org/dl/",
+        "regex": "go([\\d.]+)\\."
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://storage.googleapis.com/golang/go$version.windows-amd64.zip"
+                "url": "https://dl.google.com/go/go$version.windows-amd64.zip"
             },
             "32bit": {
-                "url": "https://storage.googleapis.com/golang/go$version.windows-386.zip"
+                "url": "https://dl.google.com/go/go$version.windows-386.zip"
             }
         },
         "hash": {

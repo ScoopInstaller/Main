@@ -1,15 +1,17 @@
 {
-    "version": "1.18.3",
-    "license": "MIT",
-    "hash": "9b15c26905d4505ab77e000750aa3aedeb909507485c5e5901b6ad7de9d42e2d",
-    "homepage": "https://github.com/rust-lang-nursery/rustup.rs",
-    "checkver": {
-        "url": "https://raw.githubusercontent.com/rust-lang-nursery/rustup.rs/master/Cargo.toml",
-        "re": "version = \"(\\d+\\.\\d+\\.\\d+)\""
-    },
-    "url": "https://win.rustup.rs/#/rustup-init.exe",
-    "autoupdate": {
-        "url": "https://win.rustup.rs/#/rustup-init.exe"
+    "homepage": "https://rustup.rs",
+    "version": "1.21.1",
+    "license": "MIT|Apache-2.0",
+    "description": "Manage multiple rust installations with ease",
+    "architecture": {
+        "64bit": {
+            "url": "https://static.rust-lang.org/rustup/archive/1.21.1/x86_64-pc-windows-gnu/rustup-init.exe",
+            "hash": "d17df34ba974b9b19cf5c75883a95475aa22ddc364591d75d174090d55711c72"
+        },
+        "32bit": {
+            "url": "https://static.rust-lang.org/rustup/archive/1.21.1/i686-pc-windows-gnu/rustup-init.exe",
+            "hash": "eb4fef7ba86a5e39f4a9837102ad34f077be864b80c0b8963cf19ff8897cc66a"
+        }
     },
     "persist": [
         ".cargo",
@@ -22,13 +24,27 @@
     },
     "installer": {
         "script": [
-            "# Create environment variables for this process",
             "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
             "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
-            "",
-            "# Install Rustup",
-            "& \"$dir\\rustup-init.exe\" -y --no-modify-path --default-toolchain stable-gnu"
+            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args '-y --no-modify-path' | Out-Null"
         ]
+    },
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/rust-lang-nursery/rustup.rs/master/Cargo.toml",
+        "regex": "version = \"([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://static.rust-lang.org/rustup/archive/$version/x86_64-pc-windows-gnu/rustup-init.exe"
+            },
+            "32bit": {
+                "url": "https://static.rust-lang.org/rustup/archive/$version/i686-pc-windows-gnu/rustup-init.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
     },
     "notes": "To use the MSVC ABI without Visual Studio 2015 (or higher) installed, you will need the Visual Studio 2017 Build Tools: https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017"
 }

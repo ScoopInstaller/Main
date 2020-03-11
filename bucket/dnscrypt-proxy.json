@@ -1,48 +1,44 @@
 {
-    "version": "2.0.25",
+    "version": "2.0.39",
     "description": "A flexible DNS proxy, with support for encrypted DNS protocols",
     "homepage": "https://dnscrypt.info",
     "license": "ISC",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jedisct1/dnscrypt-proxy/releases/download/2.0.25/dnscrypt-proxy-win64-2.0.25.zip",
-            "hash": "610e5f963b5511729bd9cc360dc37f3070f6e5ecf6bd799617e5c7bd9cb8737e",
+            "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.0.39/dnscrypt-proxy-win64-2.0.39.zip",
+            "hash": "babd4122c3b44230abe2f74a8660bdf8b65276236e62b2fbdf0628a104000e95",
             "extract_dir": "win64"
         },
         "32bit": {
-            "url": "https://github.com/jedisct1/dnscrypt-proxy/releases/download/2.0.25/dnscrypt-proxy-win32-2.0.25.zip",
-            "hash": "8de68be8fd39eea2477c743ba9548abed3e00225153fb8463787def7d450a4af",
+            "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.0.39/dnscrypt-proxy-win32-2.0.39.zip",
+            "hash": "29e7b2bb8b34c3bf59fc03be3a2f936d3a0539f2fce44d66cd06893ed4121419",
             "extract_dir": "win32"
         }
     },
+    "pre_install": [
+        "'blacklist.txt', 'cloaking-rules.txt', 'dnscrypt-proxy.toml', 'forwarding-rules.txt', 'whitelist.txt' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { Copy-Item \"$dir\\example-$_\" \"$dir\\$_\" }",
+        "}"
+    ],
+    "bin": "dnscrypt-proxy.exe",
     "persist": [
         "blacklist.txt",
         "cloaking-rules.txt",
         "dnscrypt-proxy.toml",
         "forwarding-rules.txt",
+        "localhost.pem",
         "whitelist.txt"
     ],
-    "bin": "dnscrypt-proxy.exe",
-    "pre_install": [
-        "function CopyFile ($name) {",
-        "    if (!(Test-Path \"$persist_dir\\$name\")) {",
-        "        Copy-Item \"$dir\\example-$name\" \"$dir\\$name\" | Out-Null",
-        "    }",
-        "}",
-        "'blacklist.txt', 'cloaking-rules.txt', 'dnscrypt-proxy.toml', 'forwarding-rules.txt', 'whitelist.txt' | ForEach-Object {",
-        "    CopyFile $_",
-        "}"
-    ],
     "checkver": {
-        "github": "https://github.com/jedisct1/dnscrypt-proxy"
+        "github": "https://github.com/DNSCrypt/dnscrypt-proxy"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/jedisct1/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win64-$version.zip"
+                "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win64-$version.zip"
             },
             "32bit": {
-                "url": "https://github.com/jedisct1/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win32-$version.zip"
+                "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win32-$version.zip"
             }
         }
     }

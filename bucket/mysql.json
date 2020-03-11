@@ -1,15 +1,17 @@
 {
     "homepage": "https://dev.mysql.com/downloads/mysql/",
-    "version": "8.0.16",
-    "license": "GPL-2.0",
+    "description": "The world's most popular open-source database, supported by an active community.",
+    "version": "8.0.19",
+    "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.16-winx64.zip",
-            "hash": "md5:1a6646b047425cc1150b8a88751e721b",
-            "extract_dir": "mysql-8.0.16-winx64"
+            "url": "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.19-winx64.zip",
+            "hash": "md5:f52c52e7b499958acc5f08ce0a869cab",
+            "extract_dir": "mysql-8.0.19-winx64"
         }
     },
     "bin": [
+        "bin/comp_err.exe",
         "bin/ibd2sdi.exe",
         "bin/innochecksum.exe",
         "bin/lz4_decompress.exe",
@@ -25,8 +27,6 @@
         "bin/mysqldump.exe",
         "bin/mysqlimport.exe",
         "bin/mysqlpump.exe",
-        "bin/mysqlrouter.exe",
-        "bin/mysqlrouter_plugin_info.exe",
         "bin/mysqlshow.exe",
         "bin/mysqlslap.exe",
         "bin/mysql_config_editor.exe",
@@ -38,22 +38,34 @@
         "bin/perror.exe",
         "bin/zlib_decompress.exe"
     ],
-    "persist": "data",
-    "post_install": [
-        "if (!(Test-Path \"$dir/my.ini\")) {",
+    "persist": [
+        "data",
+        "my.ini"
+    ],
+    "pre_install": [
+        "$ini = \"$dir\\my.ini\"",
+        "if (!(Test-Path \"$ini\")) {",
         "   # Using $dir instead of $persist_dir, causes this error:",
-        "   # [ERROR] [MY-010187] [Server] Could not open file 'C:/Users/ex/scoop/apps/mysql/current/data/host.err' for error logging: Permission denied",
-        "   $dir_u = ($persist_dir -replace '\\\\', '/')",
-        "   Add-Content \"$dir/my.ini\" '[mysqld]' -Encoding Ascii",
-        "   Add-Content \"$dir/my.ini\" \"datadir=$dir_u/data\" -Encoding Ascii",
+        "   # [ERROR] [MY-010187] [Server] Could not open file '~/scoop/apps/mysql/current/data/host.err' for error logging: Permission denied",
+        "   Add-Content -Path \"$ini\" -Value \"[mysqld]`ndatadir=$($persist_dir -replace '\\\\', '/')/data\" -Encoding Ascii",
         "   # Set username so it's not required when connecting",
-        "   Add-Content \"$dir/my.ini\" '[client]' -Encoding Ascii",
-        "   Add-Content \"$dir/my.ini\" 'user=root' -Encoding Ascii",
-        "}",
-        "if (!(Test-Path \"$dir/data\\auto.cnf\")) {",
-        "   # Initialize data directory (without generating root password)",
-        "   mysqld.exe --initialize-insecure",
+        "   Add-Content -Path \"$ini\" -Value \"[client]`nuser=root\" -Encoding Ascii",
         "}"
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\auto.cnf\")) {",
+        "    warn 'Initializing data directory ...'",
+        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysqld.exe\" -ArgumentList '--initialize-insecure'",
+        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "}"
+    ],
+    "notes": [
+        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
+        "or run following command as administrator to register MySQL as a service. See: https://dev.mysql.com/doc/refman/en/windows-start-service.html",
+        "",
+        "mysqld --install MySQL --defaults-file=\"$dir\\my.ini\"",
+        "",
+        "To stop and/or delete the Service run 'sc stop MySQL' and 'sc delete MySQL'."
     ],
     "checkver": {
         "url": "https://dev.mysql.com/downloads/mysql/",

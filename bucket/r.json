@@ -1,25 +1,51 @@
 {
     "homepage": "https://www.r-project.org",
-    "version": "3.6.0",
-    "license": "GPL-2.0",
+    "description": "A free software environment for statistical computing and graphics.",
+    "version": "3.6.3",
+    "license": "GPL-2.0-only",
+    "url": "https://cloud.r-project.org/bin/windows/base/R-3.6.3-win.exe",
+    "hash": "md5:840714b6dab0a5cb4452b12dc01ca881",
+    "innosetup": true,
     "architecture": {
         "64bit": {
-            "url": "https://cran.rstudio.com/bin/windows/base/R-3.6.0-win.exe",
-            "hash": "b53772889908f3bfaa9432be838d99f80dd204e2890682f040ce230a38728955",
-            "pre_install": "copy-item -recurse \"$dir\\bin\\x64\" \"$dir\\bin\\curr_arch\""
+            "pre_install": "Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'",
+            "bin": [
+                "bin\\x64\\R.exe",
+                "bin\\x64\\Rcmd.exe",
+                "bin\\x64\\Rgui.exe",
+                "bin\\x64\\Rscript.exe",
+                "bin\\x64\\Rterm.exe"
+            ],
+            "shortcuts": [
+                [
+                    "bin\\x64\\Rgui.exe",
+                    "R"
+                ]
+            ]
         },
         "32bit": {
-            "url": "https://cran.rstudio.com/bin/windows/base/R-3.6.0-win.exe",
-            "hash": "b53772889908f3bfaa9432be838d99f80dd204e2890682f040ce230a38728955",
-            "pre_install": "copy-item -recurse \"$dir\\bin\\i386\" \"$dir\\bin\\curr_arch\""
+            "pre_install": "Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'",
+            "bin": [
+                "bin\\i386\\R.exe",
+                "bin\\i386\\Rcmd.exe",
+                "bin\\i386\\Rgui.exe",
+                "bin\\i386\\Rscript.exe",
+                "bin\\i386\\Rterm.exe"
+            ],
+            "shortcuts": [
+                [
+                    "bin\\i386\\Rgui.exe",
+                    "R"
+                ]
+            ]
         }
     },
-    "innosetup": true,
-    "bin": [
-        "bin\\curr_arch\\r.exe",
-        "bin\\curr_arch\\rterm.exe",
-        "bin\\curr_arch\\rscript.exe"
-    ],
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
+            "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\""
+        ]
+    },
     "notes": [
         "You'll need to type 'r.ps1' or 'r.cmd' to run R, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
         "",
@@ -31,17 +57,13 @@
         "Annoying, right?! You might want to check out Pshazz (scoop install pshazz)--this has a plugin to remove some crazy aliases from Powershell, as well as many other improvements."
     ],
     "checkver": {
-        "url": "https://cran.rstudio.com/bin/windows/base/",
-        "re": "<h1>R-([\\d.]+)"
+        "url": "https://cloud.r-project.org/bin/windows/base/md5sum.txt",
+        "regex": "R-([\\d.]+)"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://cran.rstudio.com/bin/windows/base/R-$version-win.exe"
-            },
-            "32bit": {
-                "url": "https://cran.rstudio.com/bin/windows/base/R-$version-win.exe"
-            }
+        "url": "https://cloud.r-project.org/bin/windows/base/R-$version-win.exe",
+        "hash": {
+            "url": "$baseurl/md5sum.txt"
         }
     }
 }

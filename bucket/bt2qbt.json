@@ -1,0 +1,28 @@
+{
+    "version": "1.2",
+    "description": "Cli tool for export from uTorrent/Bittorrent into qBittorrent.",
+    "homepage": "https://github.com/rumanzo/bt2qbt/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rumanzo/bt2qbt/releases/download/v1.2/bt2qbt_v1.2_amd64.exe#/bt2qbt.exe",
+            "hash": "fca643254e0635e9e44886097a1abeb0a3821b41ea2e9f014d05c150af1a9165"
+        },
+        "32bit": {
+            "url": "https://github.com/rumanzo/bt2qbt/releases/download/v1.2/bt2qbt_v1.2_i386.exe#/bt2qbt.exe",
+            "hash": "fca643254e0635e9e44886097a1abeb0a3821b41ea2e9f014d05c150af1a9165"
+        }
+    },
+    "bin": "bt2qbt.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rumanzo/bt2qbt/releases/download/v$version/bt2qbt_v$version_amd64.exe#/bt2qbt.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/rumanzo/bt2qbt/releases/download/v$version/bt2qbt_v$version_i386.exe#/bt2qbt.exe"
+            }
+        }
+    }
+}

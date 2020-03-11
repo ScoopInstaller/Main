@@ -1,11 +1,12 @@
 {
     "homepage": "https://www.postgresql.org/",
-    "version": "11.4",
+    "description": "Object-relational database management system based on POSTGRES.",
+    "version": "12.2",
     "license": "PostgreSQL",
     "architecture": {
         "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-11.4-1-windows-x64-binaries.zip",
-            "hash": "795102077fc1496754722667826b734aadc14c546f1005aa5e481f357e4f074d"
+            "url": "https://get.enterprisedb.com/postgresql/postgresql-12.2-1-windows-x64-binaries.zip",
+            "hash": "6000cb43e17bfcaea4ec36dc115804285cd3a52d7d9bff2f385da3d43f385fdb"
         }
     },
     "extract_dir": "pgsql",
@@ -20,8 +21,16 @@
     "env_set": {
         "PGDATA": "$dir\\data"
     },
-    "post_install": "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) { iex \"initdb --username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" }",
-    "notes": "To start/stop service, run `pg_ctl start`, `pg_ctl stop`.",
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
+        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList \"--username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" | Out-Null",
+        "}"
+    ],
+    "notes": [
+        "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
+        "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
+        "Default superuser login: postgres, password: <blank>"
+    ],
     "checkver": {
         "url": "https://www.enterprisedb.com/products-services-training/pgbindownload",
         "re": "<b>Version ([\\d.]+)"

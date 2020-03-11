@@ -1,27 +1,26 @@
 {
+    "version": "1.10.0",
     "homepage": "https://getcomposer.org/",
     "description": "Dependency Manager for PHP",
     "license": "MIT",
-    "version": "1.8.6",
-    "url": "https://getcomposer.org/download/1.8.6/composer.phar",
+    "url": "https://getcomposer.org/download/1.10.0/composer.phar",
+    "hash": "8ced713bde2d89468c3385588daf27dc6fc7bc7619f95239068608d303700b09",
+    "pre_install": [
+        "@(",
+        "    'if ($args.length -eq 1 -and ($args -eq \"selfupdate\" -or $args -eq \"self-update\")) { & scoop update composer }'",
+        "    'else { & php (Join-Path $psscriptroot \"composer.phar\") @args }'",
+        ") | Add-Content -Path \"$dir\\composer.ps1\"",
+        "if (!(Test-Path \"$persist_dir\\home\") -and (Test-Path \"$env:Appdata\\Composer\")) {",
+        "    Write-Host -F yellow \"Moving old 'COMPOSER_HOME' to '$persist_dir\\home'\"",
+        "    Move-Item \"$env:Appdata\\Composer\" \"$persist_dir\\home\" -Force",
+        "}"
+    ],
     "bin": "composer.ps1",
-    "persist": "home",
     "env_set": {
         "COMPOSER_HOME": "$persist_dir\\home"
     },
     "env_add_path": "home\\vendor\\bin",
-    "pre_install": [
-        "echo 'if($args.length -eq 1 -and ($args -eq \"selfupdate\" -or $args -eq \"self-update\")) { & scoop update composer }' | out-file \"$dir\\composer.ps1\"",
-        "echo 'else { & php (join-path $psscriptroot \"composer.phar\") @args }' | out-file \"$dir\\composer.ps1\" -append"
-    ],
-    "post_install": [
-        "$och = \"$env:APPDATA\\Composer\"",
-        "if(Test-Path $och) {",
-        "Write-Host -F yellow \"Moving old 'COMPOSER_HOME' to '$persist_dir\\home'\"",
-        "Move-Item -Force \"$och\\*\" \"$persist_dir\\home\"",
-        "Remove-Item -Force \"$och\"",
-        "}"
-    ],
+    "persist": "home",
     "suggest": {
         "PHP": [
             "php",
@@ -29,11 +28,13 @@
         ]
     },
     "notes": "'composer selfupdate' is aliased to 'scoop update composer'",
-    "hash": "b66f9b53db72c5117408defe8a1e00515fe749e97ce1b0ae8bdaa6a5a43dd542",
     "checkver": {
         "github": "https://github.com/composer/composer"
     },
     "autoupdate": {
-        "url": "https://getcomposer.org/download/$version/composer.phar"
+        "url": "https://getcomposer.org/download/$version/composer.phar",
+        "hash": {
+            "url": "$url.sha256sum"
+        }
     }
 }

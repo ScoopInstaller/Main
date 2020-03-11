@@ -1,5 +1,6 @@
 {
     "homepage": "http://scriptcs.net/",
+    "description": "Scriptcs makes it easy to write and execute C# with a simple text editor.",
     "version": "0.17.1",
     "license": "Apache-2.0",
     "url": "https://packages.chocolatey.org/ScriptCs.0.17.1.nupkg",
@@ -11,6 +12,10 @@
         "regex": "ScriptCs ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://packages.chocolatey.org/ScriptCs.$version.nupkg"
+        "url": "https://packages.chocolatey.org/ScriptCs.$version.nupkg",
+        "hash": {
+            "url": "https://chocolatey.org/packages/ScriptCs/$version",
+            "regex": "/$sha256/analysis/\">$basename"
+        }
     }
 }

@@ -1,0 +1,50 @@
+{
+    "homepage": "https://rustup.rs",
+    "version": "1.21.1",
+    "license": "MIT|Apache-2.0",
+    "description": "Manage multiple rust installations with ease",
+    "architecture": {
+        "64bit": {
+            "url": "https://static.rust-lang.org/rustup/archive/1.21.1/x86_64-pc-windows-msvc/rustup-init.exe",
+            "hash": "9f9e33fa4759075ec60e4da13798d1d66a4c2f43c5500e08714399313409dcf5"
+        },
+        "32bit": {
+            "url": "https://static.rust-lang.org/rustup/archive/1.21.1/i686-pc-windows-msvc/rustup-init.exe",
+            "hash": "b98d6677b55db9c7da8582a6279ff841dd49cee93cd9bb67f9773995f1083f41"
+        }
+    },
+    "persist": [
+        ".cargo",
+        ".rustup"
+    ],
+    "env_add_path": ".cargo\\bin",
+    "env_set": {
+        "CARGO_HOME": "$persist_dir\\.cargo",
+        "RUSTUP_HOME": "$persist_dir\\.rustup"
+    },
+    "installer": {
+        "script": [
+            "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
+            "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
+            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args '-y --no-modify-path' | Out-Null"
+        ]
+    },
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/rust-lang-nursery/rustup.rs/master/Cargo.toml",
+        "regex": "version = \"([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://static.rust-lang.org/rustup/archive/$version/x86_64-pc-windows-msvc/rustup-init.exe"
+            },
+            "32bit": {
+                "url": "https://static.rust-lang.org/rustup/archive/$version/i686-pc-windows-msvc/rustup-init.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "notes": "To use the MSVC ABI without Visual Studio 2015 (or higher) installed, you will need the Visual Studio 2017 Build Tools: https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017"
+}

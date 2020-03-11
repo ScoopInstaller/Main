@@ -1,19 +1,20 @@
 {
     "homepage": "https://nim-lang.org/",
-    "version": "0.20.0",
+    "description": "A statically typed compiled systems programming language, which combines successful concepts from mature languages like Python, Ada and Modula.",
+    "version": "1.0.6",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://nim-lang.org/download/nim-0.20.0_x64.zip",
-            "hash": "47ce2a7e77c6ba65266eb35a3319cafe24e6845947bfbdcae929e57892ca1491"
+            "url": "https://nim-lang.org/download/nim-1.0.6_x64.zip",
+            "hash": "cd9585b407ec22c588cb3836862ee113e3e7eea729934eef8f81e0c1210e780d"
         },
         "32bit": {
-            "url": "https://nim-lang.org/download/nim-0.20.0_x32.zip",
-            "hash": "01801b88a8ba4974656b202c7ad6349c08d69d2e35456df3f065d20a11c18abc"
+            "url": "https://nim-lang.org/download/nim-1.0.6_x32.zip",
+            "hash": "33d274e7ec6edb62c354e5cf104e0e3eb054b7dabbd2302678b5e56001dc04e3"
         }
     },
     "depends": "gcc",
-    "extract_dir": "nim-0.20.0",
+    "extract_dir": "nim-1.0.6",
     "post_install": [
         "# Copy Nimble package",
         "Copy-Item -Recurse \"$dir\\dist\\nimble\\src\\nimblepkg\" \"$dir\\bin\""
@@ -23,9 +24,12 @@
         "bin\\nimble.exe",
         "bin\\nimgrab.exe",
         "bin\\nimgrep.exe",
+        "bin\\nimpretty.exe",
         "bin\\nimsuggest.exe",
-        "bin\\vccexe.exe"
+        "bin\\vccexe.exe",
+        "bin\\testament.exe"
     ],
+    "persist": "config",
     "checkver": {
         "url": "https://nim-lang.org/install_windows.html",
         "re": "nim-([\\d.]+)_x64"

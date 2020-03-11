@@ -1,18 +1,16 @@
 {
     "homepage": "https://windows.php.net/",
-    "license": {
-        "identifier": "PHP-3.01",
-        "url": "https://secure.php.net/license/"
-    },
-    "version": "7.3.6",
+    "description": "A popular general-purpose scripting language that is especially suited to web development. (thread safe)",
+    "license": "PHP-3.01",
+    "version": "7.4.3",
     "architecture": {
         "64bit": {
-            "url": "https://windows.php.net/downloads/releases/php-7.3.6-Win32-VC15-x64.zip",
-            "hash": "f663aa68447475a52d075c0728cbb2877925c81be961ee5e2d65a8e7747c3b6b"
+            "url": "https://windows.php.net/downloads/releases/php-7.4.3-Win32-VC15-x64.zip",
+            "hash": "dab4ffd3cfcd918acbfb76c72c342d580d4a3aa61dfc4071375421f9844ecbf8"
         },
         "32bit": {
-            "url": "https://windows.php.net/downloads/releases/php-7.3.6-Win32-VC15-x86.zip",
-            "hash": "0d62c24660d810083fa0c93946f26493d1c4943a60d2303b65fdf337e0d0ad3e"
+            "url": "https://windows.php.net/downloads/releases/php-7.4.3-Win32-VC15-x86.zip",
+            "hash": "27aae4416ed8ed8103ec44e6515de2adba5a014a5223c9ff56211092103d142c"
         }
     },
     "bin": [
@@ -38,7 +36,7 @@
     ],
     "post_install": [
         "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
-        "(gc \"$dir\\cli\\php.ini\") | % { $_ -replace '; extension_dir = \"ext\"', 'extension_dir = \"ext\"' } | sc \"$dir\\cli\\php.ini\""
+        "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
     ],
     "checkver": {
         "url": "https://windows.php.net/download/",

@@ -2,19 +2,22 @@
     "homepage": "https://github.com/kubernetes-sigs/kustomize",
     "description": "Customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.",
     "license": "Apache-2.0",
-    "version": "2.0.3",
+    "version": "3.5.4",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/v2.0.3/kustomize_2.0.3_windows_amd64.exe#/kustomize.exe",
-            "hash": "7d8be317f58a245065e1ef57356631da81b0dbab40f5f7cfbe65b55d8d484b29"
+            "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v3.5.4/kustomize_v3.5.4_windows_amd64.tar.gz",
+            "hash": "97abf54fbec1d9503080abfafafa3e4feafe1c33309dff1a12a2520c78ba7a6b"
         }
     },
     "bin": "kustomize.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/kubernetes-sigs/kustomize",
+        "regex": "kustomize/v([\\d.]+)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/v$version/kustomize_$version_windows_amd64.exe#/kustomize.exe"
+                "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v$version/kustomize_v$version_windows_amd64.tar.gz"
             }
         },
         "hash": {

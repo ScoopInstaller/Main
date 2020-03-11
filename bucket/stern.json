@@ -1,0 +1,25 @@
+{
+    "version": "1.11.0",
+    "description": "Multi pod and container log tailing for Kubernetes",
+    "homepage": "https://github.com/wercker/stern",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/wercker/stern/releases/download/1.11.0/stern_windows_amd64.exe#/stern.exe",
+            "hash": "75708b9acf6ef0eeffbe1f189402adc0405f1402e6b764f1f5152ca288e3109e"
+        }
+    },
+    "bin": "stern.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/wercker/stern/releases/download/$version/stern_windows_amd64.exe#/stern.exe"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/wercker/stern/releases/tag/$version",
+            "regex": "(?sm)$basename:.*?$sha256"
+        }
+    }
+}

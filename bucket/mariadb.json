@@ -1,17 +1,18 @@
 {
     "homepage": "https://mariadb.org",
-    "version": "10.4.6",
-    "license": "GPL-2.0",
+    "version": "10.4.12",
+    "license": "GPL-2.0-only",
+    "description": "Community developed fork of MySQL server.",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.netcologne.de/mariadb/mariadb-10.4.6/winx64-packages/mariadb-10.4.6-winx64.zip",
-            "hash": "6cbcfc2c1ccd9802cec9e7c43270f4fa763e0583c9e6585dfade4d9e22c670b2",
-            "extract_dir": "mariadb-10.4.6-winx64"
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.4.12/winx64-packages/mariadb-10.4.12-winx64.zip",
+            "hash": "1029f04ae85e3a51da89a61e68b915cade9d1801912c8a05f5effeb9a7f9c630",
+            "extract_dir": "mariadb-10.4.12-winx64"
         },
         "32bit": {
-            "url": "https://mirror.netcologne.de/mariadb/mariadb-10.4.6/win32-packages/mariadb-10.4.6-win32.zip",
-            "hash": "aac276f3e4c240ab2773f17ef75886a5e064c0ae532d3bf1bf6724d9bceed1ca",
-            "extract_dir": "mariadb-10.4.6-win32"
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.4.12/win32-packages/mariadb-10.4.12-win32.zip",
+            "hash": "827e63eac453d7e1798929766e5fad5b99874010c0dd6612ac3265fd9388a926",
+            "extract_dir": "mariadb-10.4.12-win32"
         }
     },
     "bin": [
@@ -43,33 +44,37 @@
     ],
     "persist": "data",
     "post_install": [
-        "# Initialize data directory (without generating root password)",
-        "if (!(Test-Path \"$dir\\data\\auto.cnf\")) { mysqld --initialize-insecure }"
+        "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
+        "    warn 'Initializing data directory ...'",
+        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList @(\"--datadir=`\"$dir\\data`\"\")",
+        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "}"
     ],
     "notes": [
-        "Run following command as administrator to run MariaDB as a service.",
-        "mysqld --install \"[Service Name(default:MySQL)]\""
+        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
+        "or run following command as administrator to register MariaDB as a service. See: https://mariadb.com/kb/en/library/mysql_install_dbexe/",
+        "",
+        "mysql_install_db --service=MariaDB --password=NewRootPassword",
+        "",
+        "To stop and/or delete the Service run 'sc stop MariaDB' and 'sc delete MariaDB'."
     ],
     "checkver": {
         "url": "https://downloads.mariadb.org/",
-        "re": "Download ([\\d.]+) Stable"
+        "regex": "Download ([\\d.]+) Stable"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.netcologne.de/mariadb/mariadb-$version/winx64-packages/mariadb-$version-winx64.zip",
-                "extract_dir": "mariadb-$version-winx64",
-                "hash": {
-                    "url": "https://mirror.netcologne.de/mariadb/mariadb-$version/winx64-packages/sha256sums.txt"
-                }
+                "url": "https://downloads.mariadb.com/MariaDB/mariadb-$version/winx64-packages/mariadb-$version-winx64.zip",
+                "extract_dir": "mariadb-$version-winx64"
             },
             "32bit": {
-                "url": "https://mirror.netcologne.de/mariadb/mariadb-$version/win32-packages/mariadb-$version-win32.zip",
-                "extract_dir": "mariadb-$version-win32",
-                "hash": {
-                    "url": "https://mirror.netcologne.de/mariadb/mariadb-$version/win32-packages/sha256sums.txt"
-                }
+                "url": "https://downloads.mariadb.com/MariaDB/mariadb-$version/win32-packages/mariadb-$version-win32.zip",
+                "extract_dir": "mariadb-$version-win32"
             }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums.txt"
         }
     }
 }

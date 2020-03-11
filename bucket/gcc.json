@@ -1,20 +1,42 @@
 {
     "homepage": "https://mingw-w64.org",
-    "version": "8.1.0",
-    "license": "GPL-3.0",
+    "description": "GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, Go, and D, as well as libraries for these languages (libstdc++,...). (MingW port)",
+    "version": "8.1.0.0",
+    "license": "GPL-3.0-or-later,ZPL-2.1,...",
     "architecture": {
         "64bit": {
             "url": "https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z",
-            "hash": "853970527B5DE4A55EC8CA4D3FD732C00AE1C69974CC930C82604396D43E79F8",
+            "hash": "sha1:5aa456654a6ce77249c27888b5d0f856fc011b9c",
             "extract_dir": "mingw64"
         },
         "32bit": {
             "url": "https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z",
-            "hash": "ADB84B70094C0225DD30187FF995E311D19424B1EB8F60934C60E4903297F946",
+            "hash": "sha1:dd4f34f473e84c79b6b446adb3a5fac7919ba9cb",
             "extract_dir": "mingw32"
         }
     },
+    "bin": [
+        [
+            "bin\\mingw32-make.exe",
+            "make"
+        ]
+    ],
     "env_add_path": "bin",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/mingw-w64/files/",
+        "regex": "x86_64-([\\d.]+)-release-posix-sjlj-rt_v(?<rt>\\d+)-rev(\\d+)\\.7z",
+        "replace": "${1}.${2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/$matchHead/threads-posix/seh/x86_64-$matchHead-release-posix-seh-rt_v$matchRt-rev$buildVersion.7z"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/$matchHead/threads-posix/dwarf/i686-$matchHead-release-posix-dwarf-rt_v$matchRt-rev$buildVersion.7z"
+            }
+        }
+    },
     "notes": [
         "The 64-bit version is built with Structured Exception Handling (SEH), whereas the 32-bit version is built with DWARF.",
         "Both 64-bit and 32-bit versions use the POSIX threading model."

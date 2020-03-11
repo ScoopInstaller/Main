@@ -1,0 +1,38 @@
+{
+    "version": "0.8.5",
+    "homepage": "https://evans.syfm.me/",
+    "description": "Evans: more expressive gRPC client",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/ktr0731/evans/releases/download/0.8.5/evans_windows_386.tar.gz",
+            "hash": "7c3f315b83b324ddd0016a91b61fceb904ff42f5b488a44ecfa90eded973b804"
+        },
+        "64bit": {
+            "url": "https://github.com/ktr0731/evans/releases/download/0.8.5/evans_windows_amd64.tar.gz",
+            "hash": "65cb996784851ccac3b41df7d98d0d78c74b4aa6c7529281b224315d9a767fea"
+        }
+    },
+    "bin": "evans.exe",
+    "checkver": {
+        "github": "https://github.com/ktr0731/evans"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/ktr0731/evans/releases/download/$version/evans_windows_386.tar.gz",
+                "hash": {
+                    "url": "$baseurl/checksums.txt",
+                    "regex": "($sha256)\\s+evans_windows_386.tar.gz"
+                }
+            },
+            "64bit": {
+                "url": "https://github.com/ktr0731/evans/releases/download/$version/evans_windows_amd64.tar.gz",
+                "hash": {
+                    "url": "$baseurl/checksums.txt",
+                    "regex": "($sha256)\\s+evans_windows_amd64.tar.gz"
+                }
+            }
+        }
+    }
+}

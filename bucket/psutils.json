@@ -1,10 +1,11 @@
 {
     "homepage": "https://github.com/lukesampson/psutils",
     "description": "A collection of command line utilities written in PowerShell proudly ignoring PowerShell Verb-Noun naming conventions.",
-    "version": "0.2018.08.04",
-    "url": "https://github.com/lukesampson/psutils/archive/de1a069215c54a1cb105f3dc79f14e25570c75f2.zip",
-    "hash": "432d21448ec3ed8e95e82e6ad0b633e096b1cd1c37bed081b8dbe2fd59f9fb1b",
-    "extract_dir": "psutils-de1a069215c54a1cb105f3dc79f14e25570c75f2",
+    "version": "0.2020.02.27",
+    "license": "MIT",
+    "url": "https://github.com/lukesampson/psutils/archive/8af01127a949c64ea50b657989a4cd7744d4fffd.zip",
+    "hash": "8533be612d1aff09666054cbb994bea081daddce8d38237d2b7fa6fd5830f223",
+    "extract_dir": "psutils-8af01127a949c64ea50b657989a4cd7744d4fffd",
     "bin": [
         "gitignore.ps1",
         "ln.ps1",
@@ -23,7 +24,7 @@
     "notes": "Please use 'timecmd' instead of 'time' in cmd.exe.",
     "checkver": {
         "url": "https://github.com/lukesampson/psutils/commits/master.atom",
-        "re": "(\\d+)-(\\d+)-(\\d+)[\\S\\s]*?(?<sha>[0-9a-f]{40})",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
         "replace": "0.${1}.${2}.${3}"
     },
     "autoupdate": {

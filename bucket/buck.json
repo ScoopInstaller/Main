@@ -1,10 +1,10 @@
 {
     "homepage": "https://buck.build/",
-    "version": "2019.06.17.01",
+    "version": "2019.10.17.01",
     "description": "A high-performance build tool.",
     "license": "Apache-2.0",
-    "url": "https://packages.chocolatey.org/buck.2019.06.17.01.nupkg",
-    "hash": "72852a3d23194eec5c55b888f9014f23d8f169eb02fe90c4bddbdbcedd906bb2",
+    "url": "https://packages.chocolatey.org/buck.2019.10.17.01.nupkg",
+    "hash": "6d8ae4ae184023ba6dd2d617536e6b5508e2f3b33bcd11fe6003ab50e8f02ac2",
     "extract_dir": "tools",
     "depends": "versions/python27",
     "suggest": {
@@ -22,7 +22,7 @@
     "post_install": "(Get-Content \"$dir\\buck.bat\") -replace 'C:\\\\Python27', \"$(versiondir 'python27' 'current')\" | Set-Content \"$dir\\buck.bat\"",
     "checkver": {
         "url": "https://chocolatey.org/packages/buck",
-        "regex": "Chocolatey.*?([\\d.]+)\\r"
+        "regex": "\\s+([\\d.]+)</title>"
     },
     "autoupdate": {
         "url": "https://packages.chocolatey.org/buck.$version.nupkg",

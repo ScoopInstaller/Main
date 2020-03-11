@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.freebasic.net",
+    "version": "1.07.1",
+    "license": "GPL-2.0-or-later",
+    "description": "BASIC compiler for Microsoft Windows, DOS and Linux.",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Windows/FreeBASIC-1.07.1-win64.zip",
+            "hash": "sha1:731491b93f1fd4970392b74d68d3f76c9783fb17",
+            "extract_dir": "FreeBASIC-1.07.1-win64"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Windows/FreeBASIC-1.07.1-win32.zip",
+            "hash": "sha1:98cd3b1a15f74d98231c430939d05bdd3b3d6e97",
+            "extract_dir": "FreeBASIC-1.07.1-win32"
+        }
+    },
+    "bin": "fbc.exe",
+    "checkver": {
+        "github": "https://github.com/freebasic/fbc"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Windows/FreeBASIC-$version-win64.zip",
+                "extract_dir": "FreeBASIC-$version-win64"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/fbc/Binaries%20-%20Windows/FreeBASIC-$version-win32.zip",
+                "extract_dir": "FreeBASIC-$version-win32"
+            }
+        }
+    }
+}

@@ -1,16 +1,32 @@
 {
     "homepage": "https://www.nano-editor.org/",
-    "version": "2.5.3",
+    "description": "A small and friendly GNU editor, inspired by Pico",
+    "version": "4.8-4",
     "license": "GPL-3.0-only",
-    "url": "https://www.nano-editor.org/dist/v2.5/NT/nano-2.5.3.zip",
-    "hash": "c012456b9f29e488b0e9a688aa43a34326dd573f9e99765cbdac2b81a4bc1060",
-    "bin": "nano.exe",
-    "extract_dir": "nano-2.5.3-win32",
-    "post_install": "if (-not (Test-Path ~/nano.rc)) { Copy-Item \"$dir/nano.rc\" ~/nano.rc }",
-    "checkver": "Latest Version\\s+([\\d.]+)",
+    "url": "https://files.lhmouse.com/nano-win/nano-win_8544_v4.8-4-g93fe54c6.7z",
+    "hash": "01af5cb30c4cb4417c6d4ee169e33ac76d3c6786e3e520b4af472a71a3277047",
+    "post_install": [
+        "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
+        "   Copy-Item \"$dir\\.nanorc\" \"$env:USERPROFILE\\.nanorc\"",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://files.lhmouse.com/nano-win/?C=N&O=D",
+        "regex": "nano-win_(?<build>\\d+)_v([\\d.-]+)-(?<commit>\\w+)\\.7z"
+    },
+    "architecture": {
+        "64bit": {
+            "bin": "x86_64-w64-mingw32\\bin\\nano.exe"
+        },
+        "32bit": {
+            "bin": "i686-w64-mingw32\\bin\\nano.exe"
+        }
+    },
+    "autoupdate": {
+        "url": "https://files.lhmouse.com/nano-win/nano-win_$matchBuild_v$version-$matchCommit.7z"
+    },
     "notes": [
-        "You can configure nano editor by editing the configuration file nano.rc",
-        "in your home folder. For nano to find the configuration file, you will",
-        "need to set %HOME% environment variable to point to your home folder."
+        "Configure nano by editing its configuration file %USERPROFILE%\\.nanorc",
+        "NOTE: The config file was named nano.rc in the 2.5.3 release, but is now named .nanorc"
     ]
 }

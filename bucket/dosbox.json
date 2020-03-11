@@ -1,24 +1,19 @@
 {
     "homepage": "https://www.dosbox.com/",
     "description": "DOSBox emulates an Intel x86 PC, complete with sound, graphics, mouse, joystick, modem, etc.",
-    "version": "0.74-2",
-    "license": "GPL-2.0",
-    "url": "https://downloads.sourceforge.net/project/dosbox/dosbox/0.74-2/DOSBox0.74-2-win32-installer.exe",
-    "hash": "58ccf33face7d2aeb76992f6414cf94ca46976d5b004551d6552ce18d094f1fb",
-    "installer": {
-        "args": [
-            "/S",
-            "/D=$dir"
+    "version": "0.74-3",
+    "license": "GPL-2.0-only",
+    "url": "https://downloads.sourceforge.net/project/dosbox/dosbox/0.74-3/DOSBox0.74-3-win32-installer.exe#/dl.7z",
+    "hash": "sha1:c8c1f5a5d17336607c886444518e74e3d1a4e041",
+    "bin": "DOSBox.exe",
+    "shortcuts": [
+        [
+            "DOSBox.exe",
+            "DOSBox"
         ]
-    },
-    "uninstaller": {
-        "file": "uninstall.exe",
-        "args": "/S"
-    },
-    "bin": [
-        "DOSBox.exe",
-        "SDL.dll",
-        "SDL_net.dll"
     ],
-    "checkver": "Latest version:\\s+<a[^>]+>([\\d.-]+)"
+    "checkver": "Latest version:\\s+<a[^>]+>([\\d.-]+)",
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/dosbox/dosbox/$version/DOSBox$version-win32-installer.exe#/dl.7z"
+    }
 }

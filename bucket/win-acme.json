@@ -1,16 +1,37 @@
 {
-    "description": "ACME client for Windows - for use with Let's Encrypt",
-    "version": "2.0.7.315",
+    "homepage": "https://www.win-acme.com",
+    "version": "2.1.5.742",
+    "description": "A Simple ACME Client",
     "license": "Apache-2.0",
-    "homepage": "https://github.com/PKISharp/win-acme",
-    "hash": "b7206ed832566fc789d0f662d86ddc06f1d2b247b2068f09a78782c6220d881b",
-    "url": "https://github.com/PKISharp/win-acme/releases/download/v2.0.7.315/win-acme.v2.0.7.315.zip",
-    "bin": "letsencrypt.exe",
-    "persist": "letsencrypt.exe.config",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.5/win-acme.v2.1.5.742.x64.trimmed.zip",
+            "hash": "a6c043c4707e80e2c2754134b542a80558b8f161e33054d9ebab4d94e76ad424"
+        },
+        "32bit": {
+            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.5/win-acme.v2.1.5.742.x86.trimmed.zip",
+            "hash": "f9fb2026c729093666cf767ef467173d289a9ead0272e795c050ec017ae9e8ed"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\settings.json\")) {",
+        "   Copy-Item \"$dir\\settings_default.json\" \"$dir\\settings.json\"",
+        "}"
+    ],
+    "bin": "wacs.exe",
+    "persist": "settings.json",
     "checkver": {
-        "github": "https://github.com/PKISharp/win-acme"
+        "github": "https://github.com/win-acme/win-acme",
+        "regex": "win-acme\\.v([\\d.]+)\\.x64"
     },
     "autoupdate": {
-        "url": "https://github.com/PKISharp/win-acme/releases/download/v$version/win-acme.v$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchHead/win-acme.v$version.x64.trimmed.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchHead/win-acme.v$version.x86.trimmed.zip"
+            }
+        }
     }
 }

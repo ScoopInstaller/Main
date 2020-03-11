@@ -1,0 +1,40 @@
+{
+    "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
+    "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
+    "version": "3.5.0.4",
+    "url": "https://cloud.r-project.org/bin/windows/Rtools/Rtools35.exe",
+    "hash": "18fd63bb9c903e1f9bfce5c9a2600bd24213295760592dbc130b73a61e9d9414",
+    "innosetup": true,
+    "installer": {
+        "script": [
+            "'r', 'mro' | ForEach-Object {",
+            "   if (Test-Path (appdir $_ $global)) {",
+            "       $renvloc = (versiondir $_ (current_version $_ $global) $global) + '\\etc\\Renviron.site'",
+            "       if (Test-Path $renvloc) {",
+            "           $renv = Get-Content $renvloc -Encoding ASCII",
+            "       } else {",
+            "           $renv = @()",
+            "       }",
+            "       if ($architecture -eq '32bit') {",
+            "           $rtoolspath = \"$dir\\bin;$dir\\mingw_32\\bin\"",
+            "       } else {",
+            "           $rtoolspath = \"$dir\\bin;$dir\\mingw_64\\bin\"",
+            "       }",
+            "       if ($renv -cmatch 'PATH=') {",
+            "           $renv = $renv -replace 'PATH=\"(.*)', 'PATH=\"$rtoolspath;$1'",
+            "       } else {",
+            "           $renv += '\r\nPATH=\"' + $rtoolspath + ';${PATH}\"'",
+            "       }",
+            "       $renv | Set-Content $renvloc -Encoding ASCII",
+            "   }",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://cloud.r-project.org/bin/windows/Rtools/VERSION.txt",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://cloud.r-project.org/bin/windows/Rtools/Rtools$majorVersion$minorVersion.exe"
+    }
+}

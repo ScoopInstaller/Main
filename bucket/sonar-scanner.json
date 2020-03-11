@@ -1,0 +1,24 @@
+{
+    "homepage": "https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/",
+    "description": "Source code scanner for SonarQube analyzer.",
+    "license": "LGPL-3.0-only",
+    "version": "4.3.0.2102",
+    "url": "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.3.0.2102.zip",
+    "hash": "8c78a2a1af24dfbc564d87ba6826795e6892d3035cb91a98c61d9e33e2b3cd46",
+    "extract_dir": "sonar-scanner-4.3.0.2102",
+    "bin": "bin\\sonar-scanner.bat",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ],
+        "SonarQube": "sonarqube"
+    },
+    "checkver": {
+        "github": "https://github.com/SonarSource/sonar-scanner-cli"
+    },
+    "autoupdate": {
+        "url": "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$version.zip",
+        "extract_dir": "sonar-scanner-$version"
+    }
+}

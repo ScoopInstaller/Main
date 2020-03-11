@@ -1,31 +1,30 @@
 {
-    "version": "0.69.0",
+    "version": "0.70.1",
+    "homepage": "http://uncrustify.sourceforge.net",
     "description": "A source code beautifier for C, C++, C#, ObjectiveC, D, Java, Pawn and VALA",
     "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify/uncrustify-0.69.0/uncrustify-0.69.0-win64.zip",
-            "hash": "sha1:07ae9769de653e5df54dcd251c1e5dd4f8a551d5"
+            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-0.70.1/uncrustify-0.70.1_f-win64.zip",
+            "hash": "sha1:eb95d5c36890352c772f387aea28d910fc5cbfef"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify/uncrustify-0.69.0/uncrustify-0.69.0-win32.zip",
-            "hash": "sha1:734e4a01c41631bacf45674a708fc197060e2bff"
+            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-0.70.1/uncrustify-0.70.1_f-win32.zip",
+            "hash": "sha1:c8366484e493a080d59945492229d6821f263d13"
         }
     },
-    "notes": "32-bit version is unavailable in the latest release",
-    "homepage": "http://uncrustify.sourceforge.net/",
     "bin": "uncrustify.exe",
     "checkver": {
-        "re": "/releases/tag/uncrustify-([\\d.]+)",
-        "github": "https://github.com/uncrustify/uncrustify"
+        "url": "https://sourceforge.net/projects/uncrustify/rss?path=/",
+        "regex": "uncrustify-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify/uncrustify-$version/uncrustify-$version-win64.zip"
+                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$version/uncrustify-$version_f-win64.zip"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify/uncrustify-$version/uncrustify-$version-win32.zip"
+                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$version/uncrustify-$version_f-win32.zip"
             }
         }
     }
