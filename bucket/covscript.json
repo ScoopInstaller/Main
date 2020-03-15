@@ -18,15 +18,11 @@
             "extract_dir": "build"
         }
     },
-    "pre_install": [
-        "Set-Content \"$dir\\bin\\csbuild.ps1\" 'if ($args) { $a=$args } else { $a=@() }; Start-Process \"$PSScriptRoot\\csbuild.bat\" $a' -Encoding Ascii",
-        "Set-Content \"$dir\\bin\\cspkg.ps1\" 'if ($args) { $a=$args } else { $a=@() }; Start-Process \"$PSScriptRoot\\cspkg.bat\" $a' -Encoding Ascii"
-    ],
     "bin": [
         "bin\\cs.exe",
         "bin\\cs_dbg.exe",
-        "bin\\csbuild.ps1",
-        "bin\\cspkg.ps1"
+        "bin\\csbuild.bat",
+        "bin\\cspkg.bat"
     ],
     "shortcuts": [
         [
