@@ -3,16 +3,46 @@
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "license": "Python-2.0",
     "version": "3.8.2",
+    "notes": "Allow applications and third-party installers to find python by running: \"$dir\\install-pep-514.reg\"",
     "architecture": {
         "64bit": {
-            "url": "https://www.python.org/ftp/python/3.8.2/python-3.8.2-amd64.exe",
-            "hash": "8e400e3f32cdcb746e62e0db4d3ae4cba1f927141ebc4d0d5a4006b0daee8921"
+            "url": [
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/install-pep-514.reg",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/uninstall-pep-514.reg",
+                "https://www.python.org/ftp/python/3.8.2/python-3.8.2-amd64.exe"
+            ],
+            "hash": [
+                "5d9d7a604c057e67973e1d4b3b488ae20a0e5ee5496d03b5cf091410e33e39ed",
+                "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9",
+                "8e400e3f32cdcb746e62e0db4d3ae4cba1f927141ebc4d0d5a4006b0daee8921"
+            ]
         },
         "32bit": {
-            "url": "https://www.python.org/ftp/python/3.8.2/python-3.8.2.exe",
-            "hash": "03ac5754a69c9c11c08d1f4d694c14625a4d27348ad4dd2d1253e2547819db2c"
+            "url": [
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/install-pep-514.reg",
+                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/uninstall-pep-514.reg",
+                "https://www.python.org/ftp/python/3.8.2/python-3.8.2.exe"
+            ],
+            "hash": [
+                "5d9d7a604c057e67973e1d4b3b488ae20a0e5ee5496d03b5cf091410e33e39ed",
+                "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9",
+                "03ac5754a69c9c11c08d1f4d694c14625a4d27348ad4dd2d1253e2547819db2c"
+            ]
         }
     },
+    "pre_install": [
+        "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
+        "    $py_root = \"$dir\".Replace('\\', '\\\\')",
+        "    $py_version = ($version -split '\\.')[0..1] -join '.'",
+        "    $content = Get-Content \"$dir\\$_\"",
+        "    $content = $content.Replace('$py_root', $py_root)",
+        "    $content = $content.Replace('$py_version', $py_version)",
+        "    if ($global) {",
+        "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
+        "}"
+    ],
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\"",
