@@ -1,12 +1,8 @@
 {
-    "##": "This file is generated from Gauche source tree",
     "description": "Scheme Scripting Engine",
     "homepage": "https://practical-scheme.net/gauche/",
     "version": "0.9.9",
-    "license": {
-        "identifier": "BSD-3-Clause",
-        "url": "https://github.com/shirok/Gauche/blob/master/COPYING"
-    },
+    "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
             "url": "https://github.com/shirok/Gauche/releases/download/release0_9_9/Gauche-mingw-0.9.9-64bit.msi",
@@ -17,16 +13,24 @@
             "hash": "6b6f742f05c8153448f779850333eac9a24894e2a7c706aa6bfd230bc1435434"
         }
     },
+    "extract_dir": "Gauche",
     "bin": [
-        "Gauche/bin/gauche-cesconv.exe",
-        "Gauche/bin/gauche-config.exe",
-        "Gauche/bin/gauche-install.exe",
-        "Gauche/bin/gauche-package.exe",
-        "Gauche/bin/gosh.exe",
-        "Gauche/bin/gosh-noconsole.exe"
+        "bin\\gauche-cesconv.exe",
+        "bin\\gauche-config.exe",
+        "bin\\gauche-install.exe",
+        "bin\\gauche-package.exe",
+        "bin\\gosh.exe",
+        "bin\\gosh-noconsole.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\gosh.exe",
+            "Gosh"
+        ]
     ],
     "checkver": {
-        "github": "https://github.com/shirok/Gauche"
+        "github": "https://github.com/shirok/Gauche",
+        "regex": "mingw-([\\d.]+)-\\d+bit\\.msi"
     },
     "autoupdate": {
         "architecture": {
