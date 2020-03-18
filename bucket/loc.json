@@ -1,0 +1,28 @@
+{
+    "homepage": "https://github.com/cgag/loc",
+    "description": "Count lines of code quickly.",
+    "license": "MIT",
+    "version": "0.4.1",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cgag/loc/releases/download/v0.4.1/trust-v0.4.1-x86_64-pc-windows-msvc.zip",
+            "hash": "76f5f2eaf294e01d826e419c6f71d429bc0c7660493373337ec5dcf318d400d9"
+        },
+        "32bit": {
+            "url": "https://github.com/cgag/loc/releases/download/v0.4.1/trust-v0.4.1-i686-pc-windows-msvc.zip",
+            "hash": "983f93e7e56659f213590cabc61217be96514bf5d7f0b74c75218e5b72faa28c"
+        }
+    },
+    "bin": "loc.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sharkdp/fd/releases/download/v$version/trust-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/sharkdp/fd/releases/download/v$version/trust-v$version-i686-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
