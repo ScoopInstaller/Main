@@ -43,6 +43,7 @@
         "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
         "}"
     ],
+    "post_install": "add_first_in_path (Join-Path -Path (Split-Path -Path (& $dir\\python.exe -m site --user-site) -Parent) -ChildPath Scripts) $global",
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\"",
@@ -60,6 +61,7 @@
     },
     "uninstaller": {
         "script": [
+            "remove_from_path (Join-Path -Path (Split-Path -Path (& $dir\\python.exe -m site --user-site) -Parent) -ChildPath Scripts) $global",
             "if ($global) {",
             "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
             "    env 'PATHEXT' $true \"$pathext\"",
