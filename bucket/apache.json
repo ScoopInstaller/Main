@@ -1,7 +1,7 @@
 {
-    "homepage": "https://www.apachelounge.com",
-    "description": "The Apache HTTP Server (\"httpd\")",
     "version": "2.4.41",
+    "description": "The Apache HTTP Server ('httpd')",
+    "homepage": "https://www.apachelounge.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
@@ -14,10 +14,6 @@
         }
     },
     "extract_dir": "Apache24",
-    "persist": [
-        "htdocs",
-        "conf"
-    ],
     "bin": [
         "bin\\ab.exe",
         "bin\\abs.exe",
@@ -36,9 +32,13 @@
         "$root=(scoop which httpd | split-path -res -par | split-path -par) -replace '\\\\', '/';",
         "(gc $conf) | % { $_ -replace 'c:/Apache24', \"$root\" } | sc $conf"
     ],
+    "persist": [
+        "htdocs",
+        "conf"
+    ],
     "checkver": {
         "url": "https://fossies.org/search?q=folder_search&q1=httpd&ad=%2Ffresh%2Fwindows%2Fwww&ca=yes&dp=1",
-        "re": "httpd-([\\d.]+)-win64-VC15.zip"
+        "regex": "httpd-([\\d.]+)-win64-VC15\\.zip"
     },
     "autoupdate": {
         "architecture": {
