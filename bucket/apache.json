@@ -1,23 +1,19 @@
 {
-    "homepage": "https://www.apachelounge.com",
-    "description": "The Apache HTTP Server (\"httpd\")",
     "version": "2.4.41",
+    "description": "The Apache HTTP Server ('httpd')",
+    "homepage": "https://www.apachelounge.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
             "url": "https://fossies.org/windows/www/httpd-2.4.41-win64-VC15.zip",
-            "hash": "f439da7270afe2a8f6ef00683c7a78d0de54dffe4379c5151378f66b8e631e67"
+            "hash": "3302a71ccff992d16ee3d547a9f04ed9af4490691c9b15439a88df29248f5aa5"
         },
         "32bit": {
             "url": "https://fossies.org/windows/www/httpd-2.4.41-win32-VC15.zip",
-            "hash": "1d8228b02d2ee4d75f07a35d56cc38e04b50fd82f2fc4f8615a3ece7243ca34d"
+            "hash": "d1e5be514993e270cb43e7a4332002f06c71a931f2e9067e72c9606105f786d0"
         }
     },
     "extract_dir": "Apache24",
-    "persist": [
-        "htdocs",
-        "conf"
-    ],
     "bin": [
         "bin\\ab.exe",
         "bin\\abs.exe",
@@ -36,9 +32,13 @@
         "$root=(scoop which httpd | split-path -res -par | split-path -par) -replace '\\\\', '/';",
         "(gc $conf) | % { $_ -replace 'c:/Apache24', \"$root\" } | sc $conf"
     ],
+    "persist": [
+        "htdocs",
+        "conf"
+    ],
     "checkver": {
         "url": "https://fossies.org/search?q=folder_search&q1=httpd&ad=%2Ffresh%2Fwindows%2Fwww&ca=yes&dp=1",
-        "re": "httpd-([\\d.]+)-win64-VC15.zip"
+        "regex": "httpd-([\\d.]+)-win64-VC15\\.zip"
     },
     "autoupdate": {
         "architecture": {
