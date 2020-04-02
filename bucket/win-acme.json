@@ -1,36 +1,31 @@
 {
-    "homepage": "https://www.win-acme.com",
-    "version": "2.1.5.742",
+    "version": "2.1.6.773",
     "description": "A Simple ACME Client",
+    "homepage": "https://www.win-acme.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.5/win-acme.v2.1.5.742.x64.trimmed.zip",
-            "hash": "a6c043c4707e80e2c2754134b542a80558b8f161e33054d9ebab4d94e76ad424"
+            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.6.773/win-acme.v2.1.6.773.x64.trimmed.zip",
+            "hash": "e2c06ae7e391f8ca3dd356b54a09e11ca0f08daa9a000b7766a5f02da30f16e5"
         },
         "32bit": {
-            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.5/win-acme.v2.1.5.742.x86.trimmed.zip",
-            "hash": "f9fb2026c729093666cf767ef467173d289a9ead0272e795c050ec017ae9e8ed"
+            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.6.773/win-acme.v2.1.6.773.x86.trimmed.zip",
+            "hash": "2b609a9ab829bbfecdc63ee6eada1f379864c47859f9ba6eb67141cc902ea5c3"
         }
     },
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\settings.json\")) {",
-        "   Copy-Item \"$dir\\settings_default.json\" \"$dir\\settings.json\"",
-        "}"
-    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\settings.json\")) { Copy-Item \"$dir\\settings_default.json\" \"$dir\\settings.json\" }",
     "bin": "wacs.exe",
     "persist": "settings.json",
     "checkver": {
-        "github": "https://github.com/win-acme/win-acme",
-        "regex": "win-acme\\.v([\\d.]+)\\.x64"
+        "github": "https://github.com/win-acme/win-acme"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchHead/win-acme.v$version.x64.trimmed.zip"
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$version.x64.trimmed.zip"
             },
             "32bit": {
-                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchHead/win-acme.v$version.x86.trimmed.zip"
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$version.x86.trimmed.zip"
             }
         }
     }
