@@ -1,6 +1,6 @@
 {
     "version": "2.4.0",
-    "description": "The Rancher Command Line Interface (CLI) is a unified tool for interacting with your Rancher Server.",
+    "description": "Unified tool for interacting with Rancher Server",
     "homepage": "https://github.com/rancher/cli",
     "license": "Apache-2.0",
     "architecture": {
@@ -13,7 +13,7 @@
             "hash": "ea948577e3b5a92211859903e321f46ca6548067e928d8de7f7415463e9eb3a6"
         }
     },
-    "pre_install": "mv $original_dir/rancher-v$version/* $original_dir/",
+    "extract_dir": "rancher-v2.4.0",
     "bin": "rancher.exe",
     "checkver": "github",
     "autoupdate": {
@@ -27,6 +27,7 @@
         },
         "hash": {
             "url": "$baseurl/sha256sum.txt"
-        }
+        },
+        "extract_dir": "rancher-v$version"
     }
 }
