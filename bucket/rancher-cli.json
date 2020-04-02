@@ -1,0 +1,32 @@
+{
+    "version": "2.4.0",
+    "description": "The Rancher Command Line Interface (CLI) is a unified tool for interacting with your Rancher Server.",
+    "homepage": "https://github.com/rancher/cli",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rancher/cli/releases/download/v2.4.0/rancher-windows-amd64-v2.4.0.zip",
+            "hash": "0a5414a85fe58da10ac3d547dc9486d2176a867dbc589b60bbb77cb95182e859"
+        },
+        "32bit": {
+            "url": "https://github.com/rancher/cli/releases/download/v2.4.0/rancher-windows-386-v2.4.0.zip",
+            "hash": "ea948577e3b5a92211859903e321f46ca6548067e928d8de7f7415463e9eb3a6"
+        }
+    },
+    "pre_install": "mv $original_dir/rancher-v$version/* $original_dir/",
+    "bin": "rancher.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rancher/cli/releases/download/v$version/rancher-windows-amd64-v$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/rancher/cli/releases/download/v$version/rancher-windows-386-v$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        }
+    }
+}
