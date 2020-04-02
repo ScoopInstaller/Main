@@ -1,16 +1,13 @@
 {
+    "version": "0.0.8",
+    "description": "Fuzzy search tool written in Go",
     "homepage": "https://github.com/mattn/gof",
-    "description": "Fuzzy search tool written in Go.",
-    "version": "0.0.3",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mattn/gof/releases/download/v0.0.3/gof_windows_amd64.zip",
-            "hash": "sha1:1e6e1c5c191455ae7ff21c68c79c872a053f5b1a"
-        },
-        "32bit": {
-            "url": "https://github.com/mattn/gof/releases/download/v0.0.3/gof_windows_386.zip",
-            "hash": "sha1:24ee9ecf167a372af32c63913befcc029722fc02"
+            "url": "https://github.com/mattn/gof/releases/download/v0.0.8/gof_v0.0.8_windows_amd64.zip",
+            "hash": "0c7c0f03602959ed57c8e25d76a84db0a43670373ab841d8ac3ef605404b5c24",
+            "extract_dir": "gof_v0.0.8_windows_amd64"
         }
     },
     "bin": "gof.exe",
@@ -18,14 +15,9 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mattn/gof/releases/download/v$version/gof_windows_amd64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/mattn/gof/releases/download/v$version/gof_windows_386.zip"
+                "url": "https://github.com/mattn/gof/releases/download/v$version/gof_v$version_windows_amd64.zip",
+                "extract_dir": "gof_v$version_windows_amd64"
             }
-        },
-        "hash": {
-            "url": "$baseurl/SHASUMS"
         }
     }
 }
