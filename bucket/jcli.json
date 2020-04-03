@@ -1,18 +1,33 @@
 {
-    "version": "0.0.26",
-    "description": "Multiple Jenkins servers manager.",
+    "version": "0.0.27",
+    "description": "Multiple Jenkins servers manager",
     "homepage": "https://jenkins-zh.github.io/jcli-docs/",
     "license": "MIT",
-    "url": "https://github.com/jenkins-zh/jenkins-cli/releases/download/v0.0.26/jcli-windows-386.tar.gz",
-    "hash": "d97e9448e663c24e08789dc3b4ddcab6246c6f02c35ff9479b92f825e96c5ba3",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jenkins-zh/jenkins-cli/releases/download/v0.0.27/jcli-windows-amd64.zip",
+            "hash": "80b228cbd5bdab2910337184b6516fafa3d14dd7a748e0dc91e17fcf9f06733f"
+        },
+        "32bit": {
+            "url": "https://github.com/jenkins-zh/jenkins-cli/releases/download/v0.0.27/jcli-windows-386.zip",
+            "hash": "542af60eab0019c0c39b81df9bbb4e85c74dd5b86f5262e7ba4b8ad9df6640c8"
+        }
+    },
     "bin": "jcli.exe",
     "checkver": {
         "github": "https://github.com/jenkins-zh/jenkins-cli"
     },
     "autoupdate": {
-        "url": "https://github.com/jenkins-zh/jenkins-cli/releases/download/v$version/jcli-windows-386.tar.gz",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jenkins-zh/jenkins-cli/releases/download/v$version/jcli-windows-amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/jenkins-zh/jenkins-cli/releases/download/v$version/jcli-windows-386.zip"
+            }
+        },
         "hash": {
-            "url": "$baseurl/jcli-windows-386.txt"
+            "url": "$baseurl/checksums.txt"
         }
     }
 }
