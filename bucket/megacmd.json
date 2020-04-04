@@ -21,7 +21,7 @@
     "uninstaller": {
         "script": [
             "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
-            "if ((Get-Item \"$env:LOCALAPPDATA\\MEGAcmd\" -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
+            "if ((Get-Item \"$datapath\\MEGAcmd\" -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
             "    & \"$env:COMSPEC\" /c \"rmdir `\"$datapath\\MEGAcmd`\"\"",
             "}"
         ]
