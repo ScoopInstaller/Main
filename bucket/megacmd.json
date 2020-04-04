@@ -1,13 +1,29 @@
 {
-    "homepage": "https://mega.nz/cmd",
-    "description": "Manage MEGA.nz account and files from command line.",
     "version": "1.2.0",
+    "description": "Manage MEGA.nz account and files from command line.",
+    "homepage": "https://mega.nz/cmd",
     "license": {
         "identifier": "Freeware",
         "url": "https://github.com/meganz/MEGAcmd/blob/master/build/installer/terms.txt"
     },
     "url": "https://mega.nz/MEGAcmdSetup.exe#/dl.7z",
     "hash": "7ae68ec2015b8595edc07ef0a74f83ab84bba43fdb0ddfec7d838c15441cca1b",
+    "post_install": [
+        "Remove-Item \"$dir\\`$*\", \"$dir\\unins*\" -Recurse",
+        "if (!(Test-Path \"$env:LOCALAPPDATA\\MEGAcmd\")) {",
+        "    New-Item \"$env:LOCALAPPDATA\\MEGAcmd\" -ItemType SymbolicLink -Target \"$dir\\\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\.megaCmd\\megacmd.cfg\")) {",
+        "    Set-Content \"$dir\\.megaCmd\\megacmd.cfg\" 'updaterregistered=1', 'autoupdate=0' -Encoding Ascii",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "if ((Get-Item \"$env:LOCALAPPDATA\\MEGAcmd\" -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
+            "    [System.IO.Directory]::Delete(\"$env:LOCALAPPDATA\\MEGAcmd\")",
+            "}"
+        ]
+    },
     "bin": [
         "MEGAclient.exe",
         [
@@ -319,24 +335,6 @@
         ]
     ],
     "persist": ".megaCmd",
-    "installer": {
-        "script": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse"
-    },
-    "post_install": [
-        "if(!(Test-Path -Path \"$env:LOCALAPPDATA\\MEGAcmd\")) {",
-        "    New-Item -ItemType SymbolicLink -Path \"$env:LOCALAPPDATA\\MEGAcmd\" -Target \"$dir\\\" | Out-Null",
-        "}",
-        "if(!(Test-Path -Path \"$dir\\.megaCmd\\megacmd.cfg\")) {",
-        "    Write-Output \"updaterregistered=1`r`nautoupdate=0\" | Out-File -Encoding \"ASCII\" \"$dir\\.megaCmd\\megacmd.cfg\"",
-        "}"
-    ],
-    "uninstaller": {
-        "script": [
-            "if((Get-Item \"$env:LOCALAPPDATA\\MEGAcmd\" -Force -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
-            "    [System.IO.Directory]::Delete(\"$env:LOCALAPPDATA\\MEGAcmd\")",
-            "}"
-        ]
-    },
     "checkver": {
         "url": "https://github.com/meganz/MEGAcmd/releases",
         "regex": "tag/([\\d.]+)_Win"
