@@ -1,12 +1,41 @@
 {
-    "version": "1.20",
+    "version": "1.21",
     "description": "CMD replacement shell that supports backquotes, job control, improves tab completion, file matching, aliases, command history, and more.",
     "homepage": "http://www.malsmith.net/yori/",
     "license": "MIT",
-    "url": "http://www.malsmith.net/download/?obj=yori/1.20/win32/ysetup.exe",
-    "hash": "568d3e98510528d8fa1db59a0c21963933d0b7719610d623bbdad34098ad6956",
-    "installer": {
-        "args": "\"$dir\""
+    "architecture": {
+        "64bit": {
+            "url": [
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-ypm-amd64.cab#/ypm.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-core-amd64.cab#/core.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-typical-amd64.cab#/typical.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-extra-amd64.cab#/extra.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-completion-noarch.cab#/completion.7z"
+            ],
+            "hash": [
+                "2d7f362ae4ca112e8cf4b3f70f86618a873de924c152d9d7ac3bf41e8104f466",
+                "39aae1893d7ac76b38d243b52765e2dceb06b88743e2f3d7d79bfbfd9972d48f",
+                "6051f2c286ca2972ff88e3a90d463f3bd218b8b198531bccf666f30958a58394",
+                "1bc8c748ef886b0a3581a6c43be81b64645cd95d0490e69606f8c7de06a0c76b",
+                "09c5b749c31e5c5bc789d0fc51e95dc78bc415bd229a9d650e3378bf307f3ea1"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-ypm-win32.cab#/ypm.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-core-win32.cab#/core.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-typical-win32.cab#/typical.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-extra-win32.cab#/extra.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.21/yori-completion-noarch.cab#/completion.7z"
+            ],
+            "hash": [
+                "dff0acb8b8078a9a049f470ff9ade374cec0d74f5b8215e042b479a5d54d2be0",
+                "5fdb740f7df138d36f2e992d727d9514747488442e85b47d51627573d36a6de7",
+                "ff04c1c25b29bfbe78a58a24059ba6bcd1cf5d27ecbcfeff9b5d813487aca525",
+                "0a17a368d2ea12afae5b3c57102bfcdc0d75bde31d9047d72c68f96b9fc0bf34",
+                "09c5b749c31e5c5bc789d0fc51e95dc78bc415bd229a9d650e3378bf307f3ea1"
+            ]
+        }
     },
     "bin": "yori.exe",
     "persist": "YoriInit.d",
@@ -17,9 +46,7 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/malxau/yori"
-    },
-    "autoupdate": {
-        "url": "http://www.malsmith.net/download/?obj=yori/$version/win32/ysetup.exe"
+        "url": "http://www.malsmith.net/yori/changelog/",
+        "regex": "<P>([\\d.]+)"
     }
 }
