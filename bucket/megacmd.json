@@ -10,8 +10,9 @@
     "hash": "7ae68ec2015b8595edc07ef0a74f83ab84bba43fdb0ddfec7d838c15441cca1b",
     "post_install": [
         "Remove-Item \"$dir\\`$*\", \"$dir\\unins*\" -Recurse",
-        "if (!(Test-Path \"$env:LOCALAPPDATA\\MEGAcmd\")) {",
-        "    New-Item \"$env:LOCALAPPDATA\\MEGAcmd\" -ItemType SymbolicLink -Target \"$dir\\\" | Out-Null",
+        "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
+        "if (!(Test-Path \"$datapath\\MEGAcmd\")) {",
+        "    & \"$env:COMSPEC\" /c mklink /j \"$datapath\\MEGAcmd\" \"$dir\\\" | Out-Null",
         "}",
         "if (!(Test-Path \"$persist_dir\\.megaCmd\\megacmd.cfg\")) {",
         "    Set-Content \"$dir\\.megaCmd\\megacmd.cfg\" 'updaterregistered=1', 'autoupdate=0' -Encoding Ascii",
@@ -19,8 +20,9 @@
     ],
     "uninstaller": {
         "script": [
+            "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
             "if ((Get-Item \"$env:LOCALAPPDATA\\MEGAcmd\" -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
-            "    [System.IO.Directory]::Delete(\"$env:LOCALAPPDATA\\MEGAcmd\")",
+            "    & \"$env:COMSPEC\" /c \"rmdir `\"$datapath\\MEGAcmd`\"\"",
             "}"
         ]
     },
