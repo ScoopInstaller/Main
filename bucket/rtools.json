@@ -36,5 +36,10 @@
     },
     "autoupdate": {
         "url": "https://cloud.r-project.org/bin/windows/Rtools/Rtools$majorVersion$minorVersion.exe"
-    }
+    },
+    "notes": [
+        "In order for some R packages to be able to find RTools, a symlink needs to be created in C:\\Rtools",
+        "Run the following command in PowerShell as administrator:",
+        "New-Item -ItemType SymbolicLink -Path \"C:\\RTools\" -Target \"$(scoop prefix rtools)\""
+    ]
 }
