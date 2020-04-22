@@ -1,19 +1,21 @@
 {
     "homepage": "https://httpie.org/",
     "description": "HTTPie: a CLI, cURL-like tool with wget-like downloads and more",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "license": "BSD 3-Clause New or Revised",
-    "url": "https://github.com/jakubroztocil/httpie/archive/2.0.0.zip",
-    "hash": "0c09f7b19b7704c0bf5ab12401327a32d95383b87d57dc7326fb24dcbdbd7025",
+    "url": "https://github.com/jakubroztocil/httpie/archive/2.1.0.zip",
+    "hash": "0ed60fbded523ce48575c722ce68dffbce69681dbfc8c743ff292a11807de50d",
     "depends": "main/python",
-    "post_install": [
-        "$currentdir = (Get-Item -Path \".\\\").FullName",
-        "Move-Item $dir\\httpie-$version\\* $dir",
-        "Remove-Item $dir\\httpie-$version",
-        "Set-Location $dir",
-        "python setup.py install",
-        "Set-Location $currentdir"
-    ],
+    "installer": {
+        "script": [
+            "$currentdir = (Get-Item -Path \".\\\").FullName",
+            "Move-Item $dir\\httpie-$version\\* $dir",
+            "Remove-Item $dir\\httpie-$version",
+            "Set-Location $dir",
+            "python setup.py install",
+            "Set-Location $currentdir"
+        ]
+    },
     "uninstaller": {
         "script": [
             "$pythonpath = scoop which python",
@@ -21,6 +23,8 @@
             "Get-Childitem -path $pythondir\\lib\\site-packages -Filter *.egg -Recurse | where-object {$_.Name -ilike \"httpie*\"} | Remove-Item -Force",
             "Remove-Item $pythondir\\Scripts\\http-script.py -Force",
             "Remove-Item $pythondir\\Scripts\\http.exe -Force",
+            "Remove-Item $pythondir\\Scripts\\https-script.py -Force",
+            "Remove-Item $pythondir\\Scripts\\https.exe -Force",
             "Remove-Item $pythondir\\Scripts\\pygmentize-script.py -Force",
             "Remove-Item $pythondir\\Scripts\\pygmentize.exe -Force",
             "Remove-Item $pythondir\\Scripts\\chardetect-script.py -Force",
