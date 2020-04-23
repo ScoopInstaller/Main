@@ -1,23 +1,26 @@
 {
-    "homepage": "https://github.com/roswell/roswell/",
-    "description": "Intended to be a launcher for a major lisp environment that just works.",
     "version": "20.04.14.105",
-    "license": {
-        "identifier": "MIT",
-        "url": "https://github.com/roswell/roswell/blob/master/COPYING"
+    "description": "Lisp implementation installer/manager and launcher",
+    "homepage": "https://github.com/roswell/roswell",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/roswell/roswell/releases/download/v20.04.14.105/roswell_20.04.14.105_amd64.zip",
+            "hash": "7462c6bf5d4e9b3ff03f68b6115ceefeb20fec9c7e9fc7fb0438c56e5273c395"
+        }
     },
-    "url": "https://github.com/roswell/roswell/releases/download/v20.04.14.105/roswell_20.04.14.105_amd64.zip",
-    "hash": "7462c6bf5d4e9b3ff03f68b6115ceefeb20fec9c7e9fc7fb0438c56e5273c395",
-    "bin": "roswell\\ros.exe",
-    "checkver": {
-        "github": "https://github.com/roswell/roswell"
-    },
+    "extract_dir": "roswell",
+    "bin": "ros.exe",
+    "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/roswell/roswell/releases/download/v$version/roswell_$version_amd64.zip",
-        "extract_dir": "PFiles\\roswell\\$version",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/roswell/roswell/releases/download/v$version/roswell_$version_amd64.zip"
+            }
+        },
         "hash": {
-            "url": "https://github.com/roswell/roswell/releases/download/v$version/roswell_$version_amd64.zip.hash",
-            "regex": "sha256sum\\t$sha256  $basename"
+            "url": "$url.hash",
+            "regex": "$sha256\\s+$basename"
         }
     }
 }
