@@ -43,7 +43,27 @@
     "installer": {
         "script": [
             "Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
-            "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\""
+            "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\"",
+            "if (Test-Path (appdir 'rtools' $global)) {",
+            "   $renvloc = \"$dir\\etc\\Renviron.site\"",
+            "   $rtoolsloc = versiondir 'rtools' (current_version 'rtools' $global) $global",
+            "   if (Test-Path $renvloc) {",
+            "       $renv = Get-Content $renvloc -Encoding ASCII",
+            "   } else {",
+            "       $renv = @()",
+            "   }",
+            "   if ($architecture -eq '32bit') {",
+            "       $rtoolspath = \"$rtoolsloc\\bin;$rtoolsloc\\mingw_32\\bin\"",
+            "   } else {",
+            "       $rtoolspath = \"$rtoolsloc\\bin;$rtoolsloc\\mingw_64\\bin\"",
+            "   }",
+            "   if ($renv -cmatch 'PATH=') {",
+            "       $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
+            "   } else {",
+            "       $renv += '\r\nPATH=\"' + $rtoolspath + ';${PATH}\"'",
+            "   }",
+            "   $renv | Set-Content $renvloc -Encoding ASCII",
+            "}"
         ]
     },
     "notes": [
