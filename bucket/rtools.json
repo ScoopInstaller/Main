@@ -1,9 +1,9 @@
 {
     "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
-    "version": "3.5.0.4",
-    "url": "https://cloud.r-project.org/bin/windows/Rtools/Rtools35.exe",
-    "hash": "18fd63bb9c903e1f9bfce5c9a2600bd24213295760592dbc130b73a61e9d9414",
+    "version": "4.0",
+    "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools40-x86_64.exe",
+    "hash": "5c10d60e73dd0186e8f886ef0b9388bb7dbdfdc17366c14c16183edb08fdb58a",
     "innosetup": true,
     "installer": {
         "script": [
@@ -16,9 +16,9 @@
             "           $renv = @()",
             "       }",
             "       if ($architecture -eq '32bit') {",
-            "           $rtoolspath = \"$dir\\bin;$dir\\mingw_32\\bin\"",
+            "           $rtoolspath = \"$dir\\usr\\bin;$dir\\mingw_32\\bin\"",
             "       } else {",
-            "           $rtoolspath = \"$dir\\bin;$dir\\mingw_64\\bin\"",
+            "           $rtoolspath = \"$dir\\usr\\bin;$dir\\mingw_64\\bin\"",
             "       }",
             "       if ($renv -cmatch 'PATH=') {",
             "           $renv = $renv -replace 'PATH=\"(.*)', 'PATH=\"$rtoolspath;$1'",
