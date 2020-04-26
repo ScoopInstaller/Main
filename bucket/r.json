@@ -43,10 +43,28 @@
     "installer": {
         "script": [
             "Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
-            "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\""
+            "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\"",
+            "if (Test-Path (appdir 'rtools' $global)) {",
+            "   $renvloc = \"$dir\\etc\\Renviron.site\"",
+            "   $rtoolsloc = versiondir 'rtools' (current_version 'rtools' $global) $global",
+            "   if (Test-Path $renvloc) {",
+            "       $renv = Get-Content $renvloc -Encoding ASCII",
+            "   } else {",
+            "       $renv = @()",
+            "   }",
+            "   $rtoolspath = \"$rtoolsloc\\usr\\bin\"",
+            "   if ($renv -cmatch 'PATH=') {",
+            "       $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
+            "   } else {",
+            "       $renv += '\r\nPATH=\"' + $rtoolspath + ';${PATH}\"'",
+            "   }",
+            "   $renv | Set-Content $renvloc -Encoding ASCII",
+            "}"
         ]
     },
     "notes": [
+        "For source packages installation, please install 'rtools'.",
+        "",
         "You'll need to type 'r.ps1' or 'r.cmd' to run R, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
         "",
         "You can remove Powershell's 'r' command with:",
