@@ -1,12 +1,13 @@
 {
-    "description": "AKS Engine is the easiest way to provision a self-managed Kubernetes cluster on Azure.",
+    "version": "0.50.0",
+    "description": "Self-managed Kubernetes cluster provisioning on Azure",
     "homepage": "https://github.com/Azure/aks-engine",
-    "version": "0.49.0",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Azure/aks-engine/releases/download/v0.49.0/aks-engine-v0.49.0-windows-amd64.zip",
-            "hash": "e288f8f36972d74a920ac749559bd28691a0d1570e1de3ebaa8b3f5a7260ae33"
+            "url": "https://github.com/Azure/aks-engine/releases/download/v0.50.0/aks-engine-v0.50.0-windows-amd64.zip",
+            "hash": "bd4d4096dbccac769838f50977206e3b5ef4ca79c2e1946fdf568090418e6de0",
+            "extract_dir": "aks-engine-v0.50.0-windows-amd64"
         }
     },
     "bin": "aks-engine.exe",
@@ -14,7 +15,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Azure/aks-engine/releases/download/v$version/aks-engine-v$version-windows-amd64.zip"
+                "url": "https://github.com/Azure/aks-engine/releases/download/v$version/aks-engine-v$version-windows-amd64.zip",
+                "extract_dir": "aks-engine-v$version-windows-amd64"
             }
         }
     }
