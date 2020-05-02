@@ -1,15 +1,8 @@
 {
-    "license": {
-        "identifier": "BSD-3-Clause",
-        "url": "https://farmanager.com/license.php"
-    },
-    "notes": [
-        "Far Manager now supports Portable Mode! Please move the following directories:",
-        "From \"$env:APPDATA\\Far Manager\" and \"$env:LOCALAPPDATA\\Far Manager\" to \"$env:USERPROFILE\\scoop\\persist\\far\""
-    ],
-    "homepage": "https://farmanager.com/",
-    "description": "A text-mode files and archives manager.",
     "version": "30b5577",
+    "description": "A text-mode files and archives manager",
+    "homepage": "https://farmanager.com",
+    "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
             "url": "https://farmanager.com/files/Far30b5577.x64.20200327.7z",
@@ -20,24 +13,28 @@
             "hash": "4441a8e043f418a37e4789f4a9675d575132b8d8ee609524dd65e40667db7de3"
         }
     },
+    "pre_install": [
+        "$ini = 'Far.exe.ini'",
+        "if (!(Test-Path \"$persist_dir\\$ini\")) {",
+        "    Copy-Item \"$dir\\Far.exe.example.ini\" \"$dir\\$ini\"",
+        "    (Get-Content \"$dir\\$ini\") -replace ';(UseSystemProfiles=)1', '${1}0' | Set-Content \"$dir\\$ini\" -Encoding Ascii",
+        "        # Migrate from system wide configuration",
+        "    $env:LOCALAPPDATA, $env:APPDATA | ForEach-Object {",
+        "        if (Test-Path \"$_\\Far Manager\") {",
+        "            warn \"Copying system wide profile from $_ into $dir\"",
+        "            Copy-Item \"$_\\Far Manager\\*\" \"$dir\" -Recurse -Force",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "bin": "far.exe",
     "persist": [
         "Profile",
         "Far.exe.ini"
     ],
-    "pre_install": [
-        "if (!(Test-Path \"$dir\\Far.exe.ini\")) {",
-        "    (New-Item -Type File \"$dir\\Far.exe.ini\") | Out-Null",
-        "}"
-    ],
-    "post_install": [
-        "if ((Get-Item \"$dir\\Far.exe.ini\").Length -eq 0) {",
-        "    (Copy-Item \"$dir\\Far.exe.example.ini\" \"$dir\\Far.exe.ini\") | Out-Null",
-        "}",
-        "(Get-Content -Path \"$dir\\Far.exe.ini\") -replace ';UseSystemProfiles=1', 'UseSystemProfiles=0' | Set-Content -Path \"$dir\\Far.exe.ini\""
-    ],
     "checkver": {
         "url": "https://farmanager.com/download.php",
-        "re": "files/Far(?<version>[b\\d]+).x64.(?<date>\\d+).7z"
+        "regex": "files/Far(?<version>[b\\d]+).x64.(?<date>\\d+).7z"
     },
     "autoupdate": {
         "architecture": {
@@ -48,6 +45,5 @@
                 "url": "https://farmanager.com/files/Far$version.x86.$matchDate.7z"
             }
         }
-    },
-    "bin": "far.exe"
+    }
 }
