@@ -3,6 +3,10 @@
         "identifier": "BSD-3-Clause",
         "url": "https://farmanager.com/license.php"
     },
+    "notes": [
+        "Far Manager now supports Portable Mode! Please move the following directories:",
+        "From \"$env:APPDATA\\Far Manager\" and \"$env:LOCALAPPDATA\\Far Manager\" to \"$env:USERPROFILE\\scoop\\persist\\far\""
+    ],
     "homepage": "https://farmanager.com/",
     "description": "A text-mode files and archives manager.",
     "version": "30b5577",
@@ -16,6 +20,21 @@
             "hash": "4441a8e043f418a37e4789f4a9675d575132b8d8ee609524dd65e40667db7de3"
         }
     },
+    "persist": [
+        "Profile",
+        "Far.exe.ini"
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$dir\\Far.exe.ini\")) {",
+        "    (New-Item -Type File \"$dir\\Far.exe.ini\") | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "if ((Get-Item \"$dir\\Far.exe.ini\").Length -eq 0) {",
+        "    (Copy-Item \"$dir\\Far.exe.example.ini\" \"$dir\\Far.exe.ini\") | Out-Null",
+        "}",
+        "(Get-Content -Path \"$dir\\Far.exe.ini\") -replace ';UseSystemProfiles=1', 'UseSystemProfiles=0' | Set-Content -Path \"$dir\\Far.exe.ini\""
+    ],
     "checkver": {
         "url": "https://farmanager.com/download.php",
         "re": "files/Far(?<version>[b\\d]+).x64.(?<date>\\d+).7z"
