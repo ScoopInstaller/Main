@@ -12,7 +12,7 @@
     ],
     "url": "https://sdk.lunarg.com/sdk/download/1.2.135.0/windows/VulkanSDK-1.2.135.0-Installer.exe#/dl.7z",
     "hash": "181b3353612c8b0fc5e1857b652d62140191ae42b98f2f0d532cf349cebfd8c6",
-    "pre_install": "Remove-Item -R -Path \"$dir\\`$TEMP\",\"$dir\\`$PLUGINSDIR\",\"$dir\\`$1\",\"$dir\\Uninstall.exe.nsis\"",
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstal*\" -Recurse",
     "architecture": {
         "64bit": {
             "env_add_path": [
