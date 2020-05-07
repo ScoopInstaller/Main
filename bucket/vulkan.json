@@ -1,0 +1,41 @@
+{
+    "version": "1.2.135.0",
+    "description": "Vulkan is a new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms.",
+    "homepage": "https://www.khronos.org/vulkan/",
+    "license": {
+        "identifier": "Multiple Licenses"
+    },
+    "url": "https://sdk.lunarg.com/sdk/download/1.2.135.0/windows/VulkanSDK-1.2.135.0-Installer.exe#/dl.7z",
+    "hash": "181b3353612c8b0fc5e1857b652d62140191ae42b98f2f0d532cf349cebfd8c6",
+    "pre_install": "Remove-Item -R -Path \"$dir\\`$TEMP\",\"$dir\\`$PLUGINSDIR\",\"$dir\\`$1\",\"$dir\\Uninstall.exe.nsis\"",
+    "architecture": {
+        "64bit": {
+            "env_add_path": [
+                "Bin",
+                "Tools"
+            ]
+        },
+        "32bit": {
+            "env_add_path": [
+                "Bin32",
+                "Tools32"
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://vulkan.lunarg.com/sdk/home.dhtml",
+        "regex": "#sdk/downloadConfirm/([\\d\\.]+)"
+    },
+    "autoupdate": {
+        "url": "https://sdk.lunarg.com/sdk/download/$version/windows/VulkanSDK-$version-Installer.exe#/dl.7z",
+        "hash": {
+            "url": "https://vulkan.lunarg.com/sdk/home.dhtml",
+            "regex": ">([\\da-f]{64})<"
+        }
+    },
+    "notes": [
+        "Please make sure you have the vulkan driver installed.",
+        "Variety of drivers of different graphic card vendors could be",
+        "found at the bottom of https://vulkan.lunarg.com/sdk/home"
+    ]
+}
