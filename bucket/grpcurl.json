@@ -1,0 +1,39 @@
+{
+    "homepage": "https://github.com/fullstorydev/grpcurl",
+    "description": "Command-line tool for interacting with gRPC servers",
+    "license": "MIT",
+    "version": "1.5.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/fullstorydev/grpcurl/releases/download/v1.5.0/grpcurl_1.5.0_windows_x86_64.zip",
+            "hash": "6561fe6eaf1f03806121093468a52c88faf59b496068d399c12a5a6ba124d782"
+        },
+        "32bit": {
+            "url": "https://github.com/fullstorydev/grpcurl/releases/download/v1.5.0/grpcurl_1.5.0_windows_x86_32.zip",
+            "hash": "1ddf66112882aea2c624ee48ddfcf5b94fcbc96b364fef6a19c54ce92a8bda02"
+        }
+    },
+    "bin": "grpcurl.exe",
+    "checkver": {
+        "url": "https://github.com/fullstorydev/grpcurl/releases",
+        "re": "v(?<version>[\\d.]+)/grpcurl_(?<short>[\\d.]+).*\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/fullstorydev/grpcurl/releases/download/v$version/grpcurl_$version_windows_x86_64.zip",
+                "hash": {
+                    "url": "$baseurl/grpcurl_$version_checksums.txt",
+                    "mode": "extract"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/fullstorydev/grpcurl/releases/download/v$version/grpcurl_$version_windows_x86_32.zip",
+                "hash": {
+                    "url": "$baseurl/grpcurl_$version_checksums.txt",
+                    "mode": "extract"
+                }
+            }
+        }
+    }
+}
