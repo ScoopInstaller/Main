@@ -7,32 +7,32 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://www.python.org/ftp/python/3.8.3/python-3.8.3-amd64.exe",
+                "https://www.python.org/ftp/python/3.8.3/python-3.8.3-amd64.exe#/setup.exe",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/install-pep-514.reg",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/uninstall-pep-514.reg"
             ],
             "hash": [
                 "md5:fd2458fa0e9ead1dd9fbc2370a42853b",
                 "5d9d7a604c057e67973e1d4b3b488ae20a0e5ee5496d03b5cf091410e33e39ed",
-                "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9"
             ]
         },
         "32bit": {
             "url": [
-                "https://www.python.org/ftp/python/3.8.3/python-3.8.3.exe",
+                "https://www.python.org/ftp/python/3.8.3/python-3.8.3.exe#/setup.exe",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/install-pep-514.reg",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/uninstall-pep-514.reg"
             ],
             "hash": [
                 "md5:452373e2c467c14220efeb10f40c231f",
                 "5d9d7a604c057e67973e1d4b3b488ae20a0e5ee5496d03b5cf091410e33e39ed",
-                "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9"
             ]
         }
     },
     "pre_install": [
+        "$py_root = \"$dir\".Replace('\\', '\\\\')",
         "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
-        "    $py_root = \"$dir\".Replace('\\', '\\\\')",
         "    $py_version = ($version -split '\\.')[0..1] -join '.'",
         "    $content = Get-Content \"$dir\\$_\"",
         "    $content = $content.Replace('$py_root', $py_root)",
@@ -45,12 +45,12 @@
     ],
     "installer": {
         "script": [
-            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\"",
+            "Expand-DarkArchive \"$dir\\setup.exe\" \"$dir\\_tmp\"",
             "@('launcher.msi', 'path.msi', 'pip.msi') | ForEach-Object {",
             "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
             "}",
             "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
-            "Remove-Item \"$dir\\_tmp\", \"$dir\\$fname\" -Force -Recurse",
+            "Remove-Item \"$dir\\_tmp\", \"$dir\\setup.exe\" -Force -Recurse",
             "& \"$dir\\python.exe\" -E -s -m ensurepip -U --default-pip | Out-Null",
             "if ($global) {",
             "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
@@ -90,10 +90,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.python.org/ftp/python/$version/python-$version-amd64.exe"
+                "url": "https://www.python.org/ftp/python/$version/python-$version-amd64.exe#/setup.exe"
             },
             "32bit": {
-                "url": "https://www.python.org/ftp/python/$version/python-$version.exe"
+                "url": "https://www.python.org/ftp/python/$version/python-$version.exe#/setup.exe"
             }
         },
         "hash": {
