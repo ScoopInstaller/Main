@@ -19,7 +19,27 @@
                     "Remove-Item \"$dir\\bin\\x64\\Rblas.dll\", \"$dir\\bin\\x64\\Rlapack.dll\" -Force",
                     "movedir \"$dir\\Setup\\bin\\x64\" \"$dir\\bin\\x64\" | Out-Null",
                     "movedir \"$dir\\Setup\\library\" \"$dir\\library\" | Out-Null",
-                    "Remove-Item \"$dir\\_tmp\", \"$dir\\Setup\", \"$dir\\$fname\" -Force -Recurse"
+                    "Remove-Item \"$dir\\_tmp\", \"$dir\\Setup\", \"$dir\\$fname\" -Force -Recurse",
+                    "if (Test-Path (appdir 'rtools35' $global)) {",
+                    "   $renvloc = \"$dir\\etc\\Renviron.site\"",
+                    "   $rtoolsloc = versiondir 'rtools35' (current_version 'rtools35' $global) $global",
+                    "   if (Test-Path $renvloc) {",
+                    "       $renv = Get-Content $renvloc -Encoding ASCII",
+                    "   } else {",
+                    "       $renv = @()",
+                    "   }",
+                    "   if ($architecture -eq '32bit') {",
+                    "       $rtoolspath = \"$rtoolsloc\\bin;$rtoolsloc\\mingw_32\\bin\"",
+                    "   } else {",
+                    "       $rtoolspath = \"$rtoolsloc\\bin;$rtoolsloc\\mingw_64\\bin\"",
+                    "   }",
+                    "   if ($renv -cmatch 'PATH=') {",
+                    "       $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
+                    "   } else {",
+                    "       $renv += '\r\nPATH=\"' + $rtoolspath + ';${PATH}\"'",
+                    "   }",
+                    "   $renv | Set-Content $renvloc -Encoding ASCII",
+                    "}"
                 ]
             },
             "bin": [
@@ -30,6 +50,8 @@
         }
     },
     "notes": [
+        "For source packages installation, please install 'versions/rtools35'.",
+        "",
         "You'll need to type 'r.ps1' or 'r.cmd' to run MRO, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
         "",
         "You can remove Powershell's 'r' command with:",
