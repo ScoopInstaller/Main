@@ -1,0 +1,28 @@
+{
+    "version": "2.12.0",
+    "description": "Sloc, Cloc and Code: scc is a very fast accurate code counter with complexity calculations and COCOMO estimates written in pure Go",
+    "homepage": "https://github.com/boyter/scc",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/boyter/scc/releases/download/v2.12.0/scc-2.12.0-x86_64-pc-windows.zip",
+            "hash": "094a01d1ce3ccb71c1ac07cd31d1aa9332559c141abb166d3e7b82f2abc969b8"
+        },
+        "32bit": {
+            "url": "https://github.com/boyter/scc/releases/download/v2.12.0/scc-2.12.0-i386-pc-windows.zip",
+            "hash": "f33cae24796389166478892e89468c52467e4212c28ba4e6f3e929a3a2e4a852"
+        }
+    },
+    "bin": "scc.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/boyter/scc/releases/download/v$version/scc-$version-x86_64-pc-windows.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/boyter/scc/releases/download/v$version/scc-$version-i386-pc-windows.zip"
+            }
+        }
+    }
+}
