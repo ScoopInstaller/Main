@@ -1,7 +1,7 @@
 {
     "version": "4.2.2",
-    "homepage": "https://ffmpeg.zeranoe.com/builds/",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
@@ -20,7 +20,11 @@
         "bin\\ffplay.exe",
         "bin\\ffprobe.exe"
     ],
-    "checkver": "name=\"v\"\\s+value=\"([\\d.]+)\"",
+    "checkver": {
+        "url": "https://ffmpeg.zeranoe.com/builds/win64/shared/",
+        "regex": "ffmpeg-([\\d.]+)-win64-shared\\.zip",
+        "reverse": true
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
