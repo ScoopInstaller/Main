@@ -1,32 +1,40 @@
 {
     "homepage": "https://www.mercurial-scm.org/",
     "description": "Fast, lightweight, distributed source control management system designed for easy and efficient handling of very large distributed projects.",
-    "version": "5.3.2",
+    "version": "5.4",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-5.3.2-x64.exe",
-            "hash": "e4668f098da30ece283cff8a0f1046e687f8ebd966d88f34be91e48d2c9d76be"
+            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-5.4-x64-python2.exe",
+            "hash": "66b72a4fd05e63e0407abcb7c031f14d08e33e79e411053005ccc4abe438b4ec"
         },
         "32bit": {
-            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-5.3.2.exe",
-            "hash": "b57b42ef71776969b44fde4f036c5a0f21fe1a3a7d366507f7a761f506251b35"
+            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-5.4-x86-python2.exe",
+            "hash": "517c1f5adc199a33d6500c8695853557d1aa8372a78bb79459bdaf536dcbb8c9"
         }
     },
     "innosetup": true,
     "bin": "hg.exe",
     "checkver": {
         "url": "https://www.mercurial-scm.org/release/windows/latest.dat",
-        "re": "Mercurial-([\\w.]+).exe"
+        "re": "Mercurial([-\w.]+)\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version-x64.exe"
+                "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version-x64-python2.exe"
             },
             "32bit": {
-                "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version.exe"
+                "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version-x86-python2.exe"
             }
         }
-    }
+    },
+    "notes": [
+        "Starting mercurial version 5.2 the python3 (3.5, 3.6, and 3.7) is supported.",
+        "Mercurial with Python 3 on Windows is not yet widely tested and there are some known issues.",
+        "Windows support running mercurial with python3 is considered BETA quality.",
+        "Currently still using python2 for scoop.",
+        "Assuming Windows porting proceeds well, it is expected we will drop support for Python 2.7 sometime in 2020.",
+        "For more information visit: https://www.mercurial-scm.org/wiki/Python3"
+    ]
 }
