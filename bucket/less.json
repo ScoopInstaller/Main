@@ -1,22 +1,18 @@
 {
     "homepage": "http://www.greenwoodsoftware.com/less/",
     "description": "A terminal pager program used to view (but not change) the contents of a text file one screen at a time, similar to the 'more' command.",
-    "version": "551",
+    "version": "561.1",
     "license": "GPL-3.0-only|BSD-3-Clause",
     "bin": [
         "less.exe",
         "lesskey.exe"
     ],
-    "checkver": {
-        "url": "https://www.guysalias.tk/misc/less/",
-        "re": "less-([\\d]+)-"
-    },
-    "extract_dir": "less-551-win32-static-x86",
-    "hash": "8ec4eb52b6f8cedf48d18491fd161ea9039ba40fdbd8fb466aa978c55cf5a372",
-    "url": "https://raw.githubusercontent.com/ScoopInstaller/Binary/master/less/less-551-win32-static-x86.7z",
+    "checkver": "github",
+
+    "hash": [ "a1d778f5f82a2399b0df279b3c182becae5f5474ff6f507f61e78af1dd41a7cd", "25224f351d5c7bebadad62fde950ec851e0df3adba7ba5e3c075ba3caa53634c"],
+    "url": [ "https://github.com/jftuga/less-Windows/releases/download/less-v561.1/less.exe", "https://github.com/jftuga/less-Windows/releases/download/less-v561.1/lesskey.exe" ],
     "autoupdate": {
-        "extract_dir": "less-$version-win32-static-x86",
-        "url": "https://www.guysalias.tk/misc/less/less-$version-win32-static-x86.7z",
+        "url": "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less.exe",
         "hash": {
             "url": "$url.sha256"
         }
