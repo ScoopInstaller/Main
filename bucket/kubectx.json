@@ -1,0 +1,26 @@
+{
+    "version": "0.9.0",
+    "description": "Kubernetes contexts manager",
+    "homepage": "https://kubectx.dev",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ahmetb/kubectx/releases/download/v0.9.0/kubectx_v0.9.0_windows_x86_64.zip",
+            "hash": "8c567d750ec77e71f6f9a7b818bf06dd45f9c90d9d44d763084a0054a024e560"
+        }
+    },
+    "bin": "kubectx.exe",
+    "checkver": {
+        "github": "https://github.com/ahmetb/kubectx"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ahmetb/kubectx/releases/download/v$version/kubectx_v$version_windows_x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
