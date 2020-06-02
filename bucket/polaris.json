@@ -11,7 +11,7 @@
     },
     "extract_dir": "Permafrost\\Polaris",
     "pre_install": [
-        "New-Item -Type Directory \"$persist_dir\" -Force | Out-Null",
+        "ensure \"$persist_dir\" | Out-Null",
         "Copy-Item \"$persist_dir\\db.sqlite\" \"$dir\" -ErrorAction SilentlyContinue -Force"
     ],
     "uninstaller": {
@@ -21,14 +21,14 @@
         [
             "polaris.exe",
             "polaris",
-            "-w $dir\\web -s $dir\\swagger -d $dir\\db.sqlite"
+            "-w \"$dir\\web\" -s \"$dir\\swagger\" -d $dir\\db.sqlite\""
         ]
     ],
     "shortcuts": [
         [
             "polaris.exe",
             "polaris",
-            "-w $dir\\web -s $dir\\swagger -d $dir\\db.sqlite"
+            "-w \"$dir\\web\" -s \"$dir\\swagger\" -d $dir\\db.sqlite\""
         ]
     ],
     "checkver": "github",
