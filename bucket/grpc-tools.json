@@ -1,0 +1,28 @@
+{
+    "version": "0.2.5",
+    "description": "A suite of gRPC debugging tools. Like Fiddler/Charles but for gRPC.",
+    "homepage": "https://github.com/bradleyjkemp/grpc-tools",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bradleyjkemp/grpc-tools/releases/download/v0.2.5/grpc-tools_0.2.5_Windows_amd64.zip",
+            "hash": "c0eacdc2fa0e745512c4d43e32633aad847f5a41107a38643fe0da3a8800ef6b"
+        }
+    },
+    "bin": [
+        "grpc-dump.exe",
+        "grpc-fixture.exe",
+        "grpc-replay.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bradleyjkemp/grpc-tools/releases/download/v$version/grpc-tools_$version_Windows_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
