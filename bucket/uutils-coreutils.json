@@ -1,33 +1,37 @@
 {
-    "version": "0.0.3",
+    "version": "0.0.1.1",
     "description": "Rust implementation of GNU coreutils (binaries compiled with MSVC)",
     "homepage": "https://github.com/uutils/coreutils",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/rivy/rust.coreutils/releases/download/0.0.3/uutils-0.0.3-x86_64-pc-windows-msvc.zip",
-            "hash": "ab4a80df9c2046ff578b5bdb8e61d4e4ed4dc9684f583dbdce60d9fe5900dea6",
-            "extract_dir": "uutils-0.0.3-x86_64-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.0.1.1/coreutils-0.0.1.1-x86_64-pc-windows-msvc.zip",
+            "hash": "50389d532c14c105a6078b340afb3941015fc78e17ca1717412710c16c8475c4",
+            "extract_dir": "coreutils-0.0.1.1-x86_64-pc-windows-msvc"
         },
         "32bit": {
-            "url": "https://github.com/rivy/rust.coreutils/releases/download/0.0.3/uutils-0.0.3-i686-pc-windows-msvc.zip",
-            "hash": "8beef7663a0ae2d8823d33467cb597021e2969b417fdf82006e2eec07ea0fb2e",
-            "extract_dir": "uutils-0.0.3-i686-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.0.1.1/coreutils-0.0.1.1-i686-pc-windows-msvc.zip",
+            "hash": "2551690e01aae882d7ab1c2dc71bf24ece1a3725a81ccc1b54780233b2437728",
+            "extract_dir": "coreutils-0.0.1.1-i686-pc-windows-msvc"
         }
     },
-    "bin": "uutils.exe",
-    "checkver": {
-        "github": "https://github.com/rivy/rust.coreutils"
-    },
+    "bin": [
+        "coreutils.exe",
+        [
+            "coreutils.exe",
+            "uutils"
+        ]
+    ],
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/rivy/rust.coreutils/releases/download/$version/uutils-$version-x86_64-pc-windows-msvc.zip",
-                "extract_dir": "uutils-$version-x86_64-pc-windows-msvc"
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "coreutils-$version-x86_64-pc-windows-msvc"
             },
             "32bit": {
-                "url": "https://github.com/rivy/rust.coreutils/releases/download/$version/uutils-$version-i686-pc-windows-msvc.zip",
-                "extract_dir": "uutils-$version-i686-pc-windows-msvc"
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "coreutils-$version-i686-pc-windows-msvc"
             }
         }
     }

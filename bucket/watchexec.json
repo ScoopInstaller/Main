@@ -1,15 +1,23 @@
 {
-    "homepage": "https://github.com/mattgreen/watchexec",
+    "version": "1.13.1",
     "description": "Execute commands in response to file modifications",
+    "homepage": "https://github.com/watchexec/watchexec",
     "license": "Apache-2.0",
-    "version": "1.12.0",
-    "url": "https://github.com/mattgreen/watchexec/releases/download/1.12.0/watchexec-1.12.0-x86_64-pc-windows-msvc.zip",
-    "hash": "4005419192054cc42dcd3ce83458168ac271b1a1b5ee4b6ac26828a2068661b3",
-    "extract_dir": "watchexec-1.12.0-x86_64-pc-windows-msvc",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/watchexec/watchexec/releases/download/1.13.1/watchexec-1.13.1-x86_64-pc-windows-msvc.zip",
+            "hash": "4528c1d34563d2c3fe5db3362014166f813faeed31478ab0502b416434ccd68b",
+            "extract_dir": "watchexec-1.13.1-x86_64-pc-windows-msvc"
+        }
+    },
     "bin": "watchexec.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/mattgreen/watchexec/releases/download/$version/watchexec-$version-x86_64-pc-windows-msvc.zip",
-        "extract_dir": "watchexec-$version-x86_64-pc-windows-msvc"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/watchexec/watchexec/releases/download/$version/watchexec-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "watchexec-$version-x86_64-pc-windows-msvc"
+            }
+        }
     }
 }

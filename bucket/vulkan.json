@@ -1,0 +1,41 @@
+{
+    "version": "1.2.141.0",
+    "description": "SDK for new generation graphics and compute API",
+    "homepage": "https://www.khronos.org/vulkan/",
+    "license": {
+        "identifier": "MIT,...",
+        "url": "https://vulkan.lunarg.com/license/#/license"
+    },
+    "notes": [
+        "Make sure you have the vulkan driver installed.",
+        "Variety of drivers of different graphic card vendors could be found at the bottom of 'https://www.khronos.org/vulkan/'"
+    ],
+    "url": "https://sdk.lunarg.com/sdk/download/1.2.141.0/windows/VulkanSDK-1.2.141.0-Installer.exe#/dl.7z",
+    "hash": "0375a6a31a65d8c17b0f817835aed6cdc651783a24c37b51f8ca76cc33e37579",
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstal*\" -Recurse",
+    "architecture": {
+        "64bit": {
+            "env_add_path": [
+                "Bin",
+                "Tools"
+            ]
+        },
+        "32bit": {
+            "env_add_path": [
+                "Bin32",
+                "Tools32"
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://vulkan.lunarg.com/sdk/home.dhtml",
+        "regex": "/VulkanSDK-([\\d.]+)-Installer\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://sdk.lunarg.com/sdk/download/$version/windows/VulkanSDK-$version-Installer.exe#/dl.7z",
+        "hash": {
+            "url": "https://vulkan.lunarg.com/sdk/home.dhtml",
+            "regex": "(?sm)$basename.*?>$sha256</"
+        }
+    }
+}

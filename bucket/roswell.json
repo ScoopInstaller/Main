@@ -1,0 +1,26 @@
+{
+    "version": "20.04.14.105",
+    "description": "Lisp implementation installer/manager and launcher",
+    "homepage": "https://github.com/roswell/roswell",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/roswell/roswell/releases/download/v20.04.14.105/roswell_20.04.14.105_amd64.zip",
+            "hash": "7462c6bf5d4e9b3ff03f68b6115ceefeb20fec9c7e9fc7fb0438c56e5273c395"
+        }
+    },
+    "extract_dir": "roswell",
+    "bin": "ros.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/roswell/roswell/releases/download/v$version/roswell_$version_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.hash",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}

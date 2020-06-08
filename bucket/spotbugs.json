@@ -1,0 +1,33 @@
+{
+    "version": "4.0.3",
+    "description": "Static analysis tool for Java",
+    "homepage": "https://spotbugs.github.io/",
+    "license": "LGPL-2.1-only",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "url": "https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs/4.0.3/spotbugs-4.0.3.zip",
+    "hash": "799a43974c6a4da66c5125d5ab78b588085fd1d9ecf9bf0da75c0e0a722e88e0",
+    "extract_dir": "spotbugs-4.0.3",
+    "bin": "bin\\spotbugs.bat",
+    "shortcuts": [
+        [
+            "bin\\spotbugs.bat",
+            "SpotBugs",
+            "",
+            "bin\\spotbugs.ico"
+        ]
+    ],
+    "persist": "plugin",
+    "checkver": {
+        "url": "https://spotbugs.readthedocs.io/en/stable/installing.html",
+        "regex": "spotbugs ([\\d.]+) documentation"
+    },
+    "autoupdate": {
+        "url": "https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs/$version/spotbugs-$version.zip",
+        "extract_dir": "spotbugs-$version"
+    }
+}
