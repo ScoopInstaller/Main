@@ -1,0 +1,34 @@
+{
+    "version": "1.6.0",
+    "description": "cURL like utility for gRPC",
+    "homepage": "https://github.com/fullstorydev/grpcurl",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/fullstorydev/grpcurl/releases/download/v1.6.0/grpcurl_1.6.0_windows_x86_64.zip",
+            "hash": "6f418bb8bd7b57d4116925d894782142863617e35c46dca8a047983737f0301d"
+        },
+        "32bit": {
+            "url": "https://github.com/fullstorydev/grpcurl/releases/download/v1.6.0/grpcurl_1.6.0_windows_x86_32.zip",
+            "hash": "d975772608dd98bc034526899320fb5bebb8e68efe377198643226ffb1f06288"
+        }
+    },
+    "bin": "grpcurl.exe",
+    "checkver": {
+        "url": "https://github.com/fullstorydev/grpcurl/releases",
+        "regex": "grpcurl_([\\d.]+)_windows_x"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/fullstorydev/grpcurl/releases/download/v$version/grpcurl_$version_windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/fullstorydev/grpcurl/releases/download/v$version/grpcurl_$version_windows_x86_32.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/grpcurl_$version_checksums.txt"
+        }
+    }
+}
