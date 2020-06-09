@@ -1,0 +1,36 @@
+{
+    "homepage": "https://github.com/kordamp/gm",
+    "description": "Gum is a Gradle/Maven wrapper",
+    "version": "0.3.0",
+    "license": "Apache-2.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/kordamp/gm/releases/download/v0.3.0/gm_Windows_i386.zip",
+            "hash": "sha512:1af52673cf1217d286ee3e392592829df1416c981198b5a4b58026684a24d488052da6425818243fef305126b04460aed60d800da9f1ac03c08baeaaa2a32372"
+        },
+        "64bit": {
+            "url": "https://github.com/kordamp/gm/releases/download/v0.3.0/gm_Windows_x86_64.zip",
+            "hash": "sha512:f33d6983695d966790aa8ac448c8612cd71d485151bd926bfcfde0f3a6e2ebf5bf1643e6d1242d93cb1f407f1debc4fea566acb0c92b7364891d8f02f232a3e4"
+        }
+    },
+    "bin": [
+        [
+            "gm.exe",
+            "gum"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/kordamp/gm/releases/download/v$version/gm_Windows_i386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/kordamp/gm/releases/download/v$version/gm_Windows_x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
