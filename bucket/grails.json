@@ -1,8 +1,14 @@
 {
-    "homepage": "https://grails.org/",
-    "description": "A powerful Groovy-based web application framework for the JVM built on top of Spring Boot.",
     "version": "4.0.3",
+    "description": "A powerful Groovy-based web application framework for the JVM built on top of Spring Boot.",
+    "homepage": "https://grails.org",
     "license": "Apache-2.0",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
     "url": "https://github.com/grails/grails-core/releases/download/v4.0.3/grails-4.0.3.zip",
     "hash": "4a1b219451a4a64d0236ad1e1b6e1946ca916258db069c526eb751b1f9dbed80",
     "extract_dir": "grails-4.0.3",
@@ -10,14 +16,9 @@
     "env_set": {
         "GRAILS_HOME": "$dir"
     },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
-    },
     "checkver": {
-        "github": "https://github.com/grails/grails-core"
+        "url": "https://github.com/grails/grails-core/releases",
+        "regex": "/grails-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "url": "https://github.com/grails/grails-core/releases/download/v$version/grails-$version.zip",
