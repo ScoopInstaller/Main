@@ -1,25 +1,33 @@
 {
+    "version": "20.6.0",
+    "description": "The stream database optimized for event sourcing",
     "homepage": "https://eventstore.org/",
-    "description": "The stream database optimized for event sourcing.",
     "license": "BSD-3-Clause",
-    "version": "4.1.4",
-    "url": "https://eventstore.org/downloads/EventStore-OSS-Win-v4.1.4.zip",
-    "hash": "96abde47438446a1de575d111065d887484e5f64f67c862e1f806d14831e7d78",
+    "architecture": {
+        "64bit": {
+            "url": "https://eventstore.com/downloads/win/EventStore-OSS-Windows-2019-v20.6.0.zip",
+            "hash": "9231cb29d7bd4f7db09c39e5f56a91e4d7c03c9281bdf47447836f8b7c6a08ff"
+        }
+    },
+    "extract_dir": "EventStore-OSS-Windows-2019-v20.6.0",
     "bin": [
         [
             "EventStore.ClusterNode.exe",
             "eventstore"
         ],
         "EventStore.ClusterNode.exe",
-        "EventStore.PAdmin.exe",
-        "EventStore.Query.exe",
         "EventStore.TestClient.exe"
     ],
     "checkver": {
         "url": "https://eventstore.org/downloads",
-        "re": "/downloads/EventStore-OSS-Win-v([\\d.]+(-[\\w\\d]+)?).zip"
+        "regex": "EventStore-OSS-Windows-2019-v([\\d.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://eventstore.org/downloads/EventStore-OSS-Win-v$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://eventstore.com/downloads/win/EventStore-OSS-Windows-2019-v$version.zip"
+            }
+        },
+        "extract_dir": "EventStore-OSS-Windows-2019-v$version"
     }
 }
