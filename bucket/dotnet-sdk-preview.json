@@ -1,0 +1,42 @@
+{
+    "version": "5.0",
+    "homepage": "https://www.microsoft.com/net/",
+    "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.visualstudio.microsoft.com/download/pr/d4c38dd9-6cfe-4e0b-91d3-511ede217bcc/6e6a85d8a85194a416503d1a103e95e0/dotnet-sdk-5.0.100-preview.5.20279.10-win-x64.zip",
+            "hash": "sha512:086927a537acd60cfe71cfb760d01659c77a7f918f1848b9b5776759043e45d3ead0f394aff6b45cc01f8c0f5f0fc22d0fca5a8ba478b9d514d56547492789be"
+        },
+        "32bit": {
+            "url": "https://download.visualstudio.microsoft.com/download/pr/63061248-531e-488d-a9c8-794a33a06ab7/910cf966d38c953d94d3140487786bb7/dotnet-sdk-5.0.100-preview.5.20279.10-win-x86.zip",
+            "hash": "sha512:2a906c071d3c32f9f2be846675dc3a487ea6e9127ca5dc9cbcf35d3f57cfd4817df1b006360c0455bbb6cd2e711296ccf4250733013b0740ca04509186c8e549"
+        }
+    },
+    "bin": "dotnet.exe",
+    "suggest": {
+        "Visual C++ Redistributable 2019": "extras/vcredist2019"
+    },
+    "env_add_path": ".",
+    "env_set": {
+        "DOTNET_ROOT": "$dir",
+        "MSBuildSDKsPath": "$dir\\sdk\\$version\\Sdks"
+    },
+    "checkver": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+        "regex": "(?s)(?<rtv>[\\d.]+)[^\\d]*?([\\d.]+)[^\\d]*?(?:current|lts)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x64.zip"
+            },
+            "32bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$matchRtv-sha.txt"
+        }
+    }
+}
