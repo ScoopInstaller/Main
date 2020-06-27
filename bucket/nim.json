@@ -1,20 +1,20 @@
 {
-    "homepage": "https://nim-lang.org/",
+    "version": "1.2.4",
     "description": "A statically typed compiled systems programming language, which combines successful concepts from mature languages like Python, Ada and Modula.",
-    "version": "1.2.2",
+    "homepage": "https://nim-lang.org/",
     "license": "MIT",
+    "depends": "gcc",
     "architecture": {
         "64bit": {
-            "url": "https://nim-lang.org/download/nim-1.2.2_x64.zip",
-            "hash": "142ade2508bf5c8020a1bafeb9383fbdc424161f1bd966172732035a1024f59a"
+            "url": "https://nim-lang.org/download/nim-1.2.4_x64.zip",
+            "hash": "0892b8988a7ee14e4ba477ad2057e8d7ce937f8a3d4d1aaac52fda9cf28ffe53"
         },
         "32bit": {
-            "url": "https://nim-lang.org/download/nim-1.2.2_x32.zip",
-            "hash": "7aca1fd47dc4e6348ed7399375775bfc056f0c0fd4d78676e48440244be97e18"
+            "url": "https://nim-lang.org/download/nim-1.2.4_x32.zip",
+            "hash": "7b5ae87a7bad27c0c386289acc2418f9006af4882e59d3fe786caae92781306e"
         }
     },
-    "depends": "gcc",
-    "extract_dir": "nim-1.2.2",
+    "extract_dir": "nim-1.2.4",
     "post_install": [
         "# Copy Nimble package",
         "Copy-Item -Recurse \"$dir\\dist\\nimble\\src\\nimblepkg\" \"$dir\\bin\""
@@ -32,7 +32,7 @@
     "persist": "config",
     "checkver": {
         "url": "https://nim-lang.org/install_windows.html",
-        "re": "nim-([\\d.]+)_x64"
+        "regex": "nim-([\\d.]+)_x64"
     },
     "autoupdate": {
         "architecture": {
