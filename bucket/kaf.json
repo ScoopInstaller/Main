@@ -1,0 +1,24 @@
+{
+    "version": "0.1.38",
+    "description": "Modern CLI for Apache Kafka",
+    "homepage": "https://github.com/birdayz/kaf",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/birdayz/kaf/releases/download/v0.1.38/kaf_0.1.38_Windows_x86_64.tar.gz",
+            "hash": "ce3cc29362b68f2b8a54c7653c34e1381a760d6135ad014592106b727cf1f391"
+        }
+    },
+    "bin": "kaf.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/birdayz/kaf/releases/download/v$version/kaf_$version_Windows_x86_64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
