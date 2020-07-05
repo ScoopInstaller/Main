@@ -2,25 +2,15 @@
     "homepage": "http://msys2.github.io",
     "description": "A software distro and building platform for Windows.",
     "##": "64-bit version is able to build both 32-bit and 64-bit packages",
-    "version": "20200517",
+    "version": "2020-06-29",
     "license": "GPL-2.0-only|BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/msys2/msys2-installer/releases/download/2020-05-17/msys2-base-x86_64-20200517.tar.xz",
+            "url": "https://github.com/msys2/msys2-installer/releases/download/2020-06-29/msys2-base-x86_64-20200629.tar.xz",
             "extract_dir": "msys64",
-            "hash": "sha1:5409e7a10e5d1fcefe3ae120406ed3baa1b6f58a"
-        },
-        "32bit": {
-            "url": "https://github.com/msys2/msys2-installer/releases/download/2020-05-17/msys2-base-i686-20200517.tar.xz",
-            "extract_dir": "msys32",
-            "hash": "sha1:378e4cdfe41071e47312cfb8951dcb509a559542"
+            "hash": "sha1:97efb2d53f00dbc01b3572852f91a5b682b9d301"
         }
     },
-    "pre_install": [
-        "if ($architecture -eq '32bit') {",
-        "   $manifest.bin += ,@('autorebase.bat', 'autorebase')",
-        "}"
-    ],
     "bin": [
         [
             "msys2_shell.cmd",
@@ -67,9 +57,6 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/msys2/msys2-installer/releases/download/$version/msys2-base-x86_64-$cleanVersion.tar.xz"
-            },
-            "32bit": {
-                "url": "https://github.com/msys2/msys2-installer/releases/download/$version/msys2-base-i686-$cleanVersion.tar.xz"
             }
         }
     }
