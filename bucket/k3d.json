@@ -1,0 +1,21 @@
+{
+    "homepage": "https://github.com/rancher/k3d",
+    "license": "MIT",
+    "description": "Little helper to run Rancher Lab's k3s in Docker",
+    "version": "1.7.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rancher/k3d/releases/download/v1.7.0/k3d-windows-amd64.exe#/k3d.exe",
+            "hash": "1f8e8515f281a8439bea5605c122ac4f45192c3f043f315f22250bd23f36e661"
+        }
+    },
+    "bin": "k3d.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rancher/k3d/releases/download/v$version/k3d-windows-amd64.exe#/k3d.exe"
+            }
+        }
+    }
+}
