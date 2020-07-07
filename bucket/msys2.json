@@ -2,25 +2,15 @@
     "homepage": "http://msys2.github.io",
     "description": "A software distro and building platform for Windows.",
     "##": "64-bit version is able to build both 32-bit and 64-bit packages",
-    "version": "20190524",
+    "version": "2020-06-29",
     "license": "GPL-2.0-only|BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/msys2/Base/x86_64/msys2-base-x86_64-20190524.tar.xz",
+            "url": "https://github.com/msys2/msys2-installer/releases/download/2020-06-29/msys2-base-x86_64-20200629.tar.xz",
             "extract_dir": "msys64",
-            "hash": "sha1:cfe5035b1b81b43469d16bfc23be8006b9a44455"
-        },
-        "32bit": {
-            "url": "https://downloads.sourceforge.net/project/msys2/Base/i686/msys2-base-i686-20190524.tar.xz",
-            "extract_dir": "msys32",
-            "hash": "sha1:ff86c3e4ef8777074fd394510b95943d0c943956"
+            "hash": "44049b4a6a927f1a40f9d925df72764a8e6b2ae3bd62c8421f5a65c50c8eb9c4"
         }
     },
-    "pre_install": [
-        "if ($architecture -eq '32bit') {",
-        "   $manifest.bin += ,@('autorebase.bat', 'autorebase')",
-        "}"
-    ],
     "bin": [
         [
             "msys2_shell.cmd",
@@ -60,16 +50,13 @@
     "persist": "home",
     "notes": "Please run 'msys2' now for the MSYS2 setup to complete!",
     "checkver": {
-        "url": "https://sourceforge.net/projects/msys2/files/Base/x86_64/",
-        "re": "/msys2-base-x86_64-(\\d+).tar.xz"
+        "url": "https://github.com/msys2/msys2-installer",
+        "re": "/releases/tag/(?<version>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}))"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/msys2/Base/x86_64/msys2-base-x86_64-$version.tar.xz"
-            },
-            "32bit": {
-                "url": "https://downloads.sourceforge.net/project/msys2/Base/i686/msys2-base-i686-$version.tar.xz"
+                "url": "https://github.com/msys2/msys2-installer/releases/download/$version/msys2-base-x86_64-$matchYear$matchMonth$matchDay.tar.xz"
             }
         }
     }
