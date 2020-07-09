@@ -1,0 +1,31 @@
+{
+    "version": "12.0.4",
+    "description": "Count your code, quickly.",
+    "homepage": "https://github.com/XAMPPRocky/tokei",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/XAMPPRocky/tokei/releases/download/v12.0.4/tokei-x86_64-pc-windows-msvc.exe#/tokei.exe",
+            "hash": "c223b42dc2854fac4c92976ddd3018d244ecddf0c873eb45c622475fee3409db"
+        },
+        "32bit": {
+            "url": "https://github.com/XAMPPRocky/tokei/releases/download/v12.0.4/tokei-i686-pc-windows-msvc.exe#/tokei.exe",
+            "hash": "84790bf4626ff771d42e7734273eaf7459963b9cc7aa66ef8f114420d3ea01bd"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\tokei.toml\")) { New-Item \"$dir\\tokei.toml\" | Out-Null }",
+    "bin": "tokei.exe",
+    "persist": "tokei.toml",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/XAMPPRocky/tokei/releases/download/v$version/tokei-x86_64-pc-windows-msvc.exe#/tokei.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/XAMPPRocky/tokei/releases/download/v$version/tokei-i686-pc-windows-msvc.exe#/tokei.exe"
+            }
+        }
+    },
+    "notes": "For demo configure file 'tokei.toml', please see https://github.com/XAMPPRocky/tokei/blob/v12.0.4/tokei.example.toml"
+}
