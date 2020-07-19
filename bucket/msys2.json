@@ -1,14 +1,15 @@
 {
-    "homepage": "http://msys2.github.io",
-    "description": "A software distro and building platform for Windows.",
     "##": "64-bit version is able to build both 32-bit and 64-bit packages",
-    "version": "2020-06-29",
+    "version": "2020-07-19",
+    "description": "A software distro and building platform for Windows.",
+    "homepage": "http://msys2.github.io",
     "license": "GPL-2.0-only|BSD-3-Clause",
+    "notes": "Please run 'msys2' now for the MSYS2 setup to complete!",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/msys2/msys2-installer/releases/download/2020-06-29/msys2-base-x86_64-20200629.tar.xz",
+            "url": "https://github.com/msys2/msys2-installer/releases/download/2020-07-19/msys2-base-x86_64-20200719.tar.xz",
             "extract_dir": "msys64",
-            "hash": "44049b4a6a927f1a40f9d925df72764a8e6b2ae3bd62c8421f5a65c50c8eb9c4"
+            "hash": "1264de591091f22704463da60985c6d2a3c40ec0ed4b3e20ddfd5c56a8e746a8"
         }
     },
     "bin": [
@@ -48,10 +49,9 @@
         ]
     ],
     "persist": "home",
-    "notes": "Please run 'msys2' now for the MSYS2 setup to complete!",
     "checkver": {
         "url": "https://github.com/msys2/msys2-installer",
-        "re": "/releases/tag/(?<version>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}))"
+        "regex": "/releases/tag/(?<version>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}))"
     },
     "autoupdate": {
         "architecture": {
