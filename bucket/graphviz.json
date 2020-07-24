@@ -1,55 +1,49 @@
 {
     "homepage": "https://www.graphviz.org/",
     "description": "Open source graph visualization software.",
-    "version": "2.38",
+    "version": "2.44.1",
     "license": "EPL-1.0",
-    "url": "https://graphviz.gitlab.io/_pages/Download/windows/graphviz-2.38.msi",
-    "hash": "c794ea03bc2631fff468f4d97fa6726c536fc98ee579529779aa6f45e94e4f6d",
+    "architecture": {
+        "64bit": {
+            "url": "https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/x64/graphviz-install-2.44.1-win64.exe#/dl.7z",
+            "hash": "41d70c2462a08a06d077770cbbe4c2a731e31796c0fcccc33bbd60cec1dacf80"
+        },
+        "32bit": {
+            "url": "https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/Win32/graphviz-install-2.44.1-win32.exe#/dl.7z",
+            "hash": "ef16b9d616ebee92841a758d45c87ba1d15898daca4be01eb5211e7702a9a5e1"
+        }
+    },
     "bin": [
         "bin/acyclic.exe",
         "bin/bcomps.exe",
         "bin/ccomps.exe",
-        "bin/circo.exe",
         "bin/dijkstra.exe",
         "bin/dot.exe",
-        "bin/dotty.exe",
-        "bin/fc-cache.exe",
-        "bin/fc-cat.exe",
-        "bin/fc-list.exe",
-        "bin/fc-match.exe",
-        "bin/fdp.exe",
         "bin/gc.exe",
         "bin/gml2gv.exe",
         "bin/graphml2gv.exe",
-        "bin/gv2gml.exe",
         "bin/gvcolor.exe",
-        "bin/gvedit.exe",
         "bin/gvgen.exe",
-        "bin/gvmap.exe",
         "bin/gvpack.exe",
-        "bin/gvpr.exe",
         "bin/gxl2gv.exe",
-        "bin/lefty.exe",
-        "bin/lneato.exe",
-        "bin/mingle.exe",
         "bin/mm2gv.exe",
-        "bin/neato.exe",
         "bin/nop.exe",
-        "bin/osage.exe",
-        "bin/patchwork.exe",
-        "bin/prune.exe",
         "bin/sccmap.exe",
-        "bin/sfdp.exe",
-        "bin/smyrna.exe",
         "bin/tred.exe",
-        "bin/twopi.exe",
         "bin/unflatten.exe"
     ],
     "checkver": {
-        "url": "https://graphviz.gitlab.io/_pages/Download/Download_windows.html",
-        "re": "([\\d.]+) Stable Release"
+        "url": "https://gitlab.com/graphviz/graphviz/-/tags",
+        "re": "Stable Release ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://graphviz.gitlab.io/_pages/Download/windows/graphviz-$version.msi"
+        "architecture": {
+            "64bit": {
+                "url": "https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/x64/graphviz-install-$version-win64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/Win32/graphviz-install-$version-win32.exe#/dl.7z"
+            }
+        }
     }
 }
