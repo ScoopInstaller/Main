@@ -1,0 +1,24 @@
+{
+    "version": "7.0.1",
+    "description": "REST API for any Postgres database",
+    "homepage": "https://postgrest.org",
+    "license": "MIT",
+    "depends": "postgresql",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PostgREST/postgrest/releases/download/v7.0.1/postgrest-v7.0.1-windows-x64.zip",
+            "hash": "e5f4d66a29628c8e690a8c2486aff327fcfe0090b286bb72754d0f6260196c8c"
+        }
+    },
+    "bin": "postgrest.exe",
+    "checkver": {
+        "github": "https://github.com/PostgREST/postgrest"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PostgREST/postgrest/releases/download/v$version/postgrest-v$version-windows-x64.zip"
+            }
+        }
+    }
+}
