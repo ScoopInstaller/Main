@@ -5,6 +5,8 @@
     "license":  "Apache-2.0",
     "url":  "https://github.com/appbaseio/abc/releases/download/1.0.0-beta.1/abc-windows.zip",
     "hash":  "5fe08d7f8197e683abdb0adc91f6bc5db57f2bc1c2e13dd3bacf4c73de841548",
-    "bin":  "abc-windows",
-    "checkver": "github"
+    "bin":  "abc-windows.exe",
+    "pre_install": "if(Test-Path \"$dir\\abc-windows\") { Rename-Item \"$dir\\abc-windows\" \"$dir\\abc-windows.exe\" }",
+    "checkver": "github",
+
 }
