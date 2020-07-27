@@ -3,13 +3,24 @@
     "description": "A faster way to navigate your filesystem.",
     "homepage":  "https://github.com/ajeetdsouza/zoxide",
     "license":  "MIT",
-    "url":  "https://github.com/ajeetdsouza/zoxide/releases/download/v0.4.3/zoxide-x86_64-pc-windows-msvc.exe",
-    "hash":  "502e858569ea2dd31b08db5e6621330f36abdc9b90186c915c102fbd2c7b0c1a",
-    "notes": "You'll need to add zoxide to PowerShell after installation: https://github.com/ajeetdsouza/zoxide#powershell",
-    "pre_install": "Rename-Item -Path \"$dir\\zoxide-x86_64-pc-windows-msvc.exe\" -NewName \"zoxide.exe\"",
+    "notes": "See https://github.com/ajeetdsouza/zoxide#powershell for automatic profile configuration",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ajeetdsouza/zoxide/releases/download/v0.4.3/zoxide-x86_64-pc-windows-msvc.exe#/zoxide.exe",
+            "hash": "502e858569ea2dd31b08db5e6621330f36abdc9b90186c915c102fbd2c7b0c1a"
+        }
+    },
     "bin": "zoxide.exe",
+    "env_set": {
+        "_ZO_DATA_DIR": "$dir\\data"
+    },
+    "persist": "data",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/ajeetdsouza/zoxide/releases/download/v$version/zoxide-x86_64-pc-windows-msvc.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ajeetdsouza/zoxide/releases/download/v$version/zoxide-x86_64-pc-windows-msvc.exe#/zoxide.exe"
+            }
+        }
     }
 }
