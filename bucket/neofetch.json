@@ -1,10 +1,10 @@
 {
-    "homepage": "https://github.com/dylanaraps/neofetch",
+    "version": "7.1.0",
     "description": "A command-line system information tool written in bash 3.2+.",
+    "homepage": "https://github.com/dylanaraps/neofetch",
     "license": "MIT",
-    "version": "7.0.0",
-    "url": "https://raw.githubusercontent.com/dylanaraps/neofetch/7.0.0/neofetch",
-    "hash": "a405e0d3fabe93af5ef6afa094a38086d20b1e4d17fe9c2c7cd593b295186d65",
+    "url": "https://raw.githubusercontent.com/dylanaraps/neofetch/7.1.0/neofetch",
+    "hash": "3dc33493e54029fb1528251552093a9f9a2894fcf94f9c3a6f809136a42348c7",
     "pre_install": [
         "if(installed 'git-with-openssh') { $git = 'git-with-openssh' } else { $git = 'git' }",
         "Write-Output \"& `$(join-path `$(scoop prefix $git) 'bin\\bash.exe') `$(join-path `$psscriptroot 'neofetch') @args\" | Out-File \"$dir\\neofetch.ps1\" -encoding utf8"
@@ -16,9 +16,7 @@
             "git-with-openssh"
         ]
     },
-    "checkver": {
-        "github": "https://github.com/dylanaraps/neofetch"
-    },
+    "checkver": "github",
     "autoupdate": {
         "url": "https://raw.githubusercontent.com/dylanaraps/neofetch/$version/neofetch"
     }
