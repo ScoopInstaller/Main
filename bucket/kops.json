@@ -1,23 +1,25 @@
 {
-    "version": "1.17.1",
+    "version": "1.18.0",
     "description": "Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management.",
-    "homepage": "https://github.com/kubernetes/kops/",
+    "homepage": "https://kops.sigs.k8s.io",
     "license": "Apache-2.0",
     "depends": "kubectl",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kubernetes/kops/releases/download/v1.17.1/kops-windows-amd64#/kops.exe",
-            "hash": "sha1:dc942513c3652547f4c41c116388f26a92f56686"
+            "url": "https://github.com/kubernetes/kops/releases/download/v1.18.0/kops-windows-amd64#/kops.exe",
+            "hash": "6ab15d9f9d58497833f2dd1b5f05c144605c231cf708ab300fd648e40ca7abe5"
         }
     },
     "bin": "kops.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/kubernetes/kops"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/kubernetes/kops/releases/download/v$version/kops-windows-amd64#/kops.exe",
                 "hash": {
-                    "url": "$url-sha1"
+                    "url": "$url.sha256"
                 }
             }
         }
