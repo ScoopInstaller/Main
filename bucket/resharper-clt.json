@@ -1,13 +1,13 @@
 {
-    "homepage": "https://www.jetbrains.com/resharper/download/index.html#section=resharper-clt",
+    "version": "2020.2",
     "description": "A standalone command line tools to run ReSharper inspections outside of Visual Studio.",
-    "version": "2020.1.4",
+    "homepage": "https://www.jetbrains.com/resharper/download/index.html#section=resharper-clt",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.jetbrains.com/resharper/buy/command_line_license.html"
     },
-    "url": "https://download.jetbrains.com/resharper/ReSharperUltimate.2020.1.4/JetBrains.ReSharper.CommandLineTools.2020.1.4.zip",
-    "hash": "1528baf7db535644d5bd93d61f8be743d446365540c6e201c7b8ff37a0a47f52",
+    "url": "https://download.jetbrains.com/resharper/dotUltimate.2020.2/JetBrains.ReSharper.CommandLineTools.2020.2.zip",
+    "hash": "f43f11ae11087398b66869ffb9ce5e9d2f54d31c4a3ae847334edccfebb9f03c",
     "bin": [
         "cleanupcode.exe",
         "dupfinder.exe",
@@ -15,10 +15,10 @@
     ],
     "checkver": {
         "url": "https://data.services.jetbrains.com/products/releases?code=RSCLT&latest=true&type=release",
-        "jp": "$.RSCLT.[0].version"
+        "jsonpath": "$.RSCLT.[0].version"
     },
     "autoupdate": {
-        "url": "https://download.jetbrains.com/resharper/ReSharperUltimate.$version/JetBrains.ReSharper.CommandLineTools.$version.zip",
+        "url": "https://download.jetbrains.com/resharper/dotUltimate.$version/JetBrains.ReSharper.CommandLineTools.$version.zip",
         "hash": {
             "url": "$url.sha256"
         }
