@@ -1,20 +1,22 @@
 {
-    "homepage": "http://www.greenwoodsoftware.com/less/",
-    "description": "A terminal pager program used to view (but not change) the contents of a text file one screen at a time, similar to the 'more' command.",
     "version": "562.0",
+    "description": "A terminal pager program used to view (but not change) the contents of a text file one screen at a time, similar to the 'more' command.",
+    "homepage": "http://www.greenwoodsoftware.com/less/",
     "license": "GPL-3.0-only|BSD-3-Clause",
+    "url": [
+        "https://github.com/jftuga/less-Windows/releases/download/less-v562.0/less.exe",
+        "https://github.com/jftuga/less-Windows/releases/download/less-v562.0/lesskey.exe"
+    ],
+    "hash": [
+        "61044f632f5fce2ded86f23db0154d0e87256f840c2930bceeff04db9ee75830",
+        "7cd74ba88d578cd1566c4dd36e869859dae6030fcc9f1dc063145a9d2880151b"
+    ],
     "bin": [
         "less.exe",
         "lesskey.exe"
     ],
-    "checkver": "github",
-
-    "hash": [ "61044f632f5fce2ded86f23db0154d0e87256f840c2930bceeff04db9ee75830", "7cd74ba88d578cd1566c4dd36e869859dae6030fcc9f1dc063145a9d2880151b"],
-    "url": [ "https://github.com/jftuga/less-Windows/releases/download/less-v562.0/less.exe", "https://github.com/jftuga/less-Windows/releases/download/less-v562.0/lesskey.exe" ],
-    "autoupdate": {
-        "url": "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less.exe",
-        "hash": {
-            "url": "$url.sha256"
-        }
+    "checkver": {
+        "github": "https://github.com/jftuga/less-Windows",
+        "regex": "tag/less-v([\\d.]+)"
     }
 }
