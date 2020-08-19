@@ -1,0 +1,23 @@
+{
+    "homepage": "https://kind.sigs.k8s.io/docs/user/quick-start/",
+    "description": "kind is a tool for running local Kubernetes clusters using Docker container nodes.",
+    "license": "Apache-2.0",
+    "version": "0.8.1",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kubernetes-sigs/kind/releases/download/v0.8.1/kind-windows-amd64#/kind.exe",
+            "hash": "10d0a4adc7485a0525831b2cd67062dd75d551ec0133f09e3a7d2b2674f7efc5"
+        }
+    },
+    "bin": "kind.exe",
+    "checkver": {
+        "github": "https://github.com/kubernetes-sigs/kind"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kubernetes-sigs/kind/releases/download/v$version/kind-windows-amd64#/kind.exe"
+            }
+        }
+    }
+}
