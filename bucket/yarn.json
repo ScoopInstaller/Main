@@ -1,15 +1,18 @@
 {
-    "homepage": "https://yarnpkg.com/",
+    "version": "1.22.5",
     "description": "Node.js dependency manager",
-    "version": "1.22.4",
+    "homepage": "https://yarnpkg.com/",
     "license": "BSD-2-Clause",
-    "url": "https://yarnpkg.com/downloads/1.22.4/yarn-1.22.4.msi",
-    "hash": "6243f09fef4aa4e873f74133f94dc7dc715463dc14f9f8fe99e2627d99357bfb",
-    "persist": [
-        "cache",
-        "mirror",
-        "global"
-    ],
+    "suggest": {
+        "Node.js": [
+            "nodejs",
+            "nodejs-lts",
+            "nvm",
+            "nvs"
+        ]
+    },
+    "url": "https://yarnpkg.com/downloads/1.22.5/yarn-1.22.5.msi",
+    "hash": "d7c895bc2a28df456d561ce78b8f9367b0b6a27fb5344d532868fe6f62245a60",
     "post_install": [
         "yarn config set cache-folder \"$dir\\cache\"",
         "yarn config set yarn-offline-mirror \"$dir\\mirror\"",
@@ -17,10 +20,7 @@
         "yarn config set prefix \"$dir\\global\""
     ],
     "uninstaller": {
-        "script": [
-            "Remove-Item $env:LOCALAPPDATA\\Yarn -Recurse -Force",
-            "Remove-Item $env:USERPROFILE\\.yarnrc -Force"
-        ]
+        "script": "Remove-Item \"$env:LOCALAPPDATA\\Yarn\", \"$env:USERPROFILE\\.yarnrc\" -Recurse -Force"
     },
     "env_add_path": [
         "global\\node_modules\\.bin",
@@ -29,19 +29,16 @@
     "env_set": {
         "NODE_PATH": "$dir\\global\\node_modules"
     },
+    "persist": [
+        "cache",
+        "global",
+        "mirror"
+    ],
     "checkver": {
         "url": "https://yarnpkg.com/latest-version",
-        "re": "([\\d.]+)"
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://yarnpkg.com/downloads/$version/yarn-$version.msi"
-    },
-    "suggest": {
-        "Node.js": [
-            "nodejs",
-            "nodejs-lts",
-            "nvm",
-            "nvs"
-        ]
     }
 }
