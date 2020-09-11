@@ -1,0 +1,34 @@
+{
+    "version": "3.7.11",
+    "description": "Ccache (or \"ccache\") is a compiler cache. It speeds up recompilation by caching previous compilations and detecting when the same compilation is being done again.",
+    "homepage": "https://ccache.dev/",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ccache/ccache/releases/download/v3.7.11/ccache-3.7.11-windows-64.zip",
+            "hash": "ad172266a6d966aed9eb178d1c64b20577a5f28106c436fea83b91b9830299e1",
+            "extract_dir": "ccache-3.7.11-windows-64"
+        },
+        "32bit": {
+            "url": "https://github.com/ccache/ccache/releases/download/v3.7.11/ccache-3.7.11-windows-32.zip",
+            "hash": "eeb4ca6b6f47127551d024dbccca29685c8401066920d96ab51c331a8c4da4f6",
+            "extract_dir": "ccache-3.7.11-windows-32"
+        }
+    },
+    "bin": "ccache.exe",
+    "checkver": {
+        "github": "https://github.com/ccache/ccache"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ccache/ccache/releases/download/v$version/ccache-$version-windows-64.zip",
+                "extract_dir": "ccache-$version-windows-64"
+            },
+            "32bit": {
+                "url": "https://github.com/ccache/ccache/releases/download/v$version/ccache-$version-windows-32.zip",
+                "extract_dir": "ccache-$version-windows-32"
+            }
+        }
+    }
+}
