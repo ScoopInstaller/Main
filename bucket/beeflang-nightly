@@ -1,0 +1,28 @@
+{
+    "homepage": "https://www.beeflang.org/",
+    "description": "Nightly version of Beef.Beef is an open source performance-oriented compiled programming language which has been built hand-in-hand with its IDE environment.",
+    "version": "08.26.2020.0.42.6",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "http://nightly.beeflang.org/BeefSetup_0_42_6__08_26_2020.exe#/dl.7z",
+            "hash": ""
+        }
+    },
+    "bin": [
+        ["bin\\BeefIDE.exe","beefn"],
+        ["bin\\BeefBuild.exe","BeefBuildN"]
+    ],
+    "checkver": {
+        "url": "http://nightly.beeflang.org/index.html",
+        "re": "(?<=BeefSetup_)(\\d+)_(\\d+)_(\\d+)__(\\d+)_(\\d+)_(\\d+)",
+        "replace": "${4}.${5}.${6}.${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://nightly.beeflang.org/BeefSetup_$match1_$match2_$match3__$match4_$match5_$match6.exe#/dl.7z"
+            }
+        }
+    }
+}
