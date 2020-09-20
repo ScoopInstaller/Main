@@ -5,14 +5,9 @@
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-4.3.1-win64-static.zip",
-            "hash": "f33a409dc61df9448dcd0505c6d1614a1c161397b3e5ceaebf8f5c0287374108",
-            "extract_dir": "ffmpeg-4.3.1-win64-static"
-        },
-        "32bit": {
-            "url": "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-4.3.1-win32-static.zip",
-            "hash": "589e2dedd5bba34dede84c9513505768f4042a33b5bf21d90b97901da635a245",
-            "extract_dir": "ffmpeg-4.3.1-win32-static"
+            "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.zip",
+            "hash": "9F5DF9A7BC61BB2E6F54C60BFB7A41C30B22A1E6E89FF202FF66C29CD1F49C9A",
+            "extract_dir": "ffmpeg-4.3.1-full_build"
         }
     },
     "bin": [
@@ -21,19 +16,13 @@
         "bin\\ffprobe.exe"
     ],
     "checkver": {
-        "url": "https://ffmpeg.zeranoe.com/builds/win64/static/",
-        "regex": "ffmpeg-([\\d.]+)-win64-static\\.zip",
-        "reverse": true
+        "github": "https://github.com/FFmpeg/FFmpeg"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-$version-win64-static.zip",
-                "extract_dir": "ffmpeg-$version-win64-static"
-            },
-            "32bit": {
-                "url": "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-$version-win32-static.zip",
-                "extract_dir": "ffmpeg-$version-win32-static"
+                "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.zip",
+                "extract_dir": "ffmpeg-$version-full_build"
             }
         }
     }
