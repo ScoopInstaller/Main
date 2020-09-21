@@ -1,12 +1,12 @@
 {
     "version": "4.3.1",
-    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "description": "A complete, cross-platform solution to record, convert and stream audio and video",
     "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.zip",
-            "hash": "9F5DF9A7BC61BB2E6F54C60BFB7A41C30B22A1E6E89FF202FF66C29CD1F49C9A",
+            "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-full_build.zip",
+            "hash": "9f5df9a7bc61bb2e6f54c60bfb7a41c30b22a1e6e89ff202ff66c29cd1f49c9a",
             "extract_dir": "ffmpeg-4.3.1-full_build"
         }
     },
@@ -16,12 +16,13 @@
         "bin\\ffprobe.exe"
     ],
     "checkver": {
-        "github": "https://github.com/FFmpeg/FFmpeg"
+        "url": "https://www.gyan.dev/ffmpeg/builds/",
+        "regex": "(?sm)release-ver.*?<code>([\\d.]+)</code>"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.zip",
+                "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-full_build.zip",
                 "extract_dir": "ffmpeg-$version-full_build"
             }
         }
