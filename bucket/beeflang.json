@@ -1,7 +1,7 @@
 {
-    "homepage": "https://www.beeflang.org/",
-    "description": "Beef is an open source performance-oriented compiled programming language which has been built hand-in-hand with its IDE environment.",
     "version": "0.42.6",
+    "description": "Performance-oriented compiled programming language which has been built hand-in-hand with its IDE environment.",
+    "homepage": "https://www.beeflang.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
@@ -10,17 +10,17 @@
         }
     },
     "bin": [
-        ["bin\\BeefIDE.exe","beef"],
-        "bin\\BeefBuild.exe"
+        "bin\\BeefBuild.exe",
+        [
+            "bin\\BeefIDE.exe",
+            "beef"
+        ]
     ],
-    "checkver": {
-        "url": "https://www.beeflang.org/",
-        "re": "(?<=Version )(\\d.\\d+.\\d)"
-    },
+    "checkver": ">Version ([\\d.]+)</",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/beefytech/Beef/releases/download/$version/BeefSetup_$majorVersion_$minorVersion_$patchVersion.exe#/dl.7z"
+                "url": "https://github.com/beefytech/Beef/releases/download/$version/BeefSetup_$underscoreVersion.exe#/dl.7z"
             }
         }
     }

@@ -3,11 +3,19 @@
     "description": "Buildpack CLI",
     "homepage": "https://github.com/buildpacks/pack",
     "license": "Apache-2.0",
-    "url": "https://github.com/buildpacks/pack/releases/download/v0.13.1/pack-v0.13.1-windows.zip",
-    "hash": "3db9ca2a64ab26761a0e746c15d0f2585467ab197866ddc90bfdb237a0797174",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/buildpacks/pack/releases/download/v0.13.1/pack-v0.13.1-windows.zip",
+            "hash": "3db9ca2a64ab26761a0e746c15d0f2585467ab197866ddc90bfdb237a0797174"
+        }
+    },
     "bin": "pack.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/buildpacks/pack/releases/download/v$version/pack-v$version-windows.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/buildpacks/pack/releases/download/v$version/pack-v$version-windows.zip"
+            }
+        }
     }
 }
