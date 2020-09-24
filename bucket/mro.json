@@ -4,11 +4,11 @@
     "homepage": "https://mran.microsoft.com/",
     "license": "GPL-2.0-only",
     "suggest": {
-        "Visual C/C++ Runtime 2015": "extras/vcredist2015"
+        "Visual C/C++ Runtime 2015": "extras/vcredist2019"
     },
     "architecture": {
         "64bit": {
-            "url": "https://mran.blob.core.windows.net/install/mro/4.0.2/windows/microsoft-r-open-4.0.2.exe",
+            "url": "https://mran.blob.core.windows.net/install/mro/4.0.2/Windows/microsoft-r-open-4.0.2.exe",
             "hash": "eb4f0ddb009a5cf63a85024599238802e0f4e509be3a065a3eaed9d185de66b7",
             "installer": {
                 "script": [
@@ -20,19 +20,15 @@
                     "movedir \"$dir\\Setup\\bin\\x64\" \"$dir\\bin\\x64\" | Out-Null",
                     "movedir \"$dir\\Setup\\library\" \"$dir\\library\" | Out-Null",
                     "Remove-Item \"$dir\\_tmp\", \"$dir\\Setup\", \"$dir\\$fname\" -Force -Recurse",
-                    "if (Test-Path (appdir 'rtools35' $global)) {",
+                    "if (Test-Path (appdir 'rtools' $global)) {",
                     "   $renvloc = \"$dir\\etc\\Renviron.site\"",
-                    "   $rtoolsloc = versiondir 'rtools35' (current_version 'rtools35' $global) $global",
+                    "   $rtoolsloc = versiondir 'rtools' (current_version 'rtools' $global) $global",
                     "   if (Test-Path $renvloc) {",
                     "       $renv = Get-Content $renvloc -Encoding ASCII",
                     "   } else {",
                     "       $renv = @()",
                     "   }",
-                    "   if ($architecture -eq '32bit') {",
-                    "       $rtoolspath = \"$rtoolsloc\\bin;$rtoolsloc\\mingw_32\\bin\"",
-                    "   } else {",
-                    "       $rtoolspath = \"$rtoolsloc\\bin;$rtoolsloc\\mingw_64\\bin\"",
-                    "   }",
+                    "   $rtoolspath = \"$rtoolsloc\\usr\\bin\"",
                     "   if ($renv -cmatch 'PATH=') {",
                     "       $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
                     "   } else {",
@@ -50,7 +46,7 @@
         }
     },
     "notes": [
-        "For source packages installation, please install 'versions/rtools35'.",
+        "For source packages installation, please install 'rtools'.",
         "",
         "You'll need to type 'r.ps1' or 'r.cmd' to run MRO, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
         "",
@@ -68,7 +64,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mran.blob.core.windows.net/install/mro/$version/windows/microsoft-r-open-$version.exe",
+                "url": "https://mran.blob.core.windows.net/install/mro/$version/Windows/microsoft-r-open-$version.exe",
                 "hash": {
                     "mode": "json",
                     "jsonpath": "$..versions[?(@.downloadText == '$basename')].sha256",
