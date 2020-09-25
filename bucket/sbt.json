@@ -8,10 +8,13 @@
     "extract_dir": "sbt",
     "bin": "bin\\sbt.bat",
     "checkver": {
-        "github": "https://github.com/sbt/sbt"
+        "url": "https://www.scala-sbt.org/download.html",
+        "regex": "/sbt-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "url": "https://github.com/sbt/sbt/releases/download/v$version/sbt-$version.zip",
-        "extract_dir": "sbt"
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
 }

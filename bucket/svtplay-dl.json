@@ -1,17 +1,32 @@
 {
-    "version": "2.4",
+    "version": "2.5",
+    "description": "Video downloader from various sites",
+    "homepage": "https://svtplay-dl.se",
     "license": "MIT",
-    "description": "svtplay-dl cli program for downloading media",
-    "url": "https://svtplay-dl.se/download/2.4/svtplay-dl.zip",
-    "homepage": "https://svtplay-dl.se/",
-    "hash": "3227384d1cf21fddeb67c5be7f0bfb7686eb6a12b072009324740011ed5c2b72",
+    "suggest": {
+        "ffmpeg": "ffmpeg"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://svtplay-dl.se/download/2.5/svtplay-dl-amd64.zip",
+            "hash": "63865d573b9188d79424ef9e1921eff4ed50ecf272adea82b8e9d8c683f87ca1"
+        },
+        "32bit": {
+            "url": "https://svtplay-dl.se/download/2.5/svtplay-dl-win32.zip",
+            "hash": "9c9e986da2811aed9c0d41d2bd2a9d8df4379785bec756c7c78a36760f48a712"
+        }
+    },
     "extract_dir": "svtplay-dl",
     "bin": "svtplay-dl.exe",
-    "checkver": "<p.*>Currently v([\\d\\.\\d]+) \\(.*\\)</p>",
+    "checkver": ">Currently v([\\d.]+)\\s+\\(",
     "autoupdate": {
-        "url": "https://svtplay-dl.se/download/$version/svtplay-dl.zip"
-    },
-    "suggest": {
-        "ffmpeg for joining audio and video streams": "ffmpeg"
+        "architecture": {
+            "64bit": {
+                "url": "https://svtplay-dl.se/download/$version/svtplay-dl-amd64.zip"
+            },
+            "32bit": {
+                "url": "https://svtplay-dl.se/download/$version/svtplay-dl-win32.zip"
+            }
+        }
     }
 }
