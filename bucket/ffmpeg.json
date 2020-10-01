@@ -5,9 +5,9 @@
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2020-09-30-13-11/ffmpeg-n4.3.1-19-gaf2a430bb1-win64-gpl-4.3.zip",
-            "hash": "2fa66800e00c30a64b7325c24cd6779e72c6225834b97aec4865388fbefa671a",
-            "extract_dir": "ffmpeg-4.3.1-19-$build"
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2020-09-30-23-26/ffmpeg-n4.3.1-19-gaf2a430bb1-win64-gpl-4.3.zip",
+            "hash": "647ebd0e042b6ec365b3aa4bc558d8d8fa84864ce54bf37adc5737e608d0ded4",
+            "extract_dir": "ffmpeg-n4.3.1-19-gaf2a430bb1-win64-gpl-4.3"
         }
     },
     "bin": [
@@ -17,14 +17,14 @@
     ],
     "checkver": {
         "github": "https://github.com/BtbN/FFmpeg-Builds",
-        "re": "/autobuild-(?<time>[0-9-]+)/ffmpeg-n(?<version>[0-9.]+)-(?<build>[0-9]+)-g(?<hash>[a-z0-9]+)-win64-gpl-(?<short>[0-9.]+).zip",
+        "re": "/autobuild-(?<time>[0-9-]+)/ffmpeg-n(?<version>[0-9.]+)-(?<build>[0-9]+)-g(?<hash>[a-z0-9]+)-(?<variant>win64-gpl)-(?<short>[0-9.]+).zip",
         "replace": "${version}-${build}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$matchVersion-$matchBuild-g$matchHash-win64-gpl-$matchShort.zip",
-                "extract_dir": "ffmpeg-$version-$build"
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$matchVersion-$matchBuild-g$matchHash-$matchVariant-$matchShort.zip",
+                "extract_dir": "ffmpeg-n$matchVersion-$matchBuild-g$matchHash-$matchVariant-$matchShort"
             }
         }
     }
