@@ -1,0 +1,31 @@
+{
+    "version": "4.3.1-19",
+    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2020-09-30-23-26/ffmpeg-n4.3.1-19-gaf2a430bb1-win64-gpl-shared-4.3.zip",
+            "hash": "96303100df4c18abcc48840d8fe5f28b7acb6f72b0d40b265cc1563fbc399547",
+            "extract_dir": "ffmpeg-n4.3.1-19-gaf2a430bb1-win64-gpl-shared-4.3"
+        }
+    },
+    "bin": [
+        "bin\\ffmpeg.exe",
+        "bin\\ffplay.exe",
+        "bin\\ffprobe.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/BtbN/FFmpeg-Builds",
+        "re": "/autobuild-(?<time>[0-9-]+)/ffmpeg-N-(?<version>[0-9]+)-g(?<hash>[a-z0-9]+)-(?<variant>win64-gpl-shared-vulkan).zip",
+        "replace": "${version}-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$version-g$matchHash-$matchVariant.zip",
+                "extract_dir": "ffmpeg-n$version-g$matchHash-$matchVariant"
+            }
+        }
+    }
+}
