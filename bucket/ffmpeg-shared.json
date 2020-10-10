@@ -1,5 +1,5 @@
 {
-    "version": "4.3.1",
+    "version": "4.3.1-20",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
     "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
@@ -17,14 +17,14 @@
     ],
     "checkver": {
         "github": "https://github.com/BtbN/FFmpeg-Builds",
-        "re": "/autobuild-(?<time>[0-9-]+)/ffmpeg-n(?<version>[0-9.]+)-(?<build>[0-9]+)-g(?<hash>[a-z0-9]+)-(?<variant>win64-gpl-shared)-(?<short>[0-9.]+).zip",
-        "replace": "${version}"
+        "re": "/autobuild-(?<time>[0-9-]+)/ffmpeg-n(?<version>[0-9.]+)-(?<commit>[0-9]+)-g(?<hash>[a-z0-9]+)-(?<variant>win64-gpl-shared)-(?<short>[0-9.]+).zip",
+        "replace": "${version}-${commit}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$matchVersion-$matchBuild-g$matchHash-$matchVariant-$matchShort.zip",
-                "extract_dir": "ffmpeg-n$matchVersion-$matchBuild-g$matchHash-$matchVariant-$matchShort"
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$matchVersion-$matchCommit-g$matchHash-$matchVariant-$matchShort.zip",
+                "extract_dir": "ffmpeg-n$matchVersion-$matchCommit-g$matchHash-$matchVariant-$matchShort"
             }
         }
     }
