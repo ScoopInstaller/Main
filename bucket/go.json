@@ -1,31 +1,36 @@
 {
-    "version": "1.15.2",
-    "homepage": "https://golang.org",
+    "version": "1.15.3",
     "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
+    "homepage": "https://golang.org",
     "license": "BSD-3-Clause",
-    "extract_dir": "go",
-    "env_set": {
-        "GOROOT": "$dir"
-    },
-    "bin": [
-        "bin/go.exe",
-        "bin/gofmt.exe"
+    "notes": [
+        "Your GOROOT has been set to: $dir",
+        "You can run 'go env GOROOT' to view this at any time.",
+        "\"$env:USERPROFILE\\go\\bin\" has been added to your PATH."
     ],
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.google.com/go/go1.15.3.windows-amd64.zip",
+            "hash": "1d579d0e980763f60bf43afb7c3783caf63433a485731ef4d2e262878d634b3f"
+        },
+        "32bit": {
+            "url": "https://dl.google.com/go/go1.15.3.windows-386.zip",
+            "hash": "60b343d69ca2b0a947c750584cd194b25bd2c15eb08efb1fa29056f2af0c8780"
+        }
+    },
+    "extract_dir": "go",
     "installer": {
         "script": "add_first_in_path \"$env:USERPROFILE\\go\\bin\" $global"
     },
     "uninstaller": {
         "script": "remove_from_path \"$env:USERPROFILE\\go\\bin\" $global"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://dl.google.com/go/go1.15.2.windows-amd64.zip",
-            "hash": "e72782cc6de233188c75b06849368826eaa1b8bd9e1cd766db9466a12b7138ca"
-        },
-        "32bit": {
-            "url": "https://dl.google.com/go/go1.15.2.windows-386.zip",
-            "hash": "f61e54e558e23bf2626a34e3ae2f8b73c2411a9ee29ceeb39ffb712695098138"
-        }
+    "bin": [
+        "bin\\go.exe",
+        "bin\\gofmt.exe"
+    ],
+    "env_set": {
+        "GOROOT": "$dir"
     },
     "checkver": {
         "url": "https://golang.org/dl/",
@@ -43,10 +48,5 @@
         "hash": {
             "url": "$url.sha256"
         }
-    },
-    "notes": [
-        "Your GOROOT has been set to: $dir",
-        "You can run 'go env GOROOT' to view this at any time.",
-        "\"$env:USERPROFILE\\go\\bin\" has been added to your PATH."
-    ]
+    }
 }
