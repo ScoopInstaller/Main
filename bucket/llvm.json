@@ -1,16 +1,16 @@
 {
-    "version": "10.0.0",
+    "version": "11.0.0",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org",
     "license": "NCSA",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/LLVM-10.0.0-win64.exe#/dl.7z",
-            "hash": "893f8a12506f8ad29ca464d868fb432fdadd782786a10655b86575fc7fc1a562"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/LLVM-11.0.0-win64.exe#/dl.7z",
+            "hash": "a773ee3519ecc8d68d91f0ec72ee939cbed8ded483ba8e10899dc19bccba1e22"
         },
         "32bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/LLVM-10.0.0-win32.exe#/dl.7z",
-            "hash": "322f93717ce2b27a966779254d41be0fcd618a624619a8e2bb5aa6313ab4157b"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.0/LLVM-11.0.0-win32.exe#/dl.7z",
+            "hash": "4584e589e0633e2f0749d6e38db1ce29e875cc2ce5a8f608c8c5d708d64cfa8a"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\" -Recurse",
@@ -26,7 +26,6 @@
         "bin\\clang-doc.exe",
         "bin\\clang-extdef-mapping.exe",
         "bin\\clang-format.exe",
-        "bin\\clang-import-test.exe",
         "bin\\clang-include-fixer.exe",
         "bin\\clang-move.exe",
         "bin\\clang-offload-bundler.exe",
@@ -67,8 +66,8 @@
         "bin\\wasm-ld.exe"
     ],
     "checkver": {
-        "url": "https://releases.llvm.org/download.html",
-        "regex": "Download LLVM ([\\d.]+)"
+        "url": "https://llvm.org/",
+        "regex": "([\\d.]+):"
     },
     "autoupdate": {
         "architecture": {
