@@ -5,8 +5,8 @@
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2020-10-09-12-36/ffmpeg-n4.3.1-20-g8a2acdc6da-win64-gpl-shared-4.3.zip",
-            "hash": "b02214d2035c532a1b53b9d0d988d04b968ac42545b257e368e9a63b375520e7",
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2020-10-18-12-31/ffmpeg-n4.3.1-20-g8a2acdc6da-win64-gpl-shared-4.3.zip",
+            "hash": "86ae0015aede1189b2044f573912766907a3ae70a4f7a89bc704e33d785b14f2",
             "extract_dir": "ffmpeg-n4.3.1-20-g8a2acdc6da-win64-gpl-shared-4.3"
         }
     },
@@ -17,14 +17,14 @@
     ],
     "checkver": {
         "github": "https://github.com/BtbN/FFmpeg-Builds",
-        "re": "/autobuild-(?<time>[0-9-]+)/ffmpeg-n(?<version>[0-9.]+)-(?<commit>[0-9]+)-g(?<hash>[a-z0-9]+)-(?<variant>win64-gpl-shared)-(?<short>[0-9.]+).zip",
+        "regex": "/autobuild-(?<time>[\\d-]+)/ffmpeg-n(?<version>[\\d.]+)-(?<commit>\\d+)-g(?<hash>[a-z\\d]+)-win64-gpl-shared-[\\d.]+\\.zip",
         "replace": "${version}-${commit}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$matchVersion-$matchCommit-g$matchHash-$matchVariant-$matchShort.zip",
-                "extract_dir": "ffmpeg-n$matchVersion-$matchCommit-g$matchHash-$matchVariant-$matchShort"
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$version-g$matchHash-win64-gpl-shared-$majorVersion.$minorVersion.zip",
+                "extract_dir": "ffmpeg-n$version-g$matchHash-win64-gpl-shared-$majorVersion.$minorVersion"
             }
         }
     }
