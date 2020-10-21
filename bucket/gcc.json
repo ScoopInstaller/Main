@@ -52,6 +52,10 @@
             "pre_install": [
                 "Move-Item -Path \"$dir\\mingw64\\*\" -Destination \"$dir\"",
                 "Remove-Item -Path \"$dir\\mingw64\", \"$dir\\.*\""
+            ],
+            "post_install": [
+                "New-Item \"$dir\\bin\\bak\" -ItemType \"directory\"",
+                "Move-Item -Path \"$dir\\bin\\python*.exe\" -Destination \"$dir\\bin\\bak\""
             ]
         },
         "32bit": {
@@ -102,6 +106,10 @@
             "pre_install": [
                 "Move-Item -Path \"$dir\\mingw32\\*\" -Destination \"$dir\"",
                 "Remove-Item -Path \"$dir\\mingw32\", \"$dir\\.*\""
+            ],
+            "post_install": [
+                "New-Item \"$dir\\bin\\bak\" -ItemType \"directory\"",
+                "Move-Item -Path \"$dir\\bin\\python*.exe\" -Destination \"$dir\\bin\\bak\""
             ]
         }
     },

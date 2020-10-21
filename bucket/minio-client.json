@@ -1,13 +1,13 @@
 {
-    "homepage": "https://min.io/",
+    "version": "2020-10-03T02-54-56Z",
     "description": "A high performance, distributed object storage server, designed for large-scale data infrastructure. (client)",
+    "homepage": "https://min.io/",
     "license": "Apache-2.0",
-    "version": "2020-04-25T00-43-23Z",
     "bin": "mc.exe",
     "architecture": {
         "64bit": {
-            "url": "https://dl.min.io/client/mc/release/windows-amd64/mc.RELEASE.2020-04-25T00-43-23Z#/mc.exe",
-            "hash": "ea2a58f9fe69305b12ccc231916cf68c5295b24dc7ee7fc082fb30e28f6af84b"
+            "url": "https://dl.min.io/client/mc/release/windows-amd64/archive/mc.RELEASE.2020-10-03T02-54-56Z#/mc.exe",
+            "hash": "3b3d6c54551d0f20cda1a9bea5d70d24dd61f972d7723eb5ec5f36b59b219e95"
         }
     },
     "suggest": {
@@ -15,14 +15,14 @@
     },
     "checkver": {
         "github": "https://github.com/minio/mc",
-        "re": "releases/tag/RELEASE.([\\d-]+T[\\d-]+Z)"
+        "regex": "releases/tag/RELEASE.([\\d-]+T[\\d-]+Z)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.min.io/client/mc/release/windows-amd64/mc.RELEASE.$version#/mc.exe",
+                "url": "https://dl.min.io/client/mc/release/windows-amd64/archive/mc.RELEASE.$version#/mc.exe",
                 "hash": {
-                    "url": "$baseurl/mc.exe.sha256sum"
+                    "url": "$url.sha256sum"
                 }
             }
         }

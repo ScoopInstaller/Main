@@ -1,22 +1,8 @@
 {
-    "homepage": "https://git-for-windows.github.io/",
+    "version": "2.29.0.windows.1",
     "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.(BusyBox-backed MinGit, experimental, smaller version of MinGit)",
+    "homepage": "https://git-for-windows.github.io/",
     "license": "GPL-2.0-only",
-    "version": "2.26.2.windows.1",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.26.2.windows.1/MinGit-2.26.2-busybox-64-bit.zip",
-            "hash": "e834ea73fe093fb180dc45f67a1f2a7a566dab53d1d45bc3cd150106f5c40520"
-        },
-        "32bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.26.2.windows.1/MinGit-2.26.2-busybox-32-bit.zip",
-            "hash": "09856289d5dbd445e1e109fea8be85b3bac01ae31f79bef182568061ca880120"
-        }
-    },
-    "bin": [
-        "cmd\\git.exe",
-        "mingw64\\bin\\busybox.exe"
-    ],
     "notes": [
         "To get Git to recognise OpenSSH, you will need to run",
         "",
@@ -25,9 +11,23 @@
         "",
         "and then restart powershell."
     ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.0.windows.1/MinGit-2.29.0-busybox-64-bit.zip",
+            "hash": "d6dfaecebe65abf4239a41f909da56c430ae90cf17f1110412998377dfee0045"
+        },
+        "32bit": {
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.0.windows.1/MinGit-2.29.0-busybox-32-bit.zip",
+            "hash": "9297d6e813fd7d70edba120df213f665fcb57c5c04aa8e9a7152cea5398646a8"
+        }
+    },
+    "bin": [
+        "cmd\\git.exe",
+        "mingw64\\bin\\busybox.exe"
+    ],
     "checkver": {
         "url": "https://github.com/git-for-windows/git/releases/latest",
-        "re": "v(?<version>[\\d\\w.]+)/MinGit-(?<short>[\\d.]+).*\\.zip"
+        "regex": "v(?<version>[\\d\\w.]+)/MinGit-(?<short>[\\d.]+).*\\.zip"
     },
     "env_set": {
         "GIT_INSTALL_ROOT": "$dir"

@@ -1,22 +1,26 @@
 {
-    "homepage": "https://www.rethinkdb.com/",
-    "description": "Scalable database for realtime web apps.",
-    "license": "Apache-2.0",
     "version": "2.3.6",
+    "description": "Scalable database for realtime web apps",
+    "homepage": "https://www.rethinkdb.com/",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://download.rethinkdb.com/windows/rethinkdb-2.3.6.zip",
+            "url": "https://download.rethinkdb.com/repository/raw/windows/rethinkdb-2.3.6.zip",
             "hash": "691993516f62d3495d02fa853e49d920b2ee63f8b7e86c73592c8036f0bfa328"
         }
     },
-    "bin": "rethinkdb.exe",
     "extract_dir": "rethinkdb-2.3.6",
+    "bin": "rethinkdb.exe",
     "checkver": {
         "url": "https://rethinkdb.com/docs/install/windows/",
-        "re": "<a href=\"https://download\\.rethinkdb\\.com/windows/rethinkdb-([\\d.]+)\\.zip\">"
+        "regex": "/windows/rethinkdb-([\\d.]+)\\.zip\">"
     },
     "autoupdate": {
-        "url": "https://download.rethinkdb.com/windows/rethinkdb-$version.zip",
+        "architecture": {
+            "64bit": {
+                "url": "https://download.rethinkdb.com/repository/raw/windows/rethinkdb-$version.zip"
+            }
+        },
         "extract_dir": "rethinkdb-$version"
     }
 }

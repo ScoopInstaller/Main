@@ -1,34 +1,19 @@
 {
-    "homepage": "https://www.xpdfreader.com",
-    "description": "Several command-line utilities to read and extract data from PDF files",
     "version": "4.02",
-    "url": "https://xpdfreader-dl.s3.amazonaws.com/xpdf-tools-win-4.02.zip",
-    "hash": "b39a8e3f5f8f981328c926c6bcb3f3b11cc007c826719f6e10e3eb628e0a6355",
+    "description": "Several command-line utilities to read and extract data from PDF files",
+    "homepage": "https://www.xpdfreader.com",
     "license": {
         "identifier": "GPL-2.0-only|GPL-3.0-only",
         "url": "https://www.xpdfreader.com/opensource.html"
     },
+    "url": "https://xpdfreader-dl.s3.amazonaws.com/xpdf-tools-win-4.02.zip",
+    "hash": "b39a8e3f5f8f981328c926c6bcb3f3b11cc007c826719f6e10e3eb628e0a6355",
     "architecture": {
-        "32bit": {
-            "extract_dir": "xpdf-tools-win-4.02/bin32"
-        },
         "64bit": {
-            "extract_dir": "xpdf-tools-win-4.02/bin64"
-        }
-    },
-    "checkver": {
-        "url": "https://www.xpdfreader.com/download.html",
-        "re": "Current version:\\s*([^\\s<]+)"
-    },
-    "autoupdate": {
-        "url": "https://xpdfreader-dl.s3.amazonaws.com/xpdf-tools-win-$version.zip",
-        "architecture": {
-            "32bit": {
-                "extract_dir": "xpdf-tools-win-$version/bin32"
-            },
-            "64bit": {
-                "extract_dir": "xpdf-tools-win-$version/bin64"
-            }
+            "extract_dir": "xpdf-tools-win-4.02\\bin64"
+        },
+        "32bit": {
+            "extract_dir": "xpdf-tools-win-4.02\\bin32"
         }
     },
     "bin": [
@@ -41,5 +26,20 @@
         "pdftotext.exe",
         "pdfinfo.exe",
         "pdftops.exe"
-    ]
+    ],
+    "checkver": {
+        "url": "https://www.xpdfreader.com/download.html",
+        "regex": "Current version:\\s*([^\\s<]+)"
+    },
+    "autoupdate": {
+        "url": "https://xpdfreader-dl.s3.amazonaws.com/xpdf-tools-win-$version.zip",
+        "architecture": {
+            "64bit": {
+                "extract_dir": "xpdf-tools-win-$version\\bin64"
+            },
+            "32bit": {
+                "extract_dir": "xpdf-tools-win-$version\\bin32"
+            }
+        }
+    }
 }

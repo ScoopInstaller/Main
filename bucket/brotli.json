@@ -1,18 +1,18 @@
 {
-    "version": "1.0.7_2",
-    "homepage": "https://brotli.org/",
+    "version": "1.0.9",
     "description": "Lossless compression algorithm",
+    "homepage": "https://brotli.org/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://curl.haxx.se/windows/dl-7.69.1_2/brotli-1.0.7_2-win64-mingw.tar.xz",
-            "hash": "19757b18a6860be73487756f9ee0a1ef37fa2c1ab36636d190b745611ec5284c",
-            "extract_dir": "brotli-1.0.7-win64-mingw"
+            "url": "https://curl.haxx.se/windows/dl-7.73.0/brotli-1.0.9-win64-mingw.tar.xz",
+            "hash": "1f57a199fe77acb2594c75ac2cc7ca1ebc98a3181880e9956875c555b4344c91",
+            "extract_dir": "brotli-1.0.9-win64-mingw"
         },
         "32bit": {
-            "url": "https://curl.haxx.se/windows/dl-7.69.1_2/brotli-1.0.7_2-win32-mingw.tar.xz",
-            "hash": "378e1fb3d51baa5feb35e2f633d4cf916102af83d9d63dff3a176801251af683",
-            "extract_dir": "brotli-1.0.7-win32-mingw"
+            "url": "https://curl.haxx.se/windows/dl-7.73.0/brotli-1.0.9-win32-mingw.tar.xz",
+            "hash": "f8ad5b7c0bb3c62c07549573531d7995cf454b7ccc9a979689cb39c4f7ed6da1",
+            "extract_dir": "brotli-1.0.9-win32-mingw"
         }
     },
     "bin": [
@@ -22,7 +22,7 @@
     "pre_install": "Copy-Item \"$dir\\bin\\brotli.exe\" \"$dir\\bin\\unbrotli.exe\"",
     "checkver": {
         "url": "https://curl.haxx.se/windows/",
-        "re": "dl-(?<curl>[\\d._]+)/brotli-(?<version>[\\d._]+)-win64-mingw"
+        "regex": "dl-(?<curl>[\\d._]+)/brotli-(?<version>[\\d._]+)-win64-mingw"
     },
     "autoupdate": {
         "architecture": {
