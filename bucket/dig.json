@@ -1,8 +1,15 @@
 {
     "version": "9.14.8",
-    "homepage": "https://www.isc.org/bind/",
     "description": "dig (domain information groper) is a flexible tool for interrogating DNS name servers",
+    "homepage": "https://www.isc.org/bind/",
     "license": "MPL-2.0",
+    "notes": [
+        "The dig package has been deprecated, and will be removed in the future.",
+        "Please use the bind package instead."
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2012"
+    },
     "architecture": {
         "64bit": {
             "url": "https://ftp.isc.org/isc/bind9/9.14.8/BIND9.14.8.x64.zip",
@@ -14,10 +21,6 @@
         }
     },
     "bin": "dig.exe",
-    "checkver": {
-        "url": "https://www.isc.org/downloads/",
-        "regex": "Current-Stable[\\S\\s]*?BIND(.+)\\.x64\\.zip\""
-    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -27,12 +30,5 @@
                 "url": "https://ftp.isc.org/isc/bind$majorVersion/$version/BIND$version.x86.zip"
             }
         }
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2012"
-    },
-    "notes": [
-        "The dig package has been deprecated, and will be removed in the future.",
-        "Please use the bind package instead."
-    ]
+    }
 }

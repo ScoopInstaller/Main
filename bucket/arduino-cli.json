@@ -1,0 +1,28 @@
+{
+    "version": "0.13.0",
+    "description": "Arduino command line interface",
+    "homepage": "https://github.com/arduino/arduino-cli",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/arduino/arduino-cli/releases/download/0.13.0/arduino-cli_0.13.0_Windows_64bit.zip",
+            "hash": "efd2c9570e44bde1c48b15b9bcf80c1a530b79103146d66515569f7d6ee9c73d"
+        },
+        "32bit": {
+            "url": "https://github.com/arduino/arduino-cli/releases/download/0.13.0/arduino-cli_0.13.0_Windows_32bit.zip",
+            "hash": "edca26d8d5437813d1d9a18f4e7769c801793c2e57ec9ca5fbe6c17169643fd6"
+        }
+    },
+    "bin": "arduino-cli.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/arduino/arduino-cli/releases/download/$version/arduino-cli_$version_Windows_64bit.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/arduino/arduino-cli/releases/download/$version/arduino-cli_$version_Windows_32bit.zip"
+            }
+        }
+    }
+}
