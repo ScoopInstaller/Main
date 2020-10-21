@@ -1,7 +1,7 @@
 {
-    "homepage": "https://mingw-w64.org",
-    "description": "GNU Compiler Collection (Mingw-w64 port from MSYS2 project)",
     "version": "9.3.0-2",
+    "description": "GNU Compiler Collection (Mingw-w64 port from MSYS2 project)",
+    "homepage": "https://mingw-w64.org",
     "license": "GPL-3.0-or-later,ZPL-2.1,...",
     "architecture": {
         "64bit": {
@@ -50,12 +50,12 @@
                 "1decf05b8ae6ab10ddc9035929014837c18dd76da825329023da835aec53cec2"
             ],
             "pre_install": [
-                "Move-Item -Path \"$dir\\mingw64\\*\" -Destination \"$dir\"",
-                "Remove-Item -Path \"$dir\\mingw64\", \"$dir\\.*\""
+                "Move-Item \"$dir\\mingw64\\*\" \"$dir\"",
+                "Remove-Item \"$dir\\mingw64\", \"$dir\\.*\""
             ],
             "post_install": [
-                "New-Item \"$dir\\bin\\bak\" -ItemType \"directory\"",
-                "Move-Item -Path \"$dir\\bin\\python*.exe\" -Destination \"$dir\\bin\\bak\""
+                "ensure \"$dir\\bin\\bak\" | Out-Null",
+                "Move-Item \"$dir\\bin\\python*.exe\" \"$dir\\bin\\bak\""
             ]
         },
         "32bit": {
@@ -104,12 +104,12 @@
                 "addf6c52134027407640f1cbdf4efc5b64430f3a286cb4e4c4f5dbb44ce55a42"
             ],
             "pre_install": [
-                "Move-Item -Path \"$dir\\mingw32\\*\" -Destination \"$dir\"",
-                "Remove-Item -Path \"$dir\\mingw32\", \"$dir\\.*\""
+                "Move-Item \"$dir\\mingw32\\*\" \"$dir\"",
+                "Remove-Item \"$dir\\mingw32\", \"$dir\\.*\""
             ],
             "post_install": [
-                "New-Item \"$dir\\bin\\bak\" -ItemType \"directory\"",
-                "Move-Item -Path \"$dir\\bin\\python*.exe\" -Destination \"$dir\\bin\\bak\""
+                "ensure \"$dir\\bin\\bak\" | Out-Null",
+                "Move-Item \"$dir\\bin\\python*.exe\" \"$dir\\bin\\bak\""
             ]
         }
     },

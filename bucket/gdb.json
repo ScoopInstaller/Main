@@ -1,7 +1,7 @@
 {
-    "homepage": "https://mingw-w64.org",
-    "description": "GNU Debugger (Mingw-w64 port from MSYS2 project)",
     "version": "9.1-3",
+    "description": "GNU Debugger (Mingw-w64 port from MSYS2 project)",
+    "homepage": "https://mingw-w64.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
@@ -66,8 +66,8 @@
                 "1decf05b8ae6ab10ddc9035929014837c18dd76da825329023da835aec53cec2"
             ],
             "pre_install": [
-                "Move-Item -Path \"$dir\\mingw64\\*\" -Destination \"$dir\"",
-                "Remove-Item -Path \"$dir\\mingw64\", \"$dir\\.*\""
+                "Move-Item \"$dir\\mingw64\\*\" \"$dir\"",
+                "Remove-Item \"$dir\\mingw64\", \"$dir\\.*\""
             ]
         },
         "32bit": {
@@ -132,8 +132,8 @@
                 "addf6c52134027407640f1cbdf4efc5b64430f3a286cb4e4c4f5dbb44ce55a42"
             ],
             "pre_install": [
-                "Move-Item -Path \"$dir\\mingw32\\*\" -Destination \"$dir\"",
-                "Remove-Item -Path \"$dir\\mingw32\", \"$dir\\.*\""
+                "Move-Item \"$dir\\mingw32\\*\" \"$dir\"",
+                "Remove-Item \"$dir\\mingw32\", \"$dir\\.*\""
             ]
         }
     },
