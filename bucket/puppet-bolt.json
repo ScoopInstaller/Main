@@ -9,6 +9,12 @@
             "hash": "019ccb2238bd39144c9204541a156723f2e7750e369568a4597b028b114fd6c4"
         }
     },
+    "post_install": [
+        "if (Test-Path \"$dir\\share\\install-tarballs\\ruby*.tgz\") {",
+        "   Write-Host -F yellow \"Extract tarball of gems...\"",
+        "   Expand-7zipArchive \"$dir\\share\\install-tarballs\\ruby*.tgz\" \"$dir\"",
+        "}"
+    ],
     "extract_dir": "Puppet Labs\\Bolt",
     "bin": "bin\\bolt.bat",
     "checkver": {
