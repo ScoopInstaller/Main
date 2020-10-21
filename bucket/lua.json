@@ -1,26 +1,26 @@
 {
-    "homepage": "http://www.lua.org/",
-    "version": "5.4.0",
-    "license": "MIT",
+    "version": "5.4.1",
     "description": "A powerful, efficient, lightweight, embeddable scripting language",
+    "homepage": "http://www.lua.org",
+    "license": "MIT",
     "architecture": {
         "64bit": {
             "url": [
-                "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.4.0_Win64_bin.zip",
+                "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.4.1_Win64_bin.zip",
                 "https://joedf.ahkscript.org/LuaBuilds/hdata/libgcc_s_dw2-1.dll.zip"
             ],
             "hash": [
-                "8A28E57A70D8EB44AA6F3EB87390D36A3C9F37A867B0EDD99C7D3ED4CA28C8E7",
+                "0faeda4e64113fbfd288e7a12ce58aeaf92e01c2256340a5ae4bb8b617e8461f",
                 "546204ef8af80565b051b0d5dec2d885ae524cf060f99683e038e4b49b60d9e5"
             ]
         },
         "32bit": {
             "url": [
-                "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.4.0_Win32_bin.zip",
+                "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.4.1_Win32_bin.zip",
                 "https://joedf.ahkscript.org/LuaBuilds/hdata/libgcc_s_dw2-1.dll.zip"
             ],
             "hash": [
-                "73C5CBE6DE6702341E0258C0E70FC801D3715B104EEF27C7F953D2C7E5A3DBDF",
+                "720167e8786b2356f1c7371fedca80413896c10192bdaac007ffab0a899a8910",
                 "546204ef8af80565b051b0d5dec2d885ae524cf060f99683e038e4b49b60d9e5"
             ]
         }
@@ -31,6 +31,16 @@
     ],
     "checkver": {
         "url": "https://joedf.ahkscript.org/LuaBuilds/",
-        "regex": "Lua ([\\d.]+) for Windows"
+        "regex": "Lua ([\\d.]+(-[\\w]+)?)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-$version_Win64_bin.zip"
+            },
+            "32bit": {
+                "url": "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-$version_Win32_bin.zip"
+            }
+        }
     }
 }
