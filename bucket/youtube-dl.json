@@ -1,7 +1,7 @@
 {
     "version": "2020.09.20",
     "description": "Download videos from YouTube.com (and a few more sites) using command line.",
-    "homepage": "https://ytdl-org.github.io/youtube-dl/",
+    "homepage": "https://yt-dl.org/",
     "license": "Unlicense",
     "suggest": {
         "FFmpeg": [
@@ -10,14 +10,15 @@
         ],
         "vcredist": "extras/vcredist2010"
     },
-    "url": "https://github.com/ytdl-org/youtube-dl/releases/download/2020.09.20/youtube-dl.exe",
+    "url": "https://yt-dl.org/downloads/2020.09.20/youtube-dl.exe",
     "hash": "2b71484b309ae369873cb9a421ac03ba6b642704e112eb1ca5cde6820a12d8fb",
     "bin": "youtube-dl.exe",
     "checkver": {
-        "github": "https://github.com/ytdl-org/youtube-dl"
+        "url": "https://yt-dl.org/",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/ytdl-org/youtube-dl/releases/download/$version/youtube-dl.exe",
+        "url": "https://yt-dl.org/downloads/$version/youtube-dl.exe",
         "hash": {
             "url": "$baseurl/SHA2-256SUMS"
         }
