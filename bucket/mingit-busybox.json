@@ -1,5 +1,5 @@
 {
-    "version": "2.29.1.windows.1",
+    "version": "2.29.2.windows.1",
     "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.(BusyBox-backed MinGit, experimental, smaller version of MinGit)",
     "homepage": "https://git-for-windows.github.io/",
     "license": "GPL-2.0-only",
@@ -13,37 +13,37 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.1.windows.1/MinGit-2.29.1-busybox-64-bit.zip",
-            "hash": "7890ab11efab10af4a1a075289c9b34e95666e6c208ab791d6d52697d4c03797"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.2.windows.1/MinGit-2.29.2-busybox-64-bit.zip",
+            "hash": "daa29780b064f03563879ce48e94bab5e7ecf02eae80cf7191b7f47ccded205e"
         },
         "32bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.1.windows.1/MinGit-2.29.1-busybox-32-bit.zip",
-            "hash": "91e55d05213d0d0b86e9290c76e112c6de72cacd991b96b827224060f3912353"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.2.windows.1/MinGit-2.29.2-busybox-32-bit.zip",
+            "hash": "7e744368f4316b331df55a90632ef2140038553de79e1b68895c1ef1a97df8c6"
         }
     },
     "bin": [
         "cmd\\git.exe",
         "mingw64\\bin\\busybox.exe"
     ],
-    "checkver": {
-        "url": "https://github.com/git-for-windows/git/releases/latest",
-        "regex": "v(?<version>[\\d\\w.]+)/MinGit-(?<short>[\\d.]+).*\\.zip"
-    },
     "env_set": {
         "GIT_INSTALL_ROOT": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/git-for-windows/git",
+        "regex": "tag/v([\\w.]+)\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$matchVersion/MinGit-$matchShort-busybox-64-bit.zip"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchHead-busybox-64-bit.zip"
             },
             "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$matchVersion/MinGit-$matchShort-busybox-32-bit.zip"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchHead-busybox-32-bit.zip"
             }
         },
         "hash": {
-            "url": "https://github.com/git-for-windows/git/releases/latest",
-            "find": "<td>$basename<\\/td>\\s*<td>([0-9a-fA-F]+)<\\/td>"
+            "url": "https://github.com/git-for-windows/git/releases/tag/v$version",
+            "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
         }
     }
 }
