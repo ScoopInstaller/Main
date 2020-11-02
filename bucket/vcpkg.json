@@ -1,0 +1,29 @@
+{
+    "version": "2020.07",
+    "description": "C++ Library Manager for Windows, Linux, and MacOS.",
+    "homepage": "http://aka.ms/vcpkg",
+    "license": "MIT",
+    "notes": [
+        "vcpkg is installed with telemetry disabled flag (-disableMetrics) for privacy sake.",
+        "In order to use vcpkg with Visual Studio, run the following command (may require administrator elevation):",
+        "`vcpkg integrate install`"
+    ],
+    "url": "https://github.com/microsoft/vcpkg/archive/2020.07.zip",
+    "hash": "2b2cea3ce07a3159f1c5a6d21bfa5e44fe5f8f62966093890ee0f0f5718f122c",
+    "extract_dir": "vcpkg-2020.07",
+    "installer": {
+        "file": "bootstrap-vcpkg.bat",
+        "args": ["-disableMetrics"],
+        "keep": true
+    },
+    "bin": "vcpkg.exe",
+    "checkver": {
+        "github": "https://github.com/microsoft/vcpkg",
+        "regex": "/vcpkg-(?<year>[\\d{4}])\\.(?<month>[\\d{2}])\\.zip",
+        "replace": "${year}-${month}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/microsoft/vcpkg/archive/$version.zip",
+        "extract_dir": "vcpkg-$version"
+    }
+}
