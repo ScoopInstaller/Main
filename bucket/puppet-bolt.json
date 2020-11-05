@@ -10,13 +10,18 @@
         }
     },
     "extract_dir": "Puppet Labs\\Bolt",
+    "pre_install": [
+        "Set-Content \"$dir\\bolt.bat\" \"@ECHO OFF\" -Encoding Ascii",
+        "Add-Content \"$dir\\bolt.bat\" \"`r`nSET GEM_HOME=\" -Encoding Ascii",
+        "Add-Content \"$dir\\bolt.bat\" \"`r`n%~dp0\\bin\\bolt.bat %*\" -Encoding Ascii"
+    ],
     "post_install": [
         "if (Test-Path \"$dir\\share\\install-tarballs\\ruby*.tgz\") {",
         "   info 'Extract tarball of gems...'",
         "   Expand-7zipArchive \"$dir\\share\\install-tarballs\\ruby*.tgz\" \"$dir\" -Removal",
         "}"
     ],
-    "bin": "bin\\bolt.bat",
+    "bin": "bolt.bat",
     "checkver": {
         "url": "https://downloads.puppetlabs.com/windows/puppet/index_by_lastModified_reverse.html",
         "regex": "puppet-bolt-([\\d.]+)-x64\\.msi"
