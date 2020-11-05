@@ -9,10 +9,16 @@
         "`vcpkg integrate install`",
         "The best way to use installed libraries with cmake is via the toolchain file scripts\\buildsystems\\vcpkg.cmake.",
         "To use this file, you simply need to add it onto your CMake command line as:",
-        "`-DCMAKE_TOOLCHAIN_FILE=D:\\src\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake`"
+        "`-DCMAKE_TOOLCHAIN_FILE=D:\\src\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake`",
+        "Packages will be installed on $env:USERPROFILE\\.vcpkg\\."
     ],
     "url": "https://github.com/microsoft/vcpkg/archive/2020.07.zip",
     "hash": "2b2cea3ce07a3159f1c5a6d21bfa5e44fe5f8f62966093890ee0f0f5718f122c",
+    "post_install": [
+        "if (-not (Test-Path \"$env:USERPROFILE\\.vcpkg\")) {",
+        "   New-Item \"$env:USERPROFILE\\.vcpkg\" -ItemType Directory",
+        "}"
+    ],
     "extract_dir": "vcpkg-2020.07",
     "installer": {
         "file": "bootstrap-vcpkg.bat",
@@ -21,8 +27,9 @@
     },
     "bin": "vcpkg.exe",
     "env_set": {
-        "VCPKG_DOWNLOADS": "$env:USERPROFILE\\.vcpkgs",
-        "VCPKG_ROOT": "$env:USERPROFILE\\.vcpkgs"
+        "VCPKG_DOWNLOADS": "$env:USERPROFILE\\.vcpkg",
+        "VCPKG_ROOT": "$env:USERPROFILE\\.vcpkg",
+        "VCPKG_FEATURE_FLAGS": "manifests"
     },
     "checkver": {
         "github": "https://github.com/microsoft/vcpkg"
