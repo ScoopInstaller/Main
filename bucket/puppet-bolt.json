@@ -12,8 +12,9 @@
     "extract_dir": "Puppet Labs\\Bolt",
     "pre_install": [
         "Set-Content \"$dir\\bolt.bat\" \"@ECHO OFF\" -Encoding Ascii",
-        "Add-Content \"$dir\\bolt.bat\" \"`r`nSET GEM_HOME=\" -Encoding Ascii",
-        "Add-Content \"$dir\\bolt.bat\" \"`r`n%~dp0\\bin\\bolt.bat %*\" -Encoding Ascii"
+        "Add-Content \"$dir\\bolt.bat\" \"SETLOCAL\" -Encoding Ascii",
+        "Add-Content \"$dir\\bolt.bat\" \"SET GEM_HOME=\" -Encoding Ascii",
+        "Add-Content \"$dir\\bolt.bat\" \"%~dp0\\bin\\bolt.bat %*\" -Encoding Ascii"
     ],
     "post_install": [
         "if (Test-Path \"$dir\\share\\install-tarballs\\ruby*.tgz\") {",
