@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "description": "Android audio forwarding (scrcpy, but for audio)",
+  "homepage": "https://github.com/rom1v/sndcpy",
+  "license": "MIT",
+  "depends": "adb",
+  "url": "https://github.com/rom1v/sndcpy/releases/download/v1.0/sndcpy-v1.0.zip",
+  "hash": "4495f752fc192535cd5208ace4d35d2ba644beb9aabb0e288ae339861ad6782b",
+  "bin": [
+    "sndcpy.bat"
+  ],
+  "shortcuts": [
+    [
+      "sndcpy",
+      "sndcpy"
+    ]
+  ],
+  "env_set": {
+    "SNDCPY_APK": "$dir\\sndcpy.apk"
+  },
+  "notes": [
+    "VLC must be installed and the path to vlc.exe should be in the VLC environment variable unless you installed it to the default path in program files.",
+    "VLC can be installed from https://www.videolan.org/vlc/ or from extras/vlc"
+  ]
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://github.com/rom1v/sndcpy/releases/download/v$version/sndcpy-v$version.zip",
+    "hash": {
+      "url": "$baseurl/SHA256SUMS.txt"
+    }
+  }
+}
