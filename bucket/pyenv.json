@@ -3,15 +3,19 @@
     "description": "pyenv for Windows. pyenv is a simple python version management tool. It lets you easily switch between multiple versions of Python. It's simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one thing well.",
     "homepage": "https://github.com/pyenv-win/pyenv-win",
     "license": "MIT",
-    "url": "https://github.com/pyenv-win/pyenv-win/archive/v2.64.3.zip",
-    "extract_dir": "pyenv-win-2.64.3\\pyenv-win",
-    "hash": "fbdecdeed330279fde80038da150a2d54bff222f47481968ba2ef5e600363a84",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/pyenv-win/pyenv-win/archive/v2.64.3.zip",
+            "extract_dir": "pyenv-win-2.64.3\\pyenv-win",
+            "hash": "fbdecdeed330279fde80038da150a2d54bff222f47481968ba2ef5e600363a84"
+        }
+    },
     "bin": "bin\\pyenv.bat",
     "env_set": {
         "PYENV": "$dir\\pyenv-win"
     },
     "env_add_path": "shims",
-    "persist":[
+    "persist": [
         "version",
         "shims",
         "versions",
@@ -27,8 +31,12 @@
     ],
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/pyenv-win/pyenv-win/archive/v$version.zip",
-        "extract_dir": "pyenv-win-$version\\pyenv-win"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pyenv-win/pyenv-win/archive/v$version.zip",
+                "extract_dir": "pyenv-win-$version\\pyenv-win"
+            }
+        }
     },
-    "notes":"You can specify the PYTHON_BUILD_MIRROR_URL environment variable and run 'pyenv update' to speed up downloads."
+    "notes": "You can specify the PYTHON_BUILD_MIRROR_URL environment variable and run 'pyenv update' to speed up downloads."
 }
