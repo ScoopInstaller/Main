@@ -1,13 +1,28 @@
 {
-    "version": "3.0.1",
+    "version": "4.0.0",
     "description": "Multi-threaded lossless PNG optimizer",
     "homepage": "https://github.com/shssoichiro/oxipng",
     "license": "MIT",
-    "url": "https://github.com/shssoichiro/oxipng/releases/download/v3.0.1/oxipng-3.0.1-i686-pc-windows-msvc.zip",
-    "hash": "0d0453720fc041766b3f56131e825f7ac1782a18287d3214728fc62e32928f23",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/shssoichiro/oxipng/releases/download/v4.0.0/oxipng-4.0.0-x86_64-pc-windows-msvc.zip",
+            "hash": "d8de7b5513ccfd2a814758b6c9031b15fac7a5c4347e7f6c77f8f28a6bc404b2"
+        },
+        "32bit": {
+            "url": "https://github.com/shssoichiro/oxipng/releases/download/v4.0.0/oxipng-4.0.0-i686-pc-windows-msvc.zip",
+            "hash": "b789c2a1a3b818d097a757c86d88916b58fd179717e69b0b23b5082f0b5e45c5"
+        }
+    },
     "bin": "oxipng.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/shssoichiro/oxipng/releases/download/v$version/oxipng-$version-i686-pc-windows-msvc.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/shssoichiro/oxipng/releases/download/v$version/oxipng-$version-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/shssoichiro/oxipng/releases/download/v$version/oxipng-$version-i686-pc-windows-msvc.zip"
+            }
+        }
     }
 }
