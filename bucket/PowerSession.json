@@ -1,16 +1,24 @@
 {
-    "version": "1.2.1",
-    "description": "Powershell session recorder.",
+    "version": "1.3.0",
+    "description": "Powershell session recorder",
     "homepage": "https://github.com/ibigbug/PowerSession",
     "license": "MIT",
-    "url": "https://github.com/ibigbug/PowerSession/releases/download/release-v1.2.1/PowerSession.exe",
-    "hash": "8606db94e19119c1689705e0755bb1efa878574371d086f9ab5ed8f82922ce79",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ibigbug/PowerSession/releases/download/release-1.3.0/PowerSession.exe",
+            "hash": "1502414427412aa878fbd72ddbeef2af8e0b0f4d27354e596e296619734b71ac"
+        }
+    },
     "bin": "PowerSession.exe",
     "checkver": {
         "github": "https://github.com/ibigbug/PowerSession",
-        "regex": "tree/release-v([\\d.]+)"
+        "regex": "tag/release-([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/ibigbug/PowerSession/releases/download/release-v$version/PowerSession.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ibigbug/PowerSession/releases/download/release-$version/PowerSession.exe"
+            }
+        }
     }
 }
