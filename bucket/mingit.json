@@ -1,5 +1,5 @@
 {
-    "version": "2.29.2.windows.1",
+    "version": "2.29.2.windows.2",
     "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.",
     "homepage": "https://git-for-windows.github.io/",
     "license": "GPL-2.0-only",
@@ -13,12 +13,12 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.2.windows.1/MinGit-2.29.2-64-bit.zip",
-            "hash": "cf910f49d75224237d19895fd98a900336b53e414d16b80903e2ba2a500d4ec4"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.2.windows.2/MinGit-2.29.2.2-64-bit.zip",
+            "hash": "85943737a4fea3c2146f072379ed893b69ae47b9a3cea9772a3302138885f33e"
         },
         "32bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.2.windows.1/MinGit-2.29.2-32-bit.zip",
-            "hash": "99bc40b07dbc2bd72784fee4d2f0a5fa3fd37bd1e68d63219671c57f429c4f09"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.29.2.windows.2/MinGit-2.29.2.2-32-bit.zip",
+            "hash": "b498a0bab54340edd75c8483d1a7959d9ef1ddebc3bbb5ec66d82b3021f6bc58"
         }
     },
     "post_install": "git config --global credential.helper manager",
@@ -28,15 +28,15 @@
     },
     "checkver": {
         "github": "https://github.com/git-for-windows/git",
-        "regex": "tag/v([\\w.]+)\""
+        "regex": "v([\\w.]+)/MinGit-(?<full>[\\w.]+)-64-bit"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchHead-64-bit.zip"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-64-bit.zip"
             },
             "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchHead-32-bit.zip"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-32-bit.zip"
             }
         },
         "hash": {
