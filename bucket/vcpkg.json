@@ -1,5 +1,5 @@
 {
-    "version": "2020.07",
+    "version": "2020.11-1",
     "description": "C++ Library Manager for Windows, Linux, and MacOS.",
     "homepage": "http://aka.ms/vcpkg",
     "license": "MIT",
@@ -12,17 +12,17 @@
         "`-DCMAKE_TOOLCHAIN_FILE=D:\\src\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake`",
         "Packages will be installed on $env:USERPROFILE\\.vcpkg\\."
     ],
-    "url": "https://github.com/microsoft/vcpkg/archive/2020.07.zip",
-    "hash": "2b2cea3ce07a3159f1c5a6d21bfa5e44fe5f8f62966093890ee0f0f5718f122c",
+    "url": "https://github.com/microsoft/vcpkg/archive/2020.11-1.zip",
+    "hash": "926a7aa61c1f0af1f03d6dd3e840a1daf8d8029b6e2ef0d5da88163853902ca2",
     "post_install": [
         "if (-not (Test-Path \"$env:USERPROFILE\\.vcpkg\")) {",
         "   New-Item \"$env:USERPROFILE\\.vcpkg\" -ItemType Directory",
         "}"
     ],
-    "extract_dir": "vcpkg-2020.07",
+    "extract_dir": "vcpkg-2020.11-1",
     "installer": {
         "file": "bootstrap-vcpkg.bat",
-        "args": ["-disableMetrics"],
+        "args": "-disableMetrics",
         "keep": true
     },
     "bin": "vcpkg.exe",
