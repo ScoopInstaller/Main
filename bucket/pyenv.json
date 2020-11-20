@@ -5,20 +5,21 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Vixb1122/pyenv-win/releases/download/v2.64.3/pyenv-win.7z",
-            "hash": "88e92fd093cffdb7f6c91c232d092aedc279f79acf017f5115ecc714c6d7f39d"
+            "url": "https://github.com/pyenv-win/pyenv-win/archive/v2.64.3.zip",
+            "extract_dir": "pyenv-win-2.64.3",
+            "hash": "fbdecdeed330279fde80038da150a2d54bff222f47481968ba2ef5e600363a84"
         }
     },
-    "bin": "bin\\pyenv.bat",
+    "bin": "pyenv-win\\bin\\pyenv.bat",
     "env_set": {
-        "PYENV": "$dir"
+        "PYENV": "$dir\\pyenv-win"
     },
-    "env_add_path": "shims",
+    "env_add_path": "pyenv-win\\shims",
     "persist": [
-        "version",
-        "shims",
-        "versions",
-        "install_cache"
+        "pyenv-win\\version",
+        "pyenv-win\\shims",
+        "pyenv-win\\versions",
+        "pyenv-win\\install_cache"
     ],
     "pre_install": [
         "function CreateFile([String] $file, [String] $content = $null) {",
@@ -26,16 +27,14 @@
         "        New-Item -Force -Path \"$persist_dir\\$file\" -ItemType file -Value $content | Out-Null",
         "    }",
         "}",
-        "CreateFile 'version'"
+        "CreateFile 'pyenv-win\\version'"
     ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Vixb1122/pyenv-win/releases/download/v$version/pyenv-win.7z",
-                "hash": {
-                    "url": "$url.sha256"
-                }
+                "url": "https://github.com/pyenv-win/pyenv-win/archive/v$version.zip",
+                "extract_dir": "pyenv-win-$version"
             }
         }
     },
