@@ -1,0 +1,31 @@
+{
+    "version": "2020.11.8",
+    "homepage": "https://github.com/cloudflare/cloudflared",
+    "description": "Command-line client to interact with Cloudflare's Argo Tunnel, Cloudflare Access, start up a DNS over HTTPS resolver and more.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/cloudflare/cloudflared/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cloudflare/cloudflared/releases/download/2020.10.8/cloudflared-windows-amd64.exe#/cloudflared.exe",
+            "hash": "2a92a0685cf802be11503954ac9506ee279ab082a408a40b63b26e17fe9dbe47"
+        },
+        "32bit": {
+            "url": "https://github.com/cloudflare/cloudflared/releases/download/2020.10.8/cloudflared-windows-386.exe#/cloudflared.exe",
+            "hash": "a389d018434512ef1d1300c2d0784b470315de1387b4e53ef4ef7abe77d8ac5b"
+        }
+    },
+    "bin": "cloudflared.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cloudflare/cloudflared/releases/download/$version/cloudflared-windows-amd64.exe#/cloudflared.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/cloudflare/cloudflared/releases/download/$version/cloudflared-windows-386.exe#/cloudflared.exe"
+            }
+        }
+    }
+}
