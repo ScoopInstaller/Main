@@ -7,12 +7,12 @@
         "64bit": {
             "url": "https://curl.haxx.se/windows/dl-7.73.0_3/openssl-1.1.1h_3-win64-mingw.tar.xz",
             "hash": "3ff560d7a3c87905ed9f7be73ff9c5a3b5f997d8189e20e7dd637df15daf98f9",
-            "extract_dir": "openssl-1.1.1h-win64-mingw"
+            "extract_dir": "openssl-1.1.1h_3-win64-mingw"
         },
         "32bit": {
             "url": "https://curl.haxx.se/windows/dl-7.73.0_3/openssl-1.1.1h_3-win32-mingw.tar.xz",
             "hash": "360ac29654772708072ddbc40b07fdba0b42945ad81ca976ae7c9dd48efca407",
-            "extract_dir": "openssl-1.1.1h-win32-mingw"
+            "extract_dir": "openssl-1.1.1h_3-win32-mingw"
         }
     },
     "bin": "openssl.exe",
@@ -20,16 +20,16 @@
     "env_set": {
         "OPENSSL_CONF": "$dir\\openssl.cnf"
     },
-    "checkver": "dl-(?<curl>[\\d._]+)/openssl-(?<version>(?<major>[\\da-z.]+)[_\\d]*)-win64-mingw",
+    "checkver": "dl-(?<curl>[\\d._]+)/openssl-([\\da-z._]+)-win64-mingw",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://curl.haxx.se/windows/dl-$matchCurl/openssl-$version-win64-mingw.tar.xz",
-                "extract_dir": "openssl-$matchMajor-win64-mingw"
+                "extract_dir": "openssl-$version-win64-mingw"
             },
             "32bit": {
                 "url": "https://curl.haxx.se/windows/dl-$matchCurl/openssl-$version-win32-mingw.tar.xz",
-                "extract_dir": "openssl-$matchMajor-win32-mingw"
+                "extract_dir": "openssl-$version-win32-mingw"
             }
         },
         "hash": {
