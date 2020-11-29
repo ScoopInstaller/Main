@@ -1,4 +1,3 @@
-
 <#
 .SYNOPSIS
     Triggers the download of debug
@@ -17,7 +16,7 @@ param(
 )
 
 function GetUrlStatusCode {
-    [OutputType([int])] 
+    [OutputType([int])]
     Param ([string]$url)
 
     try {
@@ -32,7 +31,7 @@ function GetUrlStatusCode {
 function ReplaceMinVersion {
     [OutputType([string])]
     Param ([string]$ver)
-    
+
     [int] $index = $ver.LastIndexOf(".")
     if ($index -eq -1) {
         throw "Version isn't of format {x.x.x.x}"
@@ -84,5 +83,5 @@ foreach ($url in $urlsToTest) {
 
         # And extract it
         Expand-Archive -Path "$download" -DestinationPath $Directory
-    } 
+    }
 }
