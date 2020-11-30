@@ -34,21 +34,13 @@
         "}"
     ],
     "bin": [
-        "bin\\bsondump.exe",
         "bin\\mongo.exe",
         [
             "bin\\mongod.exe",
             "mongod",
             "--config \"$dir\\bin\\mongod.cfg\""
         ],
-        "bin\\mongodump.exe",
-        "bin\\mongoexport.exe",
-        "bin\\mongofiles.exe",
-        "bin\\mongoimport.exe",
-        "bin\\mongorestore.exe",
-        "bin\\mongos.exe",
-        "bin\\mongostat.exe",
-        "bin\\mongotop.exe"
+        "bin\\mongos.exe"
     ],
     "persist": [
         "bin\\mongod.cfg",
@@ -56,8 +48,8 @@
         "log"
     ],
     "checkver": {
-        "url": "https://www.mongodb.com/download-center/community/releases",
-        "regex": "<h3>([\\d.]+)</h3"
+        "url": "http://downloads.mongodb.org.s3.amazonaws.com/current.json",
+        "jsonpath": "$.versions[0].version"
     },
     "autoupdate": {
         "architecture": {
