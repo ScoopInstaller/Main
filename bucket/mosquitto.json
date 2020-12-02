@@ -1,0 +1,39 @@
+{
+    "version": "1.6.12a",
+    "description": "An open-source message broker that implements the MQTT protocol.",
+    "homepage": "https://mosquitto.org/",
+    "license": "EPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mosquitto.org/files/binary/win64/mosquitto-1.6.12a-install-windows-x64.exe#dl.7z",
+            "hash": "93bf1a15ec30667a2c6f0333aeddd521fcfeb414e1154e9f19aab01a23e63719"
+        },
+        "32bit": {
+            "url": "https://mosquitto.org/files/binary/win32/mosquitto-1.6.12a-install-windows-x86.exe#/dl.7z",
+            "hash": "d339d0ecd61ade337d57a84b8bcd6b8e4efe81be386b30f6a855f9566ae31b25"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\" -Recurse",
+    "bin": [
+        "mosquitto.exe",
+        "mosquitto_passwd.exe",
+        "mosquitto_pub.exe",
+        "mosquitto_rr.exe",
+        "mosquitto_sub.exe"
+    ],
+    "persist": "mosquitto.conf",
+    "checkver": {
+        "url": "https://mosquitto.org/download/",
+        "regex": "mosquitto-([\\d.a-z]+)-install-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mosquitto.org/files/binary/win64/mosquitto-$version-install-windows-x64.exe#dl.7z"
+            },
+            "32bit": {
+                "url": "https://mosquitto.org/files/binary/win32/mosquitto-$version-install-windows-x86.exe#/dl.7z"
+            }
+        }
+    }
+}
