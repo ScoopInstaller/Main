@@ -1,0 +1,24 @@
+{
+    "version": "1.0.1",
+    "description": "Ping, but with a graph",
+    "homepage": "https://github.com/orf/gping",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/orf/gping/releases/download/v1.0.1/gping-Windows-x86_64.zip",
+            "hash": "824fe3ba3a800f38a8d20beb0bb4f0ce46fea957d4501750aa2f9e7cf015bc86"
+        }
+    },
+    "bin": "gping.exe",
+    "checkver": {
+        "url": "https://github.com/orf/gping/releases",
+        "regex": "\\/releases\\/tag\\/(?:v|V)?([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/orf/gping/releases/download/v$version/gping-Windows-x86_64.zip"
+            }
+        }
+    }
+}
