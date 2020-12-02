@@ -12,6 +12,9 @@
     },
     "bin": "telegraf.exe",
     "persist": "telegraf.conf",
+    "env_set": {
+        "TELEGRAF_CONFIG_PATH": "$persist_dir/telegraf.conf"
+    },
     "checkver": {
         "url": "https://portal.influxdata.com/downloads",
         "regex": ">Telegraf v([\\d.]+)<"
