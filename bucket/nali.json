@@ -1,0 +1,40 @@
+{
+    "version": "0.2.2",
+    "description": "An offline tool for querying IP geographic information and CDN provider",
+    "homepage": "https://github.com/zu1k/nali",
+    "license": "MIT",
+    "notes": "We don't persist your Nali data, they are still storaged in \"$env:USERPROFILE\\.nali\".",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/zu1k/nali/releases/download/v0.2.2/nali-windows-amd64-v0.2.2.zip",
+            "hash": "716A35D4741BA1E96776C248885477C5E134ABAE19A9533DC440D031A1A8BBBB",
+            "bin": [
+                [
+                    "nali-windows-amd64.exe",
+                    "nali"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/zu1k/nali/releases/download/v0.2.2/nali-windows-386-v0.2.2.zip",
+            "hash": "2F690683762FBE3286C370A8E94C261187A4F76C01FD1ACEAB8930F25B3DB6D3",
+            "bin": [
+                [
+                    "nali-windows-386.exe",
+                    "nali"
+                ]
+            ]
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/zu1k/nali/releases/download/v$version/nali-windows-amd64-v$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/zu1k/nali/releases/download/v$version/nali-windows-386-v$version.zip"
+            }
+        }
+    }
+}
