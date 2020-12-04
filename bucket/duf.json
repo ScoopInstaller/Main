@@ -1,0 +1,32 @@
+{
+    "version": "0.5.0",
+    "description": "Disk Usage/Free Utility - a better 'df' alternative",
+    "homepage": "https://github.com/muesli/duf",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/muesli/duf/releases/download/v0.5.0/duf_0.5.0_Windows_x86_64.zip",
+            "hash": "37b618d5867e640b75aebce0e735185bc6d329bf6b10bcd0ce0d8131a6c0d40d"
+        },
+        "32bit": {
+            "url": "https://github.com/muesli/duf/releases/download/v0.5.0/duf_0.5.0_Windows_i386.zip",
+            "hash": "056befc834451c7a7b00180b0f75fef2637d5a500fdedc29db17570d5003a842"
+        }
+    },
+    "bin": "duf.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/muesli/duf/releases/download/v$version/duf_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/muesli/duf/releases/download/v$version/duf_$version_Windows_i386.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/muesli/duf/releases/download/v$version/checksums.txt",
+            "mode": "extract"
+        }
+    }
+}
