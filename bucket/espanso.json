@@ -1,12 +1,15 @@
 {
-    "version": "0.7.2",
-    "description": "Text expander.",
+    "version": "0.7.3",
+    "description": "Text expander",
     "homepage": "https://espanso.org",
     "license": "GPL-3.0-only",
+    "suggest": {
+        "Microsoft Visual C++ Redistributables 2019": "extras/vcredist2019"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/federico-terzi/espanso/releases/download/v0.7.2/espanso-win-installer.exe",
-            "hash": "e4d570e491236bb53b329697b12e7b9c13e17c5a4c53cea361fd760c866fb78c"
+            "url": "https://github.com/federico-terzi/espanso/releases/download/v0.7.3/espanso-win-installer.exe",
+            "hash": "5b19d107601f736a072610f926044f5bae537590f47d67bfd358b8652d261c98"
         }
     },
     "innosetup": true,
@@ -20,9 +23,6 @@
         ]
     ],
     "persist": ".espanso",
-    "suggest": {
-        "Microsoft Visual C++ Redistributables 2019": "extras/vcredist2019"
-    },
     "checkver": {
         "github": "https://github.com/federico-terzi/espanso"
     },
@@ -31,8 +31,7 @@
             "64bit": {
                 "url": "https://github.com/federico-terzi/espanso/releases/download/v$version/espanso-win-installer.exe",
                 "hash": {
-                    "url": "$baseurl/espanso-win-installer-sha256.txt",
-                    "regex": "$sha256"
+                    "url": "$baseurl/espanso-win-installer-sha256.txt"
                 }
             }
         }
