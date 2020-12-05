@@ -2,30 +2,29 @@
     "homepage": "https://lame.sourceforge.io/",
     "description": "LAME is a high quality MPEG Audio Layer III (MP3) encoder",
     "license": "LGPL-2.0-only",
-    "version": "3.100-20200409",
+    "version": "3.100.1",
     "architecture": {
         "64bit": {
-            "url": "http://www.rarewares.org/files/mp3/lame3.100-64-20200409.zip",
-            "hash": "59ea16ac74afb04f8ed9f33f75618e4e7e5b3e1ea53f5d751e3834e99f58ba6d"
+            "url": "http://www.rarewares.org/files/mp3/lame3.100.1-x64.zip",
+            "hash": "9a9c815203316e5203847e93100c6acf0d5d7a5be7744c9018825ded037052e7"
         },
         "32bit": {
-            "url": "http://www.rarewares.org/files/mp3/lame3.100-20200409.zip",
-            "hash": "fcd7eba06d4856f58f0310b9446230fc5687ba64cf77bd05a061016180fbb0f4"
+            "url": "http://www.rarewares.org/files/mp3/lame3.100.1-win32.zip",
+            "hash": "2518e1138953c235fb2bfcefbc38883dd04538d6ae0a19692562576ba37bafec"
         }
     },
     "bin": "lame.exe",
     "checkver": {
         "url": "http://www.rarewares.org/mp3-lame-bundle.php",
-        "regex": "/files/mp3/lame(?<prefix>[\\d.]+)(?<suffix>[^.]*)\\.zip",
-        "replace": "${prefix}${suffix}"
+        "regex": "/files/mp3/lame([\\d.]+)-x64\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://www.rarewares.org/files/mp3/lame$matchPrefix-64$matchSuffix.zip"
+                "url": "http://www.rarewares.org/files/mp3/lame$version-x64.zip"
             },
             "32bit": {
-                "url": "http://www.rarewares.org/files/mp3/lame$version.zip"
+                "url": "http://www.rarewares.org/files/mp3/lame$version-win32.zip"
             }
         }
     }
