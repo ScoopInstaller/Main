@@ -10,7 +10,7 @@
         }
     },
     "extract_dir": "Puppet Labs\\Bolt",
-    "pre_install": "Set-Content \"$dir\\bolt.bat\" '@ECHO OFF', 'SETLOCAL', 'SET GEM_HOME=', '%~dp0bin\\bolt.bat %*' -Encoding Ascii",
+    "pre_install": "Set-Content \"$dir\\bolt.bat\" '@ECHO OFF', 'SETLOCAL', 'SET GEM_HOME=','SET GEM_PATH=', '%~dp0bin\\bolt.bat %*' -Encoding Ascii",
     "post_install": [
         "if (Test-Path \"$dir\\share\\install-tarballs\\ruby*.tgz\") {",
         "   info 'Extract tarball of gems...'",
