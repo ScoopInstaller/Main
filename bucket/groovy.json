@@ -1,8 +1,15 @@
 {
-    "homepage": "http://www.groovy-lang.org/",
-    "description": "A powerful, optionally typed and dynamic language, with static-typing and static compilation capabilities, for the Java platform aimed at improving developer productivity thanks to a concise, familiar and easy to learn syntax.",
     "version": "3.0.7",
+    "description": "A powerful, optionally typed and dynamic language, with static-typing and static compilation capabilities, for the Java platform aimed at improving developer productivity thanks to a concise, familiar and easy to learn syntax.",
+    "homepage": "https://www.groovy-lang.org",
     "license": "Apache-2.0",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ],
+        "groovyserv": "groovyserv"
+    },
     "url": "https://dl.bintray.com/groovy/maven/apache-groovy-binary-3.0.7.zip",
     "hash": "b9e2041cb83a963922f6761a0b037c5784670616632142b8d7002b7c3a96b7f5",
     "extract_dir": "groovy-3.0.7",
@@ -19,22 +26,15 @@
     "env_set": {
         "GROOVY_HOME": "$dir"
     },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ],
-        "groovyserv": "groovyserv"
-    },
     "checkver": {
-        "url": "http://www.groovy-lang.org/download.html",
-        "re": "apache-groovy-binary-([\\d.]+).zip"
+        "url": "https://groovy.apache.org/download.html",
+        "regex": "apache-groovy-binary-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "url": "https://dl.bintray.com/groovy/maven/apache-groovy-binary-$version.zip",
-        "extract_dir": "groovy-$version",
         "hash": {
             "url": "$url.sha256"
-        }
+        },
+        "extract_dir": "groovy-$version"
     }
 }
