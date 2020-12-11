@@ -7,11 +7,14 @@
         "64bit": {
             "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.16.3_windows_amd64.zip",
             "hash": "85fb7b0f96f8d3c42848a651d84beb34f0b7101864496248891834b36b2196cc",
-            "extract_dir": "telegraf"
+            "extract_dir": "telegraf-1.16.3"
         }
     },
     "bin": "telegraf.exe",
     "persist": "telegraf.conf",
+    "env_set": {
+        "TELEGRAF_CONFIG_PATH": "$persist_dir/telegraf.conf"
+    },
     "checkver": {
         "url": "https://portal.influxdata.com/downloads",
         "regex": ">Telegraf v([\\d.]+)<"
@@ -19,7 +22,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_amd64.zip"
+                "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_amd64.zip",
+                "extract_dir": "telegraf-$version"
             }
         },
         "hash": {
