@@ -1,12 +1,12 @@
 {
-    "version": "1.0.0-beta.1",
+    "version": "1.0.0-beta.2",
     "description": "Command-line tool to interact with appbase.io",
     "homepage": "https://github.com/appbaseio/abc",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/appbaseio/abc/releases/download/1.0.0-beta.1/abc-windows.zip",
-            "hash": "5fe08d7f8197e683abdb0adc91f6bc5db57f2bc1c2e13dd3bacf4c73de841548"
+            "url": "https://github.com/appbaseio/abc/releases/download/1.0.0-beta.2/abc-windows.zip",
+            "hash": "25340da973299670e0d9ea5b8c9cfa6498ba5b9c7a04bed75b5875676e04f970"
         }
     },
     "pre_install": "Rename-Item \"$dir\\abc-windows\" 'abc.exe' -ErrorAction SilentlyContinue",
@@ -14,5 +14,12 @@
     "checkver": {
         "github": "https://github.com/appbaseio/abc",
         "regex": "tag/([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/appbaseio/abc/releases/download/$version/abc-windows.zip"
+            }
+        }
     }
 }
