@@ -1,0 +1,27 @@
+{
+    "version": "2.2.3",
+    "description": "Scaleway CLI is a tool to help you pilot your Scaleway infrastructure directly from your terminal.",
+    "homepage": "https://www.scaleway.com/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/scaleway/scaleway-cli/releases/download/v2.2.3/scw-2.2.3-windows-x86_64.exe",
+            "hash": "62dab23b6b15107eddfb603f4f43d2787e754d5bcbc04c523b02306ef88d66c3"
+        }
+    },
+    "bin": "scw.exe",
+    "checkver": {
+        "github": "https://github.com/scaleway/scaleway-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/scaleway/scaleway-cli/releases/download/v$version/scw-$version-windows-x86_64.exe",
+                "hash": {
+                    "url": "https://github.com/scaleway/scaleway-cli/releases/download/v$version/SHA256SUMS",
+                    "find": "([A-Fa-f0-9]{64})\\s{2}\\($basename\\)"
+                }
+            }
+        }
+    }
+}
