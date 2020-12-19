@@ -1,35 +1,31 @@
 {
     "version": "2.64.3",
-    "description": "pyenv for Windows. pyenv is a simple python version management tool. It lets you easily switch between multiple versions of Python. It's simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one thing well.",
-    "homepage": "https://github.com/pyenv-win/pyenv-win",
+    "description": "Simple python version management tool for switching between multiple versions of Python.",
+    "homepage": "https://pyenv-win.github.io/pyenv-win/",
     "license": "MIT",
+    "notes": "You can specify the PYTHON_BUILD_MIRROR_URL environment variable and run 'pyenv update' to speed up downloads.",
     "architecture": {
         "64bit": {
             "url": "https://github.com/pyenv-win/pyenv-win/archive/v2.64.3.zip",
-            "extract_dir": "pyenv-win-2.64.3",
-            "hash": "fbdecdeed330279fde80038da150a2d54bff222f47481968ba2ef5e600363a84"
+            "hash": "fbdecdeed330279fde80038da150a2d54bff222f47481968ba2ef5e600363a84",
+            "extract_dir": "pyenv-win-2.64.3"
         }
     },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\pyenv-win\\version\")) { New-Item \"$dir\\pyenv-win\\version\" | Out-Null }",
     "bin": "pyenv-win\\bin\\pyenv.bat",
+    "env_add_path": "pyenv-win\\shims",
     "env_set": {
         "PYENV": "$dir\\pyenv-win"
     },
-    "env_add_path": "pyenv-win\\shims",
     "persist": [
         "pyenv-win\\version",
         "pyenv-win\\shims",
         "pyenv-win\\versions",
         "pyenv-win\\install_cache"
     ],
-    "pre_install": [
-        "function CreateFile([String] $file, [String] $content = $null) {",
-        "    if (!(Test-Path \"$persist_dir\\$file\")) {",
-        "        New-Item -Force -Path \"$persist_dir\\$file\" -ItemType file -Value $content | Out-Null",
-        "    }",
-        "}",
-        "CreateFile 'pyenv-win\\version'"
-    ],
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/pyenv-win/pyenv-win"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -37,6 +33,5 @@
                 "extract_dir": "pyenv-win-$version"
             }
         }
-    },
-    "notes": "You can specify the PYTHON_BUILD_MIRROR_URL environment variable and run 'pyenv update' to speed up downloads."
+    }
 }
