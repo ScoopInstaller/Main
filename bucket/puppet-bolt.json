@@ -1,16 +1,16 @@
 {
-    "version": "2.37.0",
+    "version": "2.40.2",
     "description": "Orchestration and agentless IT automation",
     "homepage": "https://puppet.com/open-source/bolt",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.puppetlabs.com/windows/puppet6/puppet-bolt-2.37.0-x64.msi",
-            "hash": "a6ab909c35f8d1cf36642569a9b58da76ee736ac9195e576365a96a0ed22a7cc"
+            "url": "https://downloads.puppetlabs.com/windows/puppet6/puppet-bolt-2.40.2-x64.msi",
+            "hash": "106cc2bbce53032ff03a18590226f466aea7269095168bad7d58fb2965cc2890"
         }
     },
     "extract_dir": "Puppet Labs\\Bolt",
-    "pre_install": "Set-Content \"$dir\\bolt.bat\" '@ECHO OFF', 'SETLOCAL', 'SET GEM_HOME=', '%~dp0bin\\bolt.bat %*' -Encoding Ascii",
+    "pre_install": "Set-Content \"$dir\\bolt.bat\" '@ECHO OFF', 'SETLOCAL', 'SET GEM_HOME=','SET GEM_PATH=', '%~dp0bin\\bolt.bat %*' -Encoding Ascii",
     "post_install": [
         "if (Test-Path \"$dir\\share\\install-tarballs\\ruby*.tgz\") {",
         "   info 'Extract tarball of gems...'",
