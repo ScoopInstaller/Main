@@ -1,35 +1,35 @@
 {
-    "homepage": "https://aria2.github.io/",
-    "description": "Lightweight multi-protocol & multi-source command-line download utility",
-    "license": "GPL-2.0-or-later",
     "version": "1.35.0-1",
+    "description": "Lightweight multi-protocol & multi-source command-line download utility",
+    "homepage": "https://aria2.github.io/",
+    "license": "GPL-2.0-or-later",
     "architecture": {
-        "32bit": {
-            "url": "https://github.com/aria2/aria2/releases/download/release-1.35.0/aria2-1.35.0-win-32bit-build1.zip",
-            "hash": "60b3720d1d08ff0124224c53e5f0ee05a4427782e2abc63b6a67c023aa5ffb66",
-            "extract_dir": "aria2-1.35.0-win-32bit-build1"
-        },
         "64bit": {
             "url": "https://github.com/aria2/aria2/releases/download/release-1.35.0/aria2-1.35.0-win-64bit-build1.zip",
             "hash": "81a231aa72966cf9a7a63bf40de9053261ff6b176877685e054591849c28eafa",
             "extract_dir": "aria2-1.35.0-win-64bit-build1"
+        },
+        "32bit": {
+            "url": "https://github.com/aria2/aria2/releases/download/release-1.35.0/aria2-1.35.0-win-32bit-build1.zip",
+            "hash": "60b3720d1d08ff0124224c53e5f0ee05a4427782e2abc63b6a67c023aa5ffb66",
+            "extract_dir": "aria2-1.35.0-win-32bit-build1"
         }
     },
     "bin": "aria2c.exe",
     "checkver": {
         "github": "https://github.com/aria2/aria2",
-        "re": "/release-(?:[\\d.]+)/aria2-(?<version>[\\d.]+)-win-64bit-build(?<build>[\\d]+).zip",
+        "regex": "/release-(?:[\\d.]+)/aria2-(?<version>[\\d.]+)-win-64bit-build(?<build>[\\d]+)\\.zip",
         "replace": "${version}-${build}"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://github.com/aria2/aria2/releases/download/release-$matchVersion/aria2-$matchVersion-win-32bit-build$matchBuild.zip",
-                "extract_dir": "aria2-$matchVersion-win-32bit-build$matchBuild"
-            },
             "64bit": {
                 "url": "https://github.com/aria2/aria2/releases/download/release-$matchVersion/aria2-$matchVersion-win-64bit-build$matchBuild.zip",
                 "extract_dir": "aria2-$matchVersion-win-64bit-build$matchBuild"
+            },
+            "32bit": {
+                "url": "https://github.com/aria2/aria2/releases/download/release-$matchVersion/aria2-$matchVersion-win-32bit-build$matchBuild.zip",
+                "extract_dir": "aria2-$matchVersion-win-32bit-build$matchBuild"
             }
         }
     }
