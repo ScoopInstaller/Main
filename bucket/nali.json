@@ -13,7 +13,7 @@
             "hash": "2f690683762fbe3286c370a8e94c261187a4f76c01fd1aceab8930f25b3db6d3"
         }
     },
-    "pre_install": "Rename-Item @(Get-ChildItem $dir\\nali*.exe)[0] $dir\\nali.exe",
+    "pre_install": "(Get-ChildItem \"$dir\\nali*.exe\")[0] | Rename-Item -NewName 'nali.exe'",
     "bin": "nali.exe",
     "checkver": "github",
     "autoupdate": {
