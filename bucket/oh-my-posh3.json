@@ -6,8 +6,8 @@
     "notes": "Refer to 'https://ohmyposh.dev/docs/installation#4-replace-your-existing-prompt' for shell specific configurations.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/JanDeDobbeleer/oh-my-posh3/releases/download/v3.64.2/posh-windows-wsl-amd64.7z",
-            "hash": "5e92d2802a55551069072d78e8b12d264cb5584c391f671b7127030646600238"
+            "url": "https://github.com/JanDeDobbeleer/oh-my-posh3/releases/download/v3.64.2/posh-windows-amd64.exe#/oh-my-posh.exe",
+            "hash": "115a5fb914caa9a1bdaf7bc1841427ca1cce67e267de3b6e684e6ab33b46e569"
         }
     },
     "bin": "oh-my-posh.exe",
@@ -18,11 +18,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/JanDeDobbeleer/oh-my-posh3/releases/download/v$version/posh-windows-wsl-amd64.7z"
+                "url": "https://github.com/JanDeDobbeleer/oh-my-posh3/releases/download/v$version/posh-windows-amd64.exe#/oh-my-posh.exe"
             }
         },
         "hash": {
-            "url": "$url.sha256"
+            "url": "$url.sha256",
+            "regex": "$sha256"
         }
     }
 }
