@@ -1,18 +1,19 @@
 {
-    "homepage": "https://rubyinstaller.org",
+    "version": "3.0.0-1",
     "description": "A dynamic programming language with a focus on simplicity and productivity.",
-    "version": "2.7.2-1",
+    "homepage": "https://rubyinstaller.org",
     "license": "BSD-3-Clause",
+    "notes": "Install MSYS2 via 'scoop install msys2' and then run 'ridk install' to install the toolchain!",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.2-1/rubyinstaller-2.7.2-1-x64.7z",
-            "hash": "925cc01d453951d1d0c077c44cec90849afc8d23e45946e19ecd3aaabc0c0ab3",
-            "extract_dir": "rubyinstaller-2.7.2-1-x64"
+            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.0-1/rubyinstaller-3.0.0-1-x64.7z",
+            "hash": "9f1b144659d9e6ea9fbfccb252432a0fe3c63609758ed3528a297601004aa43a",
+            "extract_dir": "rubyinstaller-3.0.0-1-x64"
         },
         "32bit": {
-            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.2-1/rubyinstaller-2.7.2-1-x86.7z",
-            "hash": "b803ca683ba926ffa14037cb8e964601cdd4e7d92688957b365719b4d4a681bd",
-            "extract_dir": "rubyinstaller-2.7.2-1-x86"
+            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.0-1/rubyinstaller-3.0.0-1-x86.7z",
+            "hash": "d00d8b7ef74f5173e7f95a85957733300ce34ef70dafa083201b7f8cfddd2296",
+            "extract_dir": "rubyinstaller-3.0.0-1-x86"
         }
     },
     "persist": "gems",
@@ -28,7 +29,6 @@
         "MSYS2": "msys2"
     },
     "post_install": "gem install rake",
-    "notes": "Install MSYS2 via 'scoop install msys2' and then run 'ridk install' to install the toolchain!",
     "checkver": {
         "url": "https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
         "regex": "Ruby (\\S+)"
