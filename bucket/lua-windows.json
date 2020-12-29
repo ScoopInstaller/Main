@@ -1,0 +1,48 @@
+{
+    "home": "https://sourceforge.net/projects/luabinaries",
+    "description": "LuaBinaries is a distribution of the Lua libraries and executables compiled for several platforms.",
+    "version": "5.3.4",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://sourceforge.net/projects/luabinaries/files/5.3.4/Tools%20Executables/lua-5.3.4_Win64_bin.zip",
+                "https://sourceforge.net/projects/luabinaries/files/5.3.4/Windows%20Libraries/Static/lua-5.3.4_Win64_vc14_lib.zip"
+             ],
+            "hash": [
+                "da3ca89ee282745809ec05cd41b4bc656127e12759ad2df24ec85c90c2dccc38",
+                "b67c0f12a172be563fd0e8dad260428aa94f01c14c2649e0def6b02fa8235ef2"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://sourceforge.net/projects/luabinaries/files/5.3.4/Tools%20Executables/lua-5.3.4_Win32_bin.zip",
+                "https://sourceforge.net/projects/luabinaries/files/5.3.4/Windows%20Libraries/Static/lua-5.3.4_Win32_vc14_lib.zip"
+            ],
+            "hash": [
+                "1c430acbff4fc5712ec2c9df986ff4e4177fd9b7648bdd20be71c669deaffede",
+                "3e91d9efd0a5e1bf25e3c39fc6e43ec214a023884c971060ef6d762db0c92edf"
+            ]
+        }
+    },
+    "pre_install": [
+        "Copy-Item \"$dir\\lua53.exe\" \"$dir\\lua.exe\"",
+        "Copy-Item \"$dir\\luac53.exe\" \"$dir\\luac.exe\"",
+        "Copy-Item \"$dir\\wlua53.exe\" \"$dir\\wlua.exe\""
+    ],
+    "env_add_path": ".",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/luabinaries/rss",
+        "re": "lua-([\\d.]+)_Win64_bin.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://sourceforge.net/projects/luabinaries/files/$version/Tools%20Executables/lua-$version_Win64_bin.zip"
+            },
+            "32bit": {
+                "url": "https://sourceforge.net/projects/luabinaries/files/$version/Tools%20Executables/lua-$version_Win32_bin.zip"
+            }
+        }
+    }
+}
