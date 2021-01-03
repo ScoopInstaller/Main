@@ -1,30 +1,30 @@
 {
-    "homepage": "https://www.smartmontools.org/",
+    "version": "7.2-1",
     "description": "Read SMART data from disks",
+    "homepage": "https://www.smartmontools.org",
     "license": "GPL-2.0-only",
-    "version": "7.1-1",
-    "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/7.1/smartmontools-7.1-1.win32-setup.exe",
-    "hash": "sha1:afc25bac715dd0ce06105bce75f0c8c653e040de",
-    "bin": [
-        "bin/runcmdu.exe",
-        "bin/smartctl.exe",
-        "bin/smartctl-nc.exe",
-        "bin/smartd.exe",
-        "bin/smartd_warning.cmd",
-        "bin/update-smart-drivedb.exe",
-        "bin/wtssendmsg.exe"
-    ],
+    "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/7.2/smartmontools-7.2-1.win32-setup.exe",
+    "hash": "sha1:fdf3660a6ac415ab2acb0094ac16ee5902e79f84",
     "installer": {
         "args": [
             "/S",
             "/D=$dir"
         ]
     },
+    "bin": [
+        "bin\\runcmdu.exe",
+        "bin\\smartctl.exe",
+        "bin\\smartctl-nc.exe",
+        "bin\\smartd.exe",
+        "bin\\smartd_warning.cmd",
+        "bin\\update-smart-drivedb.exe",
+        "bin\\wtssendmsg.exe"
+    ],
     "checkver": {
-        "re": "smartmontools-(?<version>(?<short>[\\d.]+)-[\\d]+)\\.win32",
-        "url": "https://sourceforge.net/projects/smartmontools/files/smartmontools/"
+        "url": "https://sourceforge.net/projects/smartmontools/files/smartmontools/",
+        "regex": "smartmontools-([\\d.-]+)\\.win32"
     },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/$matchShort/smartmontools-$version.win32-setup.exe"
+        "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/$matchHead/smartmontools-$version.win32-setup.exe"
     }
 }

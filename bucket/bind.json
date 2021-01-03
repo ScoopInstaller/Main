@@ -1,16 +1,17 @@
 {
-    "homepage": "https://www.isc.org/bind/",
-    "description": "Versatile, classic, complete name server software.",
-    "license": "MPL-2.0",
     "version": "9.16.10",
+    "description": "Versatile, classic, complete name server software.",
+    "homepage": "https://www.isc.org/bind/",
+    "license": "MPL-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2017"
+    },
     "architecture": {
         "64bit": {
             "url": "https://downloads.isc.org/isc/bind9/9.16.10/BIND9.16.10.x64.zip",
             "hash": "96980a4c4c6d9fb42d828f6349a361a51f03e1a8ffdd0e00708cadcee91af89f"
         }
     },
-    "env_add_path": "bin",
-    "persist": "etc",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\BINDInstall.exe\", \"$dir\\vcredist_x*.exe\"",
@@ -19,6 +20,8 @@
             "Remove-Item \"$dir\\*\" -Exclude 'bin'"
         ]
     },
+    "env_add_path": "bin",
+    "persist": "etc",
     "checkver": "(?sm)Current-Stable<.*?/([\\d.]+)/",
     "autoupdate": {
         "architecture": {
@@ -26,8 +29,5 @@
                 "url": "https://downloads.isc.org/isc/bind$majorVersion/$version/BIND$version.x64.zip"
             }
         }
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2017"
     }
 }

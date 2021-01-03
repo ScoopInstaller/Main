@@ -1,11 +1,12 @@
 {
     "version": "2.905",
-    "homepage": "https://cygwin.com/",
     "description": "A large collection of GNU and Open Source tools which provide functionality similar to a Linux distribution on Windows",
+    "homepage": "https://cygwin.com/",
     "license": {
         "identifier": "GPL-3.0-or-later,X11,Public Domain",
         "url": "https://cygwin.com/faq.html#faq.what.free"
     },
+    "notes": "To start a Cygwin shell, type \"cygwin\"",
     "architecture": {
         "64bit": {
             "url": "https://cygwin.com/setup-x86_64.exe#/cygwin-setup.exe",
@@ -15,6 +16,10 @@
             "url": "https://cygwin.com/setup-x86.exe#/cygwin-setup.exe",
             "hash": "sha512:c859221aed65d43c800373c96d2b81531f1d636ee980be89646dd86ae0862ab5cfbc183bc81e2bcb192508551bc5d5c232501d11ad13945af96538a002df1bcc"
         }
+    },
+    "checkver": {
+        "regex": ">release_([\\d.]+)<",
+        "url": "https://cygwin.com/git/?p=cygwin-apps/setup.git;a=tags"
     },
     "autoupdate": {
         "architecture": {
@@ -28,10 +33,6 @@
         "hash": {
             "url": "https://cygwin.com/sha512.sum"
         }
-    },
-    "checkver": {
-        "regex": ">release_([\\d.]+)<",
-        "url": "https://cygwin.com/git/?p=cygwin-apps/setup.git;a=tags"
     },
     "bin": [
         [
@@ -51,7 +52,6 @@
         ],
         "keep": true
     },
-    "notes": "To start a Cygwin shell, type \"cygwin\"",
     "pre_install": "persist_data @{persist = @('packages', 'root')} $original_dir $persist_dir",
     "shortcuts": [
         [
