@@ -1,0 +1,37 @@
+{
+   "version":"2021010419",
+   "description":"An Open Source, Parallel and Heterogeneous Finite Element Analysis Framework",
+   "homepage":"https://github.com/TLCFEM/suanPan",
+   "license":"GPLv3",
+   "architecture":{
+      "64bit":{
+         "url":"https://github.com/TLCFEM/suanPan/releases/download/suanPan-daily-2021010419/suanPan-win-mkl-vtk.7z",
+          "hash":"dcbc32bef794bb5baf4f52f0e2f3dabfcc753f5bd867368861f626be03876b78",
+         "extract_to":"."
+      }
+   },
+   "notes":[
+      "You can now use `suanPan` to launch the program.",
+      "Please make sure Microsoft Visual C++ Redistributable for Visual Studio 2019 is installed."
+   ],
+   "bin":[
+      "suanPan.exe"
+   ],
+   "shortcuts":[
+      [
+         "suanPan.exe",
+         "suanPan"
+      ]
+   ],
+   "checkver":{
+      "url":"https://github.com/TLCFEM/suanPan/releases",
+      "regex":"suanPan-daily-([0-9]{10})"
+   },
+   "autoupdate":{
+      "architecture":{
+         "64bit":{
+            "url":"https://github.com/TLCFEM/suanPan/releases/download/suanPan-daily-${version}/suanPan-win-mkl-vtk.7z"
+         }
+      }
+   }
+}
