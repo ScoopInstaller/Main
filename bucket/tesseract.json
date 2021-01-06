@@ -1,8 +1,12 @@
 {
-    "homepage": "https://github.com/UB-Mannheim/tesseract/wiki",
-    "license": "Apache-2.0",
     "version": "5.0.0-alpha.20201127",
     "description": "Open Source OCR Engine",
+    "homepage": "https://github.com/UB-Mannheim/tesseract/wiki",
+    "license": "Apache-2.0",
+    "notes": [
+        "Recognition data files can be installed via \"scoop install tesseract-languages\"",
+        "or downloaded manually from https://github.com/tesseract-ocr/tessdata_fast"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.0-alpha.20201127.exe#/dl.7z",
@@ -41,10 +45,6 @@
         "if (Test-Path $langdir) {",
         "   env \"TESSDATA_PREFIX\" $global $langdir",
         "}"
-    ],
-    "notes": [
-        "Recognition data files can be installed via \"scoop install tesseract-languages\"",
-        "or downloaded manually from https://github.com/tesseract-ocr/tessdata_fast"
     ],
     "suggest": {
         "tesseract-languages": "tesseract-languages"

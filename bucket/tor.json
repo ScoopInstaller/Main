@@ -3,6 +3,10 @@
     "description": "Enables anonymous communication over the onion network (expert mode).",
     "homepage": "https://www.torproject.org",
     "license": "BSD-3-Clause",
+    "notes": [
+        "NOTE: You will need to configure tor before using it, as it does not come pre-configured.",
+        "Please see https://www.torproject.org/docs/tor-manual.html.en for configuration details."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://dist.torproject.org/torbrowser/10.0.7/tor-win64-0.4.4.6.zip",
@@ -13,6 +17,17 @@
             "hash": "085017692959cc2cae15d0d4882edcfdd1714dc45b23097cf247bbee23a33478"
         }
     },
+    "pre_install": [
+        "$current = current_dir $dir",
+        "$content = @(",
+        "    \"DataDirectory `\"$current\\Data\\Data`\"\"",
+        "    \"GeoIPFile `\"$current\\Data\\Tor\\geoip`\"\"",
+        "    \"GeoIPv6File `\"$current\\Data\\Tor\\geoip6`\"\"",
+        ")",
+        "if (!(Test-Path \"$persist_dir\\torrc\")) {",
+        "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
+        "}"
+    ],
     "bin": [
         [
             "Tor\\tor.exe",
@@ -24,17 +39,6 @@
     "persist": [
         "Data\\Data",
         "torrc"
-    ],
-    "pre_install": [
-        "$current = current_dir $dir",
-        "$content = @(",
-        "    \"DataDirectory `\"$current\\Data\\Data`\"\"",
-        "    \"GeoIPFile `\"$current\\Data\\Tor\\geoip`\"\"",
-        "    \"GeoIPv6File `\"$current\\Data\\Tor\\geoip6`\"\"",
-        ")",
-        "if (!(Test-Path \"$persist_dir\\torrc\")) {",
-        "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
-        "}"
     ],
     "checkver": {
         "url": "https://www.torproject.org/download/tor/",
@@ -52,9 +56,5 @@
         "hash": {
             "url": "$baseurl/sha256sums-signed-build.txt"
         }
-    },
-    "notes": [
-        "NOTE: You will need to configure tor before using it, as it does not come pre-configured.",
-        "Please see https://www.torproject.org/docs/tor-manual.html.en for configuration details."
-    ]
+    }
 }
