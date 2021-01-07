@@ -1,8 +1,9 @@
 {
-    "homepage": "https://rustup.rs",
     "version": "1.23.1",
-    "license": "MIT|Apache-2.0",
     "description": "Manage multiple rust installations with ease",
+    "homepage": "https://rustup.rs",
+    "license": "MIT|Apache-2.0",
+    "notes": "To use the MSVC ABI without Visual Studio 2015 (or higher) installed, you will need the Visual Studio 2017 Build Tools: https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017",
     "architecture": {
         "64bit": {
             "url": "https://static.rust-lang.org/rustup/archive/1.23.1/x86_64-pc-windows-msvc/rustup-init.exe",
@@ -13,15 +14,6 @@
             "hash": "c1288bc054bcdb1106686d63db9527481ac823fa0ef2538b7012cfe7d0f3d307"
         }
     },
-    "persist": [
-        ".cargo",
-        ".rustup"
-    ],
-    "env_add_path": ".cargo\\bin",
-    "env_set": {
-        "CARGO_HOME": "$persist_dir\\.cargo",
-        "RUSTUP_HOME": "$persist_dir\\.rustup"
-    },
     "installer": {
         "script": [
             "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
@@ -29,6 +21,15 @@
             "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args '-y --no-modify-path' | Out-Null"
         ]
     },
+    "env_add_path": ".cargo\\bin",
+    "env_set": {
+        "CARGO_HOME": "$persist_dir\\.cargo",
+        "RUSTUP_HOME": "$persist_dir\\.rustup"
+    },
+    "persist": [
+        ".cargo",
+        ".rustup"
+    ],
     "checkver": {
         "url": "https://raw.githubusercontent.com/rust-lang-nursery/rustup.rs/master/Cargo.toml",
         "regex": "version = \"([\\d.]+)\""
@@ -45,6 +46,5 @@
         "hash": {
             "url": "$url.sha256"
         }
-    },
-    "notes": "To use the MSVC ABI without Visual Studio 2015 (or higher) installed, you will need the Visual Studio 2017 Build Tools: https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017"
+    }
 }
