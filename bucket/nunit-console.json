@@ -1,13 +1,8 @@
 {
-    "homepage": "https://nunit.org/",
-    "description": "NUnit Console runner for NUnit, the most popular and widely used unit testing framework for .NET",
     "version": "3.11.1",
+    "description": "NUnit Console runner for NUnit, the most popular and widely used unit testing framework for .NET",
+    "homepage": "https://nunit.org/",
     "license": "MIT",
-    "url": "https://packages.chocolatey.org/nunit-console-runner.3.11.1.nupkg",
-    "hash": "e41deca6214fb20de555c8837fe41bff7cdbecb4334b9d76539b6080b3c3ecdc",
-    "extract_dir": "tools",
-    "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
-    "bin": "nunit3-console.exe",
     "suggest": {
         "NuGet": "nuget",
         "NUnit Extension": [
@@ -18,6 +13,11 @@
             "nunit-extension-vs-project-loader"
         ]
     },
+    "url": "https://packages.chocolatey.org/nunit-console-runner.3.11.1.nupkg",
+    "hash": "e41deca6214fb20de555c8837fe41bff7cdbecb4334b9d76539b6080b3c3ecdc",
+    "extract_dir": "tools",
+    "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
+    "bin": "nunit3-console.exe",
     "checkver": {
         "url": "https://chocolatey.org/packages/nunit-console-runner",
         "regex": "\\s+([\\d.]+)</title>"
