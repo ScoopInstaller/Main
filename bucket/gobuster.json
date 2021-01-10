@@ -5,13 +5,13 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/OJ/gobuster/releases/download/v3.0.1/gobuster-windows-amd64.7z",
-            "hash": "4c1d03027e275359ed0d641d324c3e99697c23d61e36d58f857b4197d98db1e5",
+            "url": "https://github.com/OJ/gobuster/releases/download/v3.1.0/gobuster-windows-amd64.7z",
+            "hash": "31c0e87ebc91f065554ce031af9783e8b898631b9e32541abee23d14c55a8af1",
             "extract_dir": "gobuster-windows-amd64"
         },
         "32bit": {
-            "url": "https://github.com/OJ/gobuster/releases/download/v3.0.1/gobuster-windows-386.7z",
-            "hash": "824d8b306fa7d7c40cf1c131f4749024d855ec85db96d914d4ef8edb5b0f5dcf",
+            "url": "https://github.com/OJ/gobuster/releases/download/v3.1.0/gobuster-windows-386.7z",
+            "hash": "737032176e4affce74c5332879afbc2452c8af05da3ae9c755b1d5eb3930f56a",
             "extract_dir": "gobuster-windows-386"
         }
     },
@@ -20,13 +20,17 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/OJ/gobuster/releases/download/v3.0.1/gobuster-windows-amd64.7z",
+                "url": "https://github.com/OJ/gobuster/releases/download/v$version/gobuster-windows-amd64.7z",
                 "extract_dir": "gobuster-windows-amd64"
             },
             "32bit": {
-                "url": "https://github.com/OJ/gobuster/releases/download/v3.0.1/gobuster-windows-386.7z",
+                "url": "https://github.com/OJ/gobuster/releases/download/v$version/gobuster-windows-386.7z",
                 "extract_dir": "gobuster-windows-386"
             }
+        },
+        "hash": {
+            "url": "https://github.com/OJ/gobuster/releases/tag/v$version",
+            "regex": "$sha256.*$basename"
         }
     }
 }
