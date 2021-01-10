@@ -1,8 +1,16 @@
 {
-    "homepage": "https://dev.mysql.com/downloads/mysql/",
-    "description": "The world's most popular open-source database, supported by an active community.",
     "version": "8.0.22",
+    "description": "The world's most popular open-source database, supported by an active community.",
+    "homepage": "https://dev.mysql.com/downloads/mysql/",
     "license": "GPL-2.0-only",
+    "notes": [
+        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
+        "or run following command as administrator to register MySQL as a service. See: https://dev.mysql.com/doc/refman/en/windows-start-service.html",
+        "",
+        "mysqld --install MySQL --defaults-file=\"$dir\\my.ini\"",
+        "",
+        "To stop and/or delete the Service run 'sc stop MySQL' and 'sc delete MySQL'."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.22-winx64.zip",
@@ -10,37 +18,6 @@
             "extract_dir": "mysql-8.0.22-winx64"
         }
     },
-    "bin": [
-        "bin/ibd2sdi.exe",
-        "bin/innochecksum.exe",
-        "bin/lz4_decompress.exe",
-        "bin/myisamchk.exe",
-        "bin/myisamlog.exe",
-        "bin/myisampack.exe",
-        "bin/myisam_ftdump.exe",
-        "bin/mysql.exe",
-        "bin/mysqladmin.exe",
-        "bin/mysqlbinlog.exe",
-        "bin/mysqlcheck.exe",
-        "bin/mysqld.exe",
-        "bin/mysqldump.exe",
-        "bin/mysqlimport.exe",
-        "bin/mysqlpump.exe",
-        "bin/mysqlshow.exe",
-        "bin/mysqlslap.exe",
-        "bin/mysql_config_editor.exe",
-        "bin/mysql_secure_installation.exe",
-        "bin/mysql_ssl_rsa_setup.exe",
-        "bin/mysql_tzinfo_to_sql.exe",
-        "bin/mysql_upgrade.exe",
-        "bin/my_print_defaults.exe",
-        "bin/perror.exe",
-        "bin/zlib_decompress.exe"
-    ],
-    "persist": [
-        "data",
-        "my.ini"
-    ],
     "pre_install": [
         "$ini = \"$dir\\my.ini\"",
         "if (!(Test-Path \"$ini\")) {",
@@ -58,27 +35,47 @@
         "    warn 'Database has been initialized (username: root, password: <blank>)'",
         "}"
     ],
-    "notes": [
-        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
-        "or run following command as administrator to register MySQL as a service. See: https://dev.mysql.com/doc/refman/en/windows-start-service.html",
-        "",
-        "mysqld --install MySQL --defaults-file=\"$dir\\my.ini\"",
-        "",
-        "To stop and/or delete the Service run 'sc stop MySQL' and 'sc delete MySQL'."
+    "bin": [
+        "bin\\ibd2sdi.exe",
+        "bin\\innochecksum.exe",
+        "bin\\lz4_decompress.exe",
+        "bin\\myisamchk.exe",
+        "bin\\myisamlog.exe",
+        "bin\\myisampack.exe",
+        "bin\\myisam_ftdump.exe",
+        "bin\\mysql.exe",
+        "bin\\mysqladmin.exe",
+        "bin\\mysqlbinlog.exe",
+        "bin\\mysqlcheck.exe",
+        "bin\\mysqld.exe",
+        "bin\\mysqldump.exe",
+        "bin\\mysqlimport.exe",
+        "bin\\mysqlpump.exe",
+        "bin\\mysqlshow.exe",
+        "bin\\mysqlslap.exe",
+        "bin\\mysql_config_editor.exe",
+        "bin\\mysql_secure_installation.exe",
+        "bin\\mysql_ssl_rsa_setup.exe",
+        "bin\\mysql_tzinfo_to_sql.exe",
+        "bin\\mysql_upgrade.exe",
+        "bin\\my_print_defaults.exe",
+        "bin\\perror.exe",
+        "bin\\zlib_decompress.exe"
     ],
-    "checkver": {
-        "url": "https://dev.mysql.com/downloads/mysql/",
-        "re": "<h1>MySQL Community Server ([\\d.]+)"
-    },
+    "persist": [
+        "data",
+        "my.ini"
+    ],
+    "checkver": "<h1>MySQL Community Server ([\\d.]+)",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://dev.mysql.com/get/Downloads/MySQL-$majorVersion.$minorVersion/mysql-$version-winx64.zip",
-                "extract_dir": "mysql-$version-winx64",
                 "hash": {
                     "url": "https://dev.mysql.com/downloads/mysql/",
-                    "find": "md5\">([A-Fa-f\\d]{32})"
-                }
+                    "regex": "md5\">$md5"
+                },
+                "extract_dir": "mysql-$version-winx64"
             }
         }
     }
