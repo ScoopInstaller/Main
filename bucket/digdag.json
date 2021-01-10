@@ -1,15 +1,14 @@
 {
-    "homepage": "https://www.digdag.io/",
-    "description": "A simple, open source, multi-cloud workflow engine that helps you to build, run, schedule, and monitor complex pipelines of tasks",
-    "license": "Apache-2.0",
     "version": "0.9.42",
+    "description": "A simple, open source, multi-cloud workflow engine that helps you to build, run, schedule, and monitor complex pipelines of tasks",
+    "homepage": "https://www.digdag.io/",
+    "license": "Apache-2.0",
     "url": "https://dl.bintray.com/digdag/maven/digdag-0.9.42.jar#/digdag.jar",
     "hash": "71071424a5beeb881cb4ccb06067a556a3673caf3dc8850dd584357e99134b21",
-    "pre_install": "\"@java -jar \"\"$dir\\digdag.jar\"\" %*\" | out-file -en oem \"$dir\\digdag.cmd\"",
-    "bin": "digdag.cmd",
+    "bin": "digdag.jar",
     "checkver": {
         "url": "https://api.bintray.com/packages/digdag/maven/digdag",
-        "jp": "$.latest_version"
+        "jsonpath": "$.latest_version"
     },
     "autoupdate": {
         "url": "https://dl.bintray.com/digdag/maven/digdag-$version.jar#/digdag.jar",

@@ -1,26 +1,8 @@
 {
-    "homepage": "https://master.dockerproject.org",
-    "license": "Apache-2.0",
     "version": "nightly",
     "description": "Run the latest master build of docker client and engine",
-    "url": "https://master.dockerproject.org/windows/x86_64/docker.zip",
-    "extract_dir": "docker",
-    "depends": [
-        "sudo",
-        "lcow"
-    ],
-    "suggest": {
-        "Linux container support on Windows": "lcow",
-        "Docker Compose": "docker-compose",
-        "Docker Machine": "docker-machine",
-        "Kubernetes Standalone": "minikube",
-        "Kubernetes Client": "kubectl",
-        "compose.yml to kubernetes.yml": "kompose"
-    },
-    "bin": [
-        "dockerd.exe",
-        "docker.exe"
-    ],
+    "homepage": "https://master.dockerproject.org",
+    "license": "Apache-2.0",
     "notes": [
         "Make sure to have container features enabled (will need a restart afterwards):",
         "sudo Enable-WindowsOptionalFeature -Online -FeatureName containers -All -NoRestart",
@@ -47,5 +29,23 @@
         "(gwmi win32_service -filter \"name='docker'\").delete()",
         "",
         "For help, see https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon"
+    ],
+    "suggest": {
+        "Linux container support on Windows": "lcow",
+        "Docker Compose": "docker-compose",
+        "Docker Machine": "docker-machine",
+        "Kubernetes Standalone": "minikube",
+        "Kubernetes Client": "kubectl",
+        "compose.yml to kubernetes.yml": "kompose"
+    },
+    "depends": [
+        "sudo",
+        "lcow"
+    ],
+    "url": "https://master.dockerproject.org/windows/x86_64/docker.zip",
+    "extract_dir": "docker",
+    "bin": [
+        "dockerd.exe",
+        "docker.exe"
     ]
 }

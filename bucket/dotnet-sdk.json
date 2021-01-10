@@ -1,8 +1,11 @@
 {
     "version": "5.0.101",
-    "homepage": "https://www.microsoft.com/net/",
     "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
+    "homepage": "https://www.microsoft.com/net/",
     "license": "MIT",
+    "suggest": {
+        "Visual C++ Redistributable 2019": "extras/vcredist2019"
+    },
     "architecture": {
         "64bit": {
             "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/5.0.101/dotnet-sdk-5.0.101-win-x64.zip",
@@ -14,9 +17,6 @@
         }
     },
     "bin": "dotnet.exe",
-    "suggest": {
-        "Visual C++ Redistributable 2019": "extras/vcredist2019"
-    },
     "env_add_path": ".",
     "env_set": {
         "DOTNET_ROOT": "$dir",
