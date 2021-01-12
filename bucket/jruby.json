@@ -1,15 +1,24 @@
 {
-    "homepage": "https://www.jruby.org/",
-    "description": "The Ruby Programming Language on the JVM.",
     "version": "9.2.14.0",
+    "description": "The Ruby Programming Language on the JVM.",
+    "homepage": "https://www.jruby.org/",
     "license": {
         "identifier": "EPL-1.0|GPL-2.0-only|LGPL-2.1-only",
         "url": "https://github.com/jruby/jruby/blob/master/COPYING"
     },
+    "notes": [
+        "Install a JDK and set JAVA_HOME if you don't already have. JRuby won't work without it.",
+        "Also note that this installation overrides GEM_HOME and GEM_PATH from any previous Ruby or JRuby installation."
+    ],
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
     "url": "https://s3.amazonaws.com/jruby.org/downloads/9.2.14.0/jruby-bin-9.2.14.0.zip",
     "hash": "90ae86e000e587309c50e0c3c676169eb35d8ee39f250d2204d2feee57946593",
     "extract_dir": "jruby-9.2.14.0",
-    "persist": "gems",
     "env_add_path": [
         "bin",
         "gems\\bin"
@@ -19,25 +28,16 @@
         "GEM_HOME": "$dir\\gems",
         "GEM_PATH": "$dir\\gems"
     },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
-    },
-    "notes": [
-        "Install a JDK and set JAVA_HOME if you don't already have. JRuby won't work without it.",
-        "Also note that this installation overrides GEM_HOME and GEM_PATH from any previous Ruby or JRuby installation."
-    ],
+    "persist": "gems",
     "checkver": {
         "url": "https://www.jruby.org/download",
-        "re": "Current Release:\\s+JRuby\\s+([\\d.]+)"
+        "regex": "Current Release:\\s+JRuby\\s+([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://s3.amazonaws.com/jruby.org/downloads/$version/jruby-bin-$version.zip",
-        "extract_dir": "jruby-$version",
         "hash": {
             "url": "$url.sha256"
-        }
+        },
+        "extract_dir": "jruby-$version"
     }
 }
