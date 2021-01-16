@@ -1,16 +1,12 @@
 {
-    "version": "0.9.1",
+    "version": "0.10.0",
     "description": "Changelog generator implemented in Go (Golang)",
     "homepage": "https://github.com/git-chglog/git-chglog",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-chglog/git-chglog/releases/download/0.9.1/git-chglog_windows_amd64.exe#/git-chglog.exe",
-            "hash": "d14da18c6008de0c240b75991368a137068c8a06d3d4c3c240ddc806fd7b9612"
-        },
-        "32bit": {
-            "url": "https://github.com/git-chglog/git-chglog/releases/download/0.9.1/git-chglog_windows_386.exe#/git-chglog.exe",
-            "hash": "00971cd3718084f405002d9732ad8758469b04a059feae96f3a943a0706065dd"
+            "url": "https://github.com/git-chglog/git-chglog/releases/download/v0.10.0/git-chglog_0.10.0_windows_amd64.zip",
+            "hash": "cde8815a89c1b18d3f2ef7e663d208ccd0a8dd8305babf83869bf42e6493b2b6"
         }
     },
     "bin": "git-chglog.exe",
@@ -18,11 +14,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-chglog/git-chglog/releases/download/$version/git-chglog_windows_amd64.exe#/git-chglog.exe"
-            },
-            "32bit": {
-                "url": "https://github.com/git-chglog/git-chglog/releases/download/$version/git-chglog_windows_386.exe#/git-chglog.exe"
+                "url": "https://github.com/git-chglog/git-chglog/releases/download/v$version/git-chglog_$version_windows_amd64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
         }
     }
 }
