@@ -1,17 +1,17 @@
 {
-    "version": "2.3.7",
+    "version": "1.7.28",
     "description": "HTTP reverse proxy and load balancer",
     "homepage": "https://traefik.io/",
     "license": "MIT",
     "notes": "Run with a configuration file 'traefik -c <yourconfig.toml>' or 'traefik --help' for all options.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/containous/traefik/releases/download/v2.3.7/traefik_v2.3.7_windows_amd64.zip",
-            "hash": "eb54b1c9c752a6eaf48d28ff8409c17379a29b9d58390107411762ab6e4edfb4"
+            "url": "https://github.com/containous/traefik/releases/download/v1.7.28/traefik_windows-amd64.exe#/traefik.exe",
+            "hash": "eb2eb67057f944fda79fdf8503b004ff4a0e60c865187e7bcf2e31564c215911"
         },
         "32bit": {
-            "url": "https://github.com/containous/traefik/releases/download/v2.3.7/traefik_v2.3.7_windows_386.zip",
-            "hash": "6ac60a8c68de52ee64007ea05e268071f111a7eba5c04b16af555068d7560aee"
+            "url": "https://github.com/containous/traefik/releases/download/v1.7.28/traefik_windows-386.exe#/traefik.exe",
+            "hash": "5886d71deefdef9981cc99de786b6496db63e75b03f2706073355f5416d9161c"
         }
     },
     "bin": "traefik.exe",
@@ -21,14 +21,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/containous/traefik/releases/download/v$version/traefik_v$version_windows_amd64.zip"
+                "url": "https://github.com/containous/traefik/releases/download/v$version/traefik_windows-amd64.exe#/traefik.exe"
             },
             "32bit": {
-                "url": "https://github.com/containous/traefik/releases/download/v$version/traefik_v$version_windows_386.zip"
+                "url": "https://github.com/containous/traefik/releases/download/v$version/traefik_windows-386.exe#/traefik.exe"
             }
-        },
-        "hash": {
-            "url": "$baseurl/traefik_v$version_checksums.txt"
         }
     }
 }
