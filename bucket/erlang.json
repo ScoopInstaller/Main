@@ -1,41 +1,44 @@
 {
-    "version": "23.2",
+    "version": "23.2.2",
     "description": "A programming language used to build massively scalable soft real-time systems with requirements on high availability.",
     "homepage": "https://www.erlang.org",
     "license": "Apache-2.0",
+    "suggest": {
+        "Visual C/C++ Redistributable 2013": "extras/vcredist2013"
+    },
     "architecture": {
         "64bit": {
-            "url": "http://erlang.org/download/otp_win64_23.2.exe#/dl.7z",
-            "hash": "md5:3b466cba9c611320e175826942fb9c02"
+            "url": "http://erlang.org/download/otp_win64_23.2.2.exe#/dl.7z",
+            "hash": "45ea3a0231f7dec69c30d073f17e0225683353fc97c7b76e8106bee07a06c64b"
         },
         "32bit": {
-            "url": "http://erlang.org/download/otp_win32_23.2.exe#/dl.7z",
-            "hash": "md5:5c373c9d8198f332fce56fb73cd65c6e"
+            "url": "http://erlang.org/download/otp_win32_23.2.2.exe#/dl.7z",
+            "hash": "bf4ac4f8287240a4d746ced27aa265df22fd668e05aa8b71bcf016a85a1daeec"
         }
     },
     "installer": {
         "file": "Install.exe",
         "args": "-sasl"
     },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe.nsis\", \"$dir\\vcredist*\" -Force -Recurse",
     "bin": [
         "bin\\erl.exe",
         "bin\\erlc.exe",
         "bin\\escript.exe",
         "bin\\werl.exe"
     ],
-    "env_set": {
-        "ERLANG_HOME": "$dir"
-    },
     "shortcuts": [
         [
             "bin\\werl.exe",
             "Erlang"
         ]
     ],
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe.nsis\", \"$dir\\vcredist*\" -Force -Recurse",
+    "env_set": {
+        "ERLANG_HOME": "$dir"
+    },
     "checkver": {
-        "url": "https://www.erlang.org/downloads",
-        "regex": "DOWNLOAD\\s+OTP ([\\d.]+)"
+        "url": "https://erlang.org/download/otp_versions_tree_app_vsns.html",
+        "regex": "otp_win64_([\\d.]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {
@@ -45,13 +48,6 @@
             "32bit": {
                 "url": "http://erlang.org/download/otp_win32_$version.exe#/dl.7z"
             }
-        },
-        "hash": {
-            "url": "$baseurl/MD5",
-            "regex": "MD5\\($basename\\)= $md5"
         }
-    },
-    "suggest": {
-        "Visual C/C++ Redistributable 2013": "extras/vcredist2013"
     }
 }
