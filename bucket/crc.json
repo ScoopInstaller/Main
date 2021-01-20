@@ -1,0 +1,29 @@
+{
+    "version": "1.20.0",
+    "description": "Manages a local OpenShift 4.x cluster optimized for testing and development purposes.",
+    "homepage": "https://code-ready.github.io/crc/",
+    "license": "Apache-2.0",
+    "notes": "To acquire a pull secret, visit: https://cloud.redhat.com/openshift/install/crc/installer-provisioned",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/1.20.0/crc-windows-amd64.zip",
+            "hash": "ae0a847db65c8be5ef00299c9e0d3743540d7c7955a0e3985786e6f9775d7f31",
+            "extract_dir": "crc-windows-1.20.0-amd64"
+        }
+    },
+    "bin": "crc.exe",
+    "checkver": {
+        "github": "https://github.com/code-ready/crc"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/$version/crc-windows-amd64.zip",
+                "extract_dir": "crc-windows-$version-amd64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        }
+    }
+}
