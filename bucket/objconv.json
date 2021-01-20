@@ -1,16 +1,17 @@
 {
-    "version": "2020-Jun-08",
+    "version": "2.52",
     "description": "Object file converter and dissassembler",
     "homepage": "https://www.agner.org/optimize/#objconv",
     "license": "GPL-3.0-or-later",
-    "url": "https://www.agner.org/optimize/objconv.zip",
-    "checkver": "File\\s*name.{0,32}?objconv\\.zip,\\s*size:\\s*[0-9]+,\\s*last\\s*modified:\\s*(2[0-9]{3}-...-[0-9]{2})",
-    "hash": "1BFD417D73A9BEB7EBDCFC986B5607D5966BE2F7F376FEF86B7BE3ED4F3E2164",
-    "bin": "objconv.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.agner.org/optimize/objconv.zip#/dl.7z",
+            "hash": "1bfd417d73a9beb7ebdcfc986b5607d5966be2f7f376fef86b7be3ed4f3e2164"
+        }
+    },
     "pre_install": [
-        "Get-ChildItem $dir -Filter objconv.exe -Recurse | select -first 1 | % {  Move-Item $_.FullName -Destination $dir; Remove-Item $_.FullName.Replace($dir,'').Split('\\')[1] -Recurse }"
+        "Move-Item \"$dir\\C_\\_Public\\objconv\\x64\\Release\\objconv.exe\" \"$dir\"",
+        "Get-ChildItem \"$dir\" -Exclude 'objconv.exe' | Remove-Item -Recurse"
     ],
-    "autoupdate": {
-        "url": "https://www.agner.org/optimize/objconv.zip"
-    }
+    "bin": "objconv.exe"
 }
