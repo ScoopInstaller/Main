@@ -1,0 +1,21 @@
+{
+    "homepage": "https://redis.io",
+    "description": "In-memory data structure store, used as a database, cache and message broker.",
+    "version": "5.0.10",
+    "license": "BSD-3-Clause",
+    "url": "https://github.com/tporadowski/redis/releases/download/v5.0.10/Redis-x64-5.0.10.zip",
+    "hash": "f0fa5b8101b286000a9d2b05d300cd0d702b4197a96cdabe6c9d9f859de44566",
+    "bin": [
+        "redis-benchmark.exe",
+        "redis-check-aof.exe",
+        "redis-cli.exe",
+        "redis-server.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/tporadowski/redis",
+        "regex": ">v(\\d+\\.\\d+\\.\\d+)<"
+    },
+    "autoupdate": {
+        "url": "https://github.com/tporadowski/redis/releases/download/v$version/Redis-x64-$version.zip"
+    }
+}

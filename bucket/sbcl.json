@@ -1,11 +1,12 @@
 {
-    "homepage": "http://www.sbcl.org/",
-    "description": "A high performance Common Lisp compiler.",
     "version": "2.0.0",
+    "description": "A high performance Common Lisp compiler.",
+    "homepage": "http://www.sbcl.org/",
     "license": {
         "identifier": "BSD-3-Clause,MIT,Public Domain",
         "url": "https://sourceforge.net/p/sbcl/sbcl/ci/master/tree/COPYING"
     },
+    "notes": "Please restart your command line for SBCL_HOME to take effect. Please consider installing http://www.quicklisp.org/",
     "architecture": {
         "64bit": {
             "url": "https://downloads.sourceforge.net/project/sbcl/sbcl/2.0.0/sbcl-2.0.0-x86-64-windows-binary.msi",
@@ -13,13 +14,13 @@
             "extract_dir": "PFiles\\Steel Bank Common Lisp\\2.0.0"
         }
     },
+    "bin": "sbcl.exe",
     "env_set": {
         "SBCL_HOME": "$dir"
     },
-    "bin": "sbcl.exe",
     "checkver": {
         "url": "http://www.sbcl.org/platform-table.html",
-        "re": "sbcl-([\\d.]+)-x86-64-windows"
+        "regex": "sbcl-([\\d.]+)-x86-64-windows"
     },
     "autoupdate": {
         "architecture": {
@@ -28,6 +29,5 @@
                 "extract_dir": "PFiles\\Steel Bank Common Lisp\\$version"
             }
         }
-    },
-    "notes": "Please restart your command line for SBCL_HOME to take effect. Please consider installing http://www.quicklisp.org/"
+    }
 }

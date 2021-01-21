@@ -1,8 +1,9 @@
 {
-    "homepage": "https://nginx.org",
-    "description": "An HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server.",
     "version": "1.19.6",
+    "description": "An HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server.",
+    "homepage": "https://nginx.org",
     "license": "BSD-2-Clause",
+    "notes": "To use the correct configuration run 'nginx -p \"$env:NGINX_HOME\"' or 'nginx -p \"%NGINX_HOME%\"'",
     "url": "https://nginx.org/download/nginx-1.19.6.zip",
     "hash": "ce19383460413b7982abf9e7416eeb2077b73f4b433c42406eb7d9bfd0c08953",
     "extract_dir": "nginx-1.19.6",
@@ -16,10 +17,9 @@
         "logs",
         "temp"
     ],
-    "notes": "To use the correct configuration run 'nginx -p \"$env:NGINX_HOME\"' or 'nginx -p \"%NGINX_HOME%\"'",
     "checkver": {
         "url": "https://nginx.org/en/CHANGES",
-        "re": "Changes with nginx ([\\d.]+)"
+        "regex": "Changes with nginx ([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://nginx.org/download/nginx-$version.zip",

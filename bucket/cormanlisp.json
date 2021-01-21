@@ -3,6 +3,7 @@
     "description": "A Common Lisp development environment integrated with Windows.",
     "homepage": "https://github.com/sharplispers/cormanlisp",
     "license": "MIT",
+    "notes": "Please restart your command line for CORMANLISP_HOME to take effect. Consider installing <https://www.quicklisp.org/>.",
     "suggest": {
         "vcredist": "extras/vcredist2015"
     },
@@ -13,9 +14,6 @@
         "clconsole.exe",
         "clconsoleapp.exe"
     ],
-    "env_set": {
-        "CORMANLISP_HOME": "$dir"
-    },
     "shortcuts": [
         [
             "CormanLisp.exe",
@@ -32,12 +30,14 @@
             "CormanLisp.exe"
         ]
     ],
+    "env_set": {
+        "CORMANLISP_HOME": "$dir"
+    },
     "checkver": {
         "github": "https://github.com/sharplispers/cormanlisp",
         "regex": "tree/v([\\w.]+)"
     },
     "autoupdate": {
         "url": "https://github.com/sharplispers/cormanlisp/releases/download/v$version/CormanLisp-$version.zip"
-    },
-    "notes": "Please restart your command line for CORMANLISP_HOME to take effect. Consider installing <https://www.quicklisp.org/>."
+    }
 }

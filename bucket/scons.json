@@ -1,10 +1,10 @@
 {
-    "homepage": "https://scons.org/",
+    "version": "4.1.0",
     "description": "A software construction tool",
+    "homepage": "https://scons.org/",
     "license": "MIT",
-    "version": "4.0.1",
-    "url": "https://downloads.sourceforge.net/project/scons/scons-local/4.0.1/scons-local-4.0.1.zip",
-    "hash": "sha1:41e4a7f4af2d2e9cf3b574971a2cee5171da7953",
+    "url": "https://downloads.sourceforge.net/project/scons/scons-local/4.1.0/scons-local-4.1.0.zip",
+    "hash": "sha1:2c1288c5661e5e1f3cc835f407f7cb183863e1cf",
     "pre_install": "echo \"python `\"$dir\\scons.py`\" @args\" | out-file \"$dir\\scons.ps1\"",
     "bin": "scons.ps1",
     "suggest": {
@@ -12,7 +12,7 @@
     },
     "checkver": {
         "url": "https://scons.org/pages/download.html",
-        "re": "<strong>The current production release</strong> of SCons is <strong>([\\d.]+)</strong>"
+        "regex": "<strong>The current production release</strong> of SCons is <strong>([\\d.]+)</strong>"
     },
     "autoupdate": {
         "url": "https://downloads.sourceforge.net/project/scons/scons-local/$version/scons-local-$version.zip"

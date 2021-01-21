@@ -3,6 +3,12 @@
     "description": "A cross-platform, statically typed, general-purpose programming language with type inference.",
     "homepage": "https://kotlinlang.org/",
     "license": "Apache-2.0",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
     "url": "https://github.com/JetBrains/kotlin/releases/download/v1.4.21/kotlin-compiler-1.4.21.zip",
     "hash": "46720991a716e90bfc0cf3f2c81b2bd735c14f4ea6a5064c488e04fd76e6b6c7",
     "extract_dir": "kotlinc",
@@ -15,14 +21,9 @@
     "env_set": {
         "KOTLIN_HOME": "$dir"
     },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
-    },
     "checkver": {
-        "github": "https://github.com/JetBrains/kotlin"
+        "url": "https://kotlinlang.org/releases.html",
+        "regex": ">([\\d.]+)</strong"
     },
     "autoupdate": {
         "url": "https://github.com/JetBrains/kotlin/releases/download/v$version/kotlin-compiler-$version.zip"

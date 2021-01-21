@@ -1,8 +1,8 @@
 {
-    "homepage": "https://iperf.fr/",
-    "description": "Tool for measuring the maximum achievable bandwidth on IP networks",
-    "license": "BSD-3-Clause",
     "version": "3.1.3",
+    "description": "Tool for measuring the maximum achievable bandwidth on IP networks",
+    "homepage": "https://iperf.fr/",
+    "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
             "url": "https://iperf.fr/download/windows/iperf-3.1.3-win64.zip",
@@ -12,13 +12,13 @@
         "32bit": {
             "url": "https://iperf.fr/download/windows/iperf-3.1.3-win32.zip",
             "hash": "b3f8e262c17a000a30bf4f2135dfed644587cf2ec649f878aea8e9de51ffc8f2",
-            "extract_dir": "iperf-3.1.3-win32"
+            "extract_dir": "iperf-3.1.3-win64"
         }
     },
     "bin": "iperf3.exe",
     "checkver": {
         "url": "https://iperf.fr/iperf-download.php",
-        "re": "iPerf ([\\d.]+)<\\/a>"
+        "regex": "iPerf ([\\d.]+)<\\/a>"
     },
     "autoupdate": {
         "architecture": {
@@ -32,7 +32,7 @@
             }
         },
         "hash": {
-            "url": "https://iperf.fr/download/windows/sha256sum.txt"
+            "url": "$baseurl/sha256sum.txt"
         }
     }
 }

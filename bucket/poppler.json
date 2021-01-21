@@ -1,15 +1,15 @@
 {
-    "version": "20.12.1-hd95df2c_2",
+    "version": "20.12.1-data",
     "description": "PDF rendering library",
-    "homepage": "https://anaconda.org/conda-forge/poppler",
-    "license": "GPL-2.0-only",
+    "homepage": "https://github.com/oschwartz10612/poppler-windows",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://anaconda.org/conda-forge/poppler/20.12.1/download/win-64/poppler-20.12.1-hd95df2c_2.tar.bz2",
-            "hash": "5f9b0466874cc0611a8ae444205021313de477edab49ee9314fc2ad055d4cd9e"
+            "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/v20.12.1-data/Release-20.12.1.zip",
+            "hash": "f110639df0c6cb14dc96f22fd10db9f4fcf636b74d4e803fc7c5aaa729f16ffb"
         }
     },
-    "extract_dir": "Library",
+    "extract_dir": "poppler-20.12.1\\Library",
     "bin": [
         "bin\\pdfattach.exe",
         "bin\\pdfdetach.exe",
@@ -25,14 +25,15 @@
         "bin\\pdfunite.exe"
     ],
     "checkver": {
-        "url": "https://anaconda.org/conda-forge/poppler/files",
-        "regex": ">win-64/poppler-([\\w.-]+)\\.tar\\.bz2</a>"
+        "github": "https://github.com/oschwartz10612/poppler-windows",
+        "regex": "tag/v([\\w.-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://anaconda.org/conda-forge/poppler/$matchHead/download/win-64/poppler-$version.tar.bz2"
+                "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/v$version/Release-$matchHead.zip"
             }
-        }
+        },
+        "extract_dir": "poppler-$matchHead\\Library"
     }
 }

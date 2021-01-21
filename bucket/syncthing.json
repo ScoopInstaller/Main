@@ -1,21 +1,28 @@
 {
-    "version": "1.12.0",
+    "version": "1.12.1",
     "description": "Open Source Continuous File Synchronization.",
     "homepage": "https://syncthing.net/",
     "license": "MPL-2.0",
     "notes": "To start syncthing automatically, use a method described at https://github.com/syncthing/docs/blob/main/users/autostart.rst#windows",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v1.12.0/syncthing-windows-amd64-v1.12.0.zip",
-            "hash": "29c7269a5e605093437b9da78693f6e933b9b37b2660b02a2c402abe217d780a",
-            "extract_dir": "syncthing-windows-amd64-v1.12.0"
+            "url": "https://github.com/syncthing/syncthing/releases/download/v1.12.1/syncthing-windows-amd64-v1.12.1.zip",
+            "hash": "be8e3961612cba1a259b25f141dd427d24e689587d5aec886bb1598fa6fb9087",
+            "extract_dir": "syncthing-windows-amd64-v1.12.1"
         },
         "32bit": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v1.12.0/syncthing-windows-386-v1.12.0.zip",
-            "hash": "24b2e5d31eda238240c1638540d842f8d1cc2f9ea8b9167d52e8d1f569eceb2d",
-            "extract_dir": "syncthing-windows-386-v1.12.0"
+            "url": "https://github.com/syncthing/syncthing/releases/download/v1.12.1/syncthing-windows-386-v1.12.1.zip",
+            "hash": "aa674a5c6e35e23d963a6affe28e845a0a02afe7e09cc632ead3984f05690ff1",
+            "extract_dir": "syncthing-windows-386-v1.12.1"
         }
     },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config\") -and (Test-Path \"$env:LOCALAPPDATA\\Syncthing\")) {",
+        "    info \"Copying old '$env:LOCALAPPDATA\\Syncthing' to '$persist_dir\\config'\"",
+        "    ensure \"$dir\\config\" | Out-Null",
+        "    Copy-Item \"$env:LOCALAPPDATA\\Syncthing\\*\" \"$dir\\config\" -Exclude 'LOCK' -Recurse -Force",
+        "}"
+    ],
     "bin": [
         [
             "syncthing.exe",
@@ -24,13 +31,6 @@
         ]
     ],
     "persist": "config",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config\") -and (Test-Path \"$env:LOCALAPPDATA\\Syncthing\")) {",
-        "    info \"Copying old '$env:LOCALAPPDATA\\Syncthing' to '$persist_dir\\config'\"",
-        "    ensure \"$dir\\config\" | Out-Null",
-        "    Copy-Item \"$env:LOCALAPPDATA\\Syncthing\\*\" \"$dir\\config\" -Exclude LOCK -Recurse -Force",
-        "}"
-    ],
     "checkver": {
         "github": "https://github.com/syncthing/syncthing"
     },

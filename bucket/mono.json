@@ -3,6 +3,12 @@
     "description": "Cross platform, open source .NET framework.",
     "homepage": "https://www.mono-project.com/",
     "license": "MIT",
+    "suggest": {
+        "vcredist": [
+            "extras/vcredist2013",
+            "extras/vcredist2015"
+        ]
+    },
     "architecture": {
         "64bit": {
             "url": "https://download.mono-project.com/archive/6.12.0/windows-installer/mono-6.12.0.107-x64-0.msi",
@@ -17,7 +23,7 @@
     "env_add_path": "bin",
     "checkver": {
         "url": "http://www.mono-project.com/download/stable/",
-        "re": "(?<short>[\\d.]+)/windows-installer/(?<file>mono-(?<version>[\\d.]+).*win32.*).msi"
+        "regex": "(?<short>[\\d.]+)/windows-installer/(?<file>mono-(?<version>[\\d.]+).*win32.*)\\.msi"
     },
     "autoupdate": {
         "architecture": {
@@ -28,11 +34,5 @@
                 "url": "https://download.mono-project.com/archive/$matchShort/windows-installer/$matchFile.msi"
             }
         }
-    },
-    "suggest": {
-        "vcredist": [
-            "extras/vcredist2013",
-            "extras/vcredist2015"
-        ]
     }
 }

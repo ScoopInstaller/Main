@@ -1,16 +1,26 @@
 {
-    "homepage": "https://nmap.org",
-    "description": "Network exploration and security auditing utility.",
     "version": "7.91",
+    "description": "Network exploration and security auditing utility.",
+    "homepage": "https://nmap.org",
     "license": {
         "identifier": "GPL-2.0-only",
         "url": "https://github.com/nmap/nmap/blob/master/COPYING"
     },
-    "url": "https://nmap.org/dist/nmap-7.91-setup.exe#/dl.7z",
-    "hash": "c4683097a2615252eeddab06c54872efb14c2ee2da8997b1c73844e582081a79",
+    "notes": [
+        "Please install 'Npcap' by manually running '$dir\\npcap-oem.exe'!",
+        "Please import the network performance improvements by running 'regedt32 \"$dir\\nmap_performance.reg\"'",
+        "See: https://nmap.org/book/inst-windows.html"
+    ],
     "suggest": {
         "Visual C++ Redist 2008": "extras/vcredist2008"
     },
+    "url": "https://nmap.org/dist/nmap-7.91-setup.exe#/dl.7z",
+    "hash": "c4683097a2615252eeddab06c54872efb14c2ee2da8997b1c73844e582081a79",
+    "pre_install": [
+        "Get-ChildItem \"$dir\\`$PLUGINSDIR\\npcap-*-oem.exe\" | Select-Object -First 1 | Rename-Item -NewName 'npcap-oem.exe'",
+        "Move-Item \"$dir\\`$PLUGINSDIR\\npcap-oem.exe\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Recurse"
+    ],
     "bin": [
         "nmap.exe",
         "ncat.exe",
@@ -18,25 +28,15 @@
         "zenmap.exe",
         "nping.exe"
     ],
-    "pre_install": [
-        "Get-ChildItem \"$dir\\`$PLUGINSDIR\\npcap-*-oem.exe\" | Select-Object -First 1 | Rename-Item -NewName 'npcap-oem.exe'",
-        "Move-Item \"$dir\\`$PLUGINSDIR\\npcap-oem.exe\" \"$dir\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Recurse"
-    ],
     "shortcuts": [
         [
             "zenmap.exe",
             "Nmap - Zenmap GUI"
         ]
     ],
-    "notes": [
-        "Please install 'Npcap' by manually running '$dir\\npcap-oem.exe'!",
-        "Please import the network performance improvements by running 'regedt32 \"$dir\\nmap_performance.reg\"'",
-        "See: https://nmap.org/book/inst-windows.html"
-    ],
     "checkver": {
         "url": "https://nmap.org/download.html",
-        "regex": "nmap-([\\d.]+)-setup.exe"
+        "regex": "nmap-([\\d.]+)-setup\\.exe"
     },
     "autoupdate": {
         "url": "https://nmap.org/dist/nmap-$version-setup.exe#/dl.7z"
