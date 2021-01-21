@@ -1,8 +1,8 @@
 {
-    "version": "v20.12.1-data",
+    "version": "20.12.1-data",
     "description": "PDF rendering library",
     "homepage": "https://github.com/oschwartz10612/poppler-windows",
-    "license": "MIT License",
+    "license": "MIT",
     "architecture": {
         "64bit": {
             "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/v20.12.1-data/Release-20.12.1.zip",
@@ -26,12 +26,12 @@
     ],
     "checkver": {
         "url": "https://github.com/oschwartz10612/poppler-windows/releases/latest",
-        "regex": "(?<version>[\\d\\w.-]+)/Release-(?<short>[\\d.]+)\\.zip"
+        "regex": "v(?<version>[\\d\\w.-]+)/Release-(?<short>[\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/$version/Release-$matchShort.zip"
+                "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/v$version/Release-$matchShort.zip"
             }
         },
         "extract_dir": "poppler-$matchShort/Library"

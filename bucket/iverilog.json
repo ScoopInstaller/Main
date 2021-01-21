@@ -1,10 +1,14 @@
 {
-    "homepage": "http://bleyer.org/icarus/",
-    "description": "Compiler for IEEE-1364 Verilog hardware description language.",
     "version": "11-20201123",
+    "description": "Compiler for IEEE-1364 Verilog hardware description language.",
+    "homepage": "http://bleyer.org/icarus/",
     "license": "GPL-2.0-or-later",
-    "url": "http://bleyer.org/icarus/iverilog-v11-20201123-x64_setup.exe",
-    "hash": "73db2a54c3702145473d4a094f1000a005d5278e96690c835573d6962d16751a",
+    "architecture": {
+        "64bit": {
+            "url": "http://bleyer.org/icarus/iverilog-v11-20201123-x64_setup.exe",
+            "hash": "73db2a54c3702145473d4a094f1000a005d5278e96690c835573d6962d16751a"
+        }
+    },
     "innosetup": true,
     "bin": [
         "bin\\iverilog.exe",
@@ -13,8 +17,12 @@
         "gtkwave\\bin\\gtkwave.exe"
     ],
     "env_add_path": "bin",
-    "checkver": "iverilog-v([\\d.-]+)-x64_setup.exe",
+    "checkver": "iverilog-v([\\d.-]+)-x64_setup\\.exe",
     "autoupdate": {
-        "url": "http://bleyer.org/icarus/iverilog-v$version-x64_setup.exe"
+        "architecture": {
+            "64bit": {
+                "url": "http://bleyer.org/icarus/iverilog-v$version-x64_setup.exe"
+            }
+        }
     }
 }

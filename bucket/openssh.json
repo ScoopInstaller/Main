@@ -1,7 +1,7 @@
 {
-    "homepage": "https://www.openssh.com/",
-    "description": "A suite of secure networking utilities based on the Secure Shell protocol.",
     "version": "8.2p1-1",
+    "description": "A suite of secure networking utilities based on the Secure Shell protocol.",
+    "homepage": "https://www.openssh.com/",
     "license": "ISC",
     "architecture": {
         "64bit": {
@@ -39,31 +39,31 @@
             ]
         }
     },
+    "pre_install": [
+        "ensure \"$dir\\tmp\" | Out-Null",
+        "ensure \"$dir\\home\" | Out-Null",
+        "ensure \"$dir\\home\\$env:UserName\" | Out-Null",
+        "ensure \"$env:UserProfile\\.ssh\" | Out-Null",
+        "cmd /c mklink /j \"$dir\\home\\%UserName%\\.ssh\" \"%UserProfile%\\.ssh\""
+    ],
     "bin": [
         [
-            "usr/bin/sh.exe",
+            "usr\\bin\\sh.exe",
             "findssl.sh",
             "$dir/usr/bin/findssl.sh"
         ],
-        "usr/bin/scp.exe",
-        "usr/bin/sftp.exe",
-        "usr/bin/ssh.exe",
-        "usr/bin/ssh-add.exe",
-        "usr/bin/ssh-agent.exe",
+        "usr\\bin\\scp.exe",
+        "usr\\bin\\sftp.exe",
+        "usr\\bin\\ssh.exe",
+        "usr\\bin\\ssh-add.exe",
+        "usr\\bin\\ssh-agent.exe",
         [
-            "usr/bin/sh.exe",
+            "usr\\bin\\sh.exe",
             "ssh-copy-id",
             "$dir/usr/bin/ssh-copy-id"
         ],
-        "usr/bin/ssh-keygen.exe",
-        "usr/bin/ssh-keyscan.exe",
-        "usr/bin/sshd.exe"
-    ],
-    "pre_install": [
-        "mkdir \"$dir/tmp\"",
-        "mkdir \"$dir/home\"",
-        "mkdir \"$dir/home/$env:UserName\"",
-        "mkdir -Force \"$env:UserProfile/.ssh\"",
-        "cmd /c mklink /j \"$dir\\home\\%UserName%\\.ssh\" \"%UserProfile%\\.ssh\""
+        "usr\\bin\\ssh-keygen.exe",
+        "usr\\bin\\ssh-keyscan.exe",
+        "usr\\bin\\sshd.exe"
     ]
 }

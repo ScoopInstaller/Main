@@ -1,8 +1,16 @@
 {
-    "homepage": "https://openresty.org",
     "version": "1.19.3.1",
-    "license": "BSD-2-Clause",
     "description": "Dynamic web platform based on NGINX and LuaJIT.",
+    "homepage": "https://openresty.org",
+    "license": "BSD-2-Clause",
+    "notes": [
+        "Use '-p $PWD' to specify current directory when running OpenResty.",
+        "(Alternately, see documentation by running 'scoop home openresty'.)",
+        "'resty' and 'restydoc' command-line utilities require 'perl'"
+    ],
+    "suggest": {
+        "Perl": "perl"
+    },
     "architecture": {
         "64bit": {
             "url": "https://openresty.org/download/openresty-1.19.3.1-win64.zip",
@@ -29,14 +37,6 @@
         "html",
         "logs"
     ],
-    "notes": [
-        "Use '-p $PWD' to specify current directory when running OpenResty.",
-        "(Alternately, see documentation by running 'scoop home openresty'.)",
-        "'resty' and 'restydoc' command-line utilities require 'perl'"
-    ],
-    "suggest": {
-        "Perl": "perl"
-    },
     "checkver": "OpenResty ([\\d.]+)",
     "autoupdate": {
         "architecture": {

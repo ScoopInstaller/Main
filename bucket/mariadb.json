@@ -1,8 +1,16 @@
 {
-    "homepage": "https://mariadb.org",
     "version": "10.5.8",
-    "license": "GPL-2.0-only",
     "description": "Community developed fork of MySQL server.",
+    "homepage": "https://mariadb.org",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
+        "or run following command as administrator to register MariaDB as a service. See: https://mariadb.com/kb/en/library/mysql_install_dbexe/",
+        "",
+        "mysql_install_db --service=MariaDB --password=NewRootPassword",
+        "",
+        "To stop and/or delete the Service run 'sc stop MariaDB' and 'sc delete MariaDB'."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.5.8/winx64-packages/mariadb-10.5.8-winx64.zip",
@@ -15,6 +23,13 @@
             "extract_dir": "mariadb-10.5.8-win32"
         }
     },
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
+        "    warn 'Initializing data directory ...'",
+        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList @(\"--datadir=`\"$dir\\data`\"\")",
+        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "}"
+    ],
     "bin": [
         "bin\\aria_chk.exe",
         "bin\\aria_dump_log.exe",
@@ -43,21 +58,6 @@
         "bin\\my_print_defaults.exe"
     ],
     "persist": "data",
-    "post_install": [
-        "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
-        "    warn 'Initializing data directory ...'",
-        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList @(\"--datadir=`\"$dir\\data`\"\")",
-        "    warn 'Database has been initialized (username: root, password: <blank>)'",
-        "}"
-    ],
-    "notes": [
-        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
-        "or run following command as administrator to register MariaDB as a service. See: https://mariadb.com/kb/en/library/mysql_install_dbexe/",
-        "",
-        "mysql_install_db --service=MariaDB --password=NewRootPassword",
-        "",
-        "To stop and/or delete the Service run 'sc stop MariaDB' and 'sc delete MariaDB'."
-    ],
     "checkver": {
         "url": "https://downloads.mariadb.org/",
         "regex": "Download ([\\d.]+) Stable"

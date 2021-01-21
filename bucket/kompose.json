@@ -1,6 +1,6 @@
 {
     "version": "1.22.0",
-    "description": "Kompose is a conversion tool for Docker Compose to container orchestrators such as Kubernetes (or OpenShift).",
+    "description": "Conversion tool for Docker Compose to container orchestrators such as Kubernetes (or OpenShift).",
     "homepage": "https://kompose.io/",
     "license": "Apache-2.0",
     "architecture": {
@@ -21,7 +21,7 @@
         },
         "hash": {
             "url": "https://github.com/kubernetes/kompose/releases/tag/v$version",
-            "find": ">kompose-windows-amd64.exe[^.]+([0-9a-fA-F]{64})"
+            "regex": ">$basename[^.]+$sha256"
         }
     }
 }
