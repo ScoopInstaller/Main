@@ -3,6 +3,9 @@
     "description": "A popular general-purpose scripting language that is especially suited to web development. (non-thread safe)",
     "homepage": "https://windows.php.net/",
     "license": "PHP-3.01",
+    "suggest": {
+        "vcredist": "extras/vcredist2019"
+    },
     "architecture": {
         "64bit": {
             "url": "https://windows.php.net/downloads/releases/php-8.0.1-nts-Win32-vs16-x64.zip",
@@ -13,21 +16,6 @@
             "hash": "410089d7317d579fb86bbd4cfb4f275ee117ab4742c87332731811f6fde34480"
         }
     },
-    "bin": [
-        "php.exe",
-        "php-cgi.exe",
-        "phpdbg.exe"
-    ],
-    "persist": [
-        "cli",
-        [
-            "php.ini-production",
-            "cli\\php.ini"
-        ]
-    ],
-    "env_set": {
-        "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
-    },
     "pre_install": [
         "# Create directory for custom PHP configuration",
         "if (!(Test-Path \"$dir\\cli\\conf.d\")) {",
@@ -37,6 +25,21 @@
     "post_install": [
         "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
         "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
+    ],
+    "bin": [
+        "php.exe",
+        "php-cgi.exe",
+        "phpdbg.exe"
+    ],
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
+    },
+    "persist": [
+        "cli",
+        [
+            "php.ini-production",
+            "cli\\php.ini"
+        ]
     ],
     "checkver": {
         "url": "https://windows.php.net/download/",
@@ -54,8 +57,5 @@
         "hash": {
             "url": "$baseurl/sha256sum.txt"
         }
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2019"
     }
 }

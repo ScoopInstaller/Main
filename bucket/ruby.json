@@ -4,6 +4,9 @@
     "homepage": "https://rubyinstaller.org",
     "license": "BSD-3-Clause",
     "notes": "Install MSYS2 via 'scoop install msys2' and then run 'ridk install' to install the toolchain!",
+    "suggest": {
+        "MSYS2": "msys2"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.0-1/rubyinstaller-3.0.0-1-x64.7z",
@@ -16,7 +19,7 @@
             "extract_dir": "rubyinstaller-3.0.0-1-x86"
         }
     },
-    "persist": "gems",
+    "post_install": "gem install rake",
     "env_add_path": [
         "bin",
         "gems\\bin"
@@ -25,10 +28,7 @@
         "GEM_HOME": "$dir\\gems",
         "GEM_PATH": "$dir\\gems"
     },
-    "suggest": {
-        "MSYS2": "msys2"
-    },
-    "post_install": "gem install rake",
+    "persist": "gems",
     "checkver": {
         "url": "https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
         "regex": "Ruby (\\S+)"
