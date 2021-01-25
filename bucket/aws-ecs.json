@@ -1,0 +1,22 @@
+{
+    "version": "1.21.0",
+    "description": "The Amazon Elastic Container Service (Amazon ECS) command line interface (CLI) provides high-level commands to simplify creating, updating, and monitoring clusters and tasks from a local development environment. The Amazon ECS CLI supports Docker Compose files, a popular open-source specification for defining and running multi-container applications. Use the ECS CLI as part of your everyday development and testing cycle as an alternative to the AWS Management Console.",
+    "homepage": "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_CLI.html",
+    "license": "Apache-2.0",
+    "suggest": {
+        "AWS CLI": "aws"
+    },
+    "url": "https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-windows-amd64-v1.21.0.exe",
+    "hash": "062f6e642f80a3073b8fafa3f0a865c29fbc31c09bb71c0a8f18c8427da434c4",
+    "pre_install": "Rename-Item \"$dir\\ecs-cli-windows-amd64-v$version.exe\" 'ecs-cli.exe'",
+    "bin": "ecs-cli.exe",
+    "checkver": {
+        "github": "https://github.com/aws/amazon-ecs-cli"
+    },
+    "autoupdate": {
+        "url": "https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-windows-amd64-v$version.exe",
+        "hash": {
+            "url:": "https: //amazon-ecs-cli.s3.amazonaws.com/ecs-cli-windows-amd64-v$version.md5"
+        }
+    }
+}
