@@ -6,14 +6,22 @@
     "suggest": {
         "AWS CLI": "aws"
     },
-    "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.15.0/AWS_SAM_CLI_64_PY3.msi",
-    "hash": "6f9f3e078d51f7d411f37e9dead90cae339b50d0c782af821ce5877876ab8c29",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.15.0/AWS_SAM_CLI_64_PY3.msi",
+            "hash": "6f9f3e078d51f7d411f37e9dead90cae339b50d0c782af821ce5877876ab8c29"
+        }
+    },
     "extract_dir": "Amazon\\AWSSAMCLI",
     "bin": "bin\\sam.cmd",
     "checkver": {
         "github": "https://github.com/aws/aws-sam-cli"
     },
     "autoupdate": {
-        "url": "https://github.com/aws/aws-sam-cli/releases/download/v$version/AWS_SAM_CLI_64_PY3.msi"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aws/aws-sam-cli/releases/download/v$version/AWS_SAM_CLI_64_PY3.msi"
+            }
+        }
     }
 }
