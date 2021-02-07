@@ -1,7 +1,7 @@
 {
     "version": "0.35.0",
     "description": "A simple deployment tool focused on the concept of Kubernetes application",
-    "homepage": "https://get-kapp.io",
+    "homepage": "https://carvel.dev/kapp/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
@@ -16,12 +16,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vmware-tanzu/carvel-kapp/releases/download/v$version/kapp-windows-amd64.exe#/kapp.exe",
-                "hash": {
-                    "url": "https://github.com/vmware-tanzu/carvel-kapp/releases/tag/v$version",
-                    "find": "$sha256  \\.\\/kapp-windows-amd64\\.exe"
-                }
+                "url": "https://github.com/vmware-tanzu/carvel-kapp/releases/download/v$version/kapp-windows-amd64.exe#/kapp.exe"
             }
+        },
+        "hash": {
+            "url": "https://github.com/vmware-tanzu/carvel-kapp/releases/tag/v$version",
+            "regex": "$sha256\\s+(\\./)?$basename"
         }
     }
 }
