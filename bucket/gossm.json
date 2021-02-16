@@ -1,0 +1,24 @@
+{
+    "version": "1.3.2",
+    "description": "Interactive CLI tool that you can connect to EC2 using commands same as start-session, SSH in AWS SSM Session Manager.",
+    "homepage": "https://github.com/gjbae1212/gossm",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gjbae1212/gossm/releases/download/v1.3.2/gossm_1.3.2_Windows_x86_64.tar.gz",
+            "hash": "fe426e008037ea4d0556918b7e316f52556aff2308de86205c51857a70390f1a"
+        }
+    },
+    "bin": "gossm.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gjbae1212/gossm/releases/download/v$version/gossm_$version_Windows_x86_64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/gossm_$version_checksums.txt"
+        }
+    }
+}
