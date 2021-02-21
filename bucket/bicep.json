@@ -1,0 +1,27 @@
+{
+    "version": "0.2.328",
+    "description": "Compiles bicep (DSL for deploying Azure resources declaratively) files into ARM templates",
+    "homepage": "https://github.com/Azure/bicep",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://raw.githubusercontent.com/Azure/bicep/main/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Azure/bicep/releases/download/v0.2.328/bicep-win-x64.exe#/bicep.exe",
+            "hash": "4d9f635abfa950b1e2bd32e5a72d8eb7a31d24a3401d71c4e21324a291f11134"
+        }
+    },
+    "bin": "bicep.exe",
+    "checkver": {
+        "github": "https://github.com/Azure/bicep/",
+        "regex": "tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Azure/bicep/releases/download/v$version/bicep-win-x64.exe#/bicep.exe"
+            }
+        }
+    }
+}
