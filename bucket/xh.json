@@ -10,7 +10,11 @@
             "extract_dir": "xh-v0.8.0-x86_64-pc-windows-msvc"
         }
     },
-    "bin": "xh.exe",
+    "bin": [
+        "xh.exe",
+        "xhs.exe"
+    ],
+    "pre_install": "Copy-Item \"$dir\\xh.exe\" \"$dir\\xhs.exe\"",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
