@@ -16,6 +16,13 @@
             "extract_dir": "xpdf-tools-win-4.03\\bin32"
         }
     },
+    "pre_install": [
+        "ensure \"$persist_dir\" | Out-Null",
+        "Get-ChildItem \"$persist_dir\\*\" -Include 'xpdfrc' | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue"
+    ],
+    "uninstaller": {
+        "script": "Get-ChildItem \"$dir\\*\" -Include 'xpdfrc' | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
+    },
     "bin": [
         "pdftopng.exe",
         "pdftoppm.exe",
