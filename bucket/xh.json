@@ -1,20 +1,26 @@
 {
-    "version": "0.7.0",
+    "version": "0.9.0",
     "description": "Yet another HTTPie clone in Rust",
     "homepage": "https://github.com/ducaale/xh/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/ducaale/xh/releases/download/v0.7.0/xh-x86_64-pc-windows-msvc.zip",
-            "hash": "88ffe36645dbbd3bb84617536cc6fd20b8b9d0ecdfa1fb7f23adbb77f5a5c1dd"
+            "url": "https://github.com/ducaale/xh/releases/download/v0.9.0/xh-v0.9.0-x86_64-pc-windows-msvc.zip",
+            "hash": "68f1176e8fcce20daac232e7f9058897f8d49534d991d54d7c4a133394ca581c",
+            "extract_dir": "xh-v0.9.0-x86_64-pc-windows-msvc"
         }
     },
-    "bin": "xh.exe",
+    "bin": [
+        "xh.exe",
+        "xhs.exe"
+    ],
+    "pre_install": "Copy-Item \"$dir\\xh.exe\" \"$dir\\xhs.exe\"",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/ducaale/xh/releases/download/v$version/xh-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/ducaale/xh/releases/download/v$version/xh-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "xh-v$version-x86_64-pc-windows-msvc"
             }
         }
     }
