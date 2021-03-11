@@ -6,8 +6,8 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/facebook/zstd/releases/download/v1.4.9/zstd-v1.4.9-win64.zip",
-            "hash": "51bf3ebaf46d9de643521d6514fa5b0bdfef049c487d5e76e3b5bc8662785e54",
-            "pre_install": "Expand-7zipArchive \"$dir\\zstd*win64\" -Removal"
+            "hash": "6b762f30b6e356f9625e3a764fae09dc32536cfc2cf33fc135b3021984b84f0b",
+            "extract_dir": "zstd-v1.4.9-win64"
         },
         "32bit": {
             "url": "https://github.com/facebook/zstd/releases/download/v1.4.9/zstd-v1.4.9-win32.zip",
@@ -22,7 +22,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip"
+                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip",
+                "extract_dir": "zstd-v$version-win64"
             },
             "32bit": {
                 "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win32.zip",

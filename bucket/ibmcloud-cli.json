@@ -1,38 +1,37 @@
 {
     "version": "1.4.0",
     "description": "The command line client for IBM Cloud",
-    "homepage": "https://github.com/IBM-Cloud/ibm-cloud-cli-release",
+    "homepage": "https://www.ibm.com/cloud/cli",
     "license": {
-        "identifier": "Proprietary",
-        "url": "https://cloud.ibm.com/docs/overview?topic=overview-notices"
+        "identifier": "Apache-2.0",
+        "url": "https://cloud.ibm.com/media/docs/downloads/oss-licensing-info/IBMCloud-CLI-OSS-Licenses.txt"
     },
     "architecture": {
         "64bit": {
-            "url": "https://clis.cloud.ibm.com/download/bluemix-cli/1.4.0/win64/archive#/ibmcloud-cli-win64.zip",
+            "url": "https://clis.cloud.ibm.com/download/bluemix-cli/1.4.0/win64/archive#/dl.zip",
             "hash": "sha1:230d093fe32003abf1b0332ab0bcf957b656296a"
         },
         "32bit": {
-            "url": "https://clis.cloud.ibm.com/download/bluemix-cli/1.4.0/win32/archive#/ibmcloud-cli-win32.zip",
+            "url": "https://clis.cloud.ibm.com/download/bluemix-cli/1.4.0/win32/archive#/dl.zip",
             "hash": "sha1:2d7f67018e198fe93af1d9948cbfe03636d3525f"
         }
     },
     "extract_dir": "IBM_Cloud_CLI",
-    "bin": [
-        "ibmcloud.exe",
-        "ibmcloud-analytics.exe"
-    ],
+    "bin": "ibmcloud.exe",
     "env_set": {
         "IBMCLOUD_HOME": "$dir\\config"
     },
     "persist": "config",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/IBM-Cloud/ibm-cloud-cli-release"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://clis.cloud.ibm.com/download/bluemix-cli/$version/win64/archive#/ibmcloud-cli-win64.zip"
+                "url": "https://clis.cloud.ibm.com/download/bluemix-cli/$version/win64/archive#/dl.zip"
             },
             "32bit": {
-                "url": "https://clis.cloud.ibm.com/download/bluemix-cli/$version/win32/archive#/ibmcloud-cli-win32.zip"
+                "url": "https://clis.cloud.ibm.com/download/bluemix-cli/$version/win32/archive#/dl.zip"
             }
         },
         "hash": {
