@@ -1,0 +1,32 @@
+{
+    "version": "1.4.0",
+    "description": "A platform for building proxies to bypass network restrictions",
+    "homepage": "https://github.com/XTLS/Xray-core",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/XTLS/Xray-core/releases/download/v1.4.0/Xray-windows-64.zip",
+            "hash": "sha512:155f6fc120980fd734c1f155824d20ac4359c9eeb5aa9df037d36df8deb119a8bb699a663a13f7a61794b381ca9dd455e53247489c4d30b2e41662371ee14aae"
+        },
+        "32bit": {
+            "url": "https://github.com/XTLS/Xray-core/releases/download/v1.4.0/Xray-windows-32.zip",
+            "hash": "sha512:ab584b1d7d3600dbf364fcd7d6c54bd9504e5222e7072c13e0f95f68fbd7d6f9b65424cde9f80ba70d32fcfffaa8b729795b418f0c362e613e6f8a0e2bc1f34f"
+        }
+    },
+    "bin": "xray.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-32.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.dgst",
+            "regex": "SHA512= $sha512"
+        }
+    }
+}
