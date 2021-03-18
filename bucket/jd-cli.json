@@ -3,8 +3,14 @@
     "description": "Command line Java Decompiler",
     "homepage": "https://github.com/kwart/jd-cli",
     "license": "GPL-3.0-only",
-    "notes": "Deprecated. Use 'main/jd-cli'",
     "url": "https://github.com/kwart/jd-cli/releases/download/jd-cli-1.2.0/jd-cli-1.2.0-dist.zip",
     "hash": "ae589be342b8ea2ccfa48f9da09c78e1c54f263d6695c7a4385a9f748c22bb25",
-    "bin": "jd-cli.jar"
+    "bin": "jd-cli.jar",
+    "checkver": {
+        "github": "https://github.com/kwart/jd-cli",
+        "regex": "jd-cli-([\\d.]+)\\-"
+    },
+    "autoupdate": {
+        "url": "https://github.com/kwart/jd-cli/releases/download/jd-cli-$version/jd-cli-$version-dist.zip"
+    }
 }
