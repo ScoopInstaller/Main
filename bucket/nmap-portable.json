@@ -17,7 +17,7 @@
     "url": "https://nmap.org/dist/nmap-7.91-setup.exe#/dl.7z",
     "hash": "c4683097a2615252eeddab06c54872efb14c2ee2da8997b1c73844e582081a79",
     "pre_install": [
-        "Get-ChildItem \"$dir\\`$PLUGINSDIR\\npcap-*-oem.exe\" | Select-Object -First 1 | Rename-Item -NewName 'npcap-oem.exe'",
+        "Get-ChildItem \"$dir\\`$PLUGINSDIR\\npcap-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'npcap-oem.exe'",
         "Move-Item \"$dir\\`$PLUGINSDIR\\npcap-oem.exe\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Recurse"
     ],
