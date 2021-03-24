@@ -1,0 +1,26 @@
+{
+    "description": "Easy-to-use command-line/curses/web plaintext accounting tool; a modern and largely compatible Haskell rewrite of Ledger.",
+    "version": "1.21",
+    "license": "GPL-3.0-only",
+    "homepage": "https://hledger.org/",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/simonmichael/hledger/releases/download/1.21/hledger-windows.zip",
+            "hash": "AC50550CC3D4595A6391975EA1E711A6D96F80FA40E34F37CB39ABD5392BED7F"
+        }
+    },
+    "bin": [
+      "hledger.exe",
+      "hledger-web.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/simonmichael/hledger"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/simonmichael/hledger/releases/download/$version/hledger-windows.zip"
+            }
+        }
+    }
+}
