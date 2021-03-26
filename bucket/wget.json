@@ -16,7 +16,10 @@
     },
     "post_install": "\"ca_certificate=$(appdir cacert $global)\\current\\cacert.pem\" | out-file \"$dir\\wget.ini\" -encoding default",
     "bin": "wget.exe",
-    "checkver": "<title>GNU Wget ([\\d.]+) for Windows",
+     "checkver": {
+        "url": "https://eternallybored.org/misc/wget/releases/?C=M;O=D",
+        "regex": "/wget-([\\d.-])-win64\\.zip"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
