@@ -1,5 +1,5 @@
 {
-    "version": "1.21.1",
+    "version": "1.21.1-1",
     "description": "A command-line utility for retrieving files using HTTP, HTTPS, FTP, and FTPS protocols.",
     "homepage": "https://eternallybored.org/misc/wget/",
     "license": "GPL-3.0-or-later",
@@ -16,7 +16,10 @@
     },
     "post_install": "\"ca_certificate=$(appdir cacert $global)\\current\\cacert.pem\" | out-file \"$dir\\wget.ini\" -encoding default",
     "bin": "wget.exe",
-    "checkver": "<title>GNU Wget ([\\d.]+) for Windows",
+    "checkver": {
+        "url": "https://eternallybored.org/misc/wget/releases/?C=M;O=D",
+        "regex": ">wget-([\\d.-]+)-win64\\.zip"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

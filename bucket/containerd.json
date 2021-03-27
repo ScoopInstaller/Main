@@ -1,0 +1,30 @@
+{
+  "description": "An open and reliable container runtime",
+  "homepage": "https://containerd.io/",
+  "version": "1.4.4",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+        "url": "https://github.com/containerd/containerd/releases/download/v1.4.4/containerd-1.4.4-windows-amd64.tar.gz",
+        "hash": "0b668d28ec7ffda3d1930ed729ff8591540278a56539ae0bd682dea8c9964483"
+    }
+  },
+  "bin": [
+    "bin\\containerd.exe",
+    "bin\\containerd-shim-runhcs-v1.exe",
+    "bin\\ctr.exe"
+  ],
+  "checkver": {
+    "github": "https://github.com/containerd/containerd"
+    },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+          "url": "https://github.com/containerd/containerd/releases/download/v$version/containerd-$version-windows-amd64.tar.gz"
+      }
+  },
+  "hash": {
+      "url": "$url.sha256sum"
+    }
+  }
+}
