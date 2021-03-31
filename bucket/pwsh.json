@@ -1,38 +1,46 @@
 {
     "version": "7.1.3",
-    "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data.",
-    "homepage": "https://github.com/PowerShell/PowerShell",
-    "license": "MIT",
+    "description": "Cross-platform automation and configuration tool",
+    "homepage": "https://docs.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.1",
+    "bin": "PowerShell/7/pwsh.exe",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.3/PowerShell-7.1.3-win-x64.zip",
-            "hash": "47475f1d4015704f3fb5f6d2cf61196d121aba60c19592b04be818317ce01039"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.3/PowerShell-7.1.3-win-x64.msi",
+            "hash": "459642d8b6d69f643794df8394f28191f43e5ed35472899c4f0d8424f6d1317c"
         },
         "32bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.3/PowerShell-7.1.3-win-x86.zip",
-            "hash": "ecfd51545084d9b791874062c39eb0c7c7dd2991265ee7f4dc5064995a614e6c"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.3/PowerShell-7.1.3-win-x86.msi",
+            "hash": "7ceb1203d2c4a6d7c28128c9cbc8282eaf9c237fee238930c16382f2c0c731ec"
         }
     },
-    "bin": "pwsh.exe",
     "shortcuts": [
         [
-            "pwsh.exe",
-            "PowerShell Core"
+            "PowerShell/7/pwsh.exe",
+            "PowerShell 7"
         ]
     ],
-    "checkver": "github",
+    "post_install": [
+        "$shell=new-object -com wscript.shell",
+        "$path=$env:appdata+'/Microsoft/Windows/Start Menu/Programs/Scoop Apps/PowerShell 7.lnk'",
+        "$s=$shell.createshortcut($path)",
+        "$s.workingdirectory=$HOME",
+        "$s.save()"
+    ],
+    "checkver": {
+        "github": "https://github.com/PowerShell/PowerShell"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.zip"
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.msi"
             },
             "32bit": {
-                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.zip"
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.msi"
             }
         },
         "hash": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
-            "regex": "$basename\\s*<ul>\\s*<li>$sha256"
+            "url": "https://github.com/PowerShell/PowerShell/releases",
+            "regex": "$basename.*?$sha256"
         }
     }
 }
