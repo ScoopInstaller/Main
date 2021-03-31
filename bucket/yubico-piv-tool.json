@@ -1,34 +1,31 @@
 {
-    "version": "2.0.0",
+    "version": "2.2.0",
     "description": "A tool to interact with the Privilege and Identification Card (PIV) application on a YubiKey.",
     "homepage": "https://developers.yubico.com/yubico-piv-tool/",
     "license": "BSD-2-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.0.0-win64.zip",
-            "hash": "7f6c3357d3c4adda17d2326f4c43f385cad12c8471560fdc9660432d4fc4a310",
-            "extract_dir": "yubico-piv-tool-2.0.0-win64"
+            "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.2.0-win64.msi",
+            "hash": "ec65a08354e9a61d4a9eb0433cd67307544dd453bc039f2faa36411a930d5219"
         },
         "32bit": {
-            "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.0.0-win32.zip",
-            "hash": "9a4d2893aa25e8df04f764557f74178fce0d42e39dfd65ad7fb5d86a36f6af54",
-            "extract_dir": "yubico-piv-tool-2.0.0-win32"
+            "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.2.0-win32.msi",
+            "hash": "f6e552da830de04600dea3b55df14919ad165a79b91c9c9813d10b3f89ab0b6a"
         }
     },
+    "extract_dir": "PFiles\\Yubico\\Yubico PIV Tool",
     "bin": "bin\\yubico-piv-tool.exe",
     "checkver": {
         "url": "https://developers.yubico.com/yubico-piv-tool/Releases/",
-        "regex": "yubico-piv-tool-([\\d.]+)-win64\\.zip"
+        "regex": "yubico-piv-tool-([\\d.]+)-win64\\.msi"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-$version-win64.zip",
-                "extract_dir": "yubico-piv-tool-$version-win64"
+                "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-$version-win64.msi"
             },
             "32bit": {
-                "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-$version-win32.zip",
-                "extract_dir": "yubico-piv-tool-$version-win32"
+                "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-$version-win32.msi"
             }
         }
     }
