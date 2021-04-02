@@ -1,0 +1,34 @@
+{
+    "version": "0.7.0",
+    "description": "A command-line tool to interact with Gitea servers",
+    "homepage": "https://gitea.com/gitea/tea",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.gitea.io/tea/0.7.0/tea-0.7.0-windows-amd64.exe#/tea.exe",
+            "hash": "f22c09cb0d0c29fdc1070bd3980a1853abd349d4c25333f2a296f156f17078f5"
+        },
+        "32bit": {
+            "url": "https://dl.gitea.io/tea/0.7.0/tea-0.7.0-windows-386.exe#/tea.exe",
+            "hash": "6b39fef7d9a8751f42a2e802ce07afd4471436378a01133b5ada94629ec1c65b"
+        }
+    },
+    "bin": "tea.exe",
+    "checkver": {
+        "url": "https://gitea.com/gitea/tea/releases",
+        "regex": "tea-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.gitea.io/tea/$version/tea-$version-windows-amd64.exe#/tea.exe"
+            },
+            "32bit": {
+                "url": "https://dl.gitea.io/tea/$version/tea-$version-windows-386.exe#/tea.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
