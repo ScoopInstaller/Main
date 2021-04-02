@@ -1,7 +1,7 @@
 {
     "version": "0.11.0",
     "description": "A tool for keeping Kubernetes clusters in sync with sources of configuration",
-    "homepage": "https://github.com/fluxcd/flux2",
+    "homepage": "https://toolkit.fluxcd.io",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
@@ -10,7 +10,9 @@
         }
     },
     "bin": "flux.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/fluxcd/flux2"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -18,7 +20,7 @@
             }
         },
         "hash": {
-            "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_checksums.txt"
+            "url": "$baseurl/flux_$version_checksums.txt"
         }
     }
 }

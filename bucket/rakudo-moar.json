@@ -1,7 +1,7 @@
 {
     "version": "2021.03-01",
-    "description": "The most mature, production-ready implementation of the Raku language.",
-    "homepage": "https://rakudo.org/",
+    "description": "The most mature, production-ready implementation of the Raku language",
+    "homepage": "https://rakudo.org",
     "license": "Artistic-2.0",
     "architecture": {
         "64bit": {
@@ -25,14 +25,13 @@
     ],
     "checkver": {
         "url": "https://rakudo.org/downloads/rakudo",
-        "regex": "rakudo-moar-(?<version>[\\d]{4}.[\\d]{2})(?<patch>.[\\d]+)?-(?<revision>[\\d]+)-win-x86_64-msvc.zip",
-        "replace": "${version}${patch}-${revision}"
+        "regex": "rakudo-moar-([\\d.-]+)-win-x86_64-msvc\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://rakudo.org/dl/rakudo/rakudo-moar-$matchVersion$matchPatch-$matchRevision-win-x86_64-msvc.zip",
-                "extract_dir": "rakudo-moar-$matchVersion$matchPatch-$matchRevision-win-x86_64-msvc"
+                "url": "https://rakudo.org/dl/rakudo/rakudo-moar-$version-win-x86_64-msvc.zip",
+                "extract_dir": "rakudo-moar-$version-win-x86_64-msvc"
             }
         }
     }
