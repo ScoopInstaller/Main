@@ -14,10 +14,7 @@
         }
     },
     "bin": "ticker.exe",
-    "checkver": {
-        "github": "https://github.com/achannarasappa/ticker/",
-        "regex": "tag/([\\d.]+)"
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -26,6 +23,9 @@
             "32bit": {
                 "url": "https://github.com/achannarasappa/ticker/releases/download/$version/ticker-$version-windows-386.tar.gz"
             }
+        },
+        "hash": {
+            "url": "https://github.com/achannarasappa/ticker/releases/download/$version/ticker-$version-checksums.txt"
         }
     }
 }
