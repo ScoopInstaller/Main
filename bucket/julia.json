@@ -5,27 +5,30 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.6/julia-1.6.0-win64.exe",
-            "hash": "0c1f5cfe5d4ffb3505282a46169d85f31666217d3ada4831a4a5d7f2b981f0cc"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.6/julia-1.6.0-win64.zip",
+            "hash": "5ec3fe060287b650ca9519eefc2756ec4dfd1ef3a2b13fcc1f347c7223ae074f",
+            "extract_dir": "julia-1.6.0"
         },
         "32bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.6/julia-1.6.0-win32.exe",
-            "hash": "e6e07b09cb4cff3a86fa323702590db02b85a798193767a885b01ddfbd8333a9"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.6/julia-1.6.0-win32.zip",
+            "hash": "52d864af00ea04cdda871c8a804cc66d14f96ad8488f7386e2d16644bf2d1f07",
+            "extract_dir": "julia-1.6.0"
         }
     },
-    "innosetup": true,
     "bin": "bin\\julia.exe",
     "checkver": {
         "url": "https://julialang.org/downloads/",
-        "regex": "Current stable release: v([\\d.]+)"
+        "regex": "Current stable rlease: v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://julialang-s3.julialang.org/bin/winnt/x64/$majorVersion.$minorVersion/julia-$version-win64.exe"
+                "url": "https://julialang-s3.julialang.org/bin/winnt/x64/$majorVersion.$minorVersion/julia-$version-win64.zip",
+                "extract_dir": "julia-$version"
             },
             "32bit": {
-                "url": "https://julialang-s3.julialang.org/bin/winnt/x86/$majorVersion.$minorVersion/julia-$version-win32.exe"
+                "url": "https://julialang-s3.julialang.org/bin/winnt/x86/$majorVersion.$minorVersion/julia-$version-win32.zip",
+                "extract_dir": "julia-$version"
             }
         },
         "hash": {
