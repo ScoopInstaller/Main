@@ -11,17 +11,27 @@
             "url": "https://github.com/ziglang/zig/releases/download/0.7.1/zig-windows-x86_64-0.7.1.zip",
             "hash": "4818a8a65b4672bc52c0ae7f14d014e0eb8caf10f12c0745176820384cea296a",
             "extract_dir": "zig-windows-x86_64-0.7.1"
+        },
+        "32bit": {
+            "url": "https://ziglang.org/download/0.7.1/zig-windows-i386-0.7.1.zip",
+            "hash": "a1b9a7421e13153e07fd2e2c93ff29aad64d83105b8fcdafa633dbe689caf1c0",
+            "extract_dir": "zig-windows-i386-0.7.1"
         }
     },
     "bin": "zig.exe",
     "checkver": {
-        "github": "https://github.com/zig-lang/zig/"
+        "url": "https://ziglang.org/download/",
+        "regex": ">([\\d.]+)</h"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/ziglang/zig/releases/download/$version/zig-windows-x86_64-$version.zip",
                 "extract_dir": "zig-windows-x86_64-$version"
+            },
+            "32bit": {
+                "url": "https://ziglang.org/download/$version/zig-windows-i386-$version.zip",
+                "extract_dir": "zig-windows-i386-$version"
             }
         },
         "hash": {
