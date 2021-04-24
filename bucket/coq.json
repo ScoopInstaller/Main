@@ -1,12 +1,16 @@
 {
-    "version": "8.13.1",
+    "version": "2021.02.1",
     "description": "A formal proof management system. It provides a formal language to write mathematical definitions, executable algorithms and theorems together with an environment for semi-interactive development of machine-checked proofs.",
     "homepage": "https://coq.inria.fr/",
     "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/coq/coq/releases/download/V8.13.1/coq-8.13.1-installer-windows-x86_64.exe#/dl.7z",
-            "hash": "3f54ce3d89de1e235ecfce31796f149d25903772d356c055427a0f8a5b08a347"
+            "url": "https://github.com/coq/platform/releases/download/2021.02.1/coq-platform-2021.02.1-installer-windows-x86_64.exe#/dl.7z",
+            "hash": "96941bd0c1096813fb6832088cc0950b3f65acd0e3ed97deca412df8768e10d2"
+        },
+        "32bit": {
+            "url": "https://github.com/coq/platform/releases/download/2021.02.1/coq-platform-2021.02.1-installer-windows-i686.exe#/dl.7z",
+            "hash": "1c6c8a23865bba588814e95f8ac4e9a7c20e2fd80b67e0648e2e1479e0391793"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\" -Recurse -Force",
@@ -26,12 +30,15 @@
         "COQBIN": "bin"
     },
     "checkver": {
-        "github": "https://github.com/coq/coq"
+        "github": "https://github.com/coq/platform"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/coq/coq/releases/download/V$version/coq-$version-installer-windows-x86_64.exe#/dl.7z"
+                "url": "https://github.com/coq/platform/releases/download/$version/coq-platform-$version-installer-windows-x86_64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/coq/platform/releases/download/$version/coq-platform-$version-installer-windows-i686.exe#/dl.7z"
             }
         }
     }
