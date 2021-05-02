@@ -1,0 +1,31 @@
+{
+    "version": "0.1.0",
+    "description": "Simple and fast task management via the CLI",
+    "homepage": "https://github.com/Milo123459/salt",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Milo123459/salt/releases/download/v0.1.0/salt-x86_64-pc-windows-msvc.zip",
+            "hash": "9704e15fb1ea41b4a4670fa4247b491fa5c71c0c677d286b14bea3713a4ae60f"
+        },
+        "32bit": {
+            "url": "https://github.com/Milo123459/salt/releases/download/v0.1.0/salt-i686-pc-windows-msvc.zip",
+            "hash": "7dc563a6dc6d5e75360ab914f19135ffae143496e5b78968c5e0955f4b9faf67"
+        }
+    },
+    "bin": "salt.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Milo123459/salt/releases/download/v$version/salt-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Milo123459/salt/releases/download/v$version/salt-i686-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
