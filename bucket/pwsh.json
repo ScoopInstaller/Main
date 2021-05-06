@@ -20,6 +20,13 @@
             "PowerShell Core"
         ]
     ],
+     "post_install": [
+        "$shell=new-object -com wscript.shell",
+        "$path=$env:appdata+'/Microsoft/Windows/Start Menu/Programs/Scoop Apps/PowerShell Core.lnk'",
+        "$s=$shell.createshortcut($path)",
+        "$s.workingdirectory=$HOME",
+        "$s.save()"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
