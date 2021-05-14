@@ -1,26 +1,23 @@
 {
-    "version": "0.26.0",
+    "version": "1.0.0",
     "description": "Camunda workflow instance monitor/manager",
-    "homepage": "https://docs.zeebe.io/operate-user-guide/",
+    "homepage": "https://docs.camunda.io/docs/product-manuals/zeebe/zeebe-overview/",
     "license": {
-        "identifier": "Zeebe Community License Version 1.0",
-        "url": "https://zeebe.io/legal/zeebe-community-license-1.0/"
+        "identifier": "Zeebe Community License v1.0",
+        "url": "https://camunda.com/legal/terms/cloud-terms-and-conditions/zeebe-community-license-v1-0/"
     },
     "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ],
+        "JDK": "java/openjdk",
         "Zeebe": "zeebe",
         "ElasticSearch": "extras/elasticsearch"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/zeebe-io/zeebe/releases/download/0.26.0/camunda-operate-0.26.0.zip",
-            "hash": "sha1:d00b4b3483031a143511c5b88aafdeb0ec90e70d"
+            "url": "https://github.com/camunda-cloud/zeebe/releases/download/1.0.0/camunda-cloud-operate-1.0.0.zip",
+            "hash": "sha1:7fb708515922299359439e401eb23cb84d92a9d3"
         }
     },
-    "extract_dir": "camunda-operate-0.26.0",
+    "extract_dir": "camunda-cloud-operate-1.0.0",
     "bin": [
         [
             "bin\\operate.bat",
@@ -29,18 +26,17 @@
     ],
     "persist": "config",
     "checkver": {
-        "github": "https://github.com/zeebe-io/zeebe",
-        "regex": "download/(?<release>[\\d.]+)/camunda-operate-([\\d.]+)\\.zip"
+        "github": "https://github.com/camunda-cloud/zeebe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/zeebe-io/zeebe/releases/download/$matchRelease/camunda-operate-$version.zip"
+                "url": "https://github.com/camunda-cloud/zeebe/releases/download/$version/camunda-cloud-operate-$version.zip"
             }
         },
         "hash": {
             "url": "$url.sha1sum"
         },
-        "extract_dir": "camunda-operate-$version"
+        "extract_dir": "camunda-cloud-operate-$version"
     }
 }
