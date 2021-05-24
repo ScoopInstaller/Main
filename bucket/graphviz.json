@@ -1,16 +1,16 @@
 {
-    "version": "2.44.1",
+    "version": "2.47.1",
     "description": "Open source graph visualization software.",
     "homepage": "https://www.graphviz.org/",
     "license": "EPL-1.0",
     "architecture": {
         "64bit": {
-            "url": "https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/x64/graphviz-install-2.44.1-win64.exe#/dl.7z",
-            "hash": "41d70c2462a08a06d077770cbbe4c2a731e31796c0fcccc33bbd60cec1dacf80"
+            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/2.47.1/stable_windows_10_cmake_Release_x64_graphviz-install-2.47.1-win64.exe#/dl.7z",
+            "hash": "a10ad83a61a1445aa1754e869c01f56706374a8a7e3329471a0d84f8fac9aaad"
         },
         "32bit": {
-            "url": "https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/Win32/graphviz-install-2.44.1-win32.exe#/dl.7z",
-            "hash": "ef16b9d616ebee92841a758d45c87ba1d15898daca4be01eb5211e7702a9a5e1"
+            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/2.47.1/stable_windows_10_cmake_Release_Win32_graphviz-install-2.47.1-win32.exe#/dl.7z",
+            "hash": "30ea9c598e96623b528d4c67bf0bf86e9cebe1525ba3ea1293254acdcc6f674b"
         }
     },
     "bin": [
@@ -33,16 +33,24 @@
         "bin\\unflatten.exe"
     ],
     "checkver": {
-        "url": "https://gitlab.com/graphviz/graphviz/-/tags",
-        "regex": "Stable Release ([\\d.]+)"
+        "url": "https://gitlab.com/graphviz/graphviz/-/tags?format=atom",
+        "regex": "/tags/([\\d.]+)<"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/x64/graphviz-install-$version-win64.exe#/dl.7z"
+                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/stable_windows_10_cmake_Release_x64_graphviz-install-$version-win64.exe#/dl.7z",
+                "hash": {
+                    "url": "$url.sha256",
+                    "find": "([a-fA-F0-9]{32,128})\\s+.*"
+                }
             },
             "32bit": {
-                "url": "https://www2.graphviz.org/Packages/stable/windows/10/cmake/Release/Win32/graphviz-install-$version-win32.exe#/dl.7z"
+                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/stable_windows_10_cmake_Release_Win32_graphviz-install-$version-win32.exe#/dl.7z",
+                "hash": {
+                    "url": "$url.sha256",
+                    "find": "([a-fA-F0-9]{32,128})\\s+.*"
+                }
             }
         }
     }
