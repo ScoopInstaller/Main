@@ -1,0 +1,26 @@
+{
+    "homepage": "https://www.conftest.dev/",
+    "description": "Conftest is a utility to help you write tests against structured configuration data.",
+    "license": "Apache-2.0",
+    "version": "0.24.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/open-policy-agent/conftest/releases/download/v0.24.0/conftest_0.24.0_Windows_x86_64.zip",
+            "hash": "707b7da7ec4bf658b4719dd92d9a498ec2c13dba0394db6c08f084d972b5689b"
+        }
+    },
+    "bin": "conftest.exe",
+    "checkver": {
+        "github": "https://github.com/open-policy-agent/conftest"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/open-policy-agent/conftest/releases/download/v$version/conftest_$version_Windows_x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksum.txt"
+        }
+    }
+}
