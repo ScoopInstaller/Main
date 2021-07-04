@@ -1,0 +1,42 @@
+{
+    "version": "1.10.1",
+    "description": "Namespace & Virtual Cluster Manager for Kubernetes - Lightweight Virtual Clusters, Self-Service Provisioning for Engineers and 70% Cost Savings with Sleep Mode",
+    "homepage": "https://github.com/loft-sh/loft",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/loft-sh/loft/releases/download/v1.10.1/loft-windows-amd64.exe",
+            "hash": "6677d6a138f4677db4ce51e3456b7f9e666fd73542a75a5f4de934ee959d17ef",
+            "bin": [
+                [
+                    "loft-windows-amd64.exe",
+                    "loft"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/loft-sh/loft/releases/download/v1.10.1/loft-windows-386.exe",
+            "hash": "4d2e7b2e68d5aaf380e11b9754f5cd023569b3214d5d36ab99385be140401613",
+            "bin": [
+                [
+                    "loft-windows-386.exe",
+                    "loft"
+                ]
+            ]
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/loft-sh/loft/releases/download/v$version/loft-windows-amd64.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/loft-sh/loft/releases/download/v$version/loft-windows-386.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
