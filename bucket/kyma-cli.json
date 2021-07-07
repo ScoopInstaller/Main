@@ -1,0 +1,31 @@
+{
+    "version": "1.21.1",
+    "description": "Simple set of commands to manage a Kyma installation",
+    "homepage": "https://github.com/kyma-project/cli",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kyma-project/cli/releases/download/1.21.1/kyma_Windows_x86_64.zip",
+            "hash": "14a323efce6737f9a4c1e79c4d9ba18f0059f22a3d266bada1a4ebda25140583"
+        },
+        "32bit": {
+            "url": "https://github.com/kyma-project/cli/releases/download/1.21.1/kyma_Windows_i386.zip",
+            "hash": "b1918707a7cf03ac90b2ea4c1d741c542774c251ebe414e74fd733f5db5af263"
+        }
+    },
+    "bin": "kyma.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kyma-project/cli/releases/download/$version/kyma_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/kyma-project/cli/releases/download/$version/kyma_Windows_i386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
