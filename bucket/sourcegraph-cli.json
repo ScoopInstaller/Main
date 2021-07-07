@@ -1,0 +1,17 @@
+{
+    "version": "3.27.1",
+    "description": "Command line interface to Sourcegraph",
+    "homepage": "https://github.com/sourcegraph/src-cli",
+    "url": "https://github.com/sourcegraph/src-cli/releases/download/3.27.1/src_windows_amd64.exe",
+    "hash": "46edfff495948df804cb17e5b93d56388335c15627b472dc3b0d6b89ce67dd11",
+    "bin": [ [ "src_windows_amd64.exe", "src" ] ],
+    "license": "Apache-2.0",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/sourcegraph/src-cli/releases/download/$version/src_windows_amd64.exe",
+        "hash": {
+            "url": "https://github.com/sourcegraph/src-cli/releases/download/$version/src-cli_$version_checksums.txt",
+            "regex": "^(\\w+)\\s+src_windows_amd64\\.exe$"
+        }
+    }
+}
