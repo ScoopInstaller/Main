@@ -14,11 +14,11 @@
     },
     "installer": {
         "script": [
-            "$names = @('bin', 'extras', 'include', 'jre', 'lib', 'libnvvp', 'nvml', 'nvvm')",
+            "$names = @(Get-ChildItem -Path \"$dir\" -Directory -Name -Depth 2 | Where-Object {$_ -match \".*(?<!cuda_samples)\\\\.*\\\\(?:bin|compute-sanitizer|extras|include|lib|libnvvp|nvml|nvvm|nvvm-prev|src)$\"})",
             "foreach ($name in $names) {",
             "    Copy-Item \"$dir\\*\\$name\" \"$dir\" -Recurse -Force",
             "}",
-            "Get-ChildItem \"$dir\" -Exclude $names | Remove-Item -Recurse -Force"
+            "Get-ChildItem \"$dir\" -Exclude ('bin', 'compute-sanitizer', 'extras', 'include', 'lib', 'libnvvp', 'nvml', 'nvvm', 'nvvm-prev', 'src', 'version.json') | Remove-Item -Recurse -Force"
         ]
     },
     "env_add_path": [
