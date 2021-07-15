@@ -1,0 +1,30 @@
+{
+    "version": "2.5.0",
+    "description": "ABS is a programming language that works best when you're scripting on your terminal.",
+    "homepage": "https://www.abs-lang.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/abs-lang/abs/releases/download/2.5.0/abs-windows-amd64.exe#/abs.exe",
+            "hash": "22ef565fbea8f58b4892ce1876e8601ea8914a09d0e1929bc1a48dfabfb38f08"
+        },
+        "32bit": {
+            "url": "https://github.com/abs-lang/abs/releases/download/2.5.0/abs-windows-386.exe#/abs.exe",
+            "hash": "73d781fce80a111b01d22a3e4b03295fd0cbcee62fb3369d9bd94f8e236b3d23"
+        }
+    },
+    "bin": "abs.exe",
+    "checkver": {
+        "github": "https://github.com/abs-lang/abs"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/abs-lang/abs/releases/download/$version/abs-windows-amd64.exe#/abs.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/abs-lang/abs/releases/download/$version/abs-windows-386.exe#/abs.exe"
+            }
+        }
+    }
+}
