@@ -1,0 +1,26 @@
+{
+    "version": "0.47.0",
+    "description": "tfsec uses static analysis of your terraform templates to spot potential security issues. Now with terraform v0.12+ support.",
+    "homepage": "https://github.com/aquasecurity/tfsec",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aquasecurity/tfsec/releases/download/v0.47.0/tfsec-windows-amd64.exe",
+            "hash": "f96888f4dcc383cc1f318a1f535dad004e82e82261e495541f9073141a9df09d"
+        }
+    },
+    "bin": "tfsec.exe",
+    "checkver": {
+        "github": "https://github.com/aquasecurity/tfsec"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aquasecurity/tfsec/releases/download/v$version/tfsec-windows-amd64.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/tfsec_checksums.txt"
+        }
+    }
+}
