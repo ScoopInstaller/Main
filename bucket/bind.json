@@ -22,7 +22,10 @@
     },
     "env_add_path": "bin",
     "persist": "etc",
-    "checkver": "(?sm)Current-Stable<.*?/([\\d.]+)/",
+    "checkver": {
+        "url": "https://www.isc.org/download/",
+        "regex": "(?sm)>Current-Stable.*?/([\\d.]+)/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
