@@ -1,0 +1,34 @@
+{
+    "version": "43RC5-200929",
+    "description": "UniKey is the most popular Vietnamese keyboard for Windows. The core UniKey Vietnamese Input Method is also the engine for many Vietnamese keyboards in Linux, macOS and iOS. UniKey is free of charge. Source code for the UniKey Vietnamese Input Method is distributed under the GNU General Public License.",
+    "homepage": "https://www.unikey.org",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.unikey.org/about.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.unikey.org/assets/release/unikey43RC5-200929-win64.zip",
+            "hash": "dea84f2b2ae0f2f0d24740efa67e8ded0ac51657c13cb7e123078eb27032527b"
+        },
+        "32bit": {
+            "url": "https://www.unikey.org/assets/release/unikey43RC5-200929-win32.zip",
+            "hash": "1ef89f262d5b25d2279aee12c81e1767e6e58c367ac13756d391f2cb56022b22"
+        }
+    },
+    "bin": "UniKeyNT.exe",
+    "checkver": {
+        "url": "https://www.unikey.org/assets/release",
+        "regex": "unikey([\\d]+[A-Z]+[\\d]+\\-[\\d]+)-win64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.unikey.org/assets/release/unikey$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://www.unikey.org/assets/release/unikey$version-win32.zip"
+            }
+        }
+    }
+}
