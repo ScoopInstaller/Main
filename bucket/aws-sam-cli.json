@@ -1,8 +1,11 @@
 {
     "version": "1.29.0",
-    "description": "AWS Serverless Application Model (SAM) is an open-source framework for building serverless applications.",
+    "description": "The AWS SAM CLI is a command line tool that operates on an AWS SAM template and application code. With the AWS SAM CLI, you can invoke Lambda functions locally, create a deployment package for your serverless application, deploy your serverless application to the AWS Cloud, and so on.",
     "homepage": "https://aws.amazon.com/serverless/sam/",
     "license": "Apache-2.0",
+    "suggest": {
+        "AWS CLI": "aws"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.29.0/AWS_SAM_CLI_64_PY3.msi",
@@ -12,13 +15,12 @@
     "extract_dir": "Amazon\\AWSSAMCLI",
     "bin": "bin\\sam.cmd",
     "checkver": {
-        "url": "https://api.github.com/repos/aws/aws-sam-cli/tags",
-        "jsonpath": "$[0].name"
+        "url": "https://api.github.com/repos/aws/aws-sam-cli/tags"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/aws/aws-sam-cli/releases/download/$version/AWS_SAM_CLI_64_PY3.msi"
+                "url": "https://github.com/aws/aws-sam-cli/releases/download/v$version/AWS_SAM_CLI_64_PY3.msi"
             }
         }
     }
