@@ -46,7 +46,7 @@
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\setup.exe\" \"$dir\\_tmp\"",
-            "@('launcher.msi', 'path.msi', 'pip.msi') | ForEach-Object {",
+            "@('path.msi', 'pip.msi') | ForEach-Object {",
             "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
             "}",
             "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
@@ -67,8 +67,6 @@
         ]
     },
     "bin": [
-        "python.exe",
-        "pythonw.exe",
         [
             "python.exe",
             "python3"
@@ -78,6 +76,10 @@
             "Lib\\idlelib\\idle.bat",
             "idle3"
         ]
+    ],
+    "persist": [
+        "Scripts",
+        "Lib\\site-packages"
     ],
     "env_add_path": [
         "Scripts",
