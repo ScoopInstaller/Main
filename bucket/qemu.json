@@ -1,16 +1,16 @@
 {
-    "version": "6.1.0-rc3",
+    "version": "6.1.0",
     "description": "A generic and open source machine emulator and virtualizer.",
     "homepage": "https://qemu.weilnetz.de/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://qemu.weilnetz.de/w64/2021/qemu-w64-setup-20210810.exe#/dl.7z",
-            "hash": "sha512:1dbd0973190a6f3b8d61aee7bf20f07c4b713e3613fcb03bedcabf4a519a2e8a7843fff4007114430596ad016a0f8fc56d402d5ba587c62dcc1f4897995789ba"
+            "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-20210825.exe#/dl.7z",
+            "hash": "sha512:837b6c0307878233f1e7a19f020b421e0765b981c5f2c40c26141dcafbe89011477d88dc6885b4d73c9368acdec37ea92ef32b945a0581d96404a15a1db9ca9b"
         },
         "32bit": {
-            "url": "https://qemu.weilnetz.de/w32/2021/qemu-w32-setup-20210810.exe#/dl.7z",
-            "hash": "sha512:98e9bd0aaba9871208c406949ad1c774a19e3ced3fb30a0897032369e5e3a40c690aa678dc52b1c5b260b5748e92755a6cfc2b7d50b5c3caec0733fafd2b0d50"
+            "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-20210825.exe#/dl.7z",
+            "hash": "sha512:52dc3c0cb58c744e6f3175aecc655772e47f234b8dfda2c54ead3e6d9b31b12f412daa824e6d1ba7e9bda77428021a8aa77e55ea69a58dc6d1ce511bd0e68c6d"
         }
     },
     "bin": [
@@ -18,6 +18,7 @@
         "qemu-ga.exe",
         "qemu-img.exe",
         "qemu-io.exe",
+        "qemu-nbd.exe",
         "qemu-system-aarch64.exe",
         "qemu-system-aarch64w.exe",
         "qemu-system-alpha.exe",
@@ -46,8 +47,6 @@
         "qemu-system-mipsel.exe",
         "qemu-system-mipselw.exe",
         "qemu-system-mipsw.exe",
-        "qemu-system-moxie.exe",
-        "qemu-system-moxiew.exe",
         "qemu-system-nios2.exe",
         "qemu-system-nios2w.exe",
         "qemu-system-or1k.exe",
@@ -60,6 +59,8 @@
         "qemu-system-riscv32w.exe",
         "qemu-system-riscv64.exe",
         "qemu-system-riscv64w.exe",
+        "qemu-system-rx.exe",
+        "qemu-system-rxw.exe",
         "qemu-system-s390x.exe",
         "qemu-system-s390xw.exe",
         "qemu-system-sh4.exe",
@@ -83,17 +84,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
-                "hash": {
-                    "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.sha512"
-                }
+                "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://qemu.weilnetz.de/w32/$matchYear/qemu-w32-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
-                "hash": {
-                    "url": "https://qemu.weilnetz.de/w32/$matchYear/qemu-w32-setup-$matchYear$matchMonth$matchDay.sha512"
-                }
+                "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z"
             }
+        },
+        "hash": {
+            "url": "$urlNoExt.sha512"
         }
     }
 }
