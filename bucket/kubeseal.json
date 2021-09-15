@@ -1,0 +1,23 @@
+{
+    "version": "0.16.0",
+    "description": "The kubeseal utility uses asymmetric crypto to encrypt secrets that only the Kubernetes controller can decrypt.",
+    "homepage": "https://github.com/bitnami-labs/sealed-secrets",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.16.0/kubeseal.exe",
+            "hash": "0fb3ff9552530524ee7eae04161cba089a68ec2b0b25d9f43b1c1024452017aa"
+        }
+    },
+    "bin": "kubeseal.exe",
+    "checkver": {
+        "github": "https://github.com/bitnami-labs/sealed-secrets"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bitnami-labs/sealed-secrets/releases/download/v$version/kubeseal.exe"
+            }
+        }
+    }
+}
