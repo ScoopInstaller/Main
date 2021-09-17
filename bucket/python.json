@@ -15,6 +15,22 @@
                 "md5:cc3eabc1f9d6c703d1d2a4e7c041bc1d",
                 "5d9d7a604c057e67973e1d4b3b488ae20a0e5ee5496d03b5cf091410e33e39ed",
                 "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9"
+            ],
+            "pre_install": [
+                "$py_root = \"$dir\".Replace('\\', '\\\\')",
+                "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
+                "    $py_version = ($version -split '\\.')[0..1] -join '.'",
+                "    $content = Get-Content \"$dir\\$_\"",
+                "    $content = $content.Replace('$py_root', $py_root)",
+                "    $content = $content.Replace('$py_version', $py_version)",
+                "    $content = $content.Replace('$py_fullversion', $version)",
+                "    $content = $content.Replace('$py_cleanVersion', $version -replace '\\.')",
+                "    $content = $content.Replace('$py_arch', \"64\")",
+                "    if ($global) {",
+                "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+                "    }",
+                "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
+                "}"
             ]
         },
         "32bit": {
@@ -27,22 +43,25 @@
                 "md5:0d949bdfdbd0c8c66107a980a95efd85",
                 "5d9d7a604c057e67973e1d4b3b488ae20a0e5ee5496d03b5cf091410e33e39ed",
                 "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9"
+            ],
+            "pre_install": [
+                "$py_root = \"$dir\".Replace('\\', '\\\\')",
+                "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
+                "    $py_version = ($version -split '\\.')[0..1] -join '.'",
+                "    $content = Get-Content \"$dir\\$_\"",
+                "    $content = $content.Replace('$py_root', $py_root)",
+                "    $content = $content.Replace('$py_version', $py_version)",
+                "    $content = $content.Replace('$py_fullversion', $version)",
+                "    $content = $content.Replace('$py_cleanVersion', $version -replace '\\.')",
+                "    $content = $content.Replace('$py_arch', \"32\")",
+                "    if ($global) {",
+                "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+                "    }",
+                "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
+                "}"
             ]
         }
     },
-    "pre_install": [
-        "$py_root = \"$dir\".Replace('\\', '\\\\')",
-        "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
-        "    $py_version = ($version -split '\\.')[0..1] -join '.'",
-        "    $content = Get-Content \"$dir\\$_\"",
-        "    $content = $content.Replace('$py_root', $py_root)",
-        "    $content = $content.Replace('$py_version', $py_version)",
-        "    if ($global) {",
-        "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
-        "    }",
-        "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
-        "}"
-    ],
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\setup.exe\" \"$dir\\_tmp\"",
