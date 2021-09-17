@@ -6,7 +6,11 @@
     "url": "https://github.com/alibaba/arthas/releases/download/arthas-all-3.5.4/arthas-bin.zip",
     "hash": "0763be7affda0b7528c91299e1131e38d1ed75a23812ccf5915c708be451d989",
     "bin": "arthas-boot.jar",
-    "checkver": "github",
+    "checkver": {
+        "url": "https://api.github.com/repos/alibaba/arthas/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "arthas-all-([\\d\\w.]+)"
+    },
     "autoupdate": {
         "url": "https://github.com/alibaba/arthas/releases/download/arthas-all-$version/arthas-bin.zip"
     }
