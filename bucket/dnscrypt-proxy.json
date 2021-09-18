@@ -3,7 +3,11 @@
     "description": "A flexible DNS proxy, with support for encrypted DNS protocols",
     "homepage": "https://dnscrypt.info",
     "license": "ISC",
-    "notes": "\"fallback_resolvers\" was renamed to \"bootstrap_resolvers\" for clarity. Please update your configuration file accordingly.",
+    "notes": [
+        "1. \"fallback_resolvers\" was renamed to \"bootstrap_resolvers\" for clarity. Please update your configuration file accordingly.",
+        "2. Some of the configuration files are changed, for details: https://github.com/DNSCrypt/dnscrypt-proxy/releases/tag/2.0.45",
+        "3. For compatibility reasons, please move all configuration files exclude \"dnscrypt-proxy.toml\" into \"config\" folder and update your config."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.0/dnscrypt-proxy-win64-2.1.0.zip",
@@ -16,19 +20,12 @@
             "extract_dir": "win32"
         }
     },
-    "pre_install": [
-        "'blacklist.txt', 'cloaking-rules.txt', 'dnscrypt-proxy.toml', 'forwarding-rules.txt', 'whitelist.txt' | ForEach-Object {",
-        "    if (!(Test-Path \"$persist_dir\\$_\")) { Copy-Item \"$dir\\example-$_\" \"$dir\\$_\" }",
-        "}"
-    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\$dnscrypt-proxy.toml\")) { Copy-Item \"$dir\\example-dnscrypt-proxy.toml\" \"$dir\\dnscrypt-proxy.toml\" }",
     "bin": "dnscrypt-proxy.exe",
     "persist": [
-        "blacklist.txt",
-        "cloaking-rules.txt",
+        "config",
         "dnscrypt-proxy.toml",
-        "forwarding-rules.txt",
-        "localhost.pem",
-        "whitelist.txt"
+        "localhost.pem"
     ],
     "checkver": {
         "github": "https://github.com/DNSCrypt/dnscrypt-proxy"
