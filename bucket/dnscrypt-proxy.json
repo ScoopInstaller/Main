@@ -20,10 +20,7 @@
             "extract_dir": "win32"
         }
     },
-    "pre_install": [
-        "'dnscrypt-proxy.toml' | ForEach-Object {",
-        "    if (!(Test-Path \"$persist_dir\\$_\")) { Copy-Item \"$dir\\example-$_\" \"$dir\\$_\" }",
-        "}"
+    "pre_install": "if (!(Test-Path \"$persist_dir\\$dnscrypt-proxy.toml\")) { Copy-Item \"$dir\\example-dnscrypt-proxy.toml\" \"$dir\\dnscrypt-proxy.toml\" }",
     "bin": "dnscrypt-proxy.exe",
     "persist": [
         "config",
