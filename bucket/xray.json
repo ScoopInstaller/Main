@@ -6,13 +6,19 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/XTLS/Xray-core/releases/download/v1.4.3/Xray-windows-64.zip",
-            "hash": "sha512:4d9750495c1cb4d5cd6f14964ebd5c204b9a2807bc5468d4060ba18f8c2e43529b3ed481a5697b9d98de497f56bc5cae8fc7c45a70a3acbf25323f09d8e0b63d"
+            "hash": "77ef50d5a22c89a616e8f698584d074656e615184ff7be96d060b4626d3ee68c"
         },
         "32bit": {
             "url": "https://github.com/XTLS/Xray-core/releases/download/v1.4.3/Xray-windows-32.zip",
-            "hash": "sha512:8d86ae134fde59aeb985f7c5af7ac3ee90f7828eaa0cb6a69202f4099235cd8e484dbfb2477511469daeff2505721431d1cf08e9abd81d2fb0e8fe7de2756248"
+            "hash": "783f1f0dac8fa5d30e463c145743d47aeb948065b8bfd404c1d59a2403c49d95"
         }
     },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.json\")) {",
+        "    New-Item -Force -Path \"$dir\" -Name 'config.json' -Value '{}' | Out-Null",
+        "}"
+    ],
+    "persist": "config.json",
     "bin": "xray.exe",
     "checkver": "github",
     "autoupdate": {
@@ -23,10 +29,6 @@
             "32bit": {
                 "url": "https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-32.zip"
             }
-        },
-        "hash": {
-            "url": "$url.dgst",
-            "regex": "SHA512=\\s*$sha512"
         }
     }
 }
