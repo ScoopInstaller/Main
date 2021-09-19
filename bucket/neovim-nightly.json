@@ -32,7 +32,8 @@
     ],
     "checkver": {
         "url": "https://api.github.com/repos/neovim/neovim/releases",
-        "regex": "NVIM v([\\w-.+]+)"
+        "regex": "NVIM v([\\w-.]+)\\+([\\w-.]+)",
+        "replace": "${1}-${2}"
     },
     "autoupdate": {
         "architecture": {
