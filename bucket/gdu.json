@@ -1,0 +1,25 @@
+{
+    "version": "5.7.0",
+    "description": "A Fast Console Disk Usage Analyzer",
+    "homepage": "https://github.com/dundee/gdu",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/dundee/gdu/releases/download/v5.7.0/gdu_windows_amd64.exe.zip",
+            "hash": "e21f1798bc44c6d2e65fc3b9c7d43c46ebb66e7eeac97d113327acaf8893d973"
+        }
+    },
+    "pre_install": "Rename-Item \"$dir\\$($fname -replace '\\.zip$')\" 'gdu.exe'",
+    "bin": "gdu.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/dundee/gdu/releases/download/v$version/gdu_windows_amd64.exe.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums.txt"
+        }
+    }
+}

@@ -1,13 +1,16 @@
 {
-    "version": "0.14.2",
+    "version": "0.15.0",
     "description": "A software framework, for scalable cross-language services development.",
     "homepage": "https://thrift.apache.org/",
     "license": "Apache-2.0",
-    "url": "https://www-us.apache.org/dist/thrift/0.14.2/thrift-0.14.2.exe#/thrift.exe",
-    "hash": "2a0911dbd5899ebb37a08dcc517188ce02987cdebdfc5e5f1db29215ed5355bb",
+    "url": "https://dlcdn.apache.org/thrift/0.15.0/thrift-0.15.0.exe#/thrift.exe",
+    "hash": "md5:c43896461df259f3b3815336fe42040e",
     "bin": "thrift.exe",
     "checkver": "Apache\\s+Thrift\\s+v([\\d.]+)",
     "autoupdate": {
-        "url": "https://www-us.apache.org/dist/thrift/$version/thrift-$version.exe#/thrift.exe"
+        "url": "https://dlcdn.apache.org/thrift/$version/thrift-$version.exe#/thrift.exe",
+        "hash": {
+            "url": "$url.md5"
+        }
     }
 }

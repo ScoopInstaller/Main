@@ -1,16 +1,12 @@
 {
-    "version": "2.4.48",
+    "version": "2.4.49",
     "description": "The Apache HTTP Server ('httpd')",
     "homepage": "https://www.apachelounge.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://fossies.org/windows/www/httpd-2.4.48-win64-VC15.zip",
-            "hash": "207f58ce7b850abf120786f9ef5a52c01c8b52d2955277172cec9fdbf3a410ef"
-        },
-        "32bit": {
-            "url": "https://fossies.org/windows/www/httpd-2.4.48-win32-VC15.zip",
-            "hash": "86a99aa2c77cce7a08e3d4cd075bad97c38aae56de148200f3f4008f675b5e55"
+            "url": "https://fossies.org/windows/www/httpd-2.4.49-win64-VC15.zip",
+            "hash": "0200bab7df9e872ad9812fd87ab3299c0a2a75c871568d850489c6a17d06cb41"
         }
     },
     "extract_dir": "Apache24",
@@ -27,30 +23,28 @@
         "bin\\rotatelogs.exe"
     ],
     "post_install": [
-        "# set directory in httpd.conf",
-        "$conf = \"$dir/conf/httpd.conf\"",
-        "$root=(scoop which httpd | split-path -res -par | split-path -par) -replace '\\\\', '/';",
-        "(gc $conf) | % { $_ -replace 'c:/Apache24', \"$root\" } | sc $conf"
+        "    # set directory in httpd.conf",
+        "$conf = \"$dir\\conf\\httpd.conf\"",
+        "$root= \"$dir\" -replace '\\\\', '/'",
+        "((Get-Content $conf) -replace 'c:/Apache24', \"$root\") | Set-Content $conf"
     ],
     "persist": [
         "htdocs",
         "conf"
     ],
     "checkver": {
-        "url": "https://fossies.org/search?q=folder_search&q1=httpd&ad=%2Ffresh%2Fwindows%2Fwww&ca=yes&dp=1",
+        "url": "https://fossies.org/windows/www/",
         "regex": "httpd-([\\d.]+)-win64-VC15\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://fossies.org/windows/www/httpd-$version-win64-VC15.zip"
-            },
-            "32bit": {
-                "url": "https://fossies.org/windows/www/httpd-$version-win32-VC15.zip"
             }
         },
         "hash": {
             "url": "$url_fossies.sha256"
-        }
+        },
+        "extract_dir": "Apache$majorVersion$minorVersion"
     }
 }

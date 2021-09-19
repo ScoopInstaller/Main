@@ -1,5 +1,5 @@
 {
-    "version": "1.5.20",
+    "version": "1.5.30",
     "description": "An LLVM backend for the Kotlin compiler, runtime implementation, and native code generation facility using the LLVM toolchain for native binaries runnable without a virtual machine.",
     "homepage": "https://kotlinlang.org",
     "license": "Apache-2.0",
@@ -7,9 +7,13 @@
     "suggest": {
         "Kotlin": "kotlin"
     },
-    "url": "https://github.com/JetBrains/kotlin/releases/download/v1.5.20/kotlin-native-windows-1.5.20.zip",
-    "hash": "aeee65cdc6dedab8dee9308cf15c7227530c0a24c7342becc2e0d6cd882cd430",
-    "extract_dir": "kotlin-native-windows-1.5.20",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/JetBrains/kotlin/releases/download/v1.5.30/kotlin-native-windows-x86_64-1.5.30.zip",
+            "hash": "26ceb0ddc85636d459016d7824975bf82ba6e8f0526c1961604f85348a989dbf",
+            "extract_dir": "kotlin-native-windows-x86_64-1.5.30"
+        }
+    },
     "bin": [
         "bin\\cinterop.bat",
         "bin\\jsinterop.bat",
@@ -25,11 +29,15 @@
         "regex": ">([\\d.]+)</b"
     },
     "autoupdate": {
-        "url": "https://github.com/JetBrains/kotlin/releases/download/v$version/kotlin-native-windows-$version.zip",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/JetBrains/kotlin/releases/download/v$version/kotlin-native-windows-x86_64-$version.zip",
+                "extract_dir": "kotlin-native-windows-x86_64-$version"
+            }
+        },
         "hash": {
             "url": "https://github.com/JetBrains/kotlin/releases/tag/v$version",
             "regex": "(?sm)$basename</.*?>$sha256</"
-        },
-        "extract_dir": "kotlin-native-windows-$version"
+        }
     }
 }
