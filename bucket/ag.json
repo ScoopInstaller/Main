@@ -1,31 +1,20 @@
 {
-    "version": "2.2.0-58-g5a1c8d8",
-    "description": "A tool for searching code",
-    "homepage": "https://geoff.greer.fm/ag/",
+    "version": "2.2.4",
+    "description": "A tool for searching code. Fork of The Silver Searcher; dedicated to building a well behaved version for Windows.",
+    "homepage": "https://github.com/JFLarvoire/the_silver_searcher",
     "license": "Apache-2.0",
+    "url": "https://github.com/JFLarvoire/the_silver_searcher/releases/download/2.2.4-Windows/ag.zip",
+    "hash": "fc272e4cbd451654944b494b71f55041615879c96918da49f742a1036d1ba98d",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/k-takata/the_silver_searcher-win32/releases/download/2020-07-05/2.2.0-58-g5a1c8d8/ag-2020-07-05_2.2.0-58-g5a1c8d8-x64.zip",
-            "hash": "ca1988c611872fd73affe95bd20652bc6ec51a31bb72ff8b8c28f0c1b9ecd25a"
+            "bin": "WIN64\\ag.exe"
         },
         "32bit": {
-            "url": "https://github.com/k-takata/the_silver_searcher-win32/releases/download/2020-07-05/2.2.0-58-g5a1c8d8/ag-2020-07-05_2.2.0-58-g5a1c8d8-x86.zip",
-            "hash": "245fe805610c0c42a1e1957f763eccaf53f2f02a9ed7fc0bca0efa9a856533e7"
+            "bin": "WIN32\\ag.exe"
         }
     },
-    "bin": "ag.exe",
-    "checkver": {
-        "url": "https://github.com/k-takata/the_silver_searcher-win32/releases",
-        "regex": "/releases/download/(?<date>[\\d-]+)%2F(?<version>[\\w.-]+).*?-x64\\.zip"
-    },
+    "checkver": "github",
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/k-takata/the_silver_searcher-win32/releases/download/$matchDate/$version/ag-$matchDate_$version-x64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/k-takata/the_silver_searcher-win32/releases/download/$matchDate/$version/ag-$matchDate_$version-x86.zip"
-            }
-        }
+        "url": "https://github.com/JFLarvoire/the_silver_searcher/releases/download/$version-Windows/ag.zip"
     }
 }
