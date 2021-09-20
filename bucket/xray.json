@@ -15,11 +15,11 @@
     },
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\config.json\")) {",
-        "    New-Item -Force -Path \"$dir\" -Name 'config.json' -Value '{}' | Out-Null",
+        "    Set-Content \"$dir\\config.json\" '{}' -Encoding 'Ascii'",
         "}"
     ],
-    "persist": "config.json",
     "bin": "xray.exe",
+    "persist": "config.json",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
