@@ -14,17 +14,15 @@
     },
     "installer": {
         "script": [
-            "$names = @('bin', 'extras', 'include', 'jre', 'lib', 'libnvvp', 'nvml', 'nvvm')",
+            "$names = @('bin', 'extras', 'include', 'lib', 'libnvvp', 'nvml', 'nvvm')",
             "foreach ($name in $names) {",
-            "    Copy-Item \"$dir\\*\\$name\" \"$dir\" -Recurse -Force",
+            "    Copy-Item \"$dir\\cuda_*\\*\\$name\" \"$dir\" -Recurse -Force",
+            "    Copy-Item \"$dir\\lib*\\*\\$name\" \"$dir\" -Recurse -Force",
             "}",
             "Get-ChildItem \"$dir\" -Exclude $names | Remove-Item -Recurse -Force"
         ]
     },
-    "env_add_path": [
-        "bin",
-        "libnvvp"
-    ],
+    "env_add_path": "bin",
     "env_set": {
         "CUDA_PATH": "$dir"
     },

@@ -1,0 +1,32 @@
+{
+    "version": "0.8.1",
+    "description": "A command-line tool to generate, analyze, convert and manipulate colors.",
+    "homepage": "https://github.com/sharkdp/pastel",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sharkdp/pastel/releases/download/v0.8.1/pastel-v0.8.1-x86_64-pc-windows-msvc.zip",
+            "hash": "41918323cbdb7b65b92b1c976d2b6233e0a3e7bb87431e560c9563553f44ef16",
+            "extract_dir": "pastel-v0.8.1-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://github.com/sharkdp/pastel/releases/download/v0.8.1/pastel-v0.8.1-i686-pc-windows-msvc.zip",
+            "hash": "6295719a25485bda307bcabc2e3e40c204103cccbff25d81bd37c7b89100b243",
+            "extract_dir": "pastel-v0.8.1-i686-pc-windows-msvc"
+        }
+    },
+    "bin": "pastel.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sharkdp/pastel/releases/download/v$version/pastel-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "pastel-v$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://github.com/sharkdp/pastel/releases/download/v$version/pastel-v$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "pastel-v$version-i686-pc-windows-msvc"
+            }
+        }
+    }
+}

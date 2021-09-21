@@ -11,7 +11,7 @@
             "sudo"
         ]
     ],
-    "post_install": "& \"$dir\\gsudo.exe\" -k 2>&1 | Out-Null",
+    "post_install": "try { & \"$dir\\gsudo.exe\" -k 2>&1 | Out-Null } catch { info $_.Exception.Message }",
     "env_add_path": ".",
     "checkver": "github",
     "autoupdate": {
