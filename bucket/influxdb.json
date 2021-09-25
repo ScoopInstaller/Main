@@ -1,13 +1,13 @@
 {
-    "version": "1.8.6",
+    "version": "1.8.9",
     "description": "Scalable datastore for metrics, events, and real-time analytics.",
     "homepage": "https://www.influxdata.com/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/influxdb/releases/influxdb-1.8.6_windows_amd64.zip",
-            "hash": "d56d457b7039fec37c2309b1808c00509da2d77d212f2cd2ef0a180f485f2e92",
-            "extract_dir": "influxdb-1.8.6-1"
+            "url": "https://dl.influxdata.com/influxdb/releases/influxdb-1.8.9_windows_amd64.zip",
+            "hash": "8aac83b70f02088f64e99b25884fea5bd4c81780e6f3740aa9ba0e8c3424f0ba",
+            "extract_dir": "influxdb-1.8.9-1"
         }
     },
     "persist": "influxdb.conf",
@@ -15,12 +15,12 @@
         "influx.exe",
         "influx_inspect.exe",
         "influx_stress.exe",
-        "influx_tsm.exe",
         "influxd.exe"
     ],
     "checkver": {
         "url": "https://portal.influxdata.com/downloads",
-        "regex": ">InfluxDB v([\\d.]+)<"
+        "regex": ">InfluxDB v1\\.([\\d.]+)",
+        "replace": "1.${1}"
     },
     "autoupdate": {
         "architecture": {
@@ -28,9 +28,6 @@
                 "url": "https://dl.influxdata.com/influxdb/releases/influxdb-$version_windows_amd64.zip",
                 "extract_dir": "influxdb-$version-1"
             }
-        },
-        "hash": {
-            "url": "$url.sha256"
         }
     }
 }
