@@ -14,11 +14,8 @@
         }
     },
     "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\profile.ps1\")) {",
-        "    New-Item -ItemType File \"$persist_dir\\profile.ps1\" | Out-Null",
-        "}",
-        "if (!(Test-Path \"$persist_dir\\Microsoft.PowerShell_profile.ps1\")) {",
-        "    New-Item -ItemType File \"$persist_dir\\Microsoft.PowerShell_profile.ps1\" | Out-Null",
+        "'Microsoft.PowerShell_profile.ps1', 'profile.ps1' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
         "}"
     ],
     "bin": "pwsh.exe",
@@ -29,8 +26,8 @@
         ]
     ],
     "persist": [
-        "profile.ps1",
-        "Microsoft.PowerShell_profile.ps1"
+        "Microsoft.PowerShell_profile.ps1",
+        "profile.ps1"
     ],
     "checkver": "github",
     "autoupdate": {
