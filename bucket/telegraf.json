@@ -1,34 +1,40 @@
 {
-    "version": "1.18.3",
+    "version": "1.20.0",
     "description": "The plugin-driven server agent for collecting & reporting metrics.",
     "homepage": "https://www.influxdata.com/time-series-platform/telegraf/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.18.3_windows_amd64.zip",
-            "hash": "2091761ba37209c91c021c9b2c9590043f515ff39511188aa9021f1feae476b2",
-            "extract_dir": "telegraf-1.18.3"
+            "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.20.0_windows_amd64.zip",
+            "hash": "d94475df292da995418f6c74baeb11728cb1870f8bf2561528e162c67af31f84"
+        },
+        "32bit": {
+            "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.20.0_windows_i386.zip",
+            "hash": "245466d7a1042d7fcc5e1fa955a8200c09d262f809c146121facf9c8f9b29031"
         }
     },
+    "extract_dir": "telegraf-1.20.0",
     "bin": "telegraf.exe",
     "persist": "telegraf.conf",
     "env_set": {
         "TELEGRAF_CONFIG_PATH": "$persist_dir/telegraf.conf"
     },
     "checkver": {
-        "url": "https://portal.influxdata.com/downloads",
-        "regex": ">Telegraf v([\\d.]+)<"
+        "github": "https://github.com/influxdata/telegraf"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_amd64.zip",
-                "extract_dir": "telegraf-$version"
+                "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_i386.zip"
             }
         },
         "hash": {
-            "url": "https://portal.influxdata.com/downloads/",
-            "regex": "(?sm)Windows Binaries.*?>$sha256</.*?wget $url"
-        }
+            "url": "https://github.com/influxdata/telegraf/releases/tag/v$version",
+            "regex": "(?s)$basename</.*?<code>$sha256</"
+        },
+        "extract_dir": "telegraf-$version"
     }
 }
