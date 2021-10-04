@@ -13,7 +13,7 @@
     "hash": "3dc33493e54029fb1528251552093a9f9a2894fcf94f9c3a6f809136a42348c7",
     "pre_install": [
         "if(installed 'git-with-openssh') { $git = 'git-with-openssh' } else { $git = 'git' }",
-        "Write-Output \"& `$(join-path `$(scoop prefix $git) 'bin\\bash.exe') `$(join-path `$psscriptroot 'neofetch') @args\" | Out-File \"$dir\\neofetch.ps1\" -encoding utf8"
+        "Write-Output \"`$GitCmdSource = (Get-Command ${git}.exe -ErrorAction:Stop).Source; `$GitPath = (Get-Item `$GitCmdSource).Directory.Parent.FullName; if (`$GitCmdSource -match 'scoop.?shims') { `$GitPath = Join-Path (Join-Path `$GitPath 'apps') 'git'; `$GitVersionLatest = ls `$GitPath | sort -Descending | where Name -ne 'current' | select -First 1; `$GitPath = Join-Path `$GitPath `$GitVersionLatest }; & `$(Join-Path (Join-Path `$GitPath 'bin') 'bash.exe') `$(Join-Path `$PSScriptRoot 'neofetch') @args\" | Out-File \"$dir\\neofetch.ps1\" -encoding utf8"
     ],
     "bin": "neofetch.ps1",
     "checkver": "github",
