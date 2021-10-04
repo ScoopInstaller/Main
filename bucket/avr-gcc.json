@@ -1,17 +1,17 @@
 {
     "version": "11.1.0",
-    "description": "AVR toolchain for Windows by Zak Kemble.",
+    "description": "AVR toolchain for Windows by Zak Kemble",
     "homepage": "https://blog.zakkemble.net/avr-gcc-builds/",
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
             "url": "https://blog.zakkemble.net/download/avr-gcc-11.1.0-x64-windows.zip",
-            "hash": "md5:3043B0659163DD116D02FE3470D404D5",
+            "hash": "md5:3043b0659163dd116d02fe3470d404d5",
             "extract_dir": "avr-gcc-11.1.0-x64-windows"
         },
         "32bit": {
             "url": "https://blog.zakkemble.net/download/avr-gcc-11.1.0-x86-windows.zip",
-            "hash": "md5:B6459D9048B0870A96544330E54B66AE",
+            "hash": "md5:b6459d9048b0870a96544330e54b66ae",
             "extract_dir": "avr-gcc-11.1.0-x86-windows"
         }
     },
@@ -47,7 +47,7 @@
         "bin\\avr-strings.exe",
         "bin\\avr-strip.exe"
     ],
-    "checkver": "avr-gcc ([\\d.]+)",
+    "checkver": "AVR-GCC\\s*([\\d.]+)\\s+for",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -58,6 +58,10 @@
                 "url": "https://blog.zakkemble.net/download/avr-gcc-$version-x86-windows.zip",
                 "extract_dir": "avr-gcc-$version-x86-windows"
             }
+        },
+        "hash": {
+            "url": "https://blog.zakkemble.net/avr-gcc-builds/",
+            "regex": "(?sm)$basename.*?MD5:\\s*$md5"
         }
     }
 }
