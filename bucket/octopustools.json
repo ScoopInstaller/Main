@@ -1,0 +1,20 @@
+{
+    "version": "7.4.3379",
+    "homepage": "https://github.com/OctopusDeploy/OctopusCLI",
+    "description": "The Octopus CLI is a command line tool that builds on top of the Octopus Deploy REST API. With the Octopus CLI you can package your applications for deployment as either Zip or NuGet packages, and manage your environments, deployments, channels, projects, and workers.",
+    "license": "Apache-2.0",
+    "url": "https://download.octopusdeploy.com/octopus-tools/7.4.3379/OctopusTools.7.4.3379.win-x64.zip",
+    "bin": "octo.exe",
+    "hash": "md5:2db9a915b86ab793387ed650c9440f6f",
+    "checkver": {
+        "url": "https://octopus.com/downloads/octopuscli",
+        "regex": "OctopusTools\\.([\\d.]+)\\.win-x64\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://download.octopusdeploy.com/octopus-tools/$version/OctopusTools.$version.win-x64.zip",
+        "hash": {
+            "url": "https://octopus.com/downloads/octopuscli",
+            "find": "$md5"
+        }
+    }
+}
