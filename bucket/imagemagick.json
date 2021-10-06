@@ -1,17 +1,17 @@
 {
-    "version": "7.0.11-14",
+    "version": "7.1.0-9",
     "description": "Create, edit, compose, and convert 200+ of bitmap images formats.",
     "homepage": "https://imagemagick.org/",
     "license": "ImageMagick",
     "depends": "ffmpeg",
     "architecture": {
         "64bit": {
-            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.0.11-14-portable-Q16-x64.zip",
-            "hash": "e073199e80a8b9da0d4531f3030912f232f3665e28ec1193a55bc5166f48a9a6"
+            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-portable-Q16-x64.zip",
+            "hash": "53b954907b2a19e64e908e097fa669499a373e359d1e398ca9356c98656949de"
         },
         "32bit": {
-            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.0.11-14-portable-Q16-x86.zip",
-            "hash": "87d902168076bf239b3559794a9fc868b7bd0e3096a403aeea7b04987234e888"
+            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-portable-Q16-x86.zip",
+            "hash": "812be497dc07424acc1e357ba5ebba6c951ba95d32b9322ad9d4519e31de87fe"
         }
     },
     "bin": [
@@ -31,14 +31,14 @@
         "montage.exe",
         "stream.exe"
     ],
-    "checkver": "The current release is ImageMagick <a.*?>([0-9\\.p-]+)</a>",
+    "checkver": "The current release is ImageMagick <a.*?>([\\d.p-]+)</a>",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$version-portable-Q16-x64.zip"
+                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$matchHead-portable-Q16-x64.zip"
             },
             "32bit": {
-                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$version-portable-Q16-x86.zip"
+                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$matchHead-portable-Q16-x86.zip"
             }
         },
         "hash": {

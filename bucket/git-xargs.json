@@ -1,0 +1,31 @@
+{
+    "version": "0.0.11",
+    "description": "A CLI tool for making updates across multiple Github repositories with a single command",
+    "homepage": "https://github.com/gruntwork-io/git-xargs",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gruntwork-io/git-xargs/releases/download/v0.0.11/git-xargs_windows_amd64.exe#/git-xargs.exe",
+            "hash": "1ce84b4c87a6b75c4555c2b8b7aca2337915a3204d20d400e4f8208421117a0d"
+        },
+        "32bit": {
+            "url": "https://github.com/gruntwork-io/git-xargs/releases/download/v0.0.11/git-xargs_windows_386.exe#/git-xargs.exe",
+            "hash": "1bca3cfd55de3fa5b1332203773fa0860aad99faa51e65b95e608afba904525d"
+        }
+    },
+    "bin": "git-xargs.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gruntwork-io/git-xargs/releases/download/v$version/git-xargs_windows_amd64.exe#/git-xargs.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/gruntwork-io/git-xargs/releases/download/v$version/git-xargs_windows_386.exe#/git-xargs.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
