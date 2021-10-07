@@ -18,18 +18,17 @@
     ],
     "checkver": {
         "url": "https://rakudo.org/downloads/star",
-        "regex": "rakudo-star-(?<version>[\\d.-]+)-win-x86_64-(?<compiler>.*)\\.msi",
-        "replace": "${version}"
+        "regex": "rakudo-star-([\\d.-]+)-win-x86_64-(?<compiler>\\w+)\\.msi"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://rakudo.org/dl/star/rakudo-star-$version-win-x86_64-$matchCompiler.msi",
-                "hash": {
-                    "url": "$url.checksums.txt",
-                    "regex": "rakudo-star-(?<version>[\\d.-]+)-win-x86_64-(?<compiler>.*)\\.msi.*($sha256)"
-                }
+                "url": "https://rakudo.org/dl/star/rakudo-star-$version-win-x86_64-$matchCompiler.msi"
             }
+        },
+        "hash": {
+            "url": "$url.checksums.txt",
+            "regex": "$basename\\)\\s+=\\s+$sha256"
         }
     }
 }
