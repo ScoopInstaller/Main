@@ -1,0 +1,37 @@
+{
+    "version": "10.12.2",
+    "description": "Command-line utility to download/upload blobs and files from Microsoft Azure storage accounts",
+    "homepage": "https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/Azure/azure-storage-azcopy/blob/main/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://aka.ms/downloadazcopy-v10-windows/#dl.zip",
+            "hash": "b5464111326e809d44db7f2d291dd936db1ae538f9f99e190d2c016d3315cbca",
+            "extract_dir": "azcopy_windows_amd64_10.12.2"
+        },
+        "32bit": {
+            "url": "https://aka.ms/downloadazcopy-v10-windows-32bit#/dl.zip",
+            "hash": "21f566085b4f865840241ab00f0064d296ee9cdc6f6a07f6e58478c509ef7965",
+            "extract_dir": "azcopy_windows_386_10.12.2"
+        }
+    },
+    "bin": "azcopy.exe",
+    "checkver": {
+        "github": "https://github.com/Azure/azure-storage-azcopy"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://aka.ms/downloadazcopy-v10-windows/#dl.zip",
+                "extract_dir": "azcopy_windows_amd64_$version"
+            },
+            "32bit": {
+                "url": "https://aka.ms/downloadazcopy-v10-windows-32bit#/dl.zip",
+                "extract_dir": "azcopy_windows_386_$version"
+            }
+        }
+    }
+}
