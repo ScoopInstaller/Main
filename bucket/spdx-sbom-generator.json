@@ -1,20 +1,23 @@
 {
     "version": "0.0.13",
     "description": "A tool to help those in the community that want to generate SPDX Software Bill of Materials (SBOMs) with current package managers.",
-    "homepage": "https://github.com/spdx/spdx-sbom-generator/",
+    "homepage": "https://github.com/spdx/spdx-sbom-generator",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
             "url": "https://github.com/spdx/spdx-sbom-generator/releases/download/v0.0.13/spdx-sbom-generator-v0.0.13-windows-amd64.zip",
-            "hash": "0db48607b373278f41bde80864e71305b51da3a95f099b4affaf1f92d4208f8e"
+            "hash": "md5:47bf5ebced909d882e6497347cc5df0b"
         },
         "32bit": {
             "url": "https://github.com/spdx/spdx-sbom-generator/releases/download/v0.0.13/spdx-sbom-generator-v0.0.13-windows-386.zip",
-            "hash": "345900560bbe82a1aa56b6483f38c5b5e221768c0a1a7dcf31c39fb1fdbdf294"
+            "hash": "md5:62f9af59bb8aa392199c11d71588d7e6"
         }
     },
     "bin": "spdx-sbom-generator.exe",
-    "checkver": "github",
+    "checkver": {
+        "url": "https://github.com/spdx/spdx-sbom-generator/releases",
+        "regex": "download/v([\\d.]+)/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -23,6 +26,9 @@
             "32bit": {
                 "url": "https://github.com/spdx/spdx-sbom-generator/releases/download/v$version/spdx-sbom-generator-v$version-windows-386.zip"
             }
+        },
+        "hash": {
+            "url": "$url.md5"
         }
     }
 }
