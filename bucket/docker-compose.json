@@ -10,6 +10,10 @@
         }
     },
     "bin": "docker-compose.exe",
+    "post_install": "echo 'Installing docker-compose as docker-cli plugin...'; New-Item -ItemType Directory -Force \"$Env:USERPROFILE/.docker/cli-plugins\" | Out-Null; Copy-Item \"$original_dir/docker-compose.exe\" \"$Env:USERPROFILE/.docker/cli-plugins/docker-compose.exe\"",
+    "uninstaller": {
+        "script": "Remove-Item -Force \"$Env:USERPROFILE/.docker/cli-plugins/docker-compose.exe\""
+    },
     "checkver": {
         "github": "https://github.com/docker/compose"
     },
