@@ -6,11 +6,11 @@
     "architecture": {
         "64bit": {
             "url": "https://download.elifulkerson.com/files/tcping/0.39/x64/tcping64.exe#/tcping.exe",
-            "hash": "AF3C12DA527E88C9DB3774F5F12BAECC2D211C801AE4421C7B16E80F6440ED35"
+            "hash": "sha512:1e80cef7f5db6007ff83a2b7d5425fe74ed505b5af8612271b2353370151afa101be7e5a90333e7c029d20ae0be0c3557b6b7b5e440a8f5c4ee6118f242febd7"
         },
         "32bit": {
             "url": "https://download.elifulkerson.com/files/tcping/0.39/tcping.exe#/tcping.exe",
-            "hash": "9F04C46E0CDAA5BCE32D98065E1E510A5F174E51B399D6408F2446444CCCD5FF"
+            "hash": "sha512:57c328f4d91ac5422d715613b9be4fbe8ed400072ba51fd406136a31ccc4d3165933936879b9a4ba3619e85f8ca593b6de629a8a7ae3d0290732eef057b76547"
         }
     },
     "bin": "tcping.exe",
@@ -21,17 +21,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.elifulkerson.com/files/tcping/$version/x64/tcping64.exe#/tcping.exe",
-                "hash": {
-                    "url": "$baseurl/$basename.sha256"
-                }
+                "url": "https://download.elifulkerson.com/files/tcping/$version/x64/tcping64.exe#/tcping.exe"
             },
             "32bit": {
-                "url": "https://download.elifulkerson.com/files/tcping/$version/tcping.exe#/tcping.exe",
-                "hash": {
-                    "url": "$baseurl/$basename.sha256"
-                }
+                "url": "https://download.elifulkerson.com/files/tcping/$version/tcping.exe#/tcping.exe"
             }
+        },
+        "hash": {
+            "url": "$baseurl/$basename.sha512"
         }
     }
 }
