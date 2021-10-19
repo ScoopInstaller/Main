@@ -1,12 +1,12 @@
 {
-    "version": "2020.05.1-01",
+    "version": "2021.07-01",
     "description": "The Rakudo Star Bundle contains the Rakudo Compiler, a collection of modules from the Raku ecosystem, and the language documentation.",
     "homepage": "https://rakudo.org/star",
     "license": "Artistic-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://rakudo.org/dl/star/rakudo-star-2020.05.1-01-win-x86_64-(JIT).msi",
-            "hash": "abbe7e346f617ff34ec5c5cb4f31f3b106e0ff4018d53a560849254aab2386d5"
+            "url": "https://rakudo.org/dl/star/rakudo-star-2021.07-01-win-x86_64-msvc.msi",
+            "hash": "9e2281c53517645efdfab7f519b1fccdb0665f7e92cd85938d0d752db3d9f0aa"
         }
     },
     "extract_dir": "rakudo",
@@ -18,16 +18,17 @@
     ],
     "checkver": {
         "url": "https://rakudo.org/downloads/star",
-        "regex": "rakudo-star-([\\d.-]+)-win-x86_64-\\(JIT\\)\\.msi"
+        "regex": "rakudo-star-([\\d.-]+)-win-x86_64-(?<compiler>\\w+)\\.msi"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://rakudo.org/dl/star/rakudo-star-$version-win-x86_64-(JIT).msi"
+                "url": "https://rakudo.org/dl/star/rakudo-star-$version-win-x86_64-$matchCompiler.msi"
             }
         },
         "hash": {
-            "url": "$url.sha256.txt"
+            "url": "$url.checksums.txt",
+            "regex": "$basename\\)\\s+=\\s+$sha256"
         }
     }
 }

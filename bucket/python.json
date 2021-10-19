@@ -1,5 +1,5 @@
 {
-    "version": "3.9.5",
+    "version": "3.10.0",
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
     "license": "Python-2.0",
@@ -7,36 +7,41 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://www.python.org/ftp/python/3.9.5/python-3.9.5-amd64.exe#/setup.exe",
+                "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe#/setup.exe",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/install-pep-514.reg",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/uninstall-pep-514.reg"
             ],
             "hash": [
-                "md5:53a354a15baed952ea9519a7f4d87c3f",
-                "5d9d7a604c057e67973e1d4b3b488ae20a0e5ee5496d03b5cf091410e33e39ed",
+                "md5:c3917c08a7fe85db7203da6dcaa99a70",
+                "c2611c8010979a47cdeea1af17d5061d8df40c5356fd8c2f3ba9492d516a99d1",
                 "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9"
             ]
         },
         "32bit": {
             "url": [
-                "https://www.python.org/ftp/python/3.9.5/python-3.9.5.exe#/setup.exe",
+                "https://www.python.org/ftp/python/3.10.0/python-3.10.0.exe#/setup.exe",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/install-pep-514.reg",
                 "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/uninstall-pep-514.reg"
             ],
             "hash": [
-                "md5:b29b19a94bbe498808e5e12c51625dd8",
-                "5d9d7a604c057e67973e1d4b3b488ae20a0e5ee5496d03b5cf091410e33e39ed",
+                "md5:133aa48145032e341ad2a000cd3bff50",
+                "c2611c8010979a47cdeea1af17d5061d8df40c5356fd8c2f3ba9492d516a99d1",
                 "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9"
             ]
         }
     },
     "pre_install": [
         "$py_root = \"$dir\".Replace('\\', '\\\\')",
+        "$bit = '64'",
+        "if ($architecture -eq '32bit') { $bit = '32' }",
         "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
         "    $py_version = ($version -split '\\.')[0..1] -join '.'",
         "    $content = Get-Content \"$dir\\$_\"",
         "    $content = $content.Replace('$py_root', $py_root)",
         "    $content = $content.Replace('$py_version', $py_version)",
+        "    $content = $content.Replace('$py_fullversion', $version)",
+        "    $content = $content.Replace('$py_cleanVersion', $version -replace '\\.')",
+        "    $content = $content.Replace('$py_arch', \"$bit\")",
         "    if ($global) {",
         "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
         "    }",
@@ -46,12 +51,13 @@
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\setup.exe\" \"$dir\\_tmp\"",
-            "@('launcher.msi', 'path.msi', 'pip.msi') | ForEach-Object {",
+            "@('path.msi', 'pip.msi') | ForEach-Object {",
             "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
             "}",
             "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
             "Remove-Item \"$dir\\_tmp\", \"$dir\\setup.exe\" -Force -Recurse",
             "& \"$dir\\python.exe\" -E -s -m ensurepip -U --default-pip | Out-Null",
+            "Write-Output \"`e[0m\" # Reset ansi to prevent color leak from installer",
             "if ($global) {",
             "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
             "    env 'PATHEXT' $true \"$pathext;.PY;.PYW\"",
@@ -67,8 +73,6 @@
         ]
     },
     "bin": [
-        "python.exe",
-        "pythonw.exe",
         [
             "python.exe",
             "python3"
@@ -82,6 +86,10 @@
     "env_add_path": [
         "Scripts",
         "."
+    ],
+    "persist": [
+        "Scripts",
+        "Lib\\site-packages"
     ],
     "checkver": {
         "url": "https://www.python.org/downloads/windows/",
