@@ -1,8 +1,8 @@
 {
-    "homepage": "https://elv.sh/",
-    "description": "An interactive shell and an expressive programming language.",
-    "license": "BSD-2-Clause",
     "version": "0.16.3",
+    "description": "An interactive shell and an expressive programming language",
+    "homepage": "https://elv.sh",
+    "license": "BSD-2-Clause",
     "architecture": {
         "64bit": {
             "url": "https://dl.elv.sh/windows-amd64/elvish-v0.16.3.zip",
@@ -13,13 +13,11 @@
             "hash": "ff788c204f57df56341ef5cbdfa6687f48257c664a3c3f0a47dc55bcb28504f8"
         }
     },
-    "installer": {
-        "script": "Rename-Item \"$dir\\elvish-v$version.exe\" \"$dir\\elvish.exe\""
-    },
+    "pre_install": "Rename-Item \"$dir\\elvish-v$version.exe\" 'elvish.exe'",
     "bin": "elvish.exe",
     "checkver": {
         "url": "https://elv.sh/get/",
-        "regex": "([\\d.]+) \\(<a href=\"../blog/[\\d.]+-release-notes.html\">Release Note</a>\\)"
+        "regex": "\\s+([\\d.]+) \\(<a"
     },
     "autoupdate": {
         "architecture": {
@@ -29,6 +27,9 @@
             "32bit": {
                 "url": "https://dl.elv.sh/windows-386/elvish-v$version.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
         }
     }
 }
