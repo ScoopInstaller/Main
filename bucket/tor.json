@@ -1,5 +1,5 @@
 {
-    "version": "0.4.5.10-browser10.5.8",
+    "version": "0.4.5.10",
     "description": "Enables anonymous communication over the onion network (expert mode).",
     "homepage": "https://www.torproject.org",
     "license": "BSD-3-Clause",
@@ -42,16 +42,15 @@
     ],
     "checkver": {
         "url": "https://www.torproject.org/download/tor/",
-        "regex": "dist/torbrowser/(?<browser>[\\d.]+)/tor-win32-(?<tor>[\\d.]+)\\.zip",
-        "replace": "${2}-browser${1}"
+        "regex": "dist/torbrowser/(?<browser>[\\d.]+)/tor-win32-(?<version>[\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win64-$matchTor.zip"
+                "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win64-$version.zip"
             },
             "32bit": {
-                "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win32-$matchTor.zip"
+                "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win32-$version.zip"
             }
         }
     }
