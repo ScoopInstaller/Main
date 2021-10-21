@@ -1,6 +1,6 @@
 {
     "version": "8.2.2824",
-    "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
+    "description": "A highly configurable text editor",
     "homepage": "https://www.vim.org",
     "license": "Vim",
     "suggest": {
@@ -18,7 +18,11 @@
     ],
     "extract_dir": "$0",
     "pre_install": [
-        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse",
+        "Move-Item \"$dir\\`$R0\" \"$dir\\libgcc_s_sjlj-1.dll\"",
+        "Move-Item \"$dir\\GvimExt64\\`$R0\" \"$dir\\GvimExt64\\gvimext.dll\"",
+        "Move-Item \"$dir\\GvimExt64\\`$0\\GvimExt64\\*\" \"$dir\\GvimExt64\"",
+        "Move-Item \"$dir\\`$*\\*\" $dir",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\GvimExt32\", \"$dir\\GvimExt64\\`$0\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse",
         "if (!(Test-Path \"$persist_dir\\_vimrc\")) {",
         "    Copy-Item \"$dir\\vimrc_example.vim\" \"$dir\\_vimrc\"",
         "    Copy-Item \"$dir\\gvimrc_example.vim\" \"$dir\\_gvimrc\"",
