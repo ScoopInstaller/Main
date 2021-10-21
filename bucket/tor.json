@@ -42,16 +42,16 @@
     ],
     "checkver": {
         "url": "https://www.torproject.org/download/tor/",
-        "regex": "dist/torbrowser/(?<eb>[\\d.]+)/tor-win32-(?<tor>[\\d.]+)\\.zip",
-        "replace": "${2}-eb${1}"
+        "regex": "dist/torbrowser/(?<browser>[\\d.]+)/tor-win32-(?<tor>[\\d.]+)\\.zip",
+        "replace": "${2}-browser${1}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dist.torproject.org/torbrowser/$matchEb/tor-win64-$matchTor.zip"
+                "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win64-$matchTor.zip"
             },
             "32bit": {
-                "url": "https://dist.torproject.org/torbrowser/$matchEb/tor-win32-$matchTor.zip"
+                "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win32-$matchTor.zip"
             }
         }
     }
