@@ -4,17 +4,17 @@
     "homepage": "https://www.torproject.org",
     "license": "BSD-3-Clause",
     "notes": [
-        "NOTE: You will need to configure tor before using it, as it does not come pre-configured.",
-        "Please see https://www.torproject.org/docs/tor-manual.html.en for configuration details."
+        "You will need to configure Tor before using, as it does not come pre-configured.",
+        "See https://tb-manual.torproject.org/ for details."
     ],
     "architecture": {
         "64bit": {
-            "url": "https://dist.torproject.org/torbrowser/10.5.5/tor-win64-0.4.5.10.zip",
-            "hash": "b97141039f4442914f611423e0aa41a3c60a70cdc6040d676a433ad9f3d243f9"
+            "url": "https://dist.torproject.org/torbrowser/10.5.8/tor-win64-0.4.5.10.zip",
+            "hash": "3cbb20a2aed62d20bab6e7e69ab2ca2253d52001e75a01e5b34e6e437a461a46"
         },
         "32bit": {
-            "url": "https://dist.torproject.org/torbrowser/10.5.5/tor-win32-0.4.5.10.zip",
-            "hash": "08fb4439449357d3605d51250871dbeb197f59dbddc35ef4d0c1539184ef664c"
+            "url": "https://dist.torproject.org/torbrowser/10.5.8/tor-win32-0.4.5.10.zip",
+            "hash": "0bf64a03aa7807855fc4814f3685b72c7dc60a5715023362a869133b9ad74013"
         }
     },
     "pre_install": [
@@ -42,7 +42,7 @@
     ],
     "checkver": {
         "url": "https://www.torproject.org/download/tor/",
-        "regex": "torbrowser/(?<browser>[\\d.]+)/tor-win32-(?<version>[\\d.]+)\\.zip"
+        "regex": "dist/torbrowser/(?<browser>[\\d.]+)/tor-win32-(?<version>[\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
@@ -52,9 +52,6 @@
             "32bit": {
                 "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win32-$version.zip"
             }
-        },
-        "hash": {
-            "url": "$baseurl/sha256sums-signed-build.txt"
         }
     }
 }
