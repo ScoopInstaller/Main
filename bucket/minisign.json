@@ -1,15 +1,24 @@
 {
-    "version": "0.9",
+    "version": "0.10",
     "description": "A dead simple tool to sign files and verify signatures",
     "homepage": "https://jedisct1.github.io/minisign/",
     "license": "ISC",
-    "url": "https://github.com/jedisct1/minisign/releases/download/0.9/minisign-win32.zip",
-    "hash": "2068aab3d211584cee078df0c9dd178cdaaed1433af3bf8cef51fa5a39eef7d0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jedisct1/minisign/releases/download/0.10/minisign-0.10-win64.zip",
+            "hash": "a8a62e675ffe6551e689bfdd6bc4f667939092ca71a18eb53a04484493a275a4",
+            "extract_dir": "minisign-win64"
+        }
+    },
     "bin": "minisign.exe",
     "checkver": {
         "github": "https://github.com/jedisct1/minisign"
     },
     "autoupdate": {
-        "url": "https://github.com/jedisct1/minisign/releases/download/$version/minisign-win32.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jedisct1/minisign/releases/download/$version/minisign-$version-win64.zip"
+            }
+        }
     }
 }

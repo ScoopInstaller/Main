@@ -1,24 +1,33 @@
 {
-    "version": "7.1.2",
+    "version": "7.1.5",
     "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data.",
     "homepage": "https://github.com/PowerShell/PowerShell",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.2/PowerShell-7.1.2-win-x64.zip",
-            "hash": "d32856f3406670fa8c3903f33004810fe5c1e568210e8933a22017cee60d38c7"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.5/PowerShell-7.1.5-win-x64.zip",
+            "hash": "6cff673d859719a6588e5ae9d2b93f940a4fcff9a37e50c9c0f8286678d1ecad"
         },
         "32bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.2/PowerShell-7.1.2-win-x86.zip",
-            "hash": "63b96dfa3e31b6d885ac21b8df427f1cd2cd747916db5873a120855f1829dc81"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.5/PowerShell-7.1.5-win-x86.zip",
+            "hash": "35d5c3057e208878fa7f9260270252ea024b3f2b2d35976d9e4bfbb86b788a81"
         }
     },
+    "pre_install": [
+        "'Microsoft.PowerShell_profile.ps1', 'profile.ps1' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "}"
+    ],
     "bin": "pwsh.exe",
     "shortcuts": [
         [
             "pwsh.exe",
             "PowerShell Core"
         ]
+    ],
+    "persist": [
+        "Microsoft.PowerShell_profile.ps1",
+        "profile.ps1"
     ],
     "checkver": "github",
     "autoupdate": {

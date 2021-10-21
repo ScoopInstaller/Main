@@ -1,19 +1,18 @@
 {
-    "version": "2.30.1.windows.1",
+    "version": "2.33.1.windows.1",
     "description": "Distributed version control system",
     "homepage": "https://gitforwindows.org",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.30.1.windows.1/PortableGit-2.30.1-64-bit.7z.exe#/dl.7z",
-            "hash": "54bb3a0035bad71148fb6c771942a880d46a8dc6f3a0cb42eda88ca1374f1570"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.33.1.windows.1/PortableGit-2.33.1-64-bit.7z.exe#/dl.7z",
+            "hash": "723c879eb447583b893aa3234eae8caaa77d9d3ecf90883271fba98e8b2d99ac"
         },
         "32bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.30.1.windows.1/PortableGit-2.30.1-32-bit.7z.exe#/dl.7z",
-            "hash": "931dc2f5495cd41c714c9cfb69288ff9f1026469c291912bfa789165ce9eeed6"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.33.1.windows.1/PortableGit-2.33.1-32-bit.7z.exe#/dl.7z",
+            "hash": "fad2f32a3ca6e39cfbf7258c485a5601b0bfb620f44c582c1ba22784dd3faad3"
         }
     },
-    "post_install": "git config --global credential.helper manager",
     "bin": [
         "cmd\\git.exe",
         "cmd\\gitk.exe",
@@ -25,6 +24,11 @@
         "usr\\bin\\sftp.exe",
         "usr\\bin\\ssh-add.exe",
         "usr\\bin\\ssh-agent.exe",
+        [
+            "bin/sh.exe",
+            "ssh-copy-id",
+            "ssh-copy-id"
+        ],
         "usr\\bin\\ssh-keygen.exe",
         "usr\\bin\\ssh-keyscan.exe",
         "usr\\bin\\tig.exe"

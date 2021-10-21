@@ -1,45 +1,33 @@
 {
-    "version": "2.0.45",
+    "version": "2.1.0",
     "description": "A flexible DNS proxy, with support for encrypted DNS protocols",
     "homepage": "https://dnscrypt.info",
     "license": "ISC",
+    "notes": [
+        "1. \"fallback_resolvers\" was renamed to \"bootstrap_resolvers\" for clarity. Please update your configuration file accordingly.",
+        "2. Some of the configuration files are changed, for details: https://github.com/DNSCrypt/dnscrypt-proxy/releases/tag/2.0.45",
+        "3. For compatibility reasons, please move all configuration files exclude \"dnscrypt-proxy.toml\" into \"config\" folder and update your config."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.0.45/dnscrypt-proxy-win64-2.0.45.zip",
-            "hash": "d8cfc18e7892fe6977a78131750ae65a59aef602d0030f03f789881b2b31818c",
+            "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.0/dnscrypt-proxy-win64-2.1.0.zip",
+            "hash": "196dcb3da3152def54f9be89276a2b9063026f59fa6993d1850d66fd83858df0",
             "extract_dir": "win64"
         },
         "32bit": {
-            "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.0.45/dnscrypt-proxy-win32-2.0.45.zip",
-            "hash": "001cdab7a426b71641afd58dab5b1451dc2554354b1630233c3a33b116d9542f",
+            "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.0/dnscrypt-proxy-win32-2.1.0.zip",
+            "hash": "64b9ab36f5037ff44de0fa16a261e00192a419583dc2c3aebe28b809d8908d23",
             "extract_dir": "win32"
         }
     },
-    "pre_install": [
-        "'blacklist.txt', 'cloaking-rules.txt', 'dnscrypt-proxy.toml', 'forwarding-rules.txt', 'whitelist.txt' | ForEach-Object {",
-        "    if (!(Test-Path \"$persist_dir\\$_\")) { Copy-Item \"$dir\\example-$_\" \"$dir\\$_\" }",
-        "}"
-    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\$dnscrypt-proxy.toml\")) { Copy-Item \"$dir\\example-dnscrypt-proxy.toml\" \"$dir\\dnscrypt-proxy.toml\" }",
     "bin": "dnscrypt-proxy.exe",
     "persist": [
-        "blacklist.txt",
-        "cloaking-rules.txt",
+        "config",
         "dnscrypt-proxy.toml",
-        "forwarding-rules.txt",
-        "localhost.pem",
-        "whitelist.txt"
+        "localhost.pem"
     ],
     "checkver": {
         "github": "https://github.com/DNSCrypt/dnscrypt-proxy"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win64-$version.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win32-$version.zip"
-            }
-        }
     }
 }

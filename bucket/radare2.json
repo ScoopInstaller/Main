@@ -1,13 +1,18 @@
 {
-    "version": "4.3.1",
-    "description": "Portable reversing framework",
-    "homepage": "https://www.radare.org/r/",
+    "version": "5.4.2",
+    "description": "UNIX-like reverse engineering framework and command-line toolset",
+    "homepage": "https://www.radare.org/n/radare2.html",
     "license": "LGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://radare.mikelloc.com/get/4.3.1/radare2-msvc_64-4.3.1.zip",
-            "hash": "sha1:4066fc7d1ffd21cd51a189a032dc5c7a1c81c712",
-            "extract_dir": "radare2-vs2017_64-4.3.1"
+            "url": "https://github.com/radareorg/radare2/releases/download/5.4.2/radare2-5.4.2-w64.zip",
+            "hash": "303811f388b81138c615d1af4837f2a8a715b66939da211de186386986c4c5ad",
+            "extract_dir": "radare2-5.4.2-w64"
+        },
+        "32bit": {
+            "url": "https://github.com/radareorg/radare2/releases/download/5.4.2/radare2-5.4.2-w32.zip",
+            "hash": "2c79342ec28b695bd60813e4fffc8e1afc142de17c172c4c1255e376b83afd36",
+            "extract_dir": "radare2-5.4.2-w32"
         }
     },
     "bin": [
@@ -23,22 +28,24 @@
         "bin\\ragg2.exe",
         "bin\\rahash2.exe",
         "bin\\rarun2.exe",
+        "bin\\rasign2.exe",
         "bin\\rasm2.exe",
+        "bin\\ravc2.exe",
         "bin\\rax2.exe"
     ],
     "checkver": {
-        "url": "https://www.radare.org/r/down.html",
-        "regex": "last release is ([\\d.]+)"
+        "github": "https://github.com/radareorg/radare2"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://radare.mikelloc.com/get/$version/radare2-msvc_64-$version.zip",
-                "extract_dir": "radare2-vs2017_64-$version"
+                "url": "https://github.com/radareorg/radare2/releases/download/$version/radare2-$version-w64.zip",
+                "extract_dir": "radare2-$version-w64"
+            },
+            "32bit": {
+                "url": "https://github.com/radareorg/radare2/releases/download/$version/radare2-$version-w32.zip",
+                "extract_dir": "radare2-$version-w32"
             }
-        },
-        "hash": {
-            "url": "$baseurl/checksums.sha1sum"
         }
     }
 }

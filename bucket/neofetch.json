@@ -13,7 +13,7 @@
     "hash": "3dc33493e54029fb1528251552093a9f9a2894fcf94f9c3a6f809136a42348c7",
     "pre_install": [
         "if(installed 'git-with-openssh') { $git = 'git-with-openssh' } else { $git = 'git' }",
-        "Write-Output \"& `$(join-path `$(scoop prefix $git) 'bin\\bash.exe') `$(join-path `$psscriptroot 'neofetch') @args\" | Out-File \"$dir\\neofetch.ps1\" -encoding utf8"
+        "Write-Output \"`$GitDir = (Get-Item `$(scoop which $git) -ErrorAction:Stop).Directory.Parent; if (`$GitDir.FullName -imatch 'mingw') { `$GitDir = `$GitDir.Parent }; & `$(Join-Path (Join-Path `$GitDir.FullName 'bin') 'bash.exe') `$(Join-Path `$PSScriptRoot 'neofetch') @args\" | Out-File \"$dir\\neofetch.ps1\" -Encoding utf8"
     ],
     "bin": "neofetch.ps1",
     "checkver": "github",

@@ -1,5 +1,5 @@
 {
-    "version": "8.1.0.0p1-Beta",
+    "version": "8.6.0.0p1-Beta",
     "description": "A suite of secure networking utilities based on the Secure Shell protocol. (Microsoft port)",
     "homepage": "https://github.com/PowerShell/Win32-OpenSSH",
     "license": {
@@ -13,13 +13,13 @@
     ],
     "architecture": {
         "64bit": {
-            "hash": "c99240af89452610f66b7ce54c4fa3180b66aae2bc326afc2aac8fc1dd48f488",
-            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v8.1.0.0p1-Beta/OpenSSH-Win64.zip",
+            "hash": "9f9215dc0b823264d52603f4767d8531880ddfa9aedf16404923814c0ab086b7",
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/V8.6.0.0p1-Beta/OpenSSH-Win64.zip",
             "extract_dir": "OpenSSH-Win64"
         },
         "32bit": {
-            "hash": "88aaf9eafc64a11d2ba0894a1c24608f1b6d69408b19bb7b15287338fea76dd0",
-            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v8.1.0.0p1-Beta/OpenSSH-Win32.zip",
+            "hash": "0221324212413a6caf260f95e308d22f8c141fc37727b622a6ad50998c46d226",
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/V8.6.0.0p1-Beta/OpenSSH-Win32.zip",
             "extract_dir": "OpenSSH-Win32"
         }
     },
@@ -37,15 +37,15 @@
     ],
     "checkver": {
         "github": "https://github.com/PowerShell/Win32-OpenSSH",
-        "regex": "v(\\d+\\.\\d+\\.\\d+\\.\\d+[a-zA-Z-\\d]*)"
+        "regex": "download/V([\\w.-]+)/"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v$version/OpenSSH-Win64.zip"
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/V$version/OpenSSH-Win64.zip"
             },
             "32bit": {
-                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v$version/OpenSSH-Win32.zip"
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/V$version/OpenSSH-Win32.zip"
             }
         }
     }
