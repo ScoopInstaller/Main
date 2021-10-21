@@ -1,27 +1,29 @@
 {
-    "version": "3.3.2",
-    "description": "A portable command-line YAML processor.",
-    "homepage": "https://github.com/mikefarah/yq",
+    "version": "4.13.4",
+    "description": "A portable command-line YAML processor",
+    "homepage": "https://mikefarah.gitbook.io/yq/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mikefarah/yq/releases/download/3.3.2/yq_windows_amd64.exe#/yq.exe",
-            "hash": "b3ade9a5bcbf13c7c7013eecdbc54183d0392fd6360f2d19dbbe8c6141c75fd2"
+            "url": "https://github.com/mikefarah/yq/releases/download/v4.13.4/yq_windows_amd64.exe#/yq.exe",
+            "hash": "a4583983185f14740794e5cb0ad2c2707beb967936b89cf00190301525841f40"
         },
         "32bit": {
-            "url": "https://github.com/mikefarah/yq/releases/download/3.3.2/yq_windows_386.exe#/yq.exe",
-            "hash": "a0ef29a7aebfd818de0ea20150dded8d23847d7bf997061464843240a9e7c170"
+            "url": "https://github.com/mikefarah/yq/releases/download/v4.13.4/yq_windows_386.exe#/yq.exe",
+            "hash": "419581aab5347ad10a9457b2598633617c6f0543281e758bc131acbc69341dbc"
         }
     },
     "bin": "yq.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/mikefarah/yq"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mikefarah/yq/releases/download/$version/yq_windows_amd64.exe#/yq.exe"
+                "url": "https://github.com/mikefarah/yq/releases/download/v$version/yq_windows_amd64.exe#/yq.exe"
             },
             "32bit": {
-                "url": "https://github.com/mikefarah/yq/releases/download/$version/yq_windows_386.exe#/yq.exe"
+                "url": "https://github.com/mikefarah/yq/releases/download/v$version/yq_windows_386.exe#/yq.exe"
             }
         }
     }

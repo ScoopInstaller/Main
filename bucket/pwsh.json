@@ -1,24 +1,33 @@
 {
-    "homepage": "https://github.com/PowerShell/PowerShell",
+    "version": "7.1.5",
     "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data.",
-    "version": "7.0.2",
+    "homepage": "https://github.com/PowerShell/PowerShell",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/PowerShell-7.0.2-win-x64.zip",
-            "hash": "3ac28c2e9ba08a3a6d705cba90485d1f4d0dc7a58a96f7ec7947c95f61d1cb7a"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.5/PowerShell-7.1.5-win-x64.zip",
+            "hash": "6cff673d859719a6588e5ae9d2b93f940a4fcff9a37e50c9c0f8286678d1ecad"
         },
         "32bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.0.2/PowerShell-7.0.2-win-x86.zip",
-            "hash": "1c7d66e3c974a85b8d14fb80acdf71e28b745c203a581caa95071340f43b90b0"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.5/PowerShell-7.1.5-win-x86.zip",
+            "hash": "35d5c3057e208878fa7f9260270252ea024b3f2b2d35976d9e4bfbb86b788a81"
         }
     },
+    "pre_install": [
+        "'Microsoft.PowerShell_profile.ps1', 'profile.ps1' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "}"
+    ],
     "bin": "pwsh.exe",
     "shortcuts": [
         [
             "pwsh.exe",
             "PowerShell Core"
         ]
+    ],
+    "persist": [
+        "Microsoft.PowerShell_profile.ps1",
+        "profile.ps1"
     ],
     "checkver": "github",
     "autoupdate": {
@@ -32,7 +41,7 @@
         },
         "hash": {
             "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
-            "find": "$basename\\s*<ul>\\s*<li>([A-Fa-f\\d]{64})"
+            "regex": "$basename\\s*<ul>\\s*<li>$sha256"
         }
     }
 }

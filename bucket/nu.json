@@ -1,21 +1,16 @@
 {
-    "version": "0.15.0",
+    "version": "0.38.0",
     "description": "A modern shell written in Rust",
     "homepage": "https://www.nushell.sh",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/nushell/nushell/releases/download/0.15.0/nu_0_15_0_windows.zip",
-            "hash": "67b68386fef431cf33ac63d55de696f86cb46498922b5a94e9a43d9b5291ba19",
-            "extract_dir": "nu_0_15_0_windows\\nushell_0_15_0"
+            "url": "https://github.com/nushell/nushell/releases/download/0.38.0/nu_0_38_0_windows.zip",
+            "hash": "0067e4531ca70ac69fa6e5aecff64631771c33813bc664bbd04905f95c674d44",
+            "extract_dir": "nu_0_38_0_windows\\nushell-0.38.0"
         }
     },
-    "pre_install": [
-        "ensure \"$dir\\Plugins\" | Out-Null",
-        "Move-Item \"$dir\\nu_plugin_*\" \"$dir\\Plugins\""
-    ],
     "bin": "nu.exe",
-    "env_add_path": "Plugins",
     "checkver": {
         "github": "https://github.com/nushell/nushell"
     },
@@ -23,7 +18,7 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/nushell/nushell/releases/download/$version/nu_$underscoreVersion_windows.zip",
-                "extract_dir": "nu_$underscoreVersion_windows\\nushell_$underscoreVersion"
+                "extract_dir": "nu_$underscoreVersion_windows\\nushell-$version"
             }
         }
     }

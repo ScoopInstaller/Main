@@ -1,21 +1,25 @@
 {
-    "homepage": "https://rubyinstaller.org",
+    "version": "3.0.2-1",
     "description": "A dynamic programming language with a focus on simplicity and productivity.",
-    "version": "2.7.1-1",
+    "homepage": "https://rubyinstaller.org",
     "license": "BSD-3-Clause",
+    "notes": "Install MSYS2 via 'scoop install msys2' and then run 'ridk install' to install the toolchain!",
+    "suggest": {
+        "MSYS2": "msys2"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.1-1/rubyinstaller-2.7.1-1-x64.7z",
-            "hash": "e89f11517bfa9b8f58956fa387d36a08299740b776d10b3827938242e5306c5d",
-            "extract_dir": "rubyinstaller-2.7.1-1-x64"
+            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.2-1/rubyinstaller-3.0.2-1-x64.7z",
+            "hash": "92894c0488ec7eab02b2ffc61a8945c4bf98d69561e170927ec30d60bee57898",
+            "extract_dir": "rubyinstaller-3.0.2-1-x64"
         },
         "32bit": {
-            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.1-1/rubyinstaller-2.7.1-1-x86.7z",
-            "hash": "23126b996412432ebf9df1adf411e113ca8ad56e1308497fb7411ee7c42fad91",
-            "extract_dir": "rubyinstaller-2.7.1-1-x86"
+            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.2-1/rubyinstaller-3.0.2-1-x86.7z",
+            "hash": "4908a28642e0b15050a71483283960bfa753ff86da332a9019adb4b96b1423b7",
+            "extract_dir": "rubyinstaller-3.0.2-1-x86"
         }
     },
-    "persist": "gems",
+    "post_install": "gem install rake",
     "env_add_path": [
         "bin",
         "gems\\bin"
@@ -24,11 +28,7 @@
         "GEM_HOME": "$dir\\gems",
         "GEM_PATH": "$dir\\gems"
     },
-    "suggest": {
-        "MSYS2": "msys2"
-    },
-    "post_install": "gem install rake",
-    "notes": "Install MSYS2 via 'scoop install msys2' and then run 'ridk install' to install the toolchain!",
+    "persist": "gems",
     "checkver": {
         "url": "https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
         "regex": "Ruby (\\S+)"

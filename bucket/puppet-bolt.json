@@ -1,18 +1,25 @@
 {
-    "homepage": "https://puppet.com/open-source/bolt",
+    "version": "3.19.0",
     "description": "Orchestration and agentless IT automation",
-    "version": "2.13.0",
+    "homepage": "https://puppet.com/open-source/bolt",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.puppetlabs.com/windows/puppet6/puppet-bolt-2.13.0-x64.msi",
-            "hash": "58e94567c82165490b2fa438d194c9256e1b92403f8196e01d5492afb738260d"
+            "url": "https://downloads.puppetlabs.com/windows/puppet6/puppet-bolt-3.19.0-x64.msi",
+            "hash": "a7edcc4610eee3fa35c736c9ee1524b089cf8d802584620dcf0458a70a142fb7"
         }
     },
     "extract_dir": "Puppet Labs\\Bolt",
-    "bin": "bin\\bolt.bat",
+    "pre_install": "Set-Content \"$dir\\bolt.bat\" '@ECHO OFF', 'SETLOCAL', 'SET GEM_HOME=','SET GEM_PATH=', '%~dp0bin\\bolt.bat %*' -Encoding Ascii",
+    "post_install": [
+        "if (Test-Path \"$dir\\share\\install-tarballs\\ruby*.tgz\") {",
+        "   info 'Extract tarball of gems...'",
+        "   Expand-7zipArchive \"$dir\\share\\install-tarballs\\ruby*.tgz\" \"$dir\" -Removal",
+        "}"
+    ],
+    "bin": "bolt.bat",
     "checkver": {
-        "url": "https://downloads.puppetlabs.com/windows/puppet/index_by_lastModified_reverse.html",
+        "url": "https://downloads.puppetlabs.com/windows/puppet6/index_by_lastModified_reverse.html",
         "regex": "puppet-bolt-([\\d.]+)-x64\\.msi"
     },
     "autoupdate": {

@@ -1,46 +1,45 @@
 {
-    "homepage": "https://frippery.org/busybox",
+    "version": "4487-gd239d2d52",
     "description": "BusyBox is a single binary that contains many common Unix tools",
-    "version": "3466-g53c09d0e1",
+    "homepage": "https://frippery.org/busybox",
     "license": "GPL-2.0-only",
     "architecture": {
-        "32bit": {
-            "url": "https://frippery.org/files/busybox/busybox-w32-FRP-3466-g53c09d0e1.exe#/busybox.exe",
-            "hash": "0521a07b4e2114296b7e2a889ebe817a2b6cb96e7390557b54fe57ca34f43b6f"
-        },
         "64bit": {
-            "url": "https://frippery.org/files/busybox/busybox-w64-FRP-3466-g53c09d0e1.exe#/busybox.exe",
-            "hash": "8276e9ad4b22e66535b2f4bb9b42a86ddb03ecbee0ad0d4460645590788da683"
-        }
-    },
-    "checkver": {
-        "url": "https://frippery.org/busybox/",
-        "re": ">busybox-w32-FRP-([\\w-]+)\\."
-    },
-    "autoupdate": {
-        "hash": {
-            "url": "$baseurl/SHA256SUM"
+            "url": "https://frippery.org/files/busybox/busybox-w64-FRP-4487-gd239d2d52.exe#/busybox.exe",
+            "hash": "23d1bf00d07cf090abf1360eea2233195aeb5a99fcd35bf3ad1e833c76c00c6b"
         },
-        "architecture": {
-            "32bit": {
-                "url": "https://frippery.org/files/busybox/busybox-w32-FRP-$version.exe#/busybox.exe"
-            },
-            "64bit": {
-                "url": "https://frippery.org/files/busybox/busybox-w64-FRP-$version.exe#/busybox.exe"
-            }
+        "32bit": {
+            "url": "https://frippery.org/files/busybox/busybox-w32-FRP-4487-gd239d2d52.exe#/busybox.exe",
+            "hash": "35e2b0db6d57a045188b9afc617aae52a6c8e2aa0205256c049f3537a48f879b"
         }
     },
     "post_install": [
-        "if(!(test-path ~/.profile)) {",
-        "    'creating ~/.profile'",
+        "if (!(Test-Path \"$env:USERPROFILE\\.profile\")) {",
+        "    info 'creating ~/.profile'",
         "@\"",
-        "if [ -e ~/.bashrc ]",
-        "then",
+        "if [ -e ~/.bashrc ]; then",
         "   source ~/.bashrc",
         "fi",
-        "\"@ | out-file -en oem ~/.profile",
+        "\"@ | Out-File \"$env:USERPROFILE\\.profile\" -Encoding oem",
         "}"
     ],
+    "checkver": {
+        "url": "https://frippery.org/busybox/",
+        "regex": ">busybox-w32-FRP-([\\w-]+)\\."
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://frippery.org/files/busybox/busybox-w64-FRP-$version.exe#/busybox.exe"
+            },
+            "32bit": {
+                "url": "https://frippery.org/files/busybox/busybox-w32-FRP-$version.exe#/busybox.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUM"
+        }
+    },
     "bin": [
         "busybox.exe",
         [
@@ -76,8 +75,7 @@
         [
             "busybox.exe",
             "bash",
-            "bash",
-            "-l"
+            "bash"
         ],
         [
             "busybox.exe",

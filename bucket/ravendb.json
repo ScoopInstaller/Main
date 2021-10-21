@@ -1,7 +1,7 @@
 {
+    "version": "5.2.3",
+    "description": "NoSQL database built on .NET Core",
     "homepage": "https://ravendb.net",
-    "description": "NoSQL database built on .NET Core.",
-    "version": "4.2.103",
     "license": {
         "identifier": "Freeware",
         "url": "https://ravendb.net/terms/commercial"
@@ -10,13 +10,13 @@
         "Visual C++ Redistributable 2015": "extras/vcredist2015"
     },
     "architecture": {
-        "32bit": {
-            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-4.2.103-windows-x86.zip",
-            "hash": "c5ba8d1812063bb0c81e31884c664b4abe11f007aa5cddec9ad69d66d1bcdd2b"
-        },
         "64bit": {
-            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-4.2.103-windows-x64.zip",
-            "hash": "f7fe29d336c6152955a302132f9030bbf5dbab5c5d375cb4586131813a429f2b"
+            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-5.2.3-windows-x64.zip",
+            "hash": "44dec6642e83f5b0b952a317ce5e9003c10b5aef0f926873b486f2d9f947ee97"
+        },
+        "32bit": {
+            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-5.2.3-windows-x86.zip",
+            "hash": "2e19e65dab87a294e9025fd8f87740007e8616fe25b4abb9ec0375ea4e15c5b0"
         }
     },
     "installer": {
@@ -45,16 +45,16 @@
     ],
     "persist": "Server\\settings.json",
     "checkver": {
-        "url": "https://ravendb.net/download",
-        "regex": "Latest STABLE <span class=\"text-primary\">([\\d.]+)</span></h1>"
+        "url": "https://ravendb.net/whats-new",
+        "regex": "([\\d.]+)\\s*\\(\\d+"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x86.zip"
-            },
             "64bit": {
                 "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x64.zip"
+            },
+            "32bit": {
+                "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x86.zip"
             }
         }
     }

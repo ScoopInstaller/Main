@@ -1,0 +1,24 @@
+{
+    "version": "1.5.0",
+    "description": "Generates Helm charts documentation as markdown files.",
+    "homepage": "https://github.com/norwoodj/helm-docs",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/norwoodj/helm-docs/releases/download/v1.5.0/helm-docs_1.5.0_Windows_x86_64.tar.gz",
+            "hash": "e0ec8d9a7400fc9a40c96e0beaea5bf8463af1ed9cd555f821439eb1e2dcac3d"
+        }
+    },
+    "bin": "helm-docs.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/norwoodj/helm-docs/releases/download/v$version/helm-docs_$version_Windows_x86_64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

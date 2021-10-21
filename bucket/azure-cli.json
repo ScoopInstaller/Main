@@ -1,10 +1,10 @@
 {
+    "version": "2.29.0",
     "description": "Microsoft Azure CLI 2.0",
     "homepage": "https://aka.ms/cli",
-    "version": "2.7.0",
     "license": "MIT",
-    "url": "https://azurecliprod.azureedge.net/msi/azure-cli-2.7.0.msi",
-    "hash": "c2460b16d02526c43ff10b614fd5c206f9c2577a9d4564cc18ec718dc5af8e38",
+    "url": "https://azurecliprod.azureedge.net/msi/azure-cli-2.29.0.msi",
+    "hash": "e76cefe6b9d3484622d26d85d4d35bc2b10e7fbb29492e48d2cea667024d204f",
     "extract_dir": "Microsoft SDKs\\Azure\\CLI2",
     "bin": "wbin\\az.cmd",
     "checkver": {
@@ -13,5 +13,9 @@
     },
     "autoupdate": {
         "url": "https://azurecliprod.azureedge.net/msi/azure-cli-$version.msi"
+    },
+    "env_set": {
+        "AzureCLIPath": "$dir",
+        "AZURE_CLI_PATH": "$dir"
     }
 }

@@ -1,11 +1,17 @@
 {
-    "homepage": "https://spark.apache.org/",
+    "version": "3.2.0",
     "description": "A unified analytics engine for large-scale data processing.",
-    "version": "2.4.6",
+    "homepage": "https://spark.apache.org/",
     "license": "Apache-2.0",
-    "url": "https://www.apache.org/dist/spark/spark-2.4.6/spark-2.4.6-bin-hadoop2.7.tgz",
-    "hash": "sha512:3a9f401eda9b5749cdafd246b1d14219229c26387017791c345a23a65782fb8b25a302bf4ac1ed7c16a1fe83108e94e55dad9639a51c751d81c8c0534a4a9641",
-    "extract_dir": "spark-2.4.6-bin-hadoop2.7",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "url": "https://www.apache.org/dist/spark/spark-3.2.0/spark-3.2.0-bin-hadoop2.7.tgz",
+    "hash": "sha512:f20d853cfd1e0e2ba1378b11f1ce6fd9fd546ee072724667853456efffa11926f5feaf08da49aa2c0c0775813cbd82e24239961d6a976bce14e15aec3d6d1ac4",
+    "extract_dir": "spark-3.2.0-bin-hadoop2.7",
     "env_add_path": "bin",
     "env_set": {
         "SPARK_HOME": "$dir"
@@ -13,7 +19,7 @@
     "persist": "conf",
     "checkver": {
         "url": "https://spark.apache.org/downloads.html",
-        "re": "version: ([\\d.]+)"
+        "regex": "version: ([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://www.apache.org/dist/spark/spark-$version/spark-$version-bin-hadoop2.7.tgz",
@@ -22,11 +28,5 @@
             "regex": "$basename: ([A-F0-9\\s]+)$"
         },
         "extract_dir": "spark-$version-bin-hadoop2.7"
-    },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
     }
 }

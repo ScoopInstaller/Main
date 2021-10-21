@@ -1,22 +1,21 @@
 {
-    "homepage": "https://mridgers.github.io/clink/",
+    "version": "1.2.37",
     "description": "Powerful Bash-style command line editing for cmd.exe",
-    "url": "https://github.com/mridgers/clink/releases/download/0.4.9/clink_0.4.9.zip",
+    "homepage": "https://chrisant996.github.io/clink/",
     "license": "GPL-3.0-only",
-    "version": "0.4.9",
-    "hash": "57618d5fab9f0f777430fde5beceffdfb99cc81cfbd353ca58f41b7faf84eddc",
-    "extract_dir": "clink_0.4.9",
-    "checkver": {
-        "github": "https://github.com/mridgers/clink/"
-    },
-    "bin": "clink.bat",
-    "persist": "profile",
     "notes": [
         "Run 'clink inject' to start clink on the current cmd",
-        "Run 'clink autorun' to auto start clink"
+        "Run 'clink autorun install' to auto start clink"
     ],
+    "url": "https://github.com/chrisant996/clink/releases/download/v1.2.37/clink.1.2.37.de5dfb.zip",
+    "hash": "122e7a50441a8b3efb9a2015692d4b99a06bbae587de8659c4d9fc7a33fac570",
+    "bin": "clink.bat",
+    "persist": "profile",
+    "checkver": {
+        "github": "https://github.com/chrisant996/clink",
+        "regex": "clink\\.([\\d.]+)\\.(?<commit>[\\w.]+)\\.zip"
+    },
     "autoupdate": {
-        "url": "https://github.com/mridgers/clink/releases/download/$version/clink_$version.zip",
-        "extract_dir": "clink_$version"
+        "url": "https://github.com/chrisant996/clink/releases/download/v$version/clink.$version.$matchCommit.zip"
     }
 }

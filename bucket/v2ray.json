@@ -1,24 +1,35 @@
 {
-    "version": "4.24.2",
+    "version": "4.42.2",
     "description": "A platform for building proxies to bypass network restrictions.",
-    "homepage": "https://www.v2ray.com/",
+    "homepage": "https://www.v2fly.org/en_US/",
     "license": "MIT",
-    "persist": "config.json",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/v2fly/v2ray-core/releases/download/v4.24.2/v2ray-windows-64.zip",
-            "hash": "sha512:52de986a37e6734481d48c04a82d18a5d3150ebce26e2dcb5415bf2eeb0823cf50d96c2bef36f0866bf4468053da58ebee81802a20ca1b9b788f0f4679d70cfe"
+            "url": "https://github.com/v2fly/v2ray-core/releases/download/v4.42.2/v2ray-windows-64.zip",
+            "hash": "sha512:60ee09b19300907ebb41efd9a477c53a48283283999fb3fe6a4331659fc7c40a9bae6fe2e73466fa315e50d6c1b353d801c7464bb16ed77f15c74d390e5c7dd1"
         },
         "32bit": {
-            "url": "https://github.com/v2fly/v2ray-core/releases/download/v4.24.2/v2ray-windows-32.zip",
-            "hash": "sha512:9b5e5dc6513c612a0ad34e9c43a4f8a6222a002c4cf61e48017742f7c7b43d60789ebfbcc7afe7d982e2a5cf8cbdcc2b43bf8df2f6f2417f4773c7a4bacbf0a3"
+            "url": "https://github.com/v2fly/v2ray-core/releases/download/v4.42.2/v2ray-windows-32.zip",
+            "hash": "sha512:86432c728b0a265629b125f030726b907893d61e2f982b81c1be23aa1ecdbfcd58ba53e1585a29b715bbf7ad36676e4998ccf1fe631e2c8f2e35fcf99860db09"
         }
+    },
+    "installer": {
+        "script": [
+            "Write-Host 'Verifying V2Ray binary...' -f Yellow",
+            "$sig = \"$dir\\Release\"",
+            "Invoke-WebRequest \"https://github.com/v2fly/v2ray-core/releases/download/v$version/Release\" -OutFile $sig",
+            "if (!(Invoke-Expression \"$dir\\v2ctl.exe verify --sig=$sig $dir\\v2ray.exe\" | Select-String 'OK')) {",
+            "    Write-Host 'V2Ray binary is corrupted!' -f Red",
+            "    exit 1",
+            "}"
+        ]
     },
     "bin": [
         "v2ctl.exe",
         "v2ray.exe",
         "wv2ray.exe"
     ],
+    "persist": "config.json",
     "checkver": {
         "github": "https://github.com/v2fly/v2ray-core"
     },

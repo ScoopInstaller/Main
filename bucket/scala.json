@@ -1,11 +1,17 @@
 {
-    "homepage": "https://www.scala-lang.org/",
+    "version": "2.13.6",
     "description": "A modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way.",
-    "version": "2.13.2",
+    "homepage": "https://www.scala-lang.org/",
     "license": "BSD-3-Clause",
-    "url": "https://downloads.typesafe.com/scala/2.13.2/scala-2.13.2.zip",
-    "hash": "2ebb88d083f88f23b875df89f93993f9713065761b92a7c7158b6d2ed1e03612",
-    "extract_dir": "scala-2.13.2",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "url": "https://downloads.typesafe.com/scala/2.13.6/scala-2.13.6.zip",
+    "hash": "1449c761224d5dc4fe5322c92a955f71ddd50442bdc5e905096583b761fdf4fd",
+    "extract_dir": "scala-2.13.6",
     "bin": [
         "bin\\fsc.bat",
         "bin\\scala.bat",
@@ -16,15 +22,9 @@
     "env_set": {
         "SCALA_HOME": "$dir"
     },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
-    },
     "checkver": {
-        "url": "https://www.scala-lang.org/download/",
-        "re": "scala-([\\d.]+).zip"
+        "url": "https://www.scala-lang.org/download/scala2.html",
+        "regex": "scala-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "url": "https://downloads.typesafe.com/scala/$version/scala-$version.zip",

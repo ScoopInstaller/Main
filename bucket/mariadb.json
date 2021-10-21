@@ -1,20 +1,35 @@
 {
-    "homepage": "https://mariadb.org",
-    "version": "10.4.13",
-    "license": "GPL-2.0-only",
+    "version": "10.6.4",
     "description": "Community developed fork of MySQL server.",
+    "homepage": "https://mariadb.org",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
+        "or run following command as administrator to register MariaDB as a service. See: https://mariadb.com/kb/en/library/mysql_install_dbexe/",
+        "",
+        "mysql_install_db --service=MariaDB --password=NewRootPassword",
+        "",
+        "To stop and/or delete the Service run 'sc stop MariaDB' and 'sc delete MariaDB'."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.4.13/winx64-packages/mariadb-10.4.13-winx64.zip",
-            "hash": "f39e583f6dc38a4227f3fb3d300484865a6abbb40962b343b090a675c9c75557",
-            "extract_dir": "mariadb-10.4.13-winx64"
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.6.4/winx64-packages/mariadb-10.6.4-winx64.zip",
+            "hash": "25440575882fbe54a442c5fb8a7c76b70588e03a4be093dfb1694cad8fbdfdd7",
+            "extract_dir": "mariadb-10.6.4-winx64"
         },
         "32bit": {
-            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.4.13/win32-packages/mariadb-10.4.13-win32.zip",
-            "hash": "8ca7240ccc09eab8023793ed963b9590c7c87ff29449971aceb7c1a3d76ff52b",
-            "extract_dir": "mariadb-10.4.13-win32"
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.6.4/win32-packages/mariadb-10.6.4-win32.zip",
+            "hash": "1a2431b9d962ccc641fe76214a869e46e435f38be4ddd862cebdb0bd8a11ff47",
+            "extract_dir": "mariadb-10.6.4-win32"
         }
     },
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
+        "    warn 'Initializing data directory ...'",
+        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList @(\"--datadir=`\"$dir\\data`\"\")",
+        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "}"
+    ],
     "bin": [
         "bin\\aria_chk.exe",
         "bin\\aria_dump_log.exe",
@@ -43,21 +58,6 @@
         "bin\\my_print_defaults.exe"
     ],
     "persist": "data",
-    "post_install": [
-        "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
-        "    warn 'Initializing data directory ...'",
-        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList @(\"--datadir=`\"$dir\\data`\"\")",
-        "    warn 'Database has been initialized (username: root, password: <blank>)'",
-        "}"
-    ],
-    "notes": [
-        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
-        "or run following command as administrator to register MariaDB as a service. See: https://mariadb.com/kb/en/library/mysql_install_dbexe/",
-        "",
-        "mysql_install_db --service=MariaDB --password=NewRootPassword",
-        "",
-        "To stop and/or delete the Service run 'sc stop MariaDB' and 'sc delete MariaDB'."
-    ],
     "checkver": {
         "url": "https://downloads.mariadb.org/",
         "regex": "Download ([\\d.]+) Stable"

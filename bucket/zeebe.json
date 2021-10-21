@@ -1,24 +1,21 @@
 {
-    "version": "0.23.2",
+    "version": "1.2.0",
     "description": "Distributed Workflow Engine for Microservices Orchestration",
-    "homepage": "https://zeebe.io",
+    "homepage": "https://camunda.com/products/cloud/workflow-engine/",
     "license": {
-        "identifier": "Zeebe Community License Version 1.0",
-        "url": "https://zeebe.io/legal/zeebe-community-license-1.0/"
+        "identifier": "Zeebe Community License v1.0",
+        "url": "https://camunda.com/legal/terms/cloud-terms-and-conditions/zeebe-community-license-v1-0/"
     },
     "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
+        "JDK": "java/openjdk"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/zeebe-io/zeebe/releases/download/0.23.2/zeebe-distribution-0.23.2.zip",
-            "hash": "sha1:fc3a17889844a5d3c60e82981b4657d316a7b40a"
+            "url": "https://github.com/camunda-cloud/zeebe/releases/download/1.2.0/camunda-cloud-zeebe-1.2.0.zip",
+            "hash": "sha1:5bda6a443bfa1a629e2dba7806b1c6cf2ed1631c"
         }
     },
-    "extract_dir": "zeebe-broker-0.23.2",
+    "extract_dir": "camunda-cloud-zeebe-1.2.0",
     "bin": [
         [
             "bin\\broker.bat",
@@ -31,17 +28,17 @@
         "bin\\zbctl.exe"
     ],
     "checkver": {
-        "github": "https://github.com/zeebe-io/zeebe"
+        "github": "https://github.com/camunda-cloud/zeebe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/zeebe-io/zeebe/releases/download/$version/zeebe-distribution-$version.zip"
+                "url": "https://github.com/camunda-cloud/zeebe/releases/download/$version/camunda-cloud-zeebe-$version.zip"
             }
         },
         "hash": {
             "url": "$url.sha1sum"
         },
-        "extract_dir": "zeebe-broker-$version"
+        "extract_dir": "camunda-cloud-zeebe-$version"
     }
 }
