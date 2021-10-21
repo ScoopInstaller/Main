@@ -1,5 +1,5 @@
 {
-    "version": "8.6.5",
+    "version": "8.10.3",
     "description": "An advanced, purely functional programming language.",
     "homepage": "https://www.haskell.org",
     "license": "BSD-3-Clause",
@@ -12,17 +12,10 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://haskell.org/platform/download/8.6.5/HaskellPlatform-8.6.5-core-x86_64-setup.exe#/dl.7z",
-            "hash": "b557748749f6c4073885ecdf43f7cd5d4d8c8f90712665943a1d265d78bb38c6",
-            "extract_dir": "$_14_"
+            "url": "https://downloads.haskell.org/~ghc/8.10.3/ghc-8.10.3-x86_64-unknown-mingw32.tar.xz",
+            "hash": "927a6c699533a115cd49772ef2c753d9af2c13bf9f0b2d3bd13645cc6a144ee3",
+            "extract_dir": "ghc-8.10.3"
         }
-    },
-    "installer": {
-        "script": [
-            "Expand-7zipArchive -Path \"$dir\\HaskellPlatform-$version-core-x86_64-setup.exe\" -ExtractDir '$_15_' -Removal",
-            "Get-ChildItem -Path \"$dir\" -Exclude 'stack*' | Convert-Path | ForEach-Object { Expand-7zipArchive -Path $_ -Removal }",
-            "Remove-Item -Path \"$dir\\`$PLUGINSDIR\", \"$dir\\*uninstall*\", \"$dir\\stack*\" -Recurse -Force"
-        ]
     },
     "bin": [
         "bin\\ghc.exe",
@@ -35,25 +28,16 @@
         "bin\\runghc.exe",
         "bin\\runhaskell.exe"
     ],
-    "shortcuts": [
-        [
-            "winghci\\winghci.exe",
-            "WinGHCi"
-        ]
-    ],
-    "env_add_path": "lib\\extralibs\\bin",
+    "env_add_path": "lib\\bin",
     "checkver": {
-        "url": "https://www.haskell.org/platform/windows.html",
-        "regex": "<strong>([\\d.]+)</strong>"
+        "github": "https://github.com/commercialhaskell/ghc",
+        "regex": "/releases/tag/ghc-([\\d\\.]+)-release"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://haskell.org/platform/download/$version/HaskellPlatform-$version-core-x86_64-setup.exe#/dl.7z",
-                "hash": {
-                    "url": "https://www.haskell.org/platform/windows.html",
-                    "regex": ">$sha256<"
-                }
+                "url": "https://downloads.haskell.org/~ghc/$version/ghc-$version-x86_64-unknown-mingw32.tar.xz",
+                "extract_dir": "ghc-$version"
             }
         }
     }
