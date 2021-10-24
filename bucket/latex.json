@@ -1,15 +1,15 @@
 {
+    "version": "21.8",
+    "description": "MikTeX, an up-to-date implementation of TeX/LaTeX and related programs.",
     "homepage": "https://miktex.org",
-    "version": "2.9.7417",
-    "description": "MikTeX is an up-to-date implementation of TeX/LaTeX and related programs.",
     "license": {
         "identifier": "LPPL1.3c,GPL-3.0-or-later,Public Domain,...",
         "url": "https://miktex.org/copying"
     },
     "architecture": {
         "64bit": {
-            "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-2.9.7417-x64.exe",
-            "hash": "805d19ad8d9a1ef0d384f46fe45121730f06deffeb48ba694ed8843895ab13cc",
+            "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-21.8-x64.exe",
+            "hash": "0dfeba2bfcf8492c22661710e0d2c4fa7fb0ebd34f9830048cec03f8fbc9efad",
             "bin": [
                 [
                     "texmfs\\install\\miktex\\bin\\x64\\miktex-console.exe",
@@ -17,19 +17,13 @@
                     "--hide --mkmaps"
                 ]
             ],
-            "env_add_path": "texmfs\\install\\miktex\\bin\\x64"
-        },
-        "32bit": {
-            "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x86/basic-miktex-2.9.7417.exe",
-            "hash": "cac682b7f5a82e5b03816c1820fb30f52da3b061b66136fc5ab582853c0701ad",
-            "bin": [
+            "shortcuts": [
                 [
-                    "texmfs\\install\\miktex\\bin\\miktex-console.exe",
-                    "miktex",
-                    "--hide --mkmaps"
+                    "texmfs\\install\\miktex\\bin\\x64\\miktex-console.exe",
+                    "MiKTeX Console"
                 ]
             ],
-            "env_add_path": "texmfs\\install\\miktex\\bin"
+            "env_add_path": "texmfs\\install\\miktex\\bin\\x64"
         }
     },
     "installer": {
@@ -42,20 +36,17 @@
     "persist": "texmfs\\config",
     "checkver": {
         "url": "https://miktex.org/download",
-        "regex": "basic-miktex-([\\d.]+).exe"
+        "regex": "basic-miktex-([\\d.]+)-x64\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-$version-x64.exe"
-            },
-            "32bit": {
-                "url": "https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x86/basic-miktex-$version.exe"
             }
         },
         "hash": {
             "url": "https://miktex.org/download",
-            "regex": "(?sm)$basename</td>.*?$sha256"
+            "regex": "(?sm)$basename</div>.*?$sha256"
         }
     }
 }

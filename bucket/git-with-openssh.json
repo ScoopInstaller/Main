@@ -1,16 +1,16 @@
 {
-    "version": "2.26.2.windows.1",
+    "version": "2.33.1.windows.1",
+    "description": "Distributed version control system",
     "homepage": "https://gitforwindows.org",
-    "description": "Distributed version control system.",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.26.2.windows.1/PortableGit-2.26.2-64-bit.7z.exe#/dl.7z",
-            "hash": "dd36f76a815b993165e67ad3cbc8f5b2976e5757a0c808a4a92fb72d1000e1c8"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.33.1.windows.1/PortableGit-2.33.1-64-bit.7z.exe#/dl.7z",
+            "hash": "723c879eb447583b893aa3234eae8caaa77d9d3ecf90883271fba98e8b2d99ac"
         },
         "32bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.26.2.windows.1/PortableGit-2.26.2-32-bit.7z.exe#/dl.7z",
-            "hash": "e18f75db932ab314263c5f7fca7a9d638df3539629dbf5248a4089beb4e03685"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.33.1.windows.1/PortableGit-2.33.1-32-bit.7z.exe#/dl.7z",
+            "hash": "fad2f32a3ca6e39cfbf7258c485a5601b0bfb620f44c582c1ba22784dd3faad3"
         }
     },
     "bin": [
@@ -24,6 +24,11 @@
         "usr\\bin\\sftp.exe",
         "usr\\bin\\ssh-add.exe",
         "usr\\bin\\ssh-agent.exe",
+        [
+            "bin/sh.exe",
+            "ssh-copy-id",
+            "ssh-copy-id"
+        ],
         "usr\\bin\\ssh-keygen.exe",
         "usr\\bin\\ssh-keyscan.exe",
         "usr\\bin\\tig.exe"
@@ -39,25 +44,24 @@
             "Git GUI"
         ]
     ],
-    "post_install": "git config --global credential.helper manager",
-    "checkver": {
-        "github": "https://github.com/git-for-windows/git",
-        "regex": "v([\\w.]+)/PortableGit-(?<ver>[\\w.]+)-64-bit"
-    },
     "env_set": {
         "GIT_INSTALL_ROOT": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/git-for-windows/git",
+        "regex": "v([\\w.]+)/PortableGit-(?<full>[\\w.]+)-64-bit"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchVer-64-bit.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchFull-64-bit.7z.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchVer-32-bit.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchFull-32-bit.7z.exe#/dl.7z"
             }
         },
         "hash": {
-            "url": "https://github.com/git-for-windows/git/releases/latest",
+            "url": "https://github.com/git-for-windows/git/releases/tag/v$version",
             "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
         }
     }

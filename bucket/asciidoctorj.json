@@ -1,27 +1,27 @@
 {
+    "version": "2.5.2",
     "description": "Asciidoctor integration & API for Java and other JVM languages",
-    "version": "2.2.0",
     "homepage": "https://asciidoctor.org/docs/asciidoctorj",
     "license": "Apache-2.0",
-    "url": "https://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/2.2.0/asciidoctorj-2.2.0-bin.zip",
-    "hash": "d5240240a4e39f4f9c56abab2da3e960a4784b7d8e7befa323fc9f64890f0029",
-    "extract_dir": "asciidoctorj-2.2.0",
-    "bin": "bin\\asciidoctorj.bat",
     "suggest": {
         "JDK": [
             "java/oraclejdk",
             "java/openjdk"
         ]
     },
+    "url": "https://repo1.maven.org/maven2/org/asciidoctor/asciidoctorj/2.5.2/asciidoctorj-2.5.2-bin.zip",
+    "hash": "889fd490a43e59e06c4f9d6692228e48ada2829acead7ea8c454a596c5cb2a96",
+    "extract_dir": "asciidoctorj-2.5.2",
+    "bin": "bin\\asciidoctorj.bat",
     "checkver": {
-        "url": "https://api.bintray.com/packages/asciidoctor/maven/asciidoctorj",
-        "jp": "$.latest_version"
+        "url": "https://repo1.maven.org/maven2/org/asciidoctor/asciidoctorj/maven-metadata.xml",
+        "xpath": "/metadata/versioning/latest"
     },
     "autoupdate": {
-        "url": "https://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/$version/asciidoctorj-$version-bin.zip",
-        "extract_dir": "asciidoctorj-$version",
+        "url": "https://repo1.maven.org/maven2/org/asciidoctor/asciidoctorj/$version/asciidoctorj-$version-bin.zip",
         "hash": {
             "url": "$url.sha256"
-        }
+        },
+        "extract_dir": "asciidoctorj-$version"
     }
 }

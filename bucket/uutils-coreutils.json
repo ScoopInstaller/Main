@@ -1,34 +1,26 @@
 {
-    "version": "0.0.3",
+    "version": "0.0.6",
     "description": "Rust implementation of GNU coreutils (binaries compiled with MSVC)",
     "homepage": "https://github.com/uutils/coreutils",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/rivy/rust.coreutils/releases/download/0.0.3/uutils-0.0.3-x86_64-pc-windows-msvc.zip",
-            "hash": "ab4a80df9c2046ff578b5bdb8e61d4e4ed4dc9684f583dbdce60d9fe5900dea6",
-            "extract_dir": "uutils-0.0.3-x86_64-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.0.6/coreutils-0.0.6-x86_64-pc-windows-msvc.zip",
+            "hash": "d71d89a9b965011dd5130614490b989a348a877585224c4a530875c61c10bc9c",
+            "extract_dir": "coreutils-0.0.6-x86_64-pc-windows-msvc"
         },
         "32bit": {
-            "url": "https://github.com/rivy/rust.coreutils/releases/download/0.0.3/uutils-0.0.3-i686-pc-windows-msvc.zip",
-            "hash": "8beef7663a0ae2d8823d33467cb597021e2969b417fdf82006e2eec07ea0fb2e",
-            "extract_dir": "uutils-0.0.3-i686-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.0.6/coreutils-0.0.6-i686-pc-windows-msvc.zip",
+            "hash": "17330ebe331f48f3b23d578f239997898097029ec9b1baf7b616779187c547b1",
+            "extract_dir": "coreutils-0.0.6-i686-pc-windows-msvc"
         }
     },
-    "bin": "uutils.exe",
-    "checkver": {
-        "github": "https://github.com/rivy/rust.coreutils"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/rivy/rust.coreutils/releases/download/$version/uutils-$version-x86_64-pc-windows-msvc.zip",
-                "extract_dir": "uutils-$version-x86_64-pc-windows-msvc"
-            },
-            "32bit": {
-                "url": "https://github.com/rivy/rust.coreutils/releases/download/$version/uutils-$version-i686-pc-windows-msvc.zip",
-                "extract_dir": "uutils-$version-i686-pc-windows-msvc"
-            }
-        }
-    }
+    "bin": [
+        "coreutils.exe",
+        [
+            "coreutils.exe",
+            "uutils"
+        ]
+    ],
+    "checkver": "github"
 }

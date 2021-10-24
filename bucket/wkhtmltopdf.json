@@ -1,34 +1,34 @@
 {
-    "homepage": "https://wkhtmltopdf.org/",
-    "version": "0.12.5-1",
+    "version": "0.12.6-1",
     "description": "Render HTML into PDF",
+    "homepage": "https://wkhtmltopdf.org/",
     "license": "LGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox-0.12.5-1.mxe-cross-win64.7z",
-            "hash": "d9c4717318439f7576ce201de145f0b71ffdd209faadec8dcfb1be088eae6e71"
+            "url": "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.mxe-cross-win64.7z",
+            "hash": "6ce994c89d5f6018fa158e149a2de8fbbbeb14d8ff5cb656c89893bc556e0557"
         },
         "32bit": {
-            "url": "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox-0.12.5-1.mxe-cross-win32.7z",
-            "hash": "eb00f88ceed2941430cb05bc91da4e753e2319188b8e891735ad141aad668ae8"
+            "url": "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.mxe-cross-win32.7z",
+            "hash": "073f2918339e6e0cd4119f7fdb9dc4c68dc7196b4d8be9a57e47a381408d1fae"
         }
     },
-    "extract_dir": "wkhtmltox/bin",
+    "extract_dir": "wkhtmltox\\bin",
     "bin": [
         "wkhtmltoimage.exe",
         "wkhtmltopdf.exe"
     ],
     "checkver": {
-        "url": "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/latest",
-        "re": "releases/download/(?<head>[0-9.]+)/wkhtmltox-(?<version>[0-9.-]+)\\.mxe-cross-"
+        "url": "https://github.com/wkhtmltopdf/packaging/releases",
+        "regex": "/wkhtmltox-([\\d.-]+)\\.mxe-cross-"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/$matchHead/wkhtmltox-$version.mxe-cross-win64.7z"
+                "url": "https://github.com/wkhtmltopdf/packaging/releases/download/$version/wkhtmltox-$version.mxe-cross-win64.7z"
             },
             "32bit": {
-                "url": "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/$matchHead/wkhtmltox-$version.mxe-cross-win32.7z"
+                "url": "https://github.com/wkhtmltopdf/packaging/releases/download/$version/wkhtmltox-$version.mxe-cross-win32.7z"
             }
         },
         "hash": {

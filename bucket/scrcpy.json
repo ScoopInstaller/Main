@@ -1,27 +1,28 @@
 {
-    "version": "1.13",
-    "homepage": "https://github.com/Genymobile/scrcpy",
+    "version": "1.19",
     "description": "Display and control your Android device",
+    "homepage": "https://github.com/Genymobile/scrcpy",
     "license": "Apache-2.0",
     "depends": "adb",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.13/scrcpy-win64-v1.13.zip",
-            "hash": "806aafc00d4db01513193addaa24f47858893ba5efe75770bfef6ae1ea987d27"
+            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.19/scrcpy-win64-v1.19.zip",
+            "hash": "383d6483f25ac0092d4bb9fef6c967351ecd50fc248e0c82932db97d6d32f11b"
         },
         "32bit": {
-            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.13/scrcpy-win32-v1.13.zip",
-            "hash": "0fc5a702cc3aa5bf05108843a9cc443c63cb4754539b72f884defadca3d62da6"
+            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.19/scrcpy-win32-v1.19.zip",
+            "hash": "50a21f07ef9705e7867d96666fb638a4cde2b9cbd4922a9268f269d217a4cd5d"
         }
     },
     "pre_install": "if (Test-Path \"$dir\\adb.exe\") { Remove-Item \"$dir\\adb.exe\" }",
     "bin": [
         "scrcpy.exe",
-        "scrcpy-noconsole.exe"
+        "scrcpy-console.bat",
+        "scrcpy-noconsole.vbs"
     ],
     "shortcuts": [
         [
-            "scrcpy-noconsole.exe",
+            "scrcpy-noconsole.vbs",
             "scrcpy"
         ]
     ],

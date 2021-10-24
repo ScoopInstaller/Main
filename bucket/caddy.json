@@ -1,30 +1,26 @@
 {
-    "version": "1.0.4",
-    "homepage": "https://caddyserver.com",
+    "version": "2.4.5",
     "description": "HTTP/2 web server with automatic HTTPS",
+    "homepage": "https://caddyserver.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mholt/caddy/releases/download/v1.0.4/caddy_v1.0.4_windows_amd64.zip",
-            "hash": "b981f1476ee80cdb150adaad2bc8546366f75bba8190b9018a5649cec4678322"
-        },
-        "32bit": {
-            "url": "https://caddyserver.com/download/windows/386?license=personal&telemetry=off&version=v1.0.4",
-            "hash": "1e97ddbe8b2cb9f06fa1d4ec5fee58eb0c9b0e77606dea0671c95e02bb56a574"
+            "url": "https://github.com/caddyserver/caddy/releases/download/v2.4.5/caddy_2.4.5_windows_amd64.zip",
+            "hash": "sha512:794fed88b38bfeb6b3b84d63f0887c4534fc3e94bd31173182b5af80fc7783beb41192bccffdb257a9bdf59541c6822a75fdbe714d65abc3c0cce9c02018eb82"
         }
     },
     "bin": "caddy.exe",
     "checkver": {
-        "github": "https://github.com/mholt/caddy"
+        "github": "https://github.com/caddyserver/caddy"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mholt/caddy/releases/download/v$version/caddy_v$version_windows_amd64.zip"
-            },
-            "32bit": {
-                "url": "https://caddyserver.com/download/windows/386?license=personal&telemetry=off&version=v$version"
+                "url": "https://github.com/caddyserver/caddy/releases/download/v$version/caddy_$version_windows_amd64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/caddy_$version_checksums.txt"
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "version": "0.6.0",
+    "version": "0.8.1",
     "description": "General-purpose programming language designed for robustness, optimality, and maintainability.",
     "homepage": "https://ziglang.org/",
     "license": "MIT",
@@ -8,25 +8,35 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/ziglang/zig/releases/download/0.6.0/zig-windows-x86_64-0.6.0.zip",
-            "hash": "c3b897832523e1026e10b2d8d55d7f895185c0a27a63681f3a23219c3f1c38f4",
-            "extract_dir": "zig-windows-x86_64-0.6.0"
+            "url": "https://ziglang.org/download/0.8.1/zig-windows-x86_64-0.8.1.zip",
+            "hash": "43573db14cd238f7111d6bdf37492d363f11ecd1eba802567a172f277d003926",
+            "extract_dir": "zig-windows-x86_64-0.8.1"
+        },
+        "32bit": {
+            "url": "https://ziglang.org/download/0.8.1/zig-windows-i386-0.8.1.zip",
+            "hash": "099605051eb0452a947c8eab8fbbc7e43833c8376d267e94e41131c289a1c535",
+            "extract_dir": "zig-windows-i386-0.8.1"
         }
     },
     "bin": "zig.exe",
     "checkver": {
-        "github": "https://github.com/zig-lang/zig/"
+        "url": "https://ziglang.org/download/",
+        "regex": ">([\\d.]+)</h"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/ziglang/zig/releases/download/$version/zig-windows-x86_64-$version.zip",
+                "url": "https://ziglang.org/download/$version/zig-windows-x86_64-$version.zip",
                 "extract_dir": "zig-windows-x86_64-$version"
+            },
+            "32bit": {
+                "url": "https://ziglang.org/download/$version/zig-windows-i386-$version.zip",
+                "extract_dir": "zig-windows-i386-$version"
             }
         },
         "hash": {
             "url": "https://ziglang.org/download/",
-            "regex": "$basename[\\S\\s]+?$sha256"
+            "regex": "(?sm)$basename.*?$sha256"
         }
     }
 }

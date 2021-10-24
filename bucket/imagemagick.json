@@ -1,19 +1,19 @@
 {
-    "homepage": "https://imagemagick.org/",
+    "version": "7.1.0-10",
     "description": "Create, edit, compose, and convert 200+ of bitmap images formats.",
+    "homepage": "https://imagemagick.org/",
     "license": "ImageMagick",
-    "version": "7.0.10-10",
+    "depends": "ffmpeg",
     "architecture": {
         "64bit": {
-            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.0.10-10-portable-Q16-x64.zip",
-            "hash": "4e834f652c24379389c71abbb4a73468442faf4f52c594d80cc9ada3ec4a334e"
+            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-portable-Q16-x64.zip",
+            "hash": "d2ce93267c4b48d0e4ae20348ebc81c606ded2d17e2887261065a702bccbdff9"
         },
         "32bit": {
-            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.0.10-10-portable-Q16-x86.zip",
-            "hash": "65e3ba8f85885d90c2404aa86c02728a8dfeae50f8d67ef7424074b278bdff7e"
+            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-portable-Q16-x86.zip",
+            "hash": "892626c4948897a6343e7b4e596bcbff4bb239ab0f33d5707c4d7db5c855de1b"
         }
     },
-    "depends": "ffmpeg",
     "bin": [
         "compare.exe",
         "composite.exe",
@@ -24,7 +24,6 @@
             "imconvert"
         ],
         "dcraw.exe",
-        "hp2xx.exe",
         "identify.exe",
         "IMDisplay.exe",
         "magick.exe",
@@ -32,14 +31,14 @@
         "montage.exe",
         "stream.exe"
     ],
-    "checkver": "The current release is ImageMagick <a.*?>([0-9\\.p-]+)</a>",
+    "checkver": "The current release is ImageMagick <a.*?>([\\d.p-]+)</a>",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$version-portable-Q16-x64.zip"
+                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$matchHead-portable-Q16-x64.zip"
             },
             "32bit": {
-                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$version-portable-Q16-x86.zip"
+                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$matchHead-portable-Q16-x86.zip"
             }
         },
         "hash": {

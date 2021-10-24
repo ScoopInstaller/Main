@@ -1,10 +1,17 @@
 {
-    "homepage": "https://www.sonarqube.org",
+    "version": "8.9.2.46101",
     "description": "Platform for continuous inspection of code quality and security using static analysis for 20+ programming languages.",
-    "version": "8.3.0.34182",
+    "homepage": "https://www.sonarqube.org",
     "license": "LGPL-3.0-only",
-    "url": "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.3.0.34182.zip",
-    "hash": "9a45ee17e6a8556c543eae019dddc6d4baf1ae7825465a05b0ae2e8f14c47b56",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "url": "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.2.46101.zip",
+    "hash": "53389fcd52c24c6cd18dda5857863c16108b3a274eae9ab3a51080dfb6f1df1a",
+    "extract_dir": "sonarqube-8.9.2.46101",
     "architecture": {
         "64bit": {
             "bin": "bin\\windows-x86-64\\StartSonar.bat"
@@ -20,22 +27,15 @@
         "logs",
         "temp"
     ],
-    "extract_dir": "sonarqube-8.3.0.34182",
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
-    },
     "checkver": {
         "url": "https://www.sonarqube.org/downloads/",
-        "re": "sonarqube-([\\d\\.]+).zip"
+        "regex": "sonarqube-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "url": "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-$version.zip",
-        "extract_dir": "sonarqube-$version",
         "hash": {
             "url": "$url.sha"
-        }
+        },
+        "extract_dir": "sonarqube-$version"
     }
 }
