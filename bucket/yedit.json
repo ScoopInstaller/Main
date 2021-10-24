@@ -1,0 +1,31 @@
+{
+    "version": "1.60",
+    "description": "A modern version of the legacy EDIT.COM text editor, from the author of Yori.",
+    "homepage": "http://www.malsmith.net/yori/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "http://www.malsmith.net/download/?obj=yori/1.60/yori-typical-amd64.cab#/dl.7z",
+            "hash": "f9eaaacf9affc8285b79819d977697e73198f82a8d344428ac436d5a5c5e257b"
+        },
+        "32bit": {
+            "url": "http://www.malsmith.net/download/?obj=yori/1.60/yori-typical-win32.cab#/dl.7z",
+            "hash": "e72fa905b3f75eaccb4bf67a891cddfa1e2f5a6ff1398f5e435d2aeffac4bbb8"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\*\" -Recurse -Exclude yedit.exe",
+    "bin": "yedit.exe",
+    "checkver": {
+        "github": "https://github.com/malxau/yori"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://www.malsmith.net/download/?obj=yori/$version/yori-typical-amd64.cab#/dl.7z"
+            },
+            "32bit": {
+                "url": "http://www.malsmith.net/download/?obj=yori/$version/yori-typical-win32.cab#/dl.7z"
+            }
+        }
+    }
+}
