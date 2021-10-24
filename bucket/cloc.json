@@ -8,9 +8,9 @@
     "bin": "cloc.exe",
     "checkver": {
         "url": "https://github.com/AlDanial/cloc/releases",
-        "regex": "/releases/tag/([\\d.]+)"
+        "regex": "/releases/tag/(?<prefix>v?)(?<version>[\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/AlDanial/cloc/releases/download/$version/cloc-$version.exe#/cloc.exe"
+        "url": "https://github.com/AlDanial/cloc/releases/download/$matchPrefix$version/cloc-$version.exe#/cloc.exe"
     }
 }
