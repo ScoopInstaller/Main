@@ -5,15 +5,16 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.6/julia-1.6.3-win64.exe",
-            "hash": "bc43b8729dd2d95d9d148ada989c8582a66e99af89fcc91d8ed41ee2f13a9985"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.6/julia-1.6.3-win64.zip",
+            "hash": "e2611dd89a80ce3ff55a9bd72220aff5de151643042c0c99b7dd34f7ba5c68f0",
+            "extract_dir": "julia-1.6.3"
         },
         "32bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.6/julia-1.6.3-win32.exe",
-            "hash": "6448735fb3c17866106664b9e390a06ccae86b057f508c842897ef6d77495fd6"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.6/julia-1.6.3-win32.zip",
+            "hash": "03b573672f11d1fa64519195b5abca5c636b95fda15cef98d6ca82400b6b2537",
+            "extract_dir": "julia-1.6.3"
         }
     },
-    "innosetup": true,
     "bin": "bin\\julia.exe",
     "checkver": {
         "url": "https://julialang.org/downloads/",
@@ -22,10 +23,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://julialang-s3.julialang.org/bin/winnt/x64/$majorVersion.$minorVersion/julia-$version-win64.exe"
+                "url": "https://julialang-s3.julialang.org/bin/winnt/x64/$majorVersion.$minorVersion/julia-$version-win64.zip",
+                "extract_dir": "julia-$version"
             },
             "32bit": {
-                "url": "https://julialang-s3.julialang.org/bin/winnt/x86/$majorVersion.$minorVersion/julia-$version-win32.exe"
+                "url": "https://julialang-s3.julialang.org/bin/winnt/x86/$majorVersion.$minorVersion/julia-$version-win32.zip",
+                "extract_dir": "julia-$version"
             }
         },
         "hash": {
