@@ -1,0 +1,20 @@
+{
+    "homepage": "https://okd.io",
+    "license": "https://github.com/openshift/okd/blob/master/LICENSE",
+    "version": "4.8.0-0.okd-2021-10-24-061736",
+    "url": "https://github.com/openshift/okd/releases/download/4.8.0-0.okd-2021-10-24-061736/openshift-client-windows-4.8.0-0.okd-2021-10-24-061736.zip",
+    "hash": "8dacf8f63648cf075b10f5675b60c825f43847aa55bb2e6b0f89189ea057fca7",
+    "bin": "oc.exe",
+    "checkver": {
+        "url": "https://github.com/openshift/okd/releases/latest",
+        "re": "openshift-client-windows-(?<version>(?<major>[\\d.\\-]+)\\.okd-(?<date>[\\d\\-]+)-(?<commit>[a-f0-9]+)).zip"
+    },
+    "autoupdate": {
+        "url": "https://github.com/openshift/okd/releases/download/$version/openshift-client-windows-$version.zip",
+        "hash": {
+            "mode": "extract",
+            "url": "https://github.com/openshift/okd/releases/download/$version/sha256sum.txt",
+            "find": "([a-fA-F0-9]{64})\\s+\\./openshift-client-windows-$version.zip"
+        }
+    }
+}
