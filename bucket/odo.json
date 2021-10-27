@@ -10,17 +10,14 @@
         }
     },
     "checkver": {
-        "url": "https://api.github.com/repos/openshift/odo/releases",
-        "jsonpath": "$[0].name",
-        "regex": "v([\\d.]+)"
+        "github": "https://github.com/openshift/odo"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/odo/v$version/odo-windows-amd64.exe#/odo.exe",
                 "hash": {
-                    "mode": "extract",
-                    "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/odo/v$version/odo-windows-amd64.exe.sha256"
+                    "url": "$url.sha256"
                 }
             }
         }
