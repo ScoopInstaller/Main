@@ -5,16 +5,10 @@
     "version": "0.26.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/knative/client/releases/download/v0.26.0/kn-windows-amd64.exe",
+            "url": "https://github.com/knative/client/releases/download/v0.26.0/kn-windows-amd64.exe#/kn.exe",
             "hash": "b7d1c4cb10234734d81d50fd3cf1423f6ada29563d0f2a863dba3d6a6ae24fa0"
         }
     },
-    "bin": [
-        [
-            "kn-windows-amd64.exe",
-            "kn"
-        ]
-    ],
     "checkver": {
         "url": "https://api.github.com/repos/knative/client/releases",
         "jsonpath": "$[0].tag_name",
@@ -23,7 +17,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/knative/client/releases/download/v$version/kn-windows-amd64.exe",
+                "url": "https://github.com/knative/client/releases/download/v$version/kn-windows-amd64.exe#/kn.exe",
                 "hash": {
                     "mode": "extract",
                     "url": "https://github.com/knative/client/releases/download/v$version/checksums.txt",
