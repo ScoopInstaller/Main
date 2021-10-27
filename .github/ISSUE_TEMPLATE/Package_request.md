@@ -10,7 +10,7 @@ labels: "package-request"
 
 ### Criteria
 
-For an app to be acceptable in the Main bucket, it should be:
+For a package to be acceptable in the Main bucket, it should be:
 
 - [ ] a non-GUI tool
 - [ ] a reasonably well-known and widely used developer tool
