@@ -3,7 +3,6 @@ name: "Package Request"
 about: "I have a suggestion for a package (and may want to implement it)!"
 title: "[Request] "
 labels: "package-request"
-
 ---
 
 ## Package Request
@@ -20,11 +19,10 @@ For a package to be acceptable in the Main bucket, it should be:
 
 ### Information
 
-**Name:** 
+**Name:** [PLACEHOLDER]
 
-**Description:** 
+**Description:** [PLACEHOLDER]
 
-**Homepage:** 
+**Homepage:** [PLACEHOLDER]
 
-**Download link(s):** 
-
+**Download link(s):** [PLACEHOLDER]
