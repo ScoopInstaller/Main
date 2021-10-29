@@ -1,0 +1,62 @@
+{
+    "version": "8_4_0-esp-2021r2",
+    "description": "Toolchain for Xtensa (ESP32) based on GCC",
+    "homepage": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/windows-setup-scratch.html",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-2021r2/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-win64.zip",
+            "hash": "c35b7998f7f503e0cb22055d1e279ae14b6b0e09bb3ff3846b17d552ece9c247"
+        },
+        "32bit": {
+            "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-2021r2/xtensa-esp32-elf-gcc8_4_0-esp-2021r2-win32.zip",
+            "hash": "076a4171bdc33e5ced3952efffb233d70263dfa760e636704050597a9edf61db"
+        }
+    },
+    "extract_dir": "xtensa-esp32-elf",
+    "bin": [
+        "bin\\xtensa-esp32-elf-addr2line.exe",
+        "bin\\xtensa-esp32-elf-ar.exe",
+        "bin\\xtensa-esp32-elf-as.exe",
+        "bin\\xtensa-esp32-elf-c++.exe",
+        "bin\\xtensa-esp32-elf-c++filt.exe",
+        "bin\\xtensa-esp32-elf-cc.exe",
+        "bin\\xtensa-esp32-elf-cpp.exe",
+        "bin\\xtensa-esp32-elf-ct-ng.config",
+        "bin\\xtensa-esp32-elf-elfedit.exe",
+        "bin\\xtensa-esp32-elf-g++.exe",
+        "bin\\xtensa-esp32-elf-gcc.exe",
+        "bin\\xtensa-esp32-elf-gcc-ar.exe",
+        "bin\\xtensa-esp32-elf-gcc-nm.exe",
+        "bin\\xtensa-esp32-elf-gcc-ranlib.exe",
+        "bin\\xtensa-esp32-elf-gcov.exe",
+        "bin\\xtensa-esp32-elf-gcov-dump.exe",
+        "bin\\xtensa-esp32-elf-gcov-tool.exe",
+        "bin\\xtensa-esp32-elf-gdb.exe",
+        "bin\\xtensa-esp32-elf-gprof.exe",
+        "bin\\xtensa-esp32-elf-ld.bfd.exe",
+        "bin\\xtensa-esp32-elf-ld.exe",
+        "bin\\xtensa-esp32-elf-nm.exe",
+        "bin\\xtensa-esp32-elf-objcopy.exe",
+        "bin\\xtensa-esp32-elf-objdump.exe",
+        "bin\\xtensa-esp32-elf-ranlib.exe",
+        "bin\\xtensa-esp32-elf-readelf.exe",
+        "bin\\xtensa-esp32-elf-size.exe",
+        "bin\\xtensa-esp32-elf-strings.exe",
+        "bin\\xtensa-esp32-elf-strip.exe"
+    ],
+    "checkver": {
+        "url": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/tools/idf-tools.html",
+        "regex": "xtensa-esp32-elf-gcc([\\d_]+-esp-([\\w]+))-win64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-$match2/xtensa-esp32-elf-gcc$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-$match2/xtensa-esp32-elf-gcc$version-win32.zip"
+            }
+        }
+    }
+}

@@ -1,12 +1,15 @@
 {
-    "homepage": "https://github.com/Versent/saml2aws",
+    "version": "2.33.0",
     "description": "Login and retrieve Amazon Web Services / AWS temporary credentials using a SAML IDP.",
+    "homepage": "https://github.com/Versent/saml2aws",
     "license": "MIT",
-    "version": "2.25.0",
+    "suggest": {
+        "AWS": "aws"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Versent/saml2aws/releases/download/v2.25.0/saml2aws_2.25.0_windows_amd64.tar.gz",
-            "hash": "sha512:fb1ead8d91e8127bd457bcdec1a20ad6a5c6cdd498b5ade2819a104a98bdbc8f66df0d22d884fd095370808da894f38d3f3bea61ee39d12fe84f08a0657b270d"
+            "url": "https://github.com/Versent/saml2aws/releases/download/v2.33.0/saml2aws_2.33.0_windows_amd64.zip",
+            "hash": "0225eec8845a501994b2182f443c52572e84c5eb26403a1489e2275f6b2fff07"
         }
     },
     "bin": "saml2aws.exe",
@@ -14,14 +17,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Versent/saml2aws/releases/download/v$version/saml2aws_$version_windows_amd64.tar.gz",
-                "hash": {
-                    "url": "$baseurl/saml2aws_$version_windows_amd64.sha512"
-                }
+                "url": "https://github.com/Versent/saml2aws/releases/download/v$version/saml2aws_$version_windows_amd64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/saml2aws_$version_checksums.txt"
         }
-    },
-    "suggest": {
-        "AWS": "aws"
     }
 }

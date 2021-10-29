@@ -1,0 +1,37 @@
+{
+    "version": "1.42.1",
+    "description": "Go language linters aggregator",
+    "homepage": "https://golangci-lint.run/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/golangci/golangci-lint/releases/download/v1.42.1/golangci-lint-1.42.1-windows-amd64.zip",
+            "hash": "607d68f0960e3a7b69c73bc0164710dabb4ece06c509afa3584b475194e8d720",
+            "extract_dir": "golangci-lint-1.42.1-windows-amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/golangci/golangci-lint/releases/download/v1.42.1/golangci-lint-1.42.1-windows-386.zip",
+            "hash": "e64962d2c3c86caed93f60d7fa33e3f1c7452f3feb44b2d2a3fb6204ed1cddf0",
+            "extract_dir": "golangci-lint-1.42.1-windows-386"
+        }
+    },
+    "bin": "golangci-lint.exe",
+    "checkver": {
+        "github": "https://github.com/golangci/golangci-lint"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/golangci/golangci-lint/releases/download/v$version/golangci-lint-$version-windows-amd64.zip",
+                "extract_dir": "golangci-lint-$version-windows-amd64"
+            },
+            "32bit": {
+                "url": "https://github.com/golangci/golangci-lint/releases/download/v$version/golangci-lint-$version-windows-386.zip",
+                "extract_dir": "golangci-lint-$version-windows-386"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/golangci-lint-$version-checksums.txt"
+        }
+    }
+}

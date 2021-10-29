@@ -1,10 +1,14 @@
 {
-    "homepage": "https://www.nano-editor.org/",
+    "version": "5.9-10",
     "description": "A small and friendly GNU editor, inspired by Pico",
-    "version": "4.9-4",
+    "homepage": "https://www.nano-editor.org/",
     "license": "GPL-3.0-only",
-    "url": "https://files.lhmouse.com/nano-win/nano-win_8756_v4.9-4-g5929ad7c.7z",
-    "hash": "74a12ad7e663b0467047e9186e1d0b380982c83a8b5ba08372537299f37f1598",
+    "notes": [
+        "Configure nano by editing its configuration file %USERPROFILE%\\.nanorc",
+        "NOTE: The config file was named nano.rc in the 2.5.3 release, but is now named .nanorc"
+    ],
+    "url": "https://files.lhmouse.com/nano-win/nano-win_9732_v5.9-10-ga2d202368.7z",
+    "hash": "9e7b16e1083891ef1d8259505cc3523b6fa460c3113bfb9d1a5d70f4d7dd3556",
     "post_install": [
         "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
         "   Copy-Item \"$dir\\.nanorc\" \"$env:USERPROFILE\\.nanorc\"",
@@ -16,17 +20,13 @@
     },
     "architecture": {
         "64bit": {
-            "bin": "x86_64-w64-mingw32\\bin\\nano.exe"
+            "bin": "pkg_x86_64-w64-mingw32\\bin\\nano.exe"
         },
         "32bit": {
-            "bin": "i686-w64-mingw32\\bin\\nano.exe"
+            "bin": "pkg_i686-w64-mingw32\\bin\\nano.exe"
         }
     },
     "autoupdate": {
         "url": "https://files.lhmouse.com/nano-win/nano-win_$matchBuild_v$version-$matchCommit.7z"
-    },
-    "notes": [
-        "Configure nano by editing its configuration file %USERPROFILE%\\.nanorc",
-        "NOTE: The config file was named nano.rc in the 2.5.3 release, but is now named .nanorc"
-    ]
+    }
 }

@@ -1,18 +1,13 @@
 {
-    "version": "20200330-8d019db",
-    "homepage": "https://ffmpeg.zeranoe.com/builds/",
+    "version": "104442",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-20200330-8d019db-win64-static.zip",
-            "hash": "33c8af6d679ab820bd4f95c2bcd6c483ad92403c7bed821684c1a1f99f49e026",
-            "extract_dir": "ffmpeg-20200330-8d019db-win64-static"
-        },
-        "32bit": {
-            "url": "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-20200330-8d019db-win32-static.zip",
-            "hash": "65d9fe71438cfa3bb2932b09e3d43b2afd08b294006cfaa005ada7f6ceaa4e58",
-            "extract_dir": "ffmpeg-20200330-8d019db-win32-static"
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2021-10-29-12-23/ffmpeg-N-104442-g783935de18-win64-gpl.zip",
+            "hash": "a3b62f3c7d2c06caf4d2c81d57d110fb07e9edf2430a677931cd1004ecd1e4e2",
+            "extract_dir": "ffmpeg-N-104442-g783935de18-win64-gpl"
         }
     },
     "bin": [
@@ -20,16 +15,15 @@
         "bin\\ffplay.exe",
         "bin\\ffprobe.exe"
     ],
-    "checkver": "value=\"([\\d]{8}-[\\d\\w]+)\"",
+    "checkver": {
+        "github": "https://github.com/BtbN/FFmpeg-Builds",
+        "regex": "/autobuild-(?<time>[\\d-]+)/ffmpeg-N-(?<version>\\d+)-g(?<hash>[a-z\\d]+)-win64-gpl\\.zip"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-$version-win64-static.zip",
-                "extract_dir": "ffmpeg-$version-win64-static"
-            },
-            "32bit": {
-                "url": "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-$version-win32-static.zip",
-                "extract_dir": "ffmpeg-$version-win32-static"
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-N-$version-g$matchHash-win64-gpl.zip",
+                "extract_dir": "ffmpeg-N-$version-g$matchHash-win64-gpl"
             }
         }
     }

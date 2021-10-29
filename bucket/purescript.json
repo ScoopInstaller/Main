@@ -1,16 +1,16 @@
 {
-    "homepage": "http://purescript.org/",
+    "version": "0.14.5",
     "description": "A strongly-typed language that compiles to Javascript",
+    "homepage": "http://purescript.org/",
     "license": "MIT",
-    "version": "0.13.6",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/purescript/purescript/releases/download/v0.13.6/win64.tar.gz",
-            "hash": "sha1:2d4e3f39f852f31e1f1b1eeb810864157483209a"
+            "url": "https://github.com/purescript/purescript/releases/download/v0.14.5/win64.tar.gz",
+            "hash": "sha1:d288cdbe14207f69549c70bae0c0f8cf2e065133"
         }
     },
-    "bin": "purs.exe",
     "extract_dir": "purescript",
+    "bin": "purs.exe",
     "checkver": {
         "github": "https://github.com/purescript/purescript"
     },
@@ -20,7 +20,7 @@
                 "url": "https://github.com/purescript/purescript/releases/download/v$version/win64.tar.gz",
                 "hash": {
                     "url": "$baseurl/win64.sha",
-                    "find": "SHA1\\(bundle/$basename\\)=\\s+([a-fA-F\\d]{40})"
+                    "regex": "SHA1\\(bundle/$basename\\)=\\s+([a-fA-F\\d]{40})"
                 }
             }
         }

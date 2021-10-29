@@ -1,23 +1,30 @@
 {
-    "homepage": "https://www.fossil-scm.org/",
+    "version": "2.17",
     "description": "A simple, high-reliability, distributed software configuration management system.",
-    "version": "2.10",
+    "homepage": "https://www.fossil-scm.org/",
     "license": "BSD-2-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://www.fossil-scm.org/index.html/uv/fossil-w64-2.10.zip",
-            "hash": "986a44b483721f4f225ebd6574d98ba4c4ef5e467dd3bb303c0d48707ee1966e"
+            "url": "https://www.fossil-scm.org/index.html/uv/fossil-w64-2.17.zip",
+            "hash": "a2f579e26db1828cb583a079f7137c28d4884e759c27922364b0f241521627d4"
+        },
+        "32bit": {
+            "url": "https://www.fossil-scm.org/index.html/uv/fossil-w32-2.17.zip",
+            "hash": "df38874fce63dcf93b19216c2ad720ce3232e2fc10e5111a1e5e54e4c4fead3b"
         }
     },
     "bin": "fossil.exe",
     "checkver": {
         "url": "https://www.fossil-scm.org/index.html/uv/download.js",
-        "re": "Version ([\\d.]+)"
+        "regex": "p=version-([0-9.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://www.fossil-scm.org/index.html/uv/fossil-w64-$version.zip"
+            },
+            "32bit": {
+                "url": "https://www.fossil-scm.org/index.html/uv/fossil-w32-$version.zip"
             }
         }
     }

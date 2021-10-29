@@ -1,20 +1,18 @@
 {
-    "homepage": "https://www.digdag.io/",
+    "version": "0.10.3",
     "description": "A simple, open source, multi-cloud workflow engine that helps you to build, run, schedule, and monitor complex pipelines of tasks",
+    "homepage": "https://www.digdag.io",
     "license": "Apache-2.0",
-    "version": "0.9.41",
-    "url": "https://dl.bintray.com/digdag/maven/digdag-0.9.41.jar#/digdag.jar",
-    "hash": "1dc76896573a0cbb1e36f505bf61e16d7bb4b62a2798406a69deecccde780a40",
-    "pre_install": "\"@java -jar \"\"$dir\\digdag.jar\"\" %*\" | out-file -en oem \"$dir\\digdag.cmd\"",
-    "bin": "digdag.cmd",
+    "suggest": {
+        "java": "java/oraclejre8"
+    },
+    "url": "https://github.com/treasure-data/digdag/releases/download/v0.10.3/digdag-0.10.3.jar#/digdag.jar",
+    "hash": "200911b6a35a3d8b40e25f028753fb9652aeb19dbd05b8f950dc35ff69547c34",
+    "bin": "digdag.jar",
     "checkver": {
-        "url": "https://api.bintray.com/packages/digdag/maven/digdag",
-        "jp": "$.latest_version"
+        "github": "https://github.com/treasure-data/digdag"
     },
     "autoupdate": {
-        "url": "https://dl.bintray.com/digdag/maven/digdag-$version.jar#/digdag.jar",
-        "hash": {
-            "url": "$url.sha256"
-        }
+        "url": "https://github.com/treasure-data/digdag/releases/download/v$version/digdag-$version.jar#/digdag.jar"
     }
 }

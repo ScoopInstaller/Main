@@ -1,16 +1,16 @@
 {
-    "homepage": "http://strawberryperl.com",
-    "version": "5.30.2.1",
-    "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
+    "version": "5.32.1.1",
     "description": "A programming language suitable for writing simple scripts as well as complex applications.",
+    "homepage": "http://strawberryperl.com",
+    "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
     "architecture": {
-        "32bit": {
-            "url": "http://strawberryperl.com/download/5.30.2.1/strawberry-perl-5.30.2.1-32bit-portable.zip",
-            "hash": "sha1:f049504e41eaf2b1023694c8384fd07eec46090c"
-        },
         "64bit": {
-            "url": "http://strawberryperl.com/download/5.30.2.1/strawberry-perl-5.30.2.1-64bit-portable.zip",
-            "hash": "sha1:71f8dbdba5013481013810245bdf6953d2732475"
+            "url": "http://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-64bit-portable.zip",
+            "hash": "sha1:fac226b31461f2392702822052a3a5628917f857"
+        },
+        "32bit": {
+            "url": "http://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-32bit-portable.zip",
+            "hash": "sha1:28bca91cadd6651c2b2463db8587c170bf17f2fa"
         }
     },
     "post_install": [
@@ -21,22 +21,24 @@
     ],
     "env_add_path": [
         "perl\\site\\bin",
-        "perl\\bin",
-        "c\\bin"
+        "perl\\bin"
     ],
-    "checkver": "Strawberry Perl ([\\d.]+)",
+    "checkver": {
+        "url": "http://strawberryperl.com/releases.html",
+        "regex": "strawberry-perl-([\\d.]+)-32bit-portable\\.zip"
+    },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "http://strawberryperl.com/download/$version/strawberry-perl-$version-32bit-portable.zip"
-            },
             "64bit": {
                 "url": "http://strawberryperl.com/download/$version/strawberry-perl-$version-64bit-portable.zip"
+            },
+            "32bit": {
+                "url": "http://strawberryperl.com/download/$version/strawberry-perl-$version-32bit-portable.zip"
             }
         },
         "hash": {
             "url": "http://strawberryperl.com/releases.html",
-            "find": "(?sm)$basename\" onclick.*?Portable edition.*?$sha1"
+            "regex": "(?sm)$basename\" onclick.*?Portable edition.*?$sha1"
         }
     }
 }

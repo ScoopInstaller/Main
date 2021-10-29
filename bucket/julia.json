@@ -1,35 +1,44 @@
 {
-    "homepage": "https://julialang.org",
+    "version": "1.6.3",
     "description": "A programming language that is a fresh approach to technical computing.",
-    "version": "1.4.0",
+    "homepage": "https://julialang.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.4/julia-1.4.0-win64.exe",
-            "hash": "aa41a5c91eac5d34c7604cefd5cf8b619dbcfa35149b5de5381c2c8f06d6598c"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.6/julia-1.6.3-win64.zip",
+            "hash": "e2611dd89a80ce3ff55a9bd72220aff5de151643042c0c99b7dd34f7ba5c68f0",
+            "extract_dir": "julia-1.6.3"
         },
         "32bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.4/julia-1.4.0-win32.exe",
-            "hash": "e7e4edf7ad65e6ca5ac3930f9068e74b0f534cbbb04fbee354698807b04e38a0"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.6/julia-1.6.3-win32.zip",
+            "hash": "03b573672f11d1fa64519195b5abca5c636b95fda15cef98d6ca82400b6b2537",
+            "extract_dir": "julia-1.6.3"
         }
     },
-    "innosetup": true,
     "bin": "bin\\julia.exe",
     "checkver": {
         "url": "https://julialang.org/downloads/",
-        "re": "Current stable release: v([\\d.]+)"
+        "regex": "Current stable release: v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://julialang-s3.julialang.org/bin/winnt/x64/$majorVersion.$minorVersion/julia-$version-win64.exe"
+                "url": "https://julialang-s3.julialang.org/bin/winnt/x64/$majorVersion.$minorVersion/julia-$version-win64.zip",
+                "extract_dir": "julia-$version"
             },
             "32bit": {
-                "url": "https://julialang-s3.julialang.org/bin/winnt/x86/$majorVersion.$minorVersion/julia-$version-win32.exe"
+                "url": "https://julialang-s3.julialang.org/bin/winnt/x86/$majorVersion.$minorVersion/julia-$version-win32.zip",
+                "extract_dir": "julia-$version"
             }
         },
         "hash": {
             "url": "https://julialang-s3.julialang.org/bin/checksums/julia-$version.sha256"
         }
-    }
+    },
+    "shortcuts": [
+        [
+            "bin\\julia.exe",
+            "Julia"
+        ]
+    ]
 }

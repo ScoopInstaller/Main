@@ -1,0 +1,26 @@
+{
+    "version": "0.9.4",
+    "description": "Kubernetes namespaces switcher",
+    "homepage": "https://kubectx.dev",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ahmetb/kubectx/releases/download/v0.9.4/kubens_v0.9.4_windows_x86_64.zip",
+            "hash": "eab9ace6e25303b522e7006a1c9e44747b9e9c005e15b1fcf8a9678569ca1c95"
+        }
+    },
+    "bin": "kubens.exe",
+    "checkver": {
+        "github": "https://github.com/ahmetb/kubectx"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ahmetb/kubectx/releases/download/v$version/kubens_v$version_windows_x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

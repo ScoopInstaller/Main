@@ -1,0 +1,22 @@
+{
+    "version": "0.8.3",
+    "description": "Fast and effective C++ file optimizer.",
+    "homepage": "https://github.com/fhanau/Efficient-Compression-Tool",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/fhanau/Efficient-Compression-Tool/releases/download/v0.8.3/ect-0.8.3-Win64.exe.zip",
+            "hash": "EE310F0EDE7BF281859694C6472C970580610819FBF06A17CCA244668548C07D"
+        }
+    },
+    "bin": "ect.exe",
+    "pre_install": "Rename-Item \"$dir\\ect-$version.exe\" \"$dir\\ect.exe\"",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/fhanau/Efficient-Compression-Tool/releases/download/v$version/ect-$version-Win64.exe.zip"
+            }
+        }
+    }
+}

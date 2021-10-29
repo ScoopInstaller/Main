@@ -1,15 +1,19 @@
 {
-    "homepage": "https://github.com/radareorg/cutter",
-    "description": "A Qt and C++ GUI for radare2 reverse engineering framework",
+    "version": "2.0.3",
+    "description": "A Qt and C++ GUI for Rizin reverse engineering framework",
+    "homepage": "https://cutter.re",
     "license": "GPL-3.0-only",
-    "version": "1.10.2",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/radareorg/cutter/releases/download/v1.10.2/Cutter-v1.10.2-x64.Windows.zip",
-            "hash": "1090fb7a3919f7eb7f899eb804e32448797e8265deb56c701f2f32af94ae8878"
+            "url": "https://github.com/rizinorg/cutter/releases/download/v2.0.3/Cutter-v2.0.3-x64.Windows.zip",
+            "hash": "cbf279e5e7f690ffc5f028e6bd631db182e87fe19dbf5df66ad15f0bb8431a5c",
+            "extract_dir": "cutter-v2.0.3-x64.Windows"
         }
     },
-    "bin": "cutter.exe",
+    "bin": [
+        "cutter.exe",
+        "rizin.exe"
+    ],
     "shortcuts": [
         [
             "cutter.exe",
@@ -22,7 +26,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/radareorg/cutter/releases/download/v$version/Cutter-v$version-x64.Windows.zip"
+                "url": "https://github.com/rizinorg/cutter/releases/download/v$version/Cutter-v$version-x64.Windows.zip",
+                "extract_dir": "cutter-v$version-x64.Windows"
             }
         }
     }

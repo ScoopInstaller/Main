@@ -1,0 +1,28 @@
+{
+    "version": "2.11.1",
+    "description": "A practical cross-platform command-line tool for safely batch renaming files/directories via regular expression",
+    "homepage": "https://github.com/shenwei356/brename",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/shenwei356/brename/releases/download/v2.11.1/brename_windows_amd64.exe.tar.gz",
+            "hash": "84105628c4fca4a7fa9637d6dc16282378c71d545558c1b54988be2ecfe0c1f5"
+        },
+        "32bit": {
+            "url": "https://github.com/shenwei356/brename/releases/download/v2.11.1/brename_windows_386.exe.tar.gz",
+            "hash": "5f119254c2f6b4ab746131e666c3c52c5f96d657c202e91c42edcf22f8d2fd43"
+        }
+    },
+    "bin": "brename.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/shenwei356/brename/releases/download/v$version/brename_windows_amd64.exe.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/shenwei356/brename/releases/download/v$version/brename_windows_386.exe.tar.gz"
+            }
+        }
+    }
+}
