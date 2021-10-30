@@ -1,31 +1,27 @@
 {
-    "homepage": "https://ngrok.com/",
+    "version": "2.3.40",
     "description": "Spend more time programming. One command for an instant, secure URL to your localhost server through any NAT or firewall.",
-    "version": "2.3.35",
+    "homepage": "https://ngrok.com/",
     "license": {
         "identifier": "Shareware",
         "url": "https://ngrok.com/tos"
     },
     "architecture": {
         "64bit": {
-            "url": "https://bin.equinox.io/a/dNLVCVPeNck/ngrok-2.3.35-windows-amd64.zip",
-            "hash": "c8d6c591aaa978d1078c5ac1dbb579a66ef994e6f3ca6f7c461d5fb8b8fb2db0"
+            "url": "https://bin.equinox.io/a/8exBtGpBr59/ngrok-2.3.40-windows-amd64.zip",
+            "hash": "778cbe4d5f1c868a5687a97206bf39b017a76fc44eaead95a11cf8a415c2e505"
         },
         "32bit": {
-            "url": "https://bin.equinox.io/a/HS6s1synFP/ngrok-2.3.35-windows-386.zip",
-            "hash": "957e1a163b93fe6a8cd50c70cb453618679cddf5636739935b3afbca1d972744"
+            "url": "https://bin.equinox.io/a/cfjNxTRk1tM/ngrok-2.3.40-windows-386.zip",
+            "hash": "c1f32114f71fb05cf4f66e5c9a49f2d451891990f9e75f56b3dd8bb2cff520f4"
         }
     },
     "bin": "ngrok.exe",
     "checkver": {
         "url": "https://dl.equinox.io/ngrok/ngrok/stable/archive",
-        "re": "/a/(?<hash64bit>\\w+)/ngrok-([\\d.]+)-windows-amd64.zip(?:.|\\n)+?/a/(?<hash32bit>\\w+)/ngrok-([\\d.]+)-windows-386.zip"
+        "regex": "/a/(?<hash64bit>\\w+)/ngrok-([\\d.]+)-windows-amd64.zip(?:.|\\n)+?/a/(?<hash32bit>\\w+)/ngrok-([\\d.]+)-windows-386.zip"
     },
     "autoupdate": {
-        "hash": {
-            "url": "https://dl.equinox.io/ngrok/ngrok/stable/archive",
-            "regex": "$url(?:.|\\n)+?value=\"(\\w+)"
-        },
         "architecture": {
             "64bit": {
                 "url": "https://bin.equinox.io/a/$matchHash64bit/ngrok-$version-windows-amd64.zip"
@@ -33,6 +29,10 @@
             "32bit": {
                 "url": "https://bin.equinox.io/a/$matchHash32bit/ngrok-$version-windows-386.zip"
             }
+        },
+        "hash": {
+            "url": "https://dl.equinox.io/ngrok/ngrok/stable/archive",
+            "regex": "$url(?:.|\\n)+?value=\"(\\w+)"
         }
     }
 }

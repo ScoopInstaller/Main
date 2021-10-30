@@ -1,24 +1,23 @@
 {
-    "homepage": "http://mark0.net/soft-trid-e.html",
+    "version": "2.24-21.10.29",
     "description": "A utility designed to identify file types from their binary signatures.",
+    "homepage": "https://www.mark0.net/soft-trid-e.html",
     "license": "Shareware",
-    "version": "2.24-19.12.22",
     "url": [
-        "http://mark0.net/download/triddefs.zip",
-        "http://mark0.net/download/trid_w32.zip"
+        "https://mark0.net/download/triddefs.zip",
+        "https://mark0.net/download/trid_w32.zip"
     ],
     "hash": [
-        "9caecfcc7f67d1a62e92a0a8ddbb225078f6da54a3790ce23d108a9a61e8823b",
+        "b52913ea6181c89107e74f8ac2fc629d1e53c192bd7bdec2e28746ee90cff675",
         "ea7f82363912f5b3c79217ba8716425ec3f2514887f788dcd5a2821d0b1fc83f"
     ],
     "bin": "trid.exe",
     "checkver": {
-        "url": "http://mark0.net/soft-trid-e.html",
-        "re": "(?smi)Win32.*?TrID v([\\d\\.]*).*?(\\d{2})\\/(\\d{2})\\/(\\d{2})",
+        "regex": "(?smi)Win32.*?TrID v([\\d\\.]*).*?(\\d{2})\\/(\\d{2})\\/(\\d{2})",
         "replace": "${1}-${4}.${3}.${2}"
     },
     "autoupdate": {
         "note": "Autoupdate only updates TrID Definitions. If the main program updates, please change hashes manually",
-        "url": "http://mark0.net/download/triddefs.zip"
+        "url": "https://mark0.net/download/triddefs.zip"
     }
 }

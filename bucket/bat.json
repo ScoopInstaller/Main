@@ -1,24 +1,25 @@
 {
-    "homepage": "https://github.com/sharkdp/bat",
+    "version": "0.18.3",
     "description": "A cat(1) clone with syntax highlighting and Git integration",
+    "homepage": "https://github.com/sharkdp/bat",
     "license": "Apache-2.0",
-    "version": "0.12.1",
+    "suggest": {
+        "less": "less"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-v0.12.1-x86_64-pc-windows-msvc.zip",
-            "hash": "d6136b0133ad7f16029f7b996fc36cfb9af83828420e4a29d9798249fb8b37df"
+            "url": "https://github.com/sharkdp/bat/releases/download/v0.18.3/bat-v0.18.3-x86_64-pc-windows-msvc.zip",
+            "hash": "cbb1a937e288e0ebdf7b1975cc64bd0f82209ebd6b77393302460396ddd242ab",
+            "extract_dir": "bat-v0.18.3-x86_64-pc-windows-msvc"
         }
     },
     "bin": "bat.exe",
-    "suggest": {
-        "less": "less",
-        "ccat": "ccat"
-    },
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/sharkdp/bat/releases/download/v$version/bat-v$version-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/sharkdp/bat/releases/download/v$version/bat-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "bat-v$version-x86_64-pc-windows-msvc"
             }
         }
     }

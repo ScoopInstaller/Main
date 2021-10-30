@@ -1,15 +1,13 @@
 {
-    "homepage": "https://www.mls-software.com/opensshd.html",
+    "version": "8.7p1-1",
     "description": "A Windows installer package of Openssh for Windows that is actively maintained and current.",
+    "homepage": "https://www.mls-software.com/opensshd.html",
     "license": "ISC",
-    "version": "8.1p1-1",
-    "url": "https://www.mls-software.com/files/setupssh-8.1p1-1.exe#/dl.7z",
-    "hash": "sha1:9d6e5f5e36899ec4e8391c368c496796b36c8a62",
+    "url": "https://www.mls-software.com/files/setupssh-8.7p1-1.exe#/dl.7z",
+    "hash": "sha1:bcec87ec0f9b44b8374f98d07f66675d0f1807bb",
     "post_install": [
-        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
-        "Remove-Item \"$dir\\`$TEMP\" -Recurse",
-        "Remove-Item \"$dir\\uninstall.exe\"",
-        "if (!(test-path \"$dir\\tmp\")) { new-item \"$dir\\tmp\" -itemtype directory | out-null }"
+        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe\" -Recurse",
+        "ensure \"$dir\\tmp\" | Out-Null"
     ],
     "bin": [
         "bin\\scp.exe",
@@ -20,15 +18,12 @@
         "bin\\ssh-keyscan.exe",
         "bin\\ssh.exe"
     ],
-    "checkver": {
-        "url": "https://www.mls-software.com/opensshd.html",
-        "re": "New Version<.*\\n<b>OpenSSH (?<version>[\\d.\\-p]+)<br />"
-    },
+    "checkver": "New Version<.*\\n<b>OpenSSH (?<version>[\\d.\\-p]+)<br />",
     "autoupdate": {
         "url": "https://www.mls-software.com/files/setupssh-$version.exe#/dl.7z",
         "hash": {
             "url": "https://www.mls-software.com/opensshd.html",
-            "find": "$basename</a.*\\n<.*<small>SHA1=([a-fA-F0-9]+)</small>"
+            "regex": "$basename</a.*\\n<.*<small>SHA1=$sha1</small>"
         }
     }
 }

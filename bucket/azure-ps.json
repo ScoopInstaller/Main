@@ -1,16 +1,16 @@
 {
-    "version": "3.2.0.31196",
+    "version": "6.5.0.34802",
     "description": "PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications.",
     "homepage": "https://aka.ms/azpsdocs",
     "license": "Apache-2.0",
     "architecture": {
-        "32bit": {
-            "url": "https://github.com/Azure/azure-powershell/releases/download/v3.2.0-December2019/Az-Cmdlets-3.2.0.31196-x86.msi",
-            "hash": "3d10cba334db60ac4afded01c30421677abb81aa3856faf9a9f88ae3119bfab6"
-        },
         "64bit": {
-            "url": "https://github.com/Azure/azure-powershell/releases/download/v3.2.0-December2019/Az-Cmdlets-3.2.0.31196-x64.msi",
-            "hash": "cc7d3677d5012ce8f4357ed9071cdce425fd4098fcd479c28eef792decbf4634"
+            "url": "https://github.com/Azure/azure-powershell/releases/download/v6.5.0-October2021/Az-Cmdlets-6.5.0.34802-x64.msi",
+            "hash": "0c81917992e782ae21695ef712baf3a36ebfd2dc31fe0041ddbc3ccb065acbca"
+        },
+        "32bit": {
+            "url": "https://github.com/Azure/azure-powershell/releases/download/v6.5.0-October2021/Az-Cmdlets-6.5.0.34802-x86.msi",
+            "hash": "eb4a01328ef20eea5cb6cfee0c03bd4596865722054fe1831ca5547f8970d113"
         }
     },
     "extract_dir": "WindowsPowerShell\\Modules",
@@ -18,16 +18,16 @@
         "name": "AzureRM"
     },
     "checkver": {
-        "github": "https://github.com/Azure/azure-powershell",
-        "regex": "download/v?(?<release>[\\w-.]+)/Az-Cmdlets-([\\d.]+)-x64\\.msi"
+        "url": "https://github.com/Azure/azure-powershell/releases",
+        "regex": "download/v(?<release>[^/]+)/Az-Cmdlets-([0-9.]+)-x64[.]msi"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://github.com/Azure/azure-powershell/releases/download/v$matchRelease/Az-Cmdlets-$version-x86.msi"
-            },
             "64bit": {
                 "url": "https://github.com/Azure/azure-powershell/releases/download/v$matchRelease/Az-Cmdlets-$version-x64.msi"
+            },
+            "32bit": {
+                "url": "https://github.com/Azure/azure-powershell/releases/download/v$matchRelease/Az-Cmdlets-$version-x86.msi"
             }
         }
     }

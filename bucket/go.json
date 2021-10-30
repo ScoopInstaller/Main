@@ -1,35 +1,40 @@
 {
-    "version": "1.13.5",
-    "homepage": "https://golang.org",
+    "version": "1.17.2",
     "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
+    "homepage": "https://golang.org",
     "license": "BSD-3-Clause",
-    "extract_dir": "go",
-    "env_set": {
-        "GOROOT": "$dir"
-    },
-    "bin": [
-        "bin/go.exe",
-        "bin/gofmt.exe"
+    "notes": [
+        "Your GOROOT has been set to: $dir",
+        "You can run 'go env GOROOT' to view this at any time.",
+        "\"$env:USERPROFILE\\go\\bin\" has been added to your PATH."
     ],
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.google.com/go/go1.17.2.windows-amd64.zip",
+            "hash": "fa6da0b829a66f5fab7e4e312fd6aa1b2d8f045c7ecee83b3d00f6fe5306759a"
+        },
+        "32bit": {
+            "url": "https://dl.google.com/go/go1.17.2.windows-386.zip",
+            "hash": "8a85257a351996fdf045fe95ed5fdd6917dd48636d562dd11dedf193005a53e0"
+        }
+    },
+    "extract_dir": "go",
     "installer": {
         "script": "add_first_in_path \"$env:USERPROFILE\\go\\bin\" $global"
     },
     "uninstaller": {
         "script": "remove_from_path \"$env:USERPROFILE\\go\\bin\" $global"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://dl.google.com/go/go1.13.5.windows-amd64.zip",
-            "hash": "027275e04d795fbadc898ba7a50ed0ab2161ff4c5e613c94dbb066b2ca24ec11"
-        },
-        "32bit": {
-            "url": "https://dl.google.com/go/go1.13.5.windows-386.zip",
-            "hash": "5a9ace58c0fb487a07a3dec494a59957aa8425fbefd04d1a3fb1d0aa0d95fb8d"
-        }
+    "bin": [
+        "bin\\go.exe",
+        "bin\\gofmt.exe"
+    ],
+    "env_set": {
+        "GOROOT": "$dir"
     },
     "checkver": {
         "url": "https://golang.org/dl/",
-        "regex": "go([\\d.]+)\\."
+        "regex": "go([\\d.]+)\\.windows-"
     },
     "autoupdate": {
         "architecture": {
@@ -43,10 +48,5 @@
         "hash": {
             "url": "$url.sha256"
         }
-    },
-    "notes": [
-        "Your GOROOT has been set to: $dir",
-        "You can run 'go env GOROOT' to view this at any time.",
-        "\"$env:USERPROFILE\\go\\bin)\" has been added to your PATH."
-    ]
+    }
 }

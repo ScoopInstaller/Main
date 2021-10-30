@@ -1,17 +1,14 @@
 {
-    "version": "2019-11-27",
-    "homepage": "https://curl.haxx.se/docs/caextract.html",
+    "##": "Do not extract hash, it's not up to date.",
+    "version": "2021-10-26",
     "description": "CA certificates extracted from the Mozilla CA certificate store, in PEM format",
+    "homepage": "https://curl.haxx.se/docs/caextract.html",
     "license": "MPL-2.0",
-    "url": "https://curl.haxx.se/ca/cacert-2019-11-27.pem#/cacert.pem",
-    "hash": "0d98a1a961aab523c9dc547e315e1d79e887dea575426ff03567e455fc0b66b4",
-    "checkver": {
-        "url": "https://curl.haxx.se/docs/caextract.html",
-        "regex": "cacert-([\\d-]+)\\.pem"
-    },
+    "url": "https://curl.haxx.se/ca/cacert-2021-10-26.pem#/cacert.pem",
+    "hash": "ae31ecb3c6e9ff3154cb7a55f017090448f88482f0e94ac927c0c67a1f33b9cf",
     "post_install": "if (Test-Path \"$(appdir curl $global)\") { Copy-Item \"$dir\\cacert.pem\" \"$(appdir curl $global)\\current\\bin\\curl-ca-bundle.crt\" }",
+    "checkver": "cacert-([\\d-]+)\\.pem",
     "autoupdate": {
         "url": "https://curl.haxx.se/ca/cacert-$version.pem#/cacert.pem"
-    },
-    "##": "Do not extract hash, it's not up to date."
+    }
 }

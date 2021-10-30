@@ -1,31 +1,20 @@
 {
-    "homepage": "https://geoff.greer.fm/ag/",
-    "description": "A tool for searching code",
+    "version": "2.2.4",
+    "description": "A tool for searching code. Fork of The Silver Searcher; dedicated to building a well behaved version for Windows.",
+    "homepage": "https://github.com/JFLarvoire/the_silver_searcher",
     "license": "Apache-2.0",
-    "version": "2.2.0-19-g965f71d",
+    "url": "https://github.com/JFLarvoire/the_silver_searcher/releases/download/2.2.4-Windows/ag.zip",
+    "hash": "fc272e4cbd451654944b494b71f55041615879c96918da49f742a1036d1ba98d",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/k-takata/the_silver_searcher-win32/releases/download/2019-03-23/2.2.0-19-g965f71d/ag-2019-03-23_2.2.0-19-g965f71d-x64.zip",
-            "hash": "e4f39c0bb6d79a23b8d4acdeb2cc1e4195c3e6e34a649d91c6dfdbff917d3418"
+            "bin": "WIN64\\ag.exe"
         },
         "32bit": {
-            "url": "https://github.com/k-takata/the_silver_searcher-win32/releases/download/2019-03-23/2.2.0-19-g965f71d/ag-2019-03-23_2.2.0-19-g965f71d-x86.zip",
-            "hash": "26f4bdb3c47aa3bc3adf0b0fb529304facba0e923ef39dfbef714a1ea934577e"
+            "bin": "WIN32\\ag.exe"
         }
     },
-    "bin": "ag.exe",
-    "checkver": {
-        "url": "https://github.com/k-takata/the_silver_searcher-win32/releases",
-        "re": "/releases/tag/(?<date>[\\d-]+)%2F(?<version>[\\w.-]+)"
-    },
+    "checkver": "github",
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/k-takata/the_silver_searcher-win32/releases/download/$matchDate/$version/ag-$matchDate_$version-x64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/k-takata/the_silver_searcher-win32/releases/download/$matchDate/$version/ag-$matchDate_$version-x86.zip"
-            }
-        }
+        "url": "https://github.com/JFLarvoire/the_silver_searcher/releases/download/$version-Windows/ag.zip"
     }
 }

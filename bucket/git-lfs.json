@@ -1,23 +1,23 @@
 {
-    "homepage": "https://git-lfs.github.com/",
-    "version": "2.9.2",
-    "license": "MIT",
+    "version": "3.0.2",
     "description": "Git extension for versioning large files.",
-    "architecture": {
-        "32bit": {
-            "url": "https://github.com/git-lfs/git-lfs/releases/download/v2.9.2/git-lfs-windows-386-v2.9.2.zip",
-            "hash": "5e979cfcf859fbfac59ef2e78bb2e1d83c7f8d7d5e91df8ee85d47c1694ef916"
-        },
-        "64bit": {
-            "url": "https://github.com/git-lfs/git-lfs/releases/download/v2.9.2/git-lfs-windows-amd64-v2.9.2.zip",
-            "hash": "90847c9c9e4fb4ecd04fbeedc8f04f6519bbe0e4fd5f5b5674406f6d90409993"
-        }
-    },
+    "homepage": "https://git-lfs.github.com/",
+    "license": "MIT",
     "suggest": {
         "Git": [
             "git",
             "git-with-openssh"
         ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.0.2/git-lfs-windows-amd64-v3.0.2.zip",
+            "hash": "c8cdf273554262667c2f88f3e8f54c1e3c54230c20bd7d6f8917aaf97ee85d7f"
+        },
+        "32bit": {
+            "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.0.2/git-lfs-windows-386-v3.0.2.zip",
+            "hash": "d22a17621b08f716832ad752695dfce57ccf72a339eba8b4d89ff236bd7621e8"
+        }
     },
     "bin": "git-lfs.exe",
     "checkver": {
@@ -25,11 +25,11 @@
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://github.com/git-lfs/git-lfs/releases/download/v$version/git-lfs-windows-386-v$version.zip"
-            },
             "64bit": {
                 "url": "https://github.com/git-lfs/git-lfs/releases/download/v$version/git-lfs-windows-amd64-v$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/git-lfs/git-lfs/releases/download/v$version/git-lfs-windows-386-v$version.zip"
             }
         },
         "hash": {

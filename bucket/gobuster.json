@@ -1,0 +1,36 @@
+{
+    "version": "3.1.0",
+    "description": "A tool to brute-force URIs, DNS subdomains or Virtual Host names",
+    "homepage": "https://github.com/OJ/gobuster",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/OJ/gobuster/releases/download/v3.1.0/gobuster-windows-amd64.7z",
+            "hash": "31c0e87ebc91f065554ce031af9783e8b898631b9e32541abee23d14c55a8af1",
+            "extract_dir": "gobuster-windows-amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/OJ/gobuster/releases/download/v3.1.0/gobuster-windows-386.7z",
+            "hash": "737032176e4affce74c5332879afbc2452c8af05da3ae9c755b1d5eb3930f56a",
+            "extract_dir": "gobuster-windows-386"
+        }
+    },
+    "bin": "gobuster.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/OJ/gobuster/releases/download/v$version/gobuster-windows-amd64.7z",
+                "extract_dir": "gobuster-windows-amd64"
+            },
+            "32bit": {
+                "url": "https://github.com/OJ/gobuster/releases/download/v$version/gobuster-windows-386.7z",
+                "extract_dir": "gobuster-windows-386"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/OJ/gobuster/releases/tag/v$version",
+            "regex": "$sha256.*$basename"
+        }
+    }
+}

@@ -1,24 +1,22 @@
 {
-    "homepage": "https://github.com/dylanaraps/neofetch",
+    "version": "7.1.0",
     "description": "A command-line system information tool written in bash 3.2+.",
+    "homepage": "https://github.com/dylanaraps/neofetch",
     "license": "MIT",
-    "version": "6.1.0",
-    "url": "https://raw.githubusercontent.com/dylanaraps/neofetch/6.1.0/neofetch",
-    "hash": "fb6fe5eddbcd2aed3f245050961541cb3b5a8194658f4252db3b3ac8fed6e932",
     "pre_install": [
-        "if(installed 'git-with-openssh') { $git = $(scoop prefix 'git-with-openssh') } elseif(installed 'git') { $git = $(scoop prefix 'git') } else { $git = $(Get-Command 'git' | Select Source -ExpandProperty 'Path'| Split-Path -Parent | Split-Path -Parent) }",
+        "if (installed 'git-with-openssh') { $git = $(scoop prefix 'git-with-openssh') } elseif (installed 'git') { $git = $(scoop prefix 'git') } else { $git = $(Get-Command 'git' | Select Source -ExpandProperty 'Path'| Split-Path -Parent | Split-Path -Parent) }",
         "Write-Output \"& `$(join-path '$git' 'bin\\bash.exe') `$(join-path `$psscriptroot 'neofetch') @args\" | Out-File \"$dir\\neofetch.ps1\" -encoding utf8"
     ],
-    "bin": "neofetch.ps1",
     "suggest": {
         "git": [
             "git",
             "git-with-openssh"
         ]
     },
-    "checkver": {
-        "github": "https://github.com/dylanaraps/neofetch"
-    },
+    "url": "https://raw.githubusercontent.com/dylanaraps/neofetch/7.1.0/neofetch",
+    "hash": "3dc33493e54029fb1528251552093a9f9a2894fcf94f9c3a6f809136a42348c7",
+    "bin": "neofetch.ps1",
+    "checkver": "github",
     "autoupdate": {
         "url": "https://raw.githubusercontent.com/dylanaraps/neofetch/$version/neofetch"
     }

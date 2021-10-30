@@ -1,24 +1,25 @@
 {
+    "version": "30b5888",
+    "description": "A text-mode files and archives manager",
+    "homepage": "https://farmanager.com/",
     "license": {
         "identifier": "BSD-3-Clause",
         "url": "https://farmanager.com/license.php"
     },
-    "homepage": "https://farmanager.com/",
-    "description": "A text-mode files and archives manager.",
-    "version": "30b5511",
     "architecture": {
         "64bit": {
-            "url": "https://farmanager.com/files/Far30b5511.x64.20191120.7z",
-            "hash": "f58ebacc987f5ad8401cde6576046536bb1c03840ff36753d11b5373b141e3ff"
+            "url": "https://farmanager.com/files/Far30b5888.x64.20210919.7z",
+            "hash": "4aaf0355dc1c072879bd61a248a629212d5beda8b1b13194bbffbd57efce7a8d"
         },
         "32bit": {
-            "url": "https://farmanager.com/files/Far30b5511.x86.20191120.7z",
-            "hash": "bdeff8f1258c9054eb00494df4602a1f9c4a23e14ad80a1737ff7c4a062d3a31"
+            "url": "https://farmanager.com/files/Far30b5888.x86.20210919.7z",
+            "hash": "142f5ccd5eb4714a3e4a14da3dc851ee17def944ac8a9086cc510dc79e29d631"
         }
     },
+    "bin": "far.exe",
     "checkver": {
         "url": "https://farmanager.com/download.php",
-        "re": "files/Far(?<version>[b\\d]+).x64.(?<date>\\d+).7z"
+        "regex": "files/Far([b\\d]+)\\.x64\\.(?<date>\\d+)\\.7z"
     },
     "autoupdate": {
         "architecture": {
@@ -29,6 +30,5 @@
                 "url": "https://farmanager.com/files/Far$version.x86.$matchDate.7z"
             }
         }
-    },
-    "bin": "far.exe"
+    }
 }

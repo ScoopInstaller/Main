@@ -1,16 +1,16 @@
 {
-    "version": "0.123.3",
+    "version": "0.183.0",
     "description": "Release automation tool for Go projects.",
     "homepage": "https://goreleaser.com",
     "license": "MIT",
     "architecture": {
-        "32bit": {
-            "url": "https://github.com/goreleaser/goreleaser/releases/download/v0.123.3/goreleaser_Windows_i386.zip",
-            "hash": "4126cdf363e5c0e8f2dcb69b282c14386bf4242b576df446e3ed32948c6ba5a2"
-        },
         "64bit": {
-            "url": "https://github.com/goreleaser/goreleaser/releases/download/v0.123.3/goreleaser_Windows_x86_64.zip",
-            "hash": "0178be8a133a22534328d049e4cea81c4d3c3f0e1c8e3cea1c2c6f45a2503d01"
+            "url": "https://github.com/goreleaser/goreleaser/releases/download/v0.183.0/goreleaser_Windows_x86_64.zip",
+            "hash": "cd41158809713f51e7c0459ec4f5a65edcda56c618f53db87df66307884d807c"
+        },
+        "32bit": {
+            "url": "https://github.com/goreleaser/goreleaser/releases/download/v0.183.0/goreleaser_Windows_i386.zip",
+            "hash": "f7799b70aaec6498db76c0cd90b2ae1266b94b0bcef7b8404e9126ca7e8b96fc"
         }
     },
     "bin": "goreleaser.exe",
@@ -19,15 +19,15 @@
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://github.com/goreleaser/goreleaser/releases/download/v$version/goreleaser_Windows_i386.zip"
-            },
             "64bit": {
                 "url": "https://github.com/goreleaser/goreleaser/releases/download/v$version/goreleaser_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/goreleaser/goreleaser/releases/download/v$version/goreleaser_Windows_i386.zip"
             }
         },
         "hash": {
-            "url": "$baseurl/goreleaser_checksums.txt"
+            "url": "$baseurl/checksums.txt"
         }
     }
 }

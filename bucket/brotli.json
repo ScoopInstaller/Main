@@ -1,28 +1,28 @@
 {
-    "version": "1.0.7_5",
-    "homepage": "https://brotli.org/",
+    "version": "1.0.9_4",
     "description": "Lossless compression algorithm",
+    "homepage": "https://brotli.org/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://curl.haxx.se/windows/dl-7.67.0_5/brotli-1.0.7_5-win64-mingw.tar.xz",
-            "hash": "bbed3f3e1ab442e441c971ab9a88294b9ee7413ea0c5bfeb6d9081400666f8b3",
-            "extract_dir": "brotli-1.0.7-win64-mingw"
+            "url": "https://curl.haxx.se/windows/dl-7.79.1_4/brotli-1.0.9_4-win64-mingw.tar.xz",
+            "hash": "777663c9bbeee49962f67fcae678bf2820f77d913e80efbeb4086cc3ec08be2d",
+            "extract_dir": "brotli-1.0.9-win64-mingw"
         },
         "32bit": {
-            "url": "https://curl.haxx.se/windows/dl-7.67.0_5/brotli-1.0.7_5-win32-mingw.tar.xz",
-            "hash": "06e885286a2d34cc1889294e1c70eb6744936fe79771118eff2171828e8e572d",
-            "extract_dir": "brotli-1.0.7-win32-mingw"
+            "url": "https://curl.haxx.se/windows/dl-7.79.1_4/brotli-1.0.9_4-win32-mingw.tar.xz",
+            "hash": "e6c7b00b4f77897f3630cfa0a948fba51188cba2255f8c8670b8e506d79e62c5",
+            "extract_dir": "brotli-1.0.9-win32-mingw"
         }
     },
+    "pre_install": "Copy-Item \"$dir\\bin\\brotli.exe\" \"$dir\\bin\\unbrotli.exe\"",
     "bin": [
         "bin\\brotli.exe",
         "bin\\unbrotli.exe"
     ],
-    "pre_install": "Copy-Item \"$dir\\bin\\brotli.exe\" \"$dir\\bin\\unbrotli.exe\"",
     "checkver": {
         "url": "https://curl.haxx.se/windows/",
-        "re": "dl-(?<curl>[\\d._]+)/brotli-(?<version>[\\d._]+)-win64-mingw"
+        "regex": "dl-(?<curl>[\\d._]+)/brotli-(?<version>[\\d._]+)-win64-mingw"
     },
     "autoupdate": {
         "architecture": {
@@ -37,7 +37,7 @@
         },
         "hash": {
             "url": "$baseurl/hashes.txt",
-            "find": "SHA256\\($basename\\)=\\s+([a-fA-F\\d]{64})"
+            "regex": "SHA256\\($basename\\)=\\s+$sha256"
         }
     }
 }

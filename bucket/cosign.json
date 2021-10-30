@@ -1,0 +1,24 @@
+{
+    "version": "1.2.1",
+    "description": "Container Signing, Verification and Storage in an OCI registry.",
+    "homepage": "https://github.com/sigstore/cosign",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sigstore/cosign/releases/download/v1.2.1/cosign-windows-amd64.exe#/cosign.exe",
+            "hash": "617e219b322bb26c2e3cee0310a817469b23c902b7ec286196ea6e707cced3b6"
+        }
+    },
+    "bin": "cosign.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sigstore/cosign/releases/download/v$version/cosign-windows-amd64.exe#/cosign.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/cosign_checksums.txt"
+        }
+    }
+}

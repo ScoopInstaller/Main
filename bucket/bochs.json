@@ -1,37 +1,30 @@
 {
+    "version": "2.7",
+    "description": "IA-32 (x86) PC emulator written in C++",
     "homepage": "http://bochs.sourceforge.net/",
-    "description": "Open source IA-32 (x86) PC emulator written in C++",
-    "version": "2.6.10",
     "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.6.10/bochs-2.6.10-win64.zip",
-            "hash": "sha1:23f49ca8e0bb2d5ff94e68e4fdaa9e04e1752deb",
-            "bin": [
-                "bochs-win64.exe",
-                "bochsdbg-win64.exe"
-            ]
-        },
-        "32bit": {
-            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.6.10/bochs-p4-smp-2.6.10-win32.zip",
-            "hash": "sha1:b9b259c9f90e65c015aa3cbbd4c1a6471b801ab2",
-            "bin": [
-                "bochs-p4-smp.exe",
-                "bochsdbg-p4-smp.exe"
-            ]
+            "url": "https://downloads.sourceforge.net/project/bochs/bochs/2.7/Bochs-win64-2.7.exe#/dl.7z",
+            "hash": "sha1:a8e4e96716f90a892d23ca4873a7240eea6840bd"
         }
     },
+    "bin": [
+        "bochs.exe",
+        "bochsdbg.exe",
+        "bxhub.exe",
+        "bximage.exe",
+        "niclist.exe",
+        "sb16ctrl.exe"
+    ],
     "checkver": {
         "url": "http://bochs.sourceforge.net/getcurrent.html",
-        "re": "<b>Latest release:<\\/b> Bochs ([\\d.]+)"
+        "regex": "<b>Latest release:<\\/b> Bochs ([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/bochs-$version-win64.zip"
-            },
-            "32bit": {
-                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/bochs-p4-smp-$version-win32.zip"
+                "url": "https://downloads.sourceforge.net/project/bochs/bochs/$version/Bochs-win64-$version.exe#/dl.7z"
             }
         }
     }

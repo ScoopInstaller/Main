@@ -1,34 +1,23 @@
 {
-    "##": "Check https://www.apachelounge.com/viewtopic.php?t=7919 for details about this pre-compiled binary package of memcached.",
-    "homepage": "https://memcached.org/",
-    "description": "Distributed memory object caching system.",
-    "version": "1.5.20",
+    "##": "Check https://www.apachelounge.com/viewtopic.php?t=7919 for details about this pre-compiled binary package of memcached. memcached is built with both libevent 2.1 and 2.0 because libevent 2.1 is not compatible with Win7.",
+    "version": "1.6.12",
+    "description": "Distributed memory object caching system",
+    "homepage": "https://memcached.org",
     "license": "BSD-3-Clause",
-    "url": "https://github.com/nono303/memcached/archive/memcache-1.5.20.zip",
-    "hash": "eb37fd2522adfe361541050540e0ef09ee7a9fce038670b2e3fa888ec39590ee",
     "notes": "This package does not require Cygwin to run (all dependencies are included).",
+    "url": "https://github.com/nono303/memcached/archive/1.6.12.zip",
+    "hash": "b7eb101d270fa2b49ec25ea3b3e86d69fdc41a272911210d4ee8f1d7ae2a055d",
     "architecture": {
-        "32bit": {
-            "extract_dir": "memcached-memcache-1.5.20\\cygwin\\x86"
-        },
         "64bit": {
-            "extract_dir": "memcached-memcache-1.5.20\\cygwin\\x64"
+            "extract_dir": "memcached-1.6.12\\libevent-2.1\\x64"
+        },
+        "32bit": {
+            "extract_dir": "memcached-1.6.12\\libevent-2.1\\x86"
         }
     },
     "bin": "memcached.exe",
     "checkver": {
-        "url": "https://github.com/nono303/memcached/releases",
-        "regex": "tag/memcache-([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://github.com/nono303/memcached/archive/memcache-$version.zip",
-        "architecture": {
-            "32bit": {
-                "extract_dir": "memcached-memcache-$version\\cygwin\\x86"
-            },
-            "64bit": {
-                "extract_dir": "memcached-memcache-$version\\cygwin\\x64"
-            }
-        }
+        "url": "https://raw.githubusercontent.com/nono303/memcached/master/README.md",
+        "regex": "version\\s+\\[([\\d.]+)\\]"
     }
 }

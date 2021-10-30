@@ -1,0 +1,38 @@
+{
+    "version": "8.2",
+    "description": "Minimal Racket installation, without DrRacket/docs",
+    "homepage": "https://racket-lang.org",
+    "license": "LGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.racket-lang.org/installers/8.2/racket-minimal-8.2-x86_64-win32.exe#/dl.7z",
+            "hash": "de212fde1e9f3e7c9ec08d84192bd2a4b64663835e8d6956d1985f318b7a6b74"
+        },
+        "32bit": {
+            "url": "https://mirror.racket-lang.org/installers/8.2/racket-minimal-8.2-i386-win32.exe#/dl.7z",
+            "hash": "9aeb795fba2a59b18eb6989f3fc402cad2452f1273dd346daaab0f11bc4406de"
+        }
+    },
+    "bin": [
+        "racket.exe",
+        "raco.exe"
+    ],
+    "checkver": {
+        "url": "https://download.racket-lang.org/",
+        "regex": "Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.racket-lang.org/installers/$version/racket-minimal-$version-x86_64-win32.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://mirror.racket-lang.org/installers/$version/racket-minimal-$version-i386-win32.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "https://download.racket-lang.org/releases/$version/",
+            "regex": "$basename.*?\"checksum\">$sha1</span>"
+        }
+    }
+}

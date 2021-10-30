@@ -1,0 +1,26 @@
+{
+    "version": "0.3.8",
+    "description": "A high performance csv viewer with cjk/emoji support",
+    "homepage": "https://github.com/wfxr/csview",
+    "license": "MIT|Apache-2.0",
+    "suggest": {
+        "xsv": "xsv"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/wfxr/csview/releases/download/v0.3.8/csview-v0.3.8-x86_64-pc-windows-msvc.zip",
+            "hash": "4b51dd6d1c9dbcbd081de3ad3d43db92a296b753903e73c348a556e2cebda254",
+            "extract_dir": "csview-v0.3.8-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": "csview.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/wfxr/csview/releases/download/v$version/csview-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "csview-v$version-x86_64-pc-windows-msvc"
+            }
+        }
+    }
+}

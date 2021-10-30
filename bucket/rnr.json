@@ -1,0 +1,28 @@
+{
+    "version": "0.3.0",
+    "description": "A command-line tool to batch rename files and directories",
+    "homepage": "https://github.com/ChuckDaniels87/rnr",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ChuckDaniels87/rnr/releases/download/v0.3.0/rnr-v0.3.0-x86_64-pc-windows-msvc.zip",
+            "hash": "a0f181cff772dbc962066e683949cdefc69fd4d526564fb63d8c987bbe882538"
+        },
+        "32bit": {
+            "url": "https://github.com/ChuckDaniels87/rnr/releases/download/v0.3.0/rnr-v0.3.0-i686-pc-windows-msvc.zip",
+            "hash": "b1f317ba0088dd3f5ff248358a6d7dc0985a0538215cdfa08bc4975973359a2d"
+        }
+    },
+    "bin": "rnr.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ChuckDaniels87/rnr/releases/download/v$version/rnr-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/ChuckDaniels87/rnr/releases/download/v$version/rnr-v$version-i686-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

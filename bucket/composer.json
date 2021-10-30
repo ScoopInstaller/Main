@@ -1,10 +1,17 @@
 {
-    "version": "1.9.1",
-    "homepage": "https://getcomposer.org/",
+    "version": "2.1.10",
     "description": "Dependency Manager for PHP",
+    "homepage": "https://getcomposer.org/",
     "license": "MIT",
-    "url": "https://getcomposer.org/download/1.9.1/composer.phar",
-    "hash": "1f210b9037fcf82670d75892dfc44400f13fe9ada7af9e787f93e50e3b764111",
+    "notes": "'composer selfupdate' is aliased to 'scoop update composer'",
+    "suggest": {
+        "PHP": [
+            "php",
+            "php-nts"
+        ]
+    },
+    "url": "https://getcomposer.org/download/2.1.10/composer.phar",
+    "hash": "cb8b04cc6a6fb167403f7495e8539650eb555657aa48873f115383bcd8f0b18d",
     "pre_install": [
         "@(",
         "    'if ($args.length -eq 1 -and ($args -eq \"selfupdate\" -or $args -eq \"self-update\")) { & scoop update composer }'",
@@ -16,21 +23,12 @@
         "}"
     ],
     "bin": "composer.ps1",
+    "env_add_path": "home\\vendor\\bin",
     "env_set": {
         "COMPOSER_HOME": "$persist_dir\\home"
     },
-    "env_add_path": "home\\vendor\\bin",
     "persist": "home",
-    "suggest": {
-        "PHP": [
-            "php",
-            "php-nts"
-        ]
-    },
-    "notes": "'composer selfupdate' is aliased to 'scoop update composer'",
-    "checkver": {
-        "github": "https://github.com/composer/composer"
-    },
+    "checkver": "Latest: <strong>\\s*([\\d.]+)\\s*</strong>",
     "autoupdate": {
         "url": "https://getcomposer.org/download/$version/composer.phar",
         "hash": {

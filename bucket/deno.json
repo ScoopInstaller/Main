@@ -1,25 +1,23 @@
 {
-    "homepage": "https://github.com/denoland/deno",
-    "description": "A secure TypeScript runtime on V8",
-    "version": "0.27.0",
+    "version": "1.15.3",
+    "description": "A secure runtime for JavaScript and TypeScript",
+    "homepage": "https://deno.land",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/denoland/deno/releases/download/v0.27.0/deno_win_x64.zip",
-            "hash": "429226cf5ea17cc6a4c1a2dff9910d3e0b53b6f502185d7507e1612d026d1fd9"
+            "url": "https://github.com/denoland/deno/releases/download/v1.15.3/deno-x86_64-pc-windows-msvc.zip",
+            "hash": "8f19eb888a4a2a9748cefc4fa0cedc13778f7ad3174fd544bb0a9e85896d31a6"
         }
     },
-    "bin": [
-        [
-            "deno.exe",
-            "deno"
-        ]
-    ],
-    "checkver": "github",
+    "bin": "deno.exe",
+    "post_install": "& \"$dir\\deno.exe\" upgrade",
+    "checkver": {
+        "github": "https://github.com/denoland/deno"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/denoland/deno/releases/download/v$version/deno_win_x64.zip"
+                "url": "https://github.com/denoland/deno/releases/download/v$version/deno-x86_64-pc-windows-msvc.zip"
             }
         }
     }
