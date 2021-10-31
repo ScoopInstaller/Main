@@ -1,16 +1,16 @@
 {
-    "version": "2.1.19.1138",
+    "version": "2.1.19.1142",
     "description": "A Simple ACME Client",
     "homepage": "https://www.win-acme.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.19.1138/win-acme.v2.1.19.1138.x64.trimmed.zip",
-            "hash": "7dd85cac6ce5eefb52114ac2e6d041ababfcdb8534c521c1537039d15c10ff31"
+            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.19.1142/win-acme.v2.1.19.1142.x64.trimmed.zip",
+            "hash": "9b25c9ffa8ed4ae6034661d5e53e6b19a465fc94cc6d948c5a329edaf6037d43"
         },
         "32bit": {
-            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.19.1138/win-acme.v2.1.19.1138.x86.trimmed.zip",
-            "hash": "9b61bf8167649f62b982fdfcf9f6506fa152a8f43600f2ae5d875ca4df1dc00b"
+            "url": "https://github.com/win-acme/win-acme/releases/download/v2.1.19.1142/win-acme.v2.1.19.1142.x86.trimmed.zip",
+            "hash": "0bb2079636427bfe365db783e8b642fa1577dc243c68248e1244ed9888d60149"
         }
     },
     "pre_install": "if (!(Test-Path \"$persist_dir\\settings.json\")) { Copy-Item \"$dir\\settings_default.json\" \"$dir\\settings.json\" }",
@@ -23,10 +23,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchHead/win-acme.v$version.x64.trimmed.zip"
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$version.x64.trimmed.zip"
             },
             "32bit": {
-                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchHead/win-acme.v$version.x86.trimmed.zip"
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$version.x86.trimmed.zip"
             }
         }
     }
