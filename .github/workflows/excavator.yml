@@ -1,0 +1,20 @@
+name: Excavator
+
+on:
+    workflow_dispatch:
+    schedule:
+        # run every 8 hours 
+        - cron: '0 */8 * * *'
+
+jobs:
+    excavate:
+        name: Excavate
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Excavate
+              # adds support for workflow_dispatch:
+              uses: kidonng/Scoop-GithubActions@stable
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  SKIP_UPDATED: '1'
