@@ -12,8 +12,9 @@
             "pre_install": [
                 "# The trailing backslash(\\) in $dir\\\\ is required by lessmsi.",
                 "Invoke-ExternalCommand lessmsi -ArgumentList @('x', \"$dir\\crc-windows-amd64.msi\", \"$dir\\\") | Out-Null",
-                "Invoke-ExternalCommand cmd -ArgumentList @('/c', 'copy', '/b', \"`\"$dir\\SourceDir\\CodeReady Containers\\crc_hyperv_4.9.0.crcbundle.*`\"\", \"`\"$dir\\crc_hyperv_4.9.0.crcbundle`\"\", '>nul', '2>&1') | Out-Null",
-                "Remove-Item \"$dir\\SourceDir\\CodeReady Containers\\crc_hyperv_4.9.0.crcbundle.*\", \"$dir\\*.cab\", \"$dir\\*.msi\" | Out-Null",
+                "$tail = $version.Split('-')[1]",
+                "Invoke-ExternalCommand cmd -ArgumentList @('/c', 'copy', '/b', \"`\"$dir\\SourceDir\\CodeReady Containers\\crc_hyperv_$tail.crcbundle.*`\"\", \"`\"$dir\\crc_hyperv_$tail.crcbundle`\"\", '>nul', '2>&1') | Out-Null",
+                "Remove-Item \"$dir\\SourceDir\\CodeReady Containers\\crc_hyperv_$tail.crcbundle.*\", \"$dir\\*.cab\", \"$dir\\*.msi\" | Out-Null",
                 "Copy-Item \"$dir\\SourceDir\\CodeReady Containers\\*\" \"$dir\" -Force -Recurse | Out-Null",
                 "Remove-Item \"$dir\\SourceDir\" -Force -Recurse | Out-Null"
             ]
