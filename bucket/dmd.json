@@ -6,13 +6,24 @@
     "url": "http://downloads.dlang.org/releases/2.x/2.098.0/dmd.2.098.0.windows.7z",
     "hash": "621c3786491576f1d36b2c5d93f5cd299c2b57c70331fcfadeb801a9aae4fa05",
     "extract_dir": "dmd2",
-    "bin": [
-        "windows\\bin\\ddemangle.exe",
-        "windows\\bin\\dmd.exe",
-        "windows\\bin\\dub.exe",
-        "windows\\bin\\dustmite.exe",
-        "windows\\bin\\rdmd.exe"
-    ],
+    "architecture": {
+        "64bit": {
+             "bin": [
+               "windows\\bin\\ddemangle.exe",
+               "windows\\bin64\\dmd.exe",
+               "windows\\bin64\\dub.exe",
+               "windows\\bin\\dustmite.exe",
+               "windows\\bin\\rdmd.exe" ]
+        },
+        "32bit": {
+            "bin": [
+               "windows\\bin\\ddemangle.exe",
+               "windows\\bin\\dmd.exe",
+               "windows\\bin\\dub.exe",
+               "windows\\bin\\dustmite.exe",
+               "windows\\bin\\rdmd.exe" ]
+        }
+    },
     "checkver": {
         "url": "http://downloads.dlang.org/releases/LATEST",
         "regex": "([\\d.]+)"
@@ -21,3 +32,4 @@
         "url": "http://downloads.dlang.org/releases/$majorVersion.x/$version/dmd.$version.windows.7z"
     }
 }
+
