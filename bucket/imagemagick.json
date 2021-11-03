@@ -6,12 +6,12 @@
     "depends": "ffmpeg",
     "architecture": {
         "64bit": {
-            "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-portable-Q16-x64.zip",
-            "hash": "946f3ff4a3a25621820cedf020796c897a987830bf0e471ec97611f25bd24215"
+            "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-portable-Q16-HDRI-x64.zip",
+            "hash": "b9624838865c747e810e19da7f1a9ba915aed93cbbad2dc4615251e28aa9e649"
         },
         "32bit": {
-            "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-portable-Q16-x86.zip",
-            "hash": "d336cd19c6acb7fa5cddfd476a1f814631e3343e1fbd31310b1954bde85aa129"
+            "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-portable-Q16-HDRI-x86.zip",
+            "hash": "366bab6ef6166412f2a456177026bb93202e265d0399314ffdc4820af277a065"
         }
     },
     "bin": [
@@ -31,14 +31,17 @@
         "montage.exe",
         "stream.exe"
     ],
-    "checkver": "The current release is ImageMagick <a.*?>([\\d.p-]+)</a>",
+    "checkver": {
+        "url": "https://download.imagemagick.org/ImageMagick/download/binaries/?C=N;O=D",
+        "regex": "ImageMagick-([\\d.-]+)-Q16-HDRI-x64-dll\\.exe\\.asc"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-$matchHead-portable-Q16-x64.zip"
+                "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-$matchHead-portable-Q16-HDRI-x64.zip"
             },
             "32bit": {
-                "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-$matchHead-portable-Q16-x86.zip"
+                "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-$matchHead-portable-Q16-HDRI-x86.zip"
             }
         },
         "hash": {
