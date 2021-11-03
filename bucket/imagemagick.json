@@ -6,14 +6,15 @@
     "depends": "ffmpeg",
     "architecture": {
         "64bit": {
-            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-portable-Q16-x64.zip",
-            "hash": "946f3ff4a3a25621820cedf020796c897a987830bf0e471ec97611f25bd24215"
+            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-13-Q16-HDRI-x64-dll.exe",
+            "hash": "c4607f68794f9e8e5ed73b1c0a295aae8e612c4b63b163e65c5f2669068b78d0"
         },
         "32bit": {
-            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-portable-Q16-x86.zip",
-            "hash": "d336cd19c6acb7fa5cddfd476a1f814631e3343e1fbd31310b1954bde85aa129"
+            "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-13-Q16-HDRI-x86-dll.exe",
+            "hash": "477bf261a8ad6d3034e0b6f58ce7abdeb9a2c6186c9caef34e64fe9e24eafa42"
         }
     },
+    "innosetup": true,
     "bin": [
         "compare.exe",
         "composite.exe",
@@ -31,14 +32,23 @@
         "montage.exe",
         "stream.exe"
     ],
+    "env_set": {
+        "MAGICK_HOME": "$dir",
+        "MAGICK_CODER_MODULE_PATH": "$dir\\modules\\coders"
+    },
+    "env_add_path": ".",
+    "post_install": [
+        "Rename-Item $dir\\ffmpeg.exe $dir\\ffmpeg.exe.old"
+    ],
+    "notes": "The bundled ffmpeg is outdated and has been renamed to ffmpeg.exe.old - scoop will install the latest ffmpeg instead.",
     "checkver": "The current release is ImageMagick <a.*?>([\\d.p-]+)</a>",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$matchHead-portable-Q16-x64.zip"
+                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$matchHead$matchTail-Q16-HDRI-x64-dll.exe"
             },
             "32bit": {
-                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$matchHead-portable-Q16-x86.zip"
+                "url": "https://www.imagemagick.org/download/binaries/ImageMagick-$matchHead$matchTail-Q16-HDRI-x86-dll.exe"
             }
         },
         "hash": {
