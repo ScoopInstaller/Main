@@ -3,7 +3,9 @@
     "description": "Create, edit, compose, and convert 200+ of bitmap images formats.",
     "homepage": "https://imagemagick.org/",
     "license": "ImageMagick",
-    "depends": "ffmpeg",
+    "suggest": {
+        "ffmpeg": "ffmpeg"
+    },
     "architecture": {
         "64bit": {
             "url": "https://www.imagemagick.org/download/binaries/ImageMagick-7.1.0-13-Q16-HDRI-x64-dll.exe",
@@ -40,7 +42,7 @@
     "post_install": [
         "Rename-Item $dir\\ffmpeg.exe $dir\\ffmpeg.exe.old"
     ],
-    "notes": "The bundled ffmpeg is outdated and has been renamed to ffmpeg.exe.old - scoop will install the latest ffmpeg instead.",
+    "notes": "The bundled ffmpeg is outdated and has been renamed to ffmpeg.exe.old - if you need it, run 'scoop install ffmpeg' for the latest version",
     "checkver": {
         "url": "https://download.imagemagick.org/ImageMagick/download/binaries/?C=N;O=D",
         "regex": "ImageMagick-([\\d.-]+)-Q16-HDRI-x64-dll\\.exe\\.asc"
