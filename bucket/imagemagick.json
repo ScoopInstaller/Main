@@ -17,29 +17,14 @@
         }
     },
     "innosetup": true,
-    "bin": [
-        "compare.exe",
-        "composite.exe",
-        "conjure.exe",
-        [
-            "convert.exe",
-            "imconvert"
-        ],
-        "dcraw.exe",
-        "identify.exe",
-        "IMDisplay.exe",
-        "magick.exe",
-        "mogrify.exe",
-        "montage.exe",
-        "stream.exe"
-    ],
     "env_set": {
         "MAGICK_HOME": "$dir",
         "MAGICK_CODER_MODULE_PATH": "$dir\\modules\\coders"
     },
     "env_add_path": ".",
     "post_install": [
-        "Rename-Item $dir\\ffmpeg.exe $dir\\ffmpeg.exe.old"
+        "Rename-Item $dir\\ffmpeg.exe $dir\\ffmpeg.exe.old",
+        "Rename-Item $dir\\convert.exe $dir\\imconvert.exe"
     ],
     "notes": "- The bundled ffmpeg is outdated and has been renamed to ffmpeg.exe.old - if you need it, run 'scoop install ffmpeg' for the latest version.\n- 'convert.exe' has been renamed to 'imconvert.exe' so that it does not conflict with the built-in command.\n",
     "checkver": {
