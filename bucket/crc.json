@@ -10,7 +10,8 @@
             "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/1.34.0/crc-windows-installer.zip",
             "hash": "4c136278f1b13c22fb6941f6e7e0462f951a88bef19d94683c8db0c49e00bf50",
             "pre_install": [
-                "# The trailing backslash(\\) in $dir\\\\ is required by lessmsi.",
+                "# The trailing backslash(\\) in $dir\\ is required by lessmsi.",
+                "# '>nul', '2>&1' sets cmd stdout to $null, and stderr to stdout",
                 "Invoke-ExternalCommand lessmsi -ArgumentList @('x', \"$dir\\crc-windows-amd64.msi\", \"$dir\\\") | Out-Null",
                 "$tail = $version.Split('-')[1]",
                 "Invoke-ExternalCommand cmd -ArgumentList @('/c', 'copy', '/b', \"`\"$dir\\SourceDir\\CodeReady Containers\\crc_hyperv_$tail.crcbundle.*`\"\", \"`\"$dir\\crc_hyperv_$tail.crcbundle`\"\", '>nul', '2>&1') | Out-Null",
