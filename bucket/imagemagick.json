@@ -41,7 +41,10 @@
         "Rename-Item $dir\\ffmpeg.exe $dir\\ffmpeg.exe.old"
     ],
     "notes": "The bundled ffmpeg is outdated and has been renamed to ffmpeg.exe.old - scoop will install the latest ffmpeg instead.",
-    "checkver": "The current release is ImageMagick <a.*?>([\\d.p-]+)</a>",
+    "checkver": {
+        "url": "https://download.imagemagick.org/ImageMagick/download/binaries/?C=N;O=D",
+        "regex": "ImageMagick-([\\d.-]+)-Q16-HDRI-x64-dll\\.exe\\.asc"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
