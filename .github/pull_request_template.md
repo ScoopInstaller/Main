@@ -3,7 +3,7 @@
 <!--
   By opening this PR you confirm that you have searched for similar issues/PRs here already.
   Failing to do so will most likely result in closing of this PR without any explanation.
-  It is also mandatory to open a relevant issue (either Package Request or Bug Report) for 
+  It is also mandatory to open a relevant issue (either Package Request or Bug Report) for
   discussion with the maintainers, before creating any new PR.
 -->
 
