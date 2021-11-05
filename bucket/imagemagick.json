@@ -3,33 +3,26 @@
     "description": "Create, edit, compose, and convert 200+ of bitmap images formats.",
     "homepage": "https://imagemagick.org/",
     "license": "ImageMagick",
-    "depends": "ffmpeg",
     "architecture": {
         "64bit": {
-            "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-portable-Q16-HDRI-x64.zip",
-            "hash": "b9624838865c747e810e19da7f1a9ba915aed93cbbad2dc4615251e28aa9e649"
+            "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-13-Q16-HDRI-x64-dll.exe",
+            "hash": "c4607f68794f9e8e5ed73b1c0a295aae8e612c4b63b163e65c5f2669068b78d0"
         },
         "32bit": {
-            "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-portable-Q16-HDRI-x86.zip",
-            "hash": "366bab6ef6166412f2a456177026bb93202e265d0399314ffdc4820af277a065"
+            "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-7.1.0-13-Q16-HDRI-x86-dll.exe",
+            "hash": "477bf261a8ad6d3034e0b6f58ce7abdeb9a2c6186c9caef34e64fe9e24eafa42"
         }
     },
-    "bin": [
-        "compare.exe",
-        "composite.exe",
-        "conjure.exe",
-        "convert.exe",
-        [
-            "convert.exe",
-            "imconvert"
-        ],
-        "dcraw.exe",
-        "identify.exe",
-        "IMDisplay.exe",
-        "magick.exe",
-        "mogrify.exe",
-        "montage.exe",
-        "stream.exe"
+    "innosetup": true,
+    "env_set": {
+        "MAGICK_HOME": "$dir",
+        "MAGICK_CODER_MODULE_PATH": "$dir\\modules\\coders"
+    },
+    "env_add_path": ".",
+    "post_install": "Rename-Item $dir\\ffmpeg.exe $dir\\ffmpeg.exe.old",
+    "notes": [
+        "- The bundled ffmpeg has been renamed to 'ffmpeg.exe.old' to prevent conflict with a standalone ffmpeg installation - if you need it for ImageMagick tools, rename it back to 'ffmpeg.exe'.",
+        "- 'convert.exe' is deprecated in v7 (it also conflicts with the builtin Windows 'convert' utility). Use 'magick convert ...' instead."
     ],
     "checkver": {
         "url": "https://download.imagemagick.org/ImageMagick/download/binaries/?C=N;O=D",
@@ -38,10 +31,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-$matchHead-portable-Q16-HDRI-x64.zip"
+                "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-$matchHead$matchTail-Q16-HDRI-x64-dll.exe"
             },
             "32bit": {
-                "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-$matchHead-portable-Q16-HDRI-x86.zip"
+                "url": "https://download.imagemagick.org/ImageMagick/download/binaries/ImageMagick-$matchHead$matchTail-Q16-HDRI-x86-dll.exe"
             }
         },
         "hash": {
