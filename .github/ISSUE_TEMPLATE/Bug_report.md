@@ -5,9 +5,15 @@ title: ""
 labels: "bug"
 ---
 
+<!--
+  By opening this issue you confirm that you have searched for similar issues/PRs here already.
+  Failing to do so will most likely result in closing of this issue without any explanation.
+  Incomplete form details below might also result in closing of the issue.
+-->
+
 ## Bug Report
 
-**Package Name:** [PLACEHOLDER]
+**Package Name:** [name of package which has bug(s)]
 
 ### Current Behaviour
 
@@ -27,7 +33,10 @@ labels: "bug"
 
 ### System details
 
-**Windows version:** [PLACEHOLDER]
-**OS arch (32 or 64 bit):** [PLACEHOLDER]
-**PowerShell version:** [PLACEHOLDER]
-**Additional software:** [PLACEHOLDER]
+**Windows version:** [e.g. 7, 8, 10]
+
+**OS architecture:** [e.g. 32bit, 64bit]
+
+**PowerShell version:** [output of `"$($PSVersionTable.PSVersion)"`]
+
+**Additional software:** [(optional) e.g. ConEmu, Git]
