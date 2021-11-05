@@ -16,10 +16,28 @@
             "hash": "142f5ccd5eb4714a3e4a14da3dc851ee17def944ac8a9086cc510dc79e29d631"
         }
     },
+    "pre_install": [
+        "$ini = 'Far.exe.ini'",
+        "if (!(Test-Path \"$persist_dir\\$ini\")) {",
+        "    Copy-Item \"$dir\\Far.exe.example.ini\" \"$dir\\$ini\"",
+        "    (Get-Content \"$dir\\$ini\") -replace ';(UseSystemProfiles=)1', '${1}0' | Set-Content \"$dir\\$ini\" -Encoding Ascii",
+        "        # Migrate from system wide configuration",
+        "    $env:LOCALAPPDATA, $env:APPDATA | ForEach-Object {",
+        "        if (Test-Path \"$_\\Far Manager\") {",
+        "            warn \"Copying system wide profile from $_ into $dir\"",
+        "            Copy-Item \"$_\\Far Manager\\*\" \"$dir\" -Recurse -Force",
+        "        }",
+        "    }",
+        "}"
+    ],
     "bin": "far.exe",
+    "persist": [
+        "Profile",
+        "Far.exe.ini"
+    ],
     "checkver": {
         "url": "https://farmanager.com/download.php",
-        "regex": "files/Far([b\\d]+)\\.x64\\.(?<date>\\d+)\\.7z"
+        "regex": "files/Far(?<version>[b\\d]+).x64.(?<date>\\d+).7z"
     },
     "autoupdate": {
         "architecture": {
