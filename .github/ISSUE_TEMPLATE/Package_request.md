@@ -5,11 +5,19 @@ title: "[Request] "
 labels: "package-request"
 ---
 
+<!--
+  By opening this issue you confirm that you have searched for similar issues/PRs here already.
+  Failing to do so will most likely result in closing of this issue without any explanation.
+  Incomplete form details below might also result in closing of the issue.
+-->
+
 ## Package Request
 
 ### Criteria
 
 For a package to be acceptable in the Main bucket, it should be:
+
+<!-- All items need to be checked. -->
 
 - [ ] a non-GUI tool
 - [ ] a reasonably well-known and widely used developer tool
@@ -19,10 +27,13 @@ For a package to be acceptable in the Main bucket, it should be:
 
 ### Information
 
-**Name:** [PLACEHOLDER]
+**Name:** [name of new package]
 
-**Description:** [PLACEHOLDER]
+**Description:** [clear and concise details of what it is]
 
-**Homepage:** [PLACEHOLDER]
+**Homepage:** [a URL/link]
 
-**Download link(s):** [PLACEHOLDER]
+**Download link(s):** [URL(s)/link(s)]
+
+**Some indication of popularity/repute:** [GitHub stars/software reviews etc.]
+
