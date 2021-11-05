@@ -28,7 +28,20 @@
     ],
     "persist": "mega.ini",
     "checkver": {
-        "url": "https://megatools.megous.com/builds/NEWS",
-        "regex": "megatools\\s+([\\d.]+)\\s+-"
+        "url": "https://megatools.megous.com/builds/",
+        "regex": "megatools-([\\d.]+)-win32.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://megatools.megous.com/builds/megatools-$version-win64.zip",
+                "extract_dir": "megatools-$version-win64"
+            },
+            "32bit": {
+                "url": "https://megatools.megous.com/builds/megatools-$version-win32.zip",
+                "extract_dir": "megatools-$version-win32"
+            }
+
+        }
     }
 }
