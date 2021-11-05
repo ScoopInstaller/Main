@@ -1,0 +1,27 @@
+{
+    "version": "0.0.6",
+    "description": "A static analysis security scanner for CloudFormation code",
+    "homepage": "https://cfsec.dev",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aquasecurity/cfsec/releases/download/v0.0.6/cfsec-windows-amd64.exe#/cfsec.exe",
+            "hash": "5946b81471947886efa1497fa1773f054085d373e2d3b6bc21a3840f6b354504"
+        }
+    },
+    "bin": "cfsec.exe",
+    "checkver": {
+        "github": "https://github.com/aquasecurity/cfsec"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aquasecurity/cfsec/releases/download/v$version/cfsec-windows-amd64.exe#/cfsec.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/cfsec_checksums.txt"
+        }
+    }
+}
+
