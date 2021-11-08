@@ -1,8 +1,11 @@
 {
-    "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
-    "description": "Connect to a local or remote Oracle Database for development and production deployment.",
-    "license": "https://www.oracle.com/downloads/licenses/instant-client-lic.html",
     "version": "19.3.0.0.0",
+    "description": "Connect to a local or remote Oracle Database for development and production deployment.",
+    "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.oracle.com/downloads/licenses/instant-client-lic.html"
+    },
     "architecture": {
         "64bit": {
             "url": "https://download.oracle.com/otn_software/nt/instantclient/19300/instantclient-basic-windows.x64-19.3.0.0.0dbru.zip",
@@ -14,14 +17,14 @@
         }
     },
     "suggest": {
-       "Microsoft Visual Studio 2017 Redistributable": "vcredist2017"
+       "Visual C++ 2017 Redistributable": "extras/vcredist2017"
     },
     "extract_dir": "instantclient_19_3",
     "env_add_path": ".",
     "pre_install": "if (-not (Test-Path \"$dir\\network\\admin\")) { New-Item \"$dir\\network\\admin\" -ItemType Directory | Out-Null }",
     "persist": "network\\admin",
     "env_set": {
-        "TNS_ADMIN": "$persist_dir\\network\\admin"
+        "TNS_ADMIN": "network\\admin"
     },
     "checkver": {
         "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
