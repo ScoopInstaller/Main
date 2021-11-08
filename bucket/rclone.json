@@ -15,7 +15,12 @@
             "extract_dir": "rclone-v1.56.2-windows-386"
         }
     },
+    "pre_install": "New-Item -ItemType File \"$persist_dir\\rclone.conf\" -ErrorAction SilentlyContinue",
+    "uninstaller": {
+        "script": "Copy-Item \"$dir\\rclone.conf\" \"$persist_dir\\\" -Force"
+    },
     "bin": "rclone.exe",
+    "persist": "rclone.conf",
     "checkver": {
         "github": "https://github.com/rclone/rclone"
     },
