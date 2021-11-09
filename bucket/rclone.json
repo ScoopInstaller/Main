@@ -1,21 +1,24 @@
 {
-    "version": "1.56.2",
+    "version": "1.57.0",
     "description": "Sync files and directories to and from mulitple cloud / FTP / HTTP hosters.",
     "homepage": "https://rclone.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/rclone/rclone/releases/download/v1.56.2/rclone-v1.56.2-windows-amd64.zip",
-            "hash": "24affae5bf7188361d794c1a44445d719c3b7a511d69ba1e29f6cf7c97850030",
-            "extract_dir": "rclone-v1.56.2-windows-amd64"
+            "url": "https://github.com/rclone/rclone/releases/download/v1.57.0/rclone-v1.57.0-windows-amd64.zip",
+            "hash": "c4fe61892d40eb2a106bb1b59b0284cab20f7ec71ee6417fca03f15d062a257c",
+            "extract_dir": "rclone-v1.57.0-windows-amd64"
         },
         "32bit": {
-            "url": "https://github.com/rclone/rclone/releases/download/v1.56.2/rclone-v1.56.2-windows-386.zip",
-            "hash": "c307a8440f2c388425525b39d5ecfcd801c747330ed73d28e04cf65dc71caaa1",
-            "extract_dir": "rclone-v1.56.2-windows-386"
+            "url": "https://github.com/rclone/rclone/releases/download/v1.57.0/rclone-v1.57.0-windows-386.zip",
+            "hash": "02207a474093579fcf87ba000b9e42c762835e27505240ba263864e1825b81ef",
+            "extract_dir": "rclone-v1.57.0-windows-386"
         }
     },
     "pre_install": "if (!(Test-Path \"$persist_dir\\rclone.conf\")) { New-Item -ItemType File \"$dir\\rclone.conf\" | Out-Null }",
+    "uninstaller": {
+        "script": "Copy-Item \"$dir\\rclone.conf\" \"$persist_dir\\\" -Force"
+    },
     "bin": "rclone.exe",
     "persist": "rclone.conf",
     "checkver": {
