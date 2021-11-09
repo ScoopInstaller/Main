@@ -4,10 +4,7 @@
     "homepage": "https://questdb.io",
     "license": "Apache-2.0",
     "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
+        "JDK": "java/openjdk"
     },
     "architecture": {
         "64bit": {
@@ -26,7 +23,11 @@
         "github": "https://github.com/questdb/questdb"
     },
     "autoupdate": {
-        "url": "https://github.com/questdb/questdb/releases/download/$version/questdb-$version-no-jre-bin.tar.gz",
-        "extract_dir": "questdb-$version-no-jre-bin"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/questdb/questdb/releases/download/$version/questdb-$version-no-jre-bin.tar.gz",
+                "extract_dir": "questdb-$version-no-jre-bin"
+            }
+        }
     }
 }
