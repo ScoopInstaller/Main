@@ -25,7 +25,7 @@
     "uninstaller": {
         "script": [
             "$instantclient = versiondir 'oracle-instant-client' 'current'",
-            "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$instantclient\\$($_.Name)\" -Recurse -Force -ErrorAction Ignore }"
+            "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$instantclient\\$($_.Name)\" -Recurse -Force -ErrorAction SilentlyContinue }"
         ]
     },
     "checkver": {
