@@ -21,13 +21,13 @@
             "  New-Item -Path \"$7zcodecs\" -ItemType Directory | Out-Null",
             "  New-Item -Path \"$(versiondir '7zip' 'current')\\Codecs\" -Value \"$7zcodecs\" -ItemType Junction | Out-Null",
             "}",
-            "Copy-Item -Path \"$dir\\*\" -Destination \"$7zcodecs\" -Recurse -Force -ErrorAction Ignore"
+            "Copy-Item -Path \"$dir\\*\" -Destination \"$7zcodecs\" -Recurse -Force -ErrorAction SilentlyContinue"
         ]
     },
     "uninstaller": {
         "script": [
             "$7zcodecs = \"$(persistdir '7zip' $global)\\Codecs\"",
-            "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$7zcodecs\\$($_.Name)\" -Recurse -Force -ErrorAction Ignore }"
+            "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$7zcodecs\\$($_.Name)\" -Recurse -Force -ErrorAction SilentlyContinue }"
         ]
     },
     "checkver": "Plugin version: ([\\d.]+)",
