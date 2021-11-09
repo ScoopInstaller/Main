@@ -27,7 +27,7 @@
     "uninstaller": {
         "script": [
             "$7zcodecs = \"$(persistdir '7zip' $global)\\Codecs\"",
-            "Get-ChildItem -Path \"$dir\" | ForEach-Object { Remove-Item -LiteralPath \"$7zcodecs\\$($_.Name)\" -Recurse -Force -ErrorAction Ignore }"
+            "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$7zcodecs\\$($_.Name)\" -Recurse -Force -ErrorAction Ignore }"
         ]
     },
     "checkver": "Plugin version: ([\\d.]+)",
