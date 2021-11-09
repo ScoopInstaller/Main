@@ -1,10 +1,20 @@
 {
-    "version": "20210729",
+    "version": "0.11.0",
     "description": "OpenOCD is an open-source tool that allows debugging various ARM devices with GDB using a wide variety of JTAG programmers.",
     "homepage": "https://openocd.org/",
-    "license": "Unknown",
-    "url": "https://sysprogs.com/getfile/1614/openocd-20210729.7z",
-    "hash": "599fa1be109e41e0ec08744951c7bbb52acb8f6dcba16d53a08d4148a057b98d",
-    "extract_dir": "OpenOCD-20210729-0.11.0",
-    "env_add_path": "bin"
+    "license": "GPL-2.0-or-later",
+    "url": "https://github.com/openocd-org/openocd/releases/download/v0.11.0/openocd-v0.11.0-i686-w64-mingw32.tar.gz",
+    "hash": "b195e3c3e9fe3f4fe9dfd9780ff08336ef8ed3015a76cc883d9e21e57c456f33",
+    "env_add_path": "bin",
+    "checkver": {
+        "github": "https://github.com/openocd-org/openocd",
+        "regex": "/releases/tag/([\\w.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/openocd-org/openocd/releases/download/$version/win-portacle.exe#/dl.7z"
+            }
+        }
+    }
 }
