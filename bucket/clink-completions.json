@@ -12,16 +12,16 @@
     "installer": {
         "script": [
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink installscripts $dir",
+            "   clink installscripts \"$dir\"",
             "} else {",
-            "   \"Clink installation not found. Please manually install these scripts.\"",
+            "   warn 'Clink installation not found. Please manually install these scripts.'",
             "}"
         ]
     },
     "uninstaller": {
         "script": [
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink uninstallscripts $dir",
+            "   clink uninstallscripts \"$dir\"",
             "}"
         ]
     },

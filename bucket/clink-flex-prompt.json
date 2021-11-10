@@ -11,20 +11,20 @@
     "installer": {
         "script": [
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink installscripts $dir",
+            "   clink installscripts \"$dir\"",
             "} elseif ($Env:CMDER_ROOT) {",
-            "   & $Env:CMDER_ROOT\\vendor\\clink\\clink.bat installscripts $dir",
+            "   & \"$Env:CMDER_ROOT\\vendor\\clink\\clink.bat\" installscripts \"$dir\"",
             "} else {",
-            "   \"Clink or Cmder installation not found. Please manually install these scripts.\"",
+            "   warn 'Clink or Cmder installation not found. Please manually install these scripts.'",
             "}"
         ]
     },
     "uninstaller": {
         "script": [
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink uninstallscripts $dir",
+            "   clink uninstallscripts \"$dir\"",
             "} elseif ($Env:CMDER_ROOT) {",
-            "   & $Env:CMDER_ROOT\\vendor\\clink\\clink.bat uninstallscripts $dir",
+            "   & \"$Env:CMDER_ROOT\\vendor\\clink\\clink.bat\" uninstallscripts \"$dir\"",
             "}"
         ]
     },
