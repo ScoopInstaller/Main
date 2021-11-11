@@ -1,46 +1,76 @@
 {
-    "version": "5.4.3",
+    "version": "5.4.2",
     "description": "A powerful, efficient, lightweight, embeddable scripting language",
     "homepage": "http://www.lua.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
             "url": [
-                "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.4.3_Win64_bin.zip",
-                "https://joedf.ahkscript.org/LuaBuilds/hdata/libgcc_s_dw2-1.dll.zip"
+                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Tools%20Executables/lua-5.4.2_Win64_bin.zip",
+                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Windows%20Libraries/Dynamic/lua-5.4.2_Win64_dllw6_lib.zip"
             ],
             "hash": [
-                "c0dc3c0dd1799dfd3c76260138a9bd88313212dc0ee2229e98896f12b2c0f355",
-                "546204ef8af80565b051b0d5dec2d885ae524cf060f99683e038e4b49b60d9e5"
+                "sha1:31f5380006244e045c9aa2119feed8d353be72cb",
+                "sha1:e313a05e498b77b5e259737fe4ec851fe2b9d23e"
             ]
         },
         "32bit": {
             "url": [
-                "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-5.4.3_Win32_bin.zip",
-                "https://joedf.ahkscript.org/LuaBuilds/hdata/libgcc_s_dw2-1.dll.zip"
+                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Tools%20Executables/lua-5.4.2_Win32_bin.zip",
+                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Windows%20Libraries/Dynamic/lua-5.4.2_Win32_dllw6_lib.zip"
             ],
             "hash": [
-                "7887edd3e6e6d0827dcb07044402f89e47301f08805ec449c1b455104ab07d2b",
-                "546204ef8af80565b051b0d5dec2d885ae524cf060f99683e038e4b49b60d9e5"
+                "sha1:d5cb6359710413a71ba517617654f1c15229d61f",
+                "sha1:c13d772ebe44157d55279b04b93b67b5f8805a4f"
             ]
         }
     },
     "bin": [
-        "lua.exe",
-        "luac.exe"
+        "lua54.exe",
+        [
+            "lua54.exe",
+            "lua"
+        ],
+        "luac54.exe",
+        [
+            "luac54.exe",
+            "luac"
+        ]
     ],
+    "env_set": {
+        "LUA_PATH": "$dir",
+        "LUA_CPATH": "$dir"
+    },
     "checkver": {
-        "url": "https://joedf.ahkscript.org/LuaBuilds/",
-        "regex": "Lua ([\\d.]+(-[\\w]+)?)"
+        "url": "http://luabinaries.sourceforge.net/download.html",
+        "regex": "LuaBinaries ([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-$version_Win64_bin.zip"
+                "url": [
+                    "https://downloads.sourceforge.net/project/luabinaries/$version/Tools%20Executables/lua-$version_Win64_bin.zip",
+                    "https://downloads.sourceforge.net/project/luabinaries/$version/Windows%20Libraries/Dynamic/lua-$version_Win64_dllw6_lib.zip"
+                ]
             },
             "32bit": {
-                "url": "https://joedf.ahkscript.org/LuaBuilds/hdata/lua-$version_Win32_bin.zip"
+                "url": [
+                    "https://downloads.sourceforge.net/project/luabinaries/$version/Tools%20Executables/lua-$version_Win32_bin.zip",
+                    "https://downloads.sourceforge.net/project/luabinaries/$version/Windows%20Libraries/Dynamic/lua-$version_Win32_dllw6_lib.zip"
+                ]
             }
-        }
+        },
+        "bin": [
+            "lua$majorVersion$minorVersion.exe",
+            [
+                "lua$majorVersion$minorVersion.exe",
+                "lua"
+            ],
+            "luac$majorVersion$minorVersion.exe",
+            [
+                "luac$majorVersion$minorVersion.exe",
+                "luac"
+            ]
+        ]
     }
 }
