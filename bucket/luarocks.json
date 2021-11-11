@@ -3,7 +3,7 @@
     "description": "The package manager for Lua modules",
     "homepage": "https://luarocks.org",
     "license": "MIT",
-    "depends": "versions/lua53",
+    "depends": "lua",
     "architecture": {
         "64bit": {
             "url": "https://luarocks.github.io/luarocks/releases/luarocks-3.8.0-windows-64.zip",
@@ -18,13 +18,16 @@
     },
     "pre_install": [
         "$file = 'config.lua'",
-        "$lua = (versiondir 'lua53' 'current') -replace \"\\\\\", \"/\"",
-        "$rocks = \"$(versiondir 'luarocks' 'current')\\rocks\" -replace \"\\\\\", \"/\"",
+        "$lua = (versiondir 'lua' 'current' $global) -replace \"\\\\\", '/'",
+        "$v1 = (current_version 'lua' $global) -replace \"^(\\d.\\d).*\", '$1'",
+        "$v2 = $v1 -replace \"[.]\", ''",
+        "$rocks = \"$(versiondir 'luarocks' 'current' $global)\\rocks\" -replace \"\\\\\", \"/\"",
         "if (!(Test-Path \"$persist_dir\\$file\")) {",
         "   Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
         "   $CONT = @(",
         "       \"rocks_trees = { `\"$rocks`\" }\"",
-        "       \"lua_interpreter = `\"lua53.exe`\"\"",
+        "       \"lua_interpreter = `\"lua$v2.exe`\"\"",
+        "       \"lua_version = `\"$v1`\"\"",
         "       'variables = {'",
         "       \"  LUA_BINDIR = `\"$lua`\",\"",
         "       \"  LUA_DIR = `\"$lua`\"\"",
