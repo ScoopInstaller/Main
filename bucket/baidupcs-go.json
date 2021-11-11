@@ -1,0 +1,34 @@
+{
+    "version": "3.8.4",
+    "description": "Terminal utility for Baidu Network Disk",
+    "homepage": "https://github.com/qjfoidnh/BaiduPCS-Go",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/qjfoidnh/BaiduPCS-Go/releases/download/v3.8.4/BaiduPCS-Go-v3.8.4-windows-x64.zip",
+            "hash": "a9fdb978315b6e9c092f21d01393a7f826f8a9db9d7ea6d76e3af15c8d3d9277",
+            "extract_dir": "BaiduPCS-Go-v3.8.4-windows-x64"
+        },
+        "32bit": {
+            "url": "https://github.com/qjfoidnh/BaiduPCS-Go/releases/download/v3.8.4/BaiduPCS-Go-v3.8.4-windows-x86.zip",
+            "hash": "5d54a249d9f9d66e1caac8342b49a6474b2ac0c67bcd095848551a04fc612a20",
+            "extract_dir": "BaiduPCS-Go-v3.8.4-windows-x86"
+        }
+    },
+    "bin": "BaiduPCS-Go.exe",
+    "checkver": {
+        "github": "https://github.com/qjfoidnh/BaiduPCS-Go"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/qjfoidnh/BaiduPCS-Go/releases/download/v$version/BaiduPCS-Go-v$version-windows-x64.zip",
+                "extract_dir": "BaiduPCS-Go-v$version-windows-x64"
+            },
+            "32bit": {
+                "url": "https://github.com/qjfoidnh/BaiduPCS-Go/releases/download/v$version/BaiduPCS-Go-v$version-windows-x86.zip",
+                "extract_dir": "BaiduPCS-Go-v$version-windows-x86"
+            }
+        }
+    }
+}
