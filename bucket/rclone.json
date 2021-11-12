@@ -38,7 +38,7 @@
         "   }",
         "",
         "   if ($importConf -and (Test-Path $importConf)) {",
-        "       Copy-Item $importConf $persist_dir",
+        "       Copy-Item $importConf \"$persist_dir\\rclone.conf\"",
         "       Write-Host \"Imported existing rclone.conf from $importConf.\" -ForegroundColor Yellow",
         "   }",
         "}"
