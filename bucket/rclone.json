@@ -15,9 +15,36 @@
             "extract_dir": "rclone-v1.57.0-windows-386"
         }
     },
-    "pre_install": "if (!(Test-Path \"$persist_dir\\rclone.conf\")) { New-Item -ItemType File \"$dir\\rclone.conf\" | Out-Null }",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\rclone.conf\") -or !(Get-Item \"$persist_dir\\rclone.conf\").Length) {",
+        "   New-Item \"$persist_dir\\rclone.conf\" -ItemType File -Force | Out-Null",
+        "",
+        "   $tilde = if ($env:HOME) {",
+        "       $env:HOME",
+        "   } elseif ($env:USERPROFILE) {",
+        "       $env:USERPROFILE",
+        "   } else {",
+        "       \"$env:HOMEDRIVE%\\$env:HOMEPATH\"",
+        "   }",
+        "",
+        "   $importConf = if (Test-Path \"$env:APPDATA\\rclone\\rclone.conf\") {",
+        "       \"$env:APPDATA\\rclone\\rclone.conf\"",
+        "   } elseif (Test-Path \"$env:XDG_CONFIG_HOME\\rclone\\rclone.conf\") {",
+        "       \"$env:XDG_CONFIG_HOME\\rclone\\rclone.conf\"",
+        "   } elseif (Test-Path \"$tilde\\.config\\rclone\\rclone.conf\") {",
+        "       \"$tilde\\.config\\rclone\\rclone.conf\"",
+        "   } elseif (Test-Path \"$tilde\\.rclone.conf\") {",
+        "       \"$tilde\\.rclone.conf\"",
+        "   }",
+        "",
+        "   if ($importConf -and (Test-Path $importConf)) {",
+        "       Copy-Item $importConf \"$persist_dir\\rclone.conf\"",
+        "       Write-Host \"Imported existing rclone.conf from $importConf.\" -ForegroundColor Yellow",
+        "   }",
+        "}"
+    ],
     "uninstaller": {
-        "script": "Copy-Item \"$dir\\rclone.conf\" \"$persist_dir\\\" -Force"
+        "script": "if ((Test-Path \"$dir\\rclone.conf\") -and !(Get-Item \"$dir\\rclone.conf\").LinkType -and (Test-Path $persist_dir)) { Copy-Item \"$dir\\rclone.conf\" $persist_dir }"
     },
     "bin": "rclone.exe",
     "persist": "rclone.conf",
