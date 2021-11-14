@@ -1,19 +1,22 @@
 {
-    "version": "0.1.28.1",
+    "version": "0.2.4",
     "description": "The V programming language",
     "homepage": "https://vlang.io",
     "license": "MIT",
-    "url": "https://github.com/vlang/v/releases/download/0.1.28.1/v_windows.zip",
-    "hash": "a260e7a4f3adec6ba77a08937c7f27c015a4f53aceafb7da3b6cfdb5d87f349e",
+    "notes": [
+        "V requires a C compiler on Windows. You can use one of MinGW-w64, llvm-mingw, MSVC.",
+        "More information can be found here: https://github.com/vlang/v/wiki/Installing-a-C-compiler-on-Windows",
+        "Windows SDK is also required, you can download from: https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/"
+    ],
+    "url": "https://github.com/vlang/v/releases/download/0.2.4/v_windows.zip",
+    "hash": "30fd4a6773f9bf55f0ef3a0aefa52df77ce6a3035836c283bb1bf5d8e6412499",
+    "extract_dir": "v",
     "bin": "v.exe",
     "checkver": {
-        "github": "https://github.com/vlang/v"
+        "url": "https://github.com/vlang/v/releases",
+        "regex": "releases/tag/([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://github.com/vlang/v/releases/download/$version/v_windows.zip"
-    },
-    "notes": [
-        "V requires a C compiler on Windows. You can use one of MinGW-w64, llvm-mingw, MSVC.",
-        "More information can be found here: https://github.com/vlang/v/wiki/Installing-a-C-compiler-on-Windows"
-    ]
+    }
 }
