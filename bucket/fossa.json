@@ -1,12 +1,12 @@
 {
-    "version": "2.19.9",
+    "version": "3.0.0",
     "description": "Dependency analysis tool. Supports license & vulnerability scanning. Language-agnostic; integrates with 20+ build systems.",
-    "homepage": "https://github.com/fossas/spectrometer",
+    "homepage": "https://github.com/fossas/fossa-cli",
     "license": "MPL-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/fossas/spectrometer/releases/download/v2.19.9/fossa_2.19.9_windows_amd64.zip",
-            "hash": "3c6a3a113d6093952c8e6ca587669ebe433b457a86c19aa9d3eb84b2bbe5a21f"
+            "url": "https://github.com/fossas/fossa-cli/releases/download/v3.0.0/fossa_3.0.0_windows_amd64.zip",
+            "hash": "2ffe22adcc49fbea4e5f8c5a6fd1e18368fc1f979b0e85b01d51f1ee97e5eceb"
         }
     },
     "bin": "fossa.exe",
@@ -14,7 +14,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/fossas/spectrometer/releases/download/v$version/fossa_$version_windows_amd64.zip"
+                "url": "https://github.com/fossas/fossa-cli/releases/download/v$version/fossa_$version_windows_amd64.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
             }
         }
     }
