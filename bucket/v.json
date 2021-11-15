@@ -8,8 +8,12 @@
         "More information can be found here: https://github.com/vlang/v/wiki/Installing-a-C-compiler-on-Windows",
         "Windows SDK is also required, you can download from: https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/"
     ],
-    "url": "https://github.com/vlang/v/releases/download/0.2.4/v_windows.zip",
-    "hash": "30fd4a6773f9bf55f0ef3a0aefa52df77ce6a3035836c283bb1bf5d8e6412499",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vlang/v/releases/download/0.2.4/v_windows.zip",
+            "hash": "30fd4a6773f9bf55f0ef3a0aefa52df77ce6a3035836c283bb1bf5d8e6412499"
+        }
+    },
     "extract_dir": "v",
     "bin": "v.exe",
     "checkver": {
@@ -17,6 +21,10 @@
         "regex": "releases/tag/([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/vlang/v/releases/download/$version/v_windows.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vlang/v/releases/download/$version/v_windows.zip"
+            }
+        }
     }
 }
