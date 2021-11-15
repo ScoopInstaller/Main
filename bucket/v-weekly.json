@@ -1,0 +1,30 @@
+{
+    "version": "2021.45",
+    "description": "The V programming language (weekly release channel)",
+    "homepage": "https://vlang.io",
+    "license": "MIT",
+    "notes": [
+        "V requires a C compiler on Windows. You can use one of MinGW-w64, llvm-mingw, MSVC.",
+        "More information can be found here: https://github.com/vlang/v/wiki/Installing-a-C-compiler-on-Windows",
+        "Windows SDK is also required, you can download from: https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vlang/v/releases/download/weekly.2021.45/v_windows.zip",
+            "hash": "8ab14772ef6f0522c8890c5bf5d48a0c10a366af551160ff568a4ff2e331a1fd"
+        }
+    },
+    "extract_dir": "v",
+    "bin": "v.exe",
+    "checkver": {
+        "url": "https://github.com/vlang/v/releases",
+        "regex": "releases/tag/weekly\\.([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vlang/v/releases/download/weekly.$version/v_windows.zip"
+            }
+        }
+    }
+}
