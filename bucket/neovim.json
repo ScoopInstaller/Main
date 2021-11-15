@@ -31,7 +31,8 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/neovim/neovim"
+        "github": "https://github.com/neovim/neovim",
+        "regex": "NVIM v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -41,6 +42,9 @@
             "32bit": {
                 "url": "https://github.com/neovim/neovim/releases/download/v$version/nvim-win32.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
         }
     }
 }
