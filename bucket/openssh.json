@@ -1,7 +1,7 @@
 {
     "version": "8.6.0.0p1",
     "description": "The premier connectivity tool for remote login with the SSH protocol. (Microsoft build)",
-    "homepage": "https://www.openssh.com/",
+    "homepage": "https://www.openssh.com",
     "license": "SSH-OpenSSH",
     "architecture": {
         "64bit": {
@@ -40,5 +40,10 @@
                 "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/V$version-Beta/OpenSSH-Win32.zip"
             }
         }
-    }
+    },
+    "notes": [
+        "Windows 10 or higher includes OpenSSH built-in, it is recommended to use the system OpenSSH there.",
+        "Run 'sudo $dir\\install-sshd.ps1' to install sshd and ssh-agent as a service.",
+        "Run 'sudo $dir\\uninstall-sshd.ps1' to uninstall the services."
+    ]
 }
