@@ -60,7 +60,7 @@
     "persist": "data",
     "checkver": {
         "url": "https://downloads.mariadb.org/rest-api/mariadb/all-releases/",
-        "regex": "MariaDB Server ([\\d.]+)\""
+        "jsonpath": "$.releases[?(@.status=='stable')].release_number"
     },
     "autoupdate": {
         "architecture": {
