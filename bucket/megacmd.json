@@ -8,8 +8,43 @@
     },
     "url": "https://mega.nz/MEGAcmdSetup.exe#/dl.7z",
     "hash": "dc67762caa70e514b01b4da331c189e7c1e53051a38cd26b7f7b1e8ed86b0d8a",
+    "post_install": [
+        "Remove-Item \"$dir\\`$*\", \"$dir\\unins*\" -Recurse",
+        "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
+        "if (!(Test-Path \"$datapath\\MEGAcmd\")) {",
+        "    & \"$env:COMSPEC\" /c mklink /j \"$datapath\\MEGAcmd\" \"$dir\\\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\.megaCmd\\megacmd.cfg\")) {",
+        "    Set-Content \"$dir\\.megaCmd\\megacmd.cfg\" 'updaterregistered=1', 'autoupdate=0' -Encoding Ascii",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
+            "if ((Get-Item \"$datapath\\MEGAcmd\" -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
+            "    & \"$env:COMSPEC\" /c \"rmdir `\"$datapath\\MEGAcmd`\"\"",
+            "}"
+        ]
+    },
     "bin": [
         "MEGAclient.exe",
+        [
+            "MEGAcmdServer.exe",
+            "mega-cmd-server"
+        ],
+        [
+            "MEGAcmdShell.exe",
+            "mega-cmd"
+        ],
+        [
+            "MEGAclient.exe",
+            "mega-exec"
+        ],
+        [
+            "MEGAclient.exe",
+            "mega-exit",
+            "exit"
+        ],
         "mega-attr.bat",
         "mega-backup.bat",
         "mega-cancel.bat",
@@ -67,9 +102,17 @@
         "mega-webdav.bat",
         "mega-whoami.bat"
     ],
-    "installer": {
-        "script": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse"
-    },
+    "shortcuts": [
+        [
+            "MEGAcmdServer.exe",
+            "MEGAcmd Server"
+        ],
+        [
+            "MEGAcmdShell.exe",
+            "MEGAcmd Shell"
+        ]
+    ],
+    "persist": ".megaCmd",
     "checkver": {
         "url": "https://github.com/meganz/MEGAcmd/tags",
         "regex": "tag/([\\d.]+)_Win"
