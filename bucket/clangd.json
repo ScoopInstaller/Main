@@ -1,0 +1,25 @@
+{
+    "version": "13.0.0",
+    "description": "Language server for C/C++, by the LLVM project",
+    "homepage": "https://clangd.llvm.org/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/clangd/clangd/releases/download/13.0.0/clangd-windows-13.0.0.zip",
+            "hash": "94f1caaaa5cfa18711b411f727afa5fc2d66b5c37946f6757e5135101a1e1dc7",
+            "extract_dir": "clangd_13.0.0"
+        }
+    },
+    "bin": "bin\\clangd.exe",
+    "checkver": {
+        "github": "https://github.com/clangd/clangd"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/clangd/clangd/releases/download/$version/clangd-windows-$version.zip",
+                "extract_dir": "clangd_$version"
+            }
+        }
+    }
+}

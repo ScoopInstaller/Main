@@ -1,0 +1,24 @@
+{
+    "version": "1.3.0-beta",
+    "description": "Command line interface for managing Deta micros and deployments",
+    "homepage": "https://deta.sh/",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/deta/deta-cli/releases/download/v1.3.0-beta/deta-x86_64-windows.zip",
+            "hash": "982910412dbe6adc03ce743286fd29d07e6f2fdbfbe71f5d5eb17c3266f70558"
+        }
+    },
+    "bin": "deta.exe",
+    "checkver": {
+        "url": "https://github.com/deta/deta-cli",
+        "regex": "tag/v([\\w.-]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/deta/deta-cli/releases/download/v$version/deta-x86_64-windows.zip"
+            }
+        }
+    }
+}

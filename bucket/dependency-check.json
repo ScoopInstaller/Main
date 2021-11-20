@@ -1,26 +1,23 @@
 {
-    "homepage": "https://www.owasp.org/index.php/OWASP_Dependency_Check",
+    "version": "6.5.0",
     "description": "Software composition analysis utility that identifies project dependencies and checks if there are any known, publicly disclosed, vulnerabilities.",
+    "homepage": "https://owasp.org/www-project-dependency-check/",
     "license": "Apache-2.0",
-    "version": "5.3.2",
-    "url": "https://dl.bintray.com/jeremy-long/owasp/dependency-check-5.3.2-release.zip",
-    "hash": "4c6f40cb596e335fd0cd816bd6c25773e1e029c3109979ce4c429f3b49850252",
-    "extract_dir": "dependency-check",
-    "bin": "bin\\dependency-check.bat",
     "suggest": {
         "JDK": [
             "java/oraclejdk",
             "java/openjdk"
         ]
     },
+    "url": "https://github.com/jeremylong/DependencyCheck/releases/download/v6.5.0/dependency-check-6.5.0-release.zip",
+    "hash": "e27ab0c010a447e5d2ac62063112c3e1a25364193450cb4345fc18defb4511a2",
+    "extract_dir": "dependency-check",
+    "bin": "bin\\dependency-check.bat",
     "checkver": {
         "url": "https://jeremylong.github.io/DependencyCheck/current.txt",
-        "re": "(.+)"
+        "regex": "(.+)"
     },
     "autoupdate": {
-        "url": "https://dl.bintray.com/jeremy-long/owasp/dependency-check-$version-release.zip",
-        "hash": {
-            "url": "$url.sha256"
-        }
+        "url": "https://github.com/jeremylong/DependencyCheck/releases/download/v$version/dependency-check-$version-release.zip"
     }
 }

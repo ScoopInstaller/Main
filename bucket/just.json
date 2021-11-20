@@ -1,13 +1,23 @@
 {
-    "homepage": "https://github.com/casey/just",
+    "version": "0.10.3",
     "description": "A command runner written in rust",
+    "homepage": "https://just.systems",
     "license": "CC0-1.0",
-    "version": "0.5.10",
-    "url": "https://github.com/casey/just/releases/download/v0.5.10/just-v0.5.10-x86_64-pc-windows-msvc.zip",
-    "hash": "ec65a1fa95f53f2b3dfeca8bf9513f7875f60e19c2d076bb7f665cb3311be3a3",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/casey/just/releases/download/0.10.3/just-0.10.3-x86_64-pc-windows-msvc.zip",
+            "hash": "ffcf9b0a31666419cdedf059966463824347e57692ceac1e2470b48e94d0e494"
+        }
+    },
     "bin": "just.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/casey/just"
+    },
     "autoupdate": {
-        "url": "https://github.com/casey/just/releases/download/v$version/just-v$version-x86_64-pc-windows-msvc.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/casey/just/releases/download/$version/just-$version-x86_64-pc-windows-msvc.zip"
+            }
+        }
     }
 }

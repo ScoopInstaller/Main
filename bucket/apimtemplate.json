@@ -1,28 +1,25 @@
 {
-    "homepage": "https://github.com/Azure/azure-api-management-devops-resource-kit",
+    "version": "0.7",
     "description": "Azure API Management DevOps Resource Kit",
+    "homepage": "https://github.com/Azure/azure-api-management-devops-resource-kit",
     "license": "MIT",
-    "version": "0.3-gamma",
+    "depends": "azure-cli",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Azure/azure-api-management-devops-resource-kit/releases/download/v0.3-gamma/res-kit-win64.zip",
-            "hash": "c1486bcd384ff495fb665cdcf27d99c3e4b1e78858c38780790b616b00fc1164"
+            "url": "https://github.com/Azure/azure-api-management-devops-resource-kit/releases/download/v0.7/reskit0.7.zip",
+            "hash": "0bdab42015beb6220c1c015484f6ae07be49a8ca4cc0de95108f747daae6a8e1",
+            "extract_dir": "win64"
         }
     },
-    "extract_dir": "res-kit-win64",
-    "depends": "azure-cli",
     "bin": "apimtemplate.exe",
     "checkver": {
         "url": "https://github.com/Azure/azure-api-management-devops-resource-kit/releases",
-        "regex": "tag/(?:v)?([\\w.-]+)"
+        "regex": "tag/v([\\w.-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Azure/azure-api-management-devops-resource-kit/releases/download/v$version/res-kit-win64.zip",
-                "hash": {
-                    "url": "$url.sha2"
-                }
+                "url": "https://github.com/Azure/azure-api-management-devops-resource-kit/releases/download/v$version/reskit$version.zip"
             }
         }
     }

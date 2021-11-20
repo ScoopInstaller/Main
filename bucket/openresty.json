@@ -1,18 +1,26 @@
 {
-    "homepage": "https://openresty.org",
-    "version": "1.15.8.3",
-    "license": "BSD-2-Clause",
+    "version": "1.19.9.1",
     "description": "Dynamic web platform based on NGINX and LuaJIT.",
+    "homepage": "https://openresty.org",
+    "license": "BSD-2-Clause",
+    "notes": [
+        "Use '-p $PWD' to specify current directory when running OpenResty.",
+        "(Alternately, see documentation by running 'scoop home openresty'.)",
+        "'resty' and 'restydoc' command-line utilities require 'perl'"
+    ],
+    "suggest": {
+        "Perl": "perl"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://openresty.org/download/openresty-1.15.8.3-win64.zip",
-            "hash": "f6e304267135f10f49e8e0740f88b4b8842d0e8d5ffb90a437cdeeba17834140",
-            "extract_dir": "openresty-1.15.8.3-win64"
+            "url": "https://openresty.org/download/openresty-1.19.9.1-win64.zip",
+            "hash": "d7905f2b97f2caf946ddffd1bc2f9f567cfc15027c467a319226308d6126dc13",
+            "extract_dir": "openresty-1.19.9.1-win64"
         },
         "32bit": {
-            "url": "https://openresty.org/download/openresty-1.15.8.3-win32.zip",
-            "hash": "963099285346dc336af8aa9ff11f16cabfb23b1aee881a9526118e217e1408dd",
-            "extract_dir": "openresty-1.15.8.3-win32"
+            "url": "https://openresty.org/download/openresty-1.19.9.1-win32.zip",
+            "hash": "d2d9ad5c9ec9a296f424db7bfcbd75aff644bee20570291428592669c319f96f",
+            "extract_dir": "openresty-1.19.9.1-win32"
         }
     },
     "bin": [
@@ -29,15 +37,7 @@
         "html",
         "logs"
     ],
-    "notes": [
-        "Use '-p $PWD' to specify current directory when running OpenResty.",
-        "(Alternately, see documentation by running 'scoop home openresty'.)",
-        "'resty' and 'restydoc' command-line utilities require 'perl'"
-    ],
-    "suggest": {
-        "Perl": "perl"
-    },
-    "checkver": "OpenResty ([\\d.]+)",
+    "checkver": "OpenResty ([\\d.]+)<",
     "autoupdate": {
         "architecture": {
             "64bit": {

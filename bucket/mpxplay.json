@@ -1,12 +1,16 @@
 {
-    "version": "1.64",
-    "homepage": "http://mpxplay.sourceforge.net",
+    "version": "1.66",
     "description": "Commander-style console audio player.",
+    "homepage": "http://mpxplay.sourceforge.net",
     "license": "Unknown",
-    "url": "https://downloads.sourceforge.net/project/mpxplay/Mpxplay/Mpxplay%20v1.64/mpxp164w.zip",
-    "hash": "sha1:e5054a86fac8ccde74d358a4bad9a44e33ecc895",
+    "url": "https://downloads.sourceforge.net/project/mpxplay/Mpxplay/Mpxplay%20v1.66/mpxp166w.zip",
+    "hash": "sha1:2c695a12d0e48538a1464ed96e77e644b3abc619",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\MPXPTABS.INI\")) { New-Item \"$dir\\MPXPTABS.INI\" | Out-Null }",
     "bin": "mpxplay.exe",
-    "persist": "MPXPLAY.INI",
+    "persist": [
+        "MPXPLAY.INI",
+        "MPXPTABS.INI"
+    ],
     "checkver": "Mpxplay v([\\d.]+) small",
     "autoupdate": {
         "url": "https://downloads.sourceforge.net/project/mpxplay/Mpxplay/Mpxplay%20v$version/mpxp$cleanVersionw.zip"

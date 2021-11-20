@@ -1,30 +1,30 @@
 {
-    "homepage": "https://ant.apache.org/",
+    "version": "1.10.12",
     "description": "Apache Ant is a Java library and command-line tool for compiling, assembling, testing and running Java and non-Java applications.",
-    "version": "1.10.7",
+    "homepage": "https://ant.apache.org/",
     "license": "Apache-2.0",
-    "url": "https://www.apache.org/dist/ant/binaries/apache-ant-1.10.7-bin.zip",
-    "hash": "sha512:4afbf7d474b38da07992e820f22f2979e28fa8db71997ccb8ee63fe5cb32478fe26e1675feabb70321af24f25a37747c0f6d198a9e43ba747b65e3f8076f3dff",
-    "extract_dir": "apache-ant-1.10.7",
-    "env_add_path": "bin",
-    "env_set": {
-        "ANT_HOME": "$dir"
-    },
     "suggest": {
         "JDK": [
             "java/oraclejdk",
             "java/openjdk"
         ]
     },
+    "url": "https://www.apache.org/dist/ant/binaries/apache-ant-1.10.12-bin.zip",
+    "hash": "sha512:7e6fbcc3563df4bd87c883ad86a161a71da2774e0ed71a1b3aad82cbff1a7656ed9a0acb5ce40652129376dfd79f1ef74ec3369c1067d412a63062fea62ceccd",
+    "extract_dir": "apache-ant-1.10.12",
+    "env_add_path": "bin",
+    "env_set": {
+        "ANT_HOME": "$dir"
+    },
     "checkver": {
         "url": "https://ant.apache.org/bindownload.cgi",
-        "re": "Currently, Apache Ant (?:[\\d.]+ and )?([\\d.]+) (?:is|are) the best"
+        "regex": "Currently, Apache Ant (?:[\\d.]+ and )?([\\d.]+) (?:is|are) the best"
     },
     "autoupdate": {
         "url": "https://www.apache.org/dist/ant/binaries/apache-ant-$version-bin.zip",
-        "extract_dir": "apache-ant-$version",
         "hash": {
             "url": "$url.sha512"
-        }
+        },
+        "extract_dir": "apache-ant-$version"
     }
 }

@@ -1,16 +1,16 @@
 {
-    "version": "0.8.5",
-    "homepage": "https://evans.syfm.me/",
-    "description": "Evans: more expressive gRPC client",
+    "version": "0.10.0",
+    "description": "More expressive gRPC client",
+    "homepage": "https://evans.syfm.me",
     "license": "MIT",
     "architecture": {
-        "32bit": {
-            "url": "https://github.com/ktr0731/evans/releases/download/0.8.5/evans_windows_386.tar.gz",
-            "hash": "7c3f315b83b324ddd0016a91b61fceb904ff42f5b488a44ecfa90eded973b804"
-        },
         "64bit": {
-            "url": "https://github.com/ktr0731/evans/releases/download/0.8.5/evans_windows_amd64.tar.gz",
-            "hash": "65cb996784851ccac3b41df7d98d0d78c74b4aa6c7529281b224315d9a767fea"
+            "url": "https://github.com/ktr0731/evans/releases/download/0.10.0/evans_windows_amd64.tar.gz",
+            "hash": "36d31e45427e17601ca7bc57a980ecdcd678c611918b390a9c7cb5ed132d756d"
+        },
+        "32bit": {
+            "url": "https://github.com/ktr0731/evans/releases/download/0.10.0/evans_windows_386.tar.gz",
+            "hash": "37ac38a6d35307ae62905fff34820a94fee9cd21a4f75c35955ee5a63ca4a089"
         }
     },
     "bin": "evans.exe",
@@ -19,20 +19,16 @@
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://github.com/ktr0731/evans/releases/download/$version/evans_windows_386.tar.gz",
-                "hash": {
-                    "url": "$baseurl/checksums.txt",
-                    "regex": "($sha256)\\s+evans_windows_386.tar.gz"
-                }
-            },
             "64bit": {
-                "url": "https://github.com/ktr0731/evans/releases/download/$version/evans_windows_amd64.tar.gz",
-                "hash": {
-                    "url": "$baseurl/checksums.txt",
-                    "regex": "($sha256)\\s+evans_windows_amd64.tar.gz"
-                }
+                "url": "https://github.com/ktr0731/evans/releases/download/$version/evans_windows_amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/ktr0731/evans/releases/download/$version/evans_windows_386.tar.gz"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "$sha256\\s+$basename"
         }
     }
 }

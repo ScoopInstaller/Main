@@ -1,0 +1,39 @@
+{
+    "version": "1.35.0-4.9.5",
+    "description": "Manages a local OpenShift 4.x cluster optimized for testing and development purposes.",
+    "homepage": "https://code-ready.github.io/crc/",
+    "license": "Apache-2.0",
+    "notes": "To acquire a pull secret, visit: https://cloud.redhat.com/openshift/install/crc/installer-provisioned",
+    "depends": "lessmsi",
+    "architecture": {
+        "64bit": {
+            "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/1.35.0/crc-windows-installer.zip",
+            "hash": "4e550e276c2c11e5c5ae9250a1fd41c50a1458ff521a16ff1635a8b49cc5bb23",
+            "pre_install": [
+                "# The trailing backslash(\\) in $dir\\ is required by lessmsi.",
+                "# '>nul', '2>&1' sets cmd stdout to $null, and stderr to stdout",
+                "Invoke-ExternalCommand lessmsi -ArgumentList @('x', \"$dir\\crc-windows-amd64.msi\", \"$dir\\\") | Out-Null",
+                "$tail = $version.Split('-')[1]",
+                "Invoke-ExternalCommand cmd -ArgumentList @('/c', 'copy', '/b', \"`\"$dir\\SourceDir\\CodeReady Containers\\crc_hyperv_$tail.crcbundle.*`\"\", \"`\"$dir\\crc_hyperv_$tail.crcbundle`\"\", '>nul', '2>&1') | Out-Null",
+                "Remove-Item \"$dir\\SourceDir\\CodeReady Containers\\crc_hyperv_$tail.crcbundle.*\", \"$dir\\*.cab\", \"$dir\\*.msi\" | Out-Null",
+                "Copy-Item \"$dir\\SourceDir\\CodeReady Containers\\*\" \"$dir\" -Force -Recurse | Out-Null",
+                "Remove-Item \"$dir\\SourceDir\" -Force -Recurse | Out-Null"
+            ]
+        }
+    },
+    "bin": "crc.exe",
+    "checkver": {
+        "github": "https://github.com/code-ready/crc",
+        "regex": "Release\\s([\\d.]+-[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/$matchHead/crc-windows-installer.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

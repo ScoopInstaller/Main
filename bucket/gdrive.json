@@ -1,16 +1,16 @@
 {
-    "version": "2.1.0",
+    "version": "2.1.1",
     "description": "Command line utility for interacting with Google Drive.",
-    "homepage": "https://github.com/gdrive-org/gdrive",
+    "homepage": "https://github.com/prasmussen/gdrive",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-windows-x64.exe#/gdrive.exe",
-            "hash": "sha1:53780f9a4168c71fd9f3d429932207069d1dcf03"
+            "url": "https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_windows_amd64.tar.gz",
+            "hash": "md5:14226cb66d7f6c1b84a5be911ff193f6"
         },
         "32bit": {
-            "url": "https://github.com/gdrive-org/gdrive/releases/download/2.1.0/gdrive-windows-386.exe#/gdrive.exe",
-            "hash": "sha1:4974290122f635d9c71875bc2c760e46b943c5ab"
+            "url": "https://github.com/prasmussen/gdrive/releases/download/2.1.1/gdrive_2.1.1_windows_386.tar.gz",
+            "hash": "md5:e03346f9ec72225872d0e32b41abf192"
         }
     },
     "bin": "gdrive.exe",
@@ -18,14 +18,17 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/gdrive-org/gdrive/releases/download/$version/gdrive-windows-x64.exe#/gdrive.exe"
+                "url": "https://github.com/prasmussen/gdrive/releases/download/$version/gdrive_$version_windows_amd64.tar.gz",
+                "hash": {
+                    "url": "$baseurl/gdrive_$version_windows_amd64_checksum.txt"
+                }
             },
             "32bit": {
-                "url": "https://github.com/gdrive-org/gdrive/releases/download/$version/gdrive-windows-386.exe#/gdrive.exe"
+                "url": "https://github.com/prasmussen/gdrive/releases/download/$version/gdrive_$version_windows_386.tar.gz",
+                "hash": {
+                    "url": "$baseurl/gdrive_$version_windows_386_checksum.txt"
+                }
             }
-        },
-        "hash": {
-            "url": "$baseurl/shasums"
         }
     }
 }

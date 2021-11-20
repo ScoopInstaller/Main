@@ -1,0 +1,34 @@
+{
+    "version": "4.5.1",
+    "description": "Compiler cache to speed up recompilation by caching previous compilations and detecting when the same compilation is being done again.",
+    "homepage": "https://ccache.dev",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ccache/ccache/releases/download/v4.5.1/ccache-4.5.1-windows-64.zip",
+            "hash": "2b99e238993826926df2f18967ae9e2746d40c4f8e07980a31b2821e3b19eb63",
+            "extract_dir": "ccache-4.5.1-windows-64"
+        },
+        "32bit": {
+            "url": "https://github.com/ccache/ccache/releases/download/v4.5.1/ccache-4.5.1-windows-32.zip",
+            "hash": "1dde4bf19493e51025e2304290d952a6abfc093d1ccf0cb775a7e554d62b0221",
+            "extract_dir": "ccache-4.5.1-windows-32"
+        }
+    },
+    "bin": "ccache.exe",
+    "checkver": {
+        "github": "https://github.com/ccache/ccache"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ccache/ccache/releases/download/v$version/ccache-$version-windows-64.zip",
+                "extract_dir": "ccache-$version-windows-64"
+            },
+            "32bit": {
+                "url": "https://github.com/ccache/ccache/releases/download/v$version/ccache-$version-windows-32.zip",
+                "extract_dir": "ccache-$version-windows-32"
+            }
+        }
+    }
+}

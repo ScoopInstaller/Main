@@ -1,0 +1,49 @@
+{
+    "version": "1.0.5",
+    "description": "Volta is a hassle-free way to manage your JavaScript command-line tools",
+    "homepage": "https://volta.sh/",
+    "license": "BSD-2-Clause",
+    "notes": [
+        "To use volta tab-completions, add following code to your PowerShell PROFILE:",
+        "",
+        "(& volta completions powershell) | Out-String | Invoke-Expression"
+    ],
+    "url": "https://github.com/volta-cli/volta/releases/download/v1.0.5/volta-1.0.5-windows.zip",
+    "hash": "a5cdf34c8aba94ace8533370e5f2d1482df9f9f6b6ea7c43f7d832324dc47cb7",
+    "installer": {
+        "script": [
+            "function UpdateExeFile([String] $original, [String] $file, [Switch] $Removal) {",
+            "    if (Test-Path \"$persist_dir\\appdata\\bin\\$file\") { # persist new volta shims",
+            "        Remove-Item \"$persist_dir\\appdata\\bin\\$file\" -Force",
+            "        Copy-Item \"$dir\\$original\" \"$persist_dir\\appdata\\bin\\$file\"",
+            "    } else { # or create new shims",
+            "        if (!(Test-Path \"$persist_dir\\appdata\\bin\")) {",
+            "            New-Item -Path \"$persist_dir\\appdata\\bin\" -ItemType Directory | Out-Null",
+            "        }",
+            "        Copy-Item \"$dir\\$original\" \"$persist_dir\\appdata\\bin\\$file\"",
+            "    }",
+            "    if ($Removal) {",
+            "        Remove-Item \"$dir\\$original\" -Force",
+            "    }",
+            "}",
+            "UpdateExeFile 'volta-shim.exe' 'node.exe'",
+            "UpdateExeFile 'volta-shim.exe' 'npm.exe'",
+            "UpdateExeFile 'volta-shim.exe' 'npx.exe'",
+            "UpdateExeFile 'volta-shim.exe' 'yarn.exe'",
+            "UpdateExeFile 'volta.exe' 'volta.exe' -Removal",
+            "UpdateExeFile 'volta-migrate.exe' 'volta-migrate.exe' -Removal",
+            "UpdateExeFile 'volta-shim.exe' 'volta-shim.exe' -Removal"
+        ]
+    },
+    "env_set": {
+        "VOLTA_HOME": "$dir\\appdata"
+    },
+    "env_add_path": "appdata\\bin",
+    "persist": "appdata",
+    "checkver": {
+        "github": "https://github.com/volta-cli/volta"
+    },
+    "autoupdate": {
+        "url": "https://github.com/volta-cli/volta/releases/download/v$version/volta-$version-windows.zip"
+    }
+}

@@ -1,23 +1,34 @@
 {
-    "homepage": "https://flywaydb.org/",
+    "version": "8.0.5",
     "description": "Database migration tool that favors simplicity and convention over configuration.",
+    "homepage": "https://flywaydb.org/",
     "license": "Apache-2.0",
-    "version": "6.3.2",
-    "url": "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/6.3.2/flyway-commandline-6.3.2-windows-x64.zip",
-    "extract_dir": "flyway-6.3.2",
-    "bin": "flyway.cmd",
-    "hash": "sha1:d88c54438ac98f15bcf308eb13ea03dacf5984e8",
-    "checkver": "Get Started with Flyway\\s+([\\d.]+)",
-    "autoupdate": {
-        "url": "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$version/flyway-commandline-$version-windows-x64.zip",
-        "extract_dir": "flyway-$version",
-        "hash": {
-            "url": "$url.sha1"
+    "architecture": {
+        "64bit": {
+            "url": "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.0.5/flyway-commandline-8.0.5-windows-x64.zip",
+            "hash": "sha1:fbfe73a634038beb308dd5cbe0d676893a49489c"
         }
     },
+    "extract_dir": "flyway-8.0.5",
+    "bin": "flyway.cmd",
     "persist": [
         "conf",
         "sql",
         "jars"
-    ]
+    ],
+    "checkver": {
+        "url": "https://flywaydb.org/documentation/usage/commandline/#download-and-installation",
+        "regex": "flyway-commandline-([\\w.-]+)-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$version/flyway-commandline-$version-windows-x64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha1"
+        },
+        "extract_dir": "flyway-$version"
+    }
 }

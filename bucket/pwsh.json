@@ -1,24 +1,34 @@
 {
-    "homepage": "https://github.com/PowerShell/PowerShell",
+    "version": "7.2.0",
     "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data.",
-    "version": "7.0.0",
+    "homepage": "https://github.com/PowerShell/PowerShell",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.0.0/PowerShell-7.0.0-win-x64.zip",
-            "hash": "cda2ca2227fbec2c753aa760859667b02007d14646a831bd908b8f749cbcc687"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.2.0/PowerShell-7.2.0-win-x64.zip",
+            "hash": "0d38173c440cfe5fc123e82003fa5c68ced0aa1769619658364425a110f2016d"
         },
         "32bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.0.0/PowerShell-7.0.0-win-x86.zip",
-            "hash": "f33e852f7721e61ff3bae9fc04f1dfa48ce7b10cd59d649126d5ba9bfad9aecd"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.2.0/PowerShell-7.2.0-win-x86.zip",
+            "hash": "2522d078e6457052bbf8387afd2fa186486f4905bf0bed4c70ab58aa6e6b4814"
         }
     },
+    "pre_install": [
+        "'Microsoft.PowerShell_profile.ps1', 'profile.ps1' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "}"
+    ],
     "bin": "pwsh.exe",
     "shortcuts": [
         [
             "pwsh.exe",
-            "PowerShell Core"
+            "PowerShell Core",
+            "-WorkingDirectory ~"
         ]
+    ],
+    "persist": [
+        "Microsoft.PowerShell_profile.ps1",
+        "profile.ps1"
     ],
     "checkver": "github",
     "autoupdate": {
@@ -32,7 +42,7 @@
         },
         "hash": {
             "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
-            "find": "$basename\\s*<ul>\\s*<li>([A-Fa-f\\d]{64})"
+            "regex": "$basename\\s*<ul>\\s*<li>$sha256"
         }
     }
 }

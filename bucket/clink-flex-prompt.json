@@ -1,0 +1,35 @@
+{
+    "version": "0.5",
+    "description": "Flexible customizable prompt for Clink",
+    "homepage": "https://github.com/chrisant996/clink-flex-prompt",
+    "license": "MIT",
+    "suggest": {
+        "Clink": "clink"
+    },
+    "url": "https://github.com/chrisant996/clink-flex-prompt/releases/download/v0.5/clink-flex-prompt-0.5.zip",
+    "hash": "16e0e8a58d9f12acb9e29deafd258f033adb9d7ecaa81f9ea43a952827b298c6",
+    "installer": {
+        "script": [
+            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+            "   clink installscripts \"$dir\"",
+            "} elseif ($Env:CMDER_ROOT) {",
+            "   & \"$Env:CMDER_ROOT\\vendor\\clink\\clink.bat\" installscripts \"$dir\"",
+            "} else {",
+            "   warn 'Clink or Cmder installation not found. Please manually install these scripts.'",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+            "   clink uninstallscripts \"$dir\"",
+            "} elseif ($Env:CMDER_ROOT) {",
+            "   & \"$Env:CMDER_ROOT\\vendor\\clink\\clink.bat\" uninstallscripts \"$dir\"",
+            "}"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/chrisant996/clink-flex-prompt/releases/download/v$version/clink-flex-prompt-$version.zip"
+    }
+}

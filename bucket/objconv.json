@@ -1,0 +1,17 @@
+{
+    "version": "2.52",
+    "description": "Object file converter and dissassembler",
+    "homepage": "https://www.agner.org/optimize/#objconv",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.agner.org/optimize/objconv.zip#/dl.7z",
+            "hash": "1bfd417d73a9beb7ebdcfc986b5607d5966be2f7f376fef86b7be3ed4f3e2164"
+        }
+    },
+    "pre_install": [
+        "Move-Item \"$dir\\C_\\_Public\\objconv\\x64\\Release\\objconv.exe\" \"$dir\"",
+        "Get-ChildItem \"$dir\" -Exclude 'objconv.exe' | Remove-Item -Recurse"
+    ],
+    "bin": "objconv.exe"
+}

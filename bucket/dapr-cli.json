@@ -1,0 +1,24 @@
+{
+    "version": "1.5.0",
+    "description": "Command-line tools for Dapr",
+    "homepage": "https://github.com/dapr/cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/dapr/cli/releases/download/v1.5.0/dapr_windows_amd64.zip",
+            "hash": "f908cba4b667f9f2a84c7fcb2ccec529aaa990040e09cd6ef28088a6a9c9b230"
+        }
+    },
+    "bin": "dapr.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/dapr/cli/releases/download/v$version/dapr_windows_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

@@ -1,16 +1,12 @@
 {
-    "version": "2.4.41",
+    "version": "2.4.51",
     "description": "The Apache HTTP Server ('httpd')",
     "homepage": "https://www.apachelounge.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://fossies.org/windows/www/httpd-2.4.41-win64-VC15.zip",
-            "hash": "3302a71ccff992d16ee3d547a9f04ed9af4490691c9b15439a88df29248f5aa5"
-        },
-        "32bit": {
-            "url": "https://fossies.org/windows/www/httpd-2.4.41-win32-VC15.zip",
-            "hash": "d1e5be514993e270cb43e7a4332002f06c71a931f2e9067e72c9606105f786d0"
+            "url": "https://fossies.org/windows/www/httpd-2.4.51-win64-VS16.zip",
+            "hash": "54db769a0bc6256bd744607e735cc1d85e14c1d6ec07beb491e06bbb9b5b98f6"
         }
     },
     "extract_dir": "Apache24",
@@ -27,30 +23,28 @@
         "bin\\rotatelogs.exe"
     ],
     "post_install": [
-        "# set directory in httpd.conf",
-        "$conf = \"$dir/conf/httpd.conf\"",
-        "$root=(scoop which httpd | split-path -res -par | split-path -par) -replace '\\\\', '/';",
-        "(gc $conf) | % { $_ -replace 'c:/Apache24', \"$root\" } | sc $conf"
+        "    # set directory in httpd.conf",
+        "$conf = \"$dir\\conf\\httpd.conf\"",
+        "$root= \"$dir\" -replace '\\\\', '/'",
+        "((Get-Content $conf) -replace 'c:/Apache24', \"$root\") | Set-Content $conf"
     ],
     "persist": [
         "htdocs",
         "conf"
     ],
     "checkver": {
-        "url": "https://fossies.org/search?q=folder_search&q1=httpd&ad=%2Ffresh%2Fwindows%2Fwww&ca=yes&dp=1",
-        "regex": "httpd-([\\d.]+)-win64-VC15\\.zip"
+        "url": "https://fossies.org/windows/www/",
+        "regex": "httpd-([\\d.]+)-win64-VS16\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://fossies.org/windows/www/httpd-$version-win64-VC15.zip"
-            },
-            "32bit": {
-                "url": "https://fossies.org/windows/www/httpd-$version-win32-VC15.zip"
+                "url": "https://fossies.org/windows/www/httpd-$version-win64-VS16.zip"
             }
         },
         "hash": {
             "url": "$url_fossies.sha256"
-        }
+        },
+        "extract_dir": "Apache$majorVersion$minorVersion"
     }
 }
