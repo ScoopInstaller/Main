@@ -1,35 +1,21 @@
 {
-    "version": "3.7",
+    "version": "3.8-1-3.2.0-8-1.16-2-0.19.8.1-1",
     "description": "A package of several programs related to finding differences between files",
     "homepage": "https://www.gnu.org/software/diffutils/",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
             "url": [
-                "http://repo.msys2.org/msys/x86_64/diffutils-3.7-1-x86_64.pkg.tar.xz",
-                "http://repo.msys2.org/msys/x86_64/msys2-runtime-3.1.7-2-x86_64.pkg.tar.xz",
+                "http://repo.msys2.org/msys/x86_64/diffutils-3.8-1-x86_64.pkg.tar.zst",
+                "http://repo.msys2.org/msys/x86_64/msys2-runtime-3.2.0-8-x86_64.pkg.tar.zst",
                 "http://repo.msys2.org/msys/x86_64/libiconv-1.16-2-x86_64.pkg.tar.zst",
                 "http://repo.msys2.org/msys/x86_64/libintl-0.19.8.1-1-x86_64.pkg.tar.xz"
             ],
             "hash": [
-                "7df9391e234f7d0ba9ae6717aed739d01190aa9ab25c48d53549a15c89ed0d87",
-                "cea16e60334e36a0b8250e1b30c5deddfdeb341e19729fb27c6450cb13d7b628",
+                "80bd73c6185a4d5d39e846787d4dfa209e18260a930c245858912d8cb23152bd",
+                "bc452a4db3ea81ba812b1b153e2486d4abd63d64f4d376b7b7f2133efadd11a5",
                 "4d23674f25e9d558295464b4f50689698f8ce240616410da9a4d9420b5130ced",
                 "5eadc3cc42da78948d65d994f1f8326706afe011f28e2e5bd0872a37612072d2"
-            ]
-        },
-        "32bit": {
-            "url": [
-                "http://repo.msys2.org/msys/i686/diffutils-3.7-1-i686.pkg.tar.xz",
-                "http://repo.msys2.org/msys/i686/msys2-runtime-3.1.7-2-i686.pkg.tar.xz",
-                "http://repo.msys2.org/msys/i686/libiconv-1.16-2-i686.pkg.tar.zst",
-                "http://repo.msys2.org/msys/i686/libintl-0.19.8.1-1-i686.pkg.tar.xz"
-            ],
-            "hash": [
-                "d6dd47ec699ee3d0bf82dbbee310056dd59218337a743a2ecd540da0b1ac7369",
-                "f0e3fbf4e5332e06b624559b47b19d12c094acdb8f201837ccf3014f27f186e4",
-                "8474386392575a430b33ca0c342b9dbdb54a83ad30fe7bb30cdd8120202477eb",
-                "fa38ff013d43e995d97b6d21825d9059ec38d812b621bbf8c338574498b7d3e8"
             ]
         }
     },
@@ -38,5 +24,25 @@
         "usr\\bin\\diff.exe",
         "usr\\bin\\diff3.exe",
         "usr\\bin\\sdiff.exe"
-    ]
+    ],
+    "checkver": {
+        "msys": [
+            "diffutils",
+            "msys2-runtime",
+            "libiconv",
+            "libintl"
+        ]
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "http://repo.msys2.org/msys/x86_64/diffutils-$matchDiffutils-x86_64.pkg.tar.zst",
+                    "http://repo.msys2.org/msys/x86_64/msys2-runtime-$matchMsys2-Runtime-x86_64.pkg.tar.zst",
+                    "http://repo.msys2.org/msys/x86_64/libiconv-$matchLibiconv-x86_64.pkg.tar.zst",
+                    "http://repo.msys2.org/msys/x86_64/libintl-$matchLibintl-x86_64.pkg.tar.xz"
+                ]
+            }
+        }
+    }
 }
