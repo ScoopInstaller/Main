@@ -3,10 +3,6 @@
     "description": "Utility for downloading TV and radio programmes from BBC iPlayer and BBC Sounds",
     "homepage": "https://github.com/get-iplayer/get_iplayer",
     "license": "GPL-3.0-only",
-    "notes": [
-        "Default Download directories (for TV and radio) are set to",
-        "'$dir\\tv' and '$dir\\radio'"
-    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/get-iplayer/get_iplayer_win32/releases/download/3.27.1/get_iplayer-3.27.1-windows-x64-setup.exe",
@@ -23,7 +19,12 @@
         "    Set-Content \"$dir\\scoop_$_\" \"@echo off`r`n%~dp0$_ --profile-dir `\"$dir\\profile`\" %*\" -Encoding Ascii | Out-Null",
         "}"
     ],
-    "post_install": "Invoke-ExternalCommand \"$dir\\scoop_get_iplayer.cmd\" -ArgumentList @('--prefs-add', '--output-tv', \"$dir\\tv\", '--output-radio', \"$dir\\radio\") | Out-Null",
+    "post_install": [
+        "if (!(Test-Path \"$persist_dir\\options\")) {",
+        "    Invoke-ExternalCommand \"$dir\\scoop_get_iplayer.cmd\" -ArgumentList @('--prefs-add', '--output-tv', \"$dir\\tv\", '--output-radio', \"$dir\\radio\") | Out-Null",
+        "    warn 'Default Download directories (for TV and radio) are set to \"$dir\\tv\" and \"$dir\\radio\"'",
+        "}"
+    ],
     "bin": [
         [
             "scoop_get_iplayer.cmd",
