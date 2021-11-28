@@ -10,6 +10,10 @@
             "extract_dir": "ffmpeg-N-104667-gc90b3661fa-win64-gpl-shared"
         }
     },
+    "post_install": [
+        "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
+        "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\""
+    ],
     "bin": [
         "bin\\ffmpeg.exe",
         "bin\\ffplay.exe",
