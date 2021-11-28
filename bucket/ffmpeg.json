@@ -10,6 +10,10 @@
             "extract_dir": "ffmpeg-n4.4.1-2-gcc33e73618-win64-gpl-4.4"
         }
     },
+    "post_install": [
+        "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
+        "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\""
+    ],
     "bin": [
         "bin\\ffmpeg.exe",
         "bin\\ffplay.exe",
