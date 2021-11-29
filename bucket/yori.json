@@ -3,11 +3,41 @@
     "description": "CMD replacement shell that supports backquotes, job control, improves tab completion, file matching, aliases, command history, and more.",
     "homepage": "http://www.malsmith.net/yori/",
     "license": "MIT",
-    "url": "http://www.malsmith.net/download/?obj=yori/1.60/win32/ysetup.exe",
-    "hash": "a2a3de85e225d598fc06b0da053b832eea277a9cd7f945a6a2800e62a2f0f3a8",
-    "installer": {
-        "args": "\"$dir\""
+    "architecture": {
+        "64bit": {
+            "url": [
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-ypm-amd64.cab#/ypm.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-core-amd64.cab#/core.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-typical-amd64.cab#/typical.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-extra-amd64.cab#/extra.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-completion-noarch.cab#/completion.7z"
+            ],
+            "hash": [
+                "74f52c745998596ad50dcc3b51867b2c3cb9db52a898ad8b072e0050aba58071",
+                "4b7df7df443bf64759ef6ce422da2f83bbf5ffec77a72b2acbb4a53543299940",
+                "f9eaaacf9affc8285b79819d977697e73198f82a8d344428ac436d5a5c5e257b",
+                "2a83f5a92576d93a301fa6a38c628703324b3a8af56100d48cdbd44c93917041",
+                "8a6c75796d1f482f07c4b73f5243d7e3e52c67ca5b3b07ee62376abcfd82011f"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-ypm-win32.cab#/ypm.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-core-win32.cab#/core.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-typical-win32.cab#/typical.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-extra-win32.cab#/extra.7z",
+                "http://www.malsmith.net/download/?obj=yori/1.60/yori-completion-noarch.cab#/completion.7z"
+            ],
+            "hash": [
+                "54fff9392774bb29685503626d4f8a2610c07fdc36ac13ac67bc44f7ccc9b0fd",
+                "065d485d621362f98419857a58648373c7c283b320c0237d37cf082d5096cf35",
+                "e72fa905b3f75eaccb4bf67a891cddfa1e2f5a6ff1398f5e435d2aeffac4bbb8",
+                "73350e264d145ed8fc22bb885f096cae2d7de28e5060b76bc2e79cd23abe8792",
+                "8a6c75796d1f482f07c4b73f5243d7e3e52c67ca5b3b07ee62376abcfd82011f"
+            ]
+        }
     },
+    "post_install": "Remove-Item \"$dir\\pkginfo.ini\" -Force",
     "bin": "yori.exe",
     "persist": "YoriInit.d",
     "shortcuts": [
@@ -17,9 +47,29 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/malxau/yori"
+        "url": "http://www.malsmith.net/yori/changelog/",
+        "regex": "<P>([\\d.]+)"
     },
     "autoupdate": {
-        "url": "http://www.malsmith.net/download/?obj=yori/$version/win32/ysetup.exe"
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-ypm-amd64.cab#/ypm.7z",
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-core-amd64.cab#/core.7z",
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-typical-amd64.cab#/typical.7z",
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-extra-amd64.cab#/extra.7z",
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-completion-noarch.cab#/completion.7z"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-ypm-win32.cab#/ypm.7z",
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-core-win32.cab#/core.7z",
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-typical-win32.cab#/typical.7z",
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-extra-win32.cab#/extra.7z",
+                    "http://www.malsmith.net/download/?obj=yori/$version/yori-completion-noarch.cab#/completion.7z"
+                ]
+            }
+        }
     }
 }
