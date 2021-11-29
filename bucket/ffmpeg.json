@@ -1,35 +1,34 @@
 {
-    "version": "4.2.1",
-    "homepage": "https://ffmpeg.zeranoe.com/builds/",
+    "version": "4.4.1-2",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-4.2.1-win64-static.zip",
-            "hash": "d2af87bbb867bc83c070f3c1a980daaed35c37b02ca82cc2886e8743232886ff",
-            "extract_dir": "ffmpeg-4.2.1-win64-static"
-        },
-        "32bit": {
-            "url": "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-4.2.1-win32-static.zip",
-            "hash": "4dd64d7ec412f77d6745e6edaacd0a6766f041127a7ede5400abc7abacf92692",
-            "extract_dir": "ffmpeg-4.2.1-win32-static"
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2021-11-22-12-21/ffmpeg-n4.4.1-2-gcc33e73618-win64-gpl-4.4.zip",
+            "hash": "4b96a3fd21e8f6d1b088c32ff6d88bbeb05ae343dbad2d58b405e33cda2090c5",
+            "extract_dir": "ffmpeg-n4.4.1-2-gcc33e73618-win64-gpl-4.4"
         }
     },
+    "post_install": [
+        "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
+        "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\""
+    ],
     "bin": [
         "bin\\ffmpeg.exe",
         "bin\\ffplay.exe",
         "bin\\ffprobe.exe"
     ],
-    "checkver": "name=\"v\"\\s+value=\"([\\d.]+)\"",
+    "checkver": {
+        "github": "https://github.com/BtbN/FFmpeg-Builds",
+        "regex": "/autobuild-(?<time>[\\d-]+)/ffmpeg-n(?<version>[\\d.]+)-(?<commit>\\d+)-g(?<hash>[a-z\\d]+)-win64-gpl-[\\d.]+\\.zip",
+        "replace": "${version}-${commit}"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-$version-win64-static.zip",
-                "extract_dir": "ffmpeg-$version-win64-static"
-            },
-            "32bit": {
-                "url": "https://ffmpeg.zeranoe.com/builds/win32/static/ffmpeg-$version-win32-static.zip",
-                "extract_dir": "ffmpeg-$version-win32-static"
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$version-g$matchHash-win64-gpl-$majorVersion.$minorVersion.zip",
+                "extract_dir": "ffmpeg-n$version-g$matchHash-win64-gpl-$majorVersion.$minorVersion"
             }
         }
     }

@@ -1,29 +1,29 @@
 {
-    "homepage": "https://zookeeper.apache.org/",
+    "version": "3.7.0",
     "description": "High-performance coordination service for distributed applications",
-    "version": "3.5.6",
+    "homepage": "https://zookeeper.apache.org/",
     "license": "Apache-2.0",
-    "url": "https://www.apache.org/dist/zookeeper/zookeeper-3.5.6/apache-zookeeper-3.5.6-bin.tar.gz",
-    "hash": "sha512:2bbd0c3a1de0a7d466d0c2c7dce47730bf20002381e2032b87b216bddb41b659d16920c587d4769d45d2ad12230b0fef6adad7fddbfef275bbb547d7bca2c78d",
-    "extract_dir": "apache-zookeeper-3.5.6-bin",
-    "bin": [
-        "bin\\zkServer.cmd",
-        "bin\\zkCli.cmd"
-    ],
-    "persist": "data",
     "suggest": {
         "JDK": [
             "java/oraclejdk",
             "java/openjdk"
         ]
     },
+    "url": "https://www.apache.org/dist/zookeeper/zookeeper-3.7.0/apache-zookeeper-3.7.0-bin.tar.gz",
+    "hash": "sha512:64e2701c019ed46f45f4d53b2c5eaeaf7cf48c342bbafa032a0819d527fc77caebfada6bdad34e5171e6d838f40b16c95b62ce378b53dfc827af2d60cec0b17c",
+    "extract_dir": "apache-zookeeper-3.7.0-bin",
     "post_install": [
         "$dataDirPath = (\"$dir\\data\").replace('\\', '\\\\')",
         "(Get-Content \"$dir\\conf\\zoo_sample.cfg\") -Replace '^dataDir=(.+)$', \"dataDir=$dataDirPath\" | Set-Content \"$dir\\conf\\zoo.cfg\" -Encoding Ascii"
     ],
+    "bin": [
+        "bin\\zkServer.cmd",
+        "bin\\zkCli.cmd"
+    ],
+    "persist": "data",
     "checkver": {
         "url": "https://www.apache.org/dist/zookeeper/",
-        "re": "zookeeper-([\\d.]+)/",
+        "regex": "zookeeper-([\\d.]+)/",
         "reverse": true
     },
     "autoupdate": {

@@ -1,0 +1,67 @@
+{
+    "version": "3.8.0",
+    "description": "The package manager for Lua modules",
+    "homepage": "https://luarocks.org",
+    "license": "MIT",
+    "depends": "lua",
+    "architecture": {
+        "64bit": {
+            "url": "https://luarocks.github.io/luarocks/releases/luarocks-3.8.0-windows-64.zip",
+            "hash": "d0bef92a9637df25bb86bad7ee3ae72e62a20a7b566d6f9cea175db0ebaecfd7",
+            "extract_dir": "luarocks-3.8.0-windows-64"
+        },
+        "32bit": {
+            "url": "https://luarocks.github.io/luarocks/releases/luarocks-3.8.0-windows-32.zip",
+            "hash": "017b606287f3192112e51e59333c91729be3e9bb9be0b84548d74903a620706a",
+            "extract_dir": "luarocks-3.8.0-windows-32"
+        }
+    },
+    "pre_install": [
+        "$file = 'config.lua'",
+        "$lua = (versiondir 'lua' 'current' $global) -replace \"\\\\\", '/'",
+        "$v1 = (current_version 'lua' $global) -replace \"^(\\d.\\d).*\", '$1'",
+        "$v2 = $v1 -replace \"[.]\", ''",
+        "$rocks = \"$(versiondir 'luarocks' 'current' $global)\\rocks\" -replace \"\\\\\", \"/\"",
+        "if (!(Test-Path \"$persist_dir\\$file\")) {",
+        "   Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
+        "   $CONT = @(",
+        "       \"rocks_trees = { `\"$rocks`\" }\"",
+        "       \"lua_interpreter = `\"lua$v2.exe`\"\"",
+        "       \"lua_version = `\"$v1`\"\"",
+        "       'variables = {'",
+        "       \"  LUA_BINDIR = `\"$lua`\",\"",
+        "       \"  LUA_DIR = `\"$lua`\"\"",
+        "       '}'",
+        "   )",
+        "   Set-Content \"$dir\\$file\" ($CONT -join \"`r`n\") -Encoding Ascii",
+        "}"
+    ],
+    "bin": [
+        "luarocks.exe",
+        "luarocks-admin.exe"
+    ],
+    "env_add_path": "rocks\\bin",
+    "env_set": {
+        "LUAROCKS_CONFIG": "$dir\\config.lua"
+    },
+    "persist": [
+        "config.lua",
+        "rocks"
+    ],
+    "checkver": {
+        "url": "https://luarocks.github.io/luarocks/releases/",
+        "regex": "luarocks-([\\d.]+)-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://luarocks.github.io/luarocks/releases/luarocks-$version-windows-64.zip",
+                "extract_dir": "luarocks-$version-windows-64"
+            },
+            "32bit": {
+                "url": "https://luarocks.github.io/luarocks/releases/luarocks-$version-windows-32.zip",
+                "extract_dir": "luarocks-$version-windows-32"
+            }
+        }
+    }
+}

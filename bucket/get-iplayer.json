@@ -1,0 +1,83 @@
+{
+    "version": "3.27.1",
+    "description": "Utility for downloading TV and radio programmes from BBC iPlayer and BBC Sounds",
+    "homepage": "https://github.com/get-iplayer/get_iplayer",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/get-iplayer/get_iplayer_win32/releases/download/3.27.1/get_iplayer-3.27.1-windows-x64-setup.exe",
+            "hash": "6dcadf0553401fe3f5594bedc5629360266921bf295d70140861cbffa10cccef"
+        },
+        "32bit": {
+            "url": "https://github.com/get-iplayer/get_iplayer_win32/releases/download/3.27.1/get_iplayer-3.27.1-windows-x86-setup.exe",
+            "hash": "574115e41bb7dcc97ba36372acf40ef3df6f2ba3988304c27bef05abbce0865e"
+        }
+    },
+    "innosetup": true,
+    "pre_install": [
+        "'get_iplayer.cmd', 'get_iplayer_pvr.cmd', 'get_iplayer_web_pvr.cmd' | ForEach-Object {",
+        "    Set-Content \"$dir\\scoop_$_\" \"@echo off`r`n%~dp0$_ --profile-dir `\"$dir\\profile`\" %*\" -Encoding Ascii | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$persist_dir\\profile\\options\")) {",
+        "    Invoke-ExternalCommand \"$dir\\scoop_get_iplayer.cmd\" -ArgumentList @('--prefs-add', '--output-tv', \"$dir\\tv\", '--output-radio', \"$dir\\radio\") | Out-Null",
+        "    warn 'Default Download directories (for TV and radio) are set to \"$dir\\tv\" and \"$dir\\radio\"'",
+        "}"
+    ],
+    "bin": [
+        [
+            "scoop_get_iplayer.cmd",
+            "get_iplayer"
+        ],
+        [
+            "scoop_get_iplayer_pvr.cmd",
+            "get_iplayer_pvr"
+        ],
+        [
+            "scoop_get_iplayer_web_pvr.cmd",
+            "get_iplayer_web_pvr"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "scoop_get_iplayer.cmd",
+            "get_iplayer",
+            "--search dontshowanymatches && cd %HOMEDRIVE%%HOMEPATH% && cmd.exe /k get_iplayer.cmd --help",
+            "get_iplayer.ico"
+        ],
+        [
+            "scoop_get_iplayer_pvr.cmd",
+            "Run PVR Scheduler",
+            "",
+            "get_iplayer_pvr.ico"
+        ],
+        [
+            "scoop_get_iplayer_web_pvr.cmd",
+            "Web PVR Manager",
+            "",
+            "get_iplayer_pvr.ico"
+        ]
+    ],
+    "persist": [
+        "profile",
+        "tv",
+        "radio"
+    ],
+    "checkver": {
+        "github": "https://github.com/get-iplayer/get_iplayer_win32"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/get-iplayer/get_iplayer_win32/releases/download/$version/get_iplayer-$version-windows-x64-setup.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/get-iplayer/get_iplayer_win32/releases/download/$version/get_iplayer-$version-windows-x86-setup.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

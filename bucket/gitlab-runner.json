@@ -1,21 +1,22 @@
 {
+    "version": "14.5.0",
+    "description": "Run your jobs and send the results back to GitLab",
     "homepage": "https://docs.gitlab.com/runner/",
     "license": "MIT",
-    "version": "12.6.0",
-    "description": "Run your jobs and send the results back to GitLab",
+    "notes": "Run 'gitlab-runner register' and 'gitlab-runner install' from an elevated prompt to set it up",
     "architecture": {
         "64bit": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v12.6.0/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
-            "hash": "96f43f0290eb61e79dda424c9bacc542240c27029eb9baa7699bf65c184f8562"
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v14.5.0/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
+            "hash": "969b2808859b2fb1259e531973b467d16199e01f4fae2025c89b7d120f5b85e6"
         },
         "32bit": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v12.6.0/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
-            "hash": "c4818ad9d1d71dc59754762a9a555b05a0ed169e6149cbd187f62873c87a8acb"
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v14.5.0/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
+            "hash": "d4af58ce76f394d6126ddbd4f214fe5af77f20afb848b2b40f0b356f0987cf3e"
         }
     },
     "bin": "gitlab-runner.exe",
     "checkver": {
-        "url": "https://gitlab.com/gitlab-org/gitlab-runner/tags?format=atom",
+        "url": "https://gitlab.com/gitlab-org/gitlab-runner/-/tags?format=atom",
         "regex": "/tags/v([\\d.]+)<"
     },
     "autoupdate": {
@@ -30,6 +31,5 @@
         "hash": {
             "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/release.sha256"
         }
-    },
-    "notes": "Run 'gitlab-runner register' and 'gitlab-runner install' from an elevated prompt to set it up"
+    }
 }

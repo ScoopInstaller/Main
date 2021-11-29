@@ -1,35 +1,34 @@
 {
-    "version": "4.2.1",
-    "homepage": "https://ffmpeg.zeranoe.com/builds/",
+    "version": "4.4.1-2",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-4.2.1-win64-shared.zip",
-            "hash": "55063d3cf750a75485c7bf196031773d81a1b25d0980c7db48ecfc7701a42331",
-            "extract_dir": "ffmpeg-4.2.1-win64-shared"
-        },
-        "32bit": {
-            "url": "https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-4.2.1-win32-shared.zip",
-            "hash": "9208255f409410d95147151d7e829b5699bf8d91bfe1e81c3f470f47c2fa66d2",
-            "extract_dir": "ffmpeg-4.2.1-win32-shared"
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2021-11-22-12-21/ffmpeg-n4.4.1-2-gcc33e73618-win64-gpl-shared-4.4.zip",
+            "hash": "c41e3a4d39a6752f57e74f39bc32e18fa6646edebe6a9223f8a440f537cba670",
+            "extract_dir": "ffmpeg-n4.4.1-2-gcc33e73618-win64-gpl-shared-4.4"
         }
     },
+    "post_install": [
+        "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
+        "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\""
+    ],
     "bin": [
         "bin\\ffmpeg.exe",
         "bin\\ffplay.exe",
         "bin\\ffprobe.exe"
     ],
-    "checkver": "name=\"v\"\\s+value=\"([\\d.]+)\"",
+    "checkver": {
+        "github": "https://github.com/BtbN/FFmpeg-Builds",
+        "regex": "/autobuild-(?<time>[\\d-]+)/ffmpeg-n(?<version>[\\d.]+)-(?<commit>\\d+)-g(?<hash>[a-z\\d]+)-win64-gpl-shared-[\\d.]+\\.zip",
+        "replace": "${version}-${commit}"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-$version-win64-shared.zip",
-                "extract_dir": "ffmpeg-$version-win64-shared"
-            },
-            "32bit": {
-                "url": "https://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-$version-win32-shared.zip",
-                "extract_dir": "ffmpeg-$version-win32-shared"
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$version-g$matchHash-win64-gpl-shared-$majorVersion.$minorVersion.zip",
+                "extract_dir": "ffmpeg-n$version-g$matchHash-win64-gpl-shared-$majorVersion.$minorVersion"
             }
         }
     }

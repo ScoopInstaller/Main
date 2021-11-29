@@ -1,13 +1,8 @@
 {
-    "homepage": "https://nunit.org/",
+    "version": "3.12.0",
     "description": "NUnit Console runner for NUnit, the most popular and widely used unit testing framework for .NET",
-    "version": "3.10.0",
+    "homepage": "https://nunit.org/",
     "license": "MIT",
-    "url": "https://packages.chocolatey.org/nunit-console-runner.3.10.0.nupkg",
-    "hash": "ffe44c9c1c118c570bc1758293a3a88ac02df1d78b7fbda78aabf200659cda15",
-    "extract_dir": "tools",
-    "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
-    "bin": "nunit3-console.exe",
     "suggest": {
         "NuGet": "nuget",
         "NUnit Extension": [
@@ -18,6 +13,11 @@
             "nunit-extension-vs-project-loader"
         ]
     },
+    "url": "https://packages.chocolatey.org/nunit-console-runner.3.12.0.nupkg",
+    "hash": "ebb229836fb6e3d85fa8acdee454710fa2d94d9c8ccffb9e8a7e9ddf187fdd5b",
+    "extract_dir": "tools",
+    "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
+    "bin": "nunit3-console.exe",
     "checkver": {
         "url": "https://chocolatey.org/packages/nunit-console-runner",
         "regex": "\\s+([\\d.]+)</title>"

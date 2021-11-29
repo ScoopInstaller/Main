@@ -1,16 +1,16 @@
 {
-    "homepage": "https://qemu.weilnetz.de/",
+    "version": "6.2.0-rc2",
     "description": "A generic and open source machine emulator and virtualizer.",
+    "homepage": "https://qemu.weilnetz.de/",
     "license": "GPL-2.0-only",
-    "version": "4.1.0",
     "architecture": {
         "64bit": {
-            "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-20190815.exe#/dl.7z",
-            "hash": "sha512:dbd159c7814728085e171e5050b20101c3af551ee2a2eba4c51941af25ee41a24bfc902e814a42db283842e007fec57f2075e787395cfe3b38a453028a193acf"
+            "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-20211125.exe#/dl.7z",
+            "hash": "44b5857f48d26c28bb90073358ba5de28ab7dee9811dca954b3c20dcc7148475"
         },
         "32bit": {
-            "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-20190815.exe#/dl.7z",
-            "hash": "sha512:d6bda594fc0a45afbf12d6893587c9884cf9da7fc6765c3c962bd9a3d6cdcd1f7e5cbcfa789fc038e369ff70a7a5f14831b63a90ad772065aa576c33b23b8f48"
+            "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-20211125.exe#/dl.7z",
+            "hash": "6bb42cf0ae623ffa330d6682e7ee57bdbb762879183505cd4763a5c7555cb39c"
         }
     },
     "bin": [
@@ -18,20 +18,21 @@
         "qemu-ga.exe",
         "qemu-img.exe",
         "qemu-io.exe",
+        "qemu-nbd.exe",
         "qemu-system-aarch64.exe",
         "qemu-system-aarch64w.exe",
         "qemu-system-alpha.exe",
         "qemu-system-alphaw.exe",
         "qemu-system-arm.exe",
         "qemu-system-armw.exe",
+        "qemu-system-avr.exe",
+        "qemu-system-avrw.exe",
         "qemu-system-cris.exe",
         "qemu-system-crisw.exe",
         "qemu-system-hppa.exe",
         "qemu-system-hppaw.exe",
         "qemu-system-i386.exe",
         "qemu-system-i386w.exe",
-        "qemu-system-lm32.exe",
-        "qemu-system-lm32w.exe",
         "qemu-system-m68k.exe",
         "qemu-system-m68kw.exe",
         "qemu-system-microblaze.exe",
@@ -46,8 +47,6 @@
         "qemu-system-mipsel.exe",
         "qemu-system-mipselw.exe",
         "qemu-system-mipsw.exe",
-        "qemu-system-moxie.exe",
-        "qemu-system-moxiew.exe",
         "qemu-system-nios2.exe",
         "qemu-system-nios2w.exe",
         "qemu-system-or1k.exe",
@@ -60,6 +59,8 @@
         "qemu-system-riscv32w.exe",
         "qemu-system-riscv64.exe",
         "qemu-system-riscv64w.exe",
+        "qemu-system-rx.exe",
+        "qemu-system-rxw.exe",
         "qemu-system-s390x.exe",
         "qemu-system-s390xw.exe",
         "qemu-system-sh4.exe",
@@ -72,8 +73,6 @@
         "qemu-system-sparcw.exe",
         "qemu-system-tricore.exe",
         "qemu-system-tricorew.exe",
-        "qemu-system-unicore32.exe",
-        "qemu-system-unicore32w.exe",
         "qemu-system-x86_64.exe",
         "qemu-system-x86_64w.exe",
         "qemu-system-xtensa.exe",
@@ -81,23 +80,18 @@
         "qemu-system-xtensaebw.exe",
         "qemu-system-xtensaw.exe"
     ],
-    "checkver": {
-        "re": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installers \\((?<version>[\\d.a-z\\-]+)\\)"
-    },
+    "checkver": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installers \\((?<version>[\\d.a-z\\-]+)\\)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
-                "hash": {
-                    "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-$matchYear$matchMonth$matchDay.sha512"
-                }
+                "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
-                "hash": {
-                    "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-$matchYear$matchMonth$matchDay.sha512"
-                }
+                "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z"
             }
+        },
+        "hash": {
+            "url": "$urlNoExt.sha512"
         }
     }
 }

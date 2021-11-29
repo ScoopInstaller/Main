@@ -1,18 +1,33 @@
 {
-    "version": "0.4.2.5",
+    "version": "0.4.6.8",
     "description": "Enables anonymous communication over the onion network (expert mode).",
     "homepage": "https://www.torproject.org",
     "license": "BSD-3-Clause",
+    "notes": [
+        "You will need to configure Tor before using, as it does not come pre-configured.",
+        "See https://tb-manual.torproject.org/ for details."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://dist.torproject.org/torbrowser/9.0.3/tor-win64-0.4.2.5.zip",
-            "hash": "a221503d63f8938d99731560981adb68a5ff651f258e5aea919d6618ab24d28c"
+            "url": "https://dist.torproject.org/torbrowser/11.0/tor-win64-0.4.6.8.zip",
+            "hash": "8603f86409d7400b536f3da29d21a233b668294521751b30a38108719fda3fe7"
         },
         "32bit": {
-            "url": "https://dist.torproject.org/torbrowser/9.0.3/tor-win32-0.4.2.5.zip",
-            "hash": "ce6bc27dd36e53f01e4ba6cf93bdb0600f5c6eafcf602f1aaae9262dcb1e3549"
+            "url": "https://dist.torproject.org/torbrowser/11.0/tor-win32-0.4.6.8.zip",
+            "hash": "dfa04946951fdd093b3ef764923a7db92a7141fab8f75822ae9a87ed1334fb48"
         }
     },
+    "pre_install": [
+        "$current = current_dir $dir",
+        "$content = @(",
+        "    \"DataDirectory `\"$current\\Data\\Data`\"\"",
+        "    \"GeoIPFile `\"$current\\Data\\Tor\\geoip`\"\"",
+        "    \"GeoIPv6File `\"$current\\Data\\Tor\\geoip6`\"\"",
+        ")",
+        "if (!(Test-Path \"$persist_dir\\torrc\")) {",
+        "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
+        "}"
+    ],
     "bin": [
         [
             "Tor\\tor.exe",
@@ -25,20 +40,9 @@
         "Data\\Data",
         "torrc"
     ],
-    "pre_install": [
-        "$current = current_dir $dir",
-        "$content = @(",
-        "    \"DataDirectory `\"$current\\Data\\Data`\"\"",
-        "    \"GeoIPFile `\"$current\\Data\\Tor\\geoip`\"\"",
-        "    \"GeoIPv6File `\"$current\\Data\\Tor\\geoip6`\"\"",
-        ")",
-        "if (!(Test-Path \"$persist_dir\\torrc\")) {",
-        "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
-        "}"
-    ],
     "checkver": {
         "url": "https://www.torproject.org/download/tor/",
-        "regex": "torbrowser/(?<browser>[\\d.]+)/tor-win32-(?<version>[\\d.]+)\\.zip"
+        "regex": "dist/torbrowser/(?<browser>[\\d.]+)/tor-win32-(?<version>[\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
@@ -48,13 +52,6 @@
             "32bit": {
                 "url": "https://dist.torproject.org/torbrowser/$matchBrowser/tor-win32-$version.zip"
             }
-        },
-        "hash": {
-            "url": "$baseurl/sha256sums-signed-build.txt"
         }
-    },
-    "notes": [
-        "NOTE: You will need to configure tor before using it, as it does not come pre-configured.",
-        "Please see https://www.torproject.org/docs/tor-manual.html.en for configuration details."
-    ]
+    }
 }

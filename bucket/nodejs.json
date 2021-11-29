@@ -1,18 +1,18 @@
 {
-    "homepage": "https://nodejs.org",
+    "version": "17.1.0",
     "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.",
-    "version": "13.6.0",
+    "homepage": "https://nodejs.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://nodejs.org/dist/v13.6.0/node-v13.6.0-win-x64.7z",
-            "hash": "4f4960e88edc5c8873c19dcb504295b9f068651cfd6459aae69c612ddeb0a33c",
-            "extract_dir": "node-v13.6.0-win-x64"
+            "url": "https://nodejs.org/dist/v17.1.0/node-v17.1.0-win-x64.7z",
+            "hash": "d6ca33fa49c75346cef82306b70612bca7b2d65205d55d3e8f6c550ef98be6ed",
+            "extract_dir": "node-v17.1.0-win-x64"
         },
         "32bit": {
-            "url": "https://nodejs.org/dist/v13.6.0/node-v13.6.0-win-x86.7z",
-            "hash": "2608a9aca6fee6d6a32f1cfc27be2cf04d55cd36c17c7e8b7e717655f37a37a3",
-            "extract_dir": "node-v13.6.0-win-x86"
+            "url": "https://nodejs.org/dist/v17.1.0/node-v17.1.0-win-x86.7z",
+            "hash": "c640c290f6e99b646f98e095c7bf92971345c386adf33e98688dd575c136a3f4",
+            "extract_dir": "node-v17.1.0-win-x86"
         }
     },
     "persist": [
@@ -20,8 +20,8 @@
         "cache"
     ],
     "env_add_path": [
-        ".",
-        "bin"
+        "bin",
+        "."
     ],
     "post_install": [
         "# Set npm prefix to install modules inside bin and npm cache so they persist",
@@ -29,7 +29,7 @@
     ],
     "checkver": {
         "url": "https://nodejs.org/dist/latest/",
-        "re": "node-v([\\d.]+)-x86.msi"
+        "regex": "node-v([\\d.]+)-x86\\.msi"
     },
     "autoupdate": {
         "architecture": {

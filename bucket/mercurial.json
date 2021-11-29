@@ -1,23 +1,23 @@
 {
-    "homepage": "https://www.mercurial-scm.org/",
+    "version": "6.0",
     "description": "Fast, lightweight, distributed source control management system designed for easy and efficient handling of very large distributed projects.",
-    "version": "5.2.2",
+    "homepage": "https://www.mercurial-scm.org/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-5.2.2-x64.exe",
-            "hash": "ca75f9cec7b9ae9b05cf5394277f5e7de12cc4ecc1fde4575a908bdf1a7e073d"
+            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-6.0-x64.exe",
+            "hash": "5430ccf14817644cd44e84352cee2fee0c901ecd82065a63a469e471b67bdccf"
         },
         "32bit": {
-            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-5.2.2.exe",
-            "hash": "115544dcbbef0ae93486705603d2da70cc0f3412bd7483c568ca32d6b050e690"
+            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-6.0-x86.exe",
+            "hash": "7ffbb7f7f8154302c5627eff2fbcb7dd280ac027dc598c25720f63b393d54e8c"
         }
     },
     "innosetup": true,
     "bin": "hg.exe",
     "checkver": {
         "url": "https://www.mercurial-scm.org/release/windows/latest.dat",
-        "re": "Mercurial-([\\d.]+).exe"
+        "regex": "Mercurial-([\\w.]+)-x"
     },
     "autoupdate": {
         "architecture": {
@@ -25,7 +25,7 @@
                 "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version-x64.exe"
             },
             "32bit": {
-                "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version.exe"
+                "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version-x86.exe"
             }
         }
     }
