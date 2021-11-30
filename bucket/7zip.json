@@ -35,7 +35,7 @@
     },
     "pre_install": [
         "$7zip_root = \"$dir\".Replace('\\', '\\\\')",
-        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+        "'install-context_x64.reg', 'uninstall-context_x64.reg' | ForEach-Object {",
         "    $content = Get-Content \"$dir\\$_\"",
         "    $content = $content.Replace('$7zip_root', $7zip_root)",
         "    if ($global) {",
