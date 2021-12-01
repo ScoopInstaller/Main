@@ -1,0 +1,31 @@
+{
+    "version": "8.12.1",
+    "homepage": "https://www.libvips.org/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/libvips/build-win64-mxe#libvips-web-dependencies"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.12.1/vips-dev-w64-all-8.12.1.zip"
+        },
+        "32bit": {
+            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.12.1/vips-dev-w32-all-8.12.1.zip"
+        }
+    },
+    "env_add_path": "bin",
+    "extract_dir": "vips-dev-8.12",
+    "checkver": {
+        "github": "https://github.com/libvips/build-win64-mxe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cmderdev/cmder/releases/download/v$version/vips-dev-w64-all-$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/cmderdev/cmder/releases/download/v$version/vips-dev-w32-all-$version.zip"
+            }
+        }
+    }
+}
