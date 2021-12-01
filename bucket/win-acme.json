@@ -17,16 +17,16 @@
     "bin": "wacs.exe",
     "persist": "settings.json",
     "checkver": {
-        "github": "https://github.com/win-acme/win-acme",
-        "regex": "acme\\.v([\\d.]+)\\.x"
+        "url": "https://raw.githubusercontent.com/win-acme/win-acme.github.io/master/_config.yml",
+        "regex": "releasetag: (?<tag>[\\d.]+)[\r\n]releasebuild: ([\\d.]+)[\r\n]"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchHead/win-acme.v$version.x64.trimmed.zip"
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchTag/win-acme.v$version.x64.trimmed.zip"
             },
             "32bit": {
-                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchHead/win-acme.v$version.x86.trimmed.zip"
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchTag/win-acme.v$version.x86.trimmed.zip"
             }
         }
     }
