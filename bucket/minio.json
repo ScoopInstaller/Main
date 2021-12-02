@@ -1,30 +1,30 @@
 {
-    "homepage": "https://minio.io/",
+    "version": "2021-11-05T09-16-26Z",
     "description": "A high performance, distributed object storage server, designed for large-scale data infrastructure. (server)",
+    "homepage": "https://min.io",
     "license": "Apache-2.0",
-    "version": "2020-01-16T22-40-29Z",
-    "bin": "minio.exe",
-    "architecture": {
-        "64bit": {
-            "url": "https://dl.minio.io/server/minio/release/windows-amd64/minio.RELEASE.2020-01-16T22-40-29Z#/minio.exe",
-            "hash": "0ced499a3271f3c29ed0492873f09a87a4d76908e678170da88857516e575bf7"
-        }
-    },
     "suggest": {
         "minio-client": "minio-client"
     },
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.min.io/server/minio/release/windows-amd64/archive/minio.RELEASE.2021-11-05T09-16-26Z#/minio.exe",
+            "hash": "19fb987c06304c242a46a871e85451d215456ca15622aa8dba2e8d40d6ae1f9f"
+        }
+    },
+    "bin": "minio.exe",
     "checkver": {
         "github": "https://github.com/minio/minio",
-        "re": "releases/tag/RELEASE.([\\d-]+T[\\d-]+Z)"
+        "regex": "releases/tag/RELEASE\\.([\\d-]+T[\\d-]+Z)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.minio.io/server/minio/release/windows-amd64/minio.RELEASE.$version#/minio.exe",
-                "hash": {
-                    "url": "$baseurl/minio.RELEASE.$version.sha256sum"
-                }
+                "url": "https://dl.min.io/server/minio/release/windows-amd64/archive/minio.RELEASE.$version#/minio.exe"
             }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
         }
     }
 }

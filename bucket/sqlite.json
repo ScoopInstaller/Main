@@ -1,11 +1,11 @@
 {
+    "version": "3.37.0",
+    "description": "A small, fast, self-contained, high-reliability and full-featured SQL database engine",
     "homepage": "https://www.sqlite.org/",
-    "description": "A small, fast, self-contained, high-reliability and full-featured SQL database engine.",
-    "version": "3.31.0",
-    "license": "Public Domain",
-    "url": "https://www.sqlite.org/2020/sqlite-tools-win32-x86-3310000.zip",
-    "hash": "sha1:80758702c60504273c59502603cb5eea74555fce",
-    "extract_dir": "sqlite-tools-win32-x86-3310000",
+    "license": "blessing",
+    "url": "https://www.sqlite.org/2021/sqlite-tools-win32-x86-3370000.zip",
+    "hash": "6e9fbee171cd9b0521b00a6a6c2ad14a22fd2c9d2e0c6258f3411816e15ca242",
+    "extract_dir": "sqlite-tools-win32-x86-3370000",
     "bin": [
         "sqlite3.exe",
         "sqldiff.exe",
@@ -13,14 +13,10 @@
     ],
     "checkver": {
         "url": "https://www.sqlite.org/download.html",
-        "regex": "(?sm)64-bit DLL \\(x64\\) for SQLite version ([\\d.]+)\\..*?(?<year>\\d+)/sqlite-tools-win32-x86-(?<clean>\\d+)"
+        "regex": "(?sm)\\d+-bit DLL \\(x\\d+\\) for SQLite version ([\\d.]+)\\..*?(?<year>\\d+)/sqlite-tools-win32-x86-(?<clean>\\d+)"
     },
     "autoupdate": {
         "url": "https://www.sqlite.org/$matchYear/sqlite-tools-win32-x86-$matchClean.zip",
-        "hash": {
-            "url": "https://www.sqlite.org/download.html",
-            "regex": "(?sm)$basename.*?$sha1"
-        },
         "extract_dir": "sqlite-tools-win32-x86-$matchClean"
     }
 }

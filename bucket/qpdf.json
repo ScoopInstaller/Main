@@ -1,23 +1,23 @@
 {
-    "homepage": "http://qpdf.sourceforge.net/",
+    "version": "10.4.0",
     "description": "A command-line program that does structural, content-preserving transformations on PDF files.",
-    "version": "9.1.0",
+    "homepage": "http://qpdf.sourceforge.net/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/9.1.0/qpdf-9.1.0-bin-mingw64.zip",
-            "hash": "207e5a4c85c056e42c9cf25cb7127732b22831a3998f011e9b18f37ca78460c6"
+            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/10.4.0/qpdf-10.4.0-bin-mingw64.zip",
+            "hash": "sha1:cbe83cf78bf8081e1de457a9a745901f52b9b84b"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/9.1.0/qpdf-9.1.0-bin-mingw32.zip",
-            "hash": "5d92f0f8f6f2ea508c090ae7b5d5c718a27982c53d03e6a8e4daf640367297c0"
+            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/10.4.0/qpdf-10.4.0-bin-mingw32.zip",
+            "hash": "sha1:fff43a915303db020fbd2af340ffae05ab6c4bad"
         }
     },
-    "extract_dir": "qpdf-9.1.0",
+    "extract_dir": "qpdf-10.4.0",
     "bin": "bin\\qpdf.exe",
     "checkver": {
         "github": "https://github.com/qpdf/qpdf",
-        "re": "qpdf-([\\d.]+)-"
+        "regex": "qpdf-([\\d.]+)-"
     },
     "autoupdate": {
         "architecture": {
@@ -28,9 +28,6 @@
                 "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/$version/qpdf-$version-bin-mingw32.zip"
             }
         },
-        "extract_dir": "qpdf-$version",
-        "hash": {
-            "url": "$baseurl/qpdf-$version.sha512"
-        }
+        "extract_dir": "qpdf-$version"
     }
 }

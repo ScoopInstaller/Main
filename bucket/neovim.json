@@ -1,19 +1,18 @@
 {
-    "homepage": "https://neovim.io/",
-    "version": "0.4.3",
+    "version": "0.6.0",
     "description": "Vim-fork focused on extensibility and usability",
+    "homepage": "https://neovim.io/",
     "license": {
         "identifier": "Apache-2.0,Vim",
         "url": "https://github.com/neovim/neovim/blob/master/LICENSE"
     },
+    "suggest": {
+        "vcredist": "extras/vcredist2015"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-win64.zip",
-            "hash": "549fd985e3e6207dc3d52d17fb2bc7957adc264f20b525fc7e62f8dc8c597931"
-        },
-        "32bit": {
-            "url": "https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-win32.zip",
-            "hash": "4f63f55697afaf4d9f82204768fd7ad3e98cc554f2745afd4a160d50a63d1025"
+            "url": "https://github.com/neovim/neovim/releases/download/v0.6.0/nvim-win64.zip",
+            "hash": "d46a161a8e025f8a03a75b1181372f2712116e4edf566b2569cdcc4f371f80c4"
         }
     },
     "extract_dir": "Neovim",
@@ -28,19 +27,17 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/neovim/neovim"
+        "github": "https://github.com/neovim/neovim",
+        "regex": "NVIM v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/neovim/neovim/releases/download/v$version/nvim-win64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/neovim/neovim/releases/download/v$version/nvim-win32.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
         }
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2015"
     }
 }

@@ -1,20 +1,25 @@
 {
-    "version": "2.900",
-    "homepage": "https://cygwin.com/",
+    "version": "2.910",
     "description": "A large collection of GNU and Open Source tools which provide functionality similar to a Linux distribution on Windows",
+    "homepage": "https://cygwin.com/",
     "license": {
         "identifier": "GPL-3.0-or-later,X11,Public Domain",
         "url": "https://cygwin.com/faq.html#faq.what.free"
     },
+    "notes": "To start a Cygwin shell, type \"cygwin\"",
     "architecture": {
         "64bit": {
             "url": "https://cygwin.com/setup-x86_64.exe#/cygwin-setup.exe",
-            "hash": "sha512:0c4eded02d56ce8abc04bb36e6f066ef798a2746aaf9557ffc6a7f779786bbc284a14d19c3308df13bb31fe86904c2ba2b0a2553c16b0cbacb24229e8f2d4291"
+            "hash": "b9219acd1241ffa4d38e19587f1ccc2854f951e451f3858efc9d2e1fe19d375c"
         },
         "32bit": {
             "url": "https://cygwin.com/setup-x86.exe#/cygwin-setup.exe",
-            "hash": "sha512:496b706088617c9ed4572dd73286a631fd16eeb2017bc7adfe83340e5ea8ae807b30abc286650ed1b101430c12b9c3b3127aca0835669c681c1a0f37702de8af"
+            "hash": "ff20b6440ba750dc70e92b5ca24bda40543f1c68800931425c16fd428abe21fc"
         }
+    },
+    "checkver": {
+        "regex": ">release_([\\d.]+)<",
+        "url": "https://cygwin.com/git/?p=cygwin-apps/setup.git;a=tags"
     },
     "autoupdate": {
         "architecture": {
@@ -24,14 +29,7 @@
             "32bit": {
                 "url": "https://cygwin.com/setup-x86.exe#/cygwin-setup.exe"
             }
-        },
-        "hash": {
-            "url": "https://cygwin.com/sha512.sum"
         }
-    },
-    "checkver": {
-        "re": "<a.*href=\"/git/\\?p=cygwin-apps/setup\\.git;a=tag.*\">([\\d.]+)</a>",
-        "url": "https://cygwin.com/git/?p=cygwin-apps/setup.git;a=tags"
     },
     "bin": [
         [
@@ -51,7 +49,6 @@
         ],
         "keep": true
     },
-    "notes": "To start a Cygwin shell, type \"cygwin\"",
     "pre_install": "persist_data @{persist = @('packages', 'root')} $original_dir $persist_dir",
     "shortcuts": [
         [

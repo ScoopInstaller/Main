@@ -1,0 +1,33 @@
+{
+    "version": "0.3.7",
+    "description": "Completions for various commands through Clink",
+    "homepage": "https://github.com/vladimir-kotikov/clink-completions",
+    "license": "MIT",
+    "suggest": {
+        "Clink": "clink"
+    },
+    "url": "https://github.com/vladimir-kotikov/clink-completions/archive/0.3.7.zip",
+    "hash": "2136a9b868fe05af7fb07a3b8a3c878b551bf6601321c91a6390376b47c1fad6",
+    "extract_dir": "clink-completions-0.3.7",
+    "installer": {
+        "script": [
+            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+            "   clink installscripts \"$dir\"",
+            "} else {",
+            "   warn 'Clink installation not found. Please manually install these scripts.'",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+            "   clink uninstallscripts \"$dir\"",
+            "}"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/vladimir-kotikov/clink-completions/archive/$version.zip",
+        "extract_dir": "clink-completions-$version"
+    }
+}

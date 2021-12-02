@@ -1,32 +1,20 @@
 {
-    "homepage": "https://windows.php.net/",
+    "version": "8.1.0",
     "description": "A popular general-purpose scripting language that is especially suited to web development. (thread safe)",
+    "homepage": "https://windows.php.net/",
     "license": "PHP-3.01",
-    "version": "7.4.2",
+    "suggest": {
+        "vcredist": "extras/vcredist2019"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://windows.php.net/downloads/releases/php-7.4.2-Win32-VC15-x64.zip",
-            "hash": "034dc3ffb5583ee9e65f23ecae72ec93ecf1c31f694d1bdb7f90b81bc2b78897"
+            "url": "https://windows.php.net/downloads/releases/php-8.1.0-Win32-vs16-x64.zip",
+            "hash": "4c87a2f9b00bed1a40cca30ad18cc6564013f51faa1b6e4e636625e0ad5ae125"
         },
         "32bit": {
-            "url": "https://windows.php.net/downloads/releases/php-7.4.2-Win32-VC15-x86.zip",
-            "hash": "217782a1ba2ea73370dce55fe0489e92ef6e27b5f3d359a3393d886f14959b25"
+            "url": "https://windows.php.net/downloads/releases/php-8.1.0-Win32-vs16-x86.zip",
+            "hash": "fcf29c5547f2b88dd19bca9ef4bb76a829cc4c4861b2235c00b9c6a3fcc873c8"
         }
-    },
-    "bin": [
-        "php.exe",
-        "php-cgi.exe",
-        "phpdbg.exe"
-    ],
-    "persist": [
-        "cli",
-        [
-            "php.ini-production",
-            "cli\\php.ini"
-        ]
-    ],
-    "env_set": {
-        "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
     },
     "pre_install": [
         "# Create directory for custom PHP configuration",
@@ -38,24 +26,36 @@
         "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
         "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
     ],
+    "bin": [
+        "php.exe",
+        "php-cgi.exe",
+        "phpdbg.exe"
+    ],
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
+    },
+    "persist": [
+        "cli",
+        [
+            "php.ini-production",
+            "cli\\php.ini"
+        ]
+    ],
     "checkver": {
         "url": "https://windows.php.net/download/",
-        "re": "<h3 id=\"php-[\\d.]+\".*?>.*?\\(([\\d.]+)\\)</h3>"
+        "regex": "<h3 id=\"php-[\\d.]+\".*?>.*?\\(([\\d.]+)\\)</h3>"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-VC15-x64.zip"
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs16-x64.zip"
             },
             "32bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-VC15-x86.zip"
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs16-x86.zip"
             }
         },
         "hash": {
             "url": "$baseurl/sha256sum.txt"
         }
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2017"
     }
 }

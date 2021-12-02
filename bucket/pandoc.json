@@ -1,22 +1,19 @@
 {
-    "homepage": "https://pandoc.org",
-    "version": "2.9.1.1",
-    "license": "GPL-2.0-or-later",
+    "version": "2.16.2",
     "description": "Universal markup converter",
+    "homepage": "https://pandoc.org",
+    "license": "GPL-2.0-or-later",
+    "suggest": {
+        "MiKTeX": "latex"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jgm/pandoc/releases/download/2.9.1.1/pandoc-2.9.1.1-windows-x86_64.zip",
-            "hash": "1813cc1e810d339a038166a7ed2a7418a93d0067ecabb1f41fb89a0b3c1d6ea7"
-        },
-        "32bit": {
-            "url": "https://github.com/jgm/pandoc/releases/download/2.9.1.1/pandoc-2.9.1.1-windows-i386.zip",
-            "hash": "7fab231b04431ca726d5cfee466cfbb172279817ab0180677e458798cb248cd4"
+            "url": "https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-windows-x86_64.zip",
+            "hash": "a01bfd0fb702c4fc3de2e829fac2c6964afdb2bc285f57dce4ec00945069eff7"
         }
     },
-    "bin": [
-        "pandoc.exe",
-        "pandoc-citeproc.exe"
-    ],
+    "extract_dir": "pandoc-2.16.2",
+    "bin": "pandoc.exe",
     "checkver": {
         "github": "https://github.com/jgm/pandoc"
     },
@@ -28,9 +25,7 @@
             "32bit": {
                 "url": "https://github.com/jgm/pandoc/releases/download/$version/pandoc-$version-windows-i386.zip"
             }
-        }
-    },
-    "suggest": {
-        "MiKTeX": "latex"
+        },
+        "extract_dir": "pandoc-$version"
     }
 }

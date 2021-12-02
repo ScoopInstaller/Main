@@ -1,0 +1,28 @@
+{
+    "version": "18.0",
+    "description": "Nuwen's MinGW Distro with GCC, GDB, make, binutils, coreutils, 7zip and extra headers",
+    "homepage": "https://nuwen.net/mingw.html",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://nuwen.net/files/mingw/mingw-18.0-without-git.exe#/dl.7z",
+            "hash": "532aa9fc377fa8cb3985fc2fadf61da43f1c50bcc464719b8274dc2b2590d688"
+        }
+    },
+    "extract_dir": "MinGW",
+    "env_add_path": "bin",
+    "env_set": {
+        "C_INCLUDE_PATH": "$dir\\include;$dir\\include\\freetype2",
+        "CPLUS_INCLUDE_PATH": "$dir\\include;$dir\\include\\freetype2"
+    },
+    "checkver": {
+        "regex": "mingw-([\\d.]+)-without-git"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nuwen.net/files/mingw/mingw-$version-without-git.exe#/dl.7z"
+            }
+        }
+    }
+}

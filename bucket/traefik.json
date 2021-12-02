@@ -1,30 +1,27 @@
 {
-    "homepage": "https://traefik.io/",
+    "version": "2.5.3",
     "description": "HTTP reverse proxy and load balancer",
-    "version": "2.1.3",
+    "homepage": "https://traefik.io/",
     "license": "MIT",
+    "notes": "Run with a configuration file 'traefik -c <yourconfig.toml>' or 'traefik --help' for all options.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/containous/traefik/releases/download/v2.1.3/traefik_v2.1.3_windows_amd64.zip",
-            "hash": "a82054be5c961559ff52018ca0a171b945520b85a1eb02a2eb9b5d56dae060e6"
+            "url": "https://github.com/traefik/traefik/releases/download/v2.5.3/traefik_v2.5.3_windows_amd64.zip",
+            "hash": "a856b0ea45f7e8b2d3084507f4938ea218818f6d194f25a873511cf165272845"
         },
         "32bit": {
-            "url": "https://github.com/containous/traefik/releases/download/v2.1.3/traefik_v2.1.3_windows_386.zip",
-            "hash": "2feeccd6df3f5d8b1884c2fefdb90958e52d0f12466dc37d47a18f838b95de7e"
+            "url": "https://github.com/traefik/traefik/releases/download/v2.5.3/traefik_v2.5.3_windows_386.zip",
+            "hash": "7191d0e991e31b8c8e3ba27ec85df67d11994c10ffa782576da2615a859963fb"
         }
     },
     "bin": "traefik.exe",
-    "notes": "Run with a configuration file 'traefik -c <yourconfig.toml>' or 'traefik --help' for all options.",
-    "checkver": {
-        "github": "https://github.com/containous/traefik"
-    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/containous/traefik/releases/download/v$version/traefik_v$version_windows_amd64.zip"
+                "url": "https://github.com/traefik/traefik/releases/download/v$version/traefik_v$version_windows_amd64.zip"
             },
             "32bit": {
-                "url": "https://github.com/containous/traefik/releases/download/v$version/traefik_v$version_windows_386.zip"
+                "url": "https://github.com/traefik/traefik/releases/download/v$version/traefik_v$version_windows_386.zip"
             }
         },
         "hash": {

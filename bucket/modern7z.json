@@ -1,0 +1,37 @@
+{
+    "version": "1.8.7",
+    "description": "7-Zip plugin for the leading-edge compression methods; zstd, Brotli, LZ4, LZ5, Lizard, and Fast LZMA2.",
+    "homepage": "https://www.tc4shell.com/en/7zip/modern7z/",
+    "license": "Unknown",
+    "depends": "7zip",
+    "url": "https://www.tc4shell.com/binary/Modern7z.zip",
+    "hash": "b62da3482d72753047b14f3c74ac65249a4d777d56b327b2e971faad3eeb94fc",
+    "architecture": {
+        "64bit": {
+            "extract_dir": "64"
+        },
+        "32bit": {
+            "extract_dir": "32"
+        }
+    },
+    "installer": {
+        "script": [
+            "$7zcodecs = \"$(persistdir '7zip' $global)\\Codecs\"",
+            "if (-not (Test-Path \"$7zcodecs\")) {",
+            "  New-Item -Path \"$7zcodecs\" -ItemType Directory | Out-Null",
+            "  New-Item -Path \"$(versiondir '7zip' 'current')\\Codecs\" -Value \"$7zcodecs\" -ItemType Junction | Out-Null",
+            "}",
+            "Copy-Item -Path \"$dir\\*\" -Destination \"$7zcodecs\" -Recurse -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$7zcodecs = \"$(persistdir '7zip' $global)\\Codecs\"",
+            "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$7zcodecs\\$($_.Name)\" -Recurse -Force -ErrorAction SilentlyContinue }"
+        ]
+    },
+    "checkver": "Plugin version: ([\\d.]+)",
+    "autoupdate": {
+        "url": "https://www.tc4shell.com/binary/Modern7z.zip"
+    }
+}

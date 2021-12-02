@@ -1,27 +1,27 @@
 {
-    "homepage": "https://gradle.org",
+    "version": "7.3.1",
     "description": "An open-source build automation tool focused on flexibility and performance. (Source code and documentation boundled)",
-    "version": "6.1",
+    "homepage": "https://gradle.org",
     "license": "Apache-2.0",
-    "hash": "634f972af958e3c753aeb42d7a688fab6820b527a0aef9eed03d7f3f6f9c7c06",
-    "url": "https://services.gradle.org/distributions/gradle-6.1-all.zip",
-    "extract_dir": "gradle-6.1",
-    "bin": "bin\\gradle.bat",
     "suggest": {
         "JDK": [
             "java/oraclejdk",
             "java/openjdk"
         ]
     },
+    "url": "https://services.gradle.org/distributions/gradle-7.3.1-all.zip",
+    "hash": "b75392c5625a88bccd58a574552a5a323edca82dab5942d2d41097f809c6bcce",
+    "extract_dir": "gradle-7.3.1",
+    "bin": "bin\\gradle.bat",
     "checkver": {
         "url": "https://gradle.org/install/",
-        "re": "The current Gradle release is version ([\\d.]+)"
+        "regex": "The current Gradle release is version ([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://services.gradle.org/distributions/gradle-$version-all.zip",
-        "extract_dir": "gradle-$version",
         "hash": {
             "url": "$url.sha256"
-        }
+        },
+        "extract_dir": "gradle-$version"
     }
 }

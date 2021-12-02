@@ -1,20 +1,17 @@
 {
-    "homepage": "https://www.isc.org/bind/",
+    "version": "9.16.23",
     "description": "Versatile, classic, complete name server software.",
+    "homepage": "https://www.isc.org/bind/",
     "license": "MPL-2.0",
-    "version": "9.14.8",
+    "suggest": {
+        "vcredist": "extras/vcredist2017"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x64.zip",
-            "hash": "2b28768b32cd4abe81cc83f1df041aba8d3d6531fc5fb1d85e31d1346029bf27"
-        },
-        "32bit": {
-            "url": "https://downloads.isc.org/isc/bind9/9.14.8/BIND9.14.8.x86.zip",
-            "hash": "f23608dfe2d3fc91be0ebe4e380b9425f619e349863c0c18d9bec5a32a4475f5"
+            "url": "https://downloads.isc.org/isc/bind9/9.16.23/BIND9.16.23.x64.zip",
+            "hash": "16c80fe0bb6b3e2c887dfd556dd89fe7dfcbf4e6a7d90e24261f4534a9893904"
         }
     },
-    "env_add_path": "bin",
-    "persist": "etc",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\BINDInstall.exe\", \"$dir\\vcredist_x*.exe\"",
@@ -23,18 +20,17 @@
             "Remove-Item \"$dir\\*\" -Exclude 'bin'"
         ]
     },
-    "checkver": "(?sm)Current-Stable<.*?\\/([\\d.]+)\\/",
+    "env_add_path": "bin",
+    "persist": "etc",
+    "checkver": {
+        "url": "https://www.isc.org/download/",
+        "regex": "(?sm)>Current-Stable.*?/([\\d.]+)/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://downloads.isc.org/isc/bind$majorVersion/$version/BIND$version.x64.zip"
-            },
-            "32bit": {
-                "url": "https://downloads.isc.org/isc/bind$majorVersion/$version/BIND$version.x86.zip"
             }
         }
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2017"
     }
 }

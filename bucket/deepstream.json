@@ -1,27 +1,30 @@
 {
+    "version": "5.2.6",
+    "description": "Realtime, fast and secure data-sync server for mobile, web & iot",
     "homepage": "https://deepstream.io",
-    "description": "Realtime, fast and secure data-sync server for mobile, web & iot.",
     "license": "AGPL-3.0-or-later",
-    "version": "5.0.5",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/deepstreamIO/deepstream.io/releases/download/v5.0.5/deepstream.io-windows-5.0.5.zip",
-            "hash": "abeb7d998f4af288097d5f43d5c9de634da999cd7ab75062b32b274842d656b7"
+            "url": "https://github.com/deepstreamIO/deepstream.io/releases/download/v5.2.6/deepstream.io-windows-5.2.6.zip",
+            "hash": "633d161cb4414de21f01e46a6fb1e9ca3ba70bd9cba4a0a1f9776a2c0c327a44"
         }
     },
+    "extract_dir": "deepstream.io-windows-5.2.6",
     "bin": "deepstream.exe",
-    "persist": "conf",
     "env_set": {
         "DEEPSTREAM_CONFIG_DIRECTORY": "$dir\\conf\\config.yml"
     },
+    "persist": "conf",
     "checkver": {
-        "github": "https://github.com/deepstreamIO/deepstream.io"
+        "url": "https://github.com/deepstreamIO/deepstream.io/releases",
+        "regex": "deepstream\\.io-windows-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/deepstreamIO/deepstream.io/releases/download/v$version/deepstream.io-windows-$version.zip"
             }
-        }
+        },
+        "extract_dir": "deepstream.io-windows-$version"
     }
 }

@@ -1,0 +1,32 @@
+{
+    "version": "4.1.0",
+    "description": "Small Device C Compiler",
+    "homepage": "http://sdcc.sourceforge.net",
+    "license": "GPL-2.0-only,LGPL-2.1-only,GPL-3.0-only,Zlib,Libpng,BSL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win64/4.1.0/sdcc-4.1.0-x64-setup.exe#/dl.7z",
+            "hash": "sha1:3193fbb5f77091a7bb26bd1fa45da111b65f087e"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win32/4.1.0/sdcc-4.1.0-setup.exe#/dl.7z",
+            "hash": "sha1:d186f8f4b0e97f53de56285f692c58863cf8d6a5"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall*\" -Force -Recurse",
+    "bin": "bin\\sdcc.exe",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/sdcc/rss?path=/sdcc-win64",
+        "regex": "sdcc-([\\d.]+)-x64-setup\\.exe\\]\\]"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win64/$version/sdcc-$version-x64-setup.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win32/$version/sdcc-$version-setup.exe#/dl.7z"
+            }
+        }
+    }
+}

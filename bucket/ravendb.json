@@ -1,7 +1,7 @@
 {
+    "version": "5.3.0",
+    "description": "NoSQL database built on .NET Core",
     "homepage": "https://ravendb.net",
-    "description": "NoSQL database built on .NET Core.",
-    "version": "4.2.8",
     "license": {
         "identifier": "Freeware",
         "url": "https://ravendb.net/terms/commercial"
@@ -10,13 +10,13 @@
         "Visual C++ Redistributable 2015": "extras/vcredist2015"
     },
     "architecture": {
-        "32bit": {
-            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-4.2.8-windows-x86.zip",
-            "hash": "f3357901c4abab113ecd0a9f0595c535b534542866cd0d06a6bbf1cb257c6e1c"
-        },
         "64bit": {
-            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-4.2.8-windows-x64.zip",
-            "hash": "8c904d893304ed919e6a39cc82e1eb7c193a887f3d88e7b22f131aa5d29753ef"
+            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-5.3.0-windows-x64.zip",
+            "hash": "1f0933766b052bfa90d493dcf85301acdd82df196dad5f2706dcda1362df765a"
+        },
+        "32bit": {
+            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-5.3.0-windows-x86.zip",
+            "hash": "fa1214958bf33b03ebd8bf72cdaa0a05cc7ec13a19b09ca11bc8a71add325f02"
         }
     },
     "installer": {
@@ -45,16 +45,16 @@
     ],
     "persist": "Server\\settings.json",
     "checkver": {
-        "url": "https://ravendb.net/download",
-        "regex": "Latest STABLE <span class=\"text-primary\">([\\d.]+)</span></h1>"
+        "url": "https://ravendb.net/whats-new",
+        "regex": "([\\d.]+)\\s*\\(\\d+"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x86.zip"
-            },
             "64bit": {
                 "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x64.zip"
+            },
+            "32bit": {
+                "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x86.zip"
             }
         }
     }

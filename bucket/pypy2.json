@@ -1,24 +1,32 @@
 {
-    "version": "7.3.0",
-    "homepage": "https://pypy.org",
+    "version": "7.3.6",
     "description": "A fast, compliant alternative implementation of the Python language.",
+    "homepage": "https://www.pypy.org",
     "license": "MIT",
-    "url": "https://bitbucket.org/pypy/pypy/downloads/pypy2.7-v7.3.0-win32.zip",
-    "hash": "a9e3c5c983edba0313a41d3c1ab55b080816c4129e67a6c272c53b9dbcdd97ec",
-    "extract_dir": "pypy2.7-v7.3.0-win32",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.python.org/pypy/pypy2.7-v7.3.6-win64.zip",
+            "hash": "fcc8f6b3b472a77eaa754951f288fe234b4953bfba845888dd839b9b862cb891",
+            "extract_dir": "pypy2.7-v7.3.6-win64"
+        }
+    },
     "bin": [
         "pypy.exe",
         "pypyw.exe"
     ],
     "checkver": {
-        "url": "https://pypy.org/download.html",
-        "regex": "PyPy(?<py>2[\\d.]+) v([\\d.]+)"
+        "url": "https://www.pypy.org/download.html",
+        "regex": "pypy(?<py>2[\\d.]+)-v([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://bitbucket.org/pypy/pypy/downloads/pypy$matchPy-v$version-win32.zip",
-        "extract_dir": "pypy$matchPy-v$version-win32",
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.python.org/pypy/pypy$matchPy-v$version-win64.zip",
+                "extract_dir": "pypy$matchPy-v$version-win64"
+            }
+        },
         "hash": {
-            "url": "https://pypy.org/download.html"
+            "url": "https://www.pypy.org/checksums.html"
         }
     }
 }

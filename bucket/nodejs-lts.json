@@ -1,18 +1,18 @@
 {
-    "homepage": "https://nodejs.org",
+    "version": "16.13.1",
     "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications. (Long Term Support)",
-    "version": "12.14.1",
+    "homepage": "https://nodejs.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://nodejs.org/dist/v12.14.1/node-v12.14.1-win-x64.7z",
-            "hash": "5f071589df21a6d2e99fc7a52649f0a7e5d5b36ef8f619bd7dbd39e6e2f47be2",
-            "extract_dir": "node-v12.14.1-win-x64"
+            "url": "https://nodejs.org/dist/v16.13.1/node-v16.13.1-win-x64.7z",
+            "hash": "e4e06ca94b46522096cbf3baa836dbb8af8b44d6c0db0ad577881dc9edf1d252",
+            "extract_dir": "node-v16.13.1-win-x64"
         },
         "32bit": {
-            "url": "https://nodejs.org/dist/v12.14.1/node-v12.14.1-win-x86.7z",
-            "hash": "b94daef84daaf40e2a3841d8ecad679462ad48c2d5db83bc7d1289a27882a00c",
-            "extract_dir": "node-v12.14.1-win-x86"
+            "url": "https://nodejs.org/dist/v16.13.1/node-v16.13.1-win-x86.7z",
+            "hash": "439728a9c2d708e24669897d40b64b02e8d4e55c2e8c5e6f90552e1f20cf534e",
+            "extract_dir": "node-v16.13.1-win-x86"
         }
     },
     "persist": [
@@ -20,8 +20,8 @@
         "cache"
     ],
     "env_add_path": [
-        ".",
-        "bin"
+        "bin",
+        "."
     ],
     "post_install": [
         "# Set npm prefix to install modules inside bin and npm cache so they persist",
@@ -29,7 +29,7 @@
     ],
     "checkver": {
         "url": "https://nodejs.org/en/download/",
-        "re": "LTS Version: <strong>([\\d.]+)</strong>"
+        "regex": "LTS Version: <strong>([\\d.]+)</strong>"
     },
     "autoupdate": {
         "architecture": {

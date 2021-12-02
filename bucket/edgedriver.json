@@ -1,16 +1,35 @@
 {
-    "version": "6.17134",
+    "version": "98.0.1091.0",
+    "description": "Close the loop on your developer cycle by automating testing of your website in Microsoft Edge (Chromium).",
+    "homepage": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver",
     "license": {
         "identifier": "Freeware",
-        "url": "https://az813057.vo.msecnd.net/eulas/webdriver-eula.pdf"
+        "url": "https://az813057.vo.msecnd.net/webdriver/license.html"
     },
-    "homepage": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/#downloads",
-    "description": "A WebDriver implementation that controls an Edge browser running on the local machine.",
-    "url": "https://download.microsoft.com/download/F/8/A/F8AF50AB-3C3A-4BC4-8773-DC27B32988DD/MicrosoftWebDriver.exe",
-    "hash": "6E8182697EA5189491B5519D8496A3392E43741B7C0515130F2F8205881D208E",
-    "bin": "MicrosoftWebDriver.exe",
+    "notes": "For legacy (EdgeHTML) version, see 'versions/edgedriver-legacy'.",
+    "architecture": {
+        "64bit": {
+            "url": "https://msedgedriver.azureedge.net/98.0.1091.0/edgedriver_win64.zip",
+            "hash": "048f2b1266ffba6f8ec4130727b4f8ffc0bd1bb8f184687b09ec2356c76d030c"
+        },
+        "32bit": {
+            "url": "https://msedgedriver.azureedge.net/98.0.1091.0/edgedriver_win32.zip",
+            "hash": "74839e4e410b522aeda423cfd4fbdc647ae02aee4641d7005181a35945e26992"
+        }
+    },
+    "bin": "msedgedriver.exe",
     "checkver": {
-        "url": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/#downloads",
-        "re": "Version: ([\\d.]+)"
+        "url": "https://msedgedriver.azureedge.net/LATEST_CANARY",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win64.zip"
+            },
+            "32bit": {
+                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win32.zip"
+            }
+        }
     }
 }

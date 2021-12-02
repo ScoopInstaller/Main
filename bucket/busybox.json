@@ -1,46 +1,45 @@
 {
-    "homepage": "https://frippery.org/busybox",
+    "version": "4487-gd239d2d52",
     "description": "BusyBox is a single binary that contains many common Unix tools",
-    "version": "3329-gcf0fa4d13",
+    "homepage": "https://frippery.org/busybox",
     "license": "GPL-2.0-only",
     "architecture": {
-        "32bit": {
-            "url": "https://frippery.org/files/busybox/busybox-w32-FRP-3329-gcf0fa4d13.exe#/busybox.exe",
-            "hash": "bfaeb88638e580fc522a68e69072e305308f9747563e51fa085eec60ca39a5ae"
-        },
         "64bit": {
-            "url": "https://frippery.org/files/busybox/busybox-w64-FRP-3329-gcf0fa4d13.exe#/busybox.exe",
-            "hash": "8bb42c9758c8d4628d79b255e015bc891c8eb044fc9fba5265928fcb4a2a9f24"
-        }
-    },
-    "checkver": {
-        "url": "https://frippery.org/busybox/",
-        "re": ">busybox-w32-FRP-([\\w-]+)\\."
-    },
-    "autoupdate": {
-        "hash": {
-            "url": "$baseurl/SHA256SUM"
+            "url": "https://frippery.org/files/busybox/busybox-w64-FRP-4487-gd239d2d52.exe#/busybox.exe",
+            "hash": "23d1bf00d07cf090abf1360eea2233195aeb5a99fcd35bf3ad1e833c76c00c6b"
         },
-        "architecture": {
-            "32bit": {
-                "url": "https://frippery.org/files/busybox/busybox-w32-FRP-$version.exe#/busybox.exe"
-            },
-            "64bit": {
-                "url": "https://frippery.org/files/busybox/busybox-w64-FRP-$version.exe#/busybox.exe"
-            }
+        "32bit": {
+            "url": "https://frippery.org/files/busybox/busybox-w32-FRP-4487-gd239d2d52.exe#/busybox.exe",
+            "hash": "35e2b0db6d57a045188b9afc617aae52a6c8e2aa0205256c049f3537a48f879b"
         }
     },
     "post_install": [
-        "if(!(test-path ~/.profile)) {",
-        "    'creating ~/.profile'",
+        "if (!(Test-Path \"$env:USERPROFILE\\.profile\")) {",
+        "    info 'creating ~/.profile'",
         "@\"",
-        "if [ -e ~/.bashrc ]",
-        "then",
+        "if [ -e ~/.bashrc ]; then",
         "   source ~/.bashrc",
         "fi",
-        "\"@ | out-file -en oem ~/.profile",
+        "\"@ | Out-File \"$env:USERPROFILE\\.profile\" -Encoding oem",
         "}"
     ],
+    "checkver": {
+        "url": "https://frippery.org/busybox/",
+        "regex": ">busybox-w32-FRP-([\\w-]+)\\."
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://frippery.org/files/busybox/busybox-w64-FRP-$version.exe#/busybox.exe"
+            },
+            "32bit": {
+                "url": "https://frippery.org/files/busybox/busybox-w32-FRP-$version.exe#/busybox.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUM"
+        }
+    },
     "bin": [
         "busybox.exe",
         [
@@ -76,8 +75,7 @@
         [
             "busybox.exe",
             "bash",
-            "bash",
-            "-l"
+            "bash"
         ],
         [
             "busybox.exe",
@@ -306,6 +304,11 @@
         ],
         [
             "busybox.exe",
+            "httpd",
+            "httpd"
+        ],
+        [
+            "busybox.exe",
             "iconv",
             "iconv"
         ],
@@ -476,6 +479,11 @@
         ],
         [
             "busybox.exe",
+            "reset",
+            "reset"
+        ],
+        [
+            "busybox.exe",
             "rev",
             "rev"
         ],
@@ -611,6 +619,11 @@
         ],
         [
             "busybox.exe",
+            "time",
+            "time"
+        ],
+        [
+            "busybox.exe",
             "timeout",
             "timeout"
         ],
@@ -633,6 +646,11 @@
             "busybox.exe",
             "truncate",
             "truncate"
+        ],
+        [
+            "busybox.exe",
+            "ts",
+            "ts"
         ],
         [
             "busybox.exe",
@@ -711,13 +729,13 @@
         ],
         [
             "busybox.exe",
-            "wc",
-            "wc"
+            "watch",
+            "watch"
         ],
         [
             "busybox.exe",
-            "watch",
-            "watch"
+            "wc",
+            "wc"
         ],
         [
             "busybox.exe",

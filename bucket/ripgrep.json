@@ -1,16 +1,21 @@
 {
-    "homepage": "https://github.com/BurntSushi/ripgrep",
+    "version": "13.0.0",
     "description": "Recursively searches directories for a regex pattern.",
+    "homepage": "https://github.com/BurntSushi/ripgrep",
     "license": "MIT",
-    "version": "11.0.2",
+    "suggest": {
+        "vcredist": "extras/vcredist2015"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep-11.0.2-x86_64-pc-windows-msvc.zip",
-            "hash": "0be0279591412e12b0b92d5fda0707ebeceb9c6a51472e99b46fd4d25f13b6ef"
+            "url": "https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-x86_64-pc-windows-msvc.zip",
+            "hash": "a47ace6f654c5ffa236792fc3ee3fefd9c7e88e026928b44da801acb72124aa8",
+            "extract_dir": "ripgrep-13.0.0-x86_64-pc-windows-msvc"
         },
         "32bit": {
-            "url": "https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep-11.0.2-i686-pc-windows-msvc.zip",
-            "hash": "9408d9a49abc38768377378aa70c0d6615c06bbd0fd959048e1bbb7b261c3fdd"
+            "url": "https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep-13.0.0-i686-pc-windows-msvc.zip",
+            "hash": "725fab270e0c7419e0032b8dcf28cb399337be9d4867d4e527a1d9671efecffb",
+            "extract_dir": "ripgrep-13.0.0-i686-pc-windows-msvc"
         }
     },
     "bin": "rg.exe",
@@ -18,14 +23,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/BurntSushi/ripgrep/releases/download/$version/ripgrep-$version-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/BurntSushi/ripgrep/releases/download/$version/ripgrep-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "ripgrep-$version-x86_64-pc-windows-msvc"
             },
             "32bit": {
-                "url": "https://github.com/BurntSushi/ripgrep/releases/download/$version/ripgrep-$version-i686-pc-windows-msvc.zip"
+                "url": "https://github.com/BurntSushi/ripgrep/releases/download/$version/ripgrep-$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "ripgrep-$version-i686-pc-windows-msvc"
             }
         }
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2015"
     }
 }

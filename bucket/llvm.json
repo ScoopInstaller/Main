@@ -1,75 +1,31 @@
 {
-    "version": "9.0.0",
+    "version": "13.0.0",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
-    "homepage": "https://www.llvm.org/",
+    "homepage": "https://www.llvm.org",
     "license": "NCSA",
     "architecture": {
         "64bit": {
-            "url": "https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe#/dl.7z",
-            "hash": "71ed99a6720945d76b6772584735f2ed472f12719dff184a0b1a6a35047b8863"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/LLVM-13.0.0-win64.exe#/dl.7z",
+            "hash": "f81f08a8bd9d787ec0505a7475cdff9653516cbbc5804e973f8749a2139fa1cb"
         },
         "32bit": {
-            "url": "https://releases.llvm.org/9.0.0/LLVM-9.0.0-win32.exe#/dl.7z",
-            "hash": "089e226dc0d3ecb292f344cdbed96c5d9a705564cc578957a955b4ed71c70cae"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-13.0.0/LLVM-13.0.0-win32.exe#/dl.7z",
+            "hash": "0fb33b3c5b8ff78337fb0a8b54aa2f81a309d1fed57887195a29fa0f683444b8"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\`$*\" -Recurse",
-    "bin": [
-        "bin\\clang++.exe",
-        "bin\\clang-apply-replacements.exe",
-        "bin\\clang-change-namespace.exe",
-        "bin\\clang-check.exe",
-        "bin\\clang-cl.exe",
-        "bin\\clang-cpp.exe",
-        "bin\\clang-doc.exe",
-        "bin\\clang-extdef-mapping.exe",
-        "bin\\clang-format.exe",
-        "bin\\clang-import-test.exe",
-        "bin\\clang-include-fixer.exe",
-        "bin\\clang-offload-bundler.exe",
-        "bin\\clang-query.exe",
-        "bin\\clang-refactor.exe",
-        "bin\\clang-rename.exe",
-        "bin\\clang-reorder-fields.exe",
-        "bin\\clang-scan-deps.exe",
-        "bin\\clang-tidy.exe",
-        "bin\\clang.exe",
-        "bin\\clangd.exe",
-        "bin\\find-all-symbols.exe",
-        "bin\\git-clang-format",
-        "bin\\hmaptool",
-        "bin\\ld.lld.exe",
-        "bin\\ld64.lld.exe",
-        "bin\\lld-link.exe",
-        "bin\\lld.exe",
-        "bin\\lldb-argdumper.exe",
-        "bin\\lldb-instr.exe",
-        "bin\\lldb-mi.exe",
-        "bin\\lldb-vscode.exe",
-        "bin\\lldb.exe",
-        "bin\\llvm-ar.exe",
-        "bin\\llvm-lib.exe",
-        "bin\\llvm-nm.exe",
-        "bin\\llvm-objcopy.exe",
-        "bin\\llvm-objdump.exe",
-        "bin\\llvm-ranlib.exe",
-        "bin\\llvm-rc.exe",
-        "bin\\llvm-symbolizer.exe",
-        "bin\\modularize.exe",
-        "bin\\scan-build.bat",
-        "bin\\wasm-ld.exe"
-    ],
-    "checkver": "releases/download.html#([\\d.]+)",
-    "env_set": {
-        "LIBCLANG_PATH": "$dir\\bin"
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
+    "env_add_path": "bin",
+    "checkver": {
+        "github": "https://github.com/llvm/llvm-project",
+        "regex": "tag/llvmorg-([\\d._]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://releases.llvm.org/$version/LLVM-$version-win64.exe#/dl.7z"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://releases.llvm.org/$version/LLVM-$version-win32.exe#/dl.7z"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
             }
         }
     }

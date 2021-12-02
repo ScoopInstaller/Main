@@ -1,27 +1,22 @@
 {
-    "homepage": "https://kubernetes.io/docs/getting-started-guides/minikube/",
+    "version": "1.24.0",
     "description": "Runs a single-node Kubernetes cluster inside a Virtual Machine to try out Kubernetes.",
+    "homepage": "https://kubernetes.io/docs/getting-started-guides/minikube/",
     "license": "Apache-2.0",
-    "version": "1.6.2",
     "architecture": {
         "64bit": {
-            "url": "https://storage.googleapis.com/minikube/releases/v1.6.2/minikube-windows-amd64.exe",
-            "hash": "79d66c874cfe3497656e9ba191680cc95abd92d2f722b10de38f00b76ef82393"
+            "url": "https://storage.googleapis.com/minikube/releases/v1.24.0/minikube-windows-amd64.exe#/minikube.exe",
+            "hash": "bb729590e111652d5f444fa66b66196491fa21c0713e4ff29f6e5360ab13a02c"
         }
     },
-    "bin": [
-        [
-            "minikube-windows-amd64.exe",
-            "minikube"
-        ]
-    ],
+    "bin": "minikube.exe",
     "checkver": {
         "github": "https://github.com/kubernetes/minikube"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://storage.googleapis.com/minikube/releases/v$version/minikube-windows-amd64.exe"
+                "url": "https://storage.googleapis.com/minikube/releases/v$version/minikube-windows-amd64.exe#/minikube.exe"
             }
         },
         "hash": {
