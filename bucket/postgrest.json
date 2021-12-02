@@ -1,12 +1,16 @@
 {
-    "version": "8.0.0",
+    "version": "9.0.0",
     "description": "REST API for any Postgres database",
     "homepage": "https://postgrest.org",
     "license": "MIT",
+    "suggest": {
+        "PostgreSQL": "postgresql"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PostgREST/postgrest/releases/download/v8.0.0/postgrest-v8.0.0-windows-x64.zip",
-            "hash": "8bcb6152ea7df154eb4bfa712ecdd40cd067b74584a91f037b6ad641300f4b9d"
+            "url": "https://github.com/PostgREST/postgrest/releases/download/v9.0.0/postgrest-v9.0.0-windows-x64.zip",
+            "hash": "5697e646d49cf902bf08c6f5b12fe327edd7b1351058023d2785115b3a1f88d7",
+            "extract_dir": "artifacts\\postgrest-windows-x64"
         }
     },
     "bin": "postgrest.exe",
@@ -16,7 +20,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/PostgREST/postgrest/releases/download/v$version/postgrest-v$version-windows-x64.zip"
+                "url": "https://github.com/PostgREST/postgrest/releases/download/v$version/postgrest-v$version-windows-x64.zip",
+                "extract_dir": "artifacts\\postgrest-windows-x64"
             }
         }
     }
