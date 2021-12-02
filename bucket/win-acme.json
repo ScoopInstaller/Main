@@ -1,5 +1,5 @@
 {
-    "version": "2.1.20.1185",
+    "version": "2.1.20.1",
     "description": "A Simple ACME Client",
     "homepage": "https://www.win-acme.com",
     "license": "Apache-2.0",
@@ -16,17 +16,14 @@
     "pre_install": "if (!(Test-Path \"$persist_dir\\settings.json\")) { Copy-Item \"$dir\\settings_default.json\" \"$dir\\settings.json\" }",
     "bin": "wacs.exe",
     "persist": "settings.json",
-    "checkver": {
-        "url": "https://raw.githubusercontent.com/win-acme/win-acme.github.io/master/_config.yml",
-        "regex": "releasetag: (?<tag>[\\d.]+)[\r\n]releasebuild: ([\\d.]+)[\r\n]"
-    },
+    "checkver": "/releases/download/v([\\d.]+)/win-acme.v(?<build>[\\d.]+).x64",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchTag/win-acme.v$version.x64.trimmed.zip"
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$matchBuild.x64.trimmed.zip"
             },
             "32bit": {
-                "url": "https://github.com/win-acme/win-acme/releases/download/v$matchTag/win-acme.v$version.x86.trimmed.zip"
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$matchBuild.x86.trimmed.zip"
             }
         }
     }
