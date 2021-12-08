@@ -1,0 +1,25 @@
+{
+  "version": "1.1.12",
+  "homepage": "https://python-poetry.org/",
+  "description": "Dependency Management for Python",
+  "url": "https://raw.githubusercontent.com/python-poetry/poetry/1.1.12/get-poetry.py",
+  "hash": "e973b3badb95a916bfe250c22eeb7253130fd87312afa326eb02b8bdcea8f4a7",
+  "autoupdate": {
+    "url": "https://raw.githubusercontent.com/python-poetry/poetry/$version/get-poetry.py"
+  },
+  "license": "MIT",
+  "depends": "python",
+  "env_set": {
+    "POETRY_HOME": "$dir"
+  },
+  "bin": "bin\\poetry.bat",
+  "checkver": {
+    "github": "https://python-poetry.org/"
+  },
+  "installer": {
+    "script": "$env:POETRY_HOME=$dir; python $dir/$fname --version $version --no-modify-path -y"
+  },
+  "uninstaller": {
+    "script": "python $dir/get-poetry.py --uninstall -y"
+  }
+}
