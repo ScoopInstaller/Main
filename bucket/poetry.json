@@ -10,7 +10,7 @@
         "script": "$env:POETRY_HOME=$dir; python $dir/$fname --version $version --no-modify-path -y"
     },
     "uninstaller": {
-        "script": "python $dir/get-poetry.py --uninstall -y"
+        "script": "$env:POETRY_HOME=$dir; python $dir/get-poetry.py --uninstall -y"
     },
     "bin": "bin\\poetry.bat",
     "env_set": {
