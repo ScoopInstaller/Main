@@ -1,0 +1,34 @@
+{
+    "version": "2.9.3",
+    "description": "XML C parser and toolkit",
+    "homepage": "http://xmlsoft.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.zlatkovic.com/pub/libxml/64bit/libxml2-2.9.3-win32-x86_64.7z",
+            "hash": "727eac03f7b65b167aa975b5b83f89cabc6654a4031ae3810a59b5d9901627f8"
+        },
+        "32bit": {
+            "url": "https://www.zlatkovic.com/pub/libxml/64bit/libxml2-2.9.3-win32-x86.7z",
+            "hash": "67e986d9da6af91ee3665b28c323a94cb344451b6fc3ba725b7c975bdef16960"
+        }
+    },
+    "bin": [
+        "bin\\xmlcatalog.exe",
+        "bin\\xmllint.exe"
+    ],
+    "checkver": {
+        "url": "https://www.zlatkovic.com/pub/libxml/64bit/",
+        "regex": "libxml2-([\\d.]+)-win32-x86\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.zlatkovic.com/pub/libxml/64bit/libxml2-$version-win32-x86_64.7z"
+            },
+            "32bit": {
+                "url": "https://www.zlatkovic.com/pub/libxml/64bit/libxml2-$version-win32-x86.7z"
+            }
+        }
+    }
+}
