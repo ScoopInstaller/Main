@@ -1,0 +1,34 @@
+{
+    "version": "9.0",
+    "description": "The sort, uniq and wc utilities from GNU coreutils",
+    "homepage": "https://www.gnu.org/software/coreutils",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://nuwen.net/files/mingw/components-18.0.7z",
+            "hash": "50b7bddbceda793098f2fed3a249fb02911f4a46c5d9a2e6c77079fa7e40b2ad"
+        }
+    },
+    "extract_dir": "components-18.0",
+    "pre_install": [
+        "Expand-7ZipArchive \"$dir\\coreutils-*.7z\" \"$dir\"",
+        "Get-ChildItem \"$dir\\*.7z\" | Remove-Item -Recurse -Force"
+    ],
+    "bin": [
+        "bin\\sort.exe",
+        "bin\\uniq.exe",
+        "bin\\wc.exe"
+    ],
+    "checkver": {
+        "url": "https://nuwen.net/mingw.html",
+        "regex": "(?sm)>coreutils (?<version>[\\d.]+)</a>.*?components-(?<components>[\\d.]+).7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nuwen.net/files/mingw/components-$matchComponents.7z"
+            }
+        },
+        "extract_dir": "components-$matchComponents"
+    }
+}
