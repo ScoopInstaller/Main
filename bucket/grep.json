@@ -1,19 +1,30 @@
 {
-    "version": "2.5.4",
+    "version": "3.7",
     "description": "Print lines matching a pattern.",
-    "homepage": "http://gnuwin32.sourceforge.net/packages/grep.htm",
-    "license": "GPL-2.0-only",
-    "url": [
-        "https://downloads.sourceforge.net/project/gnuwin32/grep/2.5.4/grep-2.5.4-bin.zip",
-        "https://downloads.sourceforge.net/project/gnuwin32/grep/2.5.4/grep-2.5.4-dep.zip"
+    "homepage": "https://www.gnu.org/software/grep",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://nuwen.net/files/mingw/components-18.0.7z",
+            "hash": "50b7bddbceda793098f2fed3a249fb02911f4a46c5d9a2e6c77079fa7e40b2ad"
+        }
+    },
+    "extract_dir": "components-18.0",
+    "pre_install": [
+        "Expand-7ZipArchive \"$dir\\grep-*.7z\" \"$dir\"",
+        "Get-ChildItem \"$dir\\*.7z\" | Remove-Item -Recurse -Force"
     ],
-    "hash": [
-        "sha1:56f41d351b3ed8ac671df4dd3bbd4c4d3b9190a2",
-        "sha1:6dc3a0d1a1751c731fb680a01650a1396c76648c"
-    ],
-    "bin": [
-        "bin\\grep.exe",
-        "bin\\egrep.exe",
-        "bin\\fgrep.exe"
-    ]
+    "bin": "bin\\grep.exe",
+    "checkver": {
+        "url": "https://nuwen.net/mingw.html",
+        "regex": "(?sm)>grep (?<version>[\\d.]+)</a>.*?components-(?<components>[\\d.]+).7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nuwen.net/files/mingw/components-$matchComponents.7z"
+            }
+        },
+        "extract_dir": "components-$matchComponents"
+    }
 }
