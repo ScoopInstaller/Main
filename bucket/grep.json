@@ -5,26 +5,39 @@
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://nuwen.net/files/mingw/components-18.0.7z",
-            "hash": "50b7bddbceda793098f2fed3a249fb02911f4a46c5d9a2e6c77079fa7e40b2ad"
+            "url": "https://packages.chocolatey.org/grep.3.7.nupkg",
+            "hash": "ec113135322239cd453a290f48fdb1ce6190cdcde162aa8e576d41ff8c606c94",
+            "bin": [
+                [
+                    "grep-3.7-x64.exe",
+                    "grep"
+                ]
+            ],
+            "extract_dir": "tools\\install\\grep-windows-3.7"
         }
     },
-    "extract_dir": "components-18.0",
-    "pre_install": [
-        "Expand-7ZipArchive \"$dir\\grep-*.7z\" \"$dir\"",
-        "Get-ChildItem \"$dir\\*.7z\" | Remove-Item -Recurse -Force"
-    ],
-    "bin": "bin\\grep.exe",
+    "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
     "checkver": {
-        "url": "https://nuwen.net/mingw.html",
-        "regex": "(?sm)>grep (?<version>[\\d.]+)</a>.*?components-(?<components>[\\d.]+).7z"
+        "url": "https://community.chocolatey.org/packages/grep",
+        "regex": "GNU grep ([\\d.]+)</title>"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nuwen.net/files/mingw/components-$matchComponents.7z"
+                "url": "https://packages.chocolatey.org/grep.$version.nupkg",
+                "hash": {
+                    "url": "https://community.chocolatey.org/packages/grep",
+                    "regex": "$sha256.*?$basename"
+                },
+                "bin": [
+                    [
+                        "grep-$version-x64.exe",
+                        "grep"
+                    ]
+                ],
+                "extract_dir": "tools\\install\\grep-windows-$version"
             }
-        },
-        "extract_dir": "components-$matchComponents"
+        }
     }
 }
+
