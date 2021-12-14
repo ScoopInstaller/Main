@@ -3,18 +3,31 @@
     "description": "GNU Debugger",
     "homepage": "https://www.gnu.org/software/gdb/",
     "license": "GPL-3.0-or-later",
-    "url": "https://downloads.sourceforge.net/project/ezwinports/gdb-11.1-w32-bin.zip",
-    "hash": "ec984fcc9f5235566876a3bce0aad7d6b28510466ba0b6d65fe706ce5ddb5c97",
+    "architecture": {
+        "64bit": {
+            "url": "https://nuwen.net/files/mingw/components-18.0.7z",
+            "hash": "50b7bddbceda793098f2fed3a249fb02911f4a46c5d9a2e6c77079fa7e40b2ad"
+        }
+    },
+    "extract_dir": "components-18.0",
+    "pre_install": [
+        "Expand-7ZipArchive \"$dir\\gdb-*.7z\" \"$dir\"",
+        "Get-ChildItem \"$dir\\*.7z\" | Remove-Item -Recurse -Force"
+    ],
     "bin": [
         "bin\\gdb.exe",
-        "bin\\gdbreplay.exe",
         "bin\\gdbserver.exe"
     ],
     "checkver": {
-        "url": "https://sourceforge.net/projects/ezwinports/files",
-        "regex": "/files/gdb-([\\d.]+)-w32-bin.zip"
+        "url": "https://nuwen.net/mingw.html",
+        "regex": "(?sm)>gdb (?<version>[\\d.]+)</a>.*?components-(?<components>[\\d.]+).7z"
     },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/ezwinports/gdb-$version-w32-bin.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://nuwen.net/files/mingw/components-$matchComponents.7z"
+            }
+        },
+        "extract_dir": "components-$matchComponents"
     }
 }
