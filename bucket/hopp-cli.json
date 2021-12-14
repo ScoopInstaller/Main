@@ -1,0 +1,33 @@
+{
+    "version": "0.0.7",
+    "description": "An HTTP CLI client for Hoppscotch, an alternative to curl/httpie",
+    "homepage": "https://hoppscotch.io/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/hoppscotch/hopp-cli/releases/download/v0.0.7/hopp-cli_0.0.7_windows_x86_64.tar.gz",
+            "hash": "788c829ba0a1821a71f9503a8f40210923dc08e9ca70552c119d898665d4e252"
+        },
+        "32bit": {
+            "url": "https://github.com/hoppscotch/hopp-cli/releases/download/v0.0.7/hopp-cli_0.0.7_windows_386.tar.gz",
+            "hash": "695b0598291c1176a8c86854529a2d8f2c60ae286bb5aed88d3cd0058fb3a916"
+        }
+    },
+    "bin": "hopp-cli.exe",
+    "checkver": {
+        "github": "https://github.com/hoppscotch/hopp-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/hoppscotch/hopp-cli/releases/download/v$version/hopp-cli_$version_windows_x86_64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/hoppscotch/hopp-cli/releases/download/v$version/hopp-cli_$version_windows_386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
