@@ -18,7 +18,9 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/vmware-tanzu/carvel-vendir/releases/download/v$version/vendir-windows-amd64.exe#/vendir.exe",
-                "hash": "$sha256  \\./vendir-windows-amd64\\.exe"
+                "hash": {
+                    "url": "https://github.com/vmware-tanzu/carvel-vendir/releases",
+                    "regex": "$sha256  \\./vendir-windows-amd64\\.exe"
             }
         }
     }
