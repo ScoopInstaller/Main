@@ -1,0 +1,46 @@
+{
+    "version": "2.37",
+    "description": "GNU Binutils",
+    "homepage": "https://www.gnu.org/software/binutils/",
+    "license": "GPL-3.0-or-later",
+    "url": [
+        "https://downloads.sourceforge.net/project/ezwinports/binutils-2.37-w32-bin.zip",
+        "https://mirrors.gigenet.com/OSDN//mingw/72215/libgcc-9.2.0-3-mingw32-dll-1.tar.xz"
+    ],
+    "hash": [
+        "9d761a423a5c066911a9568102be481ac5638c58e8fc7385a3bb3425e6d7dbea",
+        "27f7a72e1aa5d0bb894f84aa62da0200b3a4a334e85457bb1961fc341290f833"
+    ],
+    "bin": [
+        "bin\\addr2line.exe",
+        "bin\\ar.exe",
+        "bin\\as.exe",
+        "bin\\c++filt.exe",
+        "bin\\dlltool.exe",
+        "bin\\dllwrap.exe",
+        "bin\\elfedit.exe",
+        "bin\\gprof.exe",
+        "bin\\ld.bfd.exe",
+        "bin\\ld.exe",
+        "bin\\nm.exe",
+        "bin\\objcopy.exe",
+        "bin\\objdump.exe",
+        "bin\\ranlib.exe",
+        "bin\\readelf.exe",
+        "bin\\size.exe",
+        "bin\\strings.exe",
+        "bin\\strip.exe",
+        "bin\\windmc.exe",
+        "bin\\windres.exe"
+    ],
+    "checkver": {
+        "url": "https://sourceforge.net/projects/ezwinports/files",
+        "regex": "/files/binutils-([\\d.]+)-w32-bin.zip"
+    },
+    "autoupdate": {
+        "url": [
+            "https://downloads.sourceforge.net/project/ezwinports/binutils-$version-w32-bin.zip",
+            "https://mirrors.gigenet.com/OSDN//mingw/72215/libgcc-9.2.0-3-mingw32-dll-1.tar.xz"
+        ]
+    }
+}

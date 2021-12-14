@@ -1,19 +1,43 @@
 {
-    "version": "2.5.4",
+    "version": "3.7",
     "description": "Print lines matching a pattern.",
-    "homepage": "http://gnuwin32.sourceforge.net/packages/grep.htm",
-    "license": "GPL-2.0-only",
-    "url": [
-        "https://downloads.sourceforge.net/project/gnuwin32/grep/2.5.4/grep-2.5.4-bin.zip",
-        "https://downloads.sourceforge.net/project/gnuwin32/grep/2.5.4/grep-2.5.4-dep.zip"
-    ],
-    "hash": [
-        "sha1:56f41d351b3ed8ac671df4dd3bbd4c4d3b9190a2",
-        "sha1:6dc3a0d1a1751c731fb680a01650a1396c76648c"
-    ],
-    "bin": [
-        "bin\\grep.exe",
-        "bin\\egrep.exe",
-        "bin\\fgrep.exe"
-    ]
+    "homepage": "https://www.gnu.org/software/grep",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://packages.chocolatey.org/grep.3.7.nupkg",
+            "hash": "ec113135322239cd453a290f48fdb1ce6190cdcde162aa8e576d41ff8c606c94",
+            "bin": [
+                [
+                    "grep-3.7-x64.exe",
+                    "grep"
+                ]
+            ],
+            "extract_dir": "tools\\install\\grep-windows-3.7"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
+    "checkver": {
+        "url": "https://community.chocolatey.org/packages/grep",
+        "regex": "GNU grep ([\\d.]+)</title>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://packages.chocolatey.org/grep.$version.nupkg",
+                "hash": {
+                    "url": "https://community.chocolatey.org/packages/grep",
+                    "regex": "$sha256.*?$basename"
+                },
+                "bin": [
+                    [
+                        "grep-$version-x64.exe",
+                        "grep"
+                    ]
+                ],
+                "extract_dir": "tools\\install\\grep-windows-$version"
+            }
+        }
+    }
 }
+

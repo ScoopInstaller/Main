@@ -1,15 +1,57 @@
 {
-    "version": "4.2.1",
-    "description": "Stream editor.",
-    "homepage": "http://gnuwin32.sourceforge.net/packages/sed.htm",
-    "license": "GPL-2.0-only",
-    "url": [
-        "https://downloads.sourceforge.net/project/gnuwin32/sed/4.2.1/sed-4.2.1-bin.zip",
-        "https://downloads.sourceforge.net/project/gnuwin32/sed/4.2.1/sed-4.2.1-dep.zip"
-    ],
-    "hash": [
-        "sha1:dfd3d1dae27a24784d7ab40eb074196509fa48fe",
-        "sha1:f7edbd7152d8720c95d46dd128b87b8ba48a5d6f"
-    ],
-    "bin": "bin\\sed.exe"
+    "version": "4.8",
+    "description": "sed (stream editor) is a non-interactive command-line text editor",
+    "homepage": "https://www.gnu.org/software/sed",
+    "license": "GPL-3.0-or-later",
+    "url": "https://packages.chocolatey.org/sed.4.8.nupkg",
+    "hash": "ee430b5edc827e1368cf424fb888e997fc05d24e7e90373b8e9c6811a26eec80",
+    "extract_dir": "tools\\install\\sed-windows-master",
+    "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "sed-4.8-x64.exe",
+                    "sed"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": [
+                [
+                    "sed-4.8-xp.exe",
+                    "sed"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://community.chocolatey.org/packages/sed",
+        "regex": "GNU sed ([\\d.]+)</title>"
+    },
+    "autoupdate": {
+        "url": "https://packages.chocolatey.org/sed.$version.nupkg",
+        "hash": {
+            "url": "https://community.chocolatey.org/packages/sed",
+            "regex": "$sha256.*?$basename"
+        },
+        "architecture": {
+            "64bit": {
+                "bin": [
+                    [
+                        "sed-$version-x64.exe",
+                        "sed"
+                    ]
+                ]
+            },
+            "32bit": {
+                "bin": [
+                    [
+                        "sed-$version-xp.exe",
+                        "sed"
+                    ]
+                ]
+            }
+        }
+    }
 }
