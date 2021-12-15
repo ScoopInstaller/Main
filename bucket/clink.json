@@ -13,9 +13,9 @@
     "persist": "profile",
     "checkver": {
         "github": "https://github.com/chrisant996/clink",
-        "regex": "clink\\.([\\d.]+)\\.(?<commit>[\\w.]+)\\.zip"
+        "regex": "/v(?<tag>[\\d.]+)/clink\\.([\\d.]+)\\.(?<commit>[\\w.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://github.com/chrisant996/clink/releases/download/v$version/clink.$version.$matchCommit.zip"
+        "url": "https://github.com/chrisant996/clink/releases/download/v$matchTag/clink.$version.$matchCommit.zip"
     }
 }
