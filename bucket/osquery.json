@@ -10,11 +10,18 @@
             "extract_dir": "osquery"
         }
     },
-    "bin": "osqueryi.exe",
+    "bin": [
+        "osqueryi.exe",
+        "osqueryd\\osqueryd.exe"
+    ],
     "shortcuts": [
         [
             "osqueryi.exe",
-            "osquery"
+            "osqueryi"
+        ],
+        [
+            "osqueryd\\osqueryd.exe",
+            "osqueryd"
         ]
     ],
     "checkver": {
@@ -24,7 +31,7 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/osquery/osquery/releases/download/$version/osquery-$version.msi",
-                "extract_dir": "osquery-$version"
+                "hash": "e0d01f56e0739a0ce2b3beb03ecea277ed146754884e225cba45083043442acc"
             }
         }
     }
