@@ -1,24 +1,27 @@
 {
     "version": "7.92",
-    "description": "Network exploration and security auditing utility. (includes Npcap)",
+    "description": "Network exploration and security auditing utility.",
     "homepage": "https://nmap.org",
     "license": {
         "identifier": "GPL-2.0-only",
         "url": "https://github.com/nmap/nmap/blob/master/COPYING"
     },
-    "notes": "'Npcap' has been installed automatically.",
-    "url": "https://nmap.org/dist/nmap-7.92-setup.exe",
+    "notes": [
+        "Please install 'Npcap' by manually running '$dir\\npcap.exe', otherwise Nmap will not function completely!",
+        "This however, requires administrator rights.",
+        "Please import the network performance improvements by running 'regedt32 \"$dir\\nmap_performance.reg\"'",
+        "See: https://nmap.org/book/inst-windows.html"
+    ],
+    "suggest": {
+        "Visual C++ Redist 2008": "extras/vcredist2008"
+    },
+    "url": "https://nmap.org/dist/nmap-7.92-setup.exe#/dl.7z",
     "hash": "b2400db1a4af9607fdd6ee50e0f5926d8b9272f89eec93d4c30b56dc854afb7a",
-    "installer": {
-        "args": [
-            "/S",
-            "/D=$dir"
-        ]
-    },
-    "uninstaller": {
-        "file": "Uninstall.exe",
-        "args": "/S"
-    },
+    "pre_install": [
+        "Get-ChildItem \"$dir\\`$PLUGINSDIR\\npcap-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'npcap.exe'",
+        "Move-Item \"$dir\\`$PLUGINSDIR\\npcap.exe\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Recurse"
+    ],
     "bin": [
         "nmap.exe",
         "ncat.exe",
@@ -29,7 +32,7 @@
     "shortcuts": [
         [
             "zenmap.exe",
-            "Nmap - Zenmap GUI"
+            "Zenmap - Nmap GUI"
         ]
     ],
     "checkver": {
@@ -37,6 +40,6 @@
         "regex": "nmap-([\\d.]+)-setup\\.exe"
     },
     "autoupdate": {
-        "url": "https://nmap.org/dist/nmap-$version-setup.exe"
+        "url": "https://nmap.org/dist/nmap-$version-setup.exe#/dl.7z"
     }
 }
