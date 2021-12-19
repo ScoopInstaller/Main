@@ -6,23 +6,13 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/osquery/osquery/releases/download/5.0.1/osquery-5.0.1.msi",
-            "hash": "cbf71e82956562eb51bd0c18578508e96fa409873fd0da4c34dd91aec238d252",
-            "extract_dir": "osquery"
+            "hash": "cbf71e82956562eb51bd0c18578508e96fa409873fd0da4c34dd91aec238d252"
         }
     },
+    "extract_dir": "osquery",
     "bin": [
         "osqueryi.exe",
         "osqueryd\\osqueryd.exe"
-    ],
-    "shortcuts": [
-        [
-            "osqueryi.exe",
-            "osqueryi"
-        ],
-        [
-            "osqueryd\\osqueryd.exe",
-            "osqueryd"
-        ]
     ],
     "checkver": {
         "github": "https://github.com/osquery/osquery"
@@ -33,5 +23,10 @@
                 "url": "https://github.com/osquery/osquery/releases/download/$version/osquery-$version.msi"
             }
         }
-    }
+    },
+    "notes": [
+        "To set permissions for and install the osqueryd as a service, use the",
+        "included osquery_utils.ps1 and manage-osqueryd.ps1 scripts. Check docs at",
+        "https://osquery.readthedocs.io/en/stable/installation/install-windows"
+    ]
 }
