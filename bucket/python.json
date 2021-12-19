@@ -56,14 +56,16 @@
             "}",
             "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
             "Remove-Item \"$dir\\_tmp\", \"$dir\\setup.exe\" -Force -Recurse",
-            "& \"$dir\\python.exe\" -E -s -m ensurepip -U --default-pip | Out-Null",
-            "Write-Output \"`e[0m\" # Reset ansi to prevent color leak from installer",
             "if ($global) {",
             "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
             "    env 'PATHEXT' $true \"$pathext;.PY;.PYW\"",
             "}"
         ]
     },
+    "post_install": [
+        "python -E -s -m ensurepip -U --default-pip | Out-Null",
+        "Write-Output \"`e[0m\" # Reset ansi to prevent color leak from installer"
+    ],
     "uninstaller": {
         "script": [
             "if ($global) {",
