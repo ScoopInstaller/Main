@@ -1,0 +1,25 @@
+{
+    "version": "3.1.20200127.214830",
+    "description": "JetBrains dotMemory unit testing framework for testing .NET memory issues.",
+    "homepage": "https://www.jetbrains.com/dotmemory/unit",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.jetbrains.com/legal/docs/toolbox/user/"
+    },
+    "suggest": {
+        "NUnit Console runner": "nunit-console"
+    },
+    "url": "https://download.jetbrains.com/resharper/JetBrains.dotMemoryUnit.3.1.20200127.214830.zip",
+    "hash": "eb5f1b7d0e10b7c691867e4589b36d6af14920e2ef9e3845608b68b1230e81ff",
+    "bin": "dotMemoryUnit.exe",
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=DMU&latest=true&platform=zip&type=release",
+        "regex": "dotMemoryUnit\\.([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/resharper/JetBrains.dotMemoryUnit.$version.zip",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
