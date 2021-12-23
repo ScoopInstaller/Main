@@ -1,13 +1,13 @@
 {
-    "version": "4.4.1-2",
+    "version": "4.4.1",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
     "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2021-12-21-12-18/ffmpeg-n4.4.1-2-gcc33e73618-win64-gpl-shared-4.4.zip",
-            "hash": "ab07da98f151f01906def4586d62e9220f4bad829e3d5e621f7d087d204fd849",
-            "extract_dir": "ffmpeg-n4.4.1-2-gcc33e73618-win64-gpl-shared-4.4"
+            "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.4.1-full_build-shared.7z",
+            "hash": "146d0d5ab6ba50e6813bab47518bdc582abe122bb2d41bcc5609314890df460c",
+            "extract_dir": "ffmpeg-4.4.1-full_build-shared"
         }
     },
     "post_install": [
@@ -20,15 +20,17 @@
         "bin\\ffprobe.exe"
     ],
     "checkver": {
-        "github": "https://github.com/BtbN/FFmpeg-Builds",
-        "regex": "/autobuild-(?<time>[\\d-]+)/ffmpeg-n(?<version>[\\d.]+)-(?<commit>\\d+)-g(?<hash>[a-z\\d]+)-win64-gpl-shared-[\\d.]+\\.zip",
-        "replace": "${version}-${commit}"
+        "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full-shared.7z.ver",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-n$version-g$matchHash-win64-gpl-shared-$majorVersion.$minorVersion.zip",
-                "extract_dir": "ffmpeg-n$version-g$matchHash-win64-gpl-shared-$majorVersion.$minorVersion"
+                "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-full_build-shared.7z",
+                "hash": {
+                    "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-full_build-shared.7z.sha256"
+                },
+                "extract_dir": "ffmpeg-$version-full_build-shared"
             }
         }
     }
