@@ -5,4 +5,9 @@ Core manifests for [Scoop](https://scoop.sh), the Windows command-line installer
 How do I install these manifests?
 ---------------------------------
 
-Just `scoop install <manifest>`. This is the default bucket for Scoop and is added by default.
+Just do `scoop install <manifest>`. This is the default bucket for Scoop and is added by default.
+
+How do I contribute new manifests?
+----------------------------------
+
+To make a new manifest conribution, please read the [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md).
