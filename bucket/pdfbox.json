@@ -18,5 +18,21 @@
         "pdfbox.jar",
         "preflight.jar"
     ],
-    "checkver": "Apache PDFBox ([\\d.]+) released"
+    "checkver": "Apache PDFBox ([\\d.]+) released",
+    "autoupdate": {
+      "url": [
+        "https://downloads.apache.org/pdfbox/$version/pdfbox-app-$version.jar#/pdfbox.jar",
+        "https://downloads.apache.org/pdfbox/$version/preflight-$version.jar#/preflight.jar"
+      ],
+      "hash": [
+        {
+          "url": "$url.sha512",
+          "regex": "$sha512"
+        },
+        {
+          "url": "$url.sha512",
+          "regex": "$sha512"
+        }
+      ]
+    }
 }
