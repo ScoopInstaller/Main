@@ -1,5 +1,5 @@
 {
-    "version": "10.6.4",
+    "version": "10.6.5",
     "description": "Community developed fork of MySQL server.",
     "homepage": "https://mariadb.org",
     "license": "GPL-2.0-only",
@@ -13,14 +13,14 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.6.4/winx64-packages/mariadb-10.6.4-winx64.zip",
-            "hash": "25440575882fbe54a442c5fb8a7c76b70588e03a4be093dfb1694cad8fbdfdd7",
-            "extract_dir": "mariadb-10.6.4-winx64"
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.6.5/winx64-packages/mariadb-10.6.5-winx64.zip",
+            "hash": "ca56070e4d099c412987f09b73755fe874b83f951facd0fa81b8f76463569a3b",
+            "extract_dir": "mariadb-10.6.5-winx64"
         },
         "32bit": {
-            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.6.4/win32-packages/mariadb-10.6.4-win32.zip",
-            "hash": "1a2431b9d962ccc641fe76214a869e46e435f38be4ddd862cebdb0bd8a11ff47",
-            "extract_dir": "mariadb-10.6.4-win32"
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.6.5/win32-packages/mariadb-10.6.5-win32.zip",
+            "hash": "e1c9f7aa9c8d1eefceae837ed794a1d6fa596bb86b82024e5fd187b33030fa23",
+            "extract_dir": "mariadb-10.6.5-win32"
         }
     },
     "post_install": [
@@ -59,8 +59,8 @@
     ],
     "persist": "data",
     "checkver": {
-        "url": "https://downloads.mariadb.org/",
-        "regex": "Download ([\\d.]+) Stable"
+        "url": "https://downloads.mariadb.org/rest-api/mariadb/all-releases/",
+        "jsonpath": "$.releases[?(@.status=='stable')].release_number"
     },
     "autoupdate": {
         "architecture": {
