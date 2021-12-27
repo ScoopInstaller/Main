@@ -1,0 +1,24 @@
+{
+    "version": "2.2.0",
+    "description": "Fully featured and highly configurable SFTP server with optional HTTP, FTP/S and WebDAV support",
+    "homepage": "https://github.com/drakkan/sftpgo",
+    "license": "AGPL-3.0-only",
+    "notes": "Register SFTPGo as Windows Service by running: \"sftpgo service install\" as Administrator",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/drakkan/sftpgo/releases/download/v2.2.0/sftpgo_v2.2.0_windows_portable_x86_64.zip",
+            "hash": "e8df32fbd29994475728384b17183da55775cd2abd4d4bca2d4afdd603544a82"
+        }
+    },
+    "bin": "sftpgo.exe",
+    "checkver": {
+        "github": "https://github.com/drakkan/sftpgo"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/drakkan/sftpgo/releases/download/v$version/sftpgo_v$version_windows_portable_x86_64.zip"
+            }
+        }
+    }
+}
