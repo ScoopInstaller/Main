@@ -1,5 +1,5 @@
 {
-    "version": "1.22.15",
+    "version": "1.22.17",
     "description": "Node.js dependency manager",
     "homepage": "https://yarnpkg.com/",
     "license": "BSD-2-Clause",
@@ -11,8 +11,9 @@
             "nvs"
         ]
     },
-    "url": "https://yarnpkg.com/downloads/1.22.15/yarn-1.22.15.msi",
-    "hash": "8e812ac4d27b4c04a54f32eb8823cfb54d02f5a4ec429e4091cca38fa17e4113",
+    "url": "https://github.com/yarnpkg/yarn/releases/download/v1.22.17/yarn-v1.22.17.tar.gz",
+    "hash": "267982c61119a055ba2b23d9cf90b02d3d16c202c03cb0c3a53b9633eae37249",
+    "extract_dir": "yarn-v1.22.17",
     "post_install": [
         "yarn config set cache-folder \"$dir\\cache\"",
         "yarn config set yarn-offline-mirror \"$dir\\mirror\"",
@@ -24,7 +25,7 @@
     },
     "env_add_path": [
         "global\\node_modules\\.bin",
-        "Yarn\\bin"
+        "bin"
     ],
     "env_set": {
         "NODE_PATH": "$dir\\global\\node_modules"
@@ -35,10 +36,11 @@
         "mirror"
     ],
     "checkver": {
-        "url": "https://yarnpkg.com/latest-version",
+        "url": "https://classic.yarnpkg.com/latest-version",
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://yarnpkg.com/downloads/$version/yarn-$version.msi"
+        "url": "https://github.com/yarnpkg/yarn/releases/download/v$version/yarn-v$version.tar.gz",
+        "extract_dir": "yarn-v$version"
     }
 }
