@@ -10,4 +10,4 @@ Just do `scoop install <manifest>`. This is the default bucket for Scoop and is 
 How do I contribute new manifests?
 ----------------------------------
 
-To make a new manifest conribution, please read the [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md).
+To make a new manifest contribution, please read the [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md).
