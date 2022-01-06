@@ -1,30 +1,34 @@
 {
-    "version": "2.13.7",
+    "version": "3.1.0",
     "description": "A modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way.",
     "homepage": "https://www.scala-lang.org/",
     "license": "BSD-3-Clause",
+    "notes": [
+        "Scala 3 has been installed. If you haven't migrated yet, install versions/scala2.",
+        "Or follow the migration guide: https://docs.scala-lang.org/scala3/guides/migration/compatibility-intro.html"
+    ],
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://downloads.typesafe.com/scala/2.13.7/scala-2.13.7.zip",
-    "hash": "a52cd39d0c13748b36a389b87ffbf5c4b6bc098af9ea745cf3c874867fd91976",
-    "extract_dir": "scala-2.13.7",
+    "url": "https://github.com/lampepfl/dotty/releases/download/3.1.0/scala3-3.1.0.zip",
+    "hash": "2e8e19784779870c0b6e74c6ec530a6a191b470c1c56a20f207977232c88995b",
+    "extract_dir": "scala3-3.1.0",
     "bin": [
-        "bin\\fsc.bat",
         "bin\\scala.bat",
         "bin\\scalac.bat",
-        "bin\\scaladoc.bat",
-        "bin\\scalap.bat"
+        "bin\\scaladoc.bat"
     ],
     "env_set": {
         "SCALA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://www.scala-lang.org/download/scala2.html",
-        "regex": "scala-([\\d.]+)\\.zip"
+        "github": "https://github.com/lampepfl/dotty/"
     },
     "autoupdate": {
-        "url": "https://downloads.typesafe.com/scala/$version/scala-$version.zip",
-        "extract_dir": "scala-$version"
+        "url": "https://github.com/lampepfl/dotty/releases/download/$version/scala3-$version.zip",
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        },
+        "extract_dir": "scala3-$version"
     }
 }
