@@ -14,23 +14,20 @@
         }
     },
     "bin": "symfony.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/symfony-cli/symfony-cli"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/symfony-cli_windows_amd64.zip",
-                "hash": {
-                    "url": "https://symfony.com/download",
-                    "regex": "windows_amd64:\\s+<code>$sha256</code>"
-                }
+                "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/symfony-cli_windows_amd64.zip"
             },
             "32bit": {
-                "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/symfony-cli_windows_386.zip",
-                "hash": {
-                    "url": "https://symfony.com/download",
-                    "regex": "windows_386:\\s+<code>$sha256</code>"
-                }
+                "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/symfony-cli_windows_386.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/checksums.txt"
         }
     }
 }
