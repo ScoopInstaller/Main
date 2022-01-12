@@ -1,36 +1,33 @@
 {
-    "version": "4.28.1",
-    "description": "Wrapper for managing and deploying Symfony applications",
-    "homepage": "https://github.com/symfony/cli",
-    "license": "MIT",
+    "version": "5.0.9",
+    "description": "Helps Symfony developers manage projects, from local code to remote infrastructure",
+    "homepage": "https://symfony.com",
+    "license": "AGPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/symfony/cli/releases/download/v4.28.1/symfony_windows_amd64.exe#/symfony.exe",
-            "hash": "8769cf2d1e2f4866d038f9f843b924dc7473da2698f88999cf98fb19945ad6c1"
+            "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v5.0.9/symfony-cli_windows_amd64.zip",
+            "hash": "1ac8dc9258c108dea10c00fbe444fbfa628532e883b18778e3481e04aacd449d"
         },
         "32bit": {
-            "url": "https://github.com/symfony/cli/releases/download/v4.28.1/symfony_windows_386.exe#/symfony.exe",
-            "hash": "aca6c5573d5141e08d95c71caa33347dba3954710ddb359bc39de4ac1e2d010c"
+            "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v5.0.9/symfony-cli_windows_386.zip",
+            "hash": "a5c7dfe341cd0b4be91eb51d47a94c55c14628b9a76e33921857bf4d76075139"
         }
     },
     "bin": "symfony.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/symfony-cli/symfony-cli"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_amd64.exe#/symfony.exe",
-                "hash": {
-                    "url": "https://symfony.com/download",
-                    "regex": "windows_amd64:\\s+<code>$sha256</code>"
-                }
+                "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/symfony-cli_windows_amd64.zip"
             },
             "32bit": {
-                "url": "https://github.com/symfony/cli/releases/download/v$version/symfony_windows_386.exe#/symfony.exe",
-                "hash": {
-                    "url": "https://symfony.com/download",
-                    "regex": "windows_386:\\s+<code>$sha256</code>"
-                }
+                "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/symfony-cli_windows_386.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/symfony-cli/symfony-cli/releases/download/v$version/checksums.txt"
         }
     }
 }
