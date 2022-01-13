@@ -1,25 +1,21 @@
 {
-    "version": "4.0.0",
+    "version": "4.0.20220112",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
     "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "license": "BSD-3-Clause",
     "notes": "For R 3.3.x to 3.6.x, please use 'versions/rtools35'.",
     "architecture": {
         "64bit": {
-            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools40v2-x86_64.exe",
-            "hash": "3a41212b16523473e6343680d665c5dcc23d068d63c28f0d4ce91c5ce50960dd"
-        },
-        "32bit": {
-            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools40-i686.exe",
-            "hash": "70d95372a818ae81e1e41c57751068d8bac322cf117b970bb00e76d5ec618898"
+            "url": "https://github.com/r-windows/rtools-installer/releases/download/2022-01-12/rtools40-x86_64.exe",
+            "hash": "5ed2f83ea6866ba527a75f1b76b14bcc06680a4e3b5f131eca612e59aa6f3023"
         }
     },
     "innosetup": true,
     "installer": {
         "script": [
             "'r', 'mro' | ForEach-Object {",
-            "   if ((current_version $_ $global) -match '^4') {",
-            "       $renvloc = (versiondir $_ (current_version $_ $global) $global) + '\\etc\\Renviron.site'",
+            "   if ((Select-CurrentVersion $_ $global) -match '^4') {",
+            "       $renvloc = (versiondir $_ (Select-CurrentVersion $_ $global) $global) + '\\etc\\Renviron.site'",
             "       if (Test-Path $renvloc) {",
             "           $renv = Get-Content $renvloc -Encoding ASCII",
             "       } else {",
@@ -47,8 +43,8 @@
     "uninstaller": {
         "script": [
             "'r', 'mro' | ForEach-Object {",
-            "   if ((current_version $_ $global) -match '^4') {",
-            "       $renvloc = (versiondir $_ (current_version $_ $global) $global) + '\\etc\\Renviron.site'",
+            "   if ((Select-CurrentVersion $_ $global) -match '^4') {",
+            "       $renvloc = (versiondir $_ (Select-CurrentVersion $_ $global) $global) + '\\etc\\Renviron.site'",
             "       if (Test-Path $renvloc) {",
             "           $renv = Get-Content $renvloc -Encoding ASCII",
             "       } else {",
@@ -67,16 +63,14 @@
         ]
     },
     "checkver": {
-        "url": "https://cloud.r-project.org/bin/windows/Rtools/VERSION.txt",
-        "regex": "([\\d.]+)"
+        "github": "https://github.com/r-windows/rtools-installer",
+        "regex": "/tag/(\\d+)-(\\d+)-(\\d+)",
+        "replace": "4.0.${1}${2}${3}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools$majorVersion$minorVersion-x86_64.exe"
-            },
-            "32bit": {
-                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools$majorVersion$minorVersion-i686.exe"
+                "url": "https://github.com/r-windows/rtools-installer/releases/download/$match1-$match2-$match3/rtools40-x86_64.exe"
             }
         }
     }
