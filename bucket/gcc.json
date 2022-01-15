@@ -1,6 +1,6 @@
 {
     "version": "11.2.0",
-    "description": "GNU Compiler Collection",
+    "description": "GNU Compiler Collection and binutils",
     "homepage": "https://www.gnu.org/software/gcc/",
     "license": "GPL-3.0-or-later",
     "architecture": {
@@ -11,24 +11,18 @@
     },
     "extract_dir": "components-18.0",
     "pre_install": [
+        "Expand-7ZipArchive \"$dir\\binutils-*.7z\" \"$dir\"",
         "Expand-7ZipArchive \"$dir\\mingw-w64+gcc.7z\" \"$dir\"",
         "Get-ChildItem \"$dir\\*.7z\" | Remove-Item -Recurse -Force"
     ],
-    "bin": [
-        "bin\\cpp.exe",
-        "bin\\g++.exe",
-        "bin\\gcc-ar.exe",
-        "bin\\gcc-nm.exe",
-        "bin\\gcc-ranlib.exe",
-        "bin\\gcc.exe",
-        "bin\\gcov-dump.exe",
-        "bin\\gcov-tool.exe",
-        "bin\\gcov.exe",
-        "bin\\lto-dump.exe"
-    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "C_INCLUDE_PATH": "$dir\\include",
+        "CPLUS_INCLUDE_PATH": "$dir\\include"
+    },
     "checkver": {
         "url": "https://nuwen.net/mingw.html",
-        "regex": "(?sm)>GCC (?<version>[\\d.]+)</a>.*?components-(?<components>[\\d.]+).7z"
+        "regex": "(?sm)>GCC ([\\d.]+)</a>.*?components-(?<components>[\\d.]+).7z"
     },
     "autoupdate": {
         "architecture": {
