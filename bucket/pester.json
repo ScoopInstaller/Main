@@ -1,38 +1,22 @@
 {
     "version": "5.3.1",
     "description": "Pester is a test and mock framework for PowerShell.",
-    "homepage": "https://github.com/pester/Pester",
+    "homepage": "https://pester.dev",
     "license": "Apache-2.0",
-    "url": "https://github.com/pester/pester/archive/5.3.1.tar.gz",
-    "hash": "27cee9d47bd8a09222d15e272dbc9f459bfb9480d3fbed2aae27685904b19c9b",
-    "extract_dir": "pester-5.3.1",
-    "bin": "bin\\pester.bat",
-    "post_install": [
-        "$import = \"try { `$null = gcm pester -ea stop; import-module `\"$dir\\pester.psm1`\" } catch { }\"",
-        "",
-        "if($profile) {",
-        "    'adding pester to powershell profile...'",
-        "    if(!(test-path $profile)) {",
-        "        'powershell profile doesn''t exist. creating...'",
-        "        $profile_dir = split-path $profile",
-        "        if(!(test-path $profile_dir)) { mkdir $profile_dir > $null }",
-        "        '' > $profile",
-        "    }",
-        "",
-        "    $text = get-content $profile",
-        "    if (($text | sls 'pester') -eq $null) {",
-        "        $new_profile = @($text) + $import",
-        "        $new_profile > $profile",
-        "        success 'pester added to powershell profile.'",
-        "    }",
-        "} else { warn 'no powershell profile found. the pester module will not be imported each session.' }",
-        "",
-        "'importing pester for current session...'",
-        "iex \"$import\""
+    "notes":[
+        "'Pester' is currently installed as a PS module",
+        "For more information, visit: 'https://pester.dev/docs/quick-start'"
     ],
-    "checkver": "github",
+    "url": "https://globalcdn.nuget.org/packages/pester.5.3.1.nupkg",
+    "hash": "ea4ed471b21a614bd3f4a157623941e372deea60c0e224e1e0f7ef5527a8b30c",
+    "extract_dir": "tools",
+    "psmodule": {
+        "name": "Pester"
+    },
+    "checkver":{
+        "github": "https://github.com/pester/Pester"
+    },
     "autoupdate": {
-        "url": "https://github.com/pester/pester/archive/$version.tar.gz",
-        "extract_dir": "pester-$version"
+        "url": "https://globalcdn.nuget.org/packages/pester.$version.nupkg"
     }
 }
