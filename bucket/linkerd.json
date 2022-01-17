@@ -5,10 +5,11 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/linkerd/linkerd2/releases/download/edge-22.1.3/linkerd2-cli-edge-22.1.3-windows.exe #/linkerd.exe",
+            "url": "https://github.com/linkerd/linkerd2/releases/download/edge-22.1.3/linkerd2-cli-edge-22.1.3-windows.exe",
             "hash": "dc53a29ae4d2d567f716fe39aeb1b5357b3c4807b622aefbab2293ac43293b13"
         }
     },
+    "pre_install": "Rename-Item $dir\\linkerd2-cli-edge-22.1.3-windows.exe $dir\\linkerd.exe",
     "bin": "linkerd.exe",
     "checkver": {
         "github": "https://github.com/linkerd/linkerd2",
@@ -17,11 +18,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/linkerd/linkerd2/releases/download/edge-$version/linkerd2-cli-edge-$version-windows.exe #/linkerd.exe"
+                "url": "https://github.com/linkerd/linkerd2/releases/download/edge-$version/linkerd2-cli-edge-$version-windows.exe"
             }
         },
+        "pre_install": "Rename-Item $dir\\linkerd2-cli-edge-$version-windows.exe $dir\\linkerd.exe",
         "hash": {
-            "hash": "$url.sha256sum"
+            "url": "$url.sha256"
         }
     }
 }
