@@ -1,0 +1,28 @@
+{
+    "version": "0.61.1",
+    "description": "Open source build system meant to be both extremely fast and user friendly.",
+    "homepage": "http://mesonbuild.com",
+    "license": "Apache-2.0",
+    "suggest": {
+        "Python": "python",
+        "Ninja": "ninja"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mesonbuild/meson/releases/download/0.61.1/meson-0.61.1-64.msi",
+            "hash": "3b4f08d545ae3c1fa9e0b62c78b0f13024f91955a4d0fd181fec9162a2397bf2"
+        }
+    },
+    "extract_dir": "Meson",
+    "bin": "meson.exe",
+    "checkver": {
+        "github": "https://github.com/mesonbuild/meson"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mesonbuild/meson/releases/download/$version/meson-$version-64.msi"
+            }
+        }
+    }
+}
