@@ -1,0 +1,24 @@
+{
+    "version": "2.319.2",
+    "description": "An automation server which enables developers around the world to reliably build, test, and deploy their software. (Long Term Support)",
+    "homepage": "https://www.jenkins.io",
+    "license": "MIT",
+    "suggest": {
+        "Java 8": "java/oraclejre8",
+        "Java 11": "java/openjdk11"
+    },
+    "url": "https://get.jenkins.io/war-stable/2.319.2/jenkins.war#/jenkins.jar",
+    "hash": "020c8db10469e20e22e68c81e7e83bf35ccb6a435b712c4b643851949e75a553",
+    "bin": "jenkins.jar",
+    "checkver": {
+        "url": "https://www.jenkins.io/changelog-stable/rss.xml",
+        "xpath": "/rss/channel/item/title",
+        "regex": "Jenkins ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://get.jenkins.io/war-stable/$version/jenkins.war#/jenkins.jar",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
