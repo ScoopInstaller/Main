@@ -1,0 +1,45 @@
+{
+    "version": "1.8.0",
+    "description": "A lightweight VM manager, designed for developers who want a fresh Ubuntu environment with a single command.",
+    "homepage": "https://multipass.run",
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/canonical/multipass/blob/main/COPYING.GPL.txt"
+    },
+    "notes": [
+        "Select hypervisor:",
+        " - 'multipass set local.driver=hyperv(default)|virtualbox'",
+        " - Enable 'Hyper-V' or install 'Oracle VM VirtualBox' manually.",
+        "Daemon Management:",
+        " - See 'multipassd --help'",
+        "",
+        "Official documentation: https://multipass.run/docs"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/canonical/multipass/releases/download/v1.8.0/multipass-1.8.0+win-win64.exe#/dl.7z",
+            "hash": "60b01ed14d63c9759680abc5d706a53cca9875c9e2ff9daab635481fad90a879"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\" -Force -Recurse",
+    "bin": [
+        "bin\\multipass.exe",
+        "bin\\multipassd.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\multipass.gui.exe",
+            "Multipass"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/canonical/multipass"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/canonical/multipass/releases/download/v$version/multipass-$version+win-win64.exe#/dl.7z"
+            }
+        }
+    }
+}
