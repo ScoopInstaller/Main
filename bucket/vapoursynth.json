@@ -1,0 +1,48 @@
+{
+    "version": "R57",
+    "description": "A video processing framework with simplicity in mind ",
+    "homepage": "http://www.vapoursynth.com/",
+    "depends": [
+        "https://github.com/ScoopInstaller/Extras/raw/master/bucket/vcredist2019.json"
+    ],
+    "license": {
+        "identifier": " LGPL-2.1",
+        "url": "https://github.com/vapoursynth/vapoursynth/blob/master/COPYING.LESSER"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R57/VapourSynth64-Portable-R57.7z",
+            "hash": "04A42F2EE604EB7370DF98C9C9A85D4F7854E96250AB0356BE85D81489710D20",
+            "persist": "vapoursynth64"
+
+        },
+        "32bit": {
+            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R57/VapourSynth32-Portable-R57.7z",
+            "hash": "F686A5517D648F99EFAC44F225E2C7922CBFB7E0593AC8A557B5A012D6F57E9A",
+            "persist": "vapoursynth32"
+        }
+    },
+    "notes": "As of now, VapourSynth is not compatible with anything newer than Python 3.9, it is available in the versions bucket as 'python39' ",
+    "bin": [
+        "AVFS.exe",
+        "VSPipe.exe",
+        "pfm-192-vapoursynth-win.exe",
+        "vsrepo.py"
+    ],
+    "post_install": [
+        "if (-Not(Get-Command -Name python.exe -ErrorAction Ignore)){",
+        "$shimsdir = Join-Path $scoopdir shims",
+        "@('.exe','.shim') | ForEach-Object {Copy-Item \"$shimsdir\\python39$_\" \"$shimsdir\\python$_\"}}"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/$version/VapourSynth64-Portable-$version.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/$version/VapourSynth64-Portable-$version.7z"
+            }
+        }
+    }
+}
