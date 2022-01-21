@@ -1,0 +1,40 @@
+{
+    "version": "1.29.3",
+    "description": "Fast console MPEG Audio Player and decoder library",
+    "homepage": "https://www.mpg123.org",
+    "license": "LGPL-2.1",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.mpg123.org/download/win64/1.29.3/mpg123-1.29.3-static-x86-64.zip",
+            "hash": "a0c082fda8fe4dcdcacbe1a8a58ca367962570e42c07c3532ccb7ac9e4ec87e9",
+            "extract_dir": "mpg123-1.29.3-static-x86-64"
+        },
+        "32bit": {
+            "url": "https://www.mpg123.org/download/win32/1.29.3/mpg123-1.29.3-static-x86.zip",
+            "hash": "cb7ef30ef35697e1d0a34d0430b838f2961e8fb673d7d3d91bf968c8d00cf7a6",
+            "extract_dir": "mpg123-1.29.3-static-x86"
+        }
+    },
+    "bin": [
+        "mpg123.exe",
+        "mpg123-id3dump.exe",
+        "mpg123-strip.exe",
+        "out123.exe"
+    ],
+    "checkver": {
+        "url": "https://www.mpg123.org/download.shtml",
+        "regex": "download/win64/([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.mpg123.org/download/win64/$version/mpg123-$version-static-x86-64.zip",
+                "extract_dir": "mpg123-$version-static-x86-64"
+            },
+            "32bit": {
+                "url": "https://www.mpg123.org/download/win32/$version/mpg123-$version-static-x86.zip",
+                "extract_dir": "mpg123-$version-static-x86"
+            }
+        }
+    }
+}
