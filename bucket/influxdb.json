@@ -1,32 +1,34 @@
 {
-    "version": "1.8.10",
+    "version": "2.1.1",
     "description": "Scalable datastore for metrics, events, and real-time analytics.",
     "homepage": "https://www.influxdata.com/",
     "license": "MIT",
+    "notes": [
+        "InfluxDB v1 has been moved to 'Versions' bucket, use 'scoop install versions/influxdb1' to install it.",
+        "For CLI, please install 'influx'."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/influxdb/releases/influxdb-1.8.10_windows_amd64.zip",
-            "hash": "cb39cc9505c78c17a96b4250d116772798486b3c86213c757ce09af0ae4f4029",
-            "extract_dir": "influxdb-1.8.10-1"
+            "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-2.1.1-windows-amd64.zip",
+            "hash": "912ff645a20ea7623f453b76af32d26b6a2160e6ac7fa0ac60e67c8d80c8a0df",
+            "extract_dir": "influxdb2-2.1.1-windows-amd64"
         }
     },
-    "persist": "influxdb.conf",
-    "bin": [
-        "influx.exe",
-        "influx_inspect.exe",
-        "influx_stress.exe",
-        "influxd.exe"
-    ],
+    "bin": "influxd.exe",
     "checkver": {
-        "url": "https://portal.influxdata.com/downloads",
-        "regex": ">InfluxDB v1\\.([\\d.]+)",
-        "replace": "1.${1}"
+        "url": "https://portal.influxdata.com/versions.json",
+        "jsonpath": "$.influxdb2.version",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/influxdb/releases/influxdb-$version_windows_amd64.zip",
-                "extract_dir": "influxdb-$version-1"
+                "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-$version-windows-amd64.zip",
+                "hash": {
+                    "url": "https://portal.influxdata.com/versions.json",
+                    "jsonpath": "$.influxdb2.downloads[?(@.platform =~ /^Windows/)].sha256"
+                },
+                "extract_dir": "influxdb2-$version-windows-amd64"
             }
         }
     }
