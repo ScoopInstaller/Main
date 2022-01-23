@@ -1,0 +1,30 @@
+{
+    "version": "4.22",
+    "description": "LXD client",
+    "homepage": "https://github.com/lxc/lxd",
+    "license": "Apache-2.0",
+    "url": "https://packages.chocolatey.org/lxc.4.22.nupkg",
+    "hash": "354f2d01d4874aaf58d7f7f44621c1b900881565671a37cb1540951fa3bc31ef",
+    "extract_dir": "tools",
+    "architecture": {
+        "64bit": {
+            "bin": "lxc.exe"
+        }
+    },
+    "checkver": {
+        "url": "https://community.chocolatey.org/packages/lxc",
+        "regex": "LXD client ([\\d.]+)</title>"
+    },
+    "autoupdate": {
+        "url": "https://packages.chocolatey.org/lxc.$version.nupkg",
+        "hash": {
+            "url": "https://community.chocolatey.org/packages/lxc",
+            "regex": "$sha256.*?$basename"
+        },
+        "architecture": {
+            "64bit": {
+                "bin": "lxc.exe"
+            }
+        }
+    }
+}
