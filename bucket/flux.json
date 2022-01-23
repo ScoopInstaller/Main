@@ -1,12 +1,16 @@
 {
     "version": "0.25.3",
-    "description": "A tool for keeping Kubernetes clusters in sync with sources of configuration",
-    "homepage": "https://toolkit.fluxcd.io",
+    "description": "Open and extensible continuous delivery solution for Kubernetes.",
+    "homepage": "https://fluxcd.io",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
             "url": "https://github.com/fluxcd/flux2/releases/download/v0.25.3/flux_0.25.3_windows_amd64.zip",
             "hash": "c419d445e4a970534c3442ee9404b0cb59d3677d1c64e51c574a3cf813840da0"
+        },
+        "32bit": {
+            "url": "https://github.com/fluxcd/flux2/releases/download/v0.25.3/flux_0.25.3_windows_386.zip",
+            "hash": "1dee4da037005517698427fe6866db94033c96d0893942a24da8a51616387268"
         }
     },
     "bin": "flux.exe",
@@ -17,10 +21,14 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_386.zip"
             }
         },
         "hash": {
             "url": "$baseurl/flux_$version_checksums.txt"
         }
-    }
+    },
+    "notes": "For Flux v1, please install 'versions/fluxctl' instead."
 }
