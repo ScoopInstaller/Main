@@ -1,0 +1,28 @@
+{
+    "version": "0.8.2",
+    "description": "Simple tunneling reverse proxy with a fast web UI and auto HTTPS",
+    "homepage": "https://github.com/boringproxy/boringproxy",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/boringproxy/boringproxy/releases/download/v0.8.2/boringproxy-windows-x86_64.exe#/boringproxy.exe",
+            "hash": "92aef14f6fa11efc7bf0042e3b650ee776b68421ccfde7ce793f9caf9117fd9d"
+        },
+        "32bit": {
+            "url": "https://github.com/boringproxy/boringproxy/releases/download/v0.8.2/boringproxy-windows-386.exe#/boringproxy.exe",
+            "hash": "6d7df48d3a7d6b0979beb795d179777bfe0f8cff89b949a3dfe28707d1c1f890"
+        }
+    },
+    "bin": "boringproxy.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/boringproxy/boringproxy/releases/download/v$version/boringproxy-windows-x86_64.exe#/boringproxy.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/boringproxy/boringproxy/releases/download/v$version/boringproxy-windows-386.exe#/boringproxy.exe"
+            }
+        }
+    }
+}
