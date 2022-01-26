@@ -3,13 +3,21 @@
     "description": "A small build system with a focus on speed.",
     "homepage": "https://ninja-build.org/",
     "license": "Apache-2.0",
-    "url": "https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip",
-    "hash": "bbde850d247d2737c5764c927d1071cbb1f1957dcabda4a130fa8547c12c695f",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip",
+            "hash": "bbde850d247d2737c5764c927d1071cbb1f1957dcabda4a130fa8547c12c695f"
+        }
+    },
     "bin": "ninja.exe",
     "checkver": {
         "github": "https://github.com/ninja-build/ninja"
     },
     "autoupdate": {
-        "url": "https://github.com/ninja-build/ninja/releases/download/v$version/ninja-win.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ninja-build/ninja/releases/download/v$version/ninja-win.zip"
+            }
+        }
     }
 }
