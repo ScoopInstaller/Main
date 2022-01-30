@@ -15,12 +15,12 @@
         }
     },
     "pre_install": [
-    	"[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
+        "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
         "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')"
     ],
     "installer": {
         "script": [
-	        "$arch=$(If ($architecture -eq '64bit') {'x86_64'} Else {'i686'})",
+            "$arch=$(If ($architecture -eq '64bit') {'x86_64'} Else {'i686'})",
             "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args \"-y --no-modify-path --default-host $arch-pc-windows-gnu\" | Out-Null"
         ]
     },
