@@ -14,11 +14,14 @@
             "hash": "89f529d6e17d688bf5f2c2af25281da504c24830c794564287bf760c0e6e2e9b"
         }
     },
+    "pre_install": [
+    	"[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
+        "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')"
+    ],
     "installer": {
         "script": [
-            "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
-            "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
-            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args '-y --no-modify-path --default-host x86_64-pc-windows-gnu' | Out-Null"
+	        "$arch=$(If ($architecture -eq '64bit') {'x86_64'} Else {'i686'})",
+            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args \"-y --no-modify-path --default-host $arch-pc-windows-gnu\" | Out-Null"
         ]
     },
     "env_add_path": ".cargo\\bin",
