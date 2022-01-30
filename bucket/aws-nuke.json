@@ -20,11 +20,18 @@
         "url": "https://github.com/rebuy-de/aws-nuke/releases",
         "regex": "tag/v([\\d.]+)"
     },
-     "autoupdate": {
+    "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/rebuy-de/aws-nuke/releases/download/v$version/aws-nuke-v$version-windows-amd64.zip"
             }
-        }
+        },
+        "bin": [
+            [
+                "aws-nuke-v$version-windows-amd64.exe",
+                "aws-nuke",
+                ""
+            ]
+        ]
     }
 }
