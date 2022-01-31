@@ -1,0 +1,22 @@
+{
+    "version": "2.17.0",
+    "description": "Allows deleting all resources of an AWS account.",
+    "homepage": "https://github.com/rebuy-de/aws-nuke",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rebuy-de/aws-nuke/releases/download/v2.17.0/aws-nuke-v2.17.0-windows-amd64.zip",
+            "hash": "fd01b771a8844b031f0a4c79d18c28d32c5ad843ffd87149ade2a84cb85425e5"
+        }
+    },
+    "pre_install": "Rename-Item \"$dir\\aws-nuke-v$version-windows-amd64.exe\" \"$dir\\aws-nuke.exe\"",
+    "bin": "aws-nuke.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rebuy-de/aws-nuke/releases/download/v$version/aws-nuke-v$version-windows-amd64.zip"
+            }
+        }
+    }
+}
