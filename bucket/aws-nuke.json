@@ -8,13 +8,8 @@
             "hash": "fd01b771a8844b031f0a4c79d18c28d32c5ad843ffd87149ade2a84cb85425e5"
         }
     },
-    "bin": [
-        [
-            "aws-nuke-v2.17.0-windows-amd64.exe",
-            "aws-nuke",
-            ""
-        ]
-    ],
+    "bin": "aws-nuke.exe",
+    "pre_install": "Rename-Item \"$dir\\aws-nuke-v$version-windows-amd64.exe\" \"$dir\\aws-nuke.exe\"",
     "license": "MIT",
     "checkver": {
         "url": "https://github.com/rebuy-de/aws-nuke/releases",
@@ -25,13 +20,6 @@
             "64bit": {
                 "url": "https://github.com/rebuy-de/aws-nuke/releases/download/v$version/aws-nuke-v$version-windows-amd64.zip"
             }
-        },
-        "bin": [
-            [
-                "aws-nuke-v$version-windows-amd64.exe",
-                "aws-nuke",
-                ""
-            ]
-        ]
+        }
     }
 }
