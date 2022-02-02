@@ -18,7 +18,8 @@
         "script": [
             "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
             "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
-            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args '-y --no-modify-path' | Out-Null"
+            "$host_arch = if ($architecture -eq '64bit') {'x86_64'} else {'i686'}",
+            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args \"-y --no-modify-path --default-host $host_arch-pc-windows-msvc\" | Out-Null"
         ]
     },
     "env_add_path": ".cargo\\bin",
