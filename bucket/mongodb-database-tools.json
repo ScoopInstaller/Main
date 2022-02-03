@@ -7,15 +7,15 @@
         "url": "https://www.mongodb.com/licensing/server-side-public-license"
     },
     "suggest": {
-        "MongoDB": "main/mongodb"
+        "MongoDB": "mongodb"
     },
     "architecture": {
         "64bit": {
-            "url": "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-windows-x86_64-100.5.2.zip",
-            "hash": "cb74f203d502973c50babee37d24a2ab0cef375dc614c2f5e0ca060f122bd25e",
-            "extract_dir": "mongodb-database-tools-windows-x86_64-100.5.2"
+            "url": "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-windows-x86_64-100.5.2.msi",
+            "hash": "963b489584f9c82cb10e0d46942a010658dcc76d2521a04a73dd5690ab6b1709"
         }
     },
+    "extract_dir": "MongoDB\\Tools\\100",
     "env_add_path": "bin",
     "checkver": {
         "url": "https://s3.amazonaws.com/downloads.mongodb.org/tools/db/release.json",
@@ -24,14 +24,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-windows-x86_64-$version.zip",
-                "extract_dir": "mongodb-database-tools-windows-x86_64-$version"
+                "url": "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-windows-x86_64-$version.msi"
             }
         },
+        "extract_dir": "MongoDB\\Tools\\$majorVersion",
         "hash": {
             "url": "https://s3.amazonaws.com/downloads.mongodb.org/tools/db/release.json",
             "mode": "json",
-            "jsonpath": "$.versions[0].downloads[?(@.name=='windows')].archive.sha256"
+            "jsonpath": "$.versions[0].downloads[?(@.name=='windows')].package.sha256"
         }
     }
 }
