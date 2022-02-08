@@ -7,16 +7,8 @@
     "suggest": {
         "vimtutor": "vimtutor"
     },
-    "url": [
-        "https://ftp.nluug.nl/pub/vim/pc/gvim82.exe#/dl.7z",
-        "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
-        "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/uninstall-context.reg"
-    ],
-    "hash": [
-        "md5:7d6ae2732e27b172f37b2ab097e2c2d4",
-        "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
-        "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
-    ],
+    "url": "https://ftp.nluug.nl/pub/vim/pc/gvim82.exe#/dl.7z",
+    "hash": "md5:7d6ae2732e27b172f37b2ab097e2c2d4",
     "extract_dir": "$0",
     "pre_install": [
         "Move-Item \"$dir\\`$R0\" \"$dir\\libgcc_s_sjlj-1.dll\"",
@@ -24,18 +16,16 @@
         "Move-Item \"$dir\\GvimExt64\\`$0\\GvimExt64\\*\" \"$dir\\GvimExt64\"",
         "Move-Item \"$dir\\`$*\\*\" $dir",
         "Remove-Item \"$dir\\`$*\", \"$dir\\GvimExt32\", \"$dir\\GvimExt64\\`$0\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse",
-        "if (!(Test-Path \"$persist_dir\\_vimrc\")) {",
-        "    Copy-Item \"$dir\\vimrc_example.vim\" \"$dir\\_vimrc\"",
-        "    Copy-Item \"$dir\\gvimrc_example.vim\" \"$dir\\_gvimrc\"",
-        "    Add-Content \"$dir\\_vimrc\" \"set shell=$((Get-Command powershell).Path)\\ -ExecutionPolicy\\ Bypass\" -Encoding Ascii",
-        "}",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
         "    $vimpath = \"$(current_dir $dir)\\gVim.exe\".Replace('\\', '\\\\')",
-        "    $content = (Get-Content \"$dir\\$_\").Replace('$vim', $vimpath)",
+        "    $content = (Get-Content \"$bucketsdir\\main\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
         "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "    Set-Content \"$dir\\$_\" $content",
         "}",
-        "if (!(Test-Path \"$persist_dir\\vimrc\")) { New-Item \"$dir\\vimrc\" -ItemType File | Out-Null }"
+        "if (!(Test-Path \"$persist_dir\\vimrc\")) {",
+        "    New-Item \"$dir\\vimrc\" -ItemType File | Out-Null",
+        "    Add-Content \"$dir\\vimrc\" \"set shell=$((Get-Command powershell).Path)\\ -ExecutionPolicy\\ Bypass\" -Encoding Ascii",
+        "}"
     ],
     "bin": [
         "vim.exe",
@@ -108,8 +98,6 @@
         ]
     ],
     "persist": [
-        "_vimrc",
-        "_gvimrc",
         "vimfiles",
         "vimrc"
     ],
