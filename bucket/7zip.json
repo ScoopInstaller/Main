@@ -9,34 +9,18 @@
     "notes": "Add 7-Zip as a context menu option by running: \"$dir\\install-context.reg\"",
     "architecture": {
         "64bit": {
-            "url": [
-                "https://7-zip.org/a/7z2107-x64.msi",
-                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/7-zip/install-context.reg",
-                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/7-zip/uninstall-context.reg"
-            ],
-            "hash": [
-                "5447c9ac39c48f1bc7c88359b0520396a8c9707b307c107236a93a68e6fd3eb6",
-                "358c8a2f87c4dc89c86ee4c72c71766856da146c0a8840001e6821fe5bb0c7ca",
-                "667ef7b5c7bfb6cdcc595042ac6c0cae802fbfd59fc601b22b533f6f1bcaf374"
-            ]
+            "url": "https://7-zip.org/a/7z2107-x64.msi",
+            "hash": "5447c9ac39c48f1bc7c88359b0520396a8c9707b307c107236a93a68e6fd3eb6"
         },
         "32bit": {
-            "url": [
-                "https://7-zip.org/a/7z2107.msi",
-                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/7-zip/install-context.reg",
-                "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/7-zip/uninstall-context.reg"
-            ],
-            "hash": [
-                "b3ca98a8784c710108bbf56f9355ac6060af770b8459a32d94cc09b73cf0af7e",
-                "358c8a2f87c4dc89c86ee4c72c71766856da146c0a8840001e6821fe5bb0c7ca",
-                "667ef7b5c7bfb6cdcc595042ac6c0cae802fbfd59fc601b22b533f6f1bcaf374"
-            ]
+            "url": "https://7-zip.org/a/7z2107.msi",
+            "hash": "b3ca98a8784c710108bbf56f9355ac6060af770b8459a32d94cc09b73cf0af7e"
         }
     },
     "pre_install": [
         "$7zip_root = \"$dir\".Replace('\\', '\\\\')",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    $content = Get-Content \"$dir\\$_\"",
+        "    $content = Get-Content \"$bucketsdir\\main\\scripts\\7-zip\\$_\"",
         "    $content = $content.Replace('$7zip_root', $7zip_root)",
         "    if ($global) {",
         "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
