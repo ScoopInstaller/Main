@@ -1,0 +1,23 @@
+{
+    "version": "0.0.4",
+    "description": "Tool, language and decoders for working with binary data.",
+    "homepage": "https://github.com/wader/fq",
+    "license": "Copyright (c) 2021 Mattias Wadman",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/wader/fq/releases/download/v0.0.4/fq_0.0.4_windows_amd64.zip",
+            "hash": "02faa89524d00ae7e52675ca2ac575fe734f91ba965b2c1cff422130d686f6e7",
+            "extract_dir": "fq_0.0.4_windows_amd64"
+        }
+    },
+    "bin": "fq.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/wader/fq/releases/download/v$version/fq_$version_windows_amd64.zip",
+                "extract_dir": "fd-v$version-x86_64-pc-windows-msvc"
+            }
+        }
+    }
+}
