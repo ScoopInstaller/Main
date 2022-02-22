@@ -6,8 +6,26 @@
     "architecture": {
         "64bit": {
             "url": "https://data.kitware.com/api/v1/item/617851942fa25629b9af396c/download#/castxml-windows.zip",
-            "hash": "25E5E8EBA96EC2CBF6A2CA36730FD76C99AB8DD49ABC9DB1FDF42B0885AB7006"
+            "hash": "sha512:82ff5a23f385a0fddcd76c62fa109eb3cd087d6ba61ff0bdcd55a31341bdf2b383446260d53a4d2fac7d778f4d29c383de0429804d2050f0fb743e44c315fd94"
         }
     },
-    "bin": "castxml\\bin\\castxml.exe"
+    "bin": "castxml\\bin\\castxml.exe",
+    "checkver": {
+        "script": [
+            "$folder = Invoke-RestMethod -Uri 'https://data.kitware.com/api/v1/folder?parentType=folder&parentId=57b5de948d777f10f2696370&sort=lowerName&sortdir=-1' |",
+            "    Where-Object { $_.name -match 'v\\d+\\.\\d+\\.\\d+' }",
+            "$file = Invoke-RestMethod -Uri \"https://data.kitware.com/api/v1/item?folderId=$($folder[0]._id)&name=castxml-windows.zip\"",
+            "$meta = Invoke-RestMethod -Uri \"https://data.kitware.com/api/v1/item/$($file[0]._id)/files\"",
+            "Write-Output $folder[0].name $file[0]._id $meta[0].sha512"
+        ],
+        "regex": "v(?<version>[\\d.]+)\\s(?<fileid>.+)\\s(?<hash>[0-9a-f]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://data.kitware.com/api/v1/item/$matchFileid/download#/castxml-windows.zip",
+                "hash": "sha512:$matchHash"
+            }
+        }
+    }
 }
