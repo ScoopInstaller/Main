@@ -1,0 +1,14 @@
+{
+    "version": "0.2.1",
+    "description": "App for using new feature control APIs available in Windows 10 version 2004 or newer.",
+    "homepage": "https://github.com/thebookisclosed/ViVe",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/thebookisclosed/ViVe/releases/download/v0.2.1/ViveTool-v0.2.1.zip",
+    "hash": "186d487bfac1d9e7e69e581df4530fdddee5a83b00bcfecb6c5ac503ec09a322",
+    "pre_install": "if ([Environment]::OSVersion.Version.Build -lt 18963) { error 'Windows build 18963 or newer is required.'; break }",
+    "bin": "ViVeTool.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/thebookisclosed/ViVe/releases/download/v$version/ViveTool-v$version.zip"
+    }
+}
