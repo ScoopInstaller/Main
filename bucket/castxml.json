@@ -15,16 +15,18 @@
             "$folder = Invoke-RestMethod -Uri 'https://data.kitware.com/api/v1/folder?parentType=folder&parentId=57b5de948d777f10f2696370&sort=lowerName&sortdir=-1' |",
             "    Where-Object { $_.name -match 'v\\d+\\.\\d+\\.\\d+' }",
             "$file = Invoke-RestMethod -Uri \"https://data.kitware.com/api/v1/item?folderId=$($folder[0]._id)&name=castxml-windows.zip\"",
-            "$meta = Invoke-RestMethod -Uri \"https://data.kitware.com/api/v1/item/$($file[0]._id)/files\"",
-            "Write-Output $folder[0].name $file[0]._id $meta[0].sha512"
+            "Write-Output $folder[0].name $file[0]._id"
         ],
-        "regex": "v(?<version>[\\d.]+)\\s(?<fileid>.+)\\s(?<hash>[0-9a-f]+)"
+        "regex": "v([\\d.]+)\\s(?<fileid>.+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://data.kitware.com/api/v1/item/$matchFileid/download#/castxml-windows.zip",
-                "hash": "sha512:$matchHash"
+                "hash": {
+                    "url": "https://data.kitware.com/api/v1/item/$matchFileid/files",
+                    "regex": "sha512.*$sha512"
+                }
             }
         }
     }
