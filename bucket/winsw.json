@@ -1,0 +1,27 @@
+{
+    "version": "3.0.0-alpha.10",
+    "description": "A wrapper executable that can be used to host any executable as an Windows service",
+    "homepage": "https://github.com/winsw/winsw",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/winsw/winsw/releases/download/v3.0.0-alpha.10/WinSW-x64.exe#/WinSW.exe",
+            "hash": "sha512:ac98ff9c5aa69d9c24697b847f2bccce0728a412ea5efb519d77535738fbac4bd620062f3df56a1afde03f797e81506dcadeacee5c5a22568fe650aca3091024"
+        },
+        "32bit": {
+            "url": "https://github.com/winsw/winsw/releases/download/v3.0.0-alpha.10/WinSW-x86.exe#/WinSW.exe",
+            "hash": "sha512:d0acf7c9433cae2f168937e77bb8ec0a1c4401543067c4b34b491e7e0dfb2fa7f1cc3734004cf05d3c892c28f283829d4d0762e635397d2486e4daaab24ce8f7"
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/winsw/winsw/releases/download/v$version/WinSW-x64.exe#/WinSW.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/winsw/winsw/releases/download/v$version/WinSW-x86.exe#/WinSW.exe"
+            }
+        }
+    }
+}
