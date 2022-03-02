@@ -1,0 +1,31 @@
+{
+    "version": "0.1.3",
+    "description": "Vut is a utility for propagating version numbers using methods such as regex replacement in files and templates.",
+    "homepage": "https://github.com/forbjok/vut",
+    "license": "MIT|Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/forbjok/vut/releases/download/v0.1.3/vut-0.1.3-windows-x86_64.zip",
+            "hash": "357802b91d29f005e59fe16f3c280e2ccd0d7894c7796674441959160f2baa19"
+        },
+        "32bit": {
+            "url": "https://github.com/forbjok/vut/releases/download/v0.1.3/vut-0.1.3-windows-i686.zip",
+            "hash": "2385d18a62d93d5723ee4a5511f0a0bd8c8684838ee36818020df92b48fcc464"
+        }
+    },
+    "bin": "vut.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/forbjok/vut/releases/download/v$version/vut-$version-windows-x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/forbjok/vut/releases/download/v$version/vut-$version-windows-i686.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt"
+        }
+    }
+}
