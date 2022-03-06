@@ -16,9 +16,7 @@
             "hash": "e2a654317be972c6ba7519d716f9715ff41c3d415498f7dcf56806156277ed76"
         }
     },
-    "bin": [
-        "p4.exe"
-    ],
+    "bin": "p4.exe",
     "checkver": {
         "url": "https://www.perforce.com/support/software-release-index",
         "regex": "Helix Command-line Client.*?20(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.\\d+)*\\/(?<build>\\d+)",
@@ -27,17 +25,14 @@
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://cdist2.perforce.com/perforce/r$matchMajor.$matchMinor/bin.ntx86/p4.exe",
-                "hash": {
-                    "url": "$baseurl/SHA256SUMS"
-                }
+                "url": "https://cdist2.perforce.com/perforce/r$matchMajor.$matchMinor/bin.ntx86/p4.exe"
             },
             "64bit": {
-                "url": "https://cdist2.perforce.com/perforce/r$matchMajor.$matchMinor/bin.ntx64/p4.exe",
-                "hash": {
-                    "url": "$baseurl/SHA256SUMS"
-                }
+                "url": "https://cdist2.perforce.com/perforce/r$matchMajor.$matchMinor/bin.ntx64/p4.exe"
             }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }
