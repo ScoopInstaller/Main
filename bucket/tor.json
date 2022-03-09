@@ -18,11 +18,11 @@
         }
     },
     "pre_install": [
-        "$current = current_dir $dir",
+        "$current_dir = if (get_config NO_JUNCTIONS) { $dir } else { \"$(appdir $app $global)\\current\" }",
         "$content = @(",
-        "    \"DataDirectory `\"$current\\Data\\Data`\"\"",
-        "    \"GeoIPFile `\"$current\\Data\\Tor\\geoip`\"\"",
-        "    \"GeoIPv6File `\"$current\\Data\\Tor\\geoip6`\"\"",
+        "    \"DataDirectory `\"$current_dir\\Data\\Data`\"\"",
+        "    \"GeoIPFile `\"$current_dir\\Data\\Tor\\geoip`\"\"",
+        "    \"GeoIPv6File `\"$current_dir\\Data\\Tor\\geoip6`\"\"",
         ")",
         "if (!(Test-Path \"$persist_dir\\torrc\")) {",
         "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
