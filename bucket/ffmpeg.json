@@ -10,9 +10,7 @@
             "extract_dir": "ffmpeg-5.0-full_build"
         }
     },
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\fonts\")) { New-Item \"$dir\\fonts\" -ItemType Directory | Out-Null }"
-    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\fonts\")) { New-Item \"$dir\\fonts\" -ItemType Directory | Out-Null }",
     "post_install": [
         "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
         "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\" -ErrorAction SilentlyContinue"
