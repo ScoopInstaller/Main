@@ -1,0 +1,33 @@
+{
+    "version": "6.2.0",
+    "description": "👊 Human-friendly and amazing TUI secrets manager.",
+    "homepage": "https://secman.dev",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/scmn-dev/secman/releases/download/v6.2.0/secman_windows_v6.2.0_386.zip",
+            "hash": "a622dcb45fc93402c50aa503ac64670aab05cb05c92a5c5e1c4b7e7edc1b1005"
+        },
+        "64bit": {
+            "url": "https://github.com/scmn-dev/secman/releases/download/v6.2.0/secman_windows_v6.2.0_amd64.zip",
+            "hash": "724ae25d301acf02bc16cbc96059ac3c413784dafc603e6c6195c7f18da18231"
+        }
+    },
+    "bin": "bin\\secman.exe",
+    "checkver": {
+        "github": "https://github.com/scmn-dev/secman"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/scmn-dev/secman/releases/download/v$version/secman_windows_v$version_386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/scmn-dev/secman/releases/download/v$version/secman_windows_v$version_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
