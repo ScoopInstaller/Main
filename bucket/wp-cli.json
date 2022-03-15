@@ -14,7 +14,7 @@
     "hash": "sha512:d73f9161a1f03b8ecaac7b196b6051fe847b3c402b9c92b1f6f3acbe5b1cf91f7260c0e499b8947bab75920ecec918b39533ca65fa5a1fd3eb6ce7b8e2c58e7d",
     "pre_install": [
         "echo 'if($args.length -eq 2 -and ($args[0] -eq \"cli\" -and $args[1] -eq \"update\")) { & scoop update wp-cli }' | out-file \"$dir\\wp.ps1\"",
-        "echo 'else { & php (join-path $psscriptroot \"wp-cli.phar\") @args }' | out-file \"$dir\\wp.ps1\" -append"
+        "echo 'else { & php (join-path $PSScriptRoot \"wp-cli.phar\") @args }' | out-file \"$dir\\wp.ps1\" -append"
     ],
     "bin": "wp.ps1",
     "checkver": {

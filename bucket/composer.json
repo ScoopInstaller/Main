@@ -15,7 +15,7 @@
     "pre_install": [
         "@(",
         "    'if ($args.length -eq 1 -and ($args -eq \"selfupdate\" -or $args -eq \"self-update\")) { & scoop update composer }'",
-        "    'else { & php (Join-Path $psscriptroot \"composer.phar\") @args }'",
+        "    'else { & php (Join-Path $PSScriptRoot \"composer.phar\") @args }'",
         ") | Add-Content -Path \"$dir\\composer.ps1\"",
         "if (!(Test-Path \"$persist_dir\\home\") -and (Test-Path \"$env:Appdata\\Composer\")) {",
         "    Write-Host -F yellow \"Moving old 'COMPOSER_HOME' to '$persist_dir\\home'\"",
