@@ -1,15 +1,16 @@
 {
-    "version": "9.16.25",
+    "version": "9.16.26",
     "description": "Versatile, classic, complete name server software.",
     "homepage": "https://www.isc.org/bind/",
     "license": "MPL-2.0",
+    "notes": "The 9.16 branch is the last stable Windows release of BIND. It is recommended to use the latest stable version through WSL instead. Please read the following for more info: https://www.isc.org/blogs/bind-update-summer2021/",
     "suggest": {
         "vcredist": "extras/vcredist2017"
     },
     "architecture": {
         "64bit": {
-            "url": "https://downloads.isc.org/isc/bind9/9.16.25/BIND9.16.25.x64.zip",
-            "hash": "7cce5518a8ad882f15cdc5f87d2dfb7c04c187d6cee3212a94e497019e57263d"
+            "url": "https://downloads.isc.org/isc/bind9/9.16.26/BIND9.16.26.x64.zip",
+            "hash": "76ef2e0e567443a9051a0fa7df330952614940c026bc1377c79153261a169b6d"
         }
     },
     "installer": {
@@ -24,7 +25,7 @@
     "persist": "etc",
     "checkver": {
         "url": "https://www.isc.org/download/",
-        "regex": "(?sm)>Current-Stable.*?/([\\d.]+)/"
+        "regex": "BIND([\\d.]+).x64.zip"
     },
     "autoupdate": {
         "architecture": {
