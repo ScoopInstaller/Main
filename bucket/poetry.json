@@ -9,12 +9,7 @@
     "installer": {
         "script": "$env:POETRY_HOME=$dir; python3 $dir/$fname --version $version"
     },
-    "post_install": [
-        "$symlink = \"$dir\\bin\\poetry.exe\"",
-        "$exe = \"$dir\\venv\\Scripts\\poetry.exe\"",
-        "New-Item $symlink -ItemType SymbolicLink -Target $exe -Force | Out-Null"
-    ],
-    "bin": "bin\\poetry.exe",
+    "bin": "venv\\Scripts\\poetry.exe",
     "checkver": {
         "github": "https://github.com/python-poetry/poetry/"
     },
