@@ -9,12 +9,8 @@
             "hash": "bb5f0fa7769750cdeb0a301a2e518cbc093d20e3e59efb950d5cde1ff30bf283"
         }
     },
-    "bin": [
-        [
-            "argo-windows-amd64.exe",
-            "argo"
-        ]
-    ],
+    "pre_install": "Rename-Item $dir\\argo-windows-amd64.exe $dir\\argo.exe",
+    "bin": "argo.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
