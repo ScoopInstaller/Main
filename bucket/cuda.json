@@ -1,5 +1,5 @@
 {
-    "version": "11.5.0_496.13",
+    "version": "11.6.1_511.65",
     "description": "A parallel computing platform and programming model invented by NVIDIA",
     "homepage": "https://developer.nvidia.com/cuda-toolkit",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "http://developer.download.nvidia.com/compute/cuda/11.5.0/local_installers/cuda_11.5.0_496.13_win10.exe#/dl.7z",
-            "hash": "md5:9ae3759817c87dc8ae6f0d38cb164361"
+            "url": "http://developer.download.nvidia.com/compute/cuda/11.6.1/local_installers/cuda_11.6.1_511.65_windows.exe#/dl.7z",
+            "hash": "md5:3a5bc5062c401de24f5960cb8eb8156d"
         }
     },
     "installer": {
@@ -27,13 +27,13 @@
         "CUDA_PATH": "$dir"
     },
     "checkver": {
-        "url": "https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal",
-        "regex": "/cuda_([\\d._]+)_win10\\.exe"
+        "url": "https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exe_local",
+        "regex": "/cuda_([\\d._]+)_windows\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://developer.download.nvidia.com/compute/cuda/$matchHead/local_installers/cuda_$version_win10.exe#/dl.7z"
+                "url": "http://developer.download.nvidia.com/compute/cuda/$matchHead/local_installers/cuda_$version_windows.exe#/dl.7z"
             }
         },
         "hash": {
