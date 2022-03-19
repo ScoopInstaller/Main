@@ -1,0 +1,34 @@
+{
+    "version": "2021.1.2",
+    "description": "An advanced Go linter",
+    "homepage": "https://staticcheck.io",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/dominikh/go-tools/releases/download/2021.1.2/staticcheck_windows_amd64.tar.gz",
+            "hash": "0e6a8d050b1210870aea4191bab6400c18efcaa85829ba6f7a33ffa8ac559136"
+        },
+        "32bit": {
+            "url": "https://github.com/dominikh/go-tools/releases/download/2021.1.2/staticcheck_windows_386.tar.gz",
+            "hash": "b3348908ecc1b7985b1eefd544331d7514e42eabf7e740c5bc3534059dbe0a42"
+        }
+    },
+    "extract_dir": "staticcheck",
+    "bin": "staticcheck.exe",
+    "checkver": {
+        "github": "https://github.com/dominikh/go-tools"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/dominikh/go-tools/releases/download/$version/staticcheck_windows_amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/dominikh/go-tools/releases/download/$version/staticcheck_windows_386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
