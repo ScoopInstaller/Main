@@ -1,0 +1,31 @@
+{
+    "version": "0.8.1",
+    "description": "A program for creating and using PAR2 files to detect damage in data files and repair them if necessary.",
+    "homepage": "https://github.com/Parchive/par2cmdline",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Parchive/par2cmdline/releases/download/v0.8.1/par2cmdline-0.8.1-win-x64.zip",
+            "hash": "sha512:c0e66415c6b1c34a790ff0e5a29f9cd7b413f4372440265150ef1442d577926aedb2f58edf0f934cfb2e78df6123ce15199766b89295966feedfe75d19f0ecec"
+        },
+        "32bit": {
+            "url": "https://github.com/Parchive/par2cmdline/releases/download/v0.8.1/par2cmdline-0.8.1-win-x86.zip",
+            "hash": "sha512:2997672aadfb64701d8421b868a9c478a60faea9cf9e2d2874275812860f34d47c1313f664d5c8d608b7c62d71c8ef20718c00e9acf219434a523f255d0139cb"
+        }
+    },
+    "bin": "par2.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Parchive/par2cmdline/releases/download/v$version/par2cmdline-$version-win-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Parchive/par2cmdline/releases/download/v$version/par2cmdline-$version-win-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.sha512"
+        }
+    }
+}
