@@ -2,7 +2,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\*\shell\PowerShell7$pwshArch]
 "Icon"="$pwshPath"
-"MUIVerb"="Run with PowerShell 7"
+"MUIVerb"="Run with PowerShell Core"
 
 [HKEY_CURRENT_USER\Software\Classes\*\shell\PowerShell7$pwshArch\Command]
-@="$pwshPath -Command \"$host.UI.RawUI.WindowTitle = 'PowerShell 7 ($pwshArch)'; if((Get-ExecutionPolicy ) -ne 'AllSigned') { Set-ExecutionPolicy -Scope Process Bypass }; & '%1'\""
+@="$pwshPath -Command \"$host.UI.RawUI.WindowTitle = 'PowerShell Core ($pwshArch)'; if((Get-ExecutionPolicy ) -ne 'AllSigned') { Set-ExecutionPolicy -Scope Process Bypass }; & '%1'\""

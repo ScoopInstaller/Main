@@ -23,9 +23,9 @@
         "}"
     ],
     "post_install": [
-        "    if ($architecture -eq \"32bit\") { $pwshArch = \"x86\" } else {$pwshArch = \"x64\"} ",
-        "    $pwshPath = \"$dir\\pwsh.exe\".Replace('\\', '\\\\')",
-        "    'install-explorer-context', 'uninstall-explorer-context', 'install-file-context' , 'uninstall-file-context' | ForEach-Object {",
+        "if ($architecture -eq '32bit') { $pwshArch = 'x86' } else { $pwshArch = 'x64' }",
+        "$pwshPath = \"$dir\\pwsh.exe\".Replace('\\', '\\\\')",
+        "'install-explorer-context', 'uninstall-explorer-context', 'install-file-context' , 'uninstall-file-context' | ForEach-Object {",
         "    if (Test-Path \"$bucketsdir\\main\\scripts\\pwsh\\$_.reg\") {",
         "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\pwsh\\$_.reg\").Replace('$pwshPath', $pwshPath)",
         "        $content = $content.Replace('$pwshArch', $pwshArch)",
