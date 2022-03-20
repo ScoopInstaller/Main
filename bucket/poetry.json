@@ -4,22 +4,19 @@
     "homepage": "https://python-poetry.org/",
     "license": "MIT",
     "depends": "python",
-    "url": "https://raw.githubusercontent.com/python-poetry/poetry/1.1.13/get-poetry.py",
-    "hash": "e973b3badb95a916bfe250c22eeb7253130fd87312afa326eb02b8bdcea8f4a7",
+    "url": "https://install.python-poetry.org#/install-poetry.py",
+    "hash": "761cdefb65de97882482d5edf29de6d90e42917447aabfde63a693206c4550c6",
     "installer": {
-        "script": "$env:POETRY_HOME=$dir; python $dir/$fname --version $version --no-modify-path -y"
+        "script": [
+            "$env:POETRY_HOME=\"$dir\"",
+            "python3 \"$dir\\$fname\" --version $version"
+        ]
     },
-    "uninstaller": {
-        "script": "$env:POETRY_HOME=$dir; python $dir/get-poetry.py --uninstall -y"
-    },
-    "bin": "bin\\poetry.bat",
-    "env_set": {
-        "POETRY_HOME": "$dir"
-    },
+    "bin": "venv\\Scripts\\poetry.exe",
     "checkver": {
         "github": "https://github.com/python-poetry/poetry/"
     },
     "autoupdate": {
-        "url": "https://raw.githubusercontent.com/python-poetry/poetry/$version/get-poetry.py"
+        "url": "https://install.python-poetry.org#/install-poetry.py"
     }
 }
