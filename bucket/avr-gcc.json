@@ -5,13 +5,13 @@
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://blog.zakkemble.net/download/avr-gcc-11.1.0-x64-windows.zip",
-            "hash": "md5:3043b0659163dd116d02fe3470d404d5",
+            "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v11.1.0-1/avr-gcc-11.1.0-x64-windows.zip",
+            "hash": "e11ec78125a11242cc45169d96bbff9f35b4b7b916711ff4fad64c62379a71f7",
             "extract_dir": "avr-gcc-11.1.0-x64-windows"
         },
         "32bit": {
-            "url": "https://blog.zakkemble.net/download/avr-gcc-11.1.0-x86-windows.zip",
-            "hash": "md5:b6459d9048b0870a96544330e54b66ae",
+            "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v11.1.0-1/avr-gcc-11.1.0-x86-windows.zip",
+            "hash": "a73d9a1353964ff7dc96226c41a568a2b42aea2d71de97d6aceb193cf003fadf",
             "extract_dir": "avr-gcc-11.1.0-x86-windows"
         }
     },
@@ -47,21 +47,22 @@
         "bin\\avr-strings.exe",
         "bin\\avr-strip.exe"
     ],
-    "checkver": "AVR-GCC\\s*([\\d.]+)\\s+for",
+    "checkver": {
+        "github": "https://github.com/ZakKemble/avr-gcc-build"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://blog.zakkemble.net/download/avr-gcc-$version-x64-windows.zip",
+                "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v$version-1/avr-gcc-$version-x64-windows.zip",
                 "extract_dir": "avr-gcc-$version-x64-windows"
             },
             "32bit": {
-                "url": "https://blog.zakkemble.net/download/avr-gcc-$version-x86-windows.zip",
+                "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v$version-1/avr-gcc-$version-x86-windows.zip",
                 "extract_dir": "avr-gcc-$version-x86-windows"
             }
         },
         "hash": {
-            "url": "https://blog.zakkemble.net/avr-gcc-builds/",
-            "regex": "(?sm)$basename.*?MD5:\\s*$md5"
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }
