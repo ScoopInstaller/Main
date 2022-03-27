@@ -1,33 +1,33 @@
 {
-    "version": "11.2.0-9.0.0-r3",
+    "version": "11.2.0-9.0.0-r6",
     "description": "GNU Compiler Collection (WinLibs build)",
     "homepage": "https://winlibs.com",
     "license": "GPL-3.0-or-later,ZPL-2.1,BSD-2-Clause,...",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/brechtsanders/winlibs_mingw/releases/download/11.2.0-13.0.0-9.0.0-msvcrt-r3/winlibs-x86_64-posix-seh-gcc-11.2.0-mingw-w64-9.0.0-r3.7z",
-            "hash": "sha512:ce199913b462532905c8844978cabf1c961e2bd9b04b0f858e6ecf351974c3c1b6b67b8c8ee96437ca2ae25474b16023352f3ddfbdf1dda88407f7f0f4f747b0",
+            "url": "https://github.com/brechtsanders/winlibs_mingw/releases/download/11.2.0-9.0.0-msvcrt-r6/winlibs-x86_64-posix-seh-gcc-11.2.0-mingw-w64-9.0.0-r6.7z",
+            "hash": "sha512:0173fac8312f2427b3f595ca155441d0ce5d1b1ddbf75479a8b8e66b2e060547ae49b92198487e5acfbef354345c67e47d0039020d478ccf0ea02220fd35f45e",
             "extract_dir": "mingw64"
         },
         "32bit": {
-            "url": "https://github.com/brechtsanders/winlibs_mingw/releases/download/11.2.0-13.0.0-9.0.0-msvcrt-r3/winlibs-i686-posix-dwarf-gcc-11.2.0-mingw-w64-9.0.0-r3.7z",
-            "hash": "sha512:c56bdcb93948adb0aa6b6b321d49ef6cee3a7e3f63610ce114c594671b3ebfdfc3c0db4bb802ea0f3de4724d2428b1d0f91624dd7d8026e993c40e6033aae570",
+            "url": "https://github.com/brechtsanders/winlibs_mingw/releases/download/11.2.0-9.0.0-msvcrt-r6/winlibs-i686-posix-dwarf-gcc-11.2.0-mingw-w64-9.0.0-r6.7z",
+            "hash": "sha512:39fdb06504b754ee168995a06f973500e8055548d9b4b87a2d32c5d19e7062317ea5ca693d25ac1b30cdcfe4b6a3a247722c48bf3615b68d56e1af111915dc3f",
             "extract_dir": "mingw32"
         }
     },
     "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
     "env_add_path": "bin",
     "checkver": {
-        "regex": "GCC ([\\d.]+).*?LLVM.*?([\\d.]+).*?MinGW\\-w64 ([\\d.]+).*?MSVCRT.*?release ([\\d.]+).*?LATEST",
-        "replace": "${1}-${3}-r${4}"
+        "regex": "GCC ([\\d.]+).*?MinGW\\-w64 ([\\d.]+).*?MSVCRT.*?release ([\\d.]+).*?LATEST",
+        "replace": "${1}-${2}-r${3}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-$match3-msvcrt-r$match4/winlibs-x86_64-posix-seh-gcc-$match1-mingw-w64-$match3-r$match4.7z"
+                "url": "https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-msvcrt-r$match3/winlibs-x86_64-posix-seh-gcc-$match1-mingw-w64-$match2-r$match3.7z"
             },
             "32bit": {
-                "url": "https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-$match3-msvcrt-r$match4/winlibs-i686-posix-dwarf-gcc-$match1-mingw-w64-$match3-r$match4.7z"
+                "url": "https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-msvcrt-r$match3/winlibs-i686-posix-dwarf-gcc-$match1-mingw-w64-$match2-r$match3.7z"
             }
         },
         "hash": {
