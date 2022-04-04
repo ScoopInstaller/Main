@@ -14,7 +14,8 @@
             "hash": "b3ca98a8784c710108bbf56f9355ac6060af770b8459a32d94cc09b73cf0af7e"
         }
     },
-    "pre_install": [
+    "extract_dir": "Files\\7-Zip",
+    "post_install": [
         "$7zip_root = \"$dir\".Replace('\\', '\\\\')",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
         "    $content = Get-Content \"$bucketsdir\\main\\scripts\\7-zip\\$_\"",
@@ -25,7 +26,6 @@
         "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
         "}"
     ],
-    "extract_dir": "Files\\7-Zip",
     "bin": "7z.exe",
     "shortcuts": [
         [
