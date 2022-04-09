@@ -1,0 +1,26 @@
+{
+    "version": "1.3.0",
+    "description": "Cast YouTube videos to your smart TV from command-line",
+    "homepage": "https://github.com/MarcoLucidi01/ytcast",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/MarcoLucidi01/ytcast/releases/download/v1.3.0/ytcast-v1.3.0-windows-amd64.zip",
+            "hash": "7a5f720bbf33ab6f98b9fc3a3f815deff2983b057d9686068cd673b9aabe2069",
+            "extract_dir": "ytcast-v1.3.0-windows-amd64"
+        }
+    },
+    "bin": "ytcast.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/MarcoLucidi01/ytcast/releases/download/v$version/ytcast-v$version-windows-amd64.zip",
+                "extract_dir": "ytcast-v$version-windows-amd64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/ytcast-v$version-sha256-checksums.txt"
+        }
+    }
+}
