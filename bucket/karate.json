@@ -11,7 +11,7 @@
     "extract_dir": "karate-1.1.0",
     "pre_install": [
         "$cont = Get-Content \"$dir\\karate.bat\"",
-        "$cont = 'cd /d \"%~dp0\"' + \"`n\" + $cont",
+        "$cont = 'cd /d \"%~dp0\"' + \"`r`n\" + $cont",
         "Set-Content \"$dir\\karate.bat\" $cont -Encoding ascii"
     ],
     "bin": "karate.bat",
