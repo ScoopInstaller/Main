@@ -1,0 +1,27 @@
+{
+    "version": "0.10.0",
+    "description": "SkyWalking CLI is a command interaction tool for the SkyWalking user or OPS team",
+    "homepage": "https://skywalking.apache.org/",
+    "license": "Apache-2.0",
+    "url": "https://downloads.apache.org/skywalking/cli/0.10.0/skywalking-cli-0.10.0-bin.tgz",
+    "hash": "sha512:4247e38dbf8ca3ec25a74c468ef1c93150c15f4c244f85e80923fbe9c6282544dd14bfe9c933955c9bef344c0636bcce9d2be73699c39ede009760f3cc06aa0c",
+    "extract_dir": "skywalking-cli-0.10.0-bin",
+    "bin": "bin\\swctl.exe",
+    "pre_install": [
+        "$bin_name = if ($architecture -eq '64bit') {'amd64'} else {'386'}",
+        "Rename-Item \"$dir\\bin\\swctl-$version-windows-$bin_name\" \"swctl.exe\"",
+        "Remove-Item \"$dir\\bin\\swctl-*\"",
+        "Get-ChildItem -Path \"$dir\" \"._*\" -Recurse | Remove-Item"
+    ],
+    "checkver": {
+        "url": "https://downloads.apache.org/skywalking/cli/",
+        "regex": "(?sm)<a\\s+href\\=\\\"(?:[\\d.]+)\\/\\\">\\s*([\\d.]+)\\/?<\\/a>"
+    },
+    "autoupdate": {
+        "url": "https://downloads.apache.org/skywalking/cli/$version/skywalking-cli-$version-bin.tgz",
+        "hash": {
+            "url": "$url.sha512"
+        },
+        "extract_dir": "skywalking-cli-$version-bin"
+    }
+}
