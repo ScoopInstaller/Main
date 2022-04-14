@@ -1,32 +1,29 @@
 {
-    "version": "3.27",
+    "version": "3.29",
     "description": "Flexible I/O Tester",
     "homepage": "https://bsdio.com/fio/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://bsdio.com/fio/releases/fio-3.27-x64.zip",
-            "hash": "4d17833d7ea009eb984d3e4f676a5ffc94ab98efbe9680c073b6e7c05dd524bf",
-            "extract_dir": "fio-3.27-x64"
+            "url": "https://bsdio.com/fio/releases/fio-3.29-x64.msi",
+            "hash": "5633f601136678536630e5ab7f277c5df8f112077b203f9b800cc4781090b298"
         },
         "32bit": {
-            "url": "https://bsdio.com/fio/releases/fio-3.27-x86.zip",
-            "hash": "a2a09702d5e7311903e4097b61ee248e06a03de9fd27c04c3aec987afc5716e6",
-            "extract_dir": "fio-3.27-x86"
+            "url": "https://bsdio.com/fio/releases/fio-3.29-x86.msi",
+            "hash": "64c6328d5cd5eb8629bd53e2f5651435aa369503ce186c9aa76416bbead5435e"
         }
     },
+    "extract_dir": "fio",
     "bin": "fio.exe",
     "checkver": "fio-([\\d.]+) released",
     "autoupdate": {
-       "architecture": {
-         "64bit": {
-             "url": "https://bsdio.com/fio/releases/fio-$version-x64.zip",
-             "extract_dir": "fio-$version-x64"
-         },
-         "32bit": {
-             "url": "https://bsdio.com/fio/releases/fio-$version-x86.zip",
-             "extract_dir": "fio-$version-x86"
-         }
-       }
+        "architecture": {
+            "64bit": {
+                "url": "https://bsdio.com/fio/releases/fio-$version-x64.msi"
+            },
+            "32bit": {
+                "url": "https://bsdio.com/fio/releases/fio-$version-x86.msi"
+            }
+        }
     }
 }
