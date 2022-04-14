@@ -4,18 +4,11 @@
     "homepage": "https://github.com/dylanaraps/neofetch",
     "license": "MIT",
     "suggest": {
-        "git": [
-            "git",
-            "git-with-openssh"
-        ]
+        "git": "git"
     },
     "url": "https://raw.githubusercontent.com/dylanaraps/neofetch/7.1.0/neofetch",
     "hash": "3dc33493e54029fb1528251552093a9f9a2894fcf94f9c3a6f809136a42348c7",
-    "pre_install": [
-        "if(installed 'git-with-openssh') { $git = 'git-with-openssh' } else { $git = 'git' }",
-        "Write-Output \"`$GitDir = (Get-Item (scoop which $git) -ErrorAction:Stop).Directory.Parent; if (`$GitDir.FullName -imatch 'mingw') { `$GitDir = `$GitDir.Parent }; & (Join-Path (Join-Path `$GitDir.FullName 'bin') 'bash.exe') `\"`$(Join-Path `$PSScriptRoot 'neofetch')`\" @args\" | Out-File \"$dir\\neofetch.ps1\" -Encoding utf8"
-    ],
-    "bin": "neofetch.ps1",
+    "bin": "neofetch",
     "checkver": "github",
     "autoupdate": {
         "url": "https://raw.githubusercontent.com/dylanaraps/neofetch/$version/neofetch"
