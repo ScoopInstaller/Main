@@ -9,10 +9,11 @@
             "hash": "sha512:9a0445650c1fc55c8cfc53080742842abc5b36120dfc2f6adf430fc7211049637de362fdabf653929a52b0495327ad4ecd5c803c47abc19ada088ec73f26a19b"
         }
     },
-    "bin": "swctl.exe",
+    "extract_dir": "skywalking-cli-0.9.0-bin",
+    "bin": "bin\\swctl.exe",
     "pre_install": [
-        "Move-Item \"$dir\\skywalking-cli-*\\bin\\*-win*\" \"$dir\\swctl.exe\"",
-        "Remove-Item \"$dir\\skywalking-cli-*\" -Recurse"
+        "Rename-Item \"$dir\\bin\\swctl-*-win*\" \"swctl.exe\"",
+        "Remove-Item \"$dir\\bin\\swctl-*\""
     ],
     "checkver": {
         "url": "https://downloads.apache.org/skywalking/cli/",
@@ -23,9 +24,10 @@
             "64bit": {
                 "url": "https://downloads.apache.org/skywalking/cli/$version/skywalking-cli-$version-bin.tgz",
                 "hash": {
-                    "url": "https://downloads.apache.org/skywalking/cli/$version/skywalking-cli-$version-bin.tgz.sha512"
+                    "url": "$url.sha512"
                 }
             }
-        }
+        },
+        "extract_dir": "skywalking-cli-$version-bin",
     }
 }
