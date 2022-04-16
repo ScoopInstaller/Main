@@ -1,11 +1,15 @@
 {
-    "version": "1.3.7",
+    "version": "8.0.0",
     "description": "Camunda workflow instance monitor/manager",
     "homepage": "https://docs.camunda.io/docs/product-manuals/zeebe/zeebe-overview/",
     "license": {
         "identifier": "Zeebe Community License v1.0",
         "url": "https://camunda.com/legal/terms/cloud-terms-and-conditions/zeebe-community-license-v1-0/"
     },
+    "notes": [
+        "If you are upgrading from version 1.x, you can follow the instructions on this page to migrate the settings:",
+        "https://docs.camunda.io/docs/guides/update-guide/130-to-800/"
+    ],
     "suggest": {
         "JDK": "java/openjdk",
         "Zeebe": "zeebe",
@@ -13,11 +17,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/camunda-cloud/zeebe/releases/download/1.3.7/camunda-cloud-operate-1.3.7.zip",
-            "hash": "sha1:579246f9ca77a72ce484415997c4024d502347f9"
+            "url": "https://github.com/camunda/camunda-platform/releases/download/8.0.0/camunda-operate-8.0.0.zip",
+            "hash": "sha1:041b68110fd9efbce9bdd1563de29d65e20e99a9"
         }
     },
-    "extract_dir": "camunda-cloud-operate-1.3.7",
+    "extract_dir": "camunda-operate-8.0.0",
     "bin": [
         [
             "bin\\operate.bat",
@@ -26,17 +30,17 @@
     ],
     "persist": "config",
     "checkver": {
-        "github": "https://github.com/camunda-cloud/zeebe"
+        "github": "https://github.com/camunda/camunda-platform"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/camunda-cloud/zeebe/releases/download/$version/camunda-cloud-operate-$version.zip"
+                "url": "https://github.com/camunda/camunda-platform/releases/download/$version/camunda-operate-$version.zip"
             }
         },
         "hash": {
             "url": "$url.sha1sum"
         },
-        "extract_dir": "camunda-cloud-operate-$version"
+        "extract_dir": "camunda-operate-8.0.0"
     }
 }
