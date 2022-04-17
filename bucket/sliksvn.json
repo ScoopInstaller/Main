@@ -1,19 +1,22 @@
 {
-    "version": "1.14.1",
+    "version": "1.14.2",
     "description": "A software versioning and revision control system.",
     "homepage": "https://sliksvn.com/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.1-x64.msi",
-            "hash": "db82f788dda35b5374b7383722935067af56f7b4420956ee9a2ece526bca5d3d"
+            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2-x64.zip",
+            "hash": "9348c4b28762c9e852429105c20babdb94414524eb03a03e20efd66db5fcabbd"
         },
         "32bit": {
-            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.1-win32.msi",
-            "hash": "9be8737d1357415ed286a1e68205f7ca932b6ee146dcff97db2eefe86ad90b1d"
+            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2-win32.zip",
+            "hash": "d1ea5453db6bfdf6a1886b1f1a5fadbb87d30ee4558cc60356f195e849897f07"
         }
     },
-    "extract_dir": "SlikSvn",
+    "pre_install": [
+        "Get-ChildItem \"$dir\\Slik-Subversion-*.msi\" | Select-Object -First 1 | ForEach-Object {Rename-Item $_ 'dl.msi'}",
+        "Expand-MsiArchive \"$dir\\dl.msi\" \"$dir\" -ExtractDir 'SlikSvn' -Removal | Out-Null"
+    ],
     "bin": [
         "bin\\svn.exe",
         "bin\\svnadmin.exe",
@@ -34,10 +37,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://sliksvn.com/pub/Slik-Subversion-$version-x64.msi"
+                "url": "https://sliksvn.com/pub/Slik-Subversion-$version-x64.zip"
             },
             "32bit": {
-                "url": "https://sliksvn.com/pub/Slik-Subversion-$version-win32.msi"
+                "url": "https://sliksvn.com/pub/Slik-Subversion-$version-win32.zip"
             }
         }
     }
