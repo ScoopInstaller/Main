@@ -1,0 +1,17 @@
+{
+    "version": "1.4.3",
+    "description": "Make diffs human readable instead of machine readable to improve code quality and spot defects faster.",
+    "homepage": "https://github.com/so-fancy/diff-so-fancy",
+    "license": "MIT",
+    "suggest": {
+        "Perl": "perl"
+    },
+    "url": "https://github.com/so-fancy/diff-so-fancy/releases/download/v1.4.3/diff-so-fancy",
+    "hash": "de90659705436cf17d9a8aaad7012c9ed82d7f16eadf1ecee3d6badb0717b73f",
+    "pre_install": "Set-Content -Value '@perl.exe \"%~dp0diff-so-fancy\" %*' -Path \"$dir\\diff-so-fancy.bat\"",
+    "bin": "diff-so-fancy.bat",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/so-fancy/diff-so-fancy/releases/download/v$version/diff-so-fancy"
+    }
+}
