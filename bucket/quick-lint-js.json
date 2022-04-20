@@ -1,0 +1,34 @@
+{
+    "version": "2.4.1",
+    "description": "Find bugs in JavaScript programs.",
+    "homepage": "https://quick-lint-js.com/",
+    "license": "GPL-3.0-or-later,MIT,BSL-1.0,Apache-2.0,ZPL-2.1,Public Domain,Unknown,ISC,BSD-2-Clause,MIT-CMU,LGPL-2.1-or-later,GPL-2.0-or-later,BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://c.quick-lint-js.com/releases/2.4.1/manual/windows.zip",
+            "hash": "sha256:7a4d170add6e2e9796c5bd519fd998e8316bd90df1c54704197057fc3e5d68f7"
+        },
+        "32bit": {
+            "url": "https://c.quick-lint-js.com/releases/2.4.1/manual/windows-x86.zip",
+            "hash": "sha256:96a0bb91cbbcf5133eb870583cfc932d2fbfacf752a692f625039753b568acf3"
+        }
+    },
+    "bin": "bin\\quick-lint-js.exe",
+    "checkver": {
+        "url": "https://c.quick-lint-js.com/releases/latest/scoop/quick-lint-js.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://c.quick-lint-js.com/releases/$version/manual/windows.zip"
+            },
+            "32bit": {
+                "url": "https://c.quick-lint-js.com/releases/$version/manual/windows-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/../SHA256SUMS"
+        }
+    }
+}
