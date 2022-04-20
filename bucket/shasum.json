@@ -1,11 +1,11 @@
 {
-    "version": "0.2020.01.26",
+    "version": "0.2020.02.27",
     "description": "An approximation of the Unix shasum command.",
     "homepage": "https://github.com/lukesampson/psutils",
     "license": "MIT",
     "url": [
-        "https://raw.githubusercontent.com/lukesampson/psutils/de1a069215c54a1cb105f3dc79f14e25570c75f2/shasum.ps1",
-        "https://raw.githubusercontent.com/lukesampson/psutils/de1a069215c54a1cb105f3dc79f14e25570c75f2/getopt.ps1"
+        "https://raw.githubusercontent.com/lukesampson/psutils/8af01127a949c64ea50b657989a4cd7744d4fffd/shasum.ps1",
+        "https://raw.githubusercontent.com/lukesampson/psutils/8af01127a949c64ea50b657989a4cd7744d4fffd/getopt.ps1"
     ],
     "hash": [
         "569cd02dd49cff0c92c93a609e58cc902d850fe0c312ee86c3dc3fba0976e596",
@@ -16,5 +16,11 @@
         "url": "https://github.com/lukesampson/psutils/commits/master.atom",
         "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
         "replace": "0.${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "url": [
+            "https://raw.githubusercontent.com/lukesampson/psutils/$matchSha/shasum.ps1",
+            "https://raw.githubusercontent.com/lukesampson/psutils/$matchSha/getopt.ps1"
+        ]
     }
 }
