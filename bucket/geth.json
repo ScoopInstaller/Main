@@ -1,18 +1,18 @@
 {
-    "version": "1.10.13",
+    "version": "1.10.17",
     "description": "Official Go implementation of the Ethereum protocol",
     "homepage": "https://geth.ethereum.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-amd64-1.10.13-7a0c19f8.zip",
-            "hash": "md5:2e29fac75cff1f40adce098e8a6f6b91",
-            "extract_dir": "geth-alltools-windows-amd64-1.10.13-7a0c19f8"
+            "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-amd64-1.10.17-25c9b49f.zip",
+            "hash": "md5:2da146376f3504440720a99372119fbf",
+            "extract_dir": "geth-alltools-windows-amd64-1.10.17-25c9b49f"
         },
         "32bit": {
-            "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-386-1.10.13-7a0c19f8.zip",
-            "hash": "md5:da6fc618e4f2bc61f033d34257832023",
-            "extract_dir": "geth-alltools-windows-386-1.10.13-7a0c19f8"
+            "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-386-1.10.17-25c9b49f.zip",
+            "hash": "md5:59e67deee33067349e1fe59caa32597e",
+            "extract_dir": "geth-alltools-windows-386-1.10.17-25c9b49f"
         }
     },
     "bin": [
@@ -25,18 +25,18 @@
         "rlpdump.exe"
     ],
     "checkver": {
-        "github": "https://github.com/ethereum/go-ethereum",
-        "regex": "(?sm)/tree/v([\\d.]+).*?/commit/(?<commit>[a-z\\d]{8})"
+        "url": "https://github.com/ethereum/go-ethereum/releases/latest",
+        "regex": "(?sm)/tree/v([\\d.]+).*?/commit/(?<sha>[a-z\\d]{8})"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-amd64-$version-$matchCommit.zip",
-                "extract_dir": "geth-alltools-windows-amd64-$version-$matchCommit"
+                "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-amd64-$version-$matchSha.zip",
+                "extract_dir": "geth-alltools-windows-amd64-$version-$matchSha"
             },
             "32bit": {
-                "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-386-$version-$matchCommit.zip",
-                "extract_dir": "geth-alltools-windows-386-$version-$matchCommit"
+                "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-386-$version-$matchSha.zip",
+                "extract_dir": "geth-alltools-windows-386-$version-$matchSha"
             }
         },
         "hash": {
