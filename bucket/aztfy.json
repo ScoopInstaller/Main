@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "description": "Azure Terrafy",
+    "homepage": "https://github.com/Azure/aztfy",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Azure/aztfy/releases/download/v0.2.0/aztfy_v0.2.0_windows_amd64.zip",
+            "hash": "6b55b2bfeda4709641c44cbbdf23bbed0bdbf06cbee892323cb87fedeb8700ea"
+        },
+        "32bit": {
+            "url": "https://github.com/Azure/aztfy/releases/download/v0.2.0/aztfy_v0.2.0_windows_386.zip",
+            "hash": "8308fba9ae1bab2281e8470d591ca40dea150abd1152a8d2a3f76986a4f74ce4"
+        }
+    },
+    "bin": "aztfy.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Azure/aztfy/releases/download/v$version/aztfy_v$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Azure/aztfy/releases/download/v$version/aztfy_v$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/aztfy_v$version_SHA256SUMS"
+        }
+    }
+}
