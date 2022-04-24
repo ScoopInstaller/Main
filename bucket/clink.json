@@ -5,10 +5,35 @@
     "license": "GPL-3.0-only",
     "notes": [
         "Run 'clink inject' to start clink on the current cmd",
-        "Run 'clink autorun install' to auto start clink"
+        "Run 'clink autorun install' to auto start clink",
+        "Restart terminal in order for profile persist to work"
     ],
+    "suggest": {
+        "completions": "clink-completions"
+    },
     "url": "https://github.com/chrisant996/clink/releases/download/v1.3.16/clink.1.3.16.023688.zip",
     "hash": "1773af7f4bedb05c7472b40402322c6b230629b5957a5450e850ff8be23eaa97",
+    "pre_install": [
+        "$dirInfo = if (Test-Path \"$persist_dir\\profile\") {",
+        "  Get-ChildItem \"$persist_dir\\profile\" | Measure-Object",
+        "}",
+        "",
+        "if (!($dirInfo) -or ($dirInfo.count -eq 0)) {",
+        "  $importConf = if ($env:CLINK_PROFILE -and (Test-Path $env:CLINK_PROFILE)) {",
+        "    $env:CLINK_PROFILE",
+        "  } elseif (Test-Path \"$env:LOCALAPPDATA\\clink\") {",
+        "    \"$env:LOCALAPPDATA\\clink\"",
+        "  }",
+        "",
+        "  if ($importConf -and (Test-Path $importConf)) {",
+        "    New-Item -ItemType Directory -Force -Path \"$persist_dir\\profile\" | Out-Null",
+        "    Copy-Item -Path \"$importConf\\*\" -Destination \"$persist_dir\\profile\" -Recurse | Out-Null",
+        "  }",
+        "}"
+    ],
+    "env_set": {
+        "CLINK_PROFILE": "$persist_dir\\profile"
+    },
     "bin": "clink.bat",
     "persist": "profile",
     "checkver": {
