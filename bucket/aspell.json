@@ -1,0 +1,63 @@
+{
+    "##": "The dictionary (mingw-w64-x86_64-aspell-en-2020.12.07-1-any.pkg.tar.zst) has to be updated manually.",
+    "version": "0.60.8-2",
+    "description": "A spellchecker commonly used with emacs.",
+    "homepage": "http://aspell.net/",
+    "license": "LGPL-2.1-only",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-aspell-0.60.8-2-any.pkg.tar.zst",
+                "https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-aspell-en-2020.12.07-1-any.pkg.tar.zst"
+            ],
+            "hash": [
+                "84e02ec8e81fefb20e429c6a991529de8a3c2d0296f7b781e92f2e8937d32427",
+                "98745b2737dc107adcb76264c1de61489fd44b5e74f6c50cf8eb8f2c27f826f9"
+            ],
+            "extract_dir": [
+                "mingw64",
+                "mingw64"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://mirror.msys2.org/mingw/mingw32/mingw-w64-i686-aspell-0.60.8-2-any.pkg.tar.zst",
+                "https://mirror.msys2.org/mingw/mingw32/mingw-w64-i686-aspell-en-2020.12.07-1-any.pkg.tar.zst"
+            ],
+            "hash": [
+                "2db955f695185daefcf8209ecdc71fa3b9c37d211f50ccffaa548caa6507d4da",
+                "98745b2737dc107adcb76264c1de61489fd44b5e74f6c50cf8eb8f2c27f826f9"
+            ],
+            "extract_dir": [
+                "mingw32",
+                "mingw32"
+            ]
+        }
+    },
+    "bin": [
+        "bin\\aspell.exe",
+        "bin\\word-list-compress.exe"
+    ],
+    "checkver": {
+        "url": "https://packages.msys2.org/package/mingw-w64-x86_64-aspell",
+        "regex": "mingw-w64-x86_64-aspell-([\\d.-]+)-any"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-aspell-$version-any.pkg.tar.zst",
+                "hash": {
+                    "url": "https://packages.msys2.org/package/mingw-w64-x86_64-aspell",
+                    "regex": "$sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://mirror.msys2.org/mingw/mingw32/mingw-w64-i686-aspell-$version-any.pkg.tar.zst",
+                "hash": {
+                    "url": "https://packages.msys2.org/package/mingw-w64-i686-aspell",
+                    "regex": "$sha256"
+                }
+            }
+        }
+    }
+}
