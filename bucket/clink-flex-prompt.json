@@ -8,6 +8,10 @@
     },
     "url": "https://github.com/chrisant996/clink-flex-prompt/releases/download/v0.9/clink-flex-prompt-0.9.zip",
     "hash": "6dcfac3805c334699cc65998913ba9c711e17ee015b258ea3618cd004d90da6d",
+    "pre_install": [
+        "ensure \"$persist_dir\" | Out-Null",
+        "Get-ChildItem \"$persist_dir\\*\" flexprompt_*config.lua | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue"
+    ],
     "installer": {
         "script": [
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
@@ -21,6 +25,7 @@
     },
     "uninstaller": {
         "script": [
+            "Get-ChildItem \"$dir\\*\" flexprompt_*config.lua | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue",
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
             "   clink uninstallscripts \"$dir\"",
             "} elseif ($Env:CMDER_ROOT) {",
