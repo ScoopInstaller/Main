@@ -1,0 +1,33 @@
+{
+    "version": "1.10.3",
+    "description": "RetroArch is a frontend for emulators, game engines and media players.",
+    "homepage": "https://www.retroarch.com/",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "http://buildbot.libretro.com/stable/1.10.3/windows/x86_64/RetroArch.7z",
+            "hash": "3b48f22a4ea1ecf65259e4f93ad12500042adb461690aa34d23f909242465f31"
+        },
+        "32bit": {
+            "url": "http://buildbot.libretro.com/stable/1.10.3/windows/x86/RetroArch.7z",
+            "hash": "d9ab95f0038645e20924acd022bcc11236323192bac243dc07afb274bce954da"
+        }
+    },               
+    "checkver": {
+        "github": "https://github.com/libretro/RetroArch",
+    },    
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://buildbot.libretro.com/stable/$version/windows/x86_64/RetroArch.7z",
+
+            },
+            "32bit": {
+                "url": "http://buildbot.libretro.com/stable/$version/windows/x86/RetroArch.7z"
+            },
+    "post_install": [
+        "Start-Process \"https://ra-link.web.app/r\""
+            ],                         
+        }
+    }
+}
