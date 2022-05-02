@@ -8,6 +8,11 @@
     },
     "url": "https://github.com/chrisant996/clink-flex-prompt/releases/download/v0.9/clink-flex-prompt-0.9.zip",
     "hash": "6dcfac3805c334699cc65998913ba9c711e17ee015b258ea3618cd004d90da6d",
+    "pre_install": [
+        "ensure \"$persist_dir\" | Out-Null",
+        "if (!(Test-Path \"$persist_dir\\flexprompt_autoconfig.lua\")) { New-Item -Path \"$dir\\flexprompt_autoconfig.lua\" -Force -ErrorAction SilentlyContinue | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\flexprompt_config.lua\")) { New-Item -Path \"$dir\\flexprompt_config.lua\" -Force -ErrorAction SilentlyContinue | Out-Null }"
+    ],
     "installer": {
         "script": [
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
@@ -28,6 +33,10 @@
             "}"
         ]
     },
+    "persist": [
+        "flexprompt_autoconfig.lua",
+        "flexprompt_config.lua"
+    ],
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/chrisant996/clink-flex-prompt/releases/download/v$version/clink-flex-prompt-$version.zip"
