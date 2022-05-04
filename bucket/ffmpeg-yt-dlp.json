@@ -1,0 +1,43 @@
+{
+    "version": "5.0.1-5-20220503",
+    "description": "FFMpeg builds of latest release branch with patches necessary for smooth integration with yt-dlp",
+    "homepage": "https://github.com/yt-dlp/FFmpeg-Builds",
+    "license": "MIT",
+    "suggest": {
+        "yt-dlp": "yt-dlp"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2022-05-03-12-59/ffmpeg-n5.0.1-5-g47df6cb9ed-win64-gpl-5.0.zip",
+            "hash": "c496d68f58ca5842ad95e6072bad526379a0a5f19e5a16b921eec205a9807c0a",
+            "extract_dir": "ffmpeg-n5.0.1-5-g47df6cb9ed-win64-gpl-5.0"
+        },
+        "32bit": {
+            "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2022-05-03-12-59/ffmpeg-n5.0.1-5-g971fcc06cd-win32-gpl-5.0.zip",
+            "hash": "9057732788b260aa68699af0b6107f644d0ecf9b69ae1d7d94dc20ba4cf81854",
+            "extract_dir": "ffmpeg-n5.0.1-5-g971fcc06cd-win32-gpl-5.0"
+        }
+    },
+    "bin": [
+        "bin\\ffmpeg.exe",
+        "bin\\ffplay.exe",
+        "bin\\ffprobe.exe"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases",
+        "regex": "(?sm)autobuild-(?<buildtime>(?<yyyy>\\d{4})-(?<mm>\\d{2})-(?<dd>\\d{2})-\\d{2}-\\d{2})/(?<file64bit>ffmpeg-n(?<ffmpegver>[\\d.-]+)-\\w+-win64-gpl-[\\d.]+)\\.zip.*?(?<file32bit>ffmpeg-[\\w.-]+-win32-gpl-[\\d.]+)\\.zip",
+        "replace": "${ffmpegver}-${yyyy}${mm}${dd}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/$matchFile64bit.zip",
+                "extract_dir": "$matchFile64bit"
+            },
+            "32bit": {
+                "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/$matchFile32bit.zip",
+                "extract_dir": "$matchFile32bit"
+            }
+        }
+    }
+}
