@@ -39,7 +39,7 @@
             "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
             "}",
             "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object {",
-            "    # appendpath.msi does not contain any file, which causes lessmsi extraction to fail",
+            "    # appendpath.msi does not contain any file, which causes 'msiexec /a' to fail",
             "    if($((Get-Item $_).Basename) -eq 'appendpath') { return }",
             "    Expand-MsiArchive $_ \"$dir\" ",
             "}",
