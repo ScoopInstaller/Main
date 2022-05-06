@@ -11,16 +11,16 @@
         }
     },
     "bin": "sccache.exe",
-    "checkver": {
-        "url": "https://github.com/mozilla/sccache/releases",
-        "regex": "sccache-v([\\d.]+)-x86_64-pc-windows"
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mozilla/sccache/releases/download/v$version/sccache-v$version-x86_64-pc-windows-msvc.tar.gz",
-                "extract_dir": "sccache-v$version-x86_64-pc-windows-msvc"
+                "url": "https://github.com/mozilla/sccache/releases/download/$version/sccache-$version-x86_64-pc-windows-msvc.tar.gz",
+                "extract_dir": "sccache-$version-x86_64-pc-windows-msvc"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
