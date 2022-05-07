@@ -1,12 +1,15 @@
 {
-    "version": "4.1.3",
+    "version": "4.2.0",
     "description": "A free software environment for statistical computing and graphics.",
     "homepage": "https://www.r-project.org",
-    "license": "GPL-2.0-only",
+    "license": "GPL-2.0-or-later",
     "notes": [
-        "For source packages installation, please install 'rtools'.",
+        "This version requires UCRT, which is part of Windows since Windows 10 and Windows Server 2016.",
         "",
-        "You'll need to type 'r.ps1' or 'r.cmd' to run R, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
+        "For source packages installation, please install 'rtools'.",
+        "For 32bit edition, please install 'versions/r41'.",
+        "",
+        "You'll need to type 'r.exe' to run R, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
         "",
         "You can remove Powershell's 'r' command with:",
         "    rm alias:\\r",
@@ -15,12 +18,11 @@
         "",
         "Annoying, right?! You might want to check out Pshazz (scoop install pshazz)--this has a plugin to remove some crazy aliases from Powershell, as well as many other improvements."
     ],
-    "url": "https://cloud.r-project.org/bin/windows/base/R-4.1.3-win.exe",
-    "hash": "md5:f02b305ebec458e8ba0fea9ebb0cebb3",
     "innosetup": true,
     "architecture": {
         "64bit": {
-            "pre_install": "Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'",
+            "url": "https://cloud.r-project.org/bin/windows/base/old/4.2.0/R-4.2.0-win.exe",
+            "hash": "md5:7f73761dfaab031f1cbb25530c8dba9c",
             "bin": [
                 "bin\\x64\\R.exe",
                 "bin\\x64\\Rcmd.exe",
@@ -34,54 +36,20 @@
                     "R"
                 ]
             ]
-        },
-        "32bit": {
-            "pre_install": "Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'",
-            "bin": [
-                "bin\\i386\\R.exe",
-                "bin\\i386\\Rcmd.exe",
-                "bin\\i386\\Rgui.exe",
-                "bin\\i386\\Rscript.exe",
-                "bin\\i386\\Rterm.exe"
-            ],
-            "shortcuts": [
-                [
-                    "bin\\i386\\Rgui.exe",
-                    "R"
-                ]
-            ]
         }
     },
-    "installer": {
-        "script": [
-            "Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
-            "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\"",
-            "if (Test-Path (appdir 'rtools' $global)) {",
-            "   $renvloc = \"$dir\\etc\\Renviron.site\"",
-            "   $rtoolsloc = versiondir 'rtools' (current_version 'rtools' $global) $global",
-            "   if (Test-Path $renvloc) {",
-            "       $renv = Get-Content $renvloc -Encoding ASCII",
-            "   } else {",
-            "       $renv = @()",
-            "   }",
-            "   $rtoolspath = \"$rtoolsloc\\usr\\bin\"",
-            "   if ($renv -cmatch 'PATH=') {",
-            "       $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
-            "   } else {",
-            "       $renv += \"`r`nPATH=\", '\"', $rtoolspath, ';${PATH}\"' -join ''",
-            "   }",
-            "   $renv | Set-Content $renvloc -Encoding ASCII",
-            "}"
-        ]
-    },
     "checkver": {
-        "url": "https://cloud.r-project.org/bin/windows/base/md5sum.txt",
+        "url": "https://cloud.r-project.org/bin/windows/base/",
         "regex": "R-([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://cloud.r-project.org/bin/windows/base/R-$version-win.exe",
-        "hash": {
-            "url": "$baseurl/md5sum.txt"
+        "architecture": {
+            "64bit": {
+                "url": "https://cloud.r-project.org/bin/windows/base/old/$version/R-$version-win.exe",
+                "hash": {
+                    "url": "$baseurl/md5sum.R-$version.txt"
+                }
+            }
         }
     }
 }
