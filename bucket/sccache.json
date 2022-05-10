@@ -1,26 +1,26 @@
 {
-    "version": "0.2.14",
+    "version": "0.3.0",
     "description": "Shared compilation cache used as a compiler wrapper to avoid compilation when possible, storing a cache in a remote storage.",
     "homepage": "https://github.com/mozilla/sccache",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mozilla/sccache/releases/download/0.2.14/sccache-0.2.14-x86_64-pc-windows-msvc.tar.gz",
-            "hash": "ba6bf184d2b0a78978629aaef0d9fe3ca57923e228d949b1932ec1a91ab4ceac",
-            "extract_dir": "sccache-0.2.14-x86_64-pc-windows-msvc"
+            "url": "https://github.com/mozilla/sccache/releases/download/v0.3.0/sccache-v0.3.0-x86_64-pc-windows-msvc.tar.gz",
+            "hash": "f25e927584d79d0d5ad489e04ef01b058dad47ef2c1633a13d4c69dfb83ba2be",
+            "extract_dir": "sccache-v0.3.0-x86_64-pc-windows-msvc"
         }
     },
     "bin": "sccache.exe",
-    "checkver": {
-        "url": "https://github.com/mozilla/sccache/releases",
-        "regex": "sccache-([\\d.]+)-x86_64-pc-windows"
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mozilla/sccache/releases/download/$version/sccache-$version-x86_64-pc-windows-msvc.tar.gz",
-                "extract_dir": "sccache-$version-x86_64-pc-windows-msvc"
+                "url": "https://github.com/mozilla/sccache/releases/download/v$version/sccache-v$version-x86_64-pc-windows-msvc.tar.gz",
+                "extract_dir": "sccache-v$version-x86_64-pc-windows-msvc"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
