@@ -14,7 +14,7 @@
     },
     "installer": {
         "script": [
-            "$names = @('bin', 'extras', 'include', 'lib', 'libnvvp', 'nvml', 'nvvm')",
+            "$names = @('bin', 'extras', 'include', 'lib', 'libnvvp', 'nvml', 'nvvm', 'compute-sanitizer')",
             "foreach ($name in $names) {",
             "    Copy-Item \"$dir\\cuda_*\\*\\$name\" \"$dir\" -Recurse -Force",
             "    Copy-Item \"$dir\\lib*\\*\\$name\" \"$dir\" -Recurse -Force",
