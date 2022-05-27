@@ -1,5 +1,5 @@
 {
-    "version": "0.7.3",
+    "version": "2.1.5-beta",
     "description": "Text expander",
     "homepage": "https://espanso.org",
     "license": "GPL-3.0-only",
@@ -8,15 +8,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/federico-terzi/espanso/releases/download/v0.7.3/espanso-win-installer.exe",
-            "hash": "5b19d107601f736a072610f926044f5bae537590f47d67bfd358b8652d261c98"
+            "url": "https://github.com/federico-terzi/espanso/releases/download/v2.1.5-beta/Espanso-Win-Installer-x86_64.exe",
+            "hash": "a3da8f3b721405a34c095d6f8e553518e140311e02c512453898e55dbd4f3e70"
         }
     },
     "innosetup": true,
-    "bin": "espanso.exe",
+    "bin": "espansod.exe",
     "shortcuts": [
         [
-            "espanso.exe",
+            "espansod.exe",
             "Espanso",
             "start",
             "icon.ico"
@@ -24,14 +24,15 @@
     ],
     "persist": ".espanso",
     "checkver": {
-        "github": "https://github.com/federico-terzi/espanso"
+        "github": "https://github.com/federico-terzi/espanso",
+        "regex": "v(?<version>(\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}(-beta|-alpha|)))"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/federico-terzi/espanso/releases/download/v$version/espanso-win-installer.exe",
+                "url": "https://github.com/federico-terzi/espanso/releases/download/v$version/Espanso-Win-Installer-x86_64.exe",
                 "hash": {
-                    "url": "$baseurl/espanso-win-installer-sha256.txt"
+                    "url": "$url.sha256.txt"
                 }
             }
         }
