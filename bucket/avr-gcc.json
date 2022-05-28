@@ -48,18 +48,10 @@
     ],
     "post_install": [
         "# manually shim bin\\avr-gcc-$version.exe",
-        "Write-Host \"Creating shim for 'avr-gcc-$version.exe'.\"",
-        "if($cfg.shim) {",
-        "    $shim_build = $cfg.shim",
-        "} else {",
-        "    $shim_build = 'kiennq'",
-        "}",
-        "$shim_exe = \"$scoopdir\\apps\\scoop\\current\\supporting\\shims\\$shim_build\\shim.exe\"",
-        "Copy-Item $shim_exe \"$scoopdir\\shims\\avr-gcc-$version.exe\"",
-        "Set-Content \"$scoopdir\\shims\\avr-gcc-$version.shim\" \"path = `\"$dir\\bin\\avr-gcc-$version.exe`\"\" -Encoding UTF8"
+        "scoop shim add \"avr-gcc-$version.exe\" \"$dir\\bin\\avr-gcc-$version.exe\""
     ],
     "uninstaller": {
-        "script": "Remove-Item \"$scoopdir\\shims\\avr-gcc-$version.exe\", \"$scoopdir\\shims\\avr-gcc-$version.shim\""
+        "script": "scoop shim rm \"avr-gcc-$version.exe\""
     },
     "checkver": {
         "github": "https://github.com/ZakKemble/avr-gcc-build"
