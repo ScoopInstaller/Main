@@ -6,8 +6,38 @@
     "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2022.05.10.zip",
     "hash":  "2c7a883224628ba1e36a4de5d9a7a0f2420e7f54e5fa8b1a838896ee64ee56f2",
     "extract_dir": "vcpkg-2022.05.10",
-    "pre_install": "cmd.exe /c \"$dir\\bootstrap-vcpkg.bat\"",
+    "installer": {
+        "script": [
+            "$title = 'Telemetry'",
+            "$question = @'",
+            "vcpkg collects usage data in order to help us improve your experience.",
+            "The data collected by Microsoft is anonymous.",
+            "Do you want to join the telemetry by Microsoft?",
+            "'@",
+            "$yes = New-Object System.Management.Automation.Host.ChoiceDescription '&Yes', 'Join the telemetry by Microsoft'",
+            "$no = New-Object System.Management.Automation.Host.ChoiceDescription '&No', 'Do not join the telemetry by Microsoft'",
+            "$choices = $yes, $no",
+            "$decision = $Host.UI.PromptForChoice($title, $question, $choices, 0)",
+            "if ($decision -eq 0)",
+            "{",
+            "   cmd /c $dir\\bootstrap-vcpkg.bat > $null",
+            "}",
+            "else",
+            "{",
+            "   cmd /c $dir\\bootstrap-vcpkg.bat -disableMetrics > $null",
+            "}"
+        ],
+        "keep": true
+    },
     "bin": "vcpkg.exe",
+    "post_install": "vcpkg integrate install",
+    "uninstaller": {
+        "script": "vcpkg integrate remove"
+    },
+    "persist": [
+        "downloads",
+        "installed"
+    ],
     "checkver": {
         "github": "https://github.com/microsoft/vcpkg/"
     },
