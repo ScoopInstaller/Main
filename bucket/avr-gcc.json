@@ -24,7 +24,6 @@
         "bin\\avr-cpp.exe",
         "bin\\avr-elfedit.exe",
         "bin\\avr-g++.exe",
-        "bin\\avr-gcc-11.1.0.exe",
         "bin\\avr-gcc-ar.exe",
         "bin\\avr-gcc-nm.exe",
         "bin\\avr-gcc-ranlib.exe",
@@ -47,6 +46,13 @@
         "bin\\avr-strings.exe",
         "bin\\avr-strip.exe"
     ],
+    "post_install": [
+        "# manually shim bin\\avr-gcc-$version.exe",
+        "scoop shim add \"avr-gcc-$version\" \"$dir\\bin\\avr-gcc-$version.exe\""
+    ],
+    "uninstaller": {
+        "script": "scoop shim rm \"avr-gcc-$version\""
+    },
     "checkver": {
         "github": "https://github.com/ZakKemble/avr-gcc-build"
     },
