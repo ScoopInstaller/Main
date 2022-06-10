@@ -11,7 +11,9 @@
     "extract_dir": "apache-ant-1.10.12",
     "pre_install": [
         "if (Test-Path \"$persist_dir\\lib\") {",
-        "    Copy-Item \"$persist_dir\\lib\\*\" \"$dir\\lib\"",
+        "    Get-ChildItem \"$persist_dir\\lib\" | ForEach-Object {",
+        "        if (!(Test-Path \"$dir\\lib\\$($_.Name)\")) { Copy-Item $_ \"$dir\\lib\" }",
+        "    }",
         "}"
     ],
     "env_add_path": "bin",
