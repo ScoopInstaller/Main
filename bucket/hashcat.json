@@ -10,7 +10,8 @@
         }
     },
     "extract_dir": "hashcat-6.2.5",
-    "bin": "hashcat.exe",
+    "pre_install": "Set-Content -Value \"@echo off`r`npushd $dir`r`nhashcat.exe %*`r`npopd\" -Path \"$dir\\hashcat.cmd\"",
+    "bin": "hashcat.cmd",
     "checkver": {
         "github": "https://github.com/hashcat/hashcat"
     },
