@@ -10,7 +10,7 @@
     "hash": "sha512:7e6fbcc3563df4bd87c883ad86a161a71da2774e0ed71a1b3aad82cbff1a7656ed9a0acb5ce40652129376dfd79f1ef74ec3369c1067d412a63062fea62ceccd",
     "extract_dir": "apache-ant-1.10.12",
     "pre_install": [
-        "if (Test-Path -PathType Container \"$persist_dir\\lib\") {",
+        "if (Test-Path \"$persist_dir\\lib\") {",
         "    Copy-Item \"$persist_dir\\lib\\*\" \"$dir\\lib\"",
         "}"
     ],
