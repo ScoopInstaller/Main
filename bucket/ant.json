@@ -9,9 +9,30 @@
     "url": "https://www.apache.org/dist/ant/binaries/apache-ant-1.10.12-bin.zip",
     "hash": "sha512:7e6fbcc3563df4bd87c883ad86a161a71da2774e0ed71a1b3aad82cbff1a7656ed9a0acb5ce40652129376dfd79f1ef74ec3369c1067d412a63062fea62ceccd",
     "extract_dir": "apache-ant-1.10.12",
+    "pre_install": [
+        "# Record built-in libs in builtin_libs.json",
+        "$builtin_libs = Get-ChildItem \"$dir\\lib\" | Select -ExpandProperty Name",
+        "$builtin_libs | ConvertTo-Json | Out-File \"$dir\\lib\\builtin_libs.json\" -Encoding Ascii",
+        "# Copy user libs to $dir",
+        "if (Test-Path \"$persist_dir\\lib\") {",
+        "    Get-ChildItem \"$persist_dir\\lib\" | Select -ExpandProperty Name | ForEach-Object {",
+        "        if (!(Test-Path \"$dir\\lib\\$_\")) { Copy-Item \"$persist_dir\\lib\\$_\" \"$dir\\lib\" }",
+        "    }",
+        "}"
+    ],
     "env_add_path": "bin",
     "env_set": {
         "ANT_HOME": "$dir"
+    },
+    "uninstaller": {
+        "script": [
+            "# Only persist libs that were added by the user, but not built-in ones",
+            "ensure \"$persist_dir\\lib\" | Out-Null",
+            "$builtin_libs = Get-Content \"$dir\\lib\\builtin_libs.json\" | ConvertFrom-Json",
+            "Get-ChildItem \"$dir\\lib\" -Exclude builtin_libs.json | Select -ExpandProperty Name | ForEach-Object {",
+            "    if (!($builtin_libs -contains \"$_\")) { Copy-Item \"$dir\\lib\\$_\" \"$persist_dir\\lib\" }",
+            "}"
+        ]
     },
     "checkver": {
         "url": "https://ant.apache.org/bindownload.cgi",
