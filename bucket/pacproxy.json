@@ -1,0 +1,32 @@
+{
+    "version": "2.0.5",
+    "description": "A no-frills local HTTP proxy server powered by a proxy auto-config (PAC) file",
+    "homepage": "https://github.com/williambailey/pacproxy",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/williambailey/pacproxy/releases/download/v2.0.5/pacproxy_2.0.5_windows_amd64.tar.gz",
+            "hash": "53d42fcd456c6c7a35fef258da29d57721a6b4f43cbfe2cf997e877be8e6cad0",
+            "extract_dir": "pacproxy_2.0.5_windows_amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/williambailey/pacproxy/releases/download/v2.0.5/pacproxy_2.0.5_windows_386.tar.gz",
+            "hash": "d9e13027b09c1b9d8b8a154711fd10ffc14b872970fc5926d94ebf7d53f983e8",
+            "extract_dir": "pacproxy_2.0.5_windows_386"
+        }
+    },
+    "bin": "pacproxy.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/williambailey/pacproxy/releases/download/v$version/pacproxy_$version_windows_amd64.tar.gz",
+                "extract_dir": "pacproxy_$version_windows_amd64"
+            },
+            "32bit": {
+                "url": "https://github.com/williambailey/pacproxy/releases/download/v$version/pacproxy_$version_windows_386.tar.gz",
+                "extract_dir": "pacproxy_$version_windows_386"
+            }
+        }
+    }
+}
