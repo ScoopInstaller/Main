@@ -1,0 +1,38 @@
+{
+    "version": "2.9.0",
+    "description": "A blazing fast and asynchronous web server for static files-serving",
+    "homepage": "https://sws.joseluisq.net/",
+    "license": "MIT|Apache-2.0",
+    "notes": "To run the server as a Windows Service, check: https://sws.joseluisq.net/features/windows-service",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/joseluisq/static-web-server/releases/download/v2.9.0/static-web-server-v2.9.0-x86_64-pc-windows-msvc.zip",
+            "hash": "72e846329e54c0a794e5c2c62484266f31f0c411bf4243a1bac58e7c9d697d3d",
+            "extract_dir": "static-web-server-v2.9.0-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://github.com/joseluisq/static-web-server/releases/download/v2.9.0/static-web-server-v2.9.0-i686-pc-windows-msvc.zip",
+            "hash": "8f3cd9c447136b7da200099b2265e311085debb9f2c2fc30ff8bf732f6ec312c",
+            "extract_dir": "static-web-server-v2.9.0-i686-pc-windows-msvc"
+        }
+    },
+    "bin": "static-web-server.exe",
+    "checkver": {
+        "github": "https://github.com/joseluisq/static-web-server"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/joseluisq/static-web-server/releases/download/v$version/static-web-server-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "static-web-server-v$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://github.com/joseluisq/static-web-server/releases/download/v$version/static-web-server-v$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "static-web-server-v$version-i686-pc-windows-msvc"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/static-web-server-v$version-SHA256SUM"
+        }
+    }
+}
