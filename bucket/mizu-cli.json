@@ -1,0 +1,27 @@
+{
+    "version": "33.1",
+    "description": "The API Traffic Viewer for Kubernetes",
+    "homepage": "https://getmizu.io/docs/mizu/mizu-cli",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/up9inc/mizu/releases/download/33.1/mizu.exe",
+            "hash": "1da9381b9267016454304b5dbc33dfd6740e8d2d30c33721ea3215071bac271c"
+        }
+    },
+    "bin": "mizu.exe",
+    "checkver": {
+        "github": "https://github.com/up9inc/mizu"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/up9inc/mizu/releases/download/$version/mizu.exe",
+                "hash": {
+                    "url": "$baseurl/mizu_windows_amd64.sha256",
+                    "regex": "$sha256"
+                }
+            }
+        }
+    }
+}
