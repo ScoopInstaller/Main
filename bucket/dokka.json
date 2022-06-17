@@ -1,12 +1,20 @@
 {
-    "version": "0.10.1",
+    "version": "1.6.21",
     "description": "Documentation Engine for Kotlin.",
     "homepage": "https://github.com/Kotlin/dokka/",
     "license": "Apache-2.0",
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://github.com/Kotlin/dokka/releases/download/0.10.1/dokka-fatjar-0.10.1.jar#/dokka.jar",
-    "hash": "fc315c6aeab2015789f1a964e38bfc46758a6b7bf4f9671687d4e277f92a52a4",
-    "bin": "dokka.jar"
+    "url": "https://repo1.maven.org/maven2/org/jetbrains/dokka/dokka-cli/1.6.21/dokka-cli-1.6.21.jar#/dokka.jar",
+    "hash": "b6b497589cc68af44f6e75545f5ab41b3487a472bdca969283da1848f8e77a74",
+    "bin": "dokka.jar",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://repo1.maven.org/maven2/org/jetbrains/dokka/dokka-cli/$version/dokka-cli-$version.jar#/dokka.jar",
+        "hash": {
+            "url": "https://repo1.maven.org/maven2/org/jetbrains/dokka/dokka-cli/$version/dokka-cli-$version.jar.sha256",
+            "regex": "$sha256"
+        }
+    }
 }
