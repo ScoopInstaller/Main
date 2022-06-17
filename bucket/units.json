@@ -3,8 +3,12 @@
     "description": "Tool to convert quantities between different systems of measurement",
     "homepage": "https://www.gnu.org/software/units/",
     "license": "GPL-3.0-or-later",
-    "url": "https://ftp.gnu.org/gnu/units/windows/units-2.21-setup.exe",
-    "hash": "185ba7fbb56297dbafe2c40306aa1a63f3c5b17f66688dc6c21e562b31ad80d2",
+    "architecture": {
+        "64bit": {
+            "url": "https://ftp.gnu.org/gnu/units/windows/units-2.21-setup.exe",
+            "hash": "185ba7fbb56297dbafe2c40306aa1a63f3c5b17f66688dc6c21e562b31ad80d2"
+        }
+    },
     "innosetup": true,
     "bin": "units.exe",
     "checkver": {
@@ -12,6 +16,10 @@
         "re": "units-([\\d.]+)-setup.exe"
     },
     "autoupdate": {
-        "url": "https://ftp.gnu.org/gnu/units/windows/units-$version-setup.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://ftp.gnu.org/gnu/units/windows/units-$version-setup.exe"
+            }
+        }
     }
 }
