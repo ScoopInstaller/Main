@@ -1,0 +1,31 @@
+{
+    "version": "0.14.1",
+    "description": "Automated code review tool integrated with any code analysis tools regardless of programming language.",
+    "homepage": "https://github.com/reviewdog/reviewdog",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/reviewdog/reviewdog/releases/download/v0.14.1/reviewdog_0.14.1_Windows_x86_64.tar.gz",
+            "hash": "d6009abe6a5777962118fd227a2a9e6bafc1e15368af76d54eae88cf8631e1ad"
+        },
+        "32bit": {
+            "url": "https://github.com/reviewdog/reviewdog/releases/download/v0.14.1/reviewdog_0.14.1_Windows_i386.tar.gz",
+            "hash": "d217a7642bad97464bc2dd04198c6b6f3717b98c71cdf146ed974fc990c7c368"
+        }
+    },
+    "bin": "reviewdog.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/reviewdog/reviewdog/releases/download/v$version/reviewdog_$version_Windows_x86_64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/reviewdog/reviewdog/releases/download/v$version/reviewdog_$version_Windows_i386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
