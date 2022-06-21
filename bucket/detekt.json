@@ -1,0 +1,29 @@
+{
+    "version": "1.20.0",
+    "description": "Automated code review tool integrated with any code analysis tools regardless of programming language.",
+    "homepage": "https://github.com/detekt/detekt",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "url": "https://github.com/detekt/detekt/releases/download/v1.20.0/detekt-cli-1.20.0.zip",
+    "hash": "0222d129d33493ed62817c5b700e4b1dfc90e503dfcd59640f9e965de514220d",
+    "extract_dir": "detekt-cli-1.20.0",
+    "bin": [
+        [
+            "bin\\detekt-cli.bat",
+            "detekt"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/detekt/detekt/releases",
+        "regex": "detekt-cli-(?<version>[\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://github.com/detekt/detekt/releases/download/v$version/detekt-cli-$version.zip",
+        "extract_dir": "detekt-cli-$version"
+    }
+}
