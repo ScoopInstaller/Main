@@ -1,0 +1,38 @@
+{
+    "version": "0.2.1",
+    "description": "Command-line interface to JMESPath",
+    "homepage": "http://jmespath.org/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jmespath/jp/releases/download/0.2.1/jp-windows-amd64#/jp.exe",
+            "hash": "bcda6db77a8069aa720d598dec39d6368a2de7aa76fea8c5e72b1fc80dd09150"
+        },
+        "32bit": {
+            "url": "https://github.com/jmespath/jp/releases/download/0.2.1/jp-windows-386#/jp.exe",
+            "hash": "75a20dbfc901da0ab2781693c0b7fa2f946262f7e313c5bf204d27c037935719"
+        }
+    },
+    "bin": "jp.exe",
+    "checkver": {
+        "github": "https://github.com/jmespath/jp"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jmespath/jp/releases/download/$version/jp-windows-amd64#/jp.exe",
+                "hash": {
+                    "url": "$baseurl/jp-checksums.sha256.asc",
+                    "regex": "$sha256\\s+\\./jp-windows-amd64"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/jmespath/jp/releases/download/$version/jp-windows-386#/jp.exe",
+                "hash": {
+                    "url": "$baseurl/jp-checksums.sha256.asc",
+                    "regex": "$sha256\\s+\\./jp-windows-386"
+                }
+            }
+        }
+    }
+}
