@@ -20,14 +20,19 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/jmespath/jp/releases/download/$version/jp-windows-amd64#/jp.exe"
+                "url": "https://github.com/jmespath/jp/releases/download/$version/jp-windows-amd64#/jp.exe",
+                "hash": {
+                    "url": "$baseurl/jp-checksums.sha256.asc",
+                    "regex": "$sha256\\s+\\./jp-windows-amd64"
+                }
             },
             "32bit": {
-                "url": "https://github.com/jmespath/jp/releases/download/$version/jp-windows-386#/jp.exe"
+                "url": "https://github.com/jmespath/jp/releases/download/$version/jp-windows-386#/jp.exe",
+                "hash": {
+                    "url": "$baseurl/jp-checksums.sha256.asc",
+                    "regex": "$sha256\\s+\\./jp-windows-386"
+                }
             }
-        },
-        "hash": {
-            "url": "$baseurl/jp-checksums.sha256.asc"
         }
     }
 }
