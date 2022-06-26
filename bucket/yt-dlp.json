@@ -4,8 +4,7 @@
     "homepage": "https://github.com/yt-dlp/yt-dlp",
     "license": "Unlicense",
     "suggest": {
-        "ffmpeg": "ffmpeg",
-        "vcredist": "extras/vcredist2010"
+        "ffmpeg": "ffmpeg"
     },
     "architecture": {
         "64bit": {
@@ -18,6 +17,12 @@
         }
     },
     "bin": "yt-dlp.exe",
+    "pre_install": [
+        "$manifest.persist | ForEach-Object {",
+        "    if (-not (Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType file | Out-Null }",
+        "}"
+    ],
+    "persist": "yt-dlp.conf",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
