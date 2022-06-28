@@ -6,23 +6,19 @@
     "url": "https://packages.chocolatey.org/sed.4.8.nupkg",
     "hash": "ee430b5edc827e1368cf424fb888e997fc05d24e7e90373b8e9c6811a26eec80",
     "extract_dir": "tools\\install\\sed-windows-master",
+    "pre_install": [
+        "mkdir \"$dir\\x64\"",
+        "mkdir \"$dir\\x86\"",
+        "Move-Item \"$dir\\sed-4.8-x64.exe\" \"$dir\\x64\\sed.exe\"",
+        "Move-Item \"$dir\\sed-4.8-xp.exe\" \"$dir\\x86\\sed.exe\""
+    ],
     "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
     "architecture": {
         "64bit": {
-            "bin": [
-                [
-                    "sed-4.8-x64.exe",
-                    "sed"
-                ]
-            ]
+            "bin": "x64\\sed.exe"
         },
         "32bit": {
-            "bin": [
-                [
-                    "sed-4.8-xp.exe",
-                    "sed"
-                ]
-            ]
+            "bin": "x86\\sed.exe"
         }
     },
     "checkver": {
@@ -35,23 +31,9 @@
             "url": "https://community.chocolatey.org/packages/sed",
             "regex": "$sha256.*?$basename"
         },
-        "architecture": {
-            "64bit": {
-                "bin": [
-                    [
-                        "sed-$version-x64.exe",
-                        "sed"
-                    ]
-                ]
-            },
-            "32bit": {
-                "bin": [
-                    [
-                        "sed-$version-xp.exe",
-                        "sed"
-                    ]
-                ]
-            }
-        }
+        "pre_install": [
+            "Move-Item \"$dir\\sed-$version-x64.exe\" \"$dir\\x64\\sed.exe\"",
+            "Move-Item \"$dir\\sed-$version-xp.exe\" \"$dir\\x86\\sed.exe\""
+        ]
     }
 }
