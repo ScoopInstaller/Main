@@ -7,8 +7,8 @@
     "hash": "ee430b5edc827e1368cf424fb888e997fc05d24e7e90373b8e9c6811a26eec80",
     "extract_dir": "tools\\install\\sed-windows-master",
     "pre_install": [
-        "mkdir \"$dir\\x64\"",
-        "mkdir \"$dir\\x86\"",
+        "mkdir \"$dir\\x64\" | Out-Null",
+        "mkdir \"$dir\\x86\" | Out-Null",
         "Move-Item \"$dir\\sed-4.8-x64.exe\" \"$dir\\x64\\sed.exe\"",
         "Move-Item \"$dir\\sed-4.8-xp.exe\" \"$dir\\x86\\sed.exe\""
     ],
