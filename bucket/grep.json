@@ -23,7 +23,7 @@
             "extract_dir": "tools\\install\\grep-windows-3.7"
         }
     },
-    "pre_install": "Move-Item \"$dir\\grep-$version-x64.exe\" \"$dir\\grep.exe\"",
+    "pre_install": "Rename-Item \"$dir\\grep-$version-x64.exe\" grep.exe",
     "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
     "checkver": {
         "url": "https://community.chocolatey.org/packages/grep",
