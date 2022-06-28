@@ -9,8 +9,8 @@
     "pre_install": [
         "mkdir \"$dir\\x64\" | Out-Null",
         "mkdir \"$dir\\x86\" | Out-Null",
-        "Move-Item \"$dir\\sed-4.8-x64.exe\" \"$dir\\x64\\sed.exe\"",
-        "Move-Item \"$dir\\sed-4.8-xp.exe\" \"$dir\\x86\\sed.exe\""
+        "Move-Item \"$dir\\sed-$version-x64.exe\" \"$dir\\x64\\sed.exe\"",
+        "Move-Item \"$dir\\sed-$version-xp.exe\" \"$dir\\x86\\sed.exe\""
     ],
     "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
     "architecture": {
@@ -30,10 +30,6 @@
         "hash": {
             "url": "https://community.chocolatey.org/packages/sed",
             "regex": "$sha256.*?$basename"
-        },
-        "pre_install": [
-            "Move-Item \"$dir\\sed-$version-x64.exe\" \"$dir\\x64\\sed.exe\"",
-            "Move-Item \"$dir\\sed-$version-xp.exe\" \"$dir\\x86\\sed.exe\""
-        ]
+        }
     }
 }
