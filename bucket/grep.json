@@ -20,10 +20,10 @@
                     "-F"
                 ]
             ],
-            "extract_dir": "tools\\install\\grep-windows-3.7",
-            "pre_install": "Move-Item \"$dir\\grep-3.7-x64.exe\" \"$dir\\grep.exe\""
+            "extract_dir": "tools\\install\\grep-windows-3.7"
         }
     },
+    "pre_install": "Move-Item \"$dir\\grep-3.7-x64.exe\" \"$dir\\grep.exe\"",
     "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
     "checkver": {
         "url": "https://community.chocolatey.org/packages/grep",
@@ -37,9 +37,9 @@
                     "url": "https://community.chocolatey.org/packages/grep",
                     "regex": "$sha256.*?$basename"
                 },
-                "extract_dir": "tools\\install\\grep-windows-$version",
-                "pre_install": "Move-Item \"$dir\\grep-$version-x64.exe\" \"$dir\\grep.exe\""
+                "extract_dir": "tools\\install\\grep-windows-$version"
             }
-        }
+        },
+        "pre_install": "Move-Item \"$dir\\grep-$version-x64.exe\" \"$dir\\grep.exe\""
     }
 }
