@@ -6,25 +6,22 @@
     "url": "https://packages.chocolatey.org/sed.4.8.nupkg",
     "hash": "ee430b5edc827e1368cf424fb888e997fc05d24e7e90373b8e9c6811a26eec80",
     "extract_dir": "tools\\install\\sed-windows-master",
-    "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
     "architecture": {
         "64bit": {
-            "bin": [
-                [
-                    "sed-4.8-x64.exe",
-                    "sed"
-                ]
+            "pre_install": [
+                "Rename-Item \"$dir\\sed-$version-x64.exe\" sed.exe",
+                "Remove-Item \"$dir\\sed-$version-xp.exe\""
             ]
         },
         "32bit": {
-            "bin": [
-                [
-                    "sed-4.8-xp.exe",
-                    "sed"
-                ]
+            "pre_install": [
+                "Rename-Item \"$dir\\sed-$version-xp.exe\" sed.exe",
+                "Remove-Item \"$dir\\sed-$version-x64.exe\""
             ]
         }
     },
+    "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
+    "bin": "sed.exe",
     "checkver": {
         "url": "https://community.chocolatey.org/packages/sed",
         "regex": "GNU sed ([\\d.]+)</title>"
@@ -34,24 +31,6 @@
         "hash": {
             "url": "https://community.chocolatey.org/packages/sed",
             "regex": "$sha256.*?$basename"
-        },
-        "architecture": {
-            "64bit": {
-                "bin": [
-                    [
-                        "sed-$version-x64.exe",
-                        "sed"
-                    ]
-                ]
-            },
-            "32bit": {
-                "bin": [
-                    [
-                        "sed-$version-xp.exe",
-                        "sed"
-                    ]
-                ]
-            }
         }
     }
 }
