@@ -8,17 +8,14 @@
             "url": "https://packages.chocolatey.org/grep.3.7.nupkg",
             "hash": "ec113135322239cd453a290f48fdb1ce6190cdcde162aa8e576d41ff8c606c94",
             "bin": [
+                "grep.exe",
                 [
-                    "grep-3.7-x64.exe",
-                    "grep"
-                ],
-                [
-                    "grep-3.7-x64.exe",
+                    "grep.exe",
                     "egrep",
                     "-E"
                 ],
                 [
-                    "grep-3.7-x64.exe",
+                    "grep.exe",
                     "fgrep",
                     "-F"
                 ]
@@ -26,6 +23,7 @@
             "extract_dir": "tools\\install\\grep-windows-3.7"
         }
     },
+    "pre_install": "Rename-Item \"$dir\\grep-$version-x64.exe\" grep.exe",
     "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
     "checkver": {
         "url": "https://community.chocolatey.org/packages/grep",
@@ -39,22 +37,6 @@
                     "url": "https://community.chocolatey.org/packages/grep",
                     "regex": "$sha256.*?$basename"
                 },
-                "bin": [
-                    [
-                        "grep-$version-x64.exe",
-                        "grep"
-                    ],
-                    [
-                        "grep-$version-x64.exe",
-                        "egrep",
-                        "-E"
-                    ],
-                    [
-                        "grep-$version-x64.exe",
-                        "fgrep",
-                        "-F"
-                    ]
-                ],
                 "extract_dir": "tools\\install\\grep-windows-$version"
             }
         }
