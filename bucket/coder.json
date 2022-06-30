@@ -1,0 +1,24 @@
+{
+    "version": "0.7.6",
+    "description": "Remote development environments on your infrastructure",
+    "homepage": "https://coder.com",
+    "license": "AGPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/coder/coder/releases/download/v0.7.6/coder_0.7.6_windows_amd64.zip",
+            "hash": "6e22261b95797da26c7ab927e9a3d1f4d136500013c85fd4ffbd71814336ef3d"
+        }
+    },
+    "bin": "coder.exe",
+    "checkver": {
+        "github": "https://github.com/coder/coder",
+        "regex": "tag/([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/coder/coder/releases/download/$version/coder_$version_windows_amd64.zip"
+            }
+        }
+    }
+}
