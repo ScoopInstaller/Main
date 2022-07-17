@@ -16,15 +16,19 @@
         }
     },
     "pre_install": [
-        "$files = @('qrencode.exe', 'msys-qrencode-4.dll', 'msys-2.0.dll');",
+        "$keep_files = @(\"$dir\\usr\\bin\\qrencode.exe\",",
+        "                \"$dir\\usr\\bin\\msys-qrencode-4.dll\",",
+        "                \"$dir\\usr\\bin\\msys-2.0.dll\",",
+        "                \"$dir\\usr\\share\\licenses\\libqrencode\\COPYING\",",
+        "                \"$dir\\usr\\share\\man\\man1\\qrencode.1.gz\")",
         "",
-        "foreach ($file in $files) {",
-        "    Move-Item \"$dir\\usr\\bin\\$file\" \"$dir\"",
-        "}",
-        "",
-        "Remove-Item \"$dir\\usr\" -Recurse -Force"
+        "Get-ChildItem \"$dir\\usr\" -Recurse",
+        "    | Select-Object -ExpandProperty FullName",
+        "    | Where-Object {$keep_files -notcontains $_ }",
+        "    | Sort-Object Length -Descending",
+        "    | ForEach-Object { if ((Test-Path $_ -Type Container) -and (Get-ChildItem $_)) { return } Remove-Item $_ }"
     ],
-    "bin": "qrencode.exe",
+    "bin": "usr\\bin\\qrencode.exe",
     "checkver": {
         "script": [
             "$base_url = 'https://packages.msys2.org/package/'",
