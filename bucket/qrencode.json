@@ -1,0 +1,69 @@
+{
+    "version": "4.1.1-3",
+    "description": "Encode input data in a QR Code symbol",
+    "homepage": "https://fukuchi.org/works/qrencode/",
+    "license": "LGPL-2.1-only",
+    "notes": "PNG output is disabled for this build. See https://github.com/msys2/MSYS2-packages/issues/2214.",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://mirror.msys2.org/msys/x86_64/libqrencode-4.1.1-3-x86_64.pkg.tar.zst",
+                "https://mirror.msys2.org/msys/x86_64/msys2-runtime-3.3.5-3-x86_64.pkg.tar.zst"
+            ],
+            "hash": [
+                "ead222db63fadf4c6ec67f6b7a95761eb9d0c4ffd92e18129ab11f7944e1e583",
+                "9e99486501905294eb01d7024d2cb96f658b609232878a990e469b5448ea4e11"
+            ]
+        }
+    },
+    "pre_install": [
+        "$keep_files = @(\"$dir\\usr\\bin\\qrencode.exe\",",
+        "                \"$dir\\usr\\bin\\msys-qrencode-4.dll\",",
+        "                \"$dir\\usr\\bin\\msys-2.0.dll\",",
+        "                \"$dir\\usr\\share\\licenses\\libqrencode\\COPYING\",",
+        "                \"$dir\\usr\\share\\man\\man1\\qrencode.1.gz\")",
+        "",
+        "Get-ChildItem \"$dir\" -Recurse",
+        "    | Select-Object -ExpandProperty FullName",
+        "    | Where-Object {$keep_files -notcontains $_ }",
+        "    | Sort-Object Length -Descending",
+        "    | ForEach-Object { if ((Test-Path $_ -Type Container) -and (Get-ChildItem $_)) { return } Remove-Item $_ }"
+    ],
+    "bin": "usr\\bin\\qrencode.exe",
+    "checkver": {
+        "script": [
+            "$base_url = 'https://packages.msys2.org/package/'",
+            "$qrencode_page = (Invoke-WebRequest \"${base_url}libqrencode\" -UseBasicParsing).Content",
+            "$runtime_page = (Invoke-WebRequest \"${base_url}msys2-runtime\" -UseBasicParsing).Content",
+            "$version_regex = \"Version:.+\\s+<.+>([\\d.-]+)\"",
+            "",
+            "if(!($qrencode_page -match $version_regex)) { error \"No match found for version\"; break }",
+            "$scriptver = $matches[1]",
+            "if(!($runtime_page -match $version_regex)) { error \"No match found for version\"; break }",
+            "$msys2_runtime_version = $matches[1]",
+            "",
+            "Write-Output $scriptver $msys2_runtime_version"
+        ],
+        "regex": "(?<version>[\\d.-]+)\\s(?<msys2version>[\\d.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://mirror.msys2.org/msys/x86_64/libqrencode-$matchVersion-x86_64.pkg.tar.zst",
+                    "https://mirror.msys2.org/msys/x86_64/msys2-runtime-$matchMsys2version-x86_64.pkg.tar.zst"
+                ],
+                "hash": [
+                    {
+                        "url": "https://packages.msys2.org/package/libqrencode",
+                        "regex": "SHA256:.+\\s+<.+>$sha256"
+                    },
+                    {
+                        "url": "https://packages.msys2.org/package/msys2-runtime",
+                        "regex": "SHA256:.+\\s+<.+>$sha256"
+                    }
+                ]
+            }
+        }
+    }
+}
