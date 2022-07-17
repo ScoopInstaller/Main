@@ -1,16 +1,53 @@
 {
-    "version": "4.1.1",
+    "version": "4.1.1-3",
     "description": "Encode input data in a QR Code symbol",
     "homepage": "https://fukuchi.org/works/qrencode/",
     "license": "LGPL-2.1-only",
-    "url": "https://downloads.sourceforge.net/project/qrencode-for-windows/QREncode-4.1.1_Win32%28static%29.zip",
-    "hash": "sha1:eb3afc0f87bf9f1c9af143fcd205c29c07f605bf",
-    "extract_dir": "QREncode-4.1.1_Win32",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://mirror.msys2.org/msys/x86_64/libqrencode-4.1.1-3-x86_64.pkg.tar.zst",
+                "https://mirror.msys2.org/msys/x86_64/msys2-runtime-3.3.5-3-x86_64.pkg.tar.zst"
+            ],
+            "hash": [
+                "ead222db63fadf4c6ec67f6b7a95761eb9d0c4ffd92e18129ab11f7944e1e583",
+                "9e99486501905294eb01d7024d2cb96f658b609232878a990e469b5448ea4e11"
+            ]
+        }
+    },
+    "pre_install": [
+        "$files = @('qrencode.exe', 'msys-qrencode-4.dll', 'msys-2.0.dll');",
+        "",
+        "foreach ($file in $files) {",
+        "    Move-Item \"$dir\\usr\\bin\\$file\" \"$dir\"",
+        "}",
+        "",
+        "Remove-Item \"$dir\\usr\" -Recurse -Force"
+    ],
     "bin": "qrencode.exe",
     "checkver": {
-        "github": "https://github.com/fukuchi/libqrencode"
+        "script": [
+            "$base_url = 'https://packages.msys2.org/package/'",
+            "$qrencode_page = (Invoke-WebRequest \"${base_url}libqrencode\" -UseBasicParsing).Content",
+            "$runtime_page = (Invoke-WebRequest \"${base_url}msys2-runtime\" -UseBasicParsing).Content",
+            "",
+            "if(!($qrencode_page -match \"https://mirror.msys2.org/msys/x86_64/libqrencode-([\\d.-]+)-x86_64.pkg.tar.zst\")) { break }",
+            "$scriptver = $matches[1]",
+            "if(!($runtime_page -match \"https://mirror.msys2.org/msys/x86_64/msys2-runtime-([\\d.-]+)-x86_64.pkg.tar.zst\")) { break }",
+            "$msys2_runtime_version = $matches[1]",
+            "",
+            "Write-Output $scriptver $msys2_runtime_version"
+        ],
+        "regex": "(?<version>[\\d.-]+)\\s(?<msys2version>[\\d.-]+)"
     },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/qrencode-for-windows/QREncode-$version_Win32%28static%29.zip"
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://mirror.msys2.org/msys/x86_64/libqrencode-$matchVersion-x86_64.pkg.tar.zst",
+                    "https://mirror.msys2.org/msys/x86_64/msys2-runtime-$matchMsys2version-x86_64.pkg.tar.zst"
+                ]
+            }
+        }
     }
 }
