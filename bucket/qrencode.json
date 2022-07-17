@@ -34,10 +34,11 @@
             "$base_url = 'https://packages.msys2.org/package/'",
             "$qrencode_page = (Invoke-WebRequest \"${base_url}libqrencode\" -UseBasicParsing).Content",
             "$runtime_page = (Invoke-WebRequest \"${base_url}msys2-runtime\" -UseBasicParsing).Content",
+            "$version_regex = \"Version:.+\\s+<.+>([\\d.-]+)\"",
             "",
-            "if(!($qrencode_page -match \"https://mirror.msys2.org/msys/x86_64/libqrencode-([\\d.-]+)-x86_64.pkg.tar.zst\")) { break }",
+            "if(!($qrencode_page -match $version_regex)) { error \"No match found for version\"; break }",
             "$scriptver = $matches[1]",
-            "if(!($runtime_page -match \"https://mirror.msys2.org/msys/x86_64/msys2-runtime-([\\d.-]+)-x86_64.pkg.tar.zst\")) { break }",
+            "if(!($runtime_page -match $version_regex)) { error \"No match found for version\"; break }",
             "$msys2_runtime_version = $matches[1]",
             "",
             "Write-Output $scriptver $msys2_runtime_version"
@@ -50,6 +51,16 @@
                 "url": [
                     "https://mirror.msys2.org/msys/x86_64/libqrencode-$matchVersion-x86_64.pkg.tar.zst",
                     "https://mirror.msys2.org/msys/x86_64/msys2-runtime-$matchMsys2version-x86_64.pkg.tar.zst"
+                ],
+                "hash": [
+                    {
+                        "url": "https://packages.msys2.org/package/libqrencode",
+                        "regex": "SHA256:.+\\s+<.+>$sha256"
+                    },
+                    {
+                        "url": "https://packages.msys2.org/package/msys2-runtime",
+                        "regex": "SHA256:.+\\s+<.+>$sha256"
+                    }
                 ]
             }
         }
