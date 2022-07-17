@@ -23,7 +23,7 @@
         "                \"$dir\\usr\\share\\licenses\\libqrencode\\COPYING\",",
         "                \"$dir\\usr\\share\\man\\man1\\qrencode.1.gz\")",
         "",
-        "Get-ChildItem \"$dir\\usr\" -Recurse",
+        "Get-ChildItem \"$dir\" -Recurse",
         "    | Select-Object -ExpandProperty FullName",
         "    | Where-Object {$keep_files -notcontains $_ }",
         "    | Sort-Object Length -Descending",
