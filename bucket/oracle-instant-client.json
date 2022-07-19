@@ -1,5 +1,5 @@
 {
-    "version": "21.3.0.0.0",
+    "version": "21.6.0.0.0",
     "description": "Connect to a local or remote Oracle Database for development and production deployment.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
@@ -8,16 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/213000/instantclient-basic-windows.x64-21.3.0.0.0.zip",
-            "hash": "78a1b680e03ae550d4e1c3bf9c4f9fc091d671baf933dcf645b19de508c4373b",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/216000/instantclient-basic-windows.x64-21.6.0.0.0dbru.zip",
+            "hash": "0a977e76ceed7fae926d0e9f60a02028137265adcdbbb64bddcd2c265b46f6c8",
             "env_set": {
                 "OCI_LIB64": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
             }
         },
         "32bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/213000/instantclient-basic-nt-21.3.0.0.0.zip",
-            "hash": "b09a84179d3ad9024883ff409429c7327d62790058c0b933af11ffe1b3e065ad",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/216000/instantclient-basic-nt-21.6.0.0.0dbru.zip",
+            "hash": "8eed573cfc49ba57f70ea391c788315179fa394f6fcd6a74ebd991beba487c58",
             "env_set": {
                 "OCI_LIB32": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
@@ -27,7 +27,7 @@
     "suggest": {
         "Visual C++ Redistributable": "extras/vcredist2022"
     },
-    "extract_dir": "instantclient_21_3",
+    "extract_dir": "instantclient_21_6",
     "env_add_path": ".",
     "persist": "network\\admin",
     "checkver": {
@@ -38,10 +38,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-windows.x64-$version.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-windows.x64-$versiondbru.zip"
             },
             "32bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-nt-$version.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-nt-$versiondbru.zip"
             }
         },
         "extract_dir": "instantclient_$majorVersion_$minorVersion"
