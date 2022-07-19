@@ -18,10 +18,18 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/kevwan/tproxy/releases/download/v$version/tproxy-v$version-windows-amd64.zip"
+                "url": "https://github.com/kevwan/tproxy/releases/download/v$version/tproxy-v$version-windows-amd64.zip",
+                "hash": {
+                    "url": "$url.md5",
+                    "regex": "$md5"
+                }
             },
             "32bit": {
-                "url": "https://github.com/kevwan/tproxy/releases/download/v$version/tproxy-v$version-windows-386.zip"
+                "url": "https://github.com/kevwan/tproxy/releases/download/v$version/tproxy-v$version-windows-386.zip",
+                "hash": {
+                    "url": "$url.md5",
+                    "regex": "$md5"
+                }
             }
         },
         "hash": {
