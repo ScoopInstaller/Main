@@ -3,7 +3,17 @@
     "description": "Run your jobs and send the results back to GitLab",
     "homepage": "https://docs.gitlab.com/runner/",
     "license": "MIT",
-    "notes": "Run 'gitlab-runner register' and 'gitlab-runner install' from an elevated prompt to set it up",
+    "notes": [
+        "To set up, take the steps below:",
+        "1. Get registration token in any of your project settings, group settings, or server-admin settings",
+        "2. Create runner's root directory (C:\\gitlab-runner, C:\\Users\\<your username>\\gitlab-runner, etc) where you place your config.toml and build your project, and cd there",
+        "3. Run 'gitlab-runner register --url <your server's URL> --registration-token <your token>'",
+        "4. Run 'gitlab-runner install', or 'gitlab-runner install --user <your username> --password <your password>', in an elevated prompt",
+        "5. Check your git installation IF you didn't specify your username and password. If git isn't installed system-wide, run 'scoop install git --global' as admin",
+        "6. Run 'gitlab-runner start' as admin",
+        "7. Check your runner's signal in the GitLab. If it isn't green or doesn't exist, check the official documentation",
+        "8. Run it once from your project's pipeline. If you're prompted to choose a credential helper, select 'manager-core' (or whichever desired) with 'Always use this from now on' checked"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v15.1.0/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
