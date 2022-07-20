@@ -14,7 +14,7 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mvndaemon/mvnd/releases/download/0.8.0/maven-mvnd-0.8.0-windows-amd64.zip",
+            "url": "https://dist.apache.org/repos/dist/release/maven/mvnd/0.8.0/maven-mvnd-0.8.0-windows-amd64.zip",
             "hash": "eda5d83085b2ddf3c31ba849c0f72a340e9ac5f4b3f002dce060b3fad7733a84",
             "extract_dir": "mvnd-0.8.0-windows-amd64"
         }
@@ -24,7 +24,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mvndaemon/mvnd/releases/download/$version/maven-mvnd-$version-windows-amd64.zip",
+                "url": "https://dist.apache.org/repos/dist/release/maven/mvnd/$version/maven-mvnd-$version-windows-amd64.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                },
                 "extract_dir": "mvnd-$version-windows-amd64"
             }
         }
