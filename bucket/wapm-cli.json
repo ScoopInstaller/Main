@@ -1,0 +1,29 @@
+{
+    "version": "0.5.4",
+    "description": "WebAssembly package manager.",
+    "homepage": "https://wapm.io/",
+    "license": "MIT",
+    "suggest": {
+        "wasmer": "wasmer"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/wasmerio/wapm-cli/releases/download/v0.5.4/wapm-cli-windows-amd64.tar.gz",
+            "hash": "8f198c2c31b435152eda047035c2e49d4f9cf8d2d95714d37521590392b0ecda"
+        }
+    },
+    "bin": [
+        "bin\\wapm.exe",
+        "bin\\wax.cmd"
+    ],
+    "checkver": {
+        "github": "https://github.com/wasmerio/wapm-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/wasmerio/wapm-cli/releases/download/v$version/wapm-cli-windows-amd64.tar.gz"
+            }
+        }
+    }
+}
