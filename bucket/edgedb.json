@@ -17,12 +17,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version.exe#/edgedb.exe"
+                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version.exe#/edgedb.exe",
+                "hash": {
+                    "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
+                    "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256"
+                }
             }
-        },
-        "hash": {
-            "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
-            "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256"
         }
     }
 }
