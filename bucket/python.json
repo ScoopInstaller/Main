@@ -52,7 +52,7 @@
     },
     "post_install": [
         "python -E -s -m ensurepip -U --default-pip | Out-Null",
-        "Write-Output \"`e[0m\" # Reset ansi to prevent color leak from installer"
+        "Write-Output \"$([char]0x1b)[0m\" # Reset ansi to prevent color leak from installer"
     ],
     "uninstaller": {
         "script": [
