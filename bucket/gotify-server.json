@@ -13,7 +13,7 @@
             "hash": "f5476fbf9b44a97852c39f012119515db4350e0c64653116c3bb2476d6b081e2"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\gotify-windows-*\" gotify.exe",
+    "pre_install": "Get-ChildItem \"$dir\\gotify-windows-*\" | Rename-Item -NewName gotify.exe",
     "bin": "gotify.exe",
     "checkver": {
         "github": "https://github.com/gotify/server/"
