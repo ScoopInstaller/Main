@@ -21,7 +21,7 @@
     "post_install": [
         "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
         "    warn 'Initializing data directory ...'",
-        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList @(\"--datadir=`\"$dir\\data`\"\")",
+        "    Invoke-ExternalCommand \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList \"--datadir=$dir\\data\" | Out-Null",
         "    warn 'Database has been initialized (username: root, password: <blank>)'",
         "}"
     ],
