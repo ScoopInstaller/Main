@@ -3,6 +3,7 @@
     "description": "Object-relational database management system based on POSTGRES.",
     "homepage": "https://www.postgresql.org",
     "license": "PostgreSQL",
+    "depends": "7zip19.00-helper",
     "notes": [
         "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
         "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
@@ -10,11 +11,15 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-14.5-1-windows-x64-binaries.zip",
+            "url": "https://get.enterprisedb.com/postgresql/postgresql-14.5-1-windows-x64-binaries.zip#/dl.zip_",
             "hash": "7e2cd7c82741667c5effd736d5da31fb0aeefc0eba5c8c69f89340519b265017"
         }
     },
-    "extract_dir": "pgsql",
+    "pre_install": [
+        "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"$dir\\dl.zip_\", \"-o$dir\") | Out-Null",
+        "Move-Item \"$dir\\pgsql\\*\" \"$dir\\\"",
+        "Remove-Item \"$dir\\pgsql\", \"$dir\\dl.zip_\" -Force -Recurse"
+    ],
     "post_install": [
         "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
         "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList \"--username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" | Out-Null",
@@ -40,7 +45,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
+                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip#/dl.zip_"
             }
         }
     }
