@@ -10,11 +10,11 @@
     "depends": "cacert",
     "url": [
         "https://invisible-island.net/datafiles/current/lynx-newssl-setup.exe",
-        "https://slproweb.com/download/Win32OpenSSL_Light-1_1_1o.exe"
+        "https://slproweb.com/download/Win32OpenSSL_Light-1_1_1q.exe"
     ],
     "hash": [
         "a2a7a7be5e1d1da971ec2e190b1f63a6e90e13438469756fcb448f5f19cd99b3",
-        "sha512:6644bb8e94ae7a6c0ea60fb53c14d55c6b09994c14e0bbc15e9be5925dff6a6da4ea745cd3262d347d2e2cb2d2da12325bf08bff7632be8ac75eb64600df7e51"
+        "sha512:73ae2a6864a0ac3bc574aabe2f2ab0352fc17551705361446319ca7879401fe0de76fe3b83f92e801fe151644386d757725f9132d7a509a8e96ef9df449acd3f"
     ],
     "innosetup": true,
     "pre_install": "if (!(Test-Path \"$persist_dir\\lynx.cfg\")) { Add-Content \"$dir\\lynx.cfg\" -Value @(\"SSL_CERT_FILE:`\"$(appdir cacert $global)\\current\\cacert.pem`\"\", \"FORCE_SSL_PROMPT:PROMPT\") -Encoding Ascii }",
