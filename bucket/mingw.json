@@ -1,39 +1,34 @@
 {
-    "version": "8.1.0",
+    "version": "12.2.0",
     "description": "Minimalistic GNU for Windows is a runtime environment for GCC, GDB, make and related binutils.",
     "homepage": "https://www.mingw-w64.org",
     "license": "ZPL-2.1",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z",
-            "hash": "853970527b5de4a55ec8ca4d3fd732c00ae1c69974cc930c82604396d43e79f8",
+            "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev0/x86_64-12.2.0-release-posix-seh-rt_v10-rev0.7z",
+            "hash": "f4f61ccf1dbd503b8c723d4bd88ae2adff850a4b07c620fc56c53894592a7da5",
             "extract_dir": "mingw64"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/8.1.0/threads-posix/dwarf/i686-8.1.0-release-posix-dwarf-rt_v6-rev0.7z",
-            "hash": "adb84b70094c0225dd30187ff995e311d19424b1eb8f60934c60e4903297f946",
+            "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev0/i686-12.2.0-release-posix-dwarf-rt_v10-rev0.7z",
+            "hash": "ff4063bd05ad7520fc5c250441fe0afcae89902f226f36e4b2a6cac1cfb9003c",
             "extract_dir": "mingw32"
         }
     },
     "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
     "env_add_path": "bin",
     "checkver": {
-        "url": "https://sourceforge.net/projects/mingw-w64/files/",
-        "regex": "<h1>MinGW-W64 GCC-([\\d.]+)</h1>"
+        "url": "https://github.com/niXman/mingw-builds-binaries/releases",
+        "regex": "Release ([\\d.]+)-(?<build>[a-z0-9_\\-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/$version/threads-posix/seh/x86_64-$version-release-posix-seh-rt_v6-rev0.7z"
+                "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/$version-$matchBuild/x86_64-$version-release-posix-seh-$matchBuild.7z"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/$version/threads-posix/dwarf/i686-$version-release-posix-dwarf-rt_v6-rev0.7z"
+                "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/$version-$matchBuild/i686-$version-release-posix-dwarf-$matchBuild.7z"
             }
         }
-    },
-    "notes": [
-        "- You are installing the Mingw-w64 implementation of GCC.",
-        "  This implementation has a better compatibility, but may not support newer C/C++ standards.",
-        "  For more recent GCC versions, try 'mingw-winlibs' or 'mingw-nuwen'."
-    ]
+    }
 }
