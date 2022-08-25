@@ -1,0 +1,28 @@
+{
+    "version": "0.19.1",
+    "description": "The Determined CLI is a command line tool that lets you launch new experiments and interact with a Determined cluster.",
+    "homepage": "https://github.com/determined-ai/determined",
+    "license": "Apache-2.0",
+    "depends": "python",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sirredbeard/det-helper/releases/download/0.0.1/determined.exe",
+            "hash": "B8DAAB778AC4E657F5DB909BC541C1D286B9A8E186C438079A29C82872150C01"
+        }
+    },
+    "installer": {
+        "script": "python.exe -m pip install --upgrade pip ; pip3 install determined"
+    },
+    "bin": "determined.exe",
+    "uninstaller": {
+        "script": "pip3 uninstall determined -y"
+    },
+    "checkver": {
+        "github": "https://github.com/determined-ai/determined"
+    },
+    "autoupdate": {
+        "installer": {
+            "script": "python.exe -m pip install --upgrade pip ; pip3 install determined"
+        }
+    }
+}
