@@ -1,0 +1,26 @@
+{
+    "version": "0.1.5",
+    "description": "A simple application deployment framework for Kubernetes.",
+    "homepage": "https://acorn.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/acorn-io/acorn/releases/download/v0.1.5/acorn-v0.1.5-windows-amd64.zip",
+            "hash": "d0484265f8e8becf70ae000a0219894acefe0c6f7ea22a3c313c5ef46ce8e440"
+        }
+    },
+    "bin": "acorn.exe",
+    "checkver": {
+        "github": "https://github.com/acorn-io/acorn"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/acorn-io/acorn/releases/download/v$version/acorn-v$version-windows-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
