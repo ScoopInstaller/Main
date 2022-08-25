@@ -1,0 +1,27 @@
+{
+    "version": "0.12.0",
+    "description": "Securely transfer data between computers.",
+    "homepage": "https://github.com/magic-wormhole/magic-wormhole",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aquacash5/magic-wormhole-exe/releases/download/0.12.0/wormhole.exe",
+            "hash": "518069795874fe92ea82ff404e2dfd3be076e0b691cc4a300521eccc065bcdad"
+        }
+    },
+    "bin": "wormhole.exe",
+    "checkver": {
+        "github": "https://github.com/aquacash5/magic-wormhole-exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aquacash5/magic-wormhole-exe/releases/download/$version/wormhole.exe",
+                "hash": {
+                    "url": "$url.checksum.txt",
+                    "regex": "SHA256 $sha256 $basename"
+                }
+            }
+        }
+    }
+}
