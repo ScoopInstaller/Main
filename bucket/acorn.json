@@ -15,7 +15,11 @@
         "regex": "/releases/tag/v([\\w.-]+)\""
     },
     "autoupdate": {
-        "url": "https://github.com/acorn-io/acorn/releases/download/v$version/acorn-v$version-windows-amd64.zip",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/acorn-io/acorn/releases/download/v$version/acorn-v$version-windows-amd64.zip"
+            }
+        },
         "hash": {
             "url": "$baseurl/checksums.txt"
         }
