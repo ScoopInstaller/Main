@@ -1,12 +1,12 @@
 {
-    "version": "4.2.2-2012",
+    "version": "4.2.3-2029",
     "description": "A malware samples pattern matching tool.",
     "homepage": "https://virustotal.github.io/yara/",
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/VirusTotal/yara/releases/download/v4.2.2/yara-v4.2.2-2012-win64.zip",
-            "hash": "6100466ef36478488e7b295933c946c2fc4b3d31e641bb904da186c0ea151c3f",
+            "url": "https://github.com/VirusTotal/yara/releases/download/v4.2.3/yara-4.2.3-2029-win64.zip",
+            "hash": "a71a7070bc6dd392e0c066a590d2262382b0c3d73e76cc0851dc33ab5d51d381",
             "bin": [
                 [
                     "yara64.exe",
@@ -19,8 +19,8 @@
             ]
         },
         "32bit": {
-            "url": "https://github.com/VirusTotal/yara/releases/download/v4.2.2/yara-v4.2.2-2012-win32.zip",
-            "hash": "bf35bc3b139728c993b50fcf3e8b7bc26591d057b4ee5b474ffcbc5ecce73e7e",
+            "url": "https://github.com/VirusTotal/yara/releases/download/v4.2.3/yara-4.2.3-2029-win32.zip",
+            "hash": "93c2b2b9b180cb351ae16dd34c67c128dc8db73df5e541dbcd8da9267a8dde3f",
             "bin": [
                 [
                     "yara32.exe",
@@ -35,15 +35,15 @@
     },
     "checkver": {
         "github": "https://github.com/VirusTotal/yara",
-        "regex": "yara-v([\\d.-]+)-win64"
+        "regex": "yara-([\\d.-]+)-win64"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/VirusTotal/yara/releases/download/v$matchHead/yara-v$version-win64.zip"
+                "url": "https://github.com/VirusTotal/yara/releases/download/v$matchHead/yara-$version-win64.zip"
             },
             "32bit": {
-                "url": "https://github.com/VirusTotal/yara/releases/download/v$matchHead/yara-v$version-win32.zip"
+                "url": "https://github.com/VirusTotal/yara/releases/download/v$matchHead/yara-$version-win32.zip"
             }
         }
     }
