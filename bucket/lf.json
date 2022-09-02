@@ -13,6 +13,8 @@
             "hash": "1c4db943cfbb3201cc44a159fedf61745aea6f255f2a8af8f446df1be18a66cd"
         }
     },
+    "pre_install": "Invoke-WebRequest \"https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.cmd\" -OutFile $scoopdir\\shims\\lfcd.cmd ",
+    "pre_uninstall": "Remove-Item $scoopdir\\shims\\lfcd.cmd",
     "bin": "lf.exe",
     "checkver": {
         "github": "https://github.com/gokcehan/lf/",
