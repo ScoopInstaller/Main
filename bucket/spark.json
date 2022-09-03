@@ -1,14 +1,15 @@
 {
-    "version": "3.2.1",
+    "version": "3.3.0",
     "description": "A unified analytics engine for large-scale data processing.",
     "homepage": "https://spark.apache.org/",
     "license": "Apache-2.0",
+    "notes": "Spark now comes with Hadoop 3. For the version with Hadoop 2, please install spark-hadoop2 from the Versions bucket.",
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://www.apache.org/dist/spark/spark-3.2.1/spark-3.2.1-bin-hadoop2.7.tgz",
-    "hash": "sha512:2ec9f1cb65af5ee7657ca83a1abaca805612b8b3a1d8d9bb67e317106025c81ba8d44d82ad6fdb45bbe6caa768d449cd6a4945ec050ce9390f806f46c5cb1397",
-    "extract_dir": "spark-3.2.1-bin-hadoop2.7",
+    "url": "https://www.apache.org/dist/spark/spark-3.3.0/spark-3.3.0-bin-hadoop3.tgz",
+    "hash": "sha512:1e8234d0c1d2ab4462d6b0dfe5b54f2851dcd883378e0ed756140e10adfb5be4123961b521140f580e364c239872ea5a9f813a20b73c69cb6d4e95da2575c29c",
+    "extract_dir": "spark-3.3.0-bin-hadoop3",
     "env_add_path": "bin",
     "env_set": {
         "SPARK_HOME": "$dir"
@@ -19,11 +20,11 @@
         "regex": "version: ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://www.apache.org/dist/spark/spark-$version/spark-$version-bin-hadoop2.7.tgz",
+        "url": "https://www.apache.org/dist/spark/spark-$version/spark-$version-bin-hadoop3.tgz",
         "hash": {
             "url": "$url.sha512",
             "regex": "$basename: ([A-F0-9\\s]+)$"
         },
-        "extract_dir": "spark-$version-bin-hadoop2.7"
+        "extract_dir": "spark-$version-bin-hadoop3"
     }
 }
