@@ -5,17 +5,35 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/gokcehan/lf/releases/download/r27/lf-windows-amd64.zip",
-            "hash": "118d6f2096e35ea7703f2b881a9d724806af8a5575c7f788d723f9797fa20948"
+            "url": [
+                "https://github.com/gokcehan/lf/releases/download/r27/lf-windows-amd64.zip",
+                "https://raw.githubusercontent.com/gokcehan/lf/r27/etc/lfcd.cmd",
+                "https://raw.githubusercontent.com/gokcehan/lf/r27/etc/lfcd.ps1"
+            ],
+            "hash": [
+                "118d6f2096e35ea7703f2b881a9d724806af8a5575c7f788d723f9797fa20948",
+                "894791f025c03fc2d0241b26bd23125800f1c2abb3dd7c899496ac0a84ea1890",
+                "e981fb0c6d82268b15ff27aa40925df40ee26feffdea36da75c311f733c79aef"
+            ]
         },
         "32bit": {
-            "url": "https://github.com/gokcehan/lf/releases/download/r27/lf-windows-386.zip",
-            "hash": "1c4db943cfbb3201cc44a159fedf61745aea6f255f2a8af8f446df1be18a66cd"
+            "url": [
+                "https://github.com/gokcehan/lf/releases/download/r27/lf-windows-386.zip",
+                "https://raw.githubusercontent.com/gokcehan/lf/r27/etc/lfcd.cmd",
+                "https://raw.githubusercontent.com/gokcehan/lf/r27/etc/lfcd.ps1"
+            ],
+            "hash": [
+                "1c4db943cfbb3201cc44a159fedf61745aea6f255f2a8af8f446df1be18a66cd",
+                "894791f025c03fc2d0241b26bd23125800f1c2abb3dd7c899496ac0a84ea1890",
+                "e981fb0c6d82268b15ff27aa40925df40ee26feffdea36da75c311f733c79aef"
+            ]
         }
     },
-    "pre_install": "Invoke-WebRequest \"https://raw.githubusercontent.com/gokcehan/lf/master/etc/lfcd.cmd\" -OutFile $scoopdir\\shims\\lfcd.cmd ",
-    "pre_uninstall": "Remove-Item $scoopdir\\shims\\lfcd.cmd",
-    "bin": "lf.exe",
+    "bin": [
+        "lf.exe",
+        "lfcd.cmd",
+        "lfcd.ps1"
+    ],
     "checkver": {
         "github": "https://github.com/gokcehan/lf/",
         "regex": "tag/(r[\\d]+)"
@@ -23,10 +41,18 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/gokcehan/lf/releases/download/$version/lf-windows-amd64.zip"
+                "url": [
+                    "https://github.com/gokcehan/lf/releases/download/$version/lf-windows-amd64.zip",
+                    "https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.cmd",
+                    "https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.ps1"
+                ]
             },
             "32bit": {
-                "url": "https://github.com/gokcehan/lf/releases/download/$version/lf-windows-386.zip"
+                "url": [
+                    "https://github.com/gokcehan/lf/releases/download/$version/lf-windows-386.zip",
+                    "https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.cmd",
+                    "https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.ps1"
+                ]
             }
         }
     }
