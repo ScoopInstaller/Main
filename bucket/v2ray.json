@@ -15,23 +15,19 @@
     },
     "installer": {
         "script": [
-            "#v2ctl.exe cannot recognize signature file when there are spaces in path. This is a workaround to eliminate spaces.",
+            "#v2ray.exe cannot recognize signature file when there are spaces in path. This is a workaround to eliminate spaces.",
             "Write-Host 'Verifying V2Ray binary...' -f Yellow",
             "$sig_dir = \"$Env:SystemRoot\\Temp\\v2ray\"",
             "ensure $sig_dir | Out-Null",
             "Invoke-WebRequest \"https://github.com/v2fly/v2ray-core/releases/download/v$version/Release\" -OutFile $sig_dir\\Release",
-            "if (!(Invoke-Expression \"&`\"$dir\\v2ctl.exe`\" verify --sig=$sig_dir\\Release `\"$dir\\v2ray.exe`\"\" | Select-String 'OK')) {",
+            "if (!(Invoke-Expression \"&`\"$dir\\v2ray.exe`\" verify --sig=$sig_dir\\Release `\"$dir\\v2ray.exe`\"\" | Select-String 'OK')) {",
             "    Write-Host 'V2Ray binary is corrupted!' -f Red",
             "    break",
             "}",
             "Remove-Item $sig_dir -Force -Recurse | Out-Null"
         ]
     },
-    "bin": [
-        "v2ctl.exe",
-        "v2ray.exe",
-        "wv2ray.exe"
-    ],
+    "bin": "v2ray.exe",
     "persist": "config.json",
     "checkver": {
         "github": "https://github.com/v2fly/v2ray-core"
