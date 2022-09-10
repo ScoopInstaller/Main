@@ -1,0 +1,32 @@
+{
+    "version": "1.0.5",
+    "description": "Wireguard client that exposes itself as a SOCKS5 proxy",
+    "homepage": "https://github.com/octeep/wireproxy",
+    "license": "ISC",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/octeep/wireproxy/releases/download/v1.0.5/wireproxy_windows_386.tar.gz",
+            "hash": "5c247bb774e29eb43ef20279ae9d8cee98cd0ec4028dd282a09f0bb84f379976"
+        },
+        "64bit": {
+            "url": "https://github.com/octeep/wireproxy/releases/download/v1.0.5/wireproxy_windows_amd64.tar.gz",
+            "hash": "1bcdf25876c01658756741f64fe06654583e539aa3139bdf55ef1324137e148e"
+        }
+    },
+    "bin": "wireproxy.exe",
+    "persist": "config",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/octeep/wireproxy/releases/download/v$version/wireproxy_windows_386.tar.gz"
+            },
+            "64bit": {
+                "url": "https://github.com/octeep/wireproxy/releases/download/v$version/wireproxy_windows_amd64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
