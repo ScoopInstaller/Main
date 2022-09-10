@@ -1,0 +1,32 @@
+{
+    "version": "1.0.2",
+    "description": "btop++ for windows",
+    "homepage": "https://github.com/aristocratos/btop4win",
+    "license": "Apache-2.0",
+    "notes": [
+        "Has no support for GPU monitoring, CPU temperature monitoring and does not have accurate CPU clock monitoring.",
+        "Does not require admin rights to run. (But it's still higly recommended to run as admin, otherwise some process information will be missing.)"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aristocratos/btop4win/releases/download/v1.0.2/btop4win-x64.zip",
+            "hash": "df0f7ef62dabe1d6776cba76d03e9922b440f55d210707cc3691b8abea5b3220",
+            "extract_dir": "btop4win"
+        }
+    },
+    "pre_install": [
+        "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
+        "if (!(Test-Path \"$persist_dir\")) { New-Item -ItemType dir \"$persist_dir\" | Out-Null }",
+        "if (Test-Path \"$persist_dir\\btop.conf\") { Copy-Item \"$persist_dir\\btop.conf\" \"$dir\\\" }"
+    ],
+    "pre_uninstall": "if (Test-Path \"$dir\\btop.conf\") { Copy-Item \"$dir\\btop.conf\" \"$persist_dir\\\" }",
+    "bin": "btop.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aristocratos/btop4win/releases/download/v$version/btop4win-x64.zip"
+            }
+        }
+    }
+}

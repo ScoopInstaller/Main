@@ -1,0 +1,32 @@
+{
+    "version": "1.0.2",
+    "description": "btop++ for windows",
+    "homepage": "https://github.com/aristocratos/btop4win",
+    "license": "Apache-2.0",
+    "notes": [
+        "Has full GPU monitoring, etc. using Libre Hardware Monitor, DLL's included in the package.",
+        "Requires admin rights to run."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aristocratos/btop4win/releases/download/v1.0.2/btop4win-LHM-x64.zip",
+            "hash": "898b0725918e58926851304195e795b881abd1c2353b0537e62ea1a273777a66",
+            "extract_dir": "btop4win"
+        }
+    },
+    "pre_install": [
+        "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
+        "if (!(Test-Path \"$persist_dir\")) { New-Item -ItemType dir \"$persist_dir\" | Out-Null }",
+        "if (Test-Path \"$persist_dir\\btop.conf\") { Copy-Item \"$persist_dir\\btop.conf\" \"$dir\\\" }"
+    ],
+    "pre_uninstall": "if (Test-Path \"$dir\\btop.conf\") { Copy-Item \"$dir\\btop.conf\" \"$persist_dir\\\" }",
+    "bin": "btop.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aristocratos/btop4win/releases/download/v$version/btop4win-LHM-x64.zip"
+            }
+        }
+    }
+}
