@@ -18,13 +18,7 @@
         "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
         "if (!(Test-Path \"$persist_dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
     ],
-    "pre_uninstall": [
-        "$sys = \"$dir\\btop.sys\"",
-        "if (!(Test-Path $sys)) { return }",
-        "$tempPath = '~\\appdata\\temp\\btop.sys'",
-        "if (Test-Path $tempPath) { $i = 0; While (Test-Path $tempPath) { $i++; $tempPath = \"$($tempPath | Split-Path)\\btop$i.sys\" } }",
-        "Move-Item $sys $tempPath"
-    ],
+    "pre_uninstall": "sc stop R0btop | Out-Null",
     "persist": "btop.conf",
     "bin": "btop.exe",
     "checkver": "github",
