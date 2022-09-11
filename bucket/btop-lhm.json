@@ -18,7 +18,7 @@
         "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
         "if (!(Test-Path \"$persist_dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
     ],
-    "pre_uninstall": "sc stop R0btop | Out-Null",
+    "pre_uninstall": "sc.exe stop R0btop | Out-Null",
     "persist": [
         "themes",
         "btop.conf"
