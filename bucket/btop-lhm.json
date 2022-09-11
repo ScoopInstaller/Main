@@ -19,7 +19,10 @@
         "if (!(Test-Path \"$persist_dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
     ],
     "pre_uninstall": "sc stop R0btop | Out-Null",
-    "persist": "btop.conf",
+    "persist": [
+        "themes",
+        "btop.conf"
+    ],
     "bin": "btop.exe",
     "checkver": "github",
     "autoupdate": {

@@ -18,7 +18,10 @@
         "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
         "if (!(Test-Path \"$persist_dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
     ],
-    "persist": "btop.conf",
+    "persist": [
+        "themes",
+        "btop.conf"
+    ],
     "bin": "btop.exe",
     "checkver": "github",
     "autoupdate": {
