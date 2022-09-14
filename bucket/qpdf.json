@@ -1,19 +1,20 @@
 {
-    "version": "10.6.3",
+    "version": "11.0.0",
     "description": "A command-line program that does structural, content-preserving transformations on PDF files.",
-    "homepage": "http://qpdf.sourceforge.net/",
+    "homepage": "https://qpdf.sourceforge.net/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/10.6.3/qpdf-10.6.3-bin-mingw64.zip",
-            "hash": "sha1:885bf5c485392444013aba2acda64499d85fc299"
+            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/11.0.0/qpdf-11.0.0-mingw64.zip",
+            "hash": "a85d2b0925cb2521683351409cfca950b5509ad154c4f4b248ae2491445db308",
+            "extract_dir": "qpdf-11.0.0-mingw64"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/10.6.3/qpdf-10.6.3-bin-mingw32.zip",
-            "hash": "sha1:280a3d607e7b4deff39b198fdb3f45015b82ad0c"
+            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/11.0.0/qpdf-11.0.0-mingw32.zip",
+            "hash": "766593d4772dc0d329a8d45d97b62b937283dcfdf2e4025273f168191a5bab05",
+            "extract_dir": "qpdf-11.0.0-mingw32"
         }
     },
-    "extract_dir": "qpdf-10.6.3",
     "bin": "bin\\qpdf.exe",
     "checkver": {
         "github": "https://github.com/qpdf/qpdf",
@@ -22,12 +23,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/$version/qpdf-$version-bin-mingw64.zip"
+                "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/$version/qpdf-$version-mingw64.zip",
+                "extract_dir": "qpdf-$version-mingw64"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/$version/qpdf-$version-bin-mingw32.zip"
+                "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/$version/qpdf-$version-mingw32.zip",
+                "extract_dir": "qpdf-$version-mingw32"
             }
-        },
-        "extract_dir": "qpdf-$version"
+        }
     }
 }
