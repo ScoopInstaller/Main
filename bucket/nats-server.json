@@ -1,0 +1,26 @@
+{
+    "version": "2.9.0",
+    "description": "High-Performance server for NATS.io, the cloud and edge native messaging system",
+    "homepage": "https://github.com/nats-io/nats-server",
+    "license": {
+        "identifier": "Apache-2.0",
+        "url": "https://github.com/nats-io/nats-server/blob/main/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/nats-io/nats-server/releases/download/v2.9.0/nats-server-v2.9.0-windows-amd64.zip",
+            "hash": "7bd8f5e4940b67e34cffddbaad058f1d2af1c3bd326dd2879528a6cb72c6a4ac",
+            "extract_dir": "nats-server-v2.9.0-windows-amd64"
+        }
+    },
+    "bin": "nats-server.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nats-io/nats-server/releases/download/v$version/nats-server-v$version-windows-amd64.zip",
+                "extract_dir": "nats-server-v$version-windows-amd64"
+            }
+        }
+    }
+}
