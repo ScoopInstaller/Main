@@ -1,0 +1,34 @@
+{
+    "version": "0.19.1-541",
+    "description": "LeMMinX is a language server for XML and XSD files",
+    "homepage": "https://github.com/eclipse/lemminx",
+    "license": "EPL-2.0",
+    "url": "https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/0.19.1-541/lemminx-win32.zip",
+    "bin": [
+        [
+            "lemminx-win32.exe",
+            "lemminx"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/",
+        "regex": "(\\d+\\.\\d+\\.\\d+\\-\\d+)",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/$version/lemminx-win32.zip",
+                "hash": {
+                    "url": "https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/$version/lemminx-win32.sha256"
+                }
+            },
+            "64bit": {
+                "url": "https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/$version/lemminx-win32.zip",
+                "hash": {
+                    "url": "https://download.jboss.org/jbosstools/vscode/stable/lemminx-binary/$version/lemminx-win32.sha256"
+                }
+            }
+        }
+    }
+}
