@@ -1,0 +1,28 @@
+{
+    "version": "2.16.1",
+    "description": "GitHub CLI, GitHub's official command line tool",
+    "homepage": "https://github.com/cli/cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cli/cli/releases/download/v2.16.1/gh_2.16.1_windows_amd64.zip",
+            "hash": "3019714873838be44e57cde11099574665d70abbcfbc06c0377b3c0dbdcf7ff4"
+        }
+    },
+    "bin": [
+        [
+            "bin\\gh.exe",
+            "gh"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/cli/cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cli/cli/releases/download/v$version/gh_$version_windows_amd64.zip"
+            }
+        }
+    }
+}
