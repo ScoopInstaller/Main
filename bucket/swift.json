@@ -1,0 +1,41 @@
+{
+    "version": "5.7",
+    "homepage": "https://www.swift.org/",
+    "description": "A general-purpose programming language built using a modern approach to safety, performance, and software design patterns.",
+    "license": "Apache-2.0",
+    "suggest": {
+        "python": "main/python",
+        "vcredist": "extras/vcredist"
+    },
+    "notes": [
+        "To make Swift toolchain work, you must have Visual Studio and Windows SDK components installed.",
+        "Please read https://www.swift.org/getting-started/#support-files for Supporting Files installation guide.",
+        "For documentation on Swift, please click here https://www.swift.org/documentation/",
+        ""
+    ],
+    "depends": "dark",
+    "url": "https://download.swift.org/swift-5.7-release/windows10/swift-5.7-RELEASE/swift-5.7-RELEASE-windows10.exe#/swiftsetup.exe",
+    "hash": "CC5580E347C492CF4F6C74E0E59D78938CB7B1484BA9A72CBD923C6EE6A4FE3D",
+    "pre_install": [
+        "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
+        "dir \"$dir\\extract_folder\\AttachedContainer\\*.msi\" | ForEach-Object {Expand-MsiArchive $_ \"$dir\" | Out-Null}",
+        "Remove-Item \"$dir\\extract_folder\" -Recurse -Force | Out-Null"
+    ],
+    "env_add_path": [
+        "Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
+        "icu-69.1\\usr\\bin",
+        "runtime-development\\usr\\bin"
+    ],
+    "env_set": {
+        "SDKROOT": "$dir\\Developer\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk",
+        "DEVELOPER_DIR": "$dir\\Developer"
+    },
+    "pre_uninstall": "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+    "checkver": {
+        "url": "https://www.swift.org/download/",
+        "regex": ">Swift\\s([\\d.]+)</h3>"
+    },
+    "autoupdate": {
+        "url": "https://download.swift.org/swift-5.7-release/windows10/swift-5.7-RELEASE/swift-5.7-RELEASE-windows10.exe#/swiftsetup.exe"
+    }
+}
