@@ -1,16 +1,16 @@
 {
-    "version": "3.0.0",
+    "version": "3.1.0",
     "description": "Sloc, Cloc and Code (scc) is a very fast accurate code counter with complexity calculations and COCOMO estimates.",
     "homepage": "https://github.com/boyter/scc",
-    "license": "MIT",
+    "license": "MIT|Unlicense",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/boyter/scc/releases/download/v3.0.0/scc-3.0.0-x86_64-pc-windows.zip",
-            "hash": "f3972acf03c09ff836071d1d173cb49281c8bc0f9682217118565ca62c5559b8"
+            "url": "https://github.com/boyter/scc/releases/download/v3.1.0/scc_3.1.0_Windows_x86_64.tar.gz",
+            "hash": "ba1e43810ff830abfa05bee6dc31839844f142b949ecfaa8d6940dfc49506c83"
         },
         "32bit": {
-            "url": "https://github.com/boyter/scc/releases/download/v3.0.0/scc-3.0.0-i386-pc-windows.zip",
-            "hash": "e1d02cda2f865cd18f0695ba08e376bb363939b8afafca4ad4ae1d8067e28f90"
+            "url": "https://github.com/boyter/scc/releases/download/v3.1.0/scc_3.1.0_Windows_i386.tar.gz",
+            "hash": "615381e9e4d56f8101a706efdff48f61c2cf39cfc6455d248fbb335648fabc9b"
         }
     },
     "bin": "scc.exe",
@@ -18,11 +18,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/boyter/scc/releases/download/v$version/scc-$version-x86_64-pc-windows.zip"
+                "url": "https://github.com/boyter/scc/releases/download/v$version/scc_$version_Windows_x86_64.tar.gz"
             },
             "32bit": {
-                "url": "https://github.com/boyter/scc/releases/download/v$version/scc-$version-i386-pc-windows.zip"
+                "url": "https://github.com/boyter/scc/releases/download/v$version/scc_$version_Windows_i386.tar.gz"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
         }
     }
 }
