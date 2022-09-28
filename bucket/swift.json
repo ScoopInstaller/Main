@@ -15,7 +15,7 @@
     "hash": "CC5580E347C492CF4F6C74E0E59D78938CB7B1484BA9A72CBD923C6EE6A4FE3D",
     "pre_install": [
         "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
-        "dir \"$dir\\extract_folder\\AttachedContainer\\*.msi\" | ForEach-Object {Expand-MsiArchive $_ \"$dir\" | Out-Null}",
+        "Get-ChildItem \"$dir\\extract_folder\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" | Out-Null }",
         "Remove-Item \"$dir\\extract_folder\" -Recurse -Force | Out-Null"
     ],
     "env_add_path": [
