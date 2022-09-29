@@ -6,7 +6,7 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/jenkins-x/jx/releases/download/v3.5.33/jx-windows-amd64.zip",
-            "hash": "66a631587dc1c59b8be25290c245783eeec9a4d1ab5cddbb7247156ea0989c1a"
+            "hash": "c68cc24b23a3f0529cff1d728f2aaa9c38e0a887e3e94ef461e1bdcdb59aae0d"
         }
     },
     "pre_install": "Stop-Process -Name 'jx' -ErrorAction 'Ignore' -Verbose",
@@ -19,7 +19,8 @@
             }
         },
         "hash": {
-            "url": "$baseurl/jx-checksums.txt"
+            "url": "$baseurl/jx-checksums.txt",
+            "regex": "(?m)$checksum[\\x20\\t]+.*$basename(?:[\\x20\\t]+\\d+)?$"
         }
     }
 }
