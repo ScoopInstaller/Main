@@ -15,14 +15,14 @@
         "   Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
         "   $CONT = @(",
         "       '[directories]'",
+        "       \"cache_dir = `\"$persist_dir\\cache`\"\"",
         "       \"custom_pages_dir = `\"$persist_dir\\custom-pages`\"\"",
         "   ) -replace '\\\\', '\\\\'",
         "   Set-Content \"$dir\\$file\" ($CONT -join \"`r`n\") -Encoding ASCII",
         "}"
     ],
     "env_set": {
-        "TEALDEER_CONFIG_DIR": "$dir",
-        "TEALDEER_CACHE_DIR": "$dir\\cache"
+        "TEALDEER_CONFIG_DIR": "$dir"
     },
     "bin": "tldr.exe",
     "persist": [
