@@ -1,0 +1,28 @@
+{
+    "version": "3.5.6",
+    "homepage": "https://github.com/sumneko/lua-language-server",
+    "description": "A language server written in Lua that offers Lua language support.",
+    "license": "MIT",
+    "notes": "For a guide on getting started, please visit: https://github.com/sumneko/lua-language-server/wiki/Getting-Started",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sumneko/lua-language-server/releases/download/3.5.6/lua-language-server-3.5.6-win32-x64.zip",
+            "hash": "839BDE963B969A2ABBD1A754B5593605BDA181734FF90DBB07F7EA8F31893566"
+        },
+        "32bit": {
+            "url": "https://github.com/sumneko/lua-language-server/releases/download/3.5.6/lua-language-server-3.5.6-win32-ia32.zip",
+            "hash": "40A2D8DFA7181094FFAA36E7EB47B06332BA329D278A978D10A62E4B492621C1"
+        }
+    },
+    "bin": "bin\\lua-language-server.exe",
+    "persist": "log",
+    "checkver": "github",
+    "autoupdate": {
+        "64bit": {
+            "url": "https://github.com/sumneko/lua-language-server/releases/download/$version/lua-language-server-$version-win32-x64.zip"
+        },
+        "32bit": {
+            "url": "https://github.com/sumneko/lua-language-server/releases/download/$version/lua-language-server-$version-win32-ia32.zip"
+        }
+    }
+}
