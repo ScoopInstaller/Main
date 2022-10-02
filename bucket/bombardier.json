@@ -1,0 +1,28 @@
+{
+    "version": "1.2.5",
+    "description": "Fast cross-platform HTTP benchmarking tool written in Go",
+    "homepage": "https://github.com/codesenberg/bombardier",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/codesenberg/bombardier/releases/download/v1.2.5/bombardier-windows-amd64.exe#/bombardier.exe",
+            "hash": "52e0c22e3a10c06f7013bbb09d713ab52fae6fba5a86a5ffcfdd6546ed86b7cf"
+        },
+        "32bit": {
+            "url": "https://github.com/codesenberg/bombardier/releases/download/v1.2.5/bombardier-windows-386.exe#/bombardier.exe",
+            "hash": "d2bfd99019ca590610c89ccf829bf4c84ed6652821fe55e7f9bcf342106fe496"
+        }
+    },
+    "bin": "bombardier.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/codesenberg/bombardier/releases/download/v$version/bombardier-windows-amd64.exe#/bombardier.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/codesenberg/bombardier/releases/download/v$version/bombardier-windows-386.exe#/bombardier.exe"
+            }
+        }
+    }
+}

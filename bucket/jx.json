@@ -1,12 +1,12 @@
 {
-    "version": "3.5.23",
+    "version": "3.7.1",
     "description": "A command line tool for installing and using Jenkins X",
     "homepage": "https://github.com/jenkins-x/jx",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jenkins-x/jx/releases/download/v3.5.23/jx-windows-amd64.zip",
-            "hash": "19bcd8550351fbf262f5378f891ce9dac7e35c4f1dbcef72846f97c69d7bdbb8"
+            "url": "https://github.com/jenkins-x/jx/releases/download/v3.7.1/jx-windows-amd64.zip",
+            "hash": "d51414e22eb8a759daebc6b92975a2ef43d63fd2439691156f238401aafeb496"
         }
     },
     "pre_install": "Stop-Process -Name 'jx' -ErrorAction 'Ignore' -Verbose",
@@ -19,7 +19,8 @@
             }
         },
         "hash": {
-            "url": "$baseurl/jx-checksums.txt"
+            "url": "$baseurl/jx-checksums.txt",
+            "regex": "(?m)$checksum[\\x20\\t]+.*$basename(?:[\\x20\\t]+\\d+)?$"
         }
     }
 }

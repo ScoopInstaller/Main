@@ -1,0 +1,42 @@
+{
+    "version": "5.7",
+    "homepage": "https://www.swift.org/",
+    "description": "A general-purpose programming language built using a modern approach to safety, performance, and software design patterns.",
+    "license": "Apache-2.0",
+    "suggest": {
+        "python": "main/python",
+        "vcredist": "extras/vcredist"
+    },
+    "notes": [
+        "To make Swift toolchain work, you must have Visual Studio and Windows SDK components installed.",
+        "Read https://www.swift.org/getting-started/#support-files for Supporting Files installation guide."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://download.swift.org/swift-5.7-release/windows10/swift-5.7-RELEASE/swift-5.7-RELEASE-windows10.exe#/swiftsetup.exe",
+            "hash": "CC5580E347C492CF4F6C74E0E59D78938CB7B1484BA9A72CBD923C6EE6A4FE3D"
+        }
+    },
+    "pre_install": [
+        "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
+        "Get-ChildItem \"$dir\\extract_folder\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
+        "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
+    ],
+    "env_add_path": "Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
+    "env_set": {
+        "SDKROOT": "$dir\\Developer\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk",
+        "DEVELOPER_DIR": "$dir\\Developer"
+    },
+    "bin": "runtime-development\\usr\\bin\\plutil.exe",
+    "checkver": {
+        "url": "https://github.com/apple/swift",
+        "regex": "/swift-([\\d.]+)-RELEASE"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.swift.org/swift-5.7-release/windows10/swift-5.7-RELEASE/swift-5.7-RELEASE-windows10.exe#/swiftsetup.exe"
+            }
+        }
+    }
+}

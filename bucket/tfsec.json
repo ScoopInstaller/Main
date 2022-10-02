@@ -5,22 +5,25 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/aquasecurity/tfsec/releases/download/v1.28.0/tfsec-windows-amd64.exe#/tfsec.exe",
-            "hash": "44dd1b952702f4fbdd950b659103609061b485194572fdebad2dd9f5b6ae7ec5"
+            "url": "https://github.com/aquasecurity/tfsec/releases/download/v1.28.0/tfsec_1.28.0_windows_amd64.tar.gz",
+            "hash": "cb382309e7502a6e7c01e88c3b185c4dbcf0f2a30dc988cb8e044cc3e462c3e8"
         }
     },
-    "bin": "tfsec.exe",
+    "bin": [
+        "tfsec.exe",
+        "tfsec-checkgen.exe"
+    ],
     "checkver": {
         "github": "https://github.com/aquasecurity/tfsec"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/aquasecurity/tfsec/releases/download/v$version/tfsec-windows-amd64.exe#/tfsec.exe"
+                "url": "https://github.com/aquasecurity/tfsec/releases/download/v$version/tfsec_$version_windows_amd64.tar.gz"
             }
         },
         "hash": {
-            "url": "$baseurl/tfsec_checksums.txt"
+            "url": "$baseurl/tfsec_$version_checksums.txt"
         }
     }
 }

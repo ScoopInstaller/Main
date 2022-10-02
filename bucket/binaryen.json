@@ -23,13 +23,16 @@
         "bin\\wasm-split.exe"
     ],
     "checkver": {
-        "url": "https://github.com/WebAssembly/binaryen/releases",
-        "regex": "binaryen-version_([\\d.]+)-x86_64-windows\\.tar\\.gz"
+        "github": "https://github.com/WebAssembly/binaryen",
+        "regex": "tag/version_(\\d+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz"
+                "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz",
+                "hash": {
+                    "url": "$url.sha256"
+                }
             }
         },
         "extract_dir": "binaryen-version_$version"
