@@ -1,13 +1,18 @@
 {
-    "version": "2.9.1",
+    "version": "2.9.2",
     "description": "High-Performance server for NATS.io, the cloud and edge native messaging system",
     "homepage": "https://github.com/nats-io/nats-server",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/nats-io/nats-server/releases/download/v2.9.1/nats-server-v2.9.1-windows-amd64.zip",
-            "hash": "7bd8f5e4940b67e34cffddbaad058f1d2af1c3bd326dd2879528a6cb72c6a4ac",
-            "extract_dir": "nats-server-v2.9.1-windows-amd64"
+            "url": "https://github.com/nats-io/nats-server/releases/download/v2.9.2/nats-server-v2.9.2-windows-amd64.zip",
+            "hash": "cd3d2a9d78c235292afc27f812baee7817180fcfe5ebba662e72f0cc821d04fb",
+            "extract_dir": "nats-server-v2.9.2-windows-amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/nats-io/nats-server/releases/download/v2.9.2/nats-server-v2.9.2-windows-386.zip",
+            "hash": "634eb917491cf6dc335b5b9e3789ae29ee8df2baa202ca18006f4b533655f6af",
+            "extract_dir": "nats-server-v2.9.2-windows-386"
         }
     },
     "bin": "nats-server.exe",
@@ -17,7 +22,15 @@
             "64bit": {
                 "url": "https://github.com/nats-io/nats-server/releases/download/v$version/nats-server-v$version-windows-amd64.zip",
                 "extract_dir": "nats-server-v$version-windows-amd64"
+            },
+            "32bit": {
+                "url": "https://github.com/nats-io/nats-server/releases/download/v$version/nats-server-v$version-windows-386.zip",
+                "extract_dir": "nats-server-v$version-windows-386"
             }
+        },
+        "hash": {
+            "url": "https://github.com/nats-io/nats-server/releases/download/v$version/SHA256SUMS",
+            "find": "SHA256\\($basename\\)=\\s+([a-fA-F\\d]{64})"
         }
     }
 }
