@@ -1,14 +1,35 @@
 {
-    "version": "1.7",
+    "version": "1.8",
     "description": "Simple command line utility for converting .doc & .xls files to any supported format.",
     "homepage": "https://github.com/tobya/DocTo",
     "license": "MIT",
-    "notes": "Must have Microsoft Word, Excel or Powerpoint installed on host machine.",
-    "url": "https://github.com/tobya/DocTo/releases/download/V1.7/docto.exe",
-    "hash": "26677871e9640ea207f5e7d740276c88c218b4acf18af20726b8ae2ce84123c9",
-    "bin": "docto.exe",
+    "notes": "Must have Microsoft Word, Excel or PowerPoint installed on host machine.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tobya/DocTo/releases/download/v1.8/docto_64.zip",
+            "hash": "0f0d0b072612343743824cb23ce49119b16de71b639ef56866fbcfa2a900059a",
+            "bin": [
+                [
+                    "docto_64.exe",
+                    "docto"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/tobya/DocTo/releases/download/v1.8/docto_32.zip",
+            "hash": "81c7c5a29e8f3df5c53c00d2d3cc6633d4824555c36aadcd547592c3b6fc2e96",
+            "bin": "docto.exe"
+        }
+    },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/tobya/DocTo/releases/download/V$version/docto.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tobya/DocTo/releases/download/v$version/docto_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/tobya/DocTo/releases/download/v$version/docto_32.zip"
+            }
+        }
     }
 }
