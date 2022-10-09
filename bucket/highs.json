@@ -1,18 +1,20 @@
 {
+    "###": "This manifest uses 7z instead of Expand-7zipArchive due to invalid tar extraction error",
     "version": "1.2.2+0",
     "description": "High performance software for linear optimization",
     "homepage": "https://www.maths.ed.ac.uk/hall/HiGHS/",
     "license": "MIT",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v1.2.2%2B0/HiGHS.v1.2.2.i686-w64-mingw32-cxx11.tar.gz",
+            "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v1.2.2+0/HiGHS.v1.2.2.i686-w64-mingw32-cxx11.tar.gz#/dl.gz",
             "hash": "b79f03d4877f7214931b9ad78cbfc12b5dda35565687f3352f4ce762667d9dcd"
         },
         "64bit": {
-            "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v1.2.2%2B0/HiGHS.v1.2.2.x86_64-w64-mingw32-cxx11.tar.gz",
+            "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v1.2.2+0/HiGHS.v1.2.2.x86_64-w64-mingw32-cxx11.tar.gz#/dl.gz",
             "hash": "79a0fd84af152632cbeec88f2a51802d4e6d678a56f57eca16fa091528dcde9c"
         }
     },
+    "pre_install": "7z x \"$dir\\dl\" \"-o$dir\" -ttar | Out-Null; Remove-Item -Force \"$dir\\dl\" | Out-Null",
     "bin": [
         [
             "bin\\highs.exe",
@@ -20,16 +22,16 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases",
-        "regex": "HiGHS-v((?<v>[\\d.]+)\\+(?<p>\\d+))"
+        "github": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl",
+        "regex": "HiGHS-v([\\d.]+\\+\\d+)"
     },
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v$matchV%2B$matchP/HiGHS.v$matchV.i686-w64-mingw32-cxx11.tar.gz"
+                "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v$version/HiGHS.v$matchHead.i686-w64-mingw32-cxx11.tar.gz#/dl.gz"
             },
             "64bit": {
-                "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v$matchV%2B$matchP/HiGHS.v$matchV.x86_64-w64-mingw32-cxx11.tar.gz"
+                "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v$version/HiGHS.v$matchHead.x86_64-w64-mingw32-cxx11.tar.gz#/dl.gz"
             }
         }
     }
