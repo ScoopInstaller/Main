@@ -22,7 +22,7 @@
                 "$7zr = Join-Path $env:TMP '7zr.exe'",
                 "Invoke-WebRequest https://www.7-zip.org/a/7zr.exe -OutFile $7zr",
                 "Invoke-ExternalCommand $7zr @('x', \"$dir\\$fname\", \"-o$dir\", '-y') | Out-Null",
-                "Remove-Item \"$dir\\Uninstall.exe\", \"$dir\\*-arm64.exe\""
+                "Remove-Item \"$dir\\Uninstall.exe\", \"$dir\\*-arm64.exe\", $7zr"
             ]
         }
     },
