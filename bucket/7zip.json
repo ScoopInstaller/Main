@@ -6,15 +6,26 @@
     "notes": "Add 7-Zip as a context menu option by running: \"$dir\\install-context.reg\"",
     "architecture": {
         "64bit": {
-            "url": "https://7-zip.org/a/7z2201-x64.msi",
-            "hash": "f4afba646166999d6090b5beddde546450262dc595dddeb62132da70f70d14ca"
+            "url": "https://www.7-zip.org/a/7z2201-x64.msi",
+            "hash": "f4afba646166999d6090b5beddde546450262dc595dddeb62132da70f70d14ca",
+            "extract_dir": "Files\\7-Zip"
         },
         "32bit": {
-            "url": "https://7-zip.org/a/7z2201.msi",
-            "hash": "a4913f98821e0da0c58cd3a7f2a59f1834b85b6ca6b3fdefa5454d6c3bbef54c"
+            "url": "https://www.7-zip.org/a/7z2201.msi",
+            "hash": "a4913f98821e0da0c58cd3a7f2a59f1834b85b6ca6b3fdefa5454d6c3bbef54c",
+            "extract_dir": "Files\\7-Zip"
+        },
+        "arm64": {
+            "url": "https://www.7-zip.org/a/7z2201-arm64.exe",
+            "hash": "700dea3e4012319a09ccadfce91cf090334cfe658d0bdc42204e77acbea1ef99",
+            "pre_install": [
+                "$7zr = Join-Path $env:TMP '7zr.exe'",
+                "Invoke-WebRequest https://www.7-zip.org/a/7zr.exe -OutFile $7zr",
+                "Invoke-ExternalCommand $7zr @('x', \"$dir\\$fname\", \"-o$dir\", '-y') | Out-Null",
+                "Remove-Item \"$dir\\Uninstall.exe\", \"$dir\\*-arm64.exe\", $7zr"
+            ]
         }
     },
-    "extract_dir": "Files\\7-Zip",
     "post_install": [
         "$7zip_root = \"$dir\".Replace('\\', '\\\\')",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
@@ -26,7 +37,11 @@
         "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
         "}"
     ],
-    "bin": "7z.exe",
+    "bin": [
+        "7z.exe",
+        "7zFM.exe",
+        "7zG.exe"
+    ],
     "shortcuts": [
         [
             "7zFM.exe",
@@ -44,10 +59,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://7-zip.org/a/7z$cleanVersion-x64.msi"
+                "url": "https://www.7-zip.org/a/7z$cleanVersion-x64.msi"
             },
             "32bit": {
-                "url": "https://7-zip.org/a/7z$cleanVersion.msi"
+                "url": "https://www.7-zip.org/a/7z$cleanVersion.msi"
+            },
+            "arm64": {
+                "url": "https://www.7-zip.org/a/7z$cleanVersion-arm64.exe"
             }
         }
     }

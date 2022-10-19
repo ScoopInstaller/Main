@@ -18,6 +18,9 @@
         },
         "32bit": {
             "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x86.msix' | Remove-Item -Force -Recurse"
+        },
+        "arm64": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*arm64.msix' | Remove-Item -Force -Recurse"
         }
     },
     "installer": {
