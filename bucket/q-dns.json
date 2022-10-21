@@ -1,0 +1,32 @@
+{
+  "version": "0.8.3",
+  "description": "A tiny command line DNS client with support for UDP, TCP, DoT, DoH, DoQ and ODoH.",
+  "homepage": "https://github.com/natesales/q",
+  "license": "GPL-3.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/natesales/q/releases/download/v0.8.3/q_0.8.3_windows_amd64.tar.gz",
+      "hash": "eebcda306767f414267f721df4b46a2ee7b03c10f367a568346c128a6fbf4455"
+    },
+    "arm64": {
+      "url": "https://github.com/natesales/q/releases/download/v0.8.3/q_0.8.3_windows_arm64.tar.gz",
+      "hash": "9e8c7c3a9b3e9cc72ad8ab60aec09865ac9ca430e7ccc8d466060927b8d94f81"
+    }
+  },
+  "bin": [
+    "q.exe"
+  ],
+  "checkver": {
+    "github": "https://github.com/natesales/q"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/natesales/q/releases/download/v$version/q_$version_windows_amd64.tar.gz"
+      },
+      "arm64": {
+        "url": "https://github.com/natesales/q/releases/download/v$version/q_$version_windows_arm64.tar.gz"
+      }
+    }
+  }
+}
