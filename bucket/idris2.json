@@ -1,0 +1,48 @@
+{
+    "version": "0.5.1",
+    "description": "Pure functional programming language with dependent types",
+    "homepage": "https://www.idris-lang.org/",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/idris-lang/Idris2/archive/refs/tags/v0.5.1.tar.gz",
+            "hash": "da44154f6eba5e22ec5ac64c6ba2c28d2df0a57cf620c5b00c11adb51dbda399"
+        }
+    },
+    "depends": ["msys2", "chezscheme"],
+    "installer": {
+        "script": [
+            "$dir = \"$dir\".Replace('\\', '/')",
+            "$srcDir = \"$dir/Idris2-$version\"",
+            "$targetDir = \"$dir/.idris2\"",
+            
+            "$env:MSYS2_PATH_TYPE = 'inherit'",
+
+            "msys2 -c \"pacman --noconfirm -Syu\"",
+            "msys2 -c \"pacman --noconfirm -S make mingw-w64-x86_64-gcc\"",
+
+            "mingw64 -c \"cd $srcDir && export SCHEME=scheme && make bootstrap && make install && make install-libdocs\"",
+            "mingw64 -c \"cd $srcDir && export PATH=`$PATH:~/.idris2/bin && export LD_LIBRARY_PATH=~/.idris2/lib && make clean && make all && make install && make install-api\"",
+
+            "msys2 -c \"cp -r ~/.idris2 $dir/.idris2\""
+        ]
+    },
+    "env_add_path": "./.idris2/bin",
+    "env_set": {
+        "LD_LIBRARY_PATH": "./.idris2/lib"
+    },
+    "checkver": {
+        "url": "https://www.idris-lang.org/pages/download.html",
+        "regex": "Idris 2 ([\\d]+\\.[\\d]+\\.[\\d]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/idris-lang/Idris2/archive/refs/tags/v$version.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
