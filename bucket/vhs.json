@@ -3,10 +3,10 @@
     "homepage": "https://github.com/charmbracelet/vhs",
     "description": "A cli application that allows you to create terminal GIFs as code for integration testing and demoing your CLI tools (ex. neofetch/winfetch).",
     "license": "MIT",
-    "depends": "ttyd",
-    "suggest": {
-        "ffmpeg": "main/ffmpeg"
-    },
+    "depends": [
+        "ttyd",
+        "ffmpeg"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/charmbracelet/vhs/releases/download/v0.1.1/vhs_0.1.1_Windows_x86_64.zip",
@@ -30,7 +30,7 @@
         },
         "hash": {
             "url": "$baseurl/checksums.txt",
-            "regex": "$sha256\\s+vhs_$version_Windows"
+            "regex": "(?m)^$sha256.*?$basename$"
         }
     }
 }
