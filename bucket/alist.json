@@ -1,31 +1,24 @@
 {
-    "version": "3.2.1",
+    "version": "3.3.0",
     "description": "A file list program that supports multiple storage, powered by Gin and Solidjs.",
     "homepage": "https://alist.nn.ci",
     "license": "AGPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/alist-org/alist/releases/download/v3.2.1/alist-windows-4.0-amd64.zip",
-            "hash": "md5:157a1c4e6ab3f492215d15f3bc04e6f4"
+            "url": "https://github.com/alist-org/alist/releases/download/v3.3.0/alist-windows-4.0-amd64.zip",
+            "hash": "md5:77132db9288efcbce703f53ac43bb2ea"
         },
         "32bit": {
-            "url": "https://github.com/alist-org/alist/releases/download/v3.2.1/alist-windows-4.0-386.zip",
-            "hash": "md5:88be14c1b8d93a20d17cef489f570169"
+            "url": "https://github.com/alist-org/alist/releases/download/v3.3.0/alist-windows-4.0-386.zip",
+            "hash": "md5:2895e5089b3c4a47f327a7ba42971a1e"
         }
     },
     "bin": [
         [
             "alist.exe",
             "alist",
-            "--conf \"$dir\\data\\config.json\""
+            "--force-bin-dir"
         ]
-    ],
-    "post_install": [
-        "$file = 'data\\config.json'",
-        "if (!(Test-Path \"$persist_dir\\$file\")) {",
-        "   $CONT = @{ database = @{ db_file = \"$persist_dir\\data\\data.db\" }; temp_dir = \"$persist_dir\\data\\temp\"; log = @{ name = \"$persist_dir\\log\\log.log\" } }",
-        "   Set-Content \"$dir\\$file\" ($CONT | ConvertTo-Json) -Encoding ASCII",
-        "}"
     ],
     "persist": [
         "data",
