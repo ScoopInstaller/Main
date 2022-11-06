@@ -22,7 +22,7 @@
     ],
     "post_install": [
         "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
-        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList \"--username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" | Out-Null",
+        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList @('--username=postgres', '--encoding=UTF8', '--locale=en', '--lc-collate=C') | Out-Null",
         "}"
     ],
     "shortcuts": [
