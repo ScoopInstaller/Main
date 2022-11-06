@@ -5,16 +5,28 @@
     "license": "MPL-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/RazrFalcon/resvg/releases/download/v0.25.0/resvg-win64.zip",
-            "hash": "01ae2caa627d2e376333113ab8cc79e0b89737c0c1f09ccb02e608c45f5083a6"
+            "url": [
+                "https://github.com/RazrFalcon/resvg/releases/download/v0.25.0/resvg-win64.zip",
+                "https://github.com/RazrFalcon/resvg/releases/download/v0.25.0/usvg-win64.zip"
+            ],
+            "hash": [
+                "01ae2caa627d2e376333113ab8cc79e0b89737c0c1f09ccb02e608c45f5083a6",
+                "7652fb1b90ff8278a63aec22b51882b1cfc24b2b1765abe5fe0db6399e04d191"
+            ]
         }
     },
-    "bin": "resvg.exe",
+    "bin": [
+        "resvg.exe",
+        "usvg.exe"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/RazrFalcon/resvg/releases/download/v$version/resvg-win64.zip"
+                "url": [
+                    "https://github.com/RazrFalcon/resvg/releases/download/v$version/resvg-win64.zip",
+                    "https://github.com/RazrFalcon/resvg/releases/download/v$version/usvg-win64.zip"
+                ]
             }
         }
     }
