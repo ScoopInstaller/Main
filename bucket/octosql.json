@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/cube2222/octosql/releases/download/v0.12.0/octosql_0.12.0_windows_amd64.tar.gz",
             "hash": "485417bd673f467142e02e64eaf96b9e87958b555379e6d38208b8dcee7ad2de"
+        },
+        "arm64": {
+            "url": "https://github.com/cube2222/octosql/releases/download/v0.12.0/octosql_0.12.0_windows_arm64.tar.gz",
+            "hash": "49d63e35f76d041e1f37d87958626ca6e48361f3b600c18515a00892d7293a4a"
         }
     },
     "bin": "octosql.exe",
@@ -14,11 +18,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/cube2222/octosql/releases/download/v$version/octosql_$version_windows_amd64.tar.gz",
-                "hash": {
-                    "url": "$baseurl/octosql_$version_checksums.txt"
-                }
+                "url": "https://github.com/cube2222/octosql/releases/download/v$version/octosql_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/cube2222/octosql/releases/download/v$version/octosql_$version_windows_arm64.tar.gz"
             }
+        },
+        "hash": {
+            "url": "$baseurl/octosql_$version_checksums.txt"
         }
     }
 }
