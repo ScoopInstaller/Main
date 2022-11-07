@@ -11,7 +11,25 @@
         "32bit": {
             "url": "https://github.com/tomnomnom/gron/releases/download/v0.7.1/gron-windows-386-0.7.1.zip",
             "hash": "a532d5aa29395592f3725c336640f2cf9eb670c8ce25115aaee0082d5cdf5a0e"
+        },
+        "arm64": {
+            "url": "https://github.com/tomnomnom/gron/releases/download/v0.7.1/gron-windows-arm64-0.7.1.zip",
+            "hash": "9bd38a241f1afdbd3c8f952b92b7090e7a446cac5251bfed3fdf28f219c9dda8"
         }
     },
-    "bin": "gron.exe"
+    "bin": "gron.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tomnomnom/gron/releases/download/v$version/gron-windows-amd64-$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/tomnomnom/gron/releases/download/v$version/gron-windows-386-$version.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/tomnomnom/gron/releases/download/v$version/gron-windows-arm64-$version.zip"
+            }
+        }
+    }
 }
