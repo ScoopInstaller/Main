@@ -12,12 +12,21 @@
         "32bit": {
             "url": "https://www.python.org/ftp/python/3.11.0/python-3.11.0.exe#/setup.exe",
             "hash": "2d7b87eacdd5925af4e0db0ec155dd2b765aa27efe609c0684cacc6fbf46f104"
+        },
+        "arm64": {
+            "url": "https://www.python.org/ftp/python/3.11.0/python-3.11.0-arm64.exe#/setup.exe",
+            "hash": "5638e4339eb320cee1fcc7c2722252fc6a6b0855b517a7ea72b01a0c57767091"
         }
     },
     "pre_install": [
         "$py_root = \"$dir\".Replace('\\', '\\\\')",
+        "$py_archLabel = '64-bit'",
         "$bit = '64'",
-        "if ($architecture -eq '32bit') { $bit = '32' }",
+        "if ($architecture -eq '32bit') {",
+        "    $py_archLabel = '32-bit'",
+        "    $bit = '32'",
+        "}",
+        "if ($architecture -eq 'arm64') { $py_archLabel = 'ARM64' }",
         "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
         "    $py_version = ($version -split '\\.')[0..1] -join '.'",
         "    $content = Get-Content \"$bucketsdir\\main\\scripts\\python\\$_\"",
@@ -25,6 +34,7 @@
         "    $content = $content.Replace('$py_version', $py_version)",
         "    $content = $content.Replace('$py_fullversion', $version)",
         "    $content = $content.Replace('$py_cleanVersion', $version -replace '\\.')",
+        "    $content = $content.Replace('$py_archLabel', $py_archLabel)",
         "    $content = $content.Replace('$py_arch', \"$bit\")",
         "    if ($global) {",
         "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
@@ -92,6 +102,9 @@
             },
             "32bit": {
                 "url": "https://www.python.org/ftp/python/$version/python-$version.exe#/setup.exe"
+            },
+            "arm64": {
+                "url": "https://www.python.org/ftp/python/$version/python-$version-arm64.exe#/setup.exe"
             }
         },
         "hash": {
