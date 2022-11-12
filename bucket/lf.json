@@ -29,11 +29,9 @@
             ]
         }
     },
-    "bin": [
-        "lf.exe",
-        "lfcd.cmd",
-        "lfcd.ps1"
-    ],
+    "bin": "lf.exe",
+    "pre_install": "Move-Item $dir\\lfcd.cmd, $dir\\lfcd.ps1 $scoopdir\\shims\\",
+    "post_uninstall": "Remove-Item $scoopdir\\shims\\lfcd.cmd, $scoopdir\\shims\\lfcd.ps1",
     "checkver": {
         "github": "https://github.com/gokcehan/lf/",
         "regex": "tag/(r[\\d]+)"
