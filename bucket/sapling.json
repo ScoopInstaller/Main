@@ -1,0 +1,36 @@
+{
+    "version": "20221115.080554.34470671",
+    "description": "A Scalable, User-Friendly Source Control System.",
+    "homepage": "https://sapling-scm.com/",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "The name of the Sapling CLI sl.exe conflicts with the sl shell built-in in PowerShell (sl is an alias for Set-Location, which is equivalent to cd).",
+        "If you want to use sl to run sl.exe in PowerShell, you must reassign the alias.",
+        "You must add the following to your $PROFILE:",
+        "Set-Alias -Name sl -Value '$dir\\sl.exe' -Force -Option Constant,ReadOnly,AllScope"
+    ],
+    "suggest": {
+        "Node JS": "nodejs-lts",
+        "Git": "git"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/facebook/sapling/releases/download/20221115-080554-34470671/sapling_windows_20221115.080554.34470671_amd64.zip",
+            "hash": "cb529f44fff0e8cd4a50a377eb4f5a58ce7403ed68eaa3bc0b50b24ca66123df"
+        }
+    },
+    "extract_dir": "Sapling",
+    "bin": "sl.exe",
+    "checkver": {
+        "github": "https://github.com/facebook/sapling",
+        "regex": "(\\d+)-(\\d+)-(\\d+)",
+        "replace": "${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/facebook/sapling/releases/download/$dashVersion/sapling_windows_$version_amd64.zip"
+            }
+        }
+    }
+}
