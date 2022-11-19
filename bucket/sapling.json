@@ -1,0 +1,30 @@
+{
+    "version": "20221116.203146.2c1a971a",
+    "description": "A Scalable, User-Friendly Source Control System",
+    "homepage": "https://sapling-scm.com/",
+    "license": {
+        "identifier": "GPL-2.0-only",
+        "url": "https://github.com/facebook/sapling/blob/main/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/facebook/sapling/releases/download/20221116-203146-2c1a971a/sapling_windows_20221116.203146.2c1a971a_amd64.zip",
+            "hash": "5f2b42af77af9d800a3d670014f1f9009699c3cd2aff7b73ecd577883e19dcf0"
+        }
+    },
+    "extract_dir": "Sapling",
+    "bin": "sl.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/facebook/sapling/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "(?<majorVersion>[0-9]*)-(?<minorVersion>[0-9]*)-(?<patchVersion>[0-9a-z]*)",
+        "replace": "${majorVersion}.${minorVersion}.${patchVersion}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/facebook/sapling/releases/download/$dashVersion/sapling_windows_$majorVersion.$minorVersion.$patchVersion_amd64.zip"
+            }
+        }
+    }
+}
