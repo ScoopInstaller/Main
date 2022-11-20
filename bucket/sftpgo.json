@@ -10,6 +10,23 @@
             "hash": "9147c6540291887d4d55f4e4a5f64c4b46f5ee58e45b3f9970cb339ab880ad9b"
         }
     },
+    "pre_install": [
+        "$OSArch = Get-DefaultArchitecture",
+        "if ($OSArch -ne \"64bit\") {",
+        "if (!(Test-Path \"$dir\\x64\")) {",
+        "mkdir \"$dir\\x64\" | Out-Null",
+        "}",
+        "Copy-Item \"$dir\\sftpgo.exe\" \"$dir\\x64\"",
+        "}",
+        "switch ($OSArch) {",
+        "\"32bit\" {",
+        "Copy-Item \"$dir\\x86\\sftpgo.exe\" \"$dir\"",
+        "}",
+        "\"arm64\" {",
+        "Copy-Item \"$dir\\arm64\\sftpgo.exe\" \"$dir\"",
+        "}",
+        "}"
+    ],
     "bin": "sftpgo.exe",
     "persist": [
         "sftpgo.db",
