@@ -23,8 +23,8 @@
     "checkver": {
         "url": "https://api.github.com/repos/facebook/sapling/releases/latest",
         "jsonpath": "$.tag_name",
-        "regex": "(?<tag>(?<ver>[\\d.]+)-(?<date>[\\d]{6})-(?<commit>[\\da-f]{8}))",
-        "replace": "${ver}.${date}.${commit}"
+        "regex": "(?<tag>(?<ver>[\\d.]+)\\.(?<date>[\\d]{8})-(?<time>[\\d]{6})-(?<hash>[\\da-f]{8}))",
+        "replace": "${ver}.${date}.${time}.${hash}"
     },
     "autoupdate": {
         "architecture": {
