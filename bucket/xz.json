@@ -7,7 +7,7 @@
         "url": "https://git.tukaani.org/?p=xz.git;a=blob;f=COPYING"
     },
     "url": "https://tukaani.org/xz/xz-5.2.9-windows.zip",
-    "hash": "f779372372ebcb1b87a3e23c7f144d002b30edba4ffddab96d917b8f0cd6ad9c",
+    "hash": "62ac7ba1e223616b365bd7bf1f2231b1c7e0aad111d53e675bef77ef1ac65c43",
     "architecture": {
         "64bit": {
             "bin": [
@@ -26,7 +26,10 @@
             ]
         }
     },
-    "checkver": "<h3>Stable<\\/h3>\\s+<p>\\s+([\\d.]+) was released",
+    "checkver": {
+        "url": "https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS",
+        "regex": "\\n([\\d.]+) \\("
+    },
     "autoupdate": {
         "url": "https://tukaani.org/xz/xz-$version-windows.zip"
     }
