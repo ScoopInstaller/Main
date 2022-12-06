@@ -1,0 +1,39 @@
+{
+    "version": "0.5.5",
+    "homepage": "https://github.com/iyear/tdl",
+    "description": "A cli utility for downloading files from Telegram, backing up your Telegram data, uploading files to Telegram, and recovering your Telegram data.",
+    "license": "AGPL-3.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/iyear/tdl/releases/download/v0.5.5/tdl_Windows_32bit.zip",
+            "hash": "8c6fb91adad7e76bd50eac5ef235392e247c6379e1fd2848759365ccf11dfd7a"
+        },
+        "64bit": {
+            "url": "https://github.com/iyear/tdl/releases/download/v0.5.5/tdl_Windows_64bit.zip",
+            "hash": "4adce4d5f2e610c1e69ef9f6d6033ca062aa7d389de8e289c7af2bbbcd7c9c7e"
+        },
+        "arm64": {
+            "url": "https://github.com/iyear/tdl/releases/download/v0.5.5/tdl_Windows_arm64.zip",
+            "hash": "2cc77c2a817485ba3637b73799758b223e3e3367937c72aa86dafa7362555aa9"
+        }
+    },
+    "bin": "tdl.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/iyear/tdl/releases/download/v0.5.5/tdl_Windows_32bit.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/iyear/tdl/releases/download/v0.5.5/tdl_Windows_64bit.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/iyear/tdl/releases/download/v0.5.5/tdl_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/tdl_checksums.txt",
+            "regex": "$sha256\\s+$fname"
+        }
+    }
+}
