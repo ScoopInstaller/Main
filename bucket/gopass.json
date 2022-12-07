@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/gopasspw/gopass/releases/download/v1.15.0/gopass-1.15.0-windows-amd64.zip",
             "hash": "fa914a3dd607bab15cf7d70099b705ce20d95359bd91b6ce03c177bb099ee672"
+        },
+        "arm64": {
+            "url": "https://github.com/gopasspw/gopass/releases/download/v1.15.0/gopass-1.15.0-windows-arm64.zip",
+            "hash": "e2a4b8e3f0b1260df2c72060e23a5b88159fdf80d523969f36e8803fdc35befe"
         }
     },
     "bin": "gopass.exe",
@@ -17,10 +21,14 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/gopasspw/gopass/releases/download/v$version/gopass-$version-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/gopasspw/gopass/releases/download/v$version/gopass-$version-windows-arm64.zip"
             }
         },
         "hash": {
-            "url": "$baseurl/gopass_$version_SHA256SUMS"
+            "url": "$baseurl/gopass_$version_SHA256SUMS",
+            "regex": "$sha256  $basename\\n"
         }
     }
 }
