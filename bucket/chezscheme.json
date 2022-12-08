@@ -1,0 +1,48 @@
+{
+    "version": "9.5.8",
+    "description": "Implementation of the Chez Scheme language",
+    "homepage": "https://cisco.github.io/ChezScheme/",
+    "license": "Apache-2.0",
+    "##": [
+        "Pre-packaged source code archives contain symlinks, so we can't unzip them without elevated privileges.",
+        "To work around this, we clone the source code from the Git repository ourselves in the installer.",
+        "So, we don't have any use for Scoop's built-in \"url\" property, but Scoop requires a URL to be specified anyway.",
+        "To suppress Scoop errors, we specify the URL of the license file in the \"url\" property."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://raw.githubusercontent.com/cisco/ChezScheme/v9.5.8/LICENSE",
+            "hash": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+    },
+    "depends": ["msys2", "git"],
+    "installer": {
+        "script": [
+            "$versionWithPrefix = \"v$version\"",
+            "$dir = \"$dir\".Replace('\\', '/')",
+            "$origDir = $PWD.Path",
+
+            "cd $dir",
+            "git clone --depth 1 --branch $versionWithPrefix https://github.com/cisco/ChezScheme.git",
+
+            "mingw64 -c \"pacman --noconfirm -Syu\"",
+            "mingw64 -c \"pacman --noconfirm -S make mingw-w64-x86_64-gcc\"",
+
+            "mingw64 -c \"cd $dir/ChezScheme && git config core.autocrlf false && ./configure --threads && make\"",
+
+            "cd $origDir"
+        ]
+    },
+    "env_add_path": "./ChezScheme/ta6nt/bin/ta6nt",
+    "checkver": {
+        "url": "https://cisco.github.io/ChezScheme/",
+        "regex": "Chez Scheme Version ([\\d]+\\.[\\d]+\\.[\\d]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://raw.githubusercontent.com/cisco/ChezScheme/v$version/LICENSE"
+            }
+        }
+    }
+}
