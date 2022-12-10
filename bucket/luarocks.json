@@ -19,7 +19,7 @@
     "pre_install": [
         "$file = 'config.lua'",
         "$lua = (versiondir 'lua' 'current' $global) -replace \"\\\\\", '/'",
-        "$v1 = (current_version 'lua' $global) -replace \"^(\\d.\\d).*\", '$1'",
+        "$v1 = (Select-CurrentVersion 'lua' $global) -replace \"^(\\d.\\d).*\", '$1'",
         "$v2 = $v1 -replace \"[.]\", ''",
         "$rocks = \"$(versiondir 'luarocks' 'current' $global)\\rocks\" -replace \"\\\\\", \"/\"",
         "if (!(Test-Path \"$persist_dir\\$file\")) {",
