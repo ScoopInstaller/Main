@@ -3,22 +3,30 @@
     "description": "Manage multiple rust installations with ease",
     "homepage": "https://rustup.rs",
     "license": "MIT|Apache-2.0",
+    "notes": [
+        "This package defaults to using the MSVC toolchain in new installs; use \"rustup set default-host\" to configure it",
+        "(existing installs may be using the GNU toolchain by default)",
+        "According to https://doc.rust-lang.org/book/ch01-01-installation.html#installing-rustup-on-windows",
+        "Microsoft C++ Build Tools is needed and can be downloaded here: https://visualstudio.microsoft.com/visual-cpp-build-tools/",
+        "When installing build tools, these two components should be selected:",
+        "- MSVC - VS C++ x64/x86 build tools",
+        "- Windows SDK"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://static.rust-lang.org/rustup/archive/1.25.1/x86_64-pc-windows-gnu/rustup-init.exe",
-            "hash": "f7367ca97f4b0e4d1f34181bcb68599099134c608bcf10257b4f64e6770395a6"
+            "url": "https://static.rust-lang.org/rustup/archive/1.25.1/x86_64-pc-windows-msvc/rustup-init.exe",
+            "hash": "2220ddb49fea0e0945b1b5913e33d66bd223a67f19fd1c116be0318de7ed9d9c"
         },
         "32bit": {
-            "url": "https://static.rust-lang.org/rustup/archive/1.25.1/i686-pc-windows-gnu/rustup-init.exe",
-            "hash": "e463cca92bd26e89c7ef79880e68309482cde3cc62f166a2d3c785ea9a09d7cd"
+            "url": "https://static.rust-lang.org/rustup/archive/1.25.1/i686-pc-windows-msvc/rustup-init.exe",
+            "hash": "79442f66a969a504febda49ee9158a90ad9e94913209ccdca3c22ef86d635c31"
         }
     },
     "installer": {
         "script": [
             "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
             "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
-            "$host_arch = if ($architecture -eq '64bit') {'x86_64'} else {'i686'}",
-            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args @('-y', '--no-modify-path', '--default-host', \"$host_arch-pc-windows-gnu\") | Out-Null"
+            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args @('-y', '--no-modify-path') | Out-Null"
         ]
     },
     "env_add_path": ".cargo\\bin",
@@ -37,10 +45,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://static.rust-lang.org/rustup/archive/$version/x86_64-pc-windows-gnu/rustup-init.exe"
+                "url": "https://static.rust-lang.org/rustup/archive/$version/x86_64-pc-windows-msvc/rustup-init.exe"
             },
             "32bit": {
-                "url": "https://static.rust-lang.org/rustup/archive/$version/i686-pc-windows-gnu/rustup-init.exe"
+                "url": "https://static.rust-lang.org/rustup/archive/$version/i686-pc-windows-msvc/rustup-init.exe"
             }
         },
         "hash": {

@@ -4,6 +4,8 @@
     "homepage": "https://rustup.rs",
     "license": "MIT|Apache-2.0",
     "notes": [
+        "This package defaults to using the MSVC toolchain in new installs; use \"rustup set default-host\" to configure it",
+        "(now equivalent to the rustup package)",
         "According to https://doc.rust-lang.org/book/ch01-01-installation.html#installing-rustup-on-windows",
         "Microsoft C++ Build Tools is needed and can be downloaded here: https://visualstudio.microsoft.com/visual-cpp-build-tools/",
         "When installing build tools, these two components should be selected:",
@@ -24,8 +26,7 @@
         "script": [
             "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
             "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
-            "$host_arch = if ($architecture -eq '64bit') {'x86_64'} else {'i686'}",
-            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args @('-y', '--no-modify-path', '--default-host', \"$host_arch-pc-windows-msvc\") | Out-Null"
+            "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args @('-y', '--no-modify-path') | Out-Null"
         ]
     },
     "env_add_path": ".cargo\\bin",
