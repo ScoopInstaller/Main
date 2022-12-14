@@ -1,0 +1,47 @@
+{
+    "version": "5.2.3",
+    "description": "Twilio CLI. Unleash the power of Twilio from your command prompt.",
+    "homepage": "https://github.com/twilio/twilio-cli",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/twilio/twilio-cli/raw/main/LICENSE"
+    },
+    "suggest": {
+        "Node JS": "nodejs-lts"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://twilio-cli-prod.s3.amazonaws.com/twilio-win32-x64.tar.xz",
+            "hash": "7425458c219898b2d122d98401b465143107deb656e9e87f5255bbadfc697f95"
+        },
+        "32bit": {
+            "url": "https://twilio-cli-prod.s3.amazonaws.com/twilio-win32-x86.tar.xz",
+            "hash": "5118d31f95869fbafb8339b9b491221f3e25418df0ddea010977d03e92b85726"
+        }
+    },
+    "extract_dir": "twilio",
+    "post_install": "& \"$dir\\bin\\node.exe\" \"$dir\\welcome.js\"",
+    "bin": "bin\\twilio.cmd",
+    "checkver": {
+        "url": "https://twilio-cli-prod.s3.amazonaws.com/version",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://twilio-cli-prod.s3.amazonaws.com/twilio-win32-x64.tar.xz",
+                "hash": {
+                    "url": "https://twilio-cli-prod.s3.amazonaws.com/win32-x64",
+                    "jsonpath": "$.sha256xz"
+                }
+            },
+            "32bit": {
+                "url": "https://twilio-cli-prod.s3.amazonaws.com/twilio-win32-x86.tar.xz",
+                "hash": {
+                    "url": "https://twilio-cli-prod.s3.amazonaws.com/win32-x86",
+                    "jsonpath": "$.sha256xz"
+                }
+            }
+        }
+    }
+}
