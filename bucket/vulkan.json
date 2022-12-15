@@ -21,9 +21,9 @@
         "if (Test-Path $script_path) {",
         "   $vulkan_bin = if ($architecture -eq '64bit') { \"$dir\\Bin\" } else { \"$dir\\Bin32\" }",
         "   $content = Get-Content $script_path",
-        "   $content = $content.Replace('@BIN_DIR@', \"\"\"$vulkan_bin\"\"\")",
-        "   $content = $content.Replace('@GLOBAL@', $(if ($global) { '$true' } else { '$false' }))",
-        "   $content = $content.Replace('@IS_ADMIN@', $(if (is_admin) { '$true' } else { '$false' }))",
+        "   $content = $content.Replace('$vulkan_bin', \"\"\"$vulkan_bin\"\"\")",
+        "   $content = $content.Replace('$global', $(if ($global) { '$true' } else { '$false' }))",
+        "   $content = $content.Replace('$is_admin', $(if (is_admin) { '$true' } else { '$false' }))",
         "}",
         "Set-Content -Path \"$dir\\install-vk-layers.ps1\" -Value $content -Encoding UTF8"
     ],

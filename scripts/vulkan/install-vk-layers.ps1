@@ -1,8 +1,3 @@
-# @XXX@ Replaced at post-install script
-$vulkan_bin = @BIN_DIR@
-$global = @GLOBAL@
-$is_admin = @IS_ADMIN@
-
 if ($global -and (-not $is_admin)) {
     Write-Host "ERROR write registries for global installation needs admin rights!" -ForegroundColor DarkRed
     exit 1
