@@ -12,14 +12,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.3.0.20221214.exe#/dl.7z",
+            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.3.0.20221214.exe#/dl.7z_",
             "hash": "175a326853f87474132c284072a821dd819c63b707b01879b309f80bd6c0ab1e"
         },
         "32bit": {
-            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.3.0.20221214.exe#/dl.7z",
+            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.3.0.20221214.exe#/dl.7z_",
             "hash": "7683df36c38b2173a36e581a47f2143d342385b7c791db9b207c825152ad046e"
         }
     },
+    "pre_install": "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Removal -Switches '-x!*.exe.nsis -x!$PLUGINSDIR'",
     "bin": [
         "ambiguous_words.exe",
         "classifier_tester.exe",
@@ -56,10 +57,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v$version.exe#/dl.7z"
+                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v$version.exe#/dl.7z_"
             },
             "32bit": {
-                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v$version.exe#/dl.7z"
+                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v$version.exe#/dl.7z_"
             }
         }
     }
