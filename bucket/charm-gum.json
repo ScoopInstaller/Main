@@ -26,15 +26,19 @@
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://github.com/charmbracelet/gum/releases/download/v$version/gum_$version_Windows_i386.zip"
+                "url": "https://github.com/charmbracelet/gum/releases/download/v$version/gum_$version_Windows_i386.zip",
+                "hash": {
+                    "url": "$baseurl/checksums.txt",
+                    "regex": "($sha256)\\s+gum_[\\d.]+_Windows_i386\\.zip"
+                }
             },
             "64bit": {
-                "url": "https://github.com/charmbracelet/gum/releases/download/v$version/gum_$version_Windows_x86_64.zip"
+                "url": "https://github.com/charmbracelet/gum/releases/download/v$version/gum_$version_Windows_x86_64.zip",
+                "hash": {
+                    "url": "$baseurl/checksums.txt",
+                    "regex": "($sha256)\\s+gum_[\\d.]+_Windows_x86_64\\.zip"
+                }
             }
-        },
-        "hash": {
-            "url": "$baseurl/checksums.txt",
-            "regex": "($sha256)\\s+gum_[\\d.]+_Windows_*"
         }
     }
 }
