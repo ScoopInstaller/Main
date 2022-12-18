@@ -5,23 +5,24 @@
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-20221208.exe#/dl.7z",
+            "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-20221208.exe#/dl.7z_",
             "hash": "sha512:fa65a9e9ba5011607c26305c57342f7146466f9d274d7b3ede9d8b7b4938ac0482ac45e573152a69c07eddc579f47a565d90619113b51275be01f5427b059e7d"
         },
         "32bit": {
-            "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-20221208.exe#/dl.7z",
+            "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-20221208.exe#/dl.7z_",
             "hash": "sha512:e309efe4242a9a5767528bbeab05a5876c457a4d0d0b78b0cde5a3c677a7d33ad561366bc3162187c5dc591ace9ae7968664edbbaac8e5860bc72094659dff1c"
         }
     },
+    "pre_install": "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Removal -Switches '-xr!*.exe.nsis -x!$PLUGINSDIR'",
     "env_add_path": ".",
-    "checkver": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installers \\((?<version>[\\d.a-z\\-]+)\\)",
+    "checkver": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installers \\((?<version>[\\d.a-z-]+)\\)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z"
+                "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z_"
             },
             "32bit": {
-                "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z"
+                "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z_"
             }
         },
         "hash": {
