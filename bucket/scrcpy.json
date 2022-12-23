@@ -7,11 +7,13 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.25/scrcpy-win64-v1.25.zip",
-            "hash": "db65125e9c65acd00359efb7cea9c05f63cc7ccd5833000cd243cc92f5053028"
+            "hash": "db65125e9c65acd00359efb7cea9c05f63cc7ccd5833000cd243cc92f5053028",
+            "extract_dir": "scrcpy-win64-v1.25"
         },
         "32bit": {
             "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.25/scrcpy-win32-v1.25.zip",
-            "hash": "d9422cafecb28d9df9dd8490b492bc2e573f8962854163294ba85b239becc0a3"
+            "hash": "d9422cafecb28d9df9dd8490b492bc2e573f8962854163294ba85b239becc0a3",
+            "extract_dir": "scrcpy-win32-v1.25"
         }
     },
     "pre_install": "if (Test-Path \"$dir\\adb.exe\") { Remove-Item \"$dir\\adb.exe\" }",
@@ -32,10 +34,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Genymobile/scrcpy/releases/download/v$version/scrcpy-win64-v$version.zip"
+                "url": "https://github.com/Genymobile/scrcpy/releases/download/v$version/scrcpy-win64-v$version.zip",
+                "extract_dir": "scrcpy-win64-v$version"
             },
             "32bit": {
-                "url": "https://github.com/Genymobile/scrcpy/releases/download/v$version/scrcpy-win32-v$version.zip"
+                "url": "https://github.com/Genymobile/scrcpy/releases/download/v$version/scrcpy-win32-v$version.zip",
+                "extract_dir": "scrcpy-win32-v$version"
             }
         },
         "hash": {
