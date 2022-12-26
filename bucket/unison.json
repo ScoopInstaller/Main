@@ -4,8 +4,12 @@
     "homepage": "https://www.cis.upenn.edu/~bcpierce/unison",
     "license": "GPL-3.0-only",
     "notes": "Compiled with same OCaml compiler version 4.12.1",
-    "url": "https://github.com/bcpierce00/unison/releases/download/v2.53.0/unison-v2.53.0+ocaml-4.12.1+x86_64.windows.zip",
-    "hash": "bdf67196b1a5335328317724f044e5d3c16cdff10db836176edb61a8a505cf27",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bcpierce00/unison/releases/download/v2.53.0/unison-v2.53.0+ocaml-4.12.1+x86_64.windows.zip",
+            "hash": "bdf67196b1a5335328317724f044e5d3c16cdff10db836176edb61a8a505cf27"
+        }
+    },
     "bin": [
         "bin\\unison.exe",
         "bin\\unison-fsmonitor.exe"
@@ -14,6 +18,10 @@
         "github": "https://github.com/bcpierce00/unison"
     },
     "autoupdate": {
-        "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-v$version+ocaml-4.12.1+x86_64.windows.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-v$version+ocaml-4.12.1+x86_64.windows.zip"
+            }
+        }
     }
 }
