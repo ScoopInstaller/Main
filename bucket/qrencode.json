@@ -43,11 +43,11 @@
         "                \"$dir\\share\\licenses\\qrencode\\COPYING\",",
         "                \"$dir\\share\\man\\man1\\qrencode.1.gz\")",
         "",
-        "Get-ChildItem \"$dir\" -Recurse",
-        "    | Select-Object -ExpandProperty FullName",
-        "    | Where-Object {$keep_files -notcontains $_ }",
-        "    | Sort-Object Length -Descending",
-        "    | ForEach-Object { if ((Test-Path $_ -Type Container) -and (Get-ChildItem $_)) { return } Remove-Item $_ }"
+        "Get-ChildItem \"$dir\" -Recurse                 |",
+        "    Select-Object -ExpandProperty FullName      |",
+        "    Where-Object {$keep_files -notcontains $_ } |",
+        "    Sort-Object Length -Descending              |",
+        "    ForEach-Object { if ((Test-Path $_ -Type Container) -and (Get-ChildItem $_)) { return } Remove-Item $_ }"
     ],
     "bin": "bin\\qrencode.exe",
     "checkver": {
