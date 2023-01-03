@@ -1,17 +1,28 @@
 {
-    "version": "6.4",
+    "version": "7.0",
     "description": "AVRDUDE is software for programming Atmel AVR Microcontrollers",
     "homepage": "https://github.com/avrdudes/avrdude",
     "license": "GPL-2.0-or-later",
-    "url": "https://download.savannah.gnu.org/releases/avrdude/avrdude-6.4-mingw32.zip",
-    "hash": "d16d6ec2c721c7622925b27b8ed1536b3fc6f9015c1f22c8b47ac9b19fdb03ed",
-    "bin": "avrdude.exe",
-    "checkver": {
-        "url": "https://download.savannah.gnu.org/releases/avrdude/",
-        "regex": "avrdude-([\\d.]+)-mingw32.zip",
-        "reverse": true
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/avrdudes/avrdude/releases/download/v7.0/avrdude-v7.0-windows-x64.zip",
+            "hash": "99de0041a2d0a1130de17730005ca075deb735b0435667eba6124b19977873ad",
+        },
+        "32bit": {
+            "url": "https://github.com/avrdudes/avrdude/releases/download/v7.0/avrdude-v7.0-windows-x86.zip",
+            "hash": "280a111a22b27f939ef06059458b133f4ea9031b0e9aca06937f03312cebc769",
+        }
     },
+    "bin": "avrdude.exe",
+    "checkver": "github",
     "autoupdate": {
-        "url": "https://download.savannah.gnu.org/releases/avrdude/avrdude-$version-mingw32.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/avrdudes/avrdude/releases/download/v$version/avrdude-v$version-windows-x64.zip",
+            },
+            "32bit": {
+                "url": "https://github.com/avrdudes/avrdude/releases/download/v$version/avrdude-v$version-windows-x86.zip",
+            }
+        }
     }
 }
