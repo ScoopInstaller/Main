@@ -6,15 +6,14 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/wakatime/wakatime-cli/releases/download/v1.60.4/wakatime-cli-windows-amd64.zip",
-            "hash": "13609cfbfa51f0af0d7b3e9ef53d892ee3c013c378f5318da780c2bbef02f7d0",
-            "pre_install": "Rename-Item \"$dir\\wakatime-cli-windows-amd64.exe\" wakatime-cli.exe"
+            "hash": "13609cfbfa51f0af0d7b3e9ef53d892ee3c013c378f5318da780c2bbef02f7d0"
         },
         "32bit": {
             "url": "https://github.com/wakatime/wakatime-cli/releases/download/v1.60.4/wakatime-cli-windows-386.zip",
-            "hash": "a22968e2e23ea2f88455dfac6ee49d5219568a79fb6a4a21eef943ea221557df",
-            "pre_install": "Rename-Item \"$dir\\wakatime-cli-windows-386.exe\" wakatime-cli.exe"
+            "hash": "a22968e2e23ea2f88455dfac6ee49d5219568a79fb6a4a21eef943ea221557df"
         }
     },
+    "pre_install": "Get-ChildItem \"$dir\\wakatime-cli-windows-*.exe\" | Rename-Item -NewName 'wakatime-cli.exe'",
     "bin": "wakatime-cli.exe",
     "checkver": {
         "github": "https://github.com/wakatime/wakatime-cli"
