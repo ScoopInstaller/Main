@@ -1,0 +1,26 @@
+{
+    "version": "0.44.1",
+    "description": "YAML templating tool that works on YAML structure instead of text",
+    "homepage": "https://carvel.dev/ytt",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.44.1/ytt-windows-amd64.exe#/ytt.exe",
+            "hash": "f842e29cd87745f29821e74ad61804b7947836bd9ae77a7b1b80f4eb97e48b23"
+        }
+    },
+    "bin": "ytt.exe",
+    "checkver": {
+        "github": "https://github.com/vmware-tanzu/carvel-ytt"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vmware-tanzu/carvel-ytt/releases/download/v$version/ytt-windows-amd64.exe#/ytt.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

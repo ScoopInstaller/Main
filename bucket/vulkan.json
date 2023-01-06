@@ -1,5 +1,5 @@
 {
-    "version": "1.3.231.1",
+    "version": "1.3.236.0",
     "description": "SDK for new generation graphics and compute API",
     "homepage": "https://www.vulkan.org",
     "license": {
@@ -8,11 +8,25 @@
     },
     "notes": [
         "Make sure you have the vulkan driver installed.",
-        "Variety of drivers of different graphic card vendors could be found at the bottom of 'https://www.khronos.org/vulkan/'"
+        "Variety of drivers of different graphic card vendors could be found at the bottom of 'https://www.khronos.org/vulkan/'",
+        "",
+        "Allow vulkan applications to find VK layers provided by Khronos, run \"$dir\\install-vk-layers.ps1\"",
+        "(\"powershell \"$dir\\install-vk-layers.ps1\"\" under cmd)"
     ],
-    "url": "https://sdk.lunarg.com/sdk/download/1.3.231.1/windows/VulkanSDK-1.3.231.1-Installer.exe#/dl.7z",
-    "hash": "ffdf442893761a453499d612d86534a02573c3d2b2442b40311b69a4b2518bf2",
+    "url": "https://sdk.lunarg.com/sdk/download/1.3.236.0/windows/VulkanSDK-1.3.236.0-Installer.exe#/dl.7z",
+    "hash": "0b21c602ef0d62ee49c39e03b35207d136130bf110682d7cad2c620265031dcc",
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstal*\" -Recurse",
+    "post_install": [
+        "$script_path = \"$bucketsdir\\main\\scripts\\$app\\install-vk-layers.ps1\"",
+        "if (Test-Path $script_path) {",
+        "   $vulkan_bin = if ($architecture -eq '64bit') { \"$dir\\Bin\" } else { \"$dir\\Bin32\" }",
+        "   $content = Get-Content $script_path",
+        "   $content = $content.Replace('$vulkan_bin', \"\"\"$vulkan_bin\"\"\")",
+        "   $content = $content.Replace('$global', $(if ($global) { '$true' } else { '$false' }))",
+        "   $content = $content.Replace('$is_admin', $(if (is_admin) { '$true' } else { '$false' }))",
+        "}",
+        "Set-Content -Path \"$dir\\install-vk-layers.ps1\" -Value $content -Encoding UTF8"
+    ],
     "architecture": {
         "64bit": {
             "env_add_path": [
@@ -31,6 +45,18 @@
         "VULKAN_SDK": "$dir",
         "VK_SDK_PATH": "$dir"
     },
+    "pre_uninstall": [
+        "$reg_root = if ($global) { [Microsoft.Win32.Registry]::LocalMachine } else { [Microsoft.Win32.Registry]::CurrentUser }",
+        "$vk_explicit_reg_path = 'SOFTWARE\\Khronos\\Vulkan\\ExplicitLayers'",
+        "$bin_dir = if ($architecture -eq '64bit') { 'Bin' } else { 'Bin32' }",
+        "$vulkan_bin = if ($global) { \"$globaldir\\apps\\$app\\current\\$bin_dir\" } else { \"$scoopdir\\apps\\$app\\current\\$bin_dir\" }",
+        "$vk_layers = Get-ChildItem -Path $vulkan_bin -Filter '*.json' | ForEach-Object { $_.FullName }",
+        "$vk_explicit_reg = $reg_root.CreateSubKey($vk_explicit_reg_path)",
+        "foreach ($vk_layer in $vk_layers) {",
+        "    $vk_explicit_reg.DeleteValue($vk_layer, $false)",
+        "}",
+        "$vk_explicit_reg.Close()"
+    ],
     "checkver": {
         "url": "https://vulkan.lunarg.com/sdk/latest/windows.json",
         "jsonpath": "$.windows"

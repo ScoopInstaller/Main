@@ -1,5 +1,5 @@
 {
-    "version": "5.2.0.20220712",
+    "version": "5.3.0.20221214",
     "description": "Open Source OCR Engine",
     "homepage": "https://github.com/UB-Mannheim/tesseract/wiki",
     "license": "Apache-2.0",
@@ -12,14 +12,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.2.0.20220712.exe#/dl.7z",
-            "hash": "f5a47371604e186f3171e6e0c57b2d2ee172fd80b0e2df3675b5203acc2c16ae"
+            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.3.0.20221214.exe#/dl.7z_",
+            "hash": "175a326853f87474132c284072a821dd819c63b707b01879b309f80bd6c0ab1e"
         },
         "32bit": {
-            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.2.0.20220712.exe#/dl.7z",
-            "hash": "f70cacf92dc66445300264b8bc4977e00665a74ce8af7664029fe82e336f574f"
+            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v5.3.0.20221214.exe#/dl.7z_",
+            "hash": "7683df36c38b2173a36e581a47f2143d342385b7c791db9b207c825152ad046e"
         }
     },
+    "pre_install": "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Removal -Switches '-x!*.exe.nsis -x!$PLUGINSDIR'",
     "bin": [
         "ambiguous_words.exe",
         "classifier_tester.exe",
@@ -56,10 +57,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v$version.exe#/dl.7z"
+                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v$version.exe#/dl.7z_"
             },
             "32bit": {
-                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v$version.exe#/dl.7z"
+                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w32-setup-v$version.exe#/dl.7z_"
             }
         }
     }

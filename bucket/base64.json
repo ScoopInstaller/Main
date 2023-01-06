@@ -1,0 +1,20 @@
+{
+    "version": "1.1.0",
+    "description": "Conversion of the Linux base64 utility to encode/decode data and print to standard output. Base64 is a data encoding scheme described in RFC 4648.",
+    "homepage": "https://www.di-mgt.com.au/base64-for-windows.html",
+    "license": "Freeware",
+    "url": "https://www.di-mgt.com.au/src/base64-1.1.0.zip",
+    "hash": "sha1:1222c48cb298259b3a503c819f4f09b5046f6765",
+    "bin": "base64.exe",
+    "checkver": {
+        "url": "https://www.di-mgt.com.au/base64-for-windows.html",
+        "regex": "The latest version is ([\\d.]+) compiled on"
+    },
+    "autoupdate": {
+        "url": "https://www.di-mgt.com.au/src/base64-$version.zip",
+        "hash": {
+            "url": "https://www.di-mgt.com.au/base64-for-windows.html",
+            "regex": "sha1=$sha1"
+        }
+    }
+}

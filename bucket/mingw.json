@@ -1,17 +1,17 @@
 {
-    "version": "12.2.0",
+    "version": "12.2.0-rt_v10-rev1",
     "description": "Minimalistic GNU for Windows is a runtime environment for GCC, GDB, make and related binutils.",
     "homepage": "https://www.mingw-w64.org",
     "license": "ZPL-2.1",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev0/x86_64-12.2.0-release-posix-seh-rt_v10-rev0.7z",
-            "hash": "f4f61ccf1dbd503b8c723d4bd88ae2adff850a4b07c620fc56c53894592a7da5",
+            "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev1/x86_64-12.2.0-release-posix-seh-rt_v10-rev1.7z",
+            "hash": "077e1857ad2ea5e29d57127b0b9137d01bbae31b5bc65e18a7b98f4b866fd09d",
             "extract_dir": "mingw64"
         },
         "32bit": {
-            "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev0/i686-12.2.0-release-posix-dwarf-rt_v10-rev0.7z",
-            "hash": "ff4063bd05ad7520fc5c250441fe0afcae89902f226f36e4b2a6cac1cfb9003c",
+            "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/12.2.0-rt_v10-rev1/i686-12.2.0-release-posix-dwarf-rt_v10-rev1.7z",
+            "hash": "225e11db75cab7fb13054736332d078ce4f79f01bec2e1a2bffb13c1615d7f11",
             "extract_dir": "mingw32"
         }
     },
@@ -19,15 +19,16 @@
     "env_add_path": "bin",
     "checkver": {
         "url": "https://github.com/niXman/mingw-builds-binaries/releases",
-        "regex": "Release ([\\d.]+)-(?<build>[a-z0-9_\\-]+)"
+        "regex": "Release ([\\d.]+)-(?<build>[a-z0-9_\\-]+)",
+        "replace": "${1}-${build}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/$version-$matchBuild/x86_64-$version-release-posix-seh-$matchBuild.7z"
+                "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/$version/x86_64-$match1-release-posix-seh-$matchBuild.7z"
             },
             "32bit": {
-                "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/$version-$matchBuild/i686-$version-release-posix-dwarf-$matchBuild.7z"
+                "url": "https://github.com/niXman/mingw-builds-binaries/releases/download/$version/i686-$match1-release-posix-dwarf-$matchBuild.7z"
             }
         }
     }

@@ -1,0 +1,31 @@
+{
+    "version": "1.90",
+    "description": "Interactive registry editor for console, from the author of Yori.",
+    "homepage": "http://www.malsmith.net/yori/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "http://www.malsmith.net/download/?obj=yori/1.90/yori-extra-amd64.cab#/dl.7z",
+            "hash": "b55c633d72892d7369721c43b41f9b8bdf4beb65df75f90bcc905c529217fb7c"
+        },
+        "32bit": {
+            "url": "http://www.malsmith.net/download/?obj=yori/1.90/yori-extra-win32.cab#/dl.7z",
+            "hash": "743828255bf2e6b1b5ffc22ef7f8ec587fb5d45e7959e4839d013a5eda3dc2b6"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\*\" -Recurse -Exclude yregedit.exe",
+    "bin": "yregedit.exe",
+    "checkver": {
+        "github": "https://github.com/malxau/yori"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://www.malsmith.net/download/?obj=yori/$version/yori-extra-amd64.cab#/dl.7z"
+            },
+            "32bit": {
+                "url": "http://www.malsmith.net/download/?obj=yori/$version/yori-extra-win32.cab#/dl.7z"
+            }
+        }
+    }
+}

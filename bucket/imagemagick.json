@@ -1,16 +1,16 @@
 {
-    "version": "7.1.0-52",
+    "version": "7.1.0-57",
     "description": "Create, edit, compose, and convert 200+ of bitmap images formats.",
     "homepage": "https://imagemagick.org/",
     "license": "ImageMagick",
     "architecture": {
         "64bit": {
-            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.0-52-Q16-HDRI-x64-dll.exe",
-            "hash": "5d4593ae42af79c587ea47d8d7138c0549662608d3db8098de0a337fed1aede4"
+            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.0-57-Q16-HDRI-x64-dll.exe",
+            "hash": "b2e09952e1c5271dfa5249db3cf5843bb7268cf19e66d4b9ef779dd051ff3d1e"
         },
         "32bit": {
-            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.0-52-Q16-HDRI-x86-dll.exe",
-            "hash": "c84bafb39d83118be50d7025b0ad27e9d6c03a68f73ead0739fd879e51943a78"
+            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.0-57-Q16-HDRI-x86-dll.exe",
+            "hash": "7743617f07a8eb8e303d2c7b732542bdbf20ec39f0f68ed41b893c7294d74c17"
         }
     },
     "innosetup": true,
@@ -26,16 +26,17 @@
         "- 'convert.exe' is deprecated in v7 (it also conflicts with the builtin Windows 'convert' utility). Use 'magick convert ...' instead."
     ],
     "checkver": {
-        "url": "https://imagemagick.org/archive/binaries/?C=N;O=D",
-        "regex": "ImageMagick-([\\d.-]+)-Q16-HDRI-x64-dll\\.exe\\.asc"
+        "url": "https://imagemagick.org/archive/binaries/digest.rdf",
+        "reverse": true,
+        "regex": "ImageMagick-([\\d.-]+)-Q16-HDRI-x64-dll\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$matchHead$matchTail-Q16-HDRI-x64-dll.exe"
+                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-Q16-HDRI-x64-dll.exe"
             },
             "32bit": {
-                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$matchHead$matchTail-Q16-HDRI-x86-dll.exe"
+                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-Q16-HDRI-x86-dll.exe"
             }
         },
         "hash": {

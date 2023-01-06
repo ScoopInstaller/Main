@@ -1,27 +1,30 @@
 {
-    "version": "1.22.0",
+    "version": "1.24.1",
     "description": "GitLab CLI",
-    "homepage": "https://github.com/profclems/glab",
+    "homepage": "https://gitlab.com/gitlab-org/cli",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "http://github.com/profclems/glab/releases/download/v1.22.0/glab_1.22.0_windows_x86_64.zip",
-            "hash": "1b07931cbd9547fdf33bc5c636a5e70bc01d7ef68768cff13f9655623ce411d8"
+            "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.24.1/downloads/glab_1.24.1_Windows_x86_64.zip",
+            "hash": "6b553a556ba7011a0c9fcf8a5f947ab60c6aabfaada47391ea7ba5703b08392b"
         },
         "32bit": {
-            "url": "http://github.com/profclems/glab/releases/download/v1.22.0/glab_1.22.0_windows_i386.zip",
-            "hash": "43e86b78e919ec0a1947157c1eeaf62fa8bc03087f09affb28293af939ac4389"
+            "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.24.1/downloads/glab_1.24.1_Windows_i386.zip",
+            "hash": "85e9b4ee96337ebe48b040a552b2cb7327be86d235ff6e2c9d555be32c9fe56c"
         }
     },
     "bin": "bin\\glab.exe",
-    "checkver": "github",
+    "checkver": {
+        "url": "https://gitlab.com/gitlab-org/cli/-/tags?format=atom",
+        "regex": "/tags/v([\\d.]+)<"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://github.com/profclems/glab/releases/download/v$version/glab_$version_windows_x86_64.zip"
+                "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_x86_64.zip"
             },
             "32bit": {
-                "url": "http://github.com/profclems/glab/releases/download/v$version/glab_$version_windows_i386.zip"
+                "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_i386.zip"
             }
         },
         "hash": {
