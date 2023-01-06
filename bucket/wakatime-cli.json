@@ -13,7 +13,7 @@
             "hash": "a22968e2e23ea2f88455dfac6ee49d5219568a79fb6a4a21eef943ea221557df"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\wakatime-cli-windows-*.exe\" 'wakatime-cli.exe'",
+    "pre_install": "Get-ChildItem \"$dir\\wakatime-cli-windows-*.exe\" | Rename-Item -NewName 'wakatime-cli.exe'",
     "bin": "wakatime-cli.exe",
     "checkver": {
         "github": "https://github.com/wakatime/wakatime-cli"
