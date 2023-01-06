@@ -4,28 +4,15 @@
     "homepage": "https://github.com/drakkan/sftpgo",
     "license": "AGPL-3.0-only",
     "notes": "Register SFTPGo as Windows Service by running: \"sftpgo service install\" as Administrator",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/drakkan/sftpgo/releases/download/v2.4.1/sftpgo_v2.4.1_windows_portable.zip",
-            "hash": "9147c6540291887d4d55f4e4a5f64c4b46f5ee58e45b3f9970cb339ab880ad9b"
-        }
-    },
+    "url": "https://github.com/drakkan/sftpgo/releases/download/v2.4.1/sftpgo_v2.4.1_windows_portable.zip",
+    "hash": "9147c6540291887d4d55f4e4a5f64c4b46f5ee58e45b3f9970cb339ab880ad9b",
     "pre_install": [
-        "$OSArch = Get-DefaultArchitecture",
-        "if ($OSArch -ne \"64bit\") {",
-        "if (!(Test-Path \"$dir\\x64\")) {",
-        "mkdir \"$dir\\x64\" | Out-Null",
+        "if ($architecture -eq '32bit') {",
+        "   Move-Item \"$dir\\x86\\sftpgo.exe\" \"$dir\\\" -Force",
+        "} elseif ($architecture -eq 'arm64') {",
+        "   Move-Item \"$dir\\arm64\\sftpgo.exe\" \"$dir\\\" -Force",
         "}",
-        "Copy-Item \"$dir\\sftpgo.exe\" \"$dir\\x64\"",
-        "}",
-        "switch ($OSArch) {",
-        "\"32bit\" {",
-        "Copy-Item \"$dir\\x86\\sftpgo.exe\" \"$dir\"",
-        "}",
-        "\"arm64\" {",
-        "Copy-Item \"$dir\\arm64\\sftpgo.exe\" \"$dir\"",
-        "}",
-        "}"
+        "Remove-Item \"$dir\\arm64\", \"$dir\\x86\" -Recurse -Force"
     ],
     "bin": "sftpgo.exe",
     "persist": [
@@ -36,10 +23,6 @@
         "github": "https://github.com/drakkan/sftpgo"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/drakkan/sftpgo/releases/download/v$version/sftpgo_v$version_windows_portable.zip"
-            }
-        }
+        "url": "https://github.com/drakkan/sftpgo/releases/download/v$version/sftpgo_v$version_windows_portable.zip"
     }
 }
