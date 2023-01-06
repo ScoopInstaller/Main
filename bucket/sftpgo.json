@@ -4,21 +4,25 @@
     "homepage": "https://github.com/drakkan/sftpgo",
     "license": "AGPL-3.0-only",
     "notes": "Register SFTPGo as Windows Service by running: \"sftpgo service install\" as Administrator",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/drakkan/sftpgo/releases/download/v2.4.2/sftpgo_v2.4.2_windows_portable.zip",
-            "hash": "ac82ef9c9fb6e60b839c21011ed01b96eaa746d634964ab34f84e1306a304267"
-        }
-    },
+    "url": "https://github.com/drakkan/sftpgo/releases/download/v2.4.2/sftpgo_v2.4.2_windows_portable.zip",
+    "hash": "ac82ef9c9fb6e60b839c21011ed01b96eaa746d634964ab34f84e1306a304267",
+    "pre_install": [
+        "if ($architecture -eq '32bit') {",
+        "   Move-Item \"$dir\\x86\\sftpgo.exe\" \"$dir\\\" -Force",
+        "} elseif ($architecture -eq 'arm64') {",
+        "   Move-Item \"$dir\\arm64\\sftpgo.exe\" \"$dir\\\" -Force",
+        "}",
+        "Remove-Item \"$dir\\arm64\", \"$dir\\x86\" -Recurse -Force"
+    ],
     "bin": "sftpgo.exe",
+    "persist": [
+        "sftpgo.db",
+        "sftpgo.json"
+    ],
     "checkver": {
         "github": "https://github.com/drakkan/sftpgo"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/drakkan/sftpgo/releases/download/v$version/sftpgo_v$version_windows_portable.zip"
-            }
-        }
+        "url": "https://github.com/drakkan/sftpgo/releases/download/v$version/sftpgo_v$version_windows_portable.zip"
     }
 }
