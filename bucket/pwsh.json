@@ -25,7 +25,7 @@
         }
     },
     "pre_install": [
-        "'Microsoft.PowerShell_profile.ps1', 'profile.ps1' | ForEach-Object {",
+        "'Microsoft.VSCode_profile.ps1', 'Microsoft.PowerShell_profile.ps1', 'profile.ps1' | ForEach-Object {",
         "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
         "}"
     ],
@@ -50,6 +50,7 @@
         ]
     ],
     "persist": [
+        "Microsoft.VSCode_profile.ps1",
         "Microsoft.PowerShell_profile.ps1",
         "profile.ps1"
     ],
