@@ -1,0 +1,26 @@
+{
+    "version": "1.16.1",
+    "description": "Configuration command line utility for service operators to debug and diagnose their Istio mesh.",
+    "homepage": "https://istio.io/latest/docs/reference/commands/istioctl/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/istio/istio/releases/download/1.16.1/istioctl-1.16.1-win.zip",
+            "hash": "b4c7dfca4ab8e1caeec5c4480483494b492ccee9f0871d291d429ea56a2dca18"
+        }
+    },
+    "bin": "istioctl.exe",
+    "checkver": {
+        "github": "https://github.com/istio/istio"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/istio/istio/releases/download/$version/istioctl-$version-win.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
