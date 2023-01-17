@@ -1,0 +1,36 @@
+{
+    "version": "3.7.1",
+    "description": "Tool for testing Helm charts. It is meant to be used for linting and testing pull requests. It automatically detects charts changed against the target branch.",
+    "homepage": "https://github.com/helm/chart-testing/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/helm/chart-testing/releases/download/v3.7.1/chart-testing_3.7.1_windows_amd64.zip",
+            "hash": "218f6672e2145fc270e166c132c46db36005fb990d07df01635958d9daf99ab8"
+        },
+        "arm64": {
+            "url": "https://github.com/helm/chart-testing/releases/download/v3.7.1/chart-testing_3.7.1_windows_arm64.zip",
+            "hash": "f98492089e5a3b453dd8d7b862a3e1d99e6168eb5e2853ed1b8921e664d56436"
+        }
+    },
+    "post_install": [
+        "New-Item -ItemType Directory -Path \"~/.ct\" -Force | Out-Null",
+        "Copy-Item -Path \"$dir/etc/*\" -Destination \"~/.ct\" -Recurse -Force | Out-Null"
+    ],
+    "bin": "ct.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/helm/chart-testing/releases/download/v$version/chart-testing_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/helm/chart-testing/releases/download/v$version/chart-testing_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "(?im)^$sha256\\s+$basename$"
+        }
+    }
+}
