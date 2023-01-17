@@ -1,0 +1,32 @@
+{
+    "version": "1.5.0",
+    "description": "Tool designed to help GitHub repos self-host their own chart repos by adding Helm chart artifacts to GitHub Releases named for the chart version and then creating an index.yaml file for those releases that can be hosted on GitHub Pages (or elsewhere!).",
+    "homepage": "https://github.com/helm/chart-releaser/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/helm/chart-releaser/releases/download/v1.5.0/chart-releaser_1.5.0_windows_amd64.zip",
+            "hash": "aae1958d3328e44c47499ddbbaf3cfd84e63ae76d76889c298670ea7a93758c9"
+        },
+        "arm64": {
+            "url": "https://github.com/helm/chart-releaser/releases/download/v1.5.0/chart-releaser_1.5.0_windows_arm64.zip",
+            "hash": "94685e9639c244dd6f898716e992182dd0bcafab93bb6c493ffce1c98f1cd268"
+        }
+    },
+    "bin": "cr.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/helm/chart-releaser/releases/download/v$version/chart-releaser_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/helm/chart-releaser/releases/download/v$version/chart-releaser_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "(?im)^$sha256\\s+$basename$"
+        }
+    }
+}
