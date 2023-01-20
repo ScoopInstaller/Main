@@ -1,16 +1,28 @@
 {
     "version": "1.66.1",
-    "description": "A language empowering everyone to build reliable and efficient software. (GNU toolchain)",
+    "description": "A language empowering everyone to build reliable and efficient software. (MSVC toolchain)",
     "homepage": "https://www.rust-lang.org",
     "license": "MIT|Apache-2.0",
+    "notes": [
+        "Use the rustup package instead for easier management of multiple toolchains, including beta/nightly releases.",
+        "According to https://doc.rust-lang.org/book/ch01-01-installation.html#installing-rustup-on-windows",
+        "Microsoft C++ Build Tools is needed and can be downloaded here: https://visualstudio.microsoft.com/visual-cpp-build-tools/",
+        "When installing build tools, these two components should be selected:",
+        "- MSVC - VS C++ x64/x86 build tools",
+        "- Windows SDK"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://static.rust-lang.org/dist/rust-1.66.1-x86_64-pc-windows-gnu.msi",
-            "hash": "3535f1ed1582847d62dbcfb2a99d58ecce463bbbd1728283f4e01d8ef00ac225"
+            "url": "https://static.rust-lang.org/dist/rust-1.66.1-x86_64-pc-windows-msvc.msi",
+            "hash": "847cb9fd3e3b62386cbd62be3fec0ab95b367637557437e9481e30d2ec38245b"
         },
         "32bit": {
-            "url": "https://static.rust-lang.org/dist/rust-1.66.1-i686-pc-windows-gnu.msi",
-            "hash": "0622d2b7843b8af85077d50c0a587ad0b5ba09d69131a7ed6947dee7d42f3fcc"
+            "url": "https://static.rust-lang.org/dist/rust-1.66.1-i686-pc-windows-msvc.msi",
+            "hash": "f940015b31570bb2ab48c9839f64d65f2fc87b3d5fc6e806147554ee074c8cb8"
+        },
+        "arm64": {
+            "url": "https://static.rust-lang.org/dist/rust-1.66.1-aarch64-pc-windows-msvc.msi",
+            "hash": "6512b7254efd3abc68915aeffbac57011fad6dfb3b4659eeca9bed6aff675443"
         }
     },
     "extract_dir": "Rust",
@@ -26,10 +38,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://static.rust-lang.org/dist/rust-$version-x86_64-pc-windows-gnu.msi"
+                "url": "https://static.rust-lang.org/dist/rust-$version-x86_64-pc-windows-msvc.msi"
             },
             "32bit": {
-                "url": "https://static.rust-lang.org/dist/rust-$version-i686-pc-windows-gnu.msi"
+                "url": "https://static.rust-lang.org/dist/rust-$version-i686-pc-windows-msvc.msi"
+            },
+            "arm64": {
+                "url": "https://static.rust-lang.org/dist/rust-$version-aarch64-pc-windows-msvc.msi"
             }
         },
         "hash": {
