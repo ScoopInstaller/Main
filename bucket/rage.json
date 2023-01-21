@@ -1,0 +1,25 @@
+{
+    "version": "0.9.0",
+    "description": "A simple, secure and modern encryption tool (and Rust library) with small explicit keys, no config options, and UNIX-style composability.",
+    "homepage": "https://github.com/str4d/rage",
+    "license": "Apache-2.0, MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/str4d/rage/releases/download/v0.9.0/rage-v0.9.0-x86_64-windows.zip",
+            "hash": "289529ec35996f88d900bd92c835b756eafed42592fe1129d3530e5a9cd95063"
+        }
+    },
+    "extract_dir": "rage",
+    "bin": [
+        "rage.exe",
+        "rage-keygen.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/str4d/rage/releases/download/v$version/rage-v$version-x86_64-windows.zip"
+            }
+        }
+    }
+}
