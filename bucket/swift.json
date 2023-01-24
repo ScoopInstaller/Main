@@ -19,15 +19,22 @@
     },
     "pre_install": [
         "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
-        "Get-ChildItem \"$dir\\extract_folder\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
+        "Get-ChildItem \"$dir\\extract_folder\\AttachedContainer\\*.msi\" | ForEach-Object {",
+        "    if ($_.Name -in @('icu.msi', 'runtime.msi')) { Expand-MsiArchive $_ \"$dir\\Swift\" }",
+        "    else { Expand-MsiArchive $_ \"$dir\" }",
+        "}",
         "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
     ],
-    "env_add_path": "Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
+    "env_add_path": [
+        "Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
+        "Swift\\icu-69.1\\usr\\bin",
+        "Swift\\runtime-development\\usr\\bin"
+    ],
     "env_set": {
         "SDKROOT": "$dir\\Developer\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk",
         "DEVELOPER_DIR": "$dir\\Developer"
     },
-    "bin": "runtime-development\\usr\\bin\\plutil.exe",
+    "bin": "Swift\\runtime-development\\usr\\bin\\plutil.exe",
     "checkver": {
         "url": "https://github.com/apple/swift",
         "regex": "/swift-([\\d.]+)-RELEASE"
