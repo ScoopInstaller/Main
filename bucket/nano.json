@@ -1,23 +1,11 @@
 {
-    "version": "7.1-12",
-    "description": "A small and friendly GNU editor, inspired by Pico",
+    "version": "7.2-6-10161",
+    "description": "The legendary small and friendly GNU editor, now UTF-8 ready for Windows 32/64",
     "homepage": "https://www.nano-editor.org/",
     "license": "GPL-3.0-only",
-    "notes": [
-        "Configure nano by editing its configuration file %USERPROFILE%\\.nanorc",
-        "NOTE: The config file was named nano.rc in the 2.5.3 release, but is now named .nanorc"
-    ],
-    "url": "https://files.lhmouse.com/nano-win/nano-win_10155_v7.1-12-g14f292a7c.7z",
-    "hash": "dce659505c33f6def27048d44d5998dcbe70ae4361c55fe32398af33bc83682e",
-    "post_install": [
-        "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
-        "   Copy-Item \"$dir\\.nanorc\" \"$env:USERPROFILE\\.nanorc\"",
-        "}"
-    ],
-    "checkver": {
-        "url": "https://files.lhmouse.com/nano-win/?C=N&O=D",
-        "regex": "nano-win_(?<build>\\d+)_v([\\d.-]+)-(?<commit>\\w+)\\.7z"
-    },
+    "notes": "Configure nano by editing its configuration file with nano ~\\.nanorc",
+    "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-6-10161/nano-for-windows_v7.2-6-10161.7z",
+    "hash": "426f71933d8a9536f3ceed22bae7bd0a37cf42a458cb4c7d91a0d67ba3d9b1fb",
     "architecture": {
         "64bit": {
             "bin": "pkg_x86_64-w64-mingw32\\bin\\nano.exe"
@@ -26,7 +14,18 @@
             "bin": "pkg_i686-w64-mingw32\\bin\\nano.exe"
         }
     },
+    "post_install": [
+        "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
+        "   Copy-Item \"$dir\\.nanorc\" \"$env:USERPROFILE\\.nanorc\"",
+        "   Add-Content \"$env:USERPROFILE\\.nanorc\" 'include \"~/scoop/apps/nano/current/pkg_x86_64-w64-mingw32/share/nano/*.nanorc\"'",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/okibcn/nano-for-windows",
+        "regex": "v(\\d+).(\\d+)-(\\d+)-(\\d+)\\.7z",
+        "replace": "${1}.${2}-${3}-${4}"
+    },
     "autoupdate": {
-        "url": "https://files.lhmouse.com/nano-win/nano-win_$matchBuild_v$version-$matchCommit.7z"
+        "url": "https://github.com/okibcn/nano-for-windows/releases/download/v$version/nano-for-windows_v$version.7z"
     }
 }
