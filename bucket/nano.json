@@ -12,7 +12,7 @@
             "pre_install": [
                 "if (-not (Test-Path ~/.nanorc)) {",
                 "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-                "    Add-Content ~\\.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
+                "    Add-Content ~/.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
                 "Move-Item \"$dir/pkg_x86_64-w64-mingw32/bin/*\" \"$dir\"",
                 "Move-Item \"$dir/pkg_x86_64-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
                 "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
@@ -24,7 +24,7 @@
             "pre_install": [
                 "if (-not (Test-Path ~/.nanorc)) {",
                 "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-                "    Add-Content ~\\.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
+                "    Add-Content ~/.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
                 "Move-Item \"$dir/pkg_i686-w64-mingw32/bin/*\" \"$dir\"",
                 "Move-Item \"$dir/pkg_i686-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
                 "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
