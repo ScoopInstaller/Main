@@ -3,27 +3,39 @@
     "description": "The legendary small and friendly GNU editor, now UTF-8 ready for Windows 32/64",
     "homepage": "https://www.nano-editor.org/",
     "license": "GPL-3.0-only",
-    "notes": "Configure nano by editing its configuration file with nano ~\\.nanorc",
+    "notes": "Configure nano by editing its configuration file with nano ~/.nanorc",
     "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-6-10161/nano-for-windows_v7.2-6-10161.7z",
     "hash": "426f71933d8a9536f3ceed22bae7bd0a37cf42a458cb4c7d91a0d67ba3d9b1fb",
+    "bin": "nano.exe",
     "architecture": {
         "64bit": {
-            "bin": "pkg_x86_64-w64-mingw32\\bin\\nano.exe"
+            "pre_install": [
+                "if (-not (Test-Path ~/.nanorc)) {",
+                "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
+                "    Add-Content ~\\.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
+                "Move-Item \"$dir/pkg_x86_64-w64-mingw32/bin/*\" \"$dir\"",
+                "Move-Item \"$dir/pkg_x86_64-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
+                "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
+                "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc",
+                "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', '~/scoop/apps/nano/current/syntax' | Set-Content ~/.nanorc"
+            ]
         },
         "32bit": {
-            "bin": "pkg_i686-w64-mingw32\\bin\\nano.exe"
+            "pre_install": [
+                "if (-not (Test-Path ~/.nanorc)) {",
+                "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
+                "    Add-Content ~\\.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
+                "Move-Item \"$dir/pkg_i686-w64-mingw32/bin/*\" \"$dir\"",
+                "Move-Item \"$dir/pkg_i686-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
+                "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
+                "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc",
+                "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', '~/scoop/apps/nano/current/syntax' | Set-Content ~/.nanorc"
+            ]
         }
     },
-    "post_install": [
-        "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
-        "   Copy-Item \"$dir\\.nanorc\" \"$env:USERPROFILE\\.nanorc\"",
-        "   Add-Content \"$env:USERPROFILE\\.nanorc\" 'include \"~/scoop/apps/nano/current/pkg_x86_64-w64-mingw32/share/nano/*.nanorc\"'",
-        "}"
-    ],
     "checkver": {
         "github": "https://api.github.com/repos/okibcn/nano-for-windows",
-        "regex": "v(\\d+).(\\d+)-(\\d+)-(\\d+)\\.7z",
-        "replace": "${1}.${2}-${3}-${4}"
+        "regex": "v([\\d\\.\\-]+)\\.7z"
     },
     "autoupdate": {
         "url": "https://github.com/okibcn/nano-for-windows/releases/download/v$version/nano-for-windows_v$version.7z"
