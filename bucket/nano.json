@@ -1,18 +1,18 @@
 {
-    "version": "7.2-6-10161",
+    "version": "7.2-8-10163",
     "description": "The legendary small and friendly GNU editor, now UTF-8 ready for Windows 32/64",
     "homepage": "https://www.nano-editor.org/",
     "license": "GPL-3.0-only",
     "notes": "Configure nano by editing its configuration file with nano ~/.nanorc",
-    "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-6-10161/nano-for-windows_v7.2-6-10161.7z",
-    "hash": "426f71933d8a9536f3ceed22bae7bd0a37cf42a458cb4c7d91a0d67ba3d9b1fb",
+    "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-8-10163/nano-for-windows_v7.2-8-10163.7z",
+    "hash": "c12b44f9ff0b35cc281cef9926216fd2b360ce4e2c663a5ae14d69414e70600a",
     "bin": "nano.exe",
     "architecture": {
         "64bit": {
             "pre_install": [
                 "if (-not (Test-Path ~/.nanorc)) {",
                 "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-                "    Add-Content ~/.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
+                "    Add-Content ~\\.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
                 "Move-Item \"$dir/pkg_x86_64-w64-mingw32/bin/*\" \"$dir\"",
                 "Move-Item \"$dir/pkg_x86_64-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
                 "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
@@ -24,7 +24,7 @@
             "pre_install": [
                 "if (-not (Test-Path ~/.nanorc)) {",
                 "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-                "    Add-Content ~/.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
+                "    Add-Content ~\\.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
                 "Move-Item \"$dir/pkg_i686-w64-mingw32/bin/*\" \"$dir\"",
                 "Move-Item \"$dir/pkg_i686-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
                 "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
