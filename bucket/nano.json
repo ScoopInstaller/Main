@@ -10,26 +10,32 @@
     "architecture": {
         "64bit": {
             "pre_install": [
+                "$arch='x86_64'",
+                "$scoopdir=$scoopdir -replace '\\\\', '/'",
                 "if (-not (Test-Path ~/.nanorc)) {",
                 "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-                "    Add-Content ~\\.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
-                "Move-Item \"$dir/pkg_x86_64-w64-mingw32/bin/*\" \"$dir\"",
-                "Move-Item \"$dir/pkg_x86_64-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
+                "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
+                "Move-Item \"$dir/pkg_$arch-w64-mingw32/bin/*\" \"$dir\"",
+                "Move-Item \"$dir/pkg_$arch-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
                 "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
+                "(Get-Content ~/.nanorc) -replace '(@PKGDATADIR@)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
                 "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc",
-                "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', '~/scoop/apps/nano/current/syntax' | Set-Content ~/.nanorc"
+                "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc"
             ]
         },
         "32bit": {
             "pre_install": [
+                "$arch='i686'",
+                "$scoopdir=$scoopdir -replace '\\\\', '/'",
                 "if (-not (Test-Path ~/.nanorc)) {",
                 "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-                "    Add-Content ~\\.nanorc 'include \"~/scoop/apps/nano/current/syntax/*.nanorc\"'}",
-                "Move-Item \"$dir/pkg_i686-w64-mingw32/bin/*\" \"$dir\"",
-                "Move-Item \"$dir/pkg_i686-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
+                "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
+                "Move-Item \"$dir/pkg_$arch-w64-mingw32/bin/*\" \"$dir\"",
+                "Move-Item \"$dir/pkg_$arch-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
                 "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
+                "(Get-Content ~/.nanorc) -replace '(@PKGDATADIR@)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
                 "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc",
-                "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', '~/scoop/apps/nano/current/syntax' | Set-Content ~/.nanorc"
+                "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc"
             ]
         }
     },
