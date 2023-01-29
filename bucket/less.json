@@ -5,14 +5,16 @@
     "license": "GPL-3.0-only|BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": [
-                "https://github.com/jftuga/less-Windows/releases/download/less-v608/less.exe",
-                "https://github.com/jftuga/less-Windows/releases/download/less-v608/lesskey.exe"
-            ],
-            "hash": [
-                "d42cb5d32851e27164d93aa2c6fa62e8969677871de55f9ea150e3962b5cdad3",
-                "d7b4d905fc22d680496bcb3df3a82bc526bb41b756b0d5fa48f1b2dd4f1f2d2f"
-            ]
+            "url": "https://github.com/jftuga/less-Windows/releases/download/less-v608/less-x64.zip",
+            "hash": "cd0ffc094a15c45ad5754801fa4da935fcd377b69ba0cace1a02f7780a12cd47"
+        },
+        "32bit": {
+            "url": "https://github.com/jftuga/less-Windows/releases/download/less-v608/less-x86.zip",
+            "hash": "7d41217bea6784907cdf3ef1db3a9eeadf5f28baa968e36ae5af63bca7fc0f1c"
+        },
+        "arm64": {
+            "url": "https://github.com/jftuga/less-Windows/releases/download/less-v608/less-arm64.zip",
+            "hash": "12f2f42919d1938c27e00205c3a9bf92fa72007b11bb33553455a4423dd29a9e"
         }
     },
     "bin": [
@@ -26,10 +28,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": [
-                    "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less.exe",
-                    "https://github.com/jftuga/less-Windows/releases/download/less-v$version/lesskey.exe"
-                ]
+                "url": "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less-x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less-arm64.zip"
             }
         }
     }
