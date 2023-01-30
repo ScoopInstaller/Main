@@ -7,38 +7,19 @@
     "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-8-10163.1/nano-for-windows_v7.2-8-10163.1.7z",
     "hash": "3c96a9218bda9257e20523ab37e07353104c9703e324e1198cb2c1ad308650ad",
     "bin": "nano.exe",
-    "architecture": {
-        "64bit": {
-            "pre_install": [
-                "$arch='x86_64'",
-                "$scoopdir=$scoopdir -replace '\\\\', '/'",
-                "if (-not (Test-Path ~/.nanorc)) {",
-                "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-                "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
-                "Move-Item \"$dir/pkg_$arch-w64-mingw32/bin/*\" \"$dir\"",
-                "Move-Item \"$dir/pkg_$arch-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
-                "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
-                "(Get-Content ~/.nanorc) -replace '(@PKGDATADIR@)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
-                "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc",
-                "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc"
-            ]
-        },
-        "32bit": {
-            "pre_install": [
-                "$arch='i686'",
-                "$scoopdir=$scoopdir -replace '\\\\', '/'",
-                "if (-not (Test-Path ~/.nanorc)) {",
-                "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-                "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
-                "Move-Item \"$dir/pkg_$arch-w64-mingw32/bin/*\" \"$dir\"",
-                "Move-Item \"$dir/pkg_$arch-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
-                "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
-                "(Get-Content ~/.nanorc) -replace '(@PKGDATADIR@)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
-                "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc",
-                "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc"
-            ]
-        }
-    },
+    "pre_install": [
+        "$arch=if ($architecture -match 64) {'x86_64'} else {'i686'}",
+        "$scoopdir=$scoopdir -replace '\\\\', '/'",
+        "if (-not (Test-Path ~/.nanorc)) {",
+        "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
+        "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
+        "Move-Item \"$dir/pkg_$arch-w64-mingw32/bin/*\" \"$dir\"",
+        "Move-Item \"$dir/pkg_$arch-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
+        "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
+        "(Get-Content ~/.nanorc) -replace '(@PKGDATADIR@)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
+        "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc",
+        "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc"
+    ],
     "checkver": {
         "github": "https://api.github.com/repos/okibcn/nano-for-windows",
         "regex": "v([\\d\\.\\-]+)\\.7z"
