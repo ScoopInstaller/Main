@@ -1,0 +1,24 @@
+{
+    "version": "1.3.0",
+    "description": "Asciinema GIF generator",
+    "homepage": "https://github.com/asciinema/agg",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/asciinema/agg/releases/download/v1.3.0/agg-x86_64-pc-windows-msvc.exe#/agg.exe",
+            "hash": "ccff75a5e943bd865fd86c5e9fdbf70fa778e6789439f791e4582979061bfa67"
+        }
+    },
+    "bin": "agg.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/asciinema/agg/releases/download/v$version/agg-x86_64-pc-windows-msvc.exe#/agg.exe"
+            }
+        }
+    }
+}
