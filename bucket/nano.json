@@ -1,11 +1,12 @@
 {
     "version": "7.2-8-10163.3",
-    "description": "The legendary small and friendly GNU editor, now UTF-8 ready for Windows 32/64",
+    "description": "The legendary small and friendly GNU editor, UTF-8 and mouse ready for Windows CLI 32/64 bits",
     "homepage": "https://www.nano-editor.org/",
     "license": "GPL-3.0-only",
     "notes": [
         "Configure nano interface, colors, key assignments and more by typing nano ~/.nanorc",
-        "If you are upgrading nano, a copy of the old config file is available at ~/.nanorc.bak",
+        "Default folders have been updated, no custom setting has been modified. Find a backup of",
+        "the old config file at \"$dir\\.nanorc.bak\"",
         "Visit https://github.com/okibcn/nano-for-windows for more information."
     ],
     "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-8-10163.3/nano-for-windows_v7.2-8-10163.3.7z",
@@ -17,8 +18,7 @@
         "if (-not (Test-Path ~/.nanorc)){",
         "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
         "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
-        "elseif (-not (Test-Path ~/.nanorc.bak)){",
-        "    Copy-Item ~/.nanorc ~/.nanorc.bak}",
+        "else{Copy-Item ~/.nanorc \"$dir/.nanorc.bak\"}",
         "Move-Item \"$dir/pkg_$arch-w64-mingw32/bin/*\" \"$dir\"",
         "Move-Item \"$dir/pkg_$arch-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
         "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
