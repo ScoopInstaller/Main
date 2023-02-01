@@ -11,6 +11,10 @@
         "32bit": {
             "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.2.1/v2ray-windows-32.zip",
             "hash": "dc9f37dbeb32221e62b9a52b79f1842a217f049675872b334e1e5fd96121d0d2"
+        },
+        "arm64": {
+            "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.2.1/v2ray-windows-arm64-v8a.zip",
+            "hash": "4b72b11f350a4a8db180b02f4eb6c8b2c757defbfa1e9177b3d56034c108ee2d"
         }
     },
     "bin": "v2ray.exe",
@@ -25,11 +29,14 @@
             },
             "32bit": {
                 "url": "https://github.com/v2fly/v2ray-core/releases/download/v$version/v2ray-windows-32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/v2fly/v2ray-core/releases/download/v$version/v2ray-windows-arm64-v8a.zip"
             }
         },
         "hash": {
             "url": "$url.dgst",
-            "regex": "SHA512= $sha512"
+            "regex": "SHA2-256= $sha256"
         }
     }
 }
