@@ -1,0 +1,24 @@
+{
+    "version": "1.1.0",
+    "description": "Cloud-native application life-cycle orchestration",
+    "homepage": "https://keptn.sh/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/keptn/keptn/releases/download/1.1.0/keptn-1.1.0-windows-amd64.tar.gz",
+            "hash": "2b38b2b9efbf7c5c3d4afc321d199a9a6ab752c86ef806749d858afef4b982af"
+        }
+    },
+    "pre_install": "Rename-Item \"$dir\\keptn-$version-windows-amd64.exe\" keptn.exe",
+    "bin": "keptn.exe",
+    "checkver": {
+        "github": "https://github.com/keptn/keptn"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/keptn/keptn/releases/download/$version/keptn-$version-windows-amd64.tar.gz"
+            }
+        }
+    }
+}
