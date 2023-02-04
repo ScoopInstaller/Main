@@ -6,7 +6,7 @@
     "url": "https://dfu-util.sourceforge.net/releases/dfu-util-0.11-binaries.tar.xz",
     "hash": "6450de30a7dcd8d8c1273f43f0b153f054fd24d85f7f38296b1ad8edbd2ddb25",
     "pre_install": [
-        "if ($architecture -eq 'arm64') { error \"$app does not support $architecture\"; break }",
+        "if ($architecture -eq 'arm64') { $architecture = '64bit' }",
         "$path = \"$dir\\dfu-util-$version-binaries\"",
         "Move-Item \"$path\\win$($architecture.Substring(0, 2))\\*\" \"$dir\"",
         "Remove-Item -Recurse $path"
