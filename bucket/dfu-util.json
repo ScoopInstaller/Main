@@ -1,0 +1,30 @@
+{
+    "version": "0.11",
+    "description": "DFU is intended to download and upload firmware to/from devices connected over USB",
+    "license": "GPL-2.0-only",
+    "homepage": "https://dfu-util.sourceforge.net/",
+    "url": "https://dfu-util.sourceforge.net/releases/dfu-util-0.11-binaries.tar.xz",
+    "hash": "6450de30a7dcd8d8c1273f43f0b153f054fd24d85f7f38296b1ad8edbd2ddb25",
+    "pre_install": [
+        "if ($architecture -eq 'arm64') { error \"$app does not support $architecture\"; break }",
+        "$path = \"$dir\\dfu-util-$version-binaries\"",
+        "Move-Item \"$path\\win$($architecture.Substring(0, 2))\\*\" \"$dir\"",
+        "Remove-Item -Recurse $path"
+    ],
+    "bin": [
+        "dfu-prefix.exe",
+        "dfu-suffix.exe",
+        "dfu-util-static.exe",
+        "dfu-util.exe",
+        "lsusb-static.exe",
+        "lsusb.exe"
+    ],
+    "checkver": {
+        "url": "https://gitlab.com/api/v4/projects/188452/repository/tags",
+        "jsonpath": "$.[0].name",
+        "regex": "v([\\w.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://dfu-util.sourceforge.net/releases/dfu-util-$version-binaries.tar.xz"
+    }
+}
