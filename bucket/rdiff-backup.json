@@ -3,18 +3,36 @@
     "description": "Reverse differential backup tool, over a network or locally",
     "homepage": "https://rdiff-backup.net",
     "license": "GPL-2.0-only",
+    "notes": "Please refer to https://rdiff-backup.net/Windows-README.html for (possibly outdated) Windows specific documentation.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v2.2.2/rdiff-backup-2.2.2.win64exe.zip",
+            "hash": "fa37ae6555a6d34a3a1756a2791f0cc67fa4724ccb10deddbcda7a0999bae447",
+            "extract_dir": "rdiff-backup-2.2.2-64"
+        },
+        "32bit": {
+            "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v2.2.2/rdiff-backup-2.2.2.win32exe.zip",
+            "hash": "5ee2d372561f250f500d03483a4e73af2db74eb2f4d38f599da689cd3f74af83",
+            "extract_dir": "rdiff-backup-2.2.2-32"
+        }
+    },
     "suggest": {
         "vcredist2008": "extras/vcredist2008"
     },
-    "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v2.2.2/rdiff-backup-2.2.2.win32exe.zip",
-    "hash": "5ee2d372561f250f500d03483a4e73af2db74eb2f4d38f599da689cd3f74af83",
-    "extract_dir": "rdiff-backup-2.2.2",
     "bin": "rdiff-backup.exe",
     "checkver": {
         "github": "https://github.com/rdiff-backup/rdiff-backup"
     },
     "autoupdate": {
-        "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v$version/rdiff-backup-$version.win32exe.zip",
-        "extract_dir": "rdiff-backup-$version"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v$version/rdiff-backup-$version.win64exe.zip",
+                "extract_dir": "rdiff-backup-$version-64"
+            },
+            "32bit": {
+                "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v$version/rdiff-backup-$version.win32exe.zip",
+                "extract_dir": "rdiff-backup-$version-32"
+            }
+        }
     }
 }
