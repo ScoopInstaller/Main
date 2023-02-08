@@ -15,28 +15,7 @@
             "extract_dir": "mingw32"
         }
     },
-    "extract_to": "data",
-    "pre_install": [
-        "Move-Item \"$dir\\data\\bin\\luajit.exe\" \"$dir\"",
-        "Move-Item \"$dir\\data\\bin\\lua51.dll\" \"$dir\"",
-        "New-Item \"$dir\\lua\" -ItemType Directory -Force | Out-Null",
-        "Move-Item \"$dir\\data\\share\\luajit*\\*\" \"$dir\\lua\""
-    ],
-    "post_install": "Remove-Item \"$dir\\data\" -Recurse -Force",
-    "bin": [
-        [
-            "luajit.exe",
-            "lua"
-        ],
-        [
-            "luajit.exe",
-            "lua51"
-        ],
-        [
-            "luajit.exe",
-            "luajit"
-        ]
-    ],
+    "bin": "bin\\luajit.exe",
     "checkver": {
         "url": "https://packages.msys2.org/api/search?query=mingw-w64-x86_64-luajit&qtype=binpkg",
         "jsonpath": "$.results.exact.version"
