@@ -1,0 +1,25 @@
+{
+    "version": "8.3.0",
+    "description": "Watches over your Cargo project's source. ",
+    "homepage": "https://github.com/watchexec/cargo-watch",
+    "license": "CC0-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/watchexec/cargo-watch/releases/download/v8.3.0/cargo-watch-v8.3.0-x86_64-pc-windows-msvc.zip",
+            "hash": "dad199769696e643d7c60dfa50b45a915040ca5b9efbee5f42ba40100cee7ee4"
+        }
+    },
+    "extract_dir": "cargo-watch-v8.3.0-x86_64-pc-windows-msvc",
+    "bin": "cargo-watch.exe",
+    "checkver": {
+        "github": "https://github.com/watchexec/cargo-watch"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/watchexec/cargo-watch/releases/download/v$version/cargo-watch-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "extract_dir": "cargo-watch-v$version-x86_64-pc-windows-msvc"
+    }
+}
