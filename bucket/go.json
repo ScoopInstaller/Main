@@ -3,11 +3,6 @@
     "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://golang.org",
     "license": "BSD-3-Clause",
-    "notes": [
-        "Your GOROOT has been set to: $dir",
-        "You can run 'go env GOROOT' to view this at any time.",
-        "\"$env:USERPROFILE\\go\\bin\" has been added to your PATH."
-    ],
     "architecture": {
         "64bit": {
             "url": "https://dl.google.com/go/go1.20.1.windows-amd64.zip",
@@ -24,18 +19,25 @@
     },
     "extract_dir": "go",
     "installer": {
-        "script": "add_first_in_path \"$env:USERPROFILE\\go\\bin\" $global"
+        "script": [
+            "$envgopath = \"$env:USERPROFILE\\go\"",
+            "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
+            "info \"Adding '$envgopath\\bin' to PATH...\"",
+            "add_first_in_path \"$envgopath\\bin\" $global"
+        ]
     },
     "uninstaller": {
-        "script": "remove_from_path \"$env:USERPROFILE\\go\\bin\" $global"
+        "script": [
+            "$envgopath = \"$env:USERPROFILE\\go\"",
+            "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
+            "info \"Removing '$envgopath\\bin' from PATH...\"",
+            "remove_from_path \"$envgopath\\bin\" $global"
+        ]
     },
     "bin": [
         "bin\\go.exe",
         "bin\\gofmt.exe"
     ],
-    "env_set": {
-        "GOROOT": "$dir"
-    },
     "checkver": {
         "url": "https://golang.org/dl/",
         "regex": "go([\\d.]+)\\.windows-"
