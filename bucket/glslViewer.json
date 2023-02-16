@@ -1,0 +1,37 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+    "version": "3.1.1",
+    "license": "BSD-3-Clause",
+    "homepage": "https://github.com/patriciogonzalezvivo/glslViewer",
+    "description": "GlslViewer is a flexible console-base OpenGL Sandbox to display 2D/3D GLSL shaders without the need of an UI. You can definitely make your own UI or wrapper using the Python Module (include) or any other tool that communicates back/forth with glslViewer through the standard POSIX console In/Out or OSC.",
+    "checkver": "github",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/patriciogonzalezvivo/glslViewer/releases/download/v3.1.1/glslViewer-3.1.1-win64-AMD64.zip",
+                "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n4.4-latest-win64-gpl-shared-4.4.zip"
+            ],
+            "hash": [
+                "cc48d64ce403149e290a80ae06aeb6b6da11ba2ffe26a043015101e48d553f87",
+                "9bd9417f98f72a8c6b542d65ca539b0611c0413fcd37325566fabca8366bb720"
+            ],
+            "extract_dir": "glslViewer-3.1.1-win64-AMD64/bin"
+        }
+    },
+    "bin": "glslViewer.exe",
+    "post_install": [
+        "Copy-Item $dir/ffmpeg-n4.4-latest-win64-gpl-shared-4.4/bin/*.dll $dir",
+        "Remove-Item -Recurse -Force $dir/ffmpeg-n4.4-latest-win64-gpl-shared-4.4"
+    ],
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/patriciogonzalezvivo/glslViewer/releases/download/v$version/glslViewer-$version-win64-AMD64.zip",
+                    "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n4.4-latest-win64-gpl-shared-4.4.zip"
+                ],
+                "extract_dir": "glslViewer-$version-win64-AMD64/bin"
+            }
+        }
+    }
+}
