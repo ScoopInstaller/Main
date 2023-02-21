@@ -1,0 +1,24 @@
+{
+    "version": "0.0.249",
+    "description": "An extremely fast Python linter, written in Rust",
+    "homepage": "https://github.com/charliermarsh/ruff",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/charliermarsh/ruff/releases/download/v0.0.249/ruff-x86_64-pc-windows-msvc.zip",
+            "hash": "d3e18164a996f81cce0d7962942041ddff35105719becd4085951c12050d5a0b"
+        }
+    },
+    "bin": "ruff.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ducaale/xh/releases/download/v$version/ruff-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
