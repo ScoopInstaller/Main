@@ -1,0 +1,43 @@
+{
+    "##": "This manifest uses 7z instead of Expand-7zipArchive due to invalid tar extraction error",
+    "version": "1.4.2+0",
+    "description": "High performance software for linear optimization",
+    "homepage": "https://www.maths.ed.ac.uk/hall/HiGHS/",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v1.4.2+0/HiGHS.v1.4.2.i686-w64-mingw32-cxx11.tar.gz#/dl.gz",
+            "hash": "bce3bdd3a899688a1ebdacc8627a02cf4e82c1afba2fcbe0a23da964c7e94719"
+        },
+        "64bit": {
+            "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v1.4.2+0/HiGHS.v1.4.2.x86_64-w64-mingw32-cxx11.tar.gz#/dl.gz",
+            "hash": "aaa39e06b5063f598b16baf48c8bef19359511b080ce056d7d70eecc0ddd639b"
+        }
+    },
+    "installer": {
+        "script": [
+            "7z x \"$dir\\dl\"  -o\"$dir\" -ttar | Out-Null -ErrorAction SilentlyContinue",
+            "Remove-Item \"$dir\\dl\""
+        ]
+    },
+    "bin": [
+        [
+            "bin\\highs.exe",
+            "highs"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl",
+        "regex": "HiGHS-v([\\d.]+\\+\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v$version/HiGHS.v$matchHead.i686-w64-mingw32-cxx11.tar.gz#/dl.gz"
+            },
+            "64bit": {
+                "url": "https://github.com/JuliaBinaryWrappers/HiGHS_jll.jl/releases/download/HiGHS-v$version/HiGHS.v$matchHead.x86_64-w64-mingw32-cxx11.tar.gz#/dl.gz"
+            }
+        }
+    }
+}
