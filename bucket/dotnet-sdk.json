@@ -1,5 +1,5 @@
 {
-    "version": "7.0.200",
+    "version": "8.0.100-preview.1.23115.2",
     "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
     "homepage": "https://www.microsoft.com/net/",
     "license": "MIT",
@@ -8,16 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/7.0.200/dotnet-sdk-7.0.200-win-x64.zip",
-            "hash": "sha512:f1a480dfa63d9a1912726374e67612a08bdfa438b10f5c70b7dc21b9251e8a8984c42b9a901d0f429e62e81a8f16cd8d0000f409e9f52eac5536e365895885f0"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/8.0.100-preview.1.23115.2/dotnet-sdk-8.0.100-preview.1.23115.2-win-x64.zip",
+            "hash": "42919c316dbd4326450c8a8b88be8c40aec01b8ad98649b4ee62bcc8784c95d2"
         },
         "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/7.0.200/dotnet-sdk-7.0.200-win-x86.zip",
-            "hash": "sha512:2850a888135efae77a8f46736202626881ac0330a599e2980e361379caa08eef13469960e689529adc7b1dce8d64884fc73ae026d39d6629f336362a457006e2"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/8.0.100-preview.1.23115.2/dotnet-sdk-8.0.100-preview.1.23115.2-win-x86.zip",
+            "hash": "f1cb5abb043295158ec9b4852f4881a3bf2012be1d55d4a73383691680b5f1e2"
         },
         "arm64": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/7.0.200/dotnet-sdk-7.0.200-win-arm64.zip",
-            "hash": "sha512:6f58fde3219dc86420e3d2eb012bd62733a96e140ce5c8d3af4dd5d18c2f1eca5f73f92fadf62252c15a9ae1c8e860b8a0719b4396918760ecaf6d7be2cc8c91"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/8.0.100-preview.1.23115.2/dotnet-sdk-8.0.100-preview.1.23115.2-win-arm64.zip",
+            "hash": "7045bdea56b1341d034781241a83406cc27591c889f3c39a6e73580d781d9626"
         }
     },
     "env_add_path": ".",
@@ -25,10 +25,9 @@
         "DOTNET_ROOT": "$dir",
         "MSBuildSDKsPath": "$dir\\sdk\\$version\\Sdks"
     },
-    "pre_uninstall": "info 'If the uninstall fails with a message saying that access is denied, you may need to log out of your current account, log back in and try again.'",
     "checkver": {
         "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "regex": "(?s)(?<rtv>[\\d.]+)[^\\d]*?([\\d.]+)[^\\d]*?(?:sts|lts)"
+        "jsonpath": "$.releases-index.[0].latest-sdk"
     },
     "autoupdate": {
         "architecture": {
