@@ -16,17 +16,23 @@
     "checkver": {
         "script": [
             "# Using checkver script to check through all release tags",
-            "$url = 'https://api.github.com/repos/pester/Pester/releases'",
-            "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
-            "$releases = $(Invoke-WebRequest $url).Content | ConvertFrom-Json",
-            "$releases | ForEach-Object {",
-            "    if (!($_.tag_name -match '([\\d.]+)')) { return }",
-            "    if ($_.prerelease) { return }",
-            "    $ver = [Version]::new($matches[1])",
-            "    if ($ver -gt $latest_ver) { $latest_ver = $ver }",
+            "try {",
+            "    $auth = Get-GitHubToken",
+            "    $head = @{}",
+            "    if($auth) { $head.add('authorization', \"Bearer $auth\") }",
+            "    $url = 'https://api.github.com/repos/pester/Pester/releases'",
+            "    $latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
+            "    $releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
+            "    $releases | ForEach-Object {",
+            "        if (!($_.tag_name -match '([\\d.]+)')) { return }",
+            "        if ($_.prerelease) { return }",
+            "        $ver = [Version]::new($matches[1])",
+            "        if ($ver -gt $latest_ver) { $latest_ver = $ver }",
+            "    }",
+            "    if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; break }",
+            "    Write-Output $latest_ver",
             "}",
-            "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; break }",
-            "Write-Output $latest_ver"
+            "catch { error $_.Exception.Message; break }"
         ],
         "regex": "([\\d.]+)"
     },
