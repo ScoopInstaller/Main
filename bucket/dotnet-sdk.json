@@ -25,9 +25,10 @@
         "DOTNET_ROOT": "$dir",
         "MSBuildSDKsPath": "$dir\\sdk\\$version\\Sdks"
     },
+    "pre_uninstall": "info 'If the uninstall fails with a message saying that access is denied, you may need to log out of your current account, log back in and try again.'",
     "checkver": {
         "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "regex": "(?s)(?<rtv>[\\d.]+)[^\\d]*?([\\d.]+)[^\\d]*?(?:sts|lts)"
+        "regex": "\"latest-runtime\": \"(?<rtv>[\\d.]+)\",[\\s\\S]+?\"latest-sdk\": \"([\\d.]+)\",[\\s\\S]+?\"release-type\" : \"(sts|lts)\""
     },
     "autoupdate": {
         "architecture": {
