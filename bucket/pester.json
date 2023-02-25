@@ -21,6 +21,7 @@
             "$releases = $(Invoke-WebRequest $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
             "    if (!($_.tag_name -match '([\\d.]+)')) { return }",
+            "    if ($_.prerelease) { return }",
             "    $ver = [Version]::new($matches[1])",
             "    if ($ver -gt $latest_ver) { $latest_ver = $ver }",
             "}",
