@@ -1,5 +1,5 @@
 {
-    "version": "2022.04.1",
+    "version": "2022.09.1",
     "description": "A formal proof management system. It provides a formal language to write mathematical definitions, executable algorithms and theorems together with an environment for semi-interactive development of machine-checked proofs.",
     "homepage": "https://coq.inria.fr/",
     "license": {
@@ -8,12 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/coq/platform/releases/download/2022.04.1/Coq-Platform-release-2022.04.1-version_8.15_2022.04-arch-x86_64_signed.exe#/dl.7z",
-            "hash": "f5c717ee1e1220d8a3882bf84a479d4d338efd50cb96b9aa9466be7f8b1c29f8"
+            "url": "https://github.com/coq/platform/releases/download/2022.09.1/Coq-Platform-release-2022.09.1-version.8.16.2022.09-Windows-x86_64.exe#/dl.7z",
+            "hash": "63dee137bf3e587c68c42163fa7c90e888bbe63cad620707213b00e1c6f49144"
         },
         "32bit": {
-            "url": "https://github.com/coq/platform/releases/download/2022.04.1/Coq-Platform-release-2022.04.1-version_8.15_2022.04-arch-i686_signed.exe#/dl.7z",
-            "hash": "1af4f6302f09edf1abe576d8d9a37a52ad730f92ffe3c9285f030579b652048a"
+            "url": "https://github.com/coq/platform/releases/download/2022.09.1/Coq-Platform-release-2022.09.1-version.8.16.2022.09-Windows-i686.exe#/dl.7z",
+            "hash": "cfe73223182baabcdbab653f93c2ffbc81989953b105f5b2da25ed6f2b485159"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse -Force",
@@ -34,16 +34,16 @@
     },
     "checkver": {
         "url": "https://api.github.com/repos/coq/platform/releases/latest",
-        "regex": "Coq-Platform-release-([\\d.]+)-version_(?<coqver>[\\d.]+)_[\\d.]+-arch-x86_64_signed.exe",
+        "regex": "Coq-Platform-release-([\\d.]+)-version.(?<coqver>[\\d.]+)-Windows-x86_64.exe",
         "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/coq/platform/releases/download/$version/Coq-Platform-release-$version-version_$matchCoqver_$majorVersion.$minorVersion-arch-x86_64_signed.exe#/dl.7z"
+                "url": "https://github.com/coq/platform/releases/download/$version/Coq-Platform-release-$version-version.$matchCoqver-Windows-x86_64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://github.com/coq/platform/releases/download/$version/Coq-Platform-release-$version-version_$matchCoqver_$majorVersion.$minorVersion-arch-i686_signed.exe#/dl.7z"
+                "url": "https://github.com/coq/platform/releases/download/$version/Coq-Platform-release-$version-version.$matchCoqver-Windows-i686.exe#/dl.7z"
             }
         }
     }
