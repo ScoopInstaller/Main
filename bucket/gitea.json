@@ -40,16 +40,16 @@
         "data"
     ],
     "checkver": {
-        "url": "https://dl.gitea.io/gitea",
-        "regex": "Current Release ([\\d.]+)"
+        "url": "https://dl.gitea.com/gitea/version.json",
+        "jsonpath": "$.latest.version"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.gitea.io/gitea/$version/gitea-$version-windows-4.0-amd64.exe.xz"
+                "url": "https://dl.gitea.com/gitea/$version/gitea-$version-windows-4.0-amd64.exe.xz"
             },
             "32bit": {
-                "url": "https://dl.gitea.io/gitea/$version/gitea-$version-windows-4.0-386.exe.xz"
+                "url": "https://dl.gitea.com/gitea/$version/gitea-$version-windows-4.0-386.exe.xz"
             }
         },
         "hash": {
