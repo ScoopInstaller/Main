@@ -24,7 +24,7 @@
             "    $ver = [Version]::new($matches[1])",
             "    if ($ver -gt $latest_ver) { $latest_ver = $ver }",
             "}",
-            "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; break }",
+            "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; continue }",
             "Write-Output $latest_ver"
         ],
         "regex": "([\\d.]+)"
