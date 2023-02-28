@@ -1,23 +1,27 @@
 {
-    "version": "7.27.1",
+    "version": "7.28.0",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v7.27.1/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "c31c54b79a703d26d18e1b83d72448f488f5220466a1ea84a790824cf68db1ac"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v7.28.0/pnpm-win-x64.exe#/pnpm.exe",
+            "hash": "aaee0b7786166dc937ed4aed33a28fa3e1f312e6dd194e014aaa13a23753ee0c"
         }
     },
     "bin": "pnpm.exe",
     "checkver": {
         "script": [
             "# Using checkver script to check through all release tags",
+            "$auth = Get-GitHubToken",
+            "$head = @{}",
+            "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
             "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
-            "$releases = $(Invoke-WebRequest $url).Content | ConvertFrom-Json",
+            "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
             "    if (!($_.tag_name -match '([\\d.]+)')) { return }",
+            "    if ($_.prerelease) { return }",
             "    $ver = [Version]::new($matches[1])",
             "    if ($ver -gt $latest_ver) { $latest_ver = $ver }",
             "}",
