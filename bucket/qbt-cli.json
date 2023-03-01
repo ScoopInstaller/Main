@@ -1,0 +1,28 @@
+{
+    "version": "0.1.3",
+    "description": "A cli to manage qBittorrent",
+    "homepage": "https://github.com/Bpazy/qbt-cli",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Bpazy/qbt-cli/releases/download/v0.1.3/qbt-v0.1.3-windows-amd64.exe#/qbt.exe",
+            "hash": "B737EDCE987A31FCCB5BD4AB2F6E6DB352B9F4FC3E61EEA681A63B3BADEA543F"
+        },
+        "32bit": {
+            "url": "https://github.com/Bpazy/qbt-cli/releases/download/v0.1.3/qbt-v0.1.3-x86_64-pc-windows-gnu.exe#/qbt.exe",
+            "hash": "C7946566A2987F04CA19686942D4B7D699C9F77F3466125F32CFA78B9EC4353D"
+        }
+    },
+    "bin": "qbt.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Bpazy/qbt-cli/releases/download/v$version/qbt-v$version-windows-amd64.exe#/qbt.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/Bpazy/qbt-cli/releases/download/v$version/qbt-v$version-x86_64-pc-windows-gnu.exe#/qbt.exe"
+            }
+        }
+    }
+}
