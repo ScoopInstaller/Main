@@ -22,23 +22,34 @@
     "architecture": {
         "64bit": {
             "url": "https://cloud.r-project.org/bin/windows/base/old/4.2.2/R-4.2.2-win.exe",
-            "hash": "md5:eaa06020ec663918c580050038f1d1d5",
-            "bin": [
-                "bin\\x64\\R.exe",
-                "bin\\x64\\Rcmd.exe",
-                "bin\\x64\\Rgui.exe",
-                "bin\\x64\\Rscript.exe",
-                "bin\\x64\\Rterm.exe"
-            ],
-            "shortcuts": [
-                [
-                    "bin\\x64\\Rgui.exe",
-                    "R"
-                ]
-            ]
+            "hash": "md5:eaa06020ec663918c580050038f1d1d5"
         }
     },
+    "bin": [
+        "bin\\x64\\R.exe",
+        "bin\\x64\\Rcmd.exe",
+        "bin\\x64\\Rgui.exe",
+        "bin\\x64\\Rscript.exe",
+        "bin\\x64\\Rterm.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\x64\\Rgui.exe",
+            "R GUI"
+        ]
+    ],
     "persist": "site-library",
+    "post_install": [
+        "New-Item \"HKCU:\\Software\\R-core\\R\\$version\" -Force | Out-Null",
+        "New-Item \"HKCU:\\Software\\R-core\\R64\\$version\" -Force | Out-Null",
+        "Set-ItemProperty \"HKCU:\\Software\\R-core\\R\\$version\" -Name 'InstallPath' -Value $dir -Force",
+        "Set-ItemProperty \"HKCU:\\Software\\R-core\\R64\\$version\" -Name 'InstallPath' -Value $dir -Force",
+        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R' -Name 'InstallPath' -Value $dir -Force",
+        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R' -Name 'Current Version' -Value $version -Force",
+        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R64' -Name 'InstallPath' -Value $dir -Force",
+        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R64' -Name 'Current Version' -Value $version -Force"
+    ],
+    "pre_uninstall": "Remove-Item 'HKCU:\\Software\\R-core' -Recurse -Force",
     "checkver": {
         "url": "https://cloud.r-project.org/bin/windows/base/",
         "regex": "R-([\\d.]+)"
