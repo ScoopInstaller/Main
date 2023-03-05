@@ -3,12 +3,7 @@
     "description": "The legendary small and friendly GNU editor, UTF-8 and mouse ready for Windows 32/64/ARM CLI",
     "homepage": "https://github.com/okibcn/nano-for-windows",
     "license": "GPL-3.0-only",
-    "notes": [
-        "Configure nano interface, colors, key assignments and more by typing nano ~/.nanorc",
-        "Default folders have been updated, no custom setting has been modified. Find a backup of",
-        "the old config file at \"$dir\\.nanorc.bak\"",
-        "Visit https://github.com/okibcn/nano-for-windows for more information."
-    ],
+    "notes": "The old config file has been backed up to \"$dir\\.nanorc.bak\"",
     "architecture": {
         "64bit": {
             "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-13.1/nano-for-windows_win64_v7.2-13.1.zip",
@@ -25,10 +20,12 @@
     },
     "pre_install": [
         "$scoopdir=$scoopdir -replace '\\\\','/'",
-        "if (-not (Test-Path ~/.nanorc)){",
+        "if (-not (Test-Path ~/.nanorc)) {",
         "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-        "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
-        "else{Copy-Item ~/.nanorc \"$dir/.nanorc.bak\"}",
+        "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"",
+        "} else {",
+        "    Copy-Item ~/.nanorc \"$dir/.nanorc.bak\"",
+        "}",
         "(Get-Content ~/.nanorc) -replace '(@PKGDATADIR@)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
         "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
         "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc"
