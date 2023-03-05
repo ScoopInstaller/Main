@@ -1,37 +1,57 @@
 {
-    "version": "7.2-13-10168",
-    "description": "The legendary small and friendly GNU editor, UTF-8 and mouse ready for Windows CLI 32/64 bits",
-    "homepage": "https://www.nano-editor.org/",
+    "version": "7.2-13.1",
+    "description": "The legendary small and friendly GNU editor, UTF-8 and mouse ready for Windows 32/64/ARM CLI",
+    "homepage": "https://github.com/okibcn/nano-for-windows",
     "license": "GPL-3.0-only",
     "notes": [
+        "Configure nano interface, colors, key assignments and more by typing nano ~/.nanorc",
         "Default folders have been updated, no custom setting has been modified. Find a backup of",
         "the old config file at \"$dir\\.nanorc.bak\"",
         "Visit https://github.com/okibcn/nano-for-windows for more information."
     ],
-    "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-13-10168/nano-for-windows_v7.2-13-10168.7z",
-    "hash": "082f326da0c204becd66d658c99132f68e7abfabc9ac4a8ef2e03e391d7f64ec",
-    "bin": "nano.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-13.1/nano-for-windows_win64_v7.2-13.1.zip",
+            "hash": "f16e34c2164d60511f7753f20d6f9a0957a6953306b4e63de427a92bc0dea340"
+        },
+        "32bit": {
+            "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-13.1/nano-for-windows_win32_v7.2-13.1.zip",
+            "hash": "2947460ee2b410f0557400be64cace00996ff9bb62b658ad60a4ec02a96547fa"
+        },
+        "arm64": {
+            "url": "https://github.com/okibcn/nano-for-windows/releases/download/v7.2-13.1/nano-for-windows_arm64_v7.2-13.1.zip",
+            "hash": "5578596d073c258a130d06254cc941e9f638a67aa86d2cf19a79d7221c11fae8"
+        }
+    },
     "pre_install": [
-        "$arch = if ($architecture -match '64') {'x86_64'} else {'i686'}",
-        "$scoopdir = $scoopdir -replace '\\\\','/'",
-        "if (-not (Test-Path ~/.nanorc)) {",
+        "$scoopdir=$scoopdir -replace '\\\\','/'",
+        "if (-not (Test-Path ~/.nanorc)){",
         "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-        "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"",
-        "} else {",
-        "    Copy-Item ~/.nanorc \"$dir/.nanorc.bak\"",
-        "}",
-        "Move-Item \"$dir/pkg_$arch-w64-mingw32/bin/*\" \"$dir\"",
-        "Move-Item \"$dir/pkg_$arch-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
-        "Remove-Item  \"$dir/pkg*\" -Force -Recurse",
+        "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
+        "else{Copy-Item ~/.nanorc \"$dir/.nanorc.bak\"}",
         "(Get-Content ~/.nanorc) -replace '(@PKGDATADIR@)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
         "(Get-Content ~/.nanorc) -replace '(/usr/share/nano)', \"$scoopdir/apps/nano/current/syntax\" | Set-Content ~/.nanorc",
         "(Get-Content ~/.nanorc) -replace '(pkg_.*-w64-mingw32.share.nano)', 'syntax' | Set-Content ~/.nanorc"
     ],
+    "bin": "nano.exe",
     "checkver": {
-        "github": "https://api.github.com/repos/okibcn/nano-for-windows",
-        "regex": "v([\\d\\.\\-]+)\\.7z"
+        "url": "https://github.com/okibcn/nano-for-windows/releases",
+        "regex": "assets/v([\\d\\.\\-]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/okibcn/nano-for-windows/releases/download/v$version/nano-for-windows_v$version.7z"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/okibcn/nano-for-windows/releases/download/v$version/nano-for-windows_win64_v$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/okibcn/nano-for-windows/releases/download/v$version/nano-for-windows_win32_v$version.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/okibcn/nano-for-windows/releases/download/v$version/nano-for-windows_arm64_v$version.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/okibcn/nano-for-windows/releases/download/v$version/hashes.txt"
+        }
     }
 }
