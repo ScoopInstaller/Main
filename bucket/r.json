@@ -17,6 +17,11 @@
         "... but this only affects your current session: if you'd like to remove it for all future sessions you need to add the command above to your Powershell profile.",
         "",
         "Annoying, right?! You might want to check out Pshazz (scoop install pshazz)--this has a plugin to remove some crazy aliases from Powershell, as well as many other improvements."
+        "",
+        "If you want 'r-studio' to recognize 'r', run:",
+        "$dir\\install_r-studio_registry_entries.ps1",
+        "If you want 'r-studio' to not recognize 'r', run:",
+        "$dir\\uninstall_r-studio_registry_entries.ps1"
     ],
     "innosetup": true,
     "architecture": {
@@ -25,6 +30,22 @@
             "hash": "md5:eaa06020ec663918c580050038f1d1d5"
         }
     },
+    "pre_install": [
+        "$content1 = @\"",
+        "New-Item \"HKCU:\\Software\\R-core\\R\\$version\" -Force | Out-Null",
+        "New-Item \"HKCU:\\Software\\R-core\\R64\\$version\" -Force | Out-Null",
+        "Set-ItemProperty \"HKCU:\\Software\\R-core\\R\\$version\" -Name 'InstallPath' -Value \"$dir\" -Force",
+        "Set-ItemProperty \"HKCU:\\Software\\R-core\\R64\\$version\" -Name 'InstallPath' -Value \"$dir\" -Force",
+        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R' -Name 'InstallPath' -Value \"$dir\" -Force",
+        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R' -Name 'Current Version' -Value \"$version\" -Force",
+        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R64' -Name 'InstallPath' -Value \"$dir\" -Force",
+        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R64' -Name 'Current Version' -Value \"$version\" -Force",
+        "\"@",
+        "$content2 = 'Remove-Item ''HKCU:\\Software\\R-core'' -Recurse -Force'",
+        "",
+        "Set-Content \"$dir\\install_r-studio_registry_entries.ps1\" $content1 -Encoding 'utf8' -Force",
+        "Set-Content \"$dir\\uninstall_r-studio_registry_entries.ps1\" $content2 -Encoding 'utf8' -Force"
+    ],
     "bin": [
         "bin\\x64\\R.exe",
         "bin\\x64\\Rcmd.exe",
@@ -39,16 +60,6 @@
         ]
     ],
     "persist": "site-library",
-    "post_install": [
-        "New-Item \"HKCU:\\Software\\R-core\\R\\$version\" -Force | Out-Null",
-        "New-Item \"HKCU:\\Software\\R-core\\R64\\$version\" -Force | Out-Null",
-        "Set-ItemProperty \"HKCU:\\Software\\R-core\\R\\$version\" -Name 'InstallPath' -Value $dir -Force",
-        "Set-ItemProperty \"HKCU:\\Software\\R-core\\R64\\$version\" -Name 'InstallPath' -Value $dir -Force",
-        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R' -Name 'InstallPath' -Value $dir -Force",
-        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R' -Name 'Current Version' -Value $version -Force",
-        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R64' -Name 'InstallPath' -Value $dir -Force",
-        "Set-ItemProperty 'HKCU:\\Software\\R-core\\R64' -Name 'Current Version' -Value $version -Force"
-    ],
     "pre_uninstall": "Remove-Item 'HKCU:\\Software\\R-core' -Recurse -Force",
     "checkver": {
         "url": "https://cloud.r-project.org/bin/windows/base/",
