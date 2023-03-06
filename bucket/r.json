@@ -1,5 +1,5 @@
 {
-    "version": "4.2.2-r83933",
+    "version": "4.2.2",
     "description": "A free software environment for statistical computing and graphics.",
     "homepage": "https://www.r-project.org",
     "license": "GPL-2.0-or-later",
@@ -26,8 +26,8 @@
     "innosetup": true,
     "architecture": {
         "64bit": {
-            "url": "https://cloud.r-project.org/bin/windows/base/R-4.2.2patched-win.exe",
-            "hash": "md5:1752f63b9e5b2eec1a4e5f40870ed2a4"
+            "url": "https://cloud.r-project.org/bin/windows/base/old/4.2.2/R-4.2.2-win.exe",
+            "hash": "md5:eaa06020ec663918c580050038f1d1d5"
         }
     },
     "pre_install": [
@@ -56,22 +56,21 @@
     "shortcuts": [
         [
             "bin\\x64\\Rgui.exe",
-            "R Patched"
+            "R GUI"
         ]
     ],
     "persist": "site-library",
     "pre_uninstall": "Remove-Item 'HKCU:\\Software\\R-core' -Recurse -Force",
     "checkver": {
-        "url": "https://cloud.r-project.org/bin/windows/base/rpatched.html",
-        "regex": "(?s)R-([\\d.]+)(?<stage>[^-]+)-win.*\\((?<rev>r\\d+)\\)",
-        "replace": "${1}-${rev}"
+        "url": "https://cloud.r-project.org/bin/windows/base/",
+        "regex": "R-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cloud.r-project.org/bin/windows/base/R-$matchHead$matchStage-win.exe",
+                "url": "https://cloud.r-project.org/bin/windows/base/old/$version/R-$version-win.exe",
                 "hash": {
-                    "url": "$baseurl/md5sum.R-$matchHead$matchStage.txt"
+                    "url": "$baseurl/md5sum.R-$version.txt"
                 }
             }
         }
