@@ -3,11 +3,19 @@
     "description": "Simple yet fancy CPU architecture fetching tool",
     "homepage": "https://github.com/Dr-Noob/cpufetch",
     "license": "MIT",
-    "url": "https://github.com/Dr-Noob/cpufetch/releases/download/v1.03/cpufetch_x86-64_windows.exe#/cpufetch.exe",
-    "hash": "87f53d130e1c83b317ef93876556abe66d4e68a61cd3b93f23269f4a1bdc6e11",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Dr-Noob/cpufetch/releases/download/v1.03/cpufetch_x86-64_windows.exe#/cpufetch.exe",
+            "hash": "87f53d130e1c83b317ef93876556abe66d4e68a61cd3b93f23269f4a1bdc6e11"
+        }
+    },
     "bin": "cpufetch.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/Dr-Noob/cpufetch/releases/download/v$version/cpufetch_x86-64_windows.exe#/cpufetch.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Dr-Noob/cpufetch/releases/download/v$version/cpufetch_x86-64_windows.exe#/cpufetch.exe"
+            }
+        }
     }
 }
