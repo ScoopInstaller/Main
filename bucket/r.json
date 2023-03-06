@@ -60,7 +60,11 @@
         ]
     ],
     "persist": "site-library",
-    "pre_uninstall": "Remove-Item 'HKCU:\\Software\\R-core' -Recurse -Force",
+    "pre_uninstall": [
+        "if ($cmd -eq 'uninstall')",
+        "   Remove-Item 'HKCU:\\Software\\R-core' -ErrorAction 'SilentlyContinue' -Recurse -Force",
+        "}"
+    ],
     "checkver": {
         "url": "https://cloud.r-project.org/bin/windows/base/",
         "regex": "R-([\\d.]+)"
