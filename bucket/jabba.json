@@ -1,18 +1,22 @@
 {
-    "version": "0.11.2",
+    "version": "0.12.2",
     "description": "Java Version Manager",
-    "homepage": "https://github.com/shyiko/jabba",
+    "homepage": "https://github.com/Jabba-Team/jabba",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/shyiko/jabba/releases/download/0.11.2/jabba-0.11.2-windows-amd64.exe#/jabba.exe",
-            "hash": "f0eb517f41fe42499f7abef64edac3226c20b905671f852f36fdfbb6652a3c9b",
-            "pre_install": [
-                "ensure \"$dir\\bin\" | Out-Null",
-                "Move-Item \"$dir\\jabba.exe\" \"$dir\\bin\\jabba.exe\""
-            ]
+            "url": "https://github.com/Jabba-Team/jabba/releases/download/0.12.2/jabba-0.12.2-windows-amd64.exe#/jabba.exe",
+            "hash": "5d3d8b68ee5584ca083d79d8e30481fa0d2d509990d4cfdb102aec16b4d3f378"
+        },
+        "32bit": {
+            "url": "https://github.com/Jabba-Team/jabba/releases/download/0.12.2/jabba-0.12.2-windows-386.exe#/jabba.exe",
+            "hash": "e83f6b516ea45f87a957181a9c6aacfe83dc4723015e9a344aa438dbb6fd00d4"
         }
     },
+    "pre_install": [
+        "ensure \"$dir\\bin\" | Out-Null",
+        "Move-Item \"$dir\\jabba.exe\" \"$dir\\bin\\jabba.exe\""
+    ],
     "bin": "bin\\jabba.exe",
     "env_set": {
         "JABBA_HOME": "$dir"
@@ -22,7 +26,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/shyiko/jabba/releases/download/$version/jabba-$version-windows-amd64.exe#/jabba.exe"
+                "url": "https://github.com/Jabba-Team/jabba/releases/download/$version/jabba-$version-windows-amd64.exe#/jabba.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/Jabba-Team/jabba/releases/download/$version/jabba-$version-windows-386.exe#/jabba.exe"
             }
         }
     }
