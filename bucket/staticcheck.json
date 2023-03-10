@@ -16,16 +16,15 @@
     "extract_dir": "staticcheck",
     "bin": "staticcheck.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/dominikh/go-tools/releases",
-        "regex": "Staticcheck ([\\d.]+) \\(v([\\d.]+)\\)"
+        "github": "https://github.com/dominikh/go-tools"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/dominikh/go-tools/releases/download/v$match2/staticcheck_windows_amd64.tar.gz"
+                "url": "https://github.com/dominikh/go-tools/releases/download/$version/staticcheck_windows_amd64.tar.gz"
             },
             "32bit": {
-                "url": "https://github.com/dominikh/go-tools/releases/download/v$match2/staticcheck_windows_386.tar.gz"
+                "url": "https://github.com/dominikh/go-tools/releases/download/$version/staticcheck_windows_386.tar.gz"
             }
         },
         "hash": {
