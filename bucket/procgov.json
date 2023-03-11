@@ -1,0 +1,29 @@
+{
+    "version": "2.12",
+    "description": "Set constraints various limits on Windows processes",
+    "homepage": "https://github.com/lowleveldesign/process-governor",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/lowleveldesign/process-governor/releases/download/2.12/procgov.zip"
+        },
+        "32bit": {
+            "url": "https://github.com/lowleveldesign/process-governor/releases/download/2.12/procgov.zip"
+        }
+    },
+    "bin": [
+        "procgov32.exe",
+        "procgov64.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/lowleveldesign/process-governor/releases/download/$version/procgov.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/lowleveldesign/process-governor/releases/download/$version/procgov.zip"
+            }
+        }
+    }
+}
