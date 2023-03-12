@@ -1,0 +1,24 @@
+{
+    "version": "2.15.0",
+    "description": "Inspects source code for security problems by scanning the Go AST.",
+    "homepage": "https://github.com/securego/gosec",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/securego/gosec/releases/download/v2.15.0/gosec_2.15.0_windows_amd64.tar.gz",
+            "hash": "cb684f89011976d4b8966159668935377b05986ce672555d9d90b0a3aefaadd5"
+        }
+    },
+    "bin": "gosec.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/securego/gosec/releases/download/v$version/gosec_$version_windows_amd64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/gosec_$version_checksums.txt"
+        }
+    }
+}

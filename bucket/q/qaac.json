@@ -1,0 +1,51 @@
+{
+    "version": "2.77",
+    "description": "A command line AAC/ALAC encoder frontend based on Apple encoder.",
+    "homepage": "https://sites.google.com/site/qaacpage/",
+    "license": {
+        "identifier": "Public Domain,...",
+        "url": "https://github.com/nu774/qaac/blob/master/COPYING"
+    },
+    "url": "https://github.com/nu774/qaac/releases/download/v2.77/qaac_2.77.zip",
+    "hash": "a219b90fd0741f2cb6cc46059d5e523c0c15ccd8213e10f861a3ef9633d956fb",
+    "notes": [
+        "To fix 'ERROR: CoreAudioToolbox.dll: The specified module could not be found.',",
+        "See: https://hydrogenaud.io/index.php?topic=117089.0"
+    ],
+    "architecture": {
+        "64bit": {
+            "extract_dir": "qaac_2.77\\x64",
+            "bin": [
+                [
+                    "qaac64.exe",
+                    "qaac"
+                ],
+                [
+                    "refalac64.exe",
+                    "refalac"
+                ]
+            ]
+        },
+        "32bit": {
+            "extract_dir": "qaac_2.77\\x86",
+            "bin": [
+                "qaac.exe",
+                "refalac.exe"
+            ]
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/nu774/qaac"
+    },
+    "autoupdate": {
+        "url": "https://github.com/nu774/qaac/releases/download/v$version/qaac_$version.zip",
+        "architecture": {
+            "64bit": {
+                "extract_dir": "qaac_$version\\x64"
+            },
+            "32bit": {
+                "extract_dir": "qaac_$version\\x86"
+            }
+        }
+    }
+}

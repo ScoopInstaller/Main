@@ -1,0 +1,47 @@
+{
+    "version": "7.1.1-2",
+    "description": "Create, edit, compose, and convert 200+ of bitmap images formats.",
+    "homepage": "https://imagemagick.org/",
+    "license": "ImageMagick",
+    "architecture": {
+        "64bit": {
+            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.1-2-Q16-HDRI-x64-dll.exe",
+            "hash": "caaf9406cbebef2a49ad8f0cd118500a97ffddda27c7d1034f55287a74c6ec2b"
+        },
+        "32bit": {
+            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.1-2-Q16-HDRI-x86-dll.exe",
+            "hash": "1c8f753b52c41584bb2ca11fbfe7b20f63b0b7e54e2e040a98da1b9c536b1849"
+        }
+    },
+    "innosetup": true,
+    "env_set": {
+        "MAGICK_HOME": "$dir",
+        "MAGICK_CONFIGURE_PATH": "$dir",
+        "MAGICK_CODER_MODULE_PATH": "$dir\\modules\\coders"
+    },
+    "env_add_path": ".",
+    "post_install": "Rename-Item $dir\\ffmpeg.exe $dir\\ffmpeg.exe.old",
+    "notes": [
+        "- The bundled ffmpeg has been renamed to 'ffmpeg.exe.old' to prevent conflict with a standalone ffmpeg installation - if you need it for ImageMagick tools, rename it back to 'ffmpeg.exe'.",
+        "- 'convert.exe' is deprecated in v7 (it also conflicts with the builtin Windows 'convert' utility). Use 'magick convert ...' instead."
+    ],
+    "checkver": {
+        "url": "https://imagemagick.org/archive/binaries/digest.rdf",
+        "reverse": true,
+        "regex": "ImageMagick-([\\d.-]+)-Q16-HDRI-x64-dll\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-Q16-HDRI-x64-dll.exe"
+            },
+            "32bit": {
+                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-Q16-HDRI-x86-dll.exe"
+            }
+        },
+        "hash": {
+            "mode": "rdf",
+            "url": "https://imagemagick.org/archive/binaries/digest.rdf"
+        }
+    }
+}

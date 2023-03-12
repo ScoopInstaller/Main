@@ -1,0 +1,37 @@
+{
+    "version": "4.0.9",
+    "description": "A powerful, optionally typed and dynamic language, with static-typing and static compilation capabilities, for the Java platform aimed at improving developer productivity thanks to a concise, familiar and easy to learn syntax.",
+    "homepage": "https://www.groovy-lang.org",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "java/openjdk",
+        "groovyserv": "groovyserv"
+    },
+    "url": "https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips/apache-groovy-binary-4.0.9.zip",
+    "hash": "e0d26363ec798976b448857126b42823290c2007d63ecd97843a1718797131d4",
+    "extract_dir": "groovy-4.0.9",
+    "bin": [
+        "bin\\grape.bat",
+        "bin\\groovy.bat",
+        "bin\\groovyc.bat",
+        "bin\\groovyConsole.bat",
+        "bin\\groovydoc.bat",
+        "bin\\groovysh.bat",
+        "bin\\java2groovy.bat",
+        "bin\\startGroovy.bat"
+    ],
+    "env_set": {
+        "GROOVY_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://groovy.apache.org/download.html",
+        "regex": "apache-groovy-binary-([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips/apache-groovy-binary-$version.zip",
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "groovy-$version"
+    }
+}
