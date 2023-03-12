@@ -10,6 +10,7 @@
         "script": [
             "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\gnupg-uninstall.exe.nsis\" -Force -Recurse",
             "New-Item \"$dir\\bin\\gpgconf.ctl\" -Force | Out-Null",
+            "Copy-Item \"$dir\\bin\\gpg.exe\" \"$dir\\bin\\gpg2.exe\"",
             "if (!(Test-Path \"$persist_dir\\home\") -and (Test-Path \"$env:Appdata\\gnupg\")) {",
             "    Write-Host -F yellow \"Copying old '$env:Appdata\\gnupg' to '$persist_dir\\home'\"",
             "    New-Item \"$dir\\home\" -ItemType Directory -Force | Out-Null",
