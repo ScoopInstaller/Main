@@ -9,9 +9,15 @@
     "url": "https://services.gradle.org/distributions/gradle-8.0.2-all.zip",
     "hash": "47a5bfed9ef814f90f8debcbbb315e8e7c654109acd224595ea39fca95c5d4da",
     "extract_dir": "gradle-8.0.2",
-    "env_set": {
-        "GRADLE_USER_HOME": "$dir\\.gradle"
-    },
+    "post_install": [
+        "$current_env = env GRADLE_USER_HOME $global",
+        "If ($null -eq $current_env) {",
+        "    $path = \"$dir\\.gradle\"",
+        "    env GRADLE_USER_HOME $global $path",
+        "    $Env:GRADLE_USER_HOME = $path",
+        "    Write-Host \"Environment variable 'GRADLE_USER_HOME' set to '$path'\"",
+        "}"
+    ],
     "persist": ".gradle",
     "bin": "bin\\gradle.bat",
     "checkver": {
