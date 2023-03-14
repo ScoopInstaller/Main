@@ -1,5 +1,5 @@
 {
-    "version": "30b6060",
+    "version": "3.0.6060",
     "description": "A text-mode files and archives manager",
     "homepage": "https://farmanager.com/",
     "license": {
@@ -21,7 +21,7 @@
         "if (!(Test-Path \"$persist_dir\\$ini\")) {",
         "    Copy-Item \"$dir\\Far.exe.example.ini\" \"$dir\\$ini\"",
         "    (Get-Content \"$dir\\$ini\") -replace ';(UseSystemProfiles=)1', '${1}0' | Set-Content \"$dir\\$ini\" -Encoding Ascii",
-        "        # Migrate from system wide configuration",
+        "    # Migrate from system wide configuration",
         "    $env:LOCALAPPDATA, $env:APPDATA | ForEach-Object {",
         "        if (Test-Path \"$_\\Far Manager\") {",
         "            warn \"Copying system wide profile from $_ into $dir\"",
@@ -37,15 +37,16 @@
     ],
     "checkver": {
         "url": "https://farmanager.com/download.php",
-        "regex": "files/Far(?<version>[b\\d]+).x64.(?<date>\\d+).7z"
+        "regex": "(?s)Stable.*?Far Manager v(?<version>[\\d.]+) build (?<build>[\\d]+).*?.x64.(?<date>\\d+).7z",
+        "replace": "${version}.${build}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://farmanager.com/files/Far$version.x64.$matchDate.7z"
+                "url": "https://farmanager.com/files/Far$majorVersion$minorVersionb$patchVersion.x64.$matchDate.7z"
             },
             "32bit": {
-                "url": "https://farmanager.com/files/Far$version.x86.$matchDate.7z"
+                "url": "https://farmanager.com/files/Far$majorVersion$minorVersionb$patchVersion.x86.$matchDate.7z"
             }
         }
     }
