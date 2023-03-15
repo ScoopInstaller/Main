@@ -8,12 +8,15 @@
     "extract_dir": "lzip-1.20-w32",
     "bin": "bin\\lzip.exe",
     "checkver": {
-        "url": "https://download.savannah.gnu.org/releases/lzip/",
-        "regex": "lzip-([\\d.]+)-w32\\.zip",
-        "reverse": true
+        "url": "https://download.savannah.gnu.org/releases/lzip/?C=N&O=D",
+        "regex": "lzip-([\\d.]+)-w64\\.zip"
     },
     "autoupdate": {
-        "url": "https://download.savannah.gnu.org/releases/lzip/lzip-$version-w32.zip",
-        "extract_dir": "lzip-$version-w32"
+        "architecture": {
+            "64bit": {
+                "url": "https://download.savannah.gnu.org/releases/lzip/lzip-$version-w64.zip",
+                "extract_dir": "lzip-$version-w64"
+            }
+        }
     }
 }
