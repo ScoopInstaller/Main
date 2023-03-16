@@ -1,10 +1,13 @@
 {
     "version": "1.0.0-M3",
-    "description": "Selenium Manager is a CLI (Command-Line Interface) tool developed in Rust to allow cross platform execution. On its beta 1 version, Selenium Manager is invoked transparently by the Selenium bindings when no browser driver is detected on the PATH or no third party driver manager is being used on the system.",
+    "description": "Selenium Manager is a command-line tool developed in Rust to allow cross platform execution.",
     "homepage": "https://www.selenium.dev/blog/2022/introducing-selenium-manager",
     "license": "Apache-2.0",
-    "notes": "Check selenium-manager --help for usages, example : selenium-manager --browser chrome",
-    "url": "https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe"
+        }
+    },
     "hash": "a1cef0ed9398e7f7e6cef1cb637790a97dc3f0a9d233c1bc5804e1e45b50f959",
     "bin": "selenium-manager.exe",
     "checkver": {
@@ -18,6 +21,10 @@
         "regex": "selenium-manager (.+)"
     },
     "autoupdate": {
-        "url": "https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe"
+            }
+        }
     }
 }
