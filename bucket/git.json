@@ -61,20 +61,20 @@
     },
     "checkver": {
         "github": "https://github.com/git-for-windows/git",
-        "regex": "v([\\w.]+)/PortableGit-(?<full>[\\w.]+)-64-bit"
+        "regex": "tag/v([\\d.]+\\.windows\\.\\d)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchFull-64-bit.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchHead-64-bit.7z.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchFull-32-bit.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchHead-32-bit.7z.exe#/dl.7z"
             }
         },
         "hash": {
             "url": "https://github.com/git-for-windows/git/releases/tag/v$version",
-            "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
+            "regex": "(?s)$basename.*?$sha256"
         }
     }
 }

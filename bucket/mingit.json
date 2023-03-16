@@ -27,20 +27,20 @@
     },
     "checkver": {
         "github": "https://github.com/git-for-windows/git",
-        "regex": "v([\\w.]+)/MinGit-(?<full>[\\w.]+)-64-bit"
+        "regex": "tag/v([\\d.]+\\.windows\\.\\d)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-64-bit.zip"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchHead-64-bit.zip"
             },
             "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-32-bit.zip"
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchHead-32-bit.zip"
             }
         },
         "hash": {
             "url": "https://github.com/git-for-windows/git/releases/tag/v$version",
-            "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
+            "regex": "(?s)$basename.*?$sha256"
         }
     }
 }
