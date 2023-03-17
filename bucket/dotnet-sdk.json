@@ -8,15 +8,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-x64.zip",
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-x64.zip",
             "hash": "sha512:a2012d3c70ad1d0a86eebfe44e27d875248ac217e4df4de62956dcb155a2f70f937f4cc5dd511d2cde99055bad0da8e6832bbcc73a15f779366aa2dd4d9a9bda"
         },
         "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-x86.zip",
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-x86.zip",
             "hash": "sha512:66037f54084ece3fd97d31fc3a3dbbe147be51b33483fe19b282dfc96c819b0d922c31ca48804e9800b4ba66d91fb855f54227bc9604a1278410788fa309212e"
         },
         "arm64": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-arm64.zip",
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-arm64.zip",
             "hash": "sha512:891584d6e10dc263663c33fb41ecfb69432933c08a521f45ff3b9dfa7a5b5c4c5e5cb14d74fe418b78ef4cf3065059125796cd296cd73fd4156ab45f8903f7fd"
         }
     },
@@ -28,22 +28,23 @@
     "pre_uninstall": "info 'If the uninstall fails with a message saying that access is denied, you may need to log out of your current account, log back in and try again.'",
     "checkver": {
         "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "regex": "\"latest-runtime\": \"(?<rtv>[\\d.]+)\",[\\s\\S]+?\"latest-sdk\": \"([\\d.]+)\",[\\s\\S]+?\"release-type\" : \"(sts|lts)\""
+        "jsonpath": "$..releases-index[?(@.support-phase == 'active')].latest-sdk"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x64.zip"
+                "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x64.zip"
             },
             "32bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x86.zip"
+                "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x86.zip"
             },
             "arm64": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-arm64.zip"
+                "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-arm64.zip"
             }
         },
         "hash": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$matchRtv-sha.txt"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/$majorVersion.$minorVersion/releases.json",
+            "regex": "(?s)$basename.*?$sha512"
         }
     }
 }
