@@ -1,0 +1,41 @@
+{
+    "version": "0.26.0",
+    "description": "Slang is a new language and compiler for shader development. It is designed to be a modern, extensible, and portable alternative to existing shading languages like HLSL and GLSL.",
+    "homepage": "https://shader-slang.com/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/shader-slang/slang/releases/download/v0.26.0/slang-0.26.0-win64.zip",
+            "hash": "5742367a66dddb85bead26dced6298067fce136895f236c4df22ffe3090f3649",
+            "env_add_path": "bin/windows-x64/release"
+        },
+        "32bit": {
+            "url": "https://github.com/shader-slang/slang/releases/download/v0.26.0/slang-0.26.0-win32.zip",
+            "hash": "64269e81b7297e0071f9a7457180fa8b754e0c9e99a467e0131693e11f49dd18",
+            "env_add_path": "bin/windows-x86/release"
+        },
+        "arm64": {
+            "url": "https://github.com/shader-slang/slang/releases/download/v0.26.0/slang-0.26.0-win-arm64.zip",
+            "hash": "7d558b6f0f1cd095e97c12ab3da0f96f18e5e5e05abb25831095e37a405ed8cf",
+            "env_add_path": "bin/windows-aarch64/release"
+        }
+    },
+    "extract_dir": "",
+    "bin": "",
+    "checkver": {
+        "github": "https://github.com/shader-slang/slang"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win-arm64.zip"
+            }
+        }
+    }
+}
