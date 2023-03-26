@@ -11,18 +11,17 @@
     },
     "bin": [
         "redis-benchmark.exe",
-        "redis-check-aof.exe",
-        "redis-check-rdb.exe",
         "redis-cli.exe",
         "redis-server.exe"
     ],
     "checkver": {
-        "github": "https://github.com/zkteco-home/redis-windows"
+        "url": "https://raw.githubusercontent.com/redis-windows/redis-windows/main/.github/redis_latest_version.txt",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/zkteco-home/redis-windows/archive/refs/tags/$version.zip"
+                "url": "https://github.com/redis-windows/redis-windows/releases/download/$version/Redis-$version-Windows-x64.tar.gz"
             }
         }
     }
