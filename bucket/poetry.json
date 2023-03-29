@@ -1,6 +1,6 @@
 {
     "version": "1.4.1",
-    "description": "Dependency Management for Python",
+    "description": "Python packaging and dependency management",
     "homepage": "https://python-poetry.org/",
     "license": "MIT",
     "depends": "python",
@@ -9,10 +9,10 @@
     "installer": {
         "script": [
             "$env:POETRY_HOME=\"$dir\"",
-            "python3 \"$dir\\$fname\" --version $version"
+            "Invoke-Expression \"$(scoop which python) `\"$dir\\$fname`\" --version $version\""
         ]
     },
-    "bin": "venv\\Scripts\\poetry.exe",
+    "env_add_path":["bin"],
     "checkver": {
         "github": "https://github.com/python-poetry/poetry/"
     },
