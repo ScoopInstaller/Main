@@ -1,0 +1,29 @@
+{
+    "version": "1.7.2212.1",
+    "description": "DirectXShaderCompiler is a collection of tools, libraries and tests for compiling HLSL into DXIL, SPIR-V, and other target languages.",
+    "homepage": "https://github.com/microsoft/DirectXShaderCompiler",
+    "license": {
+        "identifier": "UIUC",
+        "url": "https://github.com/microsoft/DirectXShaderCompiler/blob/main/LICENSE.TXT"
+    },
+    "url": "https://github.com/microsoft/DirectXShaderCompiler/releases/download/v1.7.2212.1/dxc_2023_03_01.zip",
+    "hash": "e4e8cb7326ff7e8a791acda6dfb0cb78cc96309098bfdb0ab1e465dc29162422",
+    "architecture": {
+        "64bit": {
+            "bin": "bin/x64/dxc.exe"
+        },
+        "32bit": {
+            "bin": "bin/x86/dxc.exe"
+        },
+        "arm64": {
+            "bin": "bin/arm64/dxc.exe"
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/microsoft/DirectXShaderCompiler",
+        "regex": "v(?<version>[\\d.]+)/dxc_(?<date>[\\d_]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/microsoft/DirectXShaderCompiler/releases/download/v$matchVersion/dxc_$matchDate.zip"
+    }
+}
