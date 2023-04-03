@@ -1,25 +1,29 @@
 {
-    "version": "113.0.1773.0",
+    "version": "111.0.1661.62",
     "description": "Close the loop on your developer cycle by automating testing of your website in Microsoft Edge (Chromium).",
     "homepage": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver",
     "license": {
         "identifier": "Freeware",
-        "url": "https://az813057.vo.msecnd.net/webdriver/license.html"
+        "url": "https://msedgedriver.azureedge.net/EULA"
     },
     "notes": "For legacy (EdgeHTML) version, see 'versions/edgedriver-legacy'.",
     "architecture": {
         "64bit": {
-            "url": "https://msedgedriver.azureedge.net/113.0.1773.0/edgedriver_win64.zip",
-            "hash": "d92f07f0ac307b064e0e4fdc6c93cbecc6c36d69410d03050f055b46766f57ba"
+            "url": "https://msedgedriver.azureedge.net/111.0.1661.62/edgedriver_win64.zip",
+            "hash": "7edcc7f55859a503674ea5f024e715e8ca26fa11d65444d2554cd87cfca1c3a6"
         },
         "32bit": {
-            "url": "https://msedgedriver.azureedge.net/113.0.1773.0/edgedriver_win32.zip",
-            "hash": "b1089c29f337cd5501650d5373e9c62b339ba5b69daddffee1f0ee3d0580cf53"
+            "url": "https://msedgedriver.azureedge.net/111.0.1661.62/edgedriver_win32.zip",
+            "hash": "153915913a0c7e456aeb412b36f87deff46af8de2de58272c6cb4293161dbe2d"
+        },
+        "arm64": {
+            "url": "https://msedgedriver.azureedge.net/111.0.1661.62/edgedriver_arm64.zip",
+            "hash": "b64626b307620f822d60c54b23499a735550ba598771fcca430b2a6f0c41a79d"
         }
     },
     "bin": "msedgedriver.exe",
     "checkver": {
-        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_CANARY).Content))",
+        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_STABLE).Content))",
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
@@ -29,6 +33,9 @@
             },
             "32bit": {
                 "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win32.zip"
+            },
+            "arm64": {
+                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_arm64.zip"
             }
         }
     }
