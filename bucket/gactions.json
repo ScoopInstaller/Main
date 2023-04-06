@@ -1,12 +1,28 @@
 {
     "version": "3.2.0",
-    "url": "https://registry.npmjs.org/@assistant/gactions/-/gactions-3.2.0.tgz",
-    "hash": "sha1:2ca4805a085d10f0de4ea92aa554655d98f29fc9",
+    "homepage": "https://github.com/actions-on-google/gactions",
+    "license": "Apache-2.0",
     "extract_dir": "package/bin",
     "bin": [
         [
             "gactions-win32-x64.exe",
             "gactions"
         ]
-    ]
+    ],
+    "url": "https://registry.npmjs.org/@assistant/gactions/-/gactions-3.2.0.tgz",
+    "hash": "sha1:2ca4805a085d10f0de4ea92aa554655d98f29fc9",
+    "checkver": {
+        "url": "https://registry.npmjs.org/@assistant/gactions/latest",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "url": [
+            "https://registry.npmjs.org/@assistant/gactions/-/gactions-$version.tgz"
+        ],
+        "hash": {
+            "mode": "json",
+            "url": "https://registry.npmjs.org/@assistant/gactions/$version",
+            "jsonpath": "$.dist.shasum"
+        }
+    }
 }
