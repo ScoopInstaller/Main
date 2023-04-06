@@ -6,10 +6,10 @@
     "architecture": {
         "64bit": {
             "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-client-2.7.1-windows-amd64.zip",
-            "hash": "fe275187581d4cc023dc0f2c1c0036f4fb7948ce466251edd6936124fdcabfeb",
-            "extract_dir": "influxdb2-client-2.7.1-windows-amd64"
+            "hash": "fe275187581d4cc023dc0f2c1c0036f4fb7948ce466251edd6936124fdcabfeb"
         }
     },
+    "pre_install": "Rename-Item \"$dir\\influx\" influx.exe",
     "bin": "influx.exe",
     "checkver": {
         "url": "https://portal.influxdata.com/versions.json",
@@ -23,8 +23,7 @@
                 "hash": {
                     "url": "https://portal.influxdata.com/versions.json",
                     "jsonpath": "$.influxdb2_cloud_cli.downloads[?(@.platform =~ /^Windows/)].sha256"
-                },
-                "extract_dir": "influxdb2-client-$version-windows-amd64"
+                }
             }
         }
     }
