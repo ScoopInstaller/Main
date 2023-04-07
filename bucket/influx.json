@@ -1,15 +1,15 @@
 {
-    "version": "2.6.1",
+    "version": "2.7.1",
     "description": "CLI for InfluxDB 2.1+",
     "homepage": "https://www.influxdata.com/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-client-2.6.1-windows-amd64.zip",
-            "hash": "873e67c917b18c5e14613025b573c9e13e9a9c31cdce9d59e0d18075ead96416",
-            "extract_dir": "influxdb2-client-2.6.1-windows-amd64"
+            "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-client-2.7.1-windows-amd64.zip",
+            "hash": "fe275187581d4cc023dc0f2c1c0036f4fb7948ce466251edd6936124fdcabfeb"
         }
     },
+    "pre_install": "Rename-Item \"$dir\\influx\" influx.exe",
     "bin": "influx.exe",
     "checkver": {
         "url": "https://portal.influxdata.com/versions.json",
@@ -23,8 +23,7 @@
                 "hash": {
                     "url": "https://portal.influxdata.com/versions.json",
                     "jsonpath": "$.influxdb2_cloud_cli.downloads[?(@.platform =~ /^Windows/)].sha256"
-                },
-                "extract_dir": "influxdb2-client-$version-windows-amd64"
+                }
             }
         }
     }

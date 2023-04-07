@@ -1,14 +1,35 @@
 {
-    "version": "3.1",
+    "version": "3.2.1",
     "description": "A Free, Fast, and Small Automatic Formatter for C, C++, C++/CLI, Objective-C, C#, and Java Source Code",
     "homepage": "https://astyle.sourceforge.net/",
     "license": "MIT",
-    "url": "https://downloads.sourceforge.net/project/astyle/astyle/astyle%203.1/AStyle_3.1_windows.zip",
-    "hash": "sha1:5372ca57577f252cb6efdde12f889329786a72a2",
-    "extract_dir": "AStyle",
-    "bin": "bin\\AStyle.exe",
-    "checkver": "Artistic Style ([\\d.]+)",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/astyle/astyle/astyle%203.2/astyle-3.2.1-x64.zip",
+            "hash": "sha1:aa71317141d31f803cc5455bcf584477c7a10ba4",
+            "extract_dir": "astyle-3.2.1-x64"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/astyle/astyle/astyle%203.2/astyle-3.2.1.zip",
+            "hash": "sha1:bed824e6d3a3ead01b6109a108f4e19882badedd",
+            "extract_dir": "astyle-3.2.1"
+        }
+    },
+    "bin": "astyle.exe",
+    "checkver": {
+        "url": "https://astyle.sourceforge.net/notes.html",
+        "regex": "Artistic Style ([\\d.]+)"
+    },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/astyle/astyle/astyle%20$version/AStyle_$version_windows.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/astyle/astyle/astyle%20$majorVersion.$minorVersion/astyle-$version-x64.zip",
+                "extract_dir": "astyle-$version-x64"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/astyle/astyle/astyle%20$majorVersion.$minorVersion/astyle-$version.zip",
+                "extract_dir": "astyle-$version"
+            }
+        }
     }
 }
