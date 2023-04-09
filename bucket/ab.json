@@ -10,9 +10,7 @@
         }
     },
     "extract_dir": "Apache24",
-    "pre_install": [
-        "Remove-Item \"$dir\\*\" -Exclude ab.exe,abs.exe,libcrypto*.dll,libssl*.dll,NOTICE.txt,LICENSE.txt -Recurse -Force"
-    ],
+    "pre_install": "Remove-Item \"$dir\\*\" -Exclude ab.exe,abs.exe,libcrypto*.dll,libssl*.dll,NOTICE.txt,LICENSE.txt -Recurse -Force",
     "bin": [
         "bin\\ab.exe",
         "bin\\abs.exe"
