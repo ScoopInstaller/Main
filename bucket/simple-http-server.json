@@ -1,23 +1,25 @@
 {
-    "version": "0.6.1",
+    "version": "0.6.6",
     "description": "Simple http server",
     "homepage": "https://github.com/TheWaWaR/simple-http-server",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/TheWaWaR/simple-http-server/releases/download/v0.6.1/x86_64-pc-windows-msvc-simple-http-server.exe#/simple-http-server.exe",
-            "hash": "57039d94af3b3c6b46b0020ab0f05c5a6bf6faadf89e8956aca2224a9134ddc1"
+            "url": "https://github.com/TheWaWaR/simple-http-server/releases/download/v0.6.6/x86_64-pc-windows-msvc-simple-http-server.exe#/simple-http-server.exe",
+            "hash": "833c7b230f996f6e96f720f3e37e184ca8a84d9e74ba138537f167827f5f8f39"
         }
     },
     "bin": "simple-http-server.exe",
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/TheWaWaR/simple-http-server/releases/download/$version/x86_64-pc-windows-msvc-simple-http-server.exe#/simple-http-server.exe"
+                "url": "https://github.com/TheWaWaR/simple-http-server/releases/download/v$version/x86_64-pc-windows-msvc-simple-http-server.exe#/simple-http-server.exe"
             }
         },
         "hash": {
-            "url": "$url.sha256"
+            "url": "$url.sha256",
+            "find": "\\\\([a-fA-F\\d]{64})"
         }
     }
 }
