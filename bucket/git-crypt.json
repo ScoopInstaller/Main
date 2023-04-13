@@ -1,34 +1,21 @@
 {
-    "version": "0.6.0-701fb8e",
+    "version": "0.7.0",
     "description": "Store encrypted data in git repository",
-    "homepage": "https://www.agwa.name/projects/git-crypt/",
+    "homepage": "https://github.com/AGWA/git-crypt",
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/rasa/git-crypt/releases/download/0.6.0-701fb8e/git-crypt-x64.exe#/git-crypt.exe",
-            "hash": "ae9126b1fe96b723a7d29fc53755d9e3ea81a454378a28f8baad78607143d1ce"
-        },
-        "32bit": {
-            "url": "https://github.com/rasa/git-crypt/releases/download/0.6.0-701fb8e/git-crypt.exe",
-            "hash": "52a0087796381e401d15f16b8c819e64b8dc76d6b850799a086fb18d5022bd4e"
+            "url": "https://github.com/AGWA/git-crypt/releases/download/0.7.0/git-crypt-0.7.0-x86_64.exe#/git-crypt.exe",
+            "hash": "8c54a3b583cd4fc1483c952480116a9c86f771b02d4403fc6d3627b26cf146e2"
         }
     },
     "bin": "git-crypt.exe",
-    "checkver": {
-        "github": "https://github.com/rasa/git-crypt",
-        "regex": "tag/([\\w.-]+)"
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/rasa/git-crypt/releases/download/$version/git-crypt-x64.exe#/git-crypt.exe"
-            },
-            "32bit": {
-                "url": "https://github.com/rasa/git-crypt/releases/download/$version/git-crypt.exe"
+                "url": "https://github.com/AGWA/git-crypt/releases/download/$version/git-crypt-$version-x86_64.exe#/git-crypt.exe"
             }
-        },
-        "hash": {
-            "url": "https://github.com/rasa/git-crypt/releases/tag/$version"
         }
     }
 }
