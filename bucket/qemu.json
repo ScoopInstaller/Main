@@ -1,28 +1,21 @@
 {
-    "version": "7.2.0",
+    "version": "8.0.0-rc3",
     "description": "A generic and open source machine emulator and virtualizer.",
     "homepage": "https://qemu.weilnetz.de/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-20221230.exe#/dl.7z_",
-            "hash": "sha512:1a8c1764359bad713b3a0b306603adce42e12974d461140fa6378b5cf0a095bd57a4abf986de4210cc431d80e9d5af785b25e571040a2a0efd1ec3dd441a8193"
-        },
-        "32bit": {
-            "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-20221230.exe#/dl.7z_",
-            "hash": "sha512:e8380fc1f44264a25a6591cee881842220106c7ceee9087dd229dc56fed1415e79afebfdbf243c71853c4b2a946d2591707f06bed429eda21e31a4d9ed7b62ab"
+            "url": "https://qemu.weilnetz.de/w64/2023/qemu-w64-setup-20230411.exe#/dl.7z_",
+            "hash": "sha512:93ed66c0af85956a46e8dbb1fe43b7877139fda9ee6446b428dae786aa12b37a5a36160e64ba605fc29bc3e3a3c570180516389c8fdb7a0c5d8f8dd18e326bb8"
         }
     },
     "pre_install": "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Removal -Switches '-xr!*.exe.nsis -x!$PLUGINSDIR'",
     "env_add_path": ".",
-    "checkver": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installers \\((?<version>[\\d.a-z-]+)\\)",
+    "checkver": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installer \\((?<version>[\\d.a-z-]+)\\)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://qemu.weilnetz.de/w64/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z_"
-            },
-            "32bit": {
-                "url": "https://qemu.weilnetz.de/w32/qemu-w32-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z_"
+                "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z_"
             }
         },
         "hash": {
