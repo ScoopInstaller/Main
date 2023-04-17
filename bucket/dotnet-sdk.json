@@ -1,5 +1,5 @@
 {
-    "version": "7.0.202",
+    "version": "7.0.203",
     "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
     "homepage": "https://www.microsoft.com/net/",
     "license": "MIT",
@@ -8,16 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-x64.zip",
-            "hash": "sha512:a2012d3c70ad1d0a86eebfe44e27d875248ac217e4df4de62956dcb155a2f70f937f4cc5dd511d2cde99055bad0da8e6832bbcc73a15f779366aa2dd4d9a9bda"
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.203/dotnet-sdk-7.0.203-win-x64.zip",
+            "hash": "sha512:d675c05c6a30fcc2d5512f37e56fda19ee5e0d22de3b2c410c7bee58d3e565a2c87af7ee522c17a51b0f8562de6610831b7f89c1d22586e8be475855b3a060e5"
         },
         "32bit": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-x86.zip",
-            "hash": "sha512:66037f54084ece3fd97d31fc3a3dbbe147be51b33483fe19b282dfc96c819b0d922c31ca48804e9800b4ba66d91fb855f54227bc9604a1278410788fa309212e"
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.203/dotnet-sdk-7.0.203-win-x86.zip",
+            "hash": "sha512:0bbd156db6337629e100218ffe6c9a12633a5fbbcbd02b4283fa29eaae9c293b05a57d5ac7a44c6317e3ef0ea35730c9fc101d054be8d713f676ed5006817118"
         },
         "arm64": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.202/dotnet-sdk-7.0.202-win-arm64.zip",
-            "hash": "sha512:891584d6e10dc263663c33fb41ecfb69432933c08a521f45ff3b9dfa7a5b5c4c5e5cb14d74fe418b78ef4cf3065059125796cd296cd73fd4156ab45f8903f7fd"
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.203/dotnet-sdk-7.0.203-win-arm64.zip",
+            "hash": "sha512:20cd360a7b914959757a21c3140092a78718622e7e88daa61cabd8d04176f827e3b93e0642e4dee497c790695d0c8e27ef7a07ffa311dce2951c702cc38676b2"
         }
     },
     "env_add_path": ".",
@@ -28,7 +28,8 @@
     "pre_uninstall": "info 'If the uninstall fails with a message saying that access is denied, you may need to log out of your current account, log back in and try again.'",
     "checkver": {
         "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "jsonpath": "$..releases-index[?(@.support-phase == 'active')].latest-sdk"
+        "jsonpath": "$..releases-index[?(@.support-phase == 'active')].latest-sdk",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
