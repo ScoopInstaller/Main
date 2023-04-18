@@ -1,15 +1,30 @@
 {
-    "version": "2.0.2",
+    "version": "2.1.1",
     "description": "Automate and organize your workflows, no matter what technology you use",
     "homepage": "http://ahoycli.com",
     "license": "MIT",
-    "url": "https://github.com/ahoy-cli/ahoy/releases/download/2.0.2/ahoy-bin-windows-amd64.exe#/ahoy.exe",
-    "hash": "d70ddbec1f3cf7cbac2192941437e62f8a616bcd238e2ff791a2e9aac7cba398",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ahoy-cli/ahoy/releases/download/v2.1.1/ahoy-bin-windows-amd64.exe#/ahoy.exe",
+            "hash": "cb672356b394d79f792448b0b9926d2c7e1e2768afe7d9aa389c88b155f2139e"
+        },
+        "arm64": {
+            "url": "https://github.com/ahoy-cli/ahoy/releases/download/v2.1.1/ahoy-bin-windows-arm64.exe#/ahoy.exe",
+            "hash": "8d263ddf271169fe5a098535b993a6303d906c51f96fa4e20d883cd08ea7f14a"
+        }
+    },
     "bin": "ahoy.exe",
     "checkver": {
         "github": "https://github.com/ahoy-cli/ahoy"
     },
     "autoupdate": {
-        "url": "https://github.com/ahoy-cli/ahoy/releases/download/$version/ahoy-bin-windows-amd64.exe#/ahoy.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ahoy-cli/ahoy/releases/download/v$version/ahoy-bin-windows-amd64.exe#/ahoy.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/ahoy-cli/ahoy/releases/download/v$version/ahoy-bin-windows-arm64.exe#/ahoy.exe"
+            }
+        }
     }
 }
