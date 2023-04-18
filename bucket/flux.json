@@ -8,6 +8,10 @@
             "url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_windows_amd64.zip",
             "hash": "0c355ef6575a853f65a18259195372c24d40921595a7d8ac33853921b20e4b4b"
         },
+        "arm64": {
+            "url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_windows_arm64.zip",
+            "hash": "d0e2ad2410848d357aedee8a9b4ee2677f326faef7c4d6cd627d1ca9b38eaebd"
+        },
         "32bit": {
             "url": "https://github.com/fluxcd/flux2/releases/download/v0.41.2/flux_0.41.2_windows_386.zip",
             "hash": "686228dd861a399e91916bf8c221aa1184d89415347fd07b03531f6970c0e2e1"
@@ -15,12 +19,17 @@
     },
     "bin": "flux.exe",
     "checkver": {
-        "github": "https://github.com/fluxcd/flux2"
+        "url": "https://api.github.com/repos/fluxcd/flux2/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "flux_([\\d.]+)_windows_amd64.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_arm64.zip"
             },
             "32bit": {
                 "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_386.zip"
