@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "description": "Parallel S3 and local filesystem execution tool.",
+    "homepage": "https://github.com/peak/s5cmd",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/peak/s5cmd/releases/download/v2.0.0/s5cmd_2.0.0_Windows-32bit.zip",
+            "hash": "92f2727b78ff3d0d982da38506dd475ba72b6f36ffcf607bba6185b0e9398981"
+        },
+        "64bit": {
+            "url": "https://github.com/peak/s5cmd/releases/download/v2.0.0/s5cmd_2.0.0_Windows-64bit.zip",
+            "hash": "c6505331f0e8d9337a3bf376df74fa7f23082ff9d57714d85171d079e25472da"
+        },
+        "arm64": {
+            "url": "https://github.com/peak/s5cmd/releases/download/v2.0.0/s5cmd_2.0.0_Windows-arm64.zip",
+            "hash": "5ce05a2085d18b8debfb3788c633290435e39aa754c3bf37c417e6736ded2af6"
+        }
+    },
+    "bin": "s5cmd.exe",
+    "checkver": {
+        "url": "https://github.com/peak/s5cmd/tags",
+        "regex": "/releases/tag/v([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/peak/s5cmd/releases/download/v$version/s5cmd_$version_Windows-32bit.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/peak/s5cmd/releases/download/v$version/s5cmd_$version_Windows-64bit.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/peak/s5cmd/releases/download/v$version/s5cmd_$version_Windows-arm64.zip"
+            }
+        }
+    }
+}
