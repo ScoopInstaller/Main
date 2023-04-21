@@ -1,0 +1,27 @@
+{
+    "version": "0.15.0",
+    "description": "Vcluster is a Virtual Kubernetes Cluster that runs inside of Kubernetes.",
+    "homepage": "https://www.vcluster.com",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/loft-sh/vcluster/releases/download/v0.15.0/vcluster-windows-amd64.exe",
+            "hash": "d81f5ea580e36549e9de7590a688fc190d2c3704b937a6d2222279468ebe4931"
+        }
+    },
+    "pre_install": "Rename-Item  \"$dir\\vcluster-windows-amd64.exe\" \"$dir\\vcluster.exe\"",
+    "bin": "vcluster.exe",
+    "checkver": {
+        "github": "https://github.com/loft-sh/vcluster"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cli/cli/releases/download/v$version/vcluster-windows-amd64.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/vcluster-windows-amd64.sha256"
+        }
+    }
+}
