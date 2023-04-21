@@ -35,7 +35,7 @@
     "post_install": [
         "$reg_app = \"HKCU:\\SOFTWARE\\Artifex\\GPL Ghostscript\\$version\"",
         "$reg_lib = \"HKCU:\\SOFTWARE\\GPL Ghostscript\\$version\"",
-        "if ($global) { $reg_app = $reg_app.Replace('HKCU:','HKLM:'); $reg_lib = $reg_lib.Replace('HKCU','HKLM') }",
+        "if ($global) { $reg_app = $reg_app.Replace('HKCU:','HKLM:'); $reg_lib = $reg_lib.Replace('HKCU:','HKLM:') }",
         "$reg_gs_dll = \"$dir\\bin\\gsdll$($architecture.Replace('bit', '')).dll\".Replace('\\','\\\\')",
         "$reg_gs_lib = \"$dir\\bin;$dir\\lib;$dir\\fonts\".Replace('\\','\\\\')",
         "New-Item -Path $reg_app -Value $dir.Replace('\\','\\\\') -Force | Out-Null",
@@ -47,7 +47,7 @@
     "post_uninstall": [
         "$reg_app = \"HKCU:\\SOFTWARE\\Artifex\\GPL Ghostscript\\$version\"",
         "$reg_lib = \"HKCU:\\SOFTWARE\\GPL Ghostscript\\$version\"",
-        "if ($global) { $reg_app = $reg_app.Replace('HKCU:','HKLM:'); $reg_lib = $reg_lib.Replace('HKCU','HKLM') }",
+        "if ($global) { $reg_app = $reg_app.Replace('HKCU:','HKLM:'); $reg_lib = $reg_lib.Replace('HKCU:','HKLM:') }",
         "Remove-Item -Path $reg_app -Force -Recurse",
         "Remove-Item -Path $reg_lib -Force -Recurse"
     ],
