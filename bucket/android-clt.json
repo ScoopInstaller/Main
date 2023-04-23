@@ -21,7 +21,7 @@
         "    Move-Item \"$persist_dir\\$_\" \"$dir\" -Force",
         "  }",
         "}",
-        "if (Get-Command 'java' -ErrorAction SilentlyContinue) {",
+        "if (!(Get-Command 'java' -ErrorAction SilentlyContinue)) {",
         "  warn \"'Java' is required to run Android SDK Commandline tools.\"",
         "}"
     ],
