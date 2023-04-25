@@ -6,13 +6,17 @@
         "identifier": "Freeware",
         "url": "https://developer.android.com/studio/terms.html"
     },
-    "url": "https://dl.google.com/android/repository/commandlinetools-win-9477386_latest.zip",
-    "hash": "696431978daadd33a28841320659835ba8db8080a535b8f35e9e60701ab8b491",
     "suggest": {
         "Java": "java/openjdk17"
     },
+    "url": "https://dl.google.com/android/repository/commandlinetools-win-9477386_latest.zip",
+    "hash": "696431978daadd33a28841320659835ba8db8080a535b8f35e9e60701ab8b491",
     "extract_to": "cmdline-tools",
-    "pre_install": "Rename-Item \"$dir\\cmdline-tools\\cmdline-tools\" -NewName 'latest'",
+    "pre_install": [
+        "Rename-Item \"$dir\\cmdline-tools\\cmdline-tools\" -NewName 'latest'",
+        "# For `env_add_path`:",
+        "ensure \"$dir\\platform-tools\""
+    ],
     "post_install": [
         "# Persistence",
         "Get-ChildItem \"$persist_dir\\cmdline-tools\" -Exclude 'latest' | Move-Item -Destination \"$dir\\cmdline-tools\" -Force",
@@ -25,7 +29,10 @@
         "  warn \"'Java' is required to run Android SDK Commandline tools.\"",
         "}"
     ],
-    "env_add_path": "cmdline-tools\\latest\\bin",
+    "env_add_path": [
+        "cmdline-tools\\latest\\bin",
+        "platform-tools"
+    ],
     "env_set": {
         "ANDROID_HOME": "$dir"
     },
@@ -47,7 +54,7 @@
         "ensure \"$persist_dir\\cmdline-tools\" | Out-Null",
         "Get-ChildItem \"$dir\\cmdline-tools\" -Exclude 'latest' | Copy-Item -Destination \"$persist_dir\\cmdline-tools\" -Force -Recurse",
         "@('emulator', 'ndk-bundle', 'platform-tools', 'tools') | ForEach-Object {",
-        "  if (Test-Path \"$dir\\$_\") {",
+        "  if ((Test-Path \"$dir\\$_\") -and ((Get-ChildItem \"$dir\\$_\").Count -gt 0)) {",
         "    Copy-Item \"$dir\\$_\" \"$persist_dir\" -Force -Recurse",
         "  }",
         "}"
