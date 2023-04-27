@@ -6,26 +6,58 @@
         "identifier": "Freeware",
         "url": "https://developer.android.com/studio/terms.html"
     },
-    "notes": "You need to launch sdkmanager with --sdk_root=$env:ANDROID_SDK_ROOT.",
+    "suggest": {
+        "Java": "java/openjdk17"
+    },
     "url": "https://dl.google.com/android/repository/commandlinetools-win-9477386_latest.zip",
     "hash": "696431978daadd33a28841320659835ba8db8080a535b8f35e9e60701ab8b491",
+    "extract_to": "cmdline-tools",
+    "pre_install": [
+        "Rename-Item \"$dir\\cmdline-tools\\cmdline-tools\" -NewName 'latest'",
+        "# For `env_add_path`:",
+        "ensure \"$dir\\platform-tools\""
+    ],
     "post_install": [
-        "if (Test-Path \"$(appdir adb $global)\") {",
-        "    New-Item \"$dir\\platform-tools\" -ItemType Junction -Target \"$(appdir adb $global)\\current\\platform-tools\" | Out-Null",
+        "# Persistence",
+        "Get-ChildItem \"$persist_dir\\cmdline-tools\" -Exclude 'latest' | Move-Item -Destination \"$dir\\cmdline-tools\" -Force",
+        "@('emulator', 'ndk-bundle', 'platform-tools', 'tools') | ForEach-Object {",
+        "  if (Test-Path \"$persist_dir\\$_\") {",
+        "    Move-Item \"$persist_dir\\$_\" \"$dir\" -Force",
+        "  }",
+        "}",
+        "if (!(Get-Command 'java' -ErrorAction SilentlyContinue)) {",
+        "  warn \"'Java' is required to run Android SDK Commandline tools.\"",
         "}"
     ],
-    "env_add_path": "cmdline-tools\\bin",
+    "env_add_path": [
+        "cmdline-tools\\latest\\bin",
+        "platform-tools"
+    ],
     "env_set": {
-        "ANDROID_SDK_ROOT": "$dir"
+        "ANDROID_HOME": "$dir"
     },
     "persist": [
+        "add-ons",
         "build-tools",
-        "emulator",
+        "cmake",
         "extras",
         "licenses",
+        "ndk",
         "patcher",
         "platforms",
-        "sources"
+        "skiaparser",
+        "sources",
+        "system-images"
+    ],
+    "pre_uninstall": [
+        "# Persistence",
+        "ensure \"$persist_dir\\cmdline-tools\" | Out-Null",
+        "Get-ChildItem \"$dir\\cmdline-tools\" -Exclude 'latest' | Copy-Item -Destination \"$persist_dir\\cmdline-tools\" -Force -Recurse",
+        "@('emulator', 'ndk-bundle', 'platform-tools', 'tools') | ForEach-Object {",
+        "  if ((Test-Path \"$dir\\$_\") -and ((Get-ChildItem \"$dir\\$_\").Count -gt 0)) {",
+        "    Copy-Item \"$dir\\$_\" \"$persist_dir\" -Force -Recurse",
+        "  }",
+        "}"
     ],
     "checkver": "commandlinetools-win-(\\d+)",
     "autoupdate": {
