@@ -5,18 +5,25 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.45.0/ytt-windows-amd64.exe#/ytt.exe",
+            "url": "https://github.com/carvel-dev/ytt/releases/download/v0.45.0/ytt-windows-amd64.exe#/ytt.exe",
             "hash": "49a857875a07640dc3a5e522cbc19ef2f9ba74b8c2047848b845b20d0addc4a8"
+        },
+        "arm64": {
+            "url": "https://github.com/carvel-dev/ytt/releases/download/v0.45.0/ytt-windows-arm64.exe#/ytt.exe",
+            "hash": "e381003ecf167e9a7dadf5a18026511f08a1c5fd9a393ad565650e3c7d444be2"
         }
     },
     "bin": "ytt.exe",
     "checkver": {
-        "github": "https://github.com/vmware-tanzu/carvel-ytt"
+        "github": "https://github.com/carvel-dev/ytt"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vmware-tanzu/carvel-ytt/releases/download/v$version/ytt-windows-amd64.exe#/ytt.exe"
+                "url": "https://github.com/carvel-dev/ytt/releases/download/v$version/ytt-windows-amd64.exe#/ytt.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/carvel-dev/ytt/releases/download/v$version/ytt-windows-arm64.exe#/ytt.exe"
             }
         },
         "hash": {
