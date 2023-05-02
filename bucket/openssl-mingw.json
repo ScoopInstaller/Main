@@ -18,22 +18,5 @@
     "env_add_path": "bin",
     "env_set": {
         "OPENSSL_CONF": "$dir\\ssl\\openssl.cnf"
-    },
-    "checkver": "dl-(?<curl>[\\d._]+)/openssl-([\\da-z._]+)-win64-mingw",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://curl.haxx.se/windows/dl-$matchCurl/openssl-$version-win64-mingw.tar.xz",
-                "extract_dir": "openssl-$matchHead-win64-mingw"
-            },
-            "32bit": {
-                "url": "https://curl.haxx.se/windows/dl-$matchCurl/openssl-$version-win32-mingw.tar.xz",
-                "extract_dir": "openssl-$matchHead-win32-mingw"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/hashes.txt",
-            "regex": "SHA256\\($basename\\)=\\s+$sha256"
-        }
     }
 }
