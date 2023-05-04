@@ -20,9 +20,9 @@
     "pre_install": [
         "$current_dir = if (get_config NO_JUNCTIONS) { $dir } else { \"$(appdir $app $global)\\current\" }",
         "$content = @(",
-        "    \"DataDirectory `\"$current_dir\\Data\\Data`\"\"",
-        "    \"GeoIPFile `\"$current_dir\\Data\\Tor\\geoip`\"\"",
-        "    \"GeoIPv6File `\"$current_dir\\Data\\Tor\\geoip6`\"\"",
+        "    \"DataDirectory `\"$current_dir\\data`\"\"",
+        "    \"GeoIPFile `\"$current_dir\\data\\geoip`\"\"",
+        "    \"GeoIPv6File `\"$current_dir\\data\\geoip6`\"\"",
         ")",
         "if (!(Test-Path \"$persist_dir\\torrc\")) {",
         "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
@@ -30,14 +30,14 @@
     ],
     "bin": [
         [
-            "Tor\\tor.exe",
+            "tor\\tor.exe",
             "tor",
             "-f \"$dir\\torrc\""
         ],
-        "Tor\\tor-gencert.exe"
+        "tor\\tor-gencert.exe"
     ],
     "persist": [
-        "Data\\Data",
+        "data",
         "torrc"
     ],
     "checkver": {
