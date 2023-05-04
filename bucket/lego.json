@@ -11,6 +11,10 @@
         "32bit": {
             "url": "https://github.com/go-acme/lego/releases/download/v4.11.0/lego_v4.11.0_windows_386.zip",
             "hash": "200d3c88882fbc123402bb6335a8b9741e75027ead5081147b771b5d15064cfe"
+        },
+        "arm64": {
+            "url": "https://github.com/go-acme/lego/releases/download/v4.11.0/lego_v4.11.0_windows_arm64.zip",
+            "hash": "e3fa68aae56cee1defcb7e87a8a694b2ca040498248f06e1f0e2197b1f2a09ad"
         }
     },
     "bin": "lego.exe",
@@ -22,7 +26,13 @@
             },
             "32bit": {
                 "url": "https://github.com/go-acme/lego/releases/download/v$version/lego_v$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/go-acme/lego/releases/download/v$version/lego_v$version_windows_arm64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/lego_$version_checksums.txt"
         }
     }
 }
