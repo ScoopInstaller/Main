@@ -27,20 +27,16 @@
         "architecture": {
             "64bit": {
                 "url": "https://ziglang.org/download/$version/zig-windows-x86_64-$version.zip",
-                "hash": {
-                    "url": "https://ziglang.org/download/index.json",
-                    "jsonpath": "$.['$version'].x86_64-windows.shasum"
-                },
                 "extract_dir": "zig-windows-x86_64-$version"
             },
             "arm64": {
                 "url": "https://ziglang.org/download/$version/zig-windows-aarch64-$version.zip",
-                "hash": {
-                    "url": "https://ziglang.org/download/index.json",
-                    "jsonpath": "$.['$version'].aarch64-windows.shasum"
-                },
                 "extract_dir": "zig-windows-aarch64-$version"
             }
+        },
+        "hash": {
+            "url": "https://ziglang.org/download/index.json",
+            "regex": "(?s)$basename.*?$sha256"
         }
     }
 }
