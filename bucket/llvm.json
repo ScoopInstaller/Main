@@ -20,9 +20,8 @@
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
     "env_add_path": "bin",
     "checkver": {
-        "url": "https://api.github.com/repos/llvm/llvm-project/releases",
-        "jsonpath": "$[?(@.prerelease == false)]..['html_url','browser_download_url']",
-        "regex": "tag/llvmorg-([\\d.]+)[\\S\\s]+?LLVM-(?<arm64>[\\d.]+)-woa64\\.exe"
+        "github": "https://github.com/llvm/llvm-project",
+        "regex": "tag/llvmorg-([\\d._]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -33,7 +32,7 @@
                 "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
             },
             "arm64": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$matchArm64/LLVM-$matchArm64-woa64.exe#/dl.7z"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-woa64.exe#/dl.7z"
             }
         }
     }
