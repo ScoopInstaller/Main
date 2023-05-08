@@ -1,0 +1,48 @@
+{
+    "version": "0.27.18",
+    "description": "A new language and compiler for shader development.",
+    "homepage": "https://shader-slang.com/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/shader-slang/slang/releases/download/v0.27.18/slang-0.27.18-win64.zip",
+            "hash": "82f8e476e39271ff2c374578b715d48c4a4ba6e934ebca8cbc3ab52d0c499747",
+            "bin": [
+                "bin/windows-x64/release/slangc.exe",
+                "bin/windows-x64/release/slangd.exe"
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/shader-slang/slang/releases/download/v0.27.18/slang-0.27.18-win32.zip",
+            "hash": "31244fe4df038e169f3b398ac69cda2a7be3f40318335d0616b70a0c8e5d69bf",
+            "bin": [
+                "bin/windows-x86/release/slangc.exe",
+                "bin/windows-x86/release/slangd.exe"
+            ]
+        },
+        "arm64": {
+            "url": "https://github.com/shader-slang/slang/releases/download/v0.27.18/slang-0.27.18-win-arm64.zip",
+            "hash": "21f5780fa36815ce400245d5ab59e261776a3ec1e8c00735b501fca61bbe540b",
+            "bin": [
+                "bin/windows-aarch64/release/slangc.exe",
+                "bin/windows-aarch64/release/slangd.exe"
+            ]
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/shader-slang/slang"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win-arm64.zip"
+            }
+        }
+    }
+}

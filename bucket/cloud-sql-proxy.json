@@ -1,34 +1,34 @@
 {
-    "version": "1.33.1",
+    "version": "2.2.0",
     "description": "Provides secure access to Cloud SQL Second Generation instances without having to add Authorized networks or configure SSL.",
     "homepage": "https://cloud.google.com/sql/docs/mysql/sql-proxy",
     "license": "Apache-2.0",
     "depends": "gcloud",
     "architecture": {
         "64bit": {
-            "url": "https://storage.googleapis.com/cloudsql-proxy/v1.33.1/cloud_sql_proxy_x64.exe#/cloud_sql_proxy.exe",
-            "hash": "2a3177fc089817b6e79a07008c5d6dff9c3faf93a68e0f4198a6b226f680db76"
+            "url": "https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.2.0/cloud-sql-proxy.x64.exe#/cloud-sql-proxy.exe",
+            "hash": "d891814cd88b63d14b7ad03bc5ac3773b8558c3a7f6fa851ebc69dfb77d0e7fd"
         },
         "32bit": {
-            "url": "https://storage.googleapis.com/cloudsql-proxy/v1.33.1/cloud_sql_proxy_x86.exe#/cloud_sql_proxy.exe",
-            "hash": "d60d4ddf3a2c5bd337661b1f1ddda947626cd0bb109ab470e14c57b3bb52b68e"
+            "url": "https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.2.0/cloud-sql-proxy.x86.exe#/cloud-sql-proxy.exe",
+            "hash": "d9d9e1e6f210115d6b55e88fabc8b7112707e0d6d442dcfdc7e6460d8e6a068b"
         }
     },
-    "bin": "cloud_sql_proxy.exe",
+    "bin": "cloud-sql-proxy.exe",
     "checkver": {
-        "github": "https://github.com/GoogleCloudPlatform/cloudsql-proxy"
+        "github": "https://github.com/GoogleCloudPlatform/cloud-sql-proxy"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://storage.googleapis.com/cloudsql-proxy/v$version/cloud_sql_proxy_x64.exe#/cloud_sql_proxy.exe"
+                "url": "https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v$version/cloud-sql-proxy.x64.exe#/cloud-sql-proxy.exe"
             },
             "32bit": {
-                "url": "https://storage.googleapis.com/cloudsql-proxy/v$version/cloud_sql_proxy_x86.exe#/cloud_sql_proxy.exe"
+                "url": "https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v$version/cloud-sql-proxy.x86.exe#/cloud-sql-proxy.exe"
             }
         },
         "hash": {
-            "url": "https://github.com/GoogleCloudPlatform/cloudsql-proxy/releases/tag/v$version",
+            "url": "https://github.com/GoogleCloudPlatform/cloud-sql-proxy/releases/tag/v$version",
             "regex": "(?sm)$basename.*?td>$sha256"
         }
     }

@@ -1,19 +1,26 @@
 {
-    "version": "1.20",
+    "version": "1.22",
     "description": "Lzip is a lossless data compressor with a user interface similar to the one of gzip or bzip2",
     "homepage": "https://www.nongnu.org/lzip/lzip.html",
     "license": "GPL-2.0-or-later",
-    "url": "https://download.savannah.gnu.org/releases/lzip/lzip-1.20-w32.zip",
-    "hash": "7ef27ab008377f6d96793b450391efee0a8682ca056a9fe688b264be92637271",
-    "extract_dir": "lzip-1.20-w32",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.savannah.gnu.org/releases/lzip/lzip-1.22-w64.zip",
+            "hash": "f151296c5389327ec800ee3ef8125549308b098c3c14e4d44c55f47b04ad6e63",
+            "extract_dir": "lzip-1.22-w64"
+        }
+    },
     "bin": "bin\\lzip.exe",
     "checkver": {
-        "url": "https://download.savannah.gnu.org/releases/lzip/",
-        "regex": "lzip-([\\d.]+)-w32\\.zip",
-        "reverse": true
+        "url": "https://download.savannah.gnu.org/releases/lzip/?C=N&O=D",
+        "regex": "lzip-([\\d.]+)-w64\\.zip"
     },
     "autoupdate": {
-        "url": "https://download.savannah.gnu.org/releases/lzip/lzip-$version-w32.zip",
-        "extract_dir": "lzip-$version-w32"
+        "architecture": {
+            "64bit": {
+                "url": "https://download.savannah.gnu.org/releases/lzip/lzip-$version-w64.zip",
+                "extract_dir": "lzip-$version-w64"
+            }
+        }
     }
 }

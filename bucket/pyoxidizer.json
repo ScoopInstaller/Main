@@ -1,0 +1,42 @@
+{
+    "version": "0.24.0",
+    "description": "A modern Python application packaging and distribution tool",
+    "homepage": "https://github.com/indygreg/PyOxidizer",
+    "license": "MPL-2.0",
+    "suggest": {
+        "bazel": "bazel"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/indygreg/PyOxidizer/releases/download/pyoxidizer%2F0.24.0/pyoxidizer-0.24.0-x86_64-pc-windows-msvc.zip",
+            "hash": "c1b757bc7c64921b38bf5fd70d2a2e2f591d36fe1cae3b5722822c08f651ba7b",
+            "extract_dir": "pyoxidizer-0.24.0-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://github.com/indygreg/PyOxidizer/releases/download/pyoxidizer%2F0.24.0/pyoxidizer-0.24.0-i686-pc-windows-msvc.zip",
+            "hash": "2e2b52d1565c71d36f8e83b8aa63949b2887b7cb2136f2f89ceef855b5d156c3",
+            "extract_dir": "pyoxidizer-0.24.0-i686-pc-windows-msvc"
+        }
+    },
+    "bin": "pyoxidizer.exe",
+    "checkver": {
+        "url": "https://github.com/indygreg/PyOxidizer/tags",
+        "regex": "/pyoxidizer/([\\d.]+)\\.tar\\.gz"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/indygreg/PyOxidizer/releases/download/pyoxidizer%2F$version/pyoxidizer-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "pyoxidizer-$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://github.com/indygreg/PyOxidizer/releases/download/pyoxidizer%2F$version/pyoxidizer-$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "pyoxidizer-$version-i686-pc-windows-msvc"
+            }
+        },
+        "hash": {
+            "mode": "extract",
+            "url": "$url.sha256"
+        }
+    }
+}

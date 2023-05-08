@@ -1,27 +1,33 @@
 {
-    "version": "1.14.2",
+    "version": "1.14.2b",
     "description": "A software versioning and revision control system.",
     "homepage": "https://sliksvn.com/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2-x64.zip",
-            "hash": "9348c4b28762c9e852429105c20babdb94414524eb03a03e20efd66db5fcabbd"
+            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2b-x64.zip",
+            "hash": "1c5b992b0d2b065bdbbea9939980cd5111519f1588de4a853d5e3115d7c1ea9d"
         },
         "32bit": {
-            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2-win32.zip",
-            "hash": "d1ea5453db6bfdf6a1886b1f1a5fadbb87d30ee4558cc60356f195e849897f07"
+            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2b-win32.zip",
+            "hash": "2774b536a769aa4be5330c68b126b27acbac0b2e08d4b86b0635eb958894ec9a"
+        },
+        "arm64": {
+            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2b-ARM64.zip",
+            "hash": "cceb88655824577ff8b956fb0752f5de0d2f07e9a12bba55255227bd89fe5e1f"
         }
     },
     "pre_install": [
-        "Get-ChildItem \"$dir\\Slik-Subversion-*.msi\" | Select-Object -First 1 | ForEach-Object {Rename-Item $_ 'dl.msi'}",
-        "Expand-MsiArchive \"$dir\\dl.msi\" \"$dir\" -ExtractDir 'SlikSvn' -Removal | Out-Null"
+        "Get-Item \"$dir\\Slik-Subversion-*.msi\" | Expand-MsiArchive -Destination \"$dir\" -ExtractDir 'PFiles' -Removal | Out-Null"
     ],
     "bin": [
         "bin\\svn.exe",
         "bin\\svnadmin.exe",
+        "bin\\svnauthz.exe",
         "bin\\svnauthz-validate.exe",
+        "bin\\svnbench.exe",
         "bin\\svndumpfilter.exe",
+        "bin\\svnfsfs.exe",
         "bin\\svnlook.exe",
         "bin\\svnmucc.exe",
         "bin\\svn-populate-node-origins-index.exe",
@@ -32,7 +38,7 @@
     ],
     "checkver": {
         "url": "https://sliksvn.com/download/",
-        "regex": "<a.*>SVN ([\\d.]+), 64 bit</a>"
+        "regex": "<a.*>SVN ([\\w.]+), 64 bit</a>"
     },
     "autoupdate": {
         "architecture": {
@@ -41,6 +47,9 @@
             },
             "32bit": {
                 "url": "https://sliksvn.com/pub/Slik-Subversion-$version-win32.zip"
+            },
+            "arm64": {
+                "url": "https://sliksvn.com/pub/Slik-Subversion-$version-ARM64.zip"
             }
         }
     }

@@ -1,23 +1,23 @@
 {
-    "version": "0.6.4",
+    "version": "06may23",
     "description": "Programming language inspired by Rebol.",
     "homepage": "https://www.red-lang.org",
     "license": {
         "identifier": "BSD-3-Clause,BSL-1.0",
         "url": "https://github.com/red/red#license"
     },
-    "url": "https://static.red-lang.org/dl/win/red-064.exe#/red.exe",
-    "hash": "45eb8d089b6e25701e4208ac5d1db0c483752e0abff28f58baff5a39f765db9c",
+    "url": "https://static.red-lang.org/dl/auto/win/red-06may23-652d66a4f.exe#/red.exe",
+    "hash": "fbac8d71e90bb693c44bcfdff19f2b3e627d7a151da9416b672abb1c3e00bf24",
     "bin": "red.exe",
     "checkver": {
-        "url": "http://static.red-lang.org/download.html",
-        "regex": "Red\\s+([\\d.]+)\\s+for"
+        "url": "https://static.red-lang.org/dl/auto/win/history.html",
+        "regex": "red-(\\w+)-(?<commit>\\w+).exe"
     },
     "autoupdate": {
-        "url": "https://static.red-lang.org/dl/win/red-$cleanVersion.exe#/red.exe",
+        "url": "https://static.red-lang.org/dl/auto/win/red-$version-$matchCommit.exe#/red.exe",
         "hash": {
             "url": "http://static.red-lang.org/download.html",
-            "regex": "$sha256"
+            "regex": "$basename[\\s\\S]+?$sha256"
         }
     }
 }

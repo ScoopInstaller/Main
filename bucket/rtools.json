@@ -1,50 +1,51 @@
 {
-    "version": "4.2.5355.5357",
+    "version": "4.3.5550.5548",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
     "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "license": "BSD-3-Clause",
     "notes": [
         "For R 3.3.x to 3.6.x, please use 'versions/rtools35'.",
-        "For R 4.0.x to 4.1.x, please use 'versions/rtools40'."
+        "For R 4.0.x to 4.1.x, please use 'versions/rtools40'.",
+        "For R 4.2.x, please use 'versions/rtools42'."
     ],
     "architecture": {
         "64bit": {
-            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools42/files/rtools42-5355-5357.exe",
-            "hash": "98205dd8bd703a7c867d182a83e361c76014520dca7393142d8e7a0c4ef03097"
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-5550-5548.exe",
+            "hash": "bf93cf85b109be80586467f586d7e6294f54c5f11ddc6b930a91e28e03e67b74"
         }
     },
     "innosetup": true,
     "installer": {
         "script": [
-            "if (Test-Path 'C:\\rtools42') {",
-            "   if ($null -eq (Get-Item 'C:\\rtools42').LinkType) {",
-            "       Rename-Item -Path 'C:\\rtools42' -NewName 'rtools42.old' -Force",
+            "if (Test-Path 'C:\\rtools43') {",
+            "   if ($null -eq (Get-Item 'C:\\rtools43').LinkType) {",
+            "       Rename-Item -Path 'C:\\rtools43' -NewName 'rtools43.old' -Force",
             "   } else {",
-            "       Remove-Item -Path 'C:\\rtools42' -Force",
+            "       Remove-Item -Path 'C:\\rtools43' -Force",
             "   }",
             "}",
-            "New-Item -Path 'C:\\rtools42' -Target \"$dir\" -ItemType Junction | Out-Null"
+            "New-Item -Path 'C:\\rtools43' -Target \"$dir\" -ItemType Junction | Out-Null"
         ]
     },
     "uninstaller": {
         "script": [
-            "if ((Test-Path 'C:\\rtools42') -and ($null -ne (Get-Item 'C:\\rtools42').LinkType)) {",
-            "   Remove-Item -Path 'C:\\rtools42' -Force",
+            "if ((Test-Path 'C:\\rtools43') -and ($null -ne (Get-Item 'C:\\rtools43').LinkType)) {",
+            "   Remove-Item -Path 'C:\\rtools43' -Force",
             "}",
-            "if (Test-Path 'C:\\rtools42.old') {",
-            "   Rename-Item -Path 'C:\\rtools42.old' -NewName 'rtools42' -Force",
+            "if (Test-Path 'C:\\rtools43.old') {",
+            "   Rename-Item -Path 'C:\\rtools43.old' -NewName 'rtools43' -Force",
             "}"
         ]
     },
     "checkver": {
-        "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools42/files/",
-        "regex": ">rtools42\\-(\\d+)\\-(\\d+).exe<",
-        "replace": "4.2.${1}.${2}"
+        "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/",
+        "regex": ">rtools43\\-(\\d+)\\-(\\d+).exe<",
+        "replace": "4.3.${1}.${2}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools42/files/rtools42-$match1-$match2.exe"
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-$match1-$match2.exe"
             }
         }
     }

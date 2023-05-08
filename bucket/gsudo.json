@@ -1,16 +1,28 @@
 {
-    "version": "2.0.4",
+    "version": "2.0.9",
     "description": "A Sudo for Windows",
-    "homepage": "https://github.com/gerardog/gsudo",
+    "homepage": "https://gerardog.github.io/gsudo",
     "license": "MIT",
-    "url": "https://github.com/gerardog/gsudo/releases/download/v2.0.4/gsudo.v2.0.4.zip",
-    "hash": "0596a670ae0d3f28ae3ce6b695d47db02096ff4b34fd89d4e6519a1d6df40078",
+    "notes": [
+        "gsudo has a PowerShell module that adds `gsudo !!` to elevate the last command.",
+        "Use the module by running: 'Import-Module gsudoModule'.",
+        "Add it to your $PROFILE to make it permanent."
+    ],
     "architecture": {
         "64bit": {
-            "extract_dir": "x64"
+            "url": "https://github.com/gerardog/gsudo/releases/download/v2.0.9/gsudo.setup.x64.msi",
+            "hash": "5f3d8d078deaf9f2f81908eebd2930e172ee74eaede78c9d80293ccf9805d8a7",
+            "extract_dir": "PFiles64\\gsudo\\2.0.9"
         },
         "32bit": {
-            "extract_dir": "x86"
+            "url": "https://github.com/gerardog/gsudo/releases/download/v2.0.9/gsudo.setup.x86.msi",
+            "hash": "1a823b62e851e292ebf39097160e6e41b5e0c63b50f0147f97bf6a9661574fba",
+            "extract_dir": "PFiles\\gsudo\\2.0.9"
+        },
+        "arm64": {
+            "url": "https://github.com/gerardog/gsudo/releases/download/v2.0.9/gsudo.setup.arm64.msi",
+            "hash": "c13e48e292b228c13bd8f46f11e95014cda6570daffde6a24767c26b630c235c",
+            "extract_dir": "PFiles64\\gsudo\\2.0.9"
         }
     },
     "bin": [
@@ -19,10 +31,31 @@
             "sudo"
         ]
     ],
+    "psmodule": {
+        "name": "gsudoModule"
+    },
     "post_install": "try { & \"$dir\\gsudo.exe\" -k 2>&1 | Out-Null } catch { info $_.Exception.Message }",
     "env_add_path": ".",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/gerardog/gsudo"
+    },
     "autoupdate": {
-        "url": "https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.v$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.setup.x64.msi",
+                "extract_dir": "PFiles64\\gsudo\\$version"
+            },
+            "32bit": {
+                "url": "https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.setup.x86.msi",
+                "extract_dir": "PFiles\\gsudo\\$version"
+            },
+            "arm64": {
+                "url": "https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.setup.arm64.msi",
+                "extract_dir": "PFiles64\\gsudo\\$version"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
 }

@@ -1,14 +1,14 @@
 {
-    "version": "3.3.2",
+    "version": "3.4.0",
     "description": "Apache Kafka. A distributed streaming platform.",
     "homepage": "https://kafka.apache.org/",
     "license": "Apache-2.0",
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://www.apache.org/dist/kafka/3.3.2/kafka_2.12-3.3.2.tgz",
-    "hash": "sha1:1226ff221da7407a66ececd7f4432f2301f89a02",
-    "extract_dir": "kafka_2.12-3.3.2",
+    "url": "https://downloads.apache.org/kafka/3.4.0/kafka_2.12-3.4.0.tgz",
+    "hash": "sha1:407ecad0f9ba8f901dc9672b2fe724896cc71d07",
+    "extract_dir": "kafka_2.12-3.4.0",
     "bin": [
         "bin\\windows\\connect-distributed.bat",
         "bin\\windows\\connect-standalone.bat",
@@ -39,10 +39,10 @@
     ],
     "checkver": {
         "url": "https://kafka.apache.org/downloads",
-        "regex": "current stable version is ([\\d.]+)\\."
+        "regex": "current stable version is ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://www.apache.org/dist/kafka/$version/kafka_2.12-$version.tgz",
+        "url": "https://downloads.apache.org/kafka/$version/kafka_2.12-$version.tgz",
         "hash": {
             "url": "$url.sha1",
             "regex": "$basename:[\\x20\\t]+([a-fA-F0-9\\s]+)\\n+"
