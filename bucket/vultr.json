@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/vultr/vultr-cli/releases/download/v2.16.2/vultr-cli_2.16.2_windows_64-bit.zip",
             "hash": "562b447720012a4e24b95307dd5047f6fbb681bc1bc802d560b25d061826764c"
+        },
+        "arm64": {
+            "url": "https://github.com/vultr/vultr-cli/releases/download/v2.16.2/vultr-cli_2.16.2_windows_arm64-bit.zip",
+            "hash": "686d33e755c3b60c6ae2fff549aa9e572d4d98c8f9c607ea1d9259b3a4cee5b9"
         }
     },
     "bin": "vultr-cli.exe",
@@ -14,11 +18,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vultr/vultr-cli/releases/download/v$version/vultr-cli_$version_windows_64-bit.zip",
-                "hash": {
-                    "url": "https://github.com/vultr/vultr-cli/releases/download/v$version/vultr-cli_v$version_checksums.txt"
-                }
+                "url": "https://github.com/vultr/vultr-cli/releases/download/v$version/vultr-cli_$version_windows_64-bit.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/vultr/vultr-cli/releases/download/v$version/vultr-cli_$version_windows_arm64-bit.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/vultr-cli_v$version_checksums.txt"
         }
     }
 }
