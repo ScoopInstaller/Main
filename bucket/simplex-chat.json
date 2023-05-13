@@ -11,7 +11,8 @@
     },
     "bin": "simplex-chat.exe",
     "checkver": {
-        "url": "https://github.com/simplex-chat/simplex-chat/releases",
+        "url": "https://api.github.com/repos/simplex-chat/simplex-chat/releases",
+        "jsonpath": "$[?(@.prerelease == false)]..browser_download_url",
         "regex": "download/v([\\d.]+)/simplex-chat-windows-x86-64"
     },
     "autoupdate": {
