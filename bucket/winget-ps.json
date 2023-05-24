@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0-alpha",
+    "version": "0.2.1",
     "description": "A PowerShell Module for the Windows Package Manager Client.",
     "homepage": "https://github.com/microsoft/winget-cli/tree/master/src/PowerShell/Microsoft.WinGet.Client",
     "license": "MIT",
@@ -7,15 +7,15 @@
         "PowerShell Core": "pwsh",
         "WinGet": "winget"
     },
-    "url": "https://psg-prod-eastus.azureedge.net/packages/microsoft.winget.client.0.1.0-alpha.nupkg",
-    "hash": "ec05f6063f38a86ab85ea7b808099433b7c708a18fd52f39c756672b57580005",
+    "url": "https://psg-prod-eastus.azureedge.net/packages/microsoft.winget.client.0.2.1.nupkg",
+    "hash": "f6b7b4d184066d6fbd1b0a1ef04faa6072073bccea5d79961bbc3cfbe621fedd",
     "pre_install": "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*Content*.xml\" -Recurse",
     "psmodule": {
         "name": "Microsoft.WinGet.Client"
     },
     "checkver": {
         "url": "https://www.powershellgallery.com/packages/Microsoft.WinGet.Client",
-        "regex": "<h2>([\\d.]+(?:-\\w*)?)</h2>"
+        "regex": "<h2>([\\d.]+)</h2>"
     },
     "autoupdate": {
         "url": "https://psg-prod-eastus.azureedge.net/packages/microsoft.winget.client.$version.nupkg"
