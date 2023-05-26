@@ -1,36 +1,32 @@
 {
-    "version": "4.8",
+    "version": "4.9",
     "description": "sed (stream editor) is a non-interactive command-line text editor",
     "homepage": "https://www.gnu.org/software/sed",
     "license": "GPL-3.0-or-later",
-    "url": "https://packages.chocolatey.org/sed.4.8.nupkg",
-    "hash": "ee430b5edc827e1368cf424fb888e997fc05d24e7e90373b8e9c6811a26eec80",
-    "extract_dir": "tools\\install\\sed-windows-master",
     "architecture": {
         "64bit": {
-            "pre_install": [
-                "Rename-Item \"$dir\\sed-$version-x64.exe\" sed.exe",
-                "Remove-Item \"$dir\\sed-$version-xp.exe\""
-            ]
+            "url": "https://github.com/mbuilov/sed-windows/releases/download/sed-4.9/sed-4.9-x64.exe#/sed.exe",
+            "hash": "55252fc023b7092d8f39b209a33ae2d56558a541ea6606af53e00c37f1296163"
         },
         "32bit": {
-            "pre_install": [
-                "Rename-Item \"$dir\\sed-$version-xp.exe\" sed.exe",
-                "Remove-Item \"$dir\\sed-$version-x64.exe\""
-            ]
+            "url": "https://github.com/mbuilov/sed-windows/releases/download/sed-4.9/sed-4.9-x86.exe#/sed.exe",
+            "hash": "7b31b07ebffa675f85b27908e9f3eb8ef57ec297c289942f6cd2a40eee8f88b3"
         }
     },
-    "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
     "bin": "sed.exe",
     "checkver": {
-        "url": "https://community.chocolatey.org/packages/sed",
-        "regex": "GNU sed ([\\d.]+)</title>"
+        "github": "https://github.com/mbuilov/sed-windows",
+        "jsonpath": "$.tag_name",
+        "regex": "sed-([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://packages.chocolatey.org/sed.$version.nupkg",
-        "hash": {
-            "url": "https://community.chocolatey.org/packages/sed",
-            "regex": "$sha256.*?$basename"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mbuilov/sed-windows/releases/download/sed-$version/sed-$version-x64.exe#/sed.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/mbuilov/sed-windows/releases/download/sed-$version/sed-$version-x86.exe#/sed.exe"
+            }
         }
     }
 }
