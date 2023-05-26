@@ -1,43 +1,41 @@
 {
-    "version": "3.7",
+    "version": "3.8",
     "description": "Print lines matching a pattern.",
     "homepage": "https://www.gnu.org/software/grep",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://packages.chocolatey.org/grep.3.7.nupkg",
-            "hash": "ec113135322239cd453a290f48fdb1ce6190cdcde162aa8e576d41ff8c606c94",
-            "bin": [
-                "grep.exe",
-                [
-                    "grep.exe",
-                    "egrep",
-                    "-E"
-                ],
-                [
-                    "grep.exe",
-                    "fgrep",
-                    "-F"
-                ]
-            ],
-            "extract_dir": "tools\\install\\grep-windows-3.7"
+            "url": "https://raw.githubusercontent.com/mbuilov/grep-windows/3.8/grep-3.8-x64.exe#/grep.exe",
+            "hash": "f63cb9baab1cfaa635b6108769970f27d9961b69cb9b92f1cb0dab48e2350cfb"
+        },
+        "32bit": {
+            "url": "https://raw.githubusercontent.com/mbuilov/grep-windows/3.8/grep-3.8-x86.exe#/grep.exe",
+            "hash": "b1ee3647d18570f04e3b7bf6a10278596d6c05056e376ba43918c5073c23f99f"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\grep-$version-x64.exe\" grep.exe",
-    "post_install": "Remove-Item \"$dir\\tools\" -Recurse",
+    "bin": [
+        "grep.exe",
+        [
+            "grep.exe",
+            "egrep",
+            "-E"
+        ],
+        [
+            "grep.exe",
+            "fgrep",
+            "-F"
+        ]
+    ],
     "checkver": {
-        "url": "https://community.chocolatey.org/packages/grep",
-        "regex": "GNU grep ([\\d.]+)</title>"
+        "github": "https://github.com/mbuilov/grep-windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://packages.chocolatey.org/grep.$version.nupkg",
-                "hash": {
-                    "url": "https://community.chocolatey.org/packages/grep",
-                    "regex": "$sha256.*?$basename"
-                },
-                "extract_dir": "tools\\install\\grep-windows-$version"
+                "url": "https://raw.githubusercontent.com/mbuilov/grep-windows/$version/grep-$version-x64.exe#/grep.exe"
+            },
+            "32bit": {
+                "url": "https://raw.githubusercontent.com/mbuilov/grep-windows/$version/grep-$version-x86.exe#/grep.exe"
             }
         }
     }
