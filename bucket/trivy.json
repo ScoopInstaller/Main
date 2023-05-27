@@ -10,7 +10,9 @@
         }
     },
     "bin": "trivy.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/aquasecurity/trivy"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -18,7 +20,8 @@
             }
         },
         "hash": {
-            "url": "$baseurl/trivy_$version_checksums.txt"
+            "url": "$baseurl/trivy_$version_checksums.txt",
+            "regex": "$sha256\\s+$basename"
         }
     }
 }
