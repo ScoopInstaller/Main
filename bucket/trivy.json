@@ -1,0 +1,24 @@
+{
+    "version": "0.41.0",
+    "description": "Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more",
+    "homepage": "https://trivy.dev",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aquasecurity/trivy/releases/download/v0.41.0/trivy_0.41.0_windows-64bit.zip",
+            "hash": "67d195335a9152edf4aaa54dbabc053a356f61f8a127f7e2e3d08081daee94d8"
+        }
+    },
+    "bin": "trivy.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aquasecurity/trivy/releases/download/v$version/trivy_$version_windows-64bit.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/trivy_$version_checksums.txt"
+        }
+    }
+}
