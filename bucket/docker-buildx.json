@@ -1,0 +1,30 @@
+{
+    "version": "0.10.5",
+    "description": "Docker CLI plugin for extended build capabilities with BuildKit",
+    "homepage": "https://github.com/docker/buildx",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/docker/buildx/releases/download/v0.10.5/buildx-v0.10.5.windows-amd64.exe#/docker-buildx.exe",
+            "hash": "9dbb9ab9b8f2aba21d2a9ea9113b98bebeed886a7df358dcdfe08bca1fd3ddb7"
+        }
+    },
+    "bin": "docker-buildx.exe",
+    "post_install": "echo 'Installing docker-buildx as docker-cli plugin...'; New-Item -ItemType Directory -Force \"$Env:USERPROFILE/.docker/cli-plugins\" | Out-Null; Copy-Item \"$original_dir/docker-buildx.exe\" \"$Env:USERPROFILE/.docker/cli-plugins/docker-buildx.exe\"",
+    "uninstaller": {
+        "script": "Remove-Item -Force \"$Env:USERPROFILE/.docker/cli-plugins/docker-buildx.exe\""
+    },
+    "checkver": {
+        "github": "https://github.com/docker/buildx"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/docker/buildx/releases/download/v$version/buildx-v$version.windows-amd64.exe#/docker-buildx.exe"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/docker/buildx/releases/download/v$version/checksums.txt"
+        }
+    }
+}
