@@ -1,0 +1,31 @@
+{
+    "version": "12.1.2",
+    "description": "Formatter, linter, bundler, and more for JavaScript, TypeScript, JSON, HTML, Markdown, and CSS.",
+    "homepage": "https://rome.tools/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rome/tools/releases/download/cli%2Fv12.1.2/rome-win32-x64.exe",
+            "hash": "508e826da8036eb6eeb25d9377997559b7978fe9a2d676adf3f2918a0a786be1",
+            "bin": [ [ "rome-win32-x64.exe", "rome" ] ]
+        },
+        "arm64": {
+            "url": "https://github.com/rome/tools/releases/download/cli%2Fv12.1.2/rome-win32-arm64.exe",
+            "hash": "732bd9c8c13ba758927108a80180b12be9a0f7f7fcc77a2160377e001aa83e46",
+            "bin": [ [ "rome-win32-arm64.exe", "rome"] ]
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/rome/tools"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rome/tools/releases/download/cli%2Fv$version/rome-win32-x64.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/rome/tools/releases/download/cli%2Fv$version/rome-win32-arm64.exe"
+            }
+        }
+    }
+}
