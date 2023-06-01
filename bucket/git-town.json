@@ -8,20 +8,18 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-town/git-town/releases/download/untagged-c5121e4d876a7f56b01f/git-town_9.0.0_windows_intel_64.zip",
+            "url": "https://github.com/git-town/git-town/releases/download/v9.0.0/git-town_9.0.0_windows_intel_64.zip",
             "hash": "a785a82f4f82714cf3ff5d0829a9934ed59cfa1d80caf5a2df997d34fc6c388e"
         }
     },
     "bin": "git-town.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/git-town/git-town/releases",
-        "jsonpath": "$..browser_download_url",
-        "regex": "download/(?<tag>[\\w-]+)/git-town_([\\d.]+)_windows_intel_64.zip"
+        "github": "https://github.com/git-town/git-town"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-town/git-town/releases/download/$matchTag/git-town_$version_windows_intel_64.zip"
+                "url": "https://github.com/git-town/git-town/releases/download/v$version/git-town_$version_windows_intel_64.zip"
             }
         }
     }
