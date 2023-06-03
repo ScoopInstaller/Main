@@ -15,10 +15,9 @@
     "hash": "732620bac8b1690d507274f025f3c6cfdc3627a84d9642e38a07452cc00e0f2e",
     "extract_dir": "yarn-v1.22.19",
     "post_install": [
-        "yarn config set cache-folder \"$dir\\cache\"",
-        "yarn config set yarn-offline-mirror \"$dir\\mirror\"",
-        "yarn config set global-folder \"$dir\\global\"",
-        "yarn config set prefix \"$dir\\global\""
+        "yarn config set cacheFolder \"$dir\\cache\"",
+        "yarn config set globalFolder \"$dir\\global\"",
+        "yarn config set enableGlobalCache true"
     ],
     "uninstaller": {
         "script": "Remove-Item \"$env:LOCALAPPDATA\\Yarn\", \"$env:USERPROFILE\\.yarnrc\" -Recurse -Force"
