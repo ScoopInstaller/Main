@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/jenkins-x/jx/releases/download/v3.10.83/jx-windows-amd64.zip",
             "hash": "8866f68e9061ef6f3644a530d0a1275c7f6b073077878e689d39dbb4b8098254"
+        },
+        "arm64": {
+            "url": "https://github.com/jenkins-x/jx/releases/download/v3.10.83/jx-windows-arm64.zip",
+            "hash": "51b7736936807361999e563a5c8510b25b2e1b74939785cf458a49788d54e999"
         }
     },
     "pre_install": "Stop-Process -Name 'jx' -ErrorAction 'Ignore' -Verbose",
@@ -16,6 +20,9 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/jenkins-x/jx/releases/download/v$version/jx-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jenkins-x/jx/releases/download/v$version/jx-windows-arm64.zip"
             }
         },
         "hash": {
