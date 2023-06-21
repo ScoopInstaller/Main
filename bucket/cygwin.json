@@ -17,6 +17,7 @@
             "hash": "1738561e93ce1ce7c69553cf63096b8a1798ec6b46c64f798f747ba3e7e72982"
         }
     },
+    "pre_install": "persist_data @{persist = @('packages', 'root')} $original_dir $persist_dir",
     "installer": {
         "args": [
             "--no-admin",
@@ -57,10 +58,7 @@
             "root\\Cygwin-Terminal.ico"
         ]
     ],
-    "persist": [
-        "packages",
-        "root"
-    ],
+    "pre_uninstall": "unlink_persist_data @{persist = @('packages', 'root')} $dir",
     "checkver": {
         "url": "https://cygwin.com/git/?p=cygwin-apps/setup.git;a=tags",
         "regex": ">release_([\\d.]+)<"
