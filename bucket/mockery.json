@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/vektra/mockery/releases/download/v2.30.16/mockery_2.30.16_Windows_x86_64.tar.gz",
             "hash": "f522e6371eb14a1717003605e9d9afca8fb3f6e6ca4fda7df23fc2f3395d258b"
+        },
+        "arm64": {
+            "url": "https://github.com/vektra/mockery/releases/download/v2.30.16/mockery_2.30.16_Windows_arm64.tar.gz",
+            "hash": "c5b9b7fa9faec87e8d04992d2ec3042c2906657f204d88df1e40f2035889deae"
         }
     },
     "bin": "mockery.exe",
@@ -14,11 +18,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vektra/mockery/releases/download/v$version/mockery_$version_Windows_x86_64.tar.gz",
-                "hash": {
-                    "url": "$baseurl/checksum.txt"
-                }
+                "url": "https://github.com/vektra/mockery/releases/download/v$version/mockery_$version_Windows_x86_64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/vektra/mockery/releases/download/v$version/mockery_$version_Windows_arm64.tar.gz"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksum.txt"
         }
     }
 }
