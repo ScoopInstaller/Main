@@ -1,0 +1,25 @@
+{
+    "version": "0.8.0",
+    "description": "Trippy combines the functionality of traceroute and ping and is designed to assist with the analysis of networking issues.",
+    "homepage": "https://trippy.cli.rs/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/fujiapple852/trippy/releases/download/0.8.0/trippy-0.8.0-x86_64-pc-windows-msvc.zip",
+            "hash": "832e18d9ad370489a4e39af34adc03585b601d187571ff4098e9dcaeb01567ce",
+            "extract_dir": "trippy-0.8.0-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": "trip.exe",
+    "checkver": {
+        "github": "https://github.com/fujiapple852/trippy"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/fujiapple852/trippy/releases/download/$version/trippy-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "trippy-$version-x86_64-pc-windows-msvc"
+            }
+        }
+    }
+}
