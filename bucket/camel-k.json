@@ -1,0 +1,23 @@
+{
+    "version": "1.12.1",
+    "description": "A lightweight integration platform, born on Kubernetes, with serverless superpowers",
+    "homepage": "https://camel.apache.org/camel-k",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/apache/camel-k/releases/download/v1.12.1/camel-k-client-1.12.1-windows-64bit.tar.gz",
+            "hash": "bb1357e8d919a9485ad4d0c3ed2d66fb2e1c1c01b5bf2215732a56ffad5c3478"
+        }
+    },
+    "bin": "kamel.exe",
+    "checkver": {
+        "github": "https://github.com/apache/camel-k"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/apache/camel-k/releases/download/v$version/camel-k-client-$version-windows-64bit.tar.gz"
+            }
+        }
+    }
+}
