@@ -1,0 +1,43 @@
+{
+    "version": "0.1.9",
+    "description": "A simple ssh client with trzsz ( trz / tsz ) support.",
+    "homepage": "https://trzsz.github.io/ssh",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.9/tssh_0.1.9_windows_x86_64.zip",
+            "hash": "55594ca11a74802acfc1b379e2ed9124af32aede96ac9a3397ad6c128ba9fa72",
+            "extract_dir": "tssh_0.1.9_windows_x86_64"
+        },
+        "32bit": {
+            "url": "https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.9/tssh_0.1.9_windows_i386.zip",
+            "hash": "b259a201efe97521523b56849234ae9d4c6a3065b3eff67cd80385b0cf86c6e1",
+            "extract_dir": "tssh_0.1.9_windows_i386"
+        },
+        "arm64": {
+            "url": "https://github.com/trzsz/trzsz-ssh/releases/download/v0.1.9/tssh_0.1.9_windows_aarch64.zip",
+            "hash": "6e1f71f3f96b4f08473f7d01946309cfd15ce1b168defbbec659cbe7569288d4",
+            "extract_dir": "tssh_0.1.9_windows_aarch64"
+        }
+    },
+    "bin": "tssh.exe",
+    "checkver": {
+        "github": "https://github.com/trzsz/trzsz-ssh"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/trzsz/trzsz-ssh/releases/download/v$version/tssh_$version_windows_x86_64.zip",
+                "extract_dir": "tssh_$version_windows_x86_64"
+            },
+            "32bit": {
+                "url": "https://github.com/trzsz/trzsz-ssh/releases/download/v$version/tssh_$version_windows_i386.zip",
+                "extract_dir": "tssh_$version_windows_i386"
+            },
+            "arm64": {
+                "url": "https://github.com/trzsz/trzsz-ssh/releases/download/v$version/tssh_$version_windows_aarch64.zip",
+                "extract_dir": "tssh_$version_windows_aarch64"
+            }
+        }
+    }
+}
