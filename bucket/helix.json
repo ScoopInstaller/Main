@@ -3,6 +3,9 @@
     "description": "A post-modern modal text editor",
     "homepage": "https://helix-editor.com",
     "license": "MPL-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/helix-editor/helix/releases/download/23.05/helix-23.05-x86_64-windows.zip",
@@ -10,6 +13,14 @@
             "extract_dir": "helix-23.05-x86_64-windows"
         }
     },
+    "pre_install": [
+        "# NOTE: Remove the migration script after 6 months (2024-01-22)",
+        "info 'Migrating config file...'",
+        "if (Test-Path \"$env:APPDATA\\helix\\config.toml\") {",
+        "  Copy-Item \"$env:APPDATA\\helix\\config.toml\" \"$persist_dir\\config.toml\"",
+        "}",
+        "# END"
+    ],
     "bin": [
         [
             "hx.exe",
