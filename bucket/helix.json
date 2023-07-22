@@ -16,7 +16,9 @@
     "pre_install": [
         "# NOTE: Remove the migration script after 6 months (2024-01-22)",
         "if (Test-Path \"$env:APPDATA\\helix\\config.toml\") {",
-        "  info 'Migrating config file...'"
+        "  info 'Migrating config file...'",
+        "  info \"Previous config patch: '$env:APPDATA\\helix\\config.toml'\"",
+        "  info \"Current config patch: '$persist_dir\\config.toml'\"",
         "  Copy-Item \"$env:APPDATA\\helix\\config.toml\" \"$persist_dir\\config.toml\"",
         "}",
         "# END"
