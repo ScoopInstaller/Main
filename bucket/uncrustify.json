@@ -1,30 +1,30 @@
 {
-    "version": "0.76.0",
+    "version": "0.77.1",
     "description": "A source code beautifier for C, C++, C#, ObjectiveC, D, Java, Pawn and VALA",
     "homepage": "https://uncrustify.sourceforge.net",
     "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-0.76.0/uncrustify-0.76.0_f-win64.zip",
-            "hash": "sha1:37d3a800166848b951169268d086d2ec7a70b656"
+            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-077.1/uncrustify-0.77.1_f-win64.zip",
+            "hash": "sha1:c6375f71a92c13559713f14247fcc8fb0b724515"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-0.76.0/uncrustify-0.76.0_f-win32.zip",
-            "hash": "sha1:b33f5284033a937f090b19a0cbd9d051eba31d9c"
+            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-077.1/uncrustify-0.77.1_f-win32.zip",
+            "hash": "sha1:92f047ce099fb264409903287c73f78da9bd8924"
         }
     },
     "bin": "bin\\uncrustify.exe",
     "checkver": {
-        "url": "https://sourceforge.net/projects/uncrustify/rss?path=/",
-        "regex": "/uncrustify-([\\d.]+)_"
+        "sourceforge": "uncrustify",
+        "regex": "uncrustify-(?<fver>[\\d.]+)/uncrustify-([\\d.]+)_"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$version/uncrustify-$version_f-win64.zip"
+                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$matchFver/uncrustify-$version_f-win64.zip"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$version/uncrustify-$version_f-win32.zip"
+                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$matchFver/uncrustify-$version_f-win32.zip"
             }
         }
     }
