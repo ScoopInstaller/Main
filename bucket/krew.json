@@ -16,7 +16,7 @@
     "installer": {
         "script": [
             "[Environment]::SetEnvironmentVariable('KREW_ROOT', \"$persist_dir\\.krew\", 'Process')",
-            "Invoke-ExternalCommand -Path \"$dir\\krew.exe\" -Args 'install krew' | Out-Null"
+            "Start-Process \"$dir\\krew.exe\" -Args 'install krew' -Wait -WindowStyle Hidden"
         ]
     },
     "env_add_path": ".krew\\bin",
