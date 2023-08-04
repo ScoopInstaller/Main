@@ -9,7 +9,7 @@
             "hash": "62dcb99d284d7afcc276499022475d7dcf2f96f4190ba0fa72b547b494588188"
         }
     },
-    "pre_install": "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Removal -Switches '-xr!*.exe.nsis -x!$PLUGINSDIR'",
+    "pre_install": "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Removal -Switches '-xr!*.exe.nsis -x!$PLUGINSDIR -x!qemu-uninstall.exe'",
     "env_add_path": ".",
     "checkver": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installer \\((?<version>[\\d.a-z-]+)\\)",
     "autoupdate": {
