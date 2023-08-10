@@ -24,16 +24,24 @@
     },
     "installer": {
         "script": [
-            "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
-            "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
+            "if ($null -eq [Environment]::GetEnvironmentVariable('CARGO_HOME', 'Process')) {",
+            "   [Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
+            "}",
+            "if ($null -eq [Environment]::GetEnvironmentVariable('RUSTUP_HOME', 'Process')) {",
+            "   [Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
+            "}",
             "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args @('-y', '--no-modify-path') | Out-Null"
         ]
     },
-    "env_add_path": ".cargo\\bin",
-    "env_set": {
-        "CARGO_HOME": "$persist_dir\\.cargo",
-        "RUSTUP_HOME": "$persist_dir\\.rustup"
-    },
+    "post_install" :[
+            "if ($null -eq [Environment]::GetEnvironmentVariable('CARGO_HOME', 'Process')) {",
+            "   setx CARGO_HOME \"$persist_dir\\.cargo\"",
+            "}",
+            "if ($null -eq [Environment]::GetEnvironmentVariable('RUSTUP_HOME', 'Process')) {",
+            "   setx RUSTUP_HOME \"$persist_dir\\.rustup\"",
+            "}",
+            "setx PATH \"%PATH%;%CARGO_HOME%\\bin\""
+    ],
     "persist": [
         ".cargo",
         ".rustup"
