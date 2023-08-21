@@ -1,0 +1,28 @@
+{
+    "version": "0.14.1",
+    "bin": "ko.exe",
+    "description": "ko is a simple, fast container image builder for Go applications.",
+    "homepage": "https://ko.build/",
+    "license": "Apache-2.0",
+
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ko-build/ko/releases/download/v0.14.1/ko_0.14.1_Windows_x86_64.tar.gz",
+            "hash": "232d418380d3181b67d30967e3528adb3d924d85b42d2cde874db1ab33c9f8d1"
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/ko-build/ko"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kubernetes/kops/releases/download/v$version/ko_$version_Windows_x86_64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}
