@@ -1,0 +1,40 @@
+{
+    "version": "0.14.1",
+    "description": "A simple, fast container image builder for Go applications",
+    "homepage": "https://ko.build/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ko-build/ko/releases/download/v0.14.1/ko_0.14.1_Windows_x86_64.tar.gz",
+            "hash": "232d418380d3181b67d30967e3528adb3d924d85b42d2cde874db1ab33c9f8d1"
+        },
+        "32bit": {
+            "url": "https://github.com/ko-build/ko/releases/download/v0.14.1/ko_0.14.1_Windows_i386.tar.gz",
+            "hash": "33ac30905255fb915d326f74a19493363d4568a38f3f7704b3666f77939ae36d"
+        },
+        "arm64": {
+            "url": "https://github.com/ko-build/ko/releases/download/v0.14.1/ko_0.14.1_Windows_arm64.tar.gz",
+            "hash": "2d3ae938efdc0215b8717f8ea79e6247af8e1298a47cd686adbfbda0f315b107"
+        }
+    },
+    "bin": "ko.exe",
+    "checkver": {
+        "github": "https://github.com/ko-build/ko/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ko-build/ko/releases/download/v$version/ko_$version_Windows_x86_64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/ko-build/ko/releases/download/v$version/ko_$version_Windows_i386.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/ko-build/ko/releases/download/v$version/ko_$version_Windows_arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
