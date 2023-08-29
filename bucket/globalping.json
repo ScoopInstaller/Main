@@ -1,0 +1,40 @@
+{
+    "version": "1.1.0",
+    "description": "Access a global network of probes without leaving your console",
+    "homepage": "https://www.jsdelivr.com/globalping",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jsdelivr/globalping-cli/releases/download/v1.1.0/globalping_Windows_x86_64.zip",
+            "hash": "81914bb7fabfa93a3f898139c49740723443a8b848cde45fc925edbacff9c32d"
+        },
+        "32bit": {
+            "url": "https://github.com/jsdelivr/globalping-cli/releases/download/v1.1.0/globalping_Windows_i386.zip",
+            "hash": "67af55c1168e26c6be919c1909f05266b55bd1e7ed6f363733f3fd7cba187211"
+        },
+        "arm64": {
+            "url": "https://github.com/jsdelivr/globalping-cli/releases/download/v1.1.0/globalping_Windows_arm64.zip",
+            "hash": "b8e7e5ffd9ac83638082929a33f36fe32f3d756542ed7de39a38ae4e6475dcdb"
+        }
+    },
+    "bin": "globalping.exe",
+    "checkver": {
+        "github": "https://github.com/jsdelivr/globalping-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jsdelivr/globalping-cli/releases/download/v$version/globalping_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/jsdelivr/globalping-cli/releases/download/v$version/globalping_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jsdelivr/globalping-cli/releases/download/v$version/globalping_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
