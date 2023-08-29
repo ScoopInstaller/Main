@@ -1,0 +1,28 @@
+{
+    "version": "1.6.2",
+    "description": "Terminal file manager",
+    "homepage": "https://github.com/antonmedv/walk",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/antonmedv/walk/releases/download/v1.6.2/walk_windows_amd64.exe#/walk.exe",
+            "hash": "23572ba4066d5e5f5796c8c4e995c5fdd047d146bc004401d418ae00678f5536"
+        },
+        "arm64": {
+            "url": "https://github.com/antonmedv/walk/releases/download/v1.6.2/walk_windows_arm64.exe#/walk.exe",
+            "hash": "9c110ae45dcfe829ec19274700e4c20ed924c2234793eaeb7ac024af551388c8"
+        }
+    },
+    "bin": "walk.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/antonmedv/walk/releases/download/v$version/walk_windows_amd64.exe#/walk.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/antonmedv/walk/releases/download/v$version/walk_windows_arm64.exe#/walk.exe"
+            }
+        }
+    }
+}
