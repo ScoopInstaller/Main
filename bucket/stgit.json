@@ -1,0 +1,24 @@
+{
+    "version": "2.3.0",
+    "description": "Manage Git commits as a stack of patches",
+    "homepage": "https://stacked-git.github.io/",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/stacked-git/stgit/releases/download/v2.3.0/stgit-2.3.0.msi",
+            "hash": "bc6752ca1f365f24dcce56be4c3ace7c77cb555771b34ee1a0190632d0d841d6"
+        }
+    },
+    "extract_dir": "PFiles64/StGit",
+    "bin": "stg.exe",
+    "checkver": {
+        "github": "https://github.com/stacked-git/stgit"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/stacked-git/stgit/releases/download/v$version/stgit-$version.msi"
+            }
+        }
+    }
+}
