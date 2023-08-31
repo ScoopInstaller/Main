@@ -1,0 +1,27 @@
+{
+    "version": "3.28.0",
+    "description": "The Confluent command-line interface (CLI)",
+    "license": "https://github.com/confluentinc/cli/blob/main/LICENSE",
+    "homepage": "https://docs.confluent.io/confluent-cli/current/overview.html",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/confluentinc/cli/releases/download/v3.28.0/confluent_3.28.0_windows_amd64.zip",
+            "hash": "d6cb5ac8e08632ffdebc8344aa168b9492f478f9ce5cad0e6aebd91f1ecc0c41"
+        }
+    },
+    "extract_dir": "confluent",
+    "bin": "confluent.exe",
+    "checkver": {
+        "github": "https://github.com/confluentinc/cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/confluentinc/cli/releases/download/v$version/confluent_$version_windows_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/confluent_$version_checksums.txt"
+        }
+    }
+}
