@@ -1,0 +1,26 @@
+{
+    "version": "1.6.0-640",
+    "description": "Full-featured MP4 format, MPEG DASH, HLS, CMAF SDK and tools",
+    "homepage": "https://www.bento4.com",
+    "license": "GPL-2.0-only|Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.bok.net/Bento4/binaries/Bento4-SDK-1-6-0-640.x86_64-microsoft-win32.zip",
+            "hash": "03caae04a9e1ed52deef2407bd6f0eccff68f52d2556ef126debafac4efe487e",
+            "extract_dir": "Bento4-SDK-1-6-0-640.x86_64-microsoft-win32"
+        }
+    },
+    "env_add_path": "bin",
+    "checkver": {
+        "url": "https://www.bento4.com/downloads/",
+        "regex": "Version ([\\d.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.bok.net/Bento4/binaries/Bento4-SDK-$dashVersion.x86_64-microsoft-win32.zip",
+                "extract_dir": "Bento4-SDK-$dashVersion.x86_64-microsoft-win32"
+            }
+        }
+    }
+}

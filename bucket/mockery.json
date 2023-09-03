@@ -1,12 +1,16 @@
 {
-    "version": "2.26.1",
+    "version": "2.33.1",
     "description": "A mock code autogenerator for Golang",
     "homepage": "https://github.com/vektra/mockery",
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vektra/mockery/releases/download/v2.26.1/mockery_2.26.1_Windows_x86_64.tar.gz",
-            "hash": "f5ab850490d2219d8ff23ab969662ed77c6b10a5f2f0e4fed46c079a791f215d"
+            "url": "https://github.com/vektra/mockery/releases/download/v2.33.1/mockery_2.33.1_Windows_x86_64.tar.gz",
+            "hash": "c5e3dbd77361f113f34e38276d96797d00e638bd8150e350d7e539f800331581"
+        },
+        "arm64": {
+            "url": "https://github.com/vektra/mockery/releases/download/v2.33.1/mockery_2.33.1_Windows_arm64.tar.gz",
+            "hash": "e0c1e517562019285fb0a437b02040d44d76af83ae52dda061fed0dfe2dcc5f4"
         }
     },
     "bin": "mockery.exe",
@@ -14,11 +18,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vektra/mockery/releases/download/v$version/mockery_$version_Windows_x86_64.tar.gz",
-                "hash": {
-                    "url": "$baseurl/checksum.txt"
-                }
+                "url": "https://github.com/vektra/mockery/releases/download/v$version/mockery_$version_Windows_x86_64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/vektra/mockery/releases/download/v$version/mockery_$version_Windows_arm64.tar.gz"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksum.txt"
         }
     }
 }

@@ -1,20 +1,39 @@
 {
-    "version": "23.03",
+    "version": "23.05",
     "description": "A post-modern modal text editor",
     "homepage": "https://helix-editor.com",
     "license": "MPL-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/helix-editor/helix/releases/download/23.03/helix-23.03-x86_64-windows.zip",
-            "hash": "58013f827d676a9dcb3efdf81e8202abc10e6665f977acb7edf2ba325645ddfb",
-            "extract_dir": "helix-23.03-x86_64-windows"
+            "url": "https://github.com/helix-editor/helix/releases/download/23.05/helix-23.05-x86_64-windows.zip",
+            "hash": "27ba9a7ea0cbb5a4de2378c5d7383405f2aeb254118cfba1785eb0b32aee3ef0",
+            "extract_dir": "helix-23.05-x86_64-windows"
         }
     },
+    "pre_install": [
+        "# NOTE: Remove the migration script after 6 months (2024-01-22)",
+        "if ((Test-Path \"$env:APPDATA\\helix\\config.toml\") -and (!(Test-Path \"$persist_dir\\config.toml\"))) {",
+        "  info 'Migrating config file...'",
+        "  info \"Previous config path: '$env:APPDATA\\helix\\config.toml'\"",
+        "  info \"Current config path: '$persist_dir\\config.toml'\"",
+        "  ensure \"$persist_dir\"",
+        "  Copy-Item \"$env:APPDATA\\helix\\config.toml\" \"$persist_dir\\config.toml\"",
+        "}",
+        "# END"
+    ],
     "bin": [
-        "hx.exe",
         [
             "hx.exe",
-            "helix"
+            "hx",
+            "--config \"$persist_dir\\config.toml\""
+        ],
+        [
+            "hx.exe",
+            "helix",
+            "--config \"$persist_dir\\config.toml\""
         ]
     ],
     "checkver": {

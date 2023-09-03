@@ -1,0 +1,50 @@
+{
+    "version": "1.1.5",
+    "description": "trzsz ( trz / tsz ) is a simple file transfer tools, similar to lrzsz ( rz / sz ), and compatible with tmux.",
+    "homepage": "https://trzsz.github.io/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/trzsz/trzsz-go/releases/download/v1.1.5/trzsz_1.1.5_windows_x86_64.zip",
+            "hash": "4c89cdc1a24ab3c474638d4aecc97b8daf04803e561b35d4d6747f750811fc63",
+            "extract_dir": "trzsz_1.1.5_windows_x86_64"
+        },
+        "32bit": {
+            "url": "https://github.com/trzsz/trzsz-go/releases/download/v1.1.5/trzsz_1.1.5_windows_i386.zip",
+            "hash": "3c502aebc71f85f2c5d31a188f418d9a474339236d844b20ca31b336ec5f21fe",
+            "extract_dir": "trzsz_1.1.5_windows_i386"
+        },
+        "arm64": {
+            "url": "https://github.com/trzsz/trzsz-go/releases/download/v1.1.5/trzsz_1.1.5_windows_aarch64.zip",
+            "hash": "344c1ff173efddab8c8162f8ea4428b238d837284e06786e5fbb8680b3d1a8cc",
+            "extract_dir": "trzsz_1.1.5_windows_aarch64"
+        }
+    },
+    "bin": [
+        "trz.exe",
+        "tsz.exe",
+        "trzsz.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/trzsz/trzsz-go"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/trzsz/trzsz-go/releases/download/v$version/trzsz_$version_windows_x86_64.zip",
+                "extract_dir": "trzsz_$version_windows_x86_64"
+            },
+            "32bit": {
+                "url": "https://github.com/trzsz/trzsz-go/releases/download/v$version/trzsz_$version_windows_i386.zip",
+                "extract_dir": "trzsz_$version_windows_i386"
+            },
+            "arm64": {
+                "url": "https://github.com/trzsz/trzsz-go/releases/download/v$version/trzsz_$version_windows_aarch64.zip",
+                "extract_dir": "trzsz_$version_windows_aarch64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/trzsz_$version_checksums.txt"
+        }
+    }
+}

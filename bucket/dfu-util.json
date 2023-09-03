@@ -1,22 +1,25 @@
 {
     "version": "0.11",
     "description": "DFU is intended to download and upload firmware to/from devices connected over USB",
-    "license": "GPL-2.0-only",
     "homepage": "https://dfu-util.sourceforge.net/",
+    "license": "GPL-2.0-only",
     "url": "https://dfu-util.sourceforge.net/releases/dfu-util-0.11-binaries.tar.xz",
     "hash": "6450de30a7dcd8d8c1273f43f0b153f054fd24d85f7f38296b1ad8edbd2ddb25",
+    "extract_dir": "dfu-util-0.11-binaries",
     "pre_install": [
-        "$arch = if ($architecture -eq 'arm64') { '64' } else { $architecture.Substring(0, 2) }",
-        "$path = \"$dir\\dfu-util-$version-binaries\"",
-        "Move-Item (Get-ChildItem \"$path\\win$arch\" | Where-Object { $_.Name -match '-(?:static|(?:pre|suf)fix)\\.exe\\Z' }) \"$dir\"",
-        "Get-ChildItem \"$dir\\*-static.exe\" | Rename-Item -NewName { $_.Name -replace '-static' }",
-        "Remove-Item -Recurse $path"
+        "Get-ChildItem \"$dir\" -Exclude 'win*' -Directory | Remove-Item -Recurse",
+        "if ($architecture -eq '32bit') { Remove-Item \"$dir\\win64\" -Recurse } else { Remove-Item \"$dir\\win32\" -Recurse }",
+        "Get-ChildItem \"$dir\\win*\" -Directory | Rename-Item -NewName 'bin'",
+        "Get-ChildItem \"$dir\\bin\" -Exclude '*.exe' | Remove-Item",
+        "Get-ChildItem \"$dir\\bin\" | Where-Object 'Name' -Match '-static' | foreach {",
+        "    Move-Item $_.FullName -Destination $_.FullName.Replace('-static', '') -Force",
+        "}"
     ],
     "bin": [
-        "dfu-prefix.exe",
-        "dfu-suffix.exe",
-        "dfu-util.exe",
-        "lsusb.exe"
+        "bin\\dfu-prefix.exe",
+        "bin\\dfu-suffix.exe",
+        "bin\\dfu-util.exe",
+        "bin\\lsusb.exe"
     ],
     "checkver": {
         "url": "https://gitlab.com/api/v4/projects/188452/repository/tags",
@@ -24,6 +27,7 @@
         "regex": "v([\\w.-]+)"
     },
     "autoupdate": {
-        "url": "https://dfu-util.sourceforge.net/releases/dfu-util-$version-binaries.tar.xz"
+        "url": "https://dfu-util.sourceforge.net/releases/dfu-util-$version-binaries.tar.xz",
+        "extract_dir": "dfu-util-$version-binaries"
     }
 }
