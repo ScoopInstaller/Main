@@ -1,0 +1,23 @@
+{
+    "version": "0.110.1",
+    "description": "The tool to run java, jar or jsh files with automatic dependency fetching, immediate compilation and execution",
+    "homepage": "https://jbang.dev/",
+    "license": "MIT",
+    "suggest": {
+        "JDK": "openjdk"
+    },
+    "url": "https://github.com/jbangdev/jbang/releases/download/v0.110.1/jbang-0.110.1.zip",
+    "hash": "d81aacd8f15acc11590c6227b66a185f6c6384e3e18f5d08aaf6499ec2345c51",
+    "extract_dir": "jbang-0.110.1",
+    "env_add_path": "bin",
+    "checkver": {
+        "github": "https://github.com/jbangdev/jbang"
+    },
+    "autoupdate": {
+        "url": "https://github.com/jbangdev/jbang/releases/download/v$version/jbang-$version.zip",
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "jbang-$version"
+    }
+}
