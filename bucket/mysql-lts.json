@@ -1,0 +1,85 @@
+{
+    "version": "8.0.34",
+    "description": "The world's most popular open-source database, supported by an active community. (Long Term Support)",
+    "homepage": "https://dev.mysql.com/downloads/mysql/8.0.html",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
+        "or run following command as administrator to register MySQL as a service. See: https://dev.mysql.com/doc/refman/en/windows-start-service.html",
+        "",
+        "mysqld --install MySQL --defaults-file=\"$dir\\my.ini\"",
+        "",
+        "To stop and/or delete the Service run 'sc stop MySQL' and 'sc delete MySQL'."
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.34-winx64.zip",
+            "hash": "md5:eb782b46032744e2fbef734cb958a70e",
+            "extract_dir": "mysql-8.0.34-winx64"
+        }
+    },
+    "pre_install": [
+        "$ini = \"$dir\\my.ini\"",
+        "if (!(Test-Path \"$ini\")) {",
+        "   # Using $dir instead of $persist_dir, causes this error:",
+        "   # [ERROR] [MY-010187] [Server] Could not open file '~/scoop/apps/mysql/current/data/host.err' for error logging: Permission denied",
+        "   Add-Content -Path \"$ini\" -Value \"[mysqld]`ndatadir=$($persist_dir -replace '\\\\', '/')/data\" -Encoding Ascii",
+        "   # Set username so it's not required when connecting",
+        "   Add-Content -Path \"$ini\" -Value \"[client]`nuser=root\" -Encoding Ascii",
+        "}"
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\auto.cnf\")) {",
+        "    warn 'Initializing data directory ...'",
+        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysqld.exe\" -ArgumentList '--initialize-insecure'",
+        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "}"
+    ],
+    "bin": [
+        "bin\\ibd2sdi.exe",
+        "bin\\innochecksum.exe",
+        "bin\\lz4_decompress.exe",
+        "bin\\myisamchk.exe",
+        "bin\\myisamlog.exe",
+        "bin\\myisampack.exe",
+        "bin\\myisam_ftdump.exe",
+        "bin\\mysql.exe",
+        "bin\\mysqladmin.exe",
+        "bin\\mysqlbinlog.exe",
+        "bin\\mysqlcheck.exe",
+        "bin\\mysqld.exe",
+        "bin\\mysqldump.exe",
+        "bin\\mysqlimport.exe",
+        "bin\\mysqlpump.exe",
+        "bin\\mysqlshow.exe",
+        "bin\\mysqlslap.exe",
+        "bin\\mysql_config_editor.exe",
+        "bin\\mysql_secure_installation.exe",
+        "bin\\mysql_ssl_rsa_setup.exe",
+        "bin\\mysql_tzinfo_to_sql.exe",
+        "bin\\mysql_upgrade.exe",
+        "bin\\my_print_defaults.exe",
+        "bin\\perror.exe",
+        "bin\\zlib_decompress.exe"
+    ],
+    "persist": [
+        "data",
+        "my.ini"
+    ],
+    "checkver": "<h1>MySQL Community Server ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dev.mysql.com/get/Downloads/MySQL-$majorVersion.$minorVersion/mysql-$version-winx64.zip",
+                "hash": {
+                    "url": "https://dev.mysql.com/downloads/mysql/8.0.html",
+                    "regex": "md5\">$md5"
+                },
+                "extract_dir": "mysql-$version-winx64"
+            }
+        }
+    }
+}
