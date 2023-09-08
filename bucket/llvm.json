@@ -11,6 +11,10 @@
         "32bit": {
             "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/LLVM-16.0.6-win32.exe#/dl.7z",
             "hash": "2b2ffd454e1d4eac6915c41e29de02d214c6cb33390098468bf088dbc7410629"
+        },
+        "arm64": {
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-16.0.6/LLVM-16.0.6-woa64.exe#/dl.7z",
+            "hash": "74b37b2eaa0b3632c15ecbb5c1c1c5bc2d093a48cc872c4991a34a75ccda805f"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
@@ -26,6 +30,9 @@
             },
             "32bit": {
                 "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-woa64.exe#/dl.7z"
             }
         }
     }

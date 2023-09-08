@@ -1,0 +1,28 @@
+{
+    "version": "0.8.0",
+    "description": "A powerful chatgpt cli",
+    "homepage": "https://github.com/sigoden/aichat",
+    "license": "MIT|Apache",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sigoden/aichat/releases/download/v0.8.0/aichat-v0.8.0-x86_64-pc-windows-msvc.zip",
+            "hash": "6cc7e0e757604df7afa23aeaf6491569fe0b142429afa01c5f76e62c38575f3a"
+        },
+        "32bit": {
+            "url": "https://github.com/sigoden/aichat/releases/download/v0.8.0/aichat-v0.8.0-i686-pc-windows-msvc.zip",
+            "hash": "208b3475785bd175bb99e9a0ab1eaed85936073a5a1d2cf1bc0e7db54474a596"
+        }
+    },
+    "bin": "aichat.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sigoden/aichat/releases/download/v$version/aichat-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/sigoden/aichat/releases/download/v$version/aichat-v$version-i686-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

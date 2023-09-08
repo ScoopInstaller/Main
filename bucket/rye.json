@@ -1,0 +1,55 @@
+{
+    "version": "0.13.0",
+    "description": "An experimental package management solution for Python",
+    "homepage": "https://rye-up.com/",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mitsuhiko/rye/releases/download/0.13.0/rye-x86_64-windows.exe#/rye.exe",
+            "hash": "749a8caa46e834527af4527825e0d829dfe758486963e038f27b3c00c5a75641"
+        },
+        "32bit": {
+            "url": "https://github.com/mitsuhiko/rye/releases/download/0.13.0/rye-x86-windows.exe#/rye.exe",
+            "hash": "f89ade3e9362741b02c245436e49908518c1f92677e33f366b47cdb000942a4e"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.toml\")) {",
+        "    New-Item -Path \"$dir\\config.toml\" | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "& \"$dir\\rye.exe\" self install --yes",
+        "Remove-Item \"$dir\\rye.exe\""
+    ],
+    "env_add_path": "shims",
+    "env_set": {
+        "RYE_HOME": "$persist_dir"
+    },
+    "persist": [
+        "self",
+        "shims",
+        "py",
+        "tools",
+        "config.toml"
+    ],
+    "checkver": {
+        "github": "https://github.com/mitsuhiko/rye"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mitsuhiko/rye/releases/download/$version/rye-x86_64-windows.exe#/rye.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/mitsuhiko/rye/releases/download/$version/rye-x86-windows.exe#/rye.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
