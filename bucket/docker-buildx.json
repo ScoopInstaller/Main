@@ -1,0 +1,50 @@
+{
+    "version": "0.11.2",
+    "description": "Docker CLI plugin for extended build capabilities with BuildKit",
+    "homepage": "https://github.com/docker/buildx",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/docker/buildx/releases/download/v0.11.2/buildx-v0.11.2.windows-amd64.exe#/docker-buildx.exe",
+            "hash": "d9419c0838c8a08c2da28fcee585f48926c4dd64e5be1d96eb55da12fa3332d9"
+        },
+        "arm64": {
+            "url": "https://github.com/docker/buildx/releases/download/v0.11.2/buildx-v0.11.2.windows-arm64.exe#/docker-buildx.exe",
+            "hash": "9278cb193ca5d508ff632416c07712a7d128349a1b2ede3085456758e2f90d3f"
+        }
+    },
+    "bin": "docker-buildx.exe",
+    "post_install": [
+        "$docker_plugin_dir=(Join-Path $Env:USERPROFILE .docker/cli-plugins)",
+        "if ($global) {",
+        "  $docker_plugin_dir=(Join-Path $Env:ProgramData Docker/cli-plugins)",
+        "  echo \"INFO: docker-buildx will be installed to global directory $docker_plugin_dir\"",
+        "}",
+        "echo 'Installing docker-buildx as docker-cli plugin...'",
+        "New-Item -ItemType Directory -Force $docker_plugin_dir | Out-Null",
+        "Copy-Item (Join-Path $original_dir docker-buildx.exe) (Join-Path $docker_plugin_dir docker-buildx.exe)"
+    ],
+    "post_uninstall": [
+        "$docker_plugin_dir=(Join-Path $Env:USERPROFILE .docker/cli-plugins)",
+        "if ($global) {",
+        "  $docker_plugin_dir=(Join-Path $Env:ProgramData Docker/cli-plugins)",
+        "}",
+        "Remove-Item -Force (Join-Path $docker_plugin_dir docker-buildx.exe)"
+    ],
+    "checkver": {
+        "github": "https://github.com/docker/buildx"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/docker/buildx/releases/download/v$version/buildx-v$version.windows-amd64.exe#/docker-buildx.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/docker/buildx/releases/download/v$version/buildx-v$version.windows-arm64.exe#/docker-buildx.exe"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/docker/buildx/releases/download/v$version/checksums.txt"
+        }
+    }
+}
