@@ -1,37 +1,37 @@
 {
     "version": "1.7",
     "description": "Lightweight and flexible command-line JSON processor",
-    "homepage": "https://stedolan.github.io/jq/",
+    "homepage": "https://jqlang.github.io/jq/",
     "license": "MIT",
     "suggest": {
         "jid": "jid"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/stedolan/jq/releases/download/jq-1.7/jq-win64.exe#/jq.exe",
+            "url": "https://github.com/jqlang/jq/releases/download/jq-1.7/jq-windows-amd64.exe#/jq.exe",
             "hash": "2e9cc54d0a5d098e2007decec1dbb3c555ca2f5aabded7aec907fe0ffe401aab"
         },
         "32bit": {
-            "url": "https://github.com/stedolan/jq/releases/download/jq-1.7/jq-win32.exe#/jq.exe",
+            "url": "https://github.com/jqlang/jq/releases/download/jq-1.7/jq-windows-i386.exe#/jq.exe",
             "hash": "9500d0300e28a930ab3430a101ca940038b8e82ca441f5c9a1fddaa9d1b770df"
         }
     },
     "bin": "jq.exe",
     "checkver": {
-        "github": "https://github.com/stedolan/jq/",
+        "github": "https://github.com/jqlang/jq/",
         "regex": "tag/jq-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/stedolan/jq/releases/download/jq-$version/jq-win64.exe#/jq.exe"
+                "url": "https://github.com/jqlang/jq/releases/download/jq-$version/jq-windows-amd64.exe#/jq.exe"
             },
             "32bit": {
-                "url": "https://github.com/stedolan/jq/releases/download/jq-$version/jq-win32.exe#/jq.exe"
+                "url": "https://github.com/jqlang/jq/releases/download/jq-$version/jq-windows-i386.exe#/jq.exe"
             }
         },
         "hash": {
-            "url": "https://raw.githubusercontent.com/stedolan/jq/jq-$version/sig/v$version/sha256sum.txt"
+            "url": "https://github.com/jqlang/jq/releases/download/jq-$version/sha256sum.txt"
         }
     }
 }
