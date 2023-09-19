@@ -1,11 +1,27 @@
 {     
     "version": "v1.10.3",
-    "url": "https://github.com/kyverno/kyverno/releases/download/v1.10.3/kyverno-cli_v1.10.3_windows_x86_64.zip",     
-    "hash": "bcc11df1a17377357705d28e84be0f660fc9c43cae30a4440ade0aec5ee298be",     
-    "extract_dir": "Kyverno",     
-    "bin": "kyverno-cli.exe",     
-    "checkver": {         
-        "url": "https://github.com/kyverno/kyverno/releases/latest",         
-        "re": "v([\\d.]+)"     
-    } 
-} 
+    "description": "The Kyverno Command Line Interface (CLI) is designed to validate and test policy behavior to resources prior to adding them to a cluster.", 
+    "homepage": "https://kyverno.io/docs/kyverno-cli/",
+    "license": "Apache-2.0",
+    "notes": "Kyverno CLI for managing Kubernetes policies.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kyverno/kyverno/releases/download/v1.10.3/kyverno-cli_v1.10.3_windows_x86_64.zip",     
+            "hash": "bcc11df1a17377357705d28e84be0f660fc9c43cae30a4440ade0aec5ee298be"     
+        }
+    },     
+    "bin": "kyverno.exe",          
+    "checkver": {
+        "github": "https://github.com/kyverno/kyverno"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kyverno/kyverno/releases/download/v$version/kyverno-cli_v$version_windows_x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
