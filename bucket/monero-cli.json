@@ -7,12 +7,12 @@
         "64bit": {
             "url": "https://dlsrc.getmonero.org/cli/monero-win-x64-v0.18.2.2.zip",
             "hash": "964c13f5d596289d2ab8ba9e265ff1e255a06269cf8fd216187d7b77a11c1371",
-            "extract_dir": "monero-x86_64-w64-mingw32"
+            "extract_dir": "monero-x86_64-w64-mingw32-v0.18.2.2"
         },
         "32bit": {
             "url": "https://dlsrc.getmonero.org/cli/monero-win-x86-v0.18.2.2.zip",
             "hash": "b7366408e74b321aa5fa3993187a862d93dc41cbc43dc585f82fc17a4c423ded",
-            "extract_dir": "monero-i686-w64-mingw32"
+            "extract_dir": "monero-i686-w64-mingw32-v0.18.2.2"
         }
     },
     "bin": [
@@ -41,10 +41,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dlsrc.getmonero.org/cli/monero-win-x64-v$version.zip"
+                "url": "https://dlsrc.getmonero.org/cli/monero-win-x64-v$version.zip",
+                "extract_dir": "monero-x86_64-w64-mingw32-v$version"
             },
             "32bit": {
-                "url": "https://dlsrc.getmonero.org/cli/monero-win-x86-v$version.zip"
+                "url": "https://dlsrc.getmonero.org/cli/monero-win-x86-v$version.zip",
+                "extract_dir": "monero-i686-w64-mingw32-v$version"
             }
         },
         "hash": {
