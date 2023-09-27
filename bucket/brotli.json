@@ -1,23 +1,30 @@
 {
-    "version": "1.0.9_1",
+    "version": "1.1.0",
     "description": "Lossless compression algorithm",
     "homepage": "https://brotli.org/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://curl.se/windows/dl-7.83.1_1/brotli-1.0.9_1-win64-mingw.tar.xz",
-            "hash": "5b233cee0b7cdcc0dbced6df5dd658e38d785a95a6e711c553dfd412aa625b9e",
-            "extract_dir": "brotli-1.0.9-win64-mingw"
+            "url": "https://github.com/google/brotli/releases/download/v1.1.0/brotli-x64-windows-static.zip",
+            "hash": "1d45ba1bef7e2bcbb70d49577f3ae195615b58a4b727d52229d4ec0004d49f88"
         },
         "32bit": {
-            "url": "https://curl.se/windows/dl-7.83.1_1/brotli-1.0.9_1-win32-mingw.tar.xz",
-            "hash": "28f81901d4468b2bce233f7cc967353975925d70584e2d15d53658dcedb67ea5",
-            "extract_dir": "brotli-1.0.9-win32-mingw"
+            "url": "https://github.com/google/brotli/releases/download/v1.1.0/brotli-x86-windows-static.zip",
+            "hash": "6692bedd404f0d681c5c73366bd550f3475f496711b1f16422ff4877c8d4bbaf"
         }
     },
-    "pre_install": "Copy-Item \"$dir\\bin\\brotli.exe\" \"$dir\\bin\\unbrotli.exe\"",
-    "bin": [
-        "bin\\brotli.exe",
-        "bin\\unbrotli.exe"
-    ]
+    "bin": "brotli.exe",
+    "checkver": {
+        "github": "https://github.com/google/brotli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/google/brotli/releases/download/v$version/brotli-x64-windows-static.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/google/brotli/releases/download/v$version/brotli-x86-windows-static.zip"
+            }
+        }
+    }
 }
