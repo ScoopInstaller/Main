@@ -3,8 +3,9 @@
     "description": "Configuration profiles manager and scheduler for restic backup",
     "homepage": "https://creativeprojects.github.io/resticprofile/",
     "license": "GPL-3.0-only",
-    "depends": "restic",
-    "bin": "resticprofile.exe",
+    "suggest": {
+        "Restic and/or Rustic" : [ "restic", "rustic" ]
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/creativeprojects/resticprofile/releases/download/v0.23.0/resticprofile_no_self_update_0.23.0_windows_amd64.tar.gz",
@@ -15,6 +16,7 @@
             "hash": "6b95adef7bf7cc020690a950dce217360e00458ed2b1449d60c8035b98e56271"
         }
     },
+    "bin": "resticprofile.exe",
     "checkver": {
         "github": "https://github.com/creativeprojects/resticprofile"
     },
