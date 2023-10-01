@@ -1,0 +1,36 @@
+{
+    "version": "0.23.0",
+    "description": "Configuration profiles manager and scheduler for restic backup",
+    "homepage": "https://creativeprojects.github.io/resticprofile/",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "restic": "restic"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/creativeprojects/resticprofile/releases/download/v0.23.0/resticprofile_no_self_update_0.23.0_windows_amd64.tar.gz",
+            "hash": "3f4bdfbede2f155df3c394c74ce099ca4e00e0f9e8c2f3957d421db4a8137ff0"
+        },
+        "32bit": {
+            "url": "https://github.com/creativeprojects/resticprofile/releases/download/v0.23.0/resticprofile_no_self_update_0.23.0_windows_386.tar.gz",
+            "hash": "6b95adef7bf7cc020690a950dce217360e00458ed2b1449d60c8035b98e56271"
+        }
+    },
+    "bin": "resticprofile.exe",
+    "checkver": {
+        "github": "https://github.com/creativeprojects/resticprofile"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/creativeprojects/resticprofile/releases/download/v$version/resticprofile_no_self_update_$version_windows_amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/creativeprojects/resticprofile/releases/download/v$version/resticprofile_no_self_update_$version_windows_386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
