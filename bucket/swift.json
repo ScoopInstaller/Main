@@ -19,15 +19,15 @@
     },
     "pre_install": [
         "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
-        "Get-ChildItem \"$dir\\extract_folder\\AttachedContainer\\*.msi\" | ForEach-Object {",
-        "    if ($_.Name -in @('icu.msi', 'runtime.msi')) { Expand-MsiArchive $_ \"$dir\\Swift\" }",
-        "    else { Expand-MsiArchive $_ \"$dir\" }",
+        "Get-ChildItem \"$dir\\extract_folder\\AttachedContainer\\a*\" | ForEach-Object {",
+        "    Expand-MsiArchive $_ \"$dir\\extract_folder\"",
         "}",
+        "Move-Item \"$dir\\extract_folder\\PFiles64\\Swift\" -Destination \"$dir\"",
+        "Move-Item \"$dir\\extract_folder\\Library\\Developer\" -Destination \"$dir\"",
         "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
     ],
     "env_add_path": [
         "Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
-        "Swift\\icu-69.1\\usr\\bin",
         "Swift\\runtime-development\\usr\\bin"
     ],
     "env_set": {
