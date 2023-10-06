@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+  "version": "0.13.3",
+  "description": "A fast and customizable application for browsing Hacker News on the terminal.",
+  "homepage": "https://github.com/aome510/hackernews-tui",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/aome510/hackernews-tui/releases/download/v0.13.3/hackernews_tui-x86_64-pc-windows-msvc.zip",
+      "hash": "a712a962f8af140972c29e4f0d19fccc49c419b521bc6c63ca9b91651d541d74"
+    }
+  },
+  "bin": "hackernews_tui.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/aome510/hackernews-tui/releases/download/v$version/hackernews_tui-x86_64-pc-windows-msvc.zip",
+        "hash": {
+          "url": "$baseurl/hackernews_tui-x86_64-pc-windows-msvc.sha256"
+        }
+      }
+    }
+  }
+}
