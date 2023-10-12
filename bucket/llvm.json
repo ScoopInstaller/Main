@@ -19,6 +19,9 @@
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
     "env_add_path": "bin",
+    "env_set": {
+        "LIBCLANG_PATH": "$dir\\bin"
+    },
     "checkver": {
         "github": "https://github.com/llvm/llvm-project",
         "regex": "tag/llvmorg-([\\d._]+)"
