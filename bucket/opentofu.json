@@ -1,0 +1,35 @@
+{
+    "version": "1.6.0-alpha2",
+    "description": "OpenTofu lets you declaratively manage your cloud infrastructure.",
+    "homepage": "https://opentofu.org",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/opentofu/opentofu/releases/download/v1.6.0-alpha2/tofu_1.6.0-alpha2_windows_amd64.zip",
+            "hash": "3f9ede88a2233be5221766be460d191a33ff1e9c1bdaef7920576d3838533523",
+            "pre_install": "ensure \"$env:APPDATA\\terraform.d\\plugins\\windows_amd64\" | Out-Null"
+        },
+        "32bit": {
+            "url": "https://github.com/opentofu/opentofu/releases/download/v1.6.0-alpha2/tofu_1.6.0-alpha2_windows_386.zip",
+            "hash": "c69f8fcecc1cd447677d2e143c41311c4a6d63f639a0504c23c6260d57cb8228",
+            "pre_install": "ensure \"$env:APPDATA\\terraform.d\\plugins\\windows_386\" | Out-Null"
+        }
+    },
+    "bin": "tofu.exe",
+    "checkver": {
+        "url": "https://github.com/opentofu/opentofu"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/opentofu/opentofu/releases/download/v$version/tofu_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/opentofu/opentofu/releases/download/v$version/tofu_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/tofu_$version_SHA256SUMS"
+        }
+    }
+}
