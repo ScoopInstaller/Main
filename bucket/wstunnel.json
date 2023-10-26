@@ -1,12 +1,12 @@
 {
-    "version": "5.0",
+    "version": "7.2.0",
     "description": "Tunneling over websocket protocol",
     "homepage": "https://github.com/erebe/wstunnel",
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/erebe/wstunnel/releases/download/v5.0/wstunnel-windows-x64.zip",
-            "hash": "976b9135e6dad490dbc070ed3221d690db8ec055c6dfa7e5315cde2e3fd74e9e"
+            "url": "https://github.com/erebe/wstunnel/releases/download/v7.2.0/wstunnel_7.2.0_windows_amd64.tar.gz",
+            "hash": "448f450ca0c7926ba0c9b9f5b9eaff4467827b5a5b9e4a1db41373421a5fec31"
         }
     },
     "bin": "wstunnel.exe",
@@ -14,8 +14,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/erebe/wstunnel/releases/download/v$version/wstunnel-windows-x64.zip"
+                "url": "https://github.com/erebe/wstunnel/releases/download/v$version/wstunnel_$version_windows_amd64.tar.gz"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
         }
     }
 }
