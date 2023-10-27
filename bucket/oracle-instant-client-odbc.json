@@ -1,5 +1,5 @@
 {
-    "version": "21.11.0.0.0",
+    "version": "21.12.0.0.0",
     "description": "Additional libraries for enabling ODBC applications with Oracle Instant Client.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
@@ -9,15 +9,15 @@
     "depends": "oracle-instant-client",
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2111000/instantclient-odbc-windows.x64-21.11.0.0.0dbru.zip",
-            "hash": "405a9f2f61b3059d43d020c5a9b902206df59a7bfb60bd9096757f741cafb295"
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2112000/instantclient-odbc-windows.x64-21.12.0.0.0dbru.zip",
+            "hash": "eac3101ec39e6695e75723578c99ad1ebd8b4df69b5e8a46757076309c080d6d"
         },
         "32bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2111000/instantclient-odbc-nt-21.11.0.0.0dbru.zip",
-            "hash": "d90ab5b934d6c254818a3042dbe85b3f1e8a7ebd11d281f8e46bedeab268d3e1"
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2112000/instantclient-odbc-nt-21.12.0.0.0dbru.zip",
+            "hash": "8bfaeeecc11dccbf3456814d2ac33920eade86ab950629258629f7f86f56be29"
         }
     },
-    "extract_dir": "instantclient_21_11",
+    "extract_dir": "instantclient_21_12",
     "pre_install": [
         "$instantclient = versiondir 'oracle-instant-client' 'current'",
         "Copy-Item -Path \"$dir\\*\" -Destination \"$instantclient\" -Force -Recurse | Out-Null"
