@@ -13,11 +13,11 @@
     "checkver": {
         "url": "https://registry.quarkus.io/client/platforms",
         "jsonpath": "$.platforms[0].streams[0].releases[0].version",
-        "regex": "([\\d+\\.]+)\\.Final"
+        "regex": "([\\d+\\.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/quarkusio/quarkus/releases/download/$version.Final/quarkus-cli-$version.Final.zip",
-        "extract_dir": "quarkus-cli-$version.Final",
+        "url": "https://github.com/quarkusio/quarkus/releases/download/$version/quarkus-cli-$version.zip",
+        "extract_dir": "quarkus-cli-$version",
         "hash": {
             "url": "$baseurl/checksums_sha256.txt"
         }
