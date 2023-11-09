@@ -16,7 +16,11 @@
         }
     },
     "bin": "jdupes.exe",
-    "checkver": "codeberg",
+    "checkver": {
+        "url": "https://codeberg.org/api/v1/repos/jbruchon/jdupes/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([\\d.]+)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
