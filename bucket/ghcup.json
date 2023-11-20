@@ -1,13 +1,9 @@
 {
-    "version": "0.1.19.2",
+    "version": "0.1.20.0",
     "description": "GHCup is the main installer for the general purpose language Haskell",
     "homepage": "https://www.haskell.org/ghcup",
     "license": "LGPL-v3",
-    "url": "https://downloads.haskell.org/~ghcup/0.1.19.2/x86_64-mingw64-ghcup-0.1.19.2.exe",
-    "hash": "sha256:8cac0e2cbd1ffe8609fc457ac491dea3b98d9332966a46b8f643a6d42ffc22b1",
-    "bin": [["x86_64-mingw64-ghcup-$version.exe", "ghcup"]],
     "notes": [
-        "Install MSYS2 via 'scoop install msys2'",
         "For `ghc`, use `ghcup install --set recommend ghc`.",
         "For `cabal`, use `ghcup install cabal latest && ghcup set cabal`.",
         "* Use `cabal user-config update --augment \"installdir: <<BIN_PATH>>\"` to reset `cabal` binary destination path.",
@@ -15,24 +11,36 @@
         "* Add \"local-bin-path: <<BIN_PATH>>\" to \"$(stack path --stack-root)\"to reset `stack` binary destination path.",
         "For `hls`, use `ghcup install hls latest`."
     ],
+    "depends": "msys2",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/haskell/ghcup-hs/releases/download/v0.1.20.0/x86_64-mingw64-ghcup-0.1.20.0.exe#/ghcup.exe",
+            "hash": "c2058a510977e982332ee910cc717e6776502243fc1d53d58f3a58b79ce86f43"
+        }
+    },
     "env_set": {
         "GHCUP_INSTALL_BASE_PREFIX": "$dir",
         "GHCUP_MSYS2": "$scoopdir\\apps\\msys2\\current"
     },
-    "env_add_path": ["ghcup\\bin"],
-    "persist": ["ghcup"],
+    "env_add_path": "ghcup\\bin",
+    "bin": [
+        [
+            "ghcup.exe",
+            "ghcup"
+        ]
+    ],
+    "persist": "ghcup",
     "checkver": {
         "github": "https://github.com/haskell/ghcup-hs"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/haskell/ghcup-hs/releases/download/$version/x86_64-mingw64-ghcup-$version.exe"
+                "url": "https://github.com/haskell/ghcup-hs/releases/download/v$version/x86_64-mingw64-ghcup-$version.exe#/ghcup.exe"
             }
         },
         "hash": {
-            "url": "$url.sha256"
+            "url": "$baseurl/SHA256SUMS"
         }
-    },
-    "depends": ["msys2"]
+    }
 }
