@@ -7,14 +7,23 @@
         "64bit": {
             "url": "https://github.com/knadh/listmonk/releases/download/v2.5.1/listmonk_2.5.1_windows_amd64.tar.gz",
             "hash": "06b9e3cac70adae2af4025198561df341e28e2bfee31b33386112f039a073c04"
+        },
+        "arm64": {
+            "url": "https://github.com/knadh/listmonk/releases/download/v2.5.1/listmonk_2.5.1_windows_arm64.tar.gz",
+            "hash": "cc41d9b6e90d9517a603f31ec5adadd27bbeb44e464ab8daed205305a441bcdf"
         }
     },
     "bin": "listmonk.exe",
-    "checkver": ">v([\\w.-]+)</",
+    "checkver": {
+        "github": "https://github.com/knadh/listmonk"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/knadh/listmonk/releases/download/v$version/listmonk_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/knadh/listmonk/releases/download/v$version/listmonk_$version_windows_arm64.tar.gz"
             }
         },
         "hash": {
