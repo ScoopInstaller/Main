@@ -13,6 +13,11 @@
             "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.1/ascii-image-converter_Windows_i386_32bit.zip",
             "hash": "9c395f8a4f38bc4070deb7c1c3d732f3dd0e092248c19e31ea3f55c074fd3787",
             "extract_dir": "ascii-image-converter_Windows_i386_32bit"
+        },
+        "arm64": {
+            "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.1/ascii-image-converter_Windows_arm64_64bit.zip",
+            "hash": "4a4f27f3aeda9ab5d71c91c77c82ac7c9ff9050ebeaaab67e417ee87454d9152",
+            "extract_dir": "ascii-image-converter_Windows_arm64_64bit"
         }
     },
     "bin": "ascii-image-converter.exe",
@@ -20,19 +25,17 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_amd64_64bit.zip",
-                "hash": {
-                    "url": "$baseurl/sha256_checksums.txt",
-                    "regex": "$sha256\\s+$basename"
-                }
+                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_amd64_64bit.zip"
             },
             "32bit": {
-                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_i386_32bit.zip",
-                "hash": {
-                    "url": "$baseurl/sha256_checksums.txt",
-                    "regex": "$sha256\\s+$basename"
-                }
+                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_i386_32bit.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_arm64_64bit.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/sha256_checksums.txt"
         }
     }
 }
