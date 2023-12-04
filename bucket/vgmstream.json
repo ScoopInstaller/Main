@@ -1,0 +1,31 @@
+{
+    "version": "r1879",
+    "description": "vgmstream command line interface",
+    "homepage": "https://github.com/vgmstream/vgmstream",
+    "license": {
+        "identifier": "VGMStream Team",
+        "url": "https://raw.githubusercontent.com/vgmstream/vgmstream/master/COPYING"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vgmstream/vgmstream/releases/download/r1879/vgmstream-win64.zip",
+            "hash": "6424951f5ca894741892f13b05e94c654a8d3d54dafd31860ed5b2fbe516b430"
+        },
+        "32bit": {
+            "url": "https://github.com/vgmstream/vgmstream/releases/download/r1879/vgmstream-win.zip",
+            "hash": "3da5ce270135b2763487d13914a91cd82404c2106d438a172956f52b169890dd"
+        }
+    },
+    "bin": "vgmstream-cli.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vgmstream/vgmstream/releases/download/$version/vgmstream-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/vgmstream/vgmstream/releases/download/$version/vgmstream-win.zip"
+            }
+        }
+    }
+}
