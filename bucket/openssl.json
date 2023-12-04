@@ -21,7 +21,12 @@
         "OPENSSL_INCLUDE_DIR": "$dir\\include",
         "OPENSSL_MODULES": "$dir\\bin"
     },
-    "checkver": "Win32 OpenSSL v([^\\s]+)",
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
+        "jsonpath": "$.files..basever",
+        "regex": "([\\d.]+)",
+        "reverse": true
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
