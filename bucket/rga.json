@@ -3,6 +3,12 @@
     "description": "ripgrep-all: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.",
     "homepage": "https://github.com/phiresky/ripgrep-all",
     "license": "AGPL-3.0-or-later",
+    "depends": [
+        "ffmpeg",
+        "pandoc",
+        "poppler",
+        "ripgrep"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/phiresky/ripgrep-all/releases/download/v0.9.6/ripgrep_all-v0.9.6-x86_64-pc-windows-msvc.zip",
@@ -10,8 +16,14 @@
             "extract_dir": "ripgrep_all-v0.9.6-x86_64-pc-windows-msvc"
         }
     },
-    "bin": "rga.exe",
-    "checkver": "github",
+    "bin": [
+        "rga.exe",
+        "rga-preproc.exe"
+    ],
+    "checkver": {
+        "url": "https://github.com/phiresky/ripgrep-all/releases",
+        "regex": "tag/v([\\d.]+)\""
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
