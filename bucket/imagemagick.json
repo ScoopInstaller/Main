@@ -1,6 +1,6 @@
 {
     "version": "7.1.1-22",
-    "description": "Create, edit, compose, and convert 200+ of bitmap images formats.",
+    "description": "Create, edit, compose, and convert 200+ bitmap image formats.",
     "homepage": "https://imagemagick.org/",
     "license": "ImageMagick",
     "architecture": {
@@ -24,10 +24,8 @@
         "MAGICK_CODER_MODULE_PATH": "$dir\\modules\\coders"
     },
     "env_add_path": ".",
-    "post_install": "Rename-Item $dir\\ffmpeg.exe $dir\\ffmpeg.exe.old",
     "notes": [
-        "- The bundled ffmpeg has been renamed to 'ffmpeg.exe.old' to prevent conflict with a standalone ffmpeg installation - if you need it for ImageMagick tools, rename it back to 'ffmpeg.exe'.",
-        "- 'convert.exe' is deprecated in v7 (it also conflicts with the builtin Windows 'convert' utility). Use 'magick convert ...' instead."
+        "'convert.exe' is deprecated in v7 (it also conflicts with the builtin Windows 'convert' utility). Use 'magick convert ...' instead."
     ],
     "checkver": {
         "url": "https://imagemagick.org/archive/binaries/digest.rdf",
