@@ -1,0 +1,28 @@
+{
+    "version": "1.2.0",
+    "description": "A jq clone focussed on correctness, speed, and simplicity",
+    "homepage": "https://github.com/01mf02/jaq/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/01mf02/jaq/releases/download/v1.2.0/jaq-v1.2.0-x86_64-pc-windows-msvc.exe#/jaq.exe",
+            "hash": "c21bb79d4bed96b97a074bae59d905a622b1d893912d9a09181be5aac9c4cec6"
+        },
+        "32bit": {
+            "url": "https://github.com/01mf02/jaq/releases/download/v1.2.0/jaq-v1.2.0-i686-pc-windows-msvc.exe#/jaq.exe",
+            "hash": "1c4ebc2eb55e4fb8fc9ff51662b99e2d05b7d4001d0c109ae5dd1d0914e46243"
+        }
+    },
+    "bin": "jaq.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/01mf02/jaq/releases/download/v$version/jaq-v$version-x86_64-pc-windows-msvc.exe#/jaq.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/01mf02/jaq/releases/download/v$version/jaq-v$version-i686-pc-windows-msvc.exe#/jaq.exe"
+            }
+        }
+    }
+}
