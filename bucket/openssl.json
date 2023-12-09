@@ -6,24 +6,28 @@
     "architecture": {
         "64bit": {
             "url": "https://slproweb.com/download/Win64OpenSSL-3_2_0.exe",
-            "hash": "dd438a78ce34f6ee99dfb3ebbc4776d88e1029e40cdbbf113a1a42dd6c6a8244"
+            "hash": "dd438a78ce34f6ee99dfb3ebbc4776d88e1029e40cdbbf113a1a42dd6c6a8244",
+            "pre_install": "$null = Get-ChildItem \"$dir/lib/VC/x64/MT\" | ForEach-Object { New-Item -ItemType SymbolicLink -Path \"$dir/lib/$($_.Name)\" -Target $_ }"
         },
         "32bit": {
             "url": "https://slproweb.com/download/Win32OpenSSL-3_2_0.exe",
-            "hash": "7546f34ab1457da4fe68187d4518ccd350d53d484bcfd6d65defb725deef0957"
+            "hash": "7546f34ab1457da4fe68187d4518ccd350d53d484bcfd6d65defb725deef0957",
+            "pre_install": "$null = Get-ChildItem \"$dir/lib/VC/x86/MT\" | ForEach-Object { New-Item -ItemType SymbolicLink -Path \"$dir/lib/$($_.Name)\" -Target $_ }"
         },
         "arm64": {
             "url": "https://slproweb.com/download/Win64ARMOpenSSL-3_2_0.exe",
-            "hash": "4550f6d18cc359358436975db5f00f528e14860d6277da584fb7b60febd84a17"
+            "hash": "4550f6d18cc359358436975db5f00f528e14860d6277da584fb7b60febd84a17",
+            "pre_install": "$null = Get-ChildItem \"$dir/lib/VC/arm64/MT\" | ForEach-Object { New-Item -ItemType SymbolicLink -Path \"$dir/lib/$($_.Name)\" -Target $_ }"
         }
     },
     "innosetup": true,
     "env_add_path": "bin",
     "env_set": {
-        "OPENSSL_CONF": "$dir\\bin\\cnf\\openssl.cnf",
+        "OPENSSL_ROOT_DIR": "$dir",
         "OPENSSL_LIB_DIR": "$dir\\lib",
         "OPENSSL_INCLUDE_DIR": "$dir\\include",
-        "OPENSSL_MODULES": "$dir\\bin"
+        "OPENSSL_MODULES": "$dir\\bin",
+        "OPENSSL_CONF": "$dir\\bin\\cnf\\openssl.cnf"
     },
     "checkver": {
         "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
