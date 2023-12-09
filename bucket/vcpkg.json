@@ -11,6 +11,9 @@
         "keep": true
     },
     "bin": "vcpkg.exe",
+    "env_set": {
+        "VCPKG_ROOT": "$dir"
+    },
     "post_install": "vcpkg integrate install",
     "uninstaller": {
         "script": "vcpkg integrate remove"
