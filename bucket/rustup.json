@@ -40,7 +40,7 @@
             "if ($null -eq [Environment]::GetEnvironmentVariable('RUSTUP_HOME', 'Process')) {",
             "   setx RUSTUP_HOME \"$persist_dir\\.rustup\"",
             "}",
-            "setx PATH \"%PATH%;%CARGO_HOME%\\bin\""
+            "setx Path \"$env:Path;$env:CARGO_HOME\\bin\""
     ],
     "persist": [
         ".cargo",
