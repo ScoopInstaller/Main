@@ -1,0 +1,42 @@
+{
+    "version": "0.1.4-bsd",
+    "description": "SSH3: faster and rich secure shell using HTTP/3",
+    "homepage": "https://github.com/francoismichel/ssh3",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/francoismichel/ssh3/releases/download/v0.1.4-bsd/ssh3_0.1.4-bsd_clientonly_windows_x86_64.zip",
+            "hash": "10f94c767923ec1b38f0c092fc6a818868626c61c0050869547899d4a2a61bb9"
+        },
+        "32bit": {
+            "url": "https://github.com/francoismichel/ssh3/releases/download/v0.1.4-bsd/ssh3_0.1.4-bsd_clientonly_windows_i386.zip",
+            "hash": "80b803d82e9a2b8f11ea4f495aa19d04a064ffeb51b38dd3546cd546a77f3fa1"
+        },
+        "arm64": {
+            "url": "https://github.com/francoismichel/ssh3/releases/download/v0.1.4-bsd/ssh3_0.1.4-bsd_clientonly_windows_arm64.zip",
+            "hash": "bf103629ae4445b4cd73c30d9aabecba08232f501d28ce8aec1626dccd7a0116"
+        }
+    },
+    "bin": "ssh3.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/712363932/releases",
+        "jsonpath": "$[0].tag_name",
+        "regex": "v([\\d.]+(?:-[^-]+)?)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/francoismichel/ssh3/releases/download/v$version/ssh3_$version_clientonly_windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/francoismichel/ssh3/releases/download/v$version/ssh3_$version_clientonly_windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/francoismichel/ssh3/releases/download/v$version/ssh3_$version_clientonly_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/ssh3_$version_clientonly_windows_checksums.txt"
+        }
+    }
+}
