@@ -17,7 +17,11 @@
         }
     },
     "bin": "vgmstream-cli.exe",
-    "checkver": "github",
+    "checkver": {
+        "url": "https://api.github.com/repositories/5591410/releases/latest",
+        "jsonpath": "$..browser_download_url",
+        "regex": "r([\\d]+)/vgmstream-win.*\\.zip"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
