@@ -1,35 +1,39 @@
 {
-    "version": "0.7.1",
+    "version": "1.0-m8",
     "description": "The Maven (mvn) Daemon is based on GraalVM and allows for faster Maven builds.",
     "homepage": "https://github.com/mvndaemon/mvnd",
     "license": "Apache-2.0",
     "notes": [
         "Maven requires a properly configured JAVA_HOME environment variable.",
-        "If you see a message that VCRUNTIME140.dll was not found, you need to install vcredist2019",
+        "If you see a message that VCRUNTIME140.dll was not found, you need to install vcredist2022",
         "See https://github.com/oracle/graal/issues/1762 for more information."
     ],
     "suggest": {
         "JDK": "java/openjdk",
-        "vcredist": "extras/vcredist2019"
+        "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mvndaemon/mvnd/releases/download/0.7.1/mvnd-0.7.1-windows-amd64.zip",
-            "hash": "749f647df21977e7ab8f1296ae39dedf1067aaaf173eddfb685b73e01d8352ff",
-            "extract_dir": "mvnd-0.7.1-windows-amd64"
+            "url": "https://dist.apache.org/repos/dist/release/maven/mvnd/1.0-m8/maven-mvnd-1.0-m8-m39-windows-amd64.zip",
+            "hash": "20cd8361c19f4d12498caeda04cd4638b270d281f5c43dc92c352b9351dcee8a",
+            "extract_dir": "maven-mvnd-1.0-m8-m39-windows-amd64"
         }
     },
     "env_add_path": "bin",
-    "checkver": "github",
+    "checkver": {
+        "url": "https://dist.apache.org/repos/dist/release/maven/mvnd/",
+        "regex": ">([\\d.\\-m]+)/",
+        "reverse": true
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mvndaemon/mvnd/releases/download/$version/mvnd-$version-windows-amd64.zip",
-                "extract_dir": "mvnd-$version-windows-amd64"
+                "url": "https://dist.apache.org/repos/dist/release/maven/mvnd/$version/maven-mvnd-$version-m39-windows-amd64.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                },
+                "extract_dir": "maven-mvnd-$version-m39-windows-amd64"
             }
-        },
-        "hash": {
-            "url": "$url.sha256"
         }
     }
 }

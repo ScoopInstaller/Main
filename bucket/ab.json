@@ -1,0 +1,33 @@
+{
+    "version": "2.4.58",
+    "description": "Apache HTTP server benchmarking tool ('ab')",
+    "homepage": "https://www.apachelounge.com",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://fossies.org/windows/www/httpd-2.4.58-win64-VS17.zip",
+            "hash": "e9a179ad4767c595be55024ee0415a96ae522f492deca4b0d54cf136ff2b092c"
+        }
+    },
+    "extract_dir": "Apache24",
+    "pre_install": "Remove-Item \"$dir\\*\" -Exclude ab.exe,abs.exe,libcrypto*.dll,libssl*.dll,NOTICE.txt,LICENSE.txt -Recurse -Force",
+    "bin": [
+        "bin\\ab.exe",
+        "bin\\abs.exe"
+    ],
+    "checkver": {
+        "url": "https://fossies.org/windows/www/",
+        "regex": "httpd-([\\d.]+)-win64-VS17\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://fossies.org/windows/www/httpd-$version-win64-VS17.zip"
+            }
+        },
+        "hash": {
+            "url": "$url_fossies.sha256"
+        },
+        "extract_dir": "Apache$majorVersion$minorVersion"
+    }
+}

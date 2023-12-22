@@ -1,0 +1,41 @@
+{
+    "version": "1.6.1",
+    "description": "一款命令行式哔哩哔哩下载器. Bilibili Downloader.",
+    "homepage": "https://github.com/nilaoda/BBDown",
+    "license": "MIT",
+    "depends": "ffmpeg",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/nilaoda/BBDown/releases/download/1.6.1/BBDown_1.6.1_20230818_win-x64.zip",
+            "hash": "bc3af8f677c8775b8d8e37ae1b35783d820a94c41d2a89bb330a946ca3e1fcaf"
+        },
+        "arm64": {
+            "url": "https://github.com/nilaoda/BBDown/releases/download/1.6.1/BBDown_1.6.1_20230818_win-arm64.zip",
+            "hash": "a86dfe76d9c8a526c39a518f6958da2036dbc5644330afbf75d7fa10bccabc57"
+        }
+    },
+    "pre_install": [
+        "'BBDown.data' | ForEach-Object {",
+        "    if (!(Test-Path -Path \"$persist_dir\\$_\")) {",
+        "        New-Item -Type File \"$dir\\$_\" | Out-Null",
+        "    }",
+        "}"
+    ],
+    "bin": "BBDown.exe",
+    "persist": "BBDown.data",
+    "checkver": {
+        "url": "https://api.github.com/repositories/282637924/releases",
+        "jsonpath": "$[0].assets",
+        "regex": "BBDown_(?<version>[\\d.]+)_(?<date>[\\d]+)_win-x64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nilaoda/BBDown/releases/download/$version/BBDown_$version_$matchDate_win-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/nilaoda/BBDown/releases/download/$version/BBDown_$version_$matchDate_win-arm64.zip"
+            }
+        }
+    }
+}

@@ -1,17 +1,37 @@
 {
-    "version": "5.38",
+    "version": "5.45",
     "description": "Determine file type.",
     "homepage": "https://www.darwinsys.com/file",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/julian-r/file-windows/releases/download/v5.38/file_5.38-build49-vs2019-x64.zip",
-            "hash": "4dd53394b90141af1f5a4e0549fc059aa1a754407e8ba70a1e6663b489f4cbdd"
+            "url": "https://github.com/rkitover/file-windows/releases/download/v5.45/file_5.45-x86_64.7z",
+            "hash": "00f4f15e393382de741e934f34acbcdb10936a9a850aaa1e06ac75401d7b5340"
         },
         "32bit": {
-            "url": "https://github.com/julian-r/file-windows/releases/download/v5.38/file_5.38-build49-vs2019-x86.zip",
-            "hash": "5604a2d55df649a648c5547bdaa7801da73e047906ba6f848f0aa2baf38f38bb"
+            "url": "https://github.com/rkitover/file-windows/releases/download/v5.45/file_5.45-x86_32.7z",
+            "hash": "4a0ea842eaf8e0d1780b896f7d5eec22bf7f9aa1a606fef50702e8005f87f28c"
+        },
+        "arm64": {
+            "url": "https://github.com/rkitover/file-windows/releases/download/v5.45/file_5.45-arm64.7z",
+            "hash": "8534c5b4fc1893958011bcc5341ef3b10fecc2a1065ff9873311ed5f281d3fe2"
         }
     },
-    "bin": "file.exe"
+    "bin": "file.exe",
+    "checkver": {
+        "github": "https://github.com/rkitover/file-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rkitover/file-windows/releases/download/v$version/file_$version-x86_64.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/rkitover/file-windows/releases/download/v$version/file_$version-x86_32.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/rkitover/file-windows/releases/download/v$version/file_$version-arm64.7z"
+            }
+        }
+    }
 }

@@ -1,22 +1,32 @@
 {
-    "version": "14.6.0",
+    "version": "16.7.0",
     "description": "Run your jobs and send the results back to GitLab",
     "homepage": "https://docs.gitlab.com/runner/",
     "license": "MIT",
-    "notes": "Run 'gitlab-runner register' and 'gitlab-runner install' from an elevated prompt to set it up",
+    "notes": [
+        "To set up, take the steps below:",
+        "1. Get registration token in any of your project settings, group settings, or server-admin settings",
+        "2. Create runner's root directory (C:\\gitlab-runner, C:\\Users\\<your username>\\gitlab-runner, etc) where you place your config.toml and build your project, and cd there",
+        "3. Run 'gitlab-runner register --url <your server's URL> --registration-token <your token>'",
+        "4. Run 'gitlab-runner install', or 'gitlab-runner install --user <your username> --password <your password>', in an elevated prompt",
+        "5. Check your git installation IF you didn't specify your username and password. If git isn't installed system-wide, run 'scoop install git --global' as admin",
+        "6. Run 'gitlab-runner start' as admin",
+        "7. Check your runner's signal in the GitLab. If it isn't green or doesn't exist, check the official documentation",
+        "8. Run it once from your project's pipeline. If you're prompted to choose a credential helper, select 'manager-core' (or whichever desired) with 'Always use this from now on' checked"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v14.6.0/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
-            "hash": "31265330dfba51a7975f9c8c6f33cea4ec46ef2d712936cfeacae54a259c7fda"
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v16.7.0/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
+            "hash": "4b2ff0f3fb2737af32358c1fe1078e65b98409f46a283ba115b0738c9df4ed8e"
         },
         "32bit": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v14.6.0/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
-            "hash": "e91238ec75fba1f3faa81b4a37c4fa979692b27186efc1499b24b6a391e7f451"
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v16.7.0/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
+            "hash": "be580aaf757d8dba42d94fdcadc0b0c302790e4271f95b4367e54e78de361e47"
         }
     },
     "bin": "gitlab-runner.exe",
     "checkver": {
-        "url": "https://gitlab.com/gitlab-org/gitlab-runner/-/tags?format=atom",
+        "url": "https://gitlab.com/gitlab-org/gitlab-runner/-/tags?format=atom&sort=version_desc",
         "regex": "/tags/v([\\d.]+)<"
     },
     "autoupdate": {

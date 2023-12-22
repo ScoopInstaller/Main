@@ -1,37 +1,23 @@
 {
-    "version": "4.44.0",
+    "version": "5.12.1",
     "description": "A platform for building proxies to bypass network restrictions.",
     "homepage": "https://www.v2fly.org/en_US/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/v2fly/v2ray-core/releases/download/v4.44.0/v2ray-windows-64.zip",
-            "hash": "sha512:533f372906ae7a94acc02c2e1feb4e7d78f66598583a705a32c09aba45109c9b39ed040c0882309a9234626123637b8a18af001fd975980694e5fa16ae704aa5"
+            "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.12.1/v2ray-windows-64.zip",
+            "hash": "324fb1b1f86d320be06ad1e32ebf657162c9fa7780235355959a6a4b34820f97"
         },
         "32bit": {
-            "url": "https://github.com/v2fly/v2ray-core/releases/download/v4.44.0/v2ray-windows-32.zip",
-            "hash": "sha512:270d2e6ba656b1936a09385102ee4e4afd31205e87710a20ca32dc0e738d618d1b474a1be23ed15d3da279a2edbca7d9d746547d492c30e0be8ce41d993e4bc8"
+            "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.12.1/v2ray-windows-32.zip",
+            "hash": "ac57756ef4aab9332436ab5391d9f984265b5f23bb08f18c0cdd64174bf157fe"
+        },
+        "arm64": {
+            "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.12.1/v2ray-windows-arm64-v8a.zip",
+            "hash": "4d633da917042ce48b3fc111689294fbfdcdf99dc639817e8bb1bacfde6ce7b9"
         }
     },
-    "installer": {
-        "script": [
-            "#v2ctl.exe cannot recognize signature file when there are spaces in path. This is a workaround to eliminate spaces.",
-            "Write-Host 'Verifying V2Ray binary...' -f Yellow",
-            "$sig_dir = \"$Env:SystemRoot\\Temp\\v2ray\"",
-            "ensure $sig_dir | Out-Null",
-            "Invoke-WebRequest \"https://github.com/v2fly/v2ray-core/releases/download/v$version/Release\" -OutFile $sig_dir\\Release",
-            "if (!(Invoke-Expression \"&`\"$dir\\v2ctl.exe`\" verify --sig=$sig_dir\\Release `\"$dir\\v2ray.exe`\"\" | Select-String 'OK')) {",
-            "    Write-Host 'V2Ray binary is corrupted!' -f Red",
-            "    break",
-            "}",
-            "Remove-Item $sig_dir -Force -Recurse | Out-Null"
-        ]
-    },
-    "bin": [
-        "v2ctl.exe",
-        "v2ray.exe",
-        "wv2ray.exe"
-    ],
+    "bin": "v2ray.exe",
     "persist": "config.json",
     "checkver": {
         "github": "https://github.com/v2fly/v2ray-core"
@@ -43,11 +29,14 @@
             },
             "32bit": {
                 "url": "https://github.com/v2fly/v2ray-core/releases/download/v$version/v2ray-windows-32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/v2fly/v2ray-core/releases/download/v$version/v2ray-windows-arm64-v8a.zip"
             }
         },
         "hash": {
             "url": "$url.dgst",
-            "regex": "SHA512= $sha512"
+            "regex": "SHA2-256= $sha256"
         }
     }
 }

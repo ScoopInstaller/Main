@@ -1,19 +1,19 @@
 {
-    "version": "24.2",
+    "version": "26.2.1",
     "description": "A programming language used to build massively scalable soft real-time systems with requirements on high availability.",
     "homepage": "https://www.erlang.org",
     "license": "Apache-2.0",
     "suggest": {
-        "Visual C/C++ Redistributable 2013": "extras/vcredist2013"
+        "vcredist": "extras/vcredist2013"
     },
     "architecture": {
         "64bit": {
-            "url": "https://erlang.org/download/otp_win64_24.2.exe#/dl.7z",
-            "hash": "c22052c4920f06a9044f514a427b1c4116da6db6d6d6070eedeb2955f1f6869b"
+            "url": "https://github.com/erlang/otp/releases/download/OTP-26.2.1/otp_win64_26.2.1.exe#/dl.7z",
+            "hash": "5d0ee38ddf1fdd9f0675d73afc86e5def3689fa518b23db3eafee73d6465c71f"
         },
         "32bit": {
-            "url": "https://erlang.org/download/otp_win32_24.2.exe#/dl.7z",
-            "hash": "608c4375e6695fbbd53cf478e41c62aef820f73e8de5f16c3885a277cbfb31ea"
+            "url": "https://github.com/erlang/otp/releases/download/OTP-26.2.1/otp_win32_26.2.1.exe#/dl.7z",
+            "hash": "52047d4cd1b7cb6343164fb5f8a93511c83c04696b7ca1e4323249b91bbbee7b"
         }
     },
     "installer": {
@@ -37,16 +37,16 @@
         "ERLANG_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://erlang.org/download/otp_versions_tree_app_vsns.html",
-        "regex": "otp_win64_([\\d.]+)\\.exe"
+        "url": "https://www.erlang.org/downloads",
+        "regex": "https://github\\.com/erlang/otp/releases/download/OTP-([\\d.]+)/otp_win64_\\1\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://erlang.org/download/otp_win64_$version.exe#/dl.7z"
+                "url": "https://github.com/erlang/otp/releases/download/OTP-$version/otp_win64_$version.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://erlang.org/download/otp_win32_$version.exe#/dl.7z"
+                "url": "https://github.com/erlang/otp/releases/download/OTP-$version/otp_win32_$version.exe#/dl.7z"
             }
         }
     }

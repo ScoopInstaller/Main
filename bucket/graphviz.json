@@ -1,16 +1,16 @@
 {
-    "version": "2.49.3",
+    "version": "9.0.0",
     "description": "Open source graph visualization software.",
     "homepage": "https://www.graphviz.org/",
     "license": "EPL-1.0",
     "architecture": {
         "64bit": {
-            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/2.49.3/stable_windows_10_cmake_Release_x64_graphviz-install-2.49.3-win64.exe#/dl.7z",
-            "hash": "cab87543088c88631d9fe256b345279e8a7ae8bca90acf8c16d33ba53d39ae0c"
+            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/9.0.0/windows_10_cmake_Release_graphviz-install-9.0.0-win64.exe#/dl.7z",
+            "hash": "01670c7e5bf637656bd89cd8484d517f3b5bc77f8666ceb29ddcc17e095b0f61"
         },
         "32bit": {
-            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/2.49.3/stable_windows_10_cmake_Release_Win32_graphviz-install-2.49.3-win32.exe#/dl.7z",
-            "hash": "f189c94b7531cc268b1d3e47b186e8ba80ecdccf160035559d2562e5b9fa9cc5"
+            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/9.0.0/windows_10_cmake_Release_graphviz-install-9.0.0-win32.exe#/dl.7z",
+            "hash": "39d6cb6871d91ad9f0f47edcdff15be2a98f1de815832f1fd69e2c558eaed787"
         }
     },
     "bin": [
@@ -30,7 +30,40 @@
         "bin\\nop.exe",
         "bin\\sccmap.exe",
         "bin\\tred.exe",
-        "bin\\unflatten.exe"
+        "bin\\unflatten.exe",
+        [
+            "bin\\dot.exe",
+            "circo"
+        ],
+        [
+            "bin\\dot.exe",
+            "fdp"
+        ],
+        [
+            "bin\\dot.exe",
+            "neato"
+        ],
+        [
+            "bin\\dot.exe",
+            "nop2",
+            "-Knop2"
+        ],
+        [
+            "bin\\dot.exe",
+            "osage"
+        ],
+        [
+            "bin\\dot.exe",
+            "patchwork"
+        ],
+        [
+            "bin\\dot.exe",
+            "sfdp"
+        ],
+        [
+            "bin\\dot.exe",
+            "twopi"
+        ]
     ],
     "checkver": {
         "url": "https://gitlab.com/graphviz/graphviz/-/tags?format=atom",
@@ -39,10 +72,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/stable_windows_10_cmake_Release_x64_graphviz-install-$version-win64.exe#/dl.7z"
+                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/windows_10_cmake_Release_graphviz-install-$version-win64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/stable_windows_10_cmake_Release_Win32_graphviz-install-$version-win32.exe#/dl.7z"
+                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/windows_10_cmake_Release_graphviz-install-$version-win32.exe#/dl.7z"
             }
         },
         "hash": {

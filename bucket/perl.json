@@ -1,16 +1,12 @@
 {
-    "version": "5.32.1.1",
+    "version": "5.38.0.1",
     "description": "A programming language suitable for writing simple scripts as well as complex applications.",
-    "homepage": "http://strawberryperl.com",
+    "homepage": "https://strawberryperl.com",
     "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
     "architecture": {
         "64bit": {
-            "url": "http://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-64bit-portable.zip",
-            "hash": "sha1:fac226b31461f2392702822052a3a5628917f857"
-        },
-        "32bit": {
-            "url": "http://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-32bit-portable.zip",
-            "hash": "sha1:28bca91cadd6651c2b2463db8587c170bf17f2fa"
+            "url": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_5380_5361/strawberry-perl-5.38.0.1-64bit-portable.zip",
+            "hash": "ca6402a466939d5d658cc0d09a20dc59635ae68f6903a92a747a802539e40908"
         }
     },
     "post_install": [
@@ -24,21 +20,18 @@
         "perl\\bin"
     ],
     "checkver": {
-        "url": "http://strawberryperl.com/releases.html",
-        "regex": "strawberry-perl-([\\d.]+)-32bit-portable\\.zip"
+        "url": "https://strawberryperl.com/releases.html",
+        "regex": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/(?<tag>[^/]+)/strawberry-perl-([\\d.]+)-64bit-portable\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://strawberryperl.com/download/$version/strawberry-perl-$version-64bit-portable.zip"
-            },
-            "32bit": {
-                "url": "http://strawberryperl.com/download/$version/strawberry-perl-$version-32bit-portable.zip"
+                "url": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/$matchTag/strawberry-perl-$version-64bit-portable.zip",
+                "hash": {
+                    "url": "https://strawberryperl.com/releases.html",
+                    "find": "(?sm)$url\" onclick=\".*?Portable edition.*?$sha256"
+                }
             }
-        },
-        "hash": {
-            "url": "http://strawberryperl.com/releases.html",
-            "regex": "(?sm)$basename\" onclick.*?Portable edition.*?$sha1"
         }
     }
 }

@@ -1,24 +1,28 @@
 {
-    "version": "2.2.0",
+    "version": "2.5.6",
     "description": "Fully featured and highly configurable SFTP server with optional HTTP, FTP/S and WebDAV support",
     "homepage": "https://github.com/drakkan/sftpgo",
     "license": "AGPL-3.0-only",
     "notes": "Register SFTPGo as Windows Service by running: \"sftpgo service install\" as Administrator",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/drakkan/sftpgo/releases/download/v2.2.0/sftpgo_v2.2.0_windows_portable_x86_64.zip",
-            "hash": "e8df32fbd29994475728384b17183da55775cd2abd4d4bca2d4afdd603544a82"
-        }
-    },
+    "url": "https://github.com/drakkan/sftpgo/releases/download/v2.5.6/sftpgo_v2.5.6_windows_portable.zip",
+    "hash": "ef7b03e6947766fc44bec00e804eb32cf3630704cb4daff400e88fbdc5edaf44",
+    "pre_install": [
+        "if ($architecture -eq '32bit') {",
+        "   Move-Item \"$dir\\x86\\sftpgo.exe\" \"$dir\\\" -Force",
+        "} elseif ($architecture -eq 'arm64') {",
+        "   Move-Item \"$dir\\arm64\\sftpgo.exe\" \"$dir\\\" -Force",
+        "}",
+        "Remove-Item \"$dir\\arm64\", \"$dir\\x86\" -Recurse -Force"
+    ],
     "bin": "sftpgo.exe",
+    "persist": [
+        "sftpgo.db",
+        "sftpgo.json"
+    ],
     "checkver": {
         "github": "https://github.com/drakkan/sftpgo"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/drakkan/sftpgo/releases/download/v$version/sftpgo_v$version_windows_portable_x86_64.zip"
-            }
-        }
+        "url": "https://github.com/drakkan/sftpgo/releases/download/v$version/sftpgo_v$version_windows_portable.zip"
     }
 }

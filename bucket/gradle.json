@@ -1,14 +1,24 @@
 {
-    "version": "7.3.3",
-    "description": "An open-source build automation tool focused on flexibility and performance. (Source code and documentation boundled)",
+    "version": "8.5",
+    "description": "An open-source build automation tool focused on flexibility and performance. (Source code and documentation bundled)",
     "homepage": "https://gradle.org",
     "license": "Apache-2.0",
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://services.gradle.org/distributions/gradle-7.3.3-all.zip",
-    "hash": "c9490e938b221daf0094982288e4038deed954a3f12fb54cbf270ddf4e37d879",
-    "extract_dir": "gradle-7.3.3",
+    "url": "https://services.gradle.org/distributions/gradle-8.5-all.zip",
+    "hash": "c16d517b50dd28b3f5838f0e844b7520b8f1eb610f2f29de7e4e04a1b7c9c79b",
+    "extract_dir": "gradle-8.5",
+    "post_install": [
+        "$current_env = env GRADLE_USER_HOME $global",
+        "If ($null -eq $current_env) {",
+        "    $path = \"$dir\\.gradle\"",
+        "    env GRADLE_USER_HOME $global $path",
+        "    $Env:GRADLE_USER_HOME = $path",
+        "    Write-Host \"Environment variable 'GRADLE_USER_HOME' set to '$path'\"",
+        "}"
+    ],
+    "persist": ".gradle",
     "bin": "bin\\gradle.bat",
     "checkver": {
         "url": "https://gradle.org/install/",

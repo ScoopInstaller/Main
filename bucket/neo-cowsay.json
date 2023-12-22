@@ -1,0 +1,41 @@
+{
+    "version": "2.0.4",
+    "description": "Cowsay written in Go, with more fun options",
+    "homepage": "https://github.com/Code-Hex/Neo-cowsay",
+    "license": "Artistic-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Code-Hex/Neo-cowsay/releases/download/v2.0.4/cowsay_2.0.4_Windows_x86_64.zip",
+            "hash": "9a7ba1dfd94c526f9fbef10e8b59f068530e18d2457d0776240ffab791824cb1"
+        },
+        "32bit": {
+            "url": "https://github.com/Code-Hex/Neo-cowsay/releases/download/v2.0.4/cowsay_2.0.4_Windows_i386.zip",
+            "hash": "fd08590ce1794e69e786651c36f64def4632f07683ec558ebeeb0c29f3a0150e"
+        },
+        "arm64": {
+            "url": "https://github.com/Code-Hex/Neo-cowsay/releases/download/v2.0.4/cowsay_2.0.4_Windows_arm64.zip",
+            "hash": "6e4301108b708880583aa080c1ec4efe16dd6f4cc7c2817d3653b3b1e0f4f547"
+        }
+    },
+    "bin": [
+        "cowsay.exe",
+        "cowthink.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Code-Hex/Neo-cowsay/releases/download/v$version/cowsay_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Code-Hex/Neo-cowsay/releases/download/v$version/cowsay_$version_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Code-Hex/Neo-cowsay/releases/download/v$version/cowsay_$version_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/cowsay_checksums.txt"
+        }
+    }
+}

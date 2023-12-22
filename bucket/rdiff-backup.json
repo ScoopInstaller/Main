@@ -1,20 +1,38 @@
 {
-    "version": "2.0.5",
+    "version": "2.2.6",
     "description": "Reverse differential backup tool, over a network or locally",
     "homepage": "https://rdiff-backup.net",
     "license": "GPL-2.0-only",
-    "suggest": {
-        "vcredist2008": "extras/vcredist2008"
+    "notes": "Please refer to https://rdiff-backup.net/Windows-README.html for Windows specific documentation.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v2.2.6/rdiff-backup-2.2.6.win64exe.zip",
+            "hash": "2f2e2c6836a23e4e0b546d525beb179b7afeba5f49b65a1aa9342f2cb7115ee4",
+            "extract_dir": "rdiff-backup-2.2.6-64"
+        },
+        "32bit": {
+            "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v2.2.6/rdiff-backup-2.2.6.win32exe.zip",
+            "hash": "9e800a1964fdd3d4199eee7231a05da26578263dd43e379516ca1e99ebca5827",
+            "extract_dir": "rdiff-backup-2.2.6-32"
+        }
     },
-    "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v2.0.5/rdiff-backup-2.0.5.win32exe.zip",
-    "hash": "33c206a872ee125447c0f34726a9b5b0afec29b5394cd287a8c413cbad6203a6",
-    "extract_dir": "rdiff-backup-2.0.5",
+    "suggest": {
+        "vcredist": "extras/vcredist2008"
+    },
     "bin": "rdiff-backup.exe",
     "checkver": {
         "github": "https://github.com/rdiff-backup/rdiff-backup"
     },
     "autoupdate": {
-        "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v$version/rdiff-backup-$version.win32exe.zip",
-        "extract_dir": "rdiff-backup-$version"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v$version/rdiff-backup-$version.win64exe.zip",
+                "extract_dir": "rdiff-backup-$version-64"
+            },
+            "32bit": {
+                "url": "https://github.com/rdiff-backup/rdiff-backup/releases/download/v$version/rdiff-backup-$version.win32exe.zip",
+                "extract_dir": "rdiff-backup-$version-32"
+            }
+        }
     }
 }

@@ -1,0 +1,33 @@
+{
+    "version": "0.5.0",
+    "description": "C-family abstract syntax tree XML output tool.",
+    "homepage": "https://github.com/CastXML/CastXML",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://data.kitware.com/api/v1/item/63bed83a6d3fc641a02d7ea2/download#/castxml-windows.zip",
+            "hash": "sha512:df5a40605ac1c3487ed5e8bd202b681dd8f981b6a26b60c6fb5b7712a98bf4f3b55c6642c734f19c227c47a5937c8d78750a97d7498600fe2cd7a317b5096dcc"
+        }
+    },
+    "bin": "castxml\\bin\\castxml.exe",
+    "checkver": {
+        "script": [
+            "$folder = Invoke-RestMethod -Uri 'https://data.kitware.com/api/v1/folder?parentType=folder&parentId=57b5de948d777f10f2696370&sort=lowerName&sortdir=-1' |",
+            "    Where-Object { $_.name -match 'v\\d+\\.\\d+\\.\\d+' }",
+            "$file = Invoke-RestMethod -Uri \"https://data.kitware.com/api/v1/item?folderId=$($folder[0]._id)&name=castxml-windows.zip\"",
+            "Write-Output $folder[0].name $file[0]._id"
+        ],
+        "regex": "v([\\d.]+)\\s(?<fileid>.+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://data.kitware.com/api/v1/item/$matchFileid/download#/castxml-windows.zip",
+                "hash": {
+                    "url": "https://data.kitware.com/api/v1/item/$matchFileid/files",
+                    "regex": "sha512.*$sha512"
+                }
+            }
+        }
+    }
+}

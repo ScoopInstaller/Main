@@ -1,5 +1,5 @@
 {
-    "version": "21.3.0.0.0",
+    "version": "21.12.0.0.0",
     "description": "Connect to a local or remote Oracle Database for development and production deployment.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
@@ -8,16 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/213000/instantclient-basic-windows.x64-21.3.0.0.0.zip",
-            "hash": "78a1b680e03ae550d4e1c3bf9c4f9fc091d671baf933dcf645b19de508c4373b",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2112000/instantclient-basic-windows.x64-21.12.0.0.0dbru.zip",
+            "hash": "6e48bc117ff25c57cf7c6bdd57d57367566186e1e5d17c0dfd56eb02dcd8cbc4",
             "env_set": {
                 "OCI_LIB64": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
             }
         },
         "32bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/213000/instantclient-basic-nt-21.3.0.0.0.zip",
-            "hash": "b09a84179d3ad9024883ff409429c7327d62790058c0b933af11ffe1b3e065ad",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2112000/instantclient-basic-nt-21.12.0.0.0dbru.zip",
+            "hash": "bfe8b09c4e08013e3fa62bb1b2f5bd0f5f42680328d69ec743b266184632db0d",
             "env_set": {
                 "OCI_LIB32": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
@@ -25,23 +25,23 @@
         }
     },
     "suggest": {
-        "Visual C++ 2017 Redistributable": "extras/vcredist2017"
+        "vcredist": "extras/vcredist2022"
     },
-    "extract_dir": "instantclient_21_3",
+    "extract_dir": "instantclient_21_12",
     "env_add_path": ".",
     "persist": "network\\admin",
     "checkver": {
-        "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
+        "url": "https://www.oracle.com/database/technologies/instant-client/microsoft-windows-32-downloads.html",
         "regex": "Version ([\\d.]+)",
         "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-windows.x64-$version.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-windows.x64-$versiondbru.zip"
             },
             "32bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-nt-$version.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-nt-$versiondbru.zip"
             }
         },
         "extract_dir": "instantclient_$majorVersion_$minorVersion"

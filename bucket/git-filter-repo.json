@@ -1,21 +1,17 @@
 {
-    "version": "2.34.0",
+    "version": "2.38.0",
     "description": "git filter-branch replacement",
     "homepage": "https://github.com/newren/git-filter-repo",
     "license": "MIT",
     "suggest": {
+        "Git": "git",
         "Python 3": "python"
     },
-    "url": "https://github.com/newren/git-filter-repo/archive/v2.34.0.zip",
-    "hash": "6425c8d7f60cabf1afec27673658e1ee5f6acab02f4363cc3f06a6089f1d8ab4",
+    "url": "https://github.com/newren/git-filter-repo/archive/v2.38.0.zip",
+    "hash": "b8c76eac0a20a0bac47d0321c5093f4a5d50f6312273c3f3a7d9a60791378212",
     "pre_install": "Move-Item \"$dir\\git-filter-repo-*\\*\" \"$dir\"; Remove-Item \"$dir\\git-filter-repo-*\"",
     "post_install": "Copy-Item \"$dir\\git-filter-repo\" \"$dir\\contrib\\filter-repo-demos\" | Out-Null",
-    "bin": [
-        [
-            "git_filter_repo.py",
-            "git-filter-repo"
-        ]
-    ],
+    "bin": "git-filter-repo",
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/newren/git-filter-repo/archive/v$version.zip"

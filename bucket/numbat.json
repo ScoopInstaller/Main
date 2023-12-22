@@ -1,0 +1,34 @@
+{
+    "version": "1.8.0",
+    "description": "A statically typed programming language for scientific computations with first class support for physical dimensions and units",
+    "homepage": "https://numbat.dev/",
+    "license": "Apache-2.0, MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/sharkdp/numbat/releases/download/v1.8.0/numbat-v1.8.0-i686-pc-windows-msvc.zip",
+            "hash": "5342de9ae2da4fcbd5deb1878962fe3061b397e4b942452ac313d5d5f386ffa1",
+            "extract_dir": "numbat-v1.8.0-i686-pc-windows-msvc"
+        },
+        "64bit": {
+            "url": "https://github.com/sharkdp/numbat/releases/download/v1.8.0/numbat-v1.8.0-x86_64-pc-windows-msvc.zip",
+            "hash": "180f7586077bd7d7ce1b89e723ba80865580854cca9915f2c74527368fb04927",
+            "extract_dir": "numbat-v1.8.0-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": "numbat.exe",
+    "checkver": {
+        "github": "https://github.com/sharkdp/numbat"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "extract_dir": "numbat-v$version-i686-pc-windows-msvc",
+                "url": "https://github.com/sharkdp/numbat/releases/download/v$version/numbat-v$version-i686-pc-windows-msvc.zip"
+            },
+            "64bit": {
+                "extract_dir": "numbat-v$version-x86_64-pc-windows-msvc",
+                "url": "https://github.com/sharkdp/numbat/releases/download/v$version/numbat-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

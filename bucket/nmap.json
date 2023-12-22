@@ -1,5 +1,5 @@
 {
-    "version": "7.92",
+    "version": "7.94",
     "description": "Network exploration and security auditing utility.",
     "homepage": "https://nmap.org",
     "license": {
@@ -14,10 +14,10 @@
         "See: https://nmap.org/book/inst-windows.html"
     ],
     "suggest": {
-        "Visual C++ Redist 2008": "extras/vcredist2008"
+        "vcredist": "extras/vcredist2008"
     },
-    "url": "https://nmap.org/dist/nmap-7.92-setup.exe#/dl.7z",
-    "hash": "b2400db1a4af9607fdd6ee50e0f5926d8b9272f89eec93d4c30b56dc854afb7a",
+    "url": "https://nmap.org/dist/nmap-7.94-setup.exe#/dl.7z",
+    "hash": "b99c4535e1603a2150e4dd97933b69bfddf23e8cceff5c36606ec0327c6f7193",
     "pre_install": [
         "Get-ChildItem \"$dir\\`$PLUGINSDIR\\npcap-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'npcap.exe'",
         "Move-Item \"$dir\\`$PLUGINSDIR\\npcap.exe\" \"$dir\"",
@@ -26,15 +26,8 @@
     "bin": [
         "nmap.exe",
         "ncat.exe",
-        "ndiff.exe",
-        "zenmap.exe",
+        "ndiff.bat",
         "nping.exe"
-    ],
-    "shortcuts": [
-        [
-            "zenmap.exe",
-            "Zenmap - Nmap GUI"
-        ]
     ],
     "checkver": {
         "url": "https://nmap.org/download.html",

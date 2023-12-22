@@ -1,18 +1,18 @@
 {
-    "version": "11.1.0",
+    "version": "12.1.0",
     "description": "AVR toolchain for Windows by Zak Kemble",
     "homepage": "https://blog.zakkemble.net/avr-gcc-builds/",
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://blog.zakkemble.net/download/avr-gcc-11.1.0-x64-windows.zip",
-            "hash": "md5:3043b0659163dd116d02fe3470d404d5",
-            "extract_dir": "avr-gcc-11.1.0-x64-windows"
+            "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v12.1.0-1/avr-gcc-12.1.0-x64-windows.zip",
+            "hash": "e921a964fdeaedbe963352d0f26c6520a0a3eb8effc6ff232f3824b06c4ea0e2",
+            "extract_dir": "avr-gcc-12.1.0-x64-windows"
         },
         "32bit": {
-            "url": "https://blog.zakkemble.net/download/avr-gcc-11.1.0-x86-windows.zip",
-            "hash": "md5:b6459d9048b0870a96544330e54b66ae",
-            "extract_dir": "avr-gcc-11.1.0-x86-windows"
+            "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v12.1.0-1/avr-gcc-12.1.0-x86-windows.zip",
+            "hash": "3a8db73306956f53506b558074d1d59adc46a4e036658ec1a36da1662cd4ef4a",
+            "extract_dir": "avr-gcc-12.1.0-x86-windows"
         }
     },
     "bin": [
@@ -24,7 +24,6 @@
         "bin\\avr-cpp.exe",
         "bin\\avr-elfedit.exe",
         "bin\\avr-g++.exe",
-        "bin\\avr-gcc-11.1.0.exe",
         "bin\\avr-gcc-ar.exe",
         "bin\\avr-gcc-nm.exe",
         "bin\\avr-gcc-ranlib.exe",
@@ -45,23 +44,33 @@
         "bin\\avr-run.exe",
         "bin\\avr-size.exe",
         "bin\\avr-strings.exe",
-        "bin\\avr-strip.exe"
+        "bin\\avr-strip.exe",
+        "bin\\avrdude.exe",
+        "bin\\make.exe"
     ],
-    "checkver": "AVR-GCC\\s*([\\d.]+)\\s+for",
+    "post_install": [
+        "# manually shim bin\\avr-gcc-$version.exe",
+        "scoop shim add \"avr-gcc-$version\" \"$dir\\bin\\avr-gcc-$version.exe\""
+    ],
+    "uninstaller": {
+        "script": "scoop shim rm \"avr-gcc-$version\""
+    },
+    "checkver": {
+        "github": "https://github.com/ZakKemble/avr-gcc-build"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://blog.zakkemble.net/download/avr-gcc-$version-x64-windows.zip",
+                "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v$version-1/avr-gcc-$version-x64-windows.zip",
                 "extract_dir": "avr-gcc-$version-x64-windows"
             },
             "32bit": {
-                "url": "https://blog.zakkemble.net/download/avr-gcc-$version-x86-windows.zip",
+                "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v$version-1/avr-gcc-$version-x86-windows.zip",
                 "extract_dir": "avr-gcc-$version-x86-windows"
             }
         },
         "hash": {
-            "url": "https://blog.zakkemble.net/avr-gcc-builds/",
-            "regex": "(?sm)$basename.*?MD5:\\s*$md5"
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }

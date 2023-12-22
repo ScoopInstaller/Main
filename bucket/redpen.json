@@ -1,26 +1,20 @@
 {
     "version": "1.10.4",
     "description": "A proofreading tool.",
-    "homepage": "http://redpen.cc",
+    "homepage": "https://redpen.cc",
     "license": "Apache-2.0",
     "suggest": {
-        "Java": [
-            "adopt8-hotspot-jre"
-        ]
+        "Java": "java/temurin8-jre"
     },
-    "url": "https://github.com/redpen-cc/redpen/releases/download/redpen-1.10.4/redpen-distribution-1.10.4-assembled.tar.gz",
+    "url": "https://github.com/redpen-cc/redpen/releases/download/redpen-1.10.4/redpen-1.10.4.tar.gz",
     "hash": "6c3dc4a6a45828f9cc833ca7253fdb036179036631248288251cb9ac4520c39d",
     "extract_dir": "redpen-distribution-1.10.4",
     "bin": [
         "bin\\redpen.bat",
         "bin\\redpen-server.bat"
     ],
-    "checkver": {
-        "github": "https://github.com/redpen-cc/redpen/",
-        "regex": "Release ([\\d.]+)"
-    },
     "autoupdate": {
-        "url": "https://github.com/redpen-cc/redpen/releases/download/redpen-$version/redpen-distribution-$version-assembled.tar.gz",
+        "url": "https://github.com/redpen-cc/redpen/releases/download/redpen-$version/redpen-$version.tar.gz",
         "extract_dir": "redpen-distribution-$version"
     }
 }

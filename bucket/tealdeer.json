@@ -1,12 +1,12 @@
 {
-    "version": "1.5.0",
+    "version": "1.6.1",
     "description": "A very fast implementation of tldr in Rust.",
     "homepage": "https://dbrgn.github.io/tealdeer",
     "license": "Apache-2.0|MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/dbrgn/tealdeer/releases/download/v1.5.0/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
-            "hash": "399e5ddcf600b8ae7a9629990a2943360dec01bb47bf5d9f3b90e14ff4f88ede"
+            "url": "https://github.com/dbrgn/tealdeer/releases/download/v1.6.1/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
+            "hash": "abf2708b4932bc67bbee7c194d482146bad2fc880ee9d54dd0892524601bad31"
         }
     },
     "pre_install": [
@@ -15,14 +15,14 @@
         "   Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
         "   $CONT = @(",
         "       '[directories]'",
+        "       \"cache_dir = `\"$persist_dir\\cache`\"\"",
         "       \"custom_pages_dir = `\"$persist_dir\\custom-pages`\"\"",
         "   ) -replace '\\\\', '\\\\'",
         "   Set-Content \"$dir\\$file\" ($CONT -join \"`r`n\") -Encoding ASCII",
         "}"
     ],
     "env_set": {
-        "TEALDEER_CONFIG_DIR": "$dir",
-        "TEALDEER_CACHE_DIR": "$dir\\cache"
+        "TEALDEER_CONFIG_DIR": "$dir"
     },
     "bin": "tldr.exe",
     "persist": [

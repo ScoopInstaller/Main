@@ -1,16 +1,16 @@
 {
-    "version": "3.00",
+    "version": "4.0.5",
     "description": "A fast, easy, and free BitTorrent client.",
     "homepage": "https://transmissionbt.com/",
     "license": "GPL-2.0-only|GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/transmission/transmission-releases/raw/master/transmission-3.00-x64.msi",
-            "hash": "c34828a6d2c50c7c590d05ca50249b511d46e9a2a7223323fb3d1421e3f6b9d1"
+            "url": "https://github.com/transmission/transmission/releases/download/4.0.5/transmission-4.0.5-x64.msi",
+            "hash": "a698a6b39abf307c72f3a9152f320e290dc967927821161521f1460db74d7654"
         },
         "32bit": {
-            "url": "https://github.com/transmission/transmission-releases/raw/master/transmission-3.00-x86.msi",
-            "hash": "eeab85327fa8a1299bb133d5f60f6674ca9e76522297202bbe39aae92dad4f32"
+            "url": "https://github.com/transmission/transmission/releases/download/4.0.5/transmission-4.0.5-x86.msi",
+            "hash": "416f6d6fd96b7481c9cf75a89ba66d61a0d9c1237703bad799e5574404cf6b14"
         }
     },
     "extract_dir": "PFiles\\Transmission",
@@ -27,19 +27,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/transmission/transmission-releases/raw/master/transmission-$version-x64.msi",
-                "hash": {
-                    "url": "https://raw.githubusercontent.com/transmission/transmission.github.io/master/includes/js/constants.js",
-                    "regex": "sha256_msi64: \"$sha256\""
-                }
+                "url": "https://github.com/transmission/transmission/releases/download/$version/transmission-$version-x64.msi"
             },
             "32bit": {
-                "url": "https://github.com/transmission/transmission-releases/raw/master/transmission-$version-x86.msi",
-                "hash": {
-                    "url": "https://raw.githubusercontent.com/transmission/transmission.github.io/master/includes/js/constants.js",
-                    "regex": "sha256_msi32: \"$sha256\""
-                }
+                "url": "https://github.com/transmission/transmission/releases/download/$version/transmission-$version-x86.msi"
             }
+        },
+        "hash": {
+            "url": "https://transmissionbt.com/download",
+            "regex": "$sha256</a>  $basename"
         }
     }
 }

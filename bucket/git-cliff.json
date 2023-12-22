@@ -1,0 +1,30 @@
+{
+    "version": "1.4.0",
+    "description": "A highly customizable Changelog Generator that follows Conventional Commit specifications",
+    "homepage": "https://github.com/orhun/git-cliff",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/orhun/git-cliff/releases/download/v1.4.0/git-cliff-1.4.0-i686-pc-windows-msvc.zip",
+            "hash": "6efb0c321210e97fe99e3a6d4c02886fbf4ab889b234f82499fd1c3d76ca0a35"
+        },
+        "64bit": {
+            "url": "https://github.com/orhun/git-cliff/releases/download/v1.4.0/git-cliff-1.4.0-x86_64-pc-windows-msvc.zip",
+            "hash": "5aa4147cb7862438c61c7d73a6651a48b91dc36b545fd0c61a790b6f71ed0c9e"
+        }
+    },
+    "extract_dir": "git-cliff-1.4.0",
+    "bin": "git-cliff.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/orhun/git-cliff/releases/download/v$version/git-cliff-$version-i686-pc-windows-msvc.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/orhun/git-cliff/releases/download/v$version/git-cliff-$version-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "extract_dir": "git-cliff-$version"
+    }
+}

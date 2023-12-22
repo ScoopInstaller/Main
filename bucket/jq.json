@@ -1,37 +1,37 @@
 {
-    "version": "1.6",
+    "version": "1.7.1",
     "description": "Lightweight and flexible command-line JSON processor",
-    "homepage": "https://stedolan.github.io/jq/",
+    "homepage": "https://jqlang.github.io/jq/",
     "license": "MIT",
     "suggest": {
         "jid": "jid"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe#/jq.exe",
-            "hash": "a51d36968dcbdeabb3142c6f5cf9b401a65dc3a095f3144bd0c118d5bb192753"
+            "url": "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-windows-amd64.exe#/jq.exe",
+            "hash": "7451fbbf37feffb9bf262bd97c54f0da558c63f0748e64152dd87b0a07b6d6ab"
         },
         "32bit": {
-            "url": "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win32.exe#/jq.exe",
-            "hash": "0012cb4c0eb6eaf97b842e676e423a69a8fea95055d93830551b4a5a54494bd8"
+            "url": "https://github.com/jqlang/jq/releases/download/jq-1.7.1/jq-windows-i386.exe#/jq.exe",
+            "hash": "e4efdd6a2c463ae714ed98fd5e874fe834a3a2380e17885bd4cda1c49e5166df"
         }
     },
     "bin": "jq.exe",
     "checkver": {
-        "github": "https://github.com/stedolan/jq/",
+        "github": "https://github.com/jqlang/jq/",
         "regex": "tag/jq-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/stedolan/jq/releases/download/jq-$version/jq-win64.exe#/jq.exe"
+                "url": "https://github.com/jqlang/jq/releases/download/jq-$version/jq-windows-amd64.exe#/jq.exe"
             },
             "32bit": {
-                "url": "https://github.com/stedolan/jq/releases/download/jq-$version/jq-win32.exe#/jq.exe"
+                "url": "https://github.com/jqlang/jq/releases/download/jq-$version/jq-windows-i386.exe#/jq.exe"
             }
         },
         "hash": {
-            "url": "https://raw.githubusercontent.com/stedolan/jq/jq-$version/sig/v$version/sha256sum.txt"
+            "url": "https://github.com/jqlang/jq/releases/download/jq-$version/sha256sum.txt"
         }
     }
 }

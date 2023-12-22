@@ -1,4 +1,4 @@
-# Scoop Main [![Build Status](https://ci.appveyor.com/api/projects/status/3i3h4mv47pnda41y?svg=true)](https://ci.appveyor.com/project/r15ch13/scoopinstaller-main "Build Status") [![Excavator](https://github.com/ScoopInstaller/Main/actions/workflows/excavator.yml/badge.svg)](https://github.com/ScoopInstaller/Main/actions/workflows/excavator.yml)
+# Scoop Main [![Tests](https://github.com/ScoopInstaller/Main/actions/workflows/ci.yml/badge.svg)](https://github.com/ScoopInstaller/Main/actions/workflows/ci.yml) [![Excavator](https://github.com/ScoopInstaller/Main/actions/workflows/excavator.yml/badge.svg)](https://github.com/ScoopInstaller/Main/actions/workflows/excavator.yml)
 
 Core manifests for [Scoop](https://scoop.sh), the Windows command-line installer. For manifests that fit the [Main criteria](https://github.com/ScoopInstaller/Scoop/wiki/Criteria-for-including-apps-in-the-main-bucket).
 

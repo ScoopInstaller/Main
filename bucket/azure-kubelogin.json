@@ -1,0 +1,24 @@
+{
+    "version": "0.0.34",
+    "description": "A client-go credential (exec) plugin implementing Azure authentication.",
+    "homepage": "https://github.com/Azure/kubelogin/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Azure/kubelogin/releases/download/v0.0.34/kubelogin-win-amd64.zip",
+            "hash": "bcb0f22fde17a9d8bf2c9c5486b0b47884fa9e6ad7020774b725aa123c56d82b"
+        }
+    },
+    "bin": "bin\\windows_amd64\\kubelogin.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Azure/kubelogin/releases/download/v$version/kubelogin-win-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

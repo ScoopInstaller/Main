@@ -1,15 +1,22 @@
 {
-    "version": "0.4.0",
+    "version": "0.8.4",
     "description": "An HTTP proxy server to automatically authenticate through an NTLM proxy.",
     "homepage": "https://github.com/genotrance/px",
     "license": "MIT",
-    "url": "https://github.com/genotrance/px/releases/download/v0.4.0/px.exe",
-    "hash": "93b54b5b6154c536f7ec0a85ed90ea25aa5ed66c7f61d2acbc37cab8a9231440",
-    "pre_install": "if (-not (Test-Path \"$persist_dir\\px.ini\")) { New-Item \"$dir\\px.ini\" -ItemType File | Out-Null }",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/genotrance/px/releases/download/v0.8.4/px-v0.8.4-windows.zip",
+            "hash": "deeac596f36257ee8878c6dc1570ccc7a0bc10da351abc98275c4de89616fa3f"
+        }
+    },
     "bin": "px.exe",
     "persist": "px.ini",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/genotrance/px/releases/download/v$version/px.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/genotrance/px/releases/download/v$version/px-v$version-windows.zip"
+            }
+        }
     }
 }

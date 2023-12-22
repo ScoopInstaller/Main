@@ -1,22 +1,22 @@
 {
-    "version": "0.7.5",
+    "version": "1.0.0",
     "description": "Intuitive find & replace CLI (sed alternative)",
     "homepage": "https://github.com/chmln/sd",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/chmln/sd/releases/download/v0.7.5/sd.0.7.5-.x86_64-pc-windows-msvc.zip",
-            "hash": "b27672506f38c6a4bf6e26ec5ddcce8497c42eaeedbffd43a1de29e70e30f9ea",
-            "extract_dir": "b\\x86_64-pc-windows-msvc\\release"
+            "url": "https://github.com/chmln/sd/releases/download/v1.0.0/sd-v1.0.0-x86_64-pc-windows-msvc.zip",
+            "hash": "b7cc9937ebc1f736c87d5929b9ea2280053af10f8e320d9c20ca90c3af46a5d5",
+            "extract_dir": "sd-v1.0.0-x86_64-pc-windows-msvc"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\build\", \"$dir\\b\", \"$dir\\sd.pdb\" -Force -Recurse",
     "bin": "sd.exe",
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/chmln/sd/releases/download/v$version/sd.$version-.x86_64-pc-windows-msvc.zip",
-                "extract_dir": "b\\x86_64-pc-windows-msvc\\release"
+                "url": "https://github.com/chmln/sd/releases/download/v$version/sd-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "sd-v$version-x86_64-pc-windows-msvc"
             }
         }
     }

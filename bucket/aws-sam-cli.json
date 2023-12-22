@@ -1,18 +1,24 @@
 {
-    "version": "1.37.0",
+    "version": "1.105.0",
     "description": "Build, test, debug, and deploy Serverless applications from CLI",
     "homepage": "https://aws.amazon.com/serverless/sam/",
     "license": "Apache-2.0",
+    "depends": "lessmsi",
     "suggest": {
         "AWS CLI": "aws"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.37.0/AWS_SAM_CLI_64_PY3.msi",
-            "hash": "a7542e39ae7c65fa47ac57e7a0c6cbc6e6050a111ce7080aac6912f145a369ac"
+            "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.105.0/AWS_SAM_CLI_64_PY3.msi#/dl.msi_",
+            "hash": "821551df6cd9294dcd377797905bd9d89d316933ca12a42bf84ce433788658ee"
         }
     },
-    "extract_dir": "Amazon\\AWSSAMCLI",
+    "pre_install": [
+        "# Workaround for #4980",
+        "Start-Process lessmsi -ArgumentList @('x', \"$dir\\$fname\", \"$dir\\\") -Wait -NoNewWindow",
+        "Move-Item \"$dir\\SourceDir\\Amazon\\AWSSAMCLI\\**\" \"$dir\"",
+        "Remove-Item \"$dir\\SourceDir\", \"$dir\\$fname\" -Force -Recurse"
+    ],
     "bin": [
         "bin\\sam.cmd",
         [
@@ -26,7 +32,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/aws/aws-sam-cli/releases/download/v$version/AWS_SAM_CLI_64_PY3.msi"
+                "url": "https://github.com/aws/aws-sam-cli/releases/download/v$version/AWS_SAM_CLI_64_PY3.msi#/dl.msi_"
             }
         },
         "hash": {

@@ -1,17 +1,40 @@
 {
-    "version": "2.51.2",
+    "version": "2.53.3",
     "description": "A file-synchronization tool.",
     "homepage": "https://www.cis.upenn.edu/~bcpierce/unison",
     "license": "GPL-3.0-only",
-    "url": "https://github.com/bcpierce00/unison/releases/download/v2.51.2/unison-windows-2.51.2-text.zip",
-    "hash": "9c1e1fca202dd1e7f55b82c1abf632ee546424253284a062839e7a7212a180bf",
-    "extract_dir": "unison-windows-2.51.2-text",
+    "notes": "Compiled with same OCaml compiler version 4.12.1",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bcpierce00/unison/releases/download/v2.53.3/unison-2.53.3-windows-x86_64.zip",
+            "hash": "5e8607adb6402fb57b10d5cf2d2cc1a717473698023d3edeb5060ea42d79713c"
+        },
+        "32bit": {
+            "url": "https://github.com/bcpierce00/unison/releases/download/v2.53.3/unison-2.53.3-windows-i386.zip",
+            "hash": "77e3008f98390c2187ebc6ed41807bd0db0a2291ba276cd838c87dd6d5db78b7"
+        }
+    },
     "bin": [
-        "unison.exe",
-        "unison-fsmonitor.exe"
+        "bin\\unison.exe",
+        "bin\\unison-fsmonitor.exe"
     ],
+    "shortcuts": [
+        [
+            "bin\\unison-gui.exe",
+            "Unison"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/bcpierce00/unison"
+    },
     "autoupdate": {
-        "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-windows-$version-text.zip",
-        "extract_dir": "unison-windows-$version-text"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-$version-windows-x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-$version-windows-i386.zip"
+            }
+        }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "version": "10.6.5",
+    "version": "11.2.2",
     "description": "Community developed fork of MySQL server.",
     "homepage": "https://mariadb.org",
     "license": "GPL-2.0-only",
@@ -13,20 +13,15 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.6.5/winx64-packages/mariadb-10.6.5-winx64.zip",
-            "hash": "ca56070e4d099c412987f09b73755fe874b83f951facd0fa81b8f76463569a3b",
-            "extract_dir": "mariadb-10.6.5-winx64"
-        },
-        "32bit": {
-            "url": "https://downloads.mariadb.com/MariaDB/mariadb-10.6.5/win32-packages/mariadb-10.6.5-win32.zip",
-            "hash": "e1c9f7aa9c8d1eefceae837ed794a1d6fa596bb86b82024e5fd187b33030fa23",
-            "extract_dir": "mariadb-10.6.5-win32"
+            "url": "https://downloads.mariadb.com/MariaDB/mariadb-11.2.2/winx64-packages/mariadb-11.2.2-winx64.zip",
+            "hash": "7d40de0c468cf33b5e8283e6f67d315aeae6ffa8df052b8d20a9b5943598d35e",
+            "extract_dir": "mariadb-11.2.2-winx64"
         }
     },
     "post_install": [
         "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
         "    warn 'Initializing data directory ...'",
-        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList @(\"--datadir=`\"$dir\\data`\"\")",
+        "    Invoke-ExternalCommand \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList \"--datadir=$dir\\data\" | Out-Null",
         "    warn 'Database has been initialized (username: root, password: <blank>)'",
         "}"
     ],
@@ -60,17 +55,14 @@
     "persist": "data",
     "checkver": {
         "url": "https://downloads.mariadb.org/rest-api/mariadb/all-releases/",
-        "jsonpath": "$.releases[?(@.status=='stable')].release_number"
+        "jsonpath": "$.releases[?(@.status=='stable')].release_number",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://downloads.mariadb.com/MariaDB/mariadb-$version/winx64-packages/mariadb-$version-winx64.zip",
                 "extract_dir": "mariadb-$version-winx64"
-            },
-            "32bit": {
-                "url": "https://downloads.mariadb.com/MariaDB/mariadb-$version/win32-packages/mariadb-$version-win32.zip",
-                "extract_dir": "mariadb-$version-win32"
             }
         },
         "hash": {

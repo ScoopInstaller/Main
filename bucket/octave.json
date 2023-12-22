@@ -1,14 +1,24 @@
 {
-    "version": "6.4.0",
+    "version": "8.3.0",
     "description": "A high-level language primarily intended for numerical computations.",
     "homepage": "https://www.gnu.org/software/octave/",
     "license": "GPL-3.0-only",
+    "notes": [
+        "* Known issue:",
+        "  - Spaces or non-ASCII characters in the path are discouraged and may cause program errors.",
+        "------",
+        "Please run 'octave-post-install' now to reduce plot delays due to the Windows font cache and make the pre-installed packages visible to the system."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://ftp.gnu.org/gnu/octave/windows/octave-6.4.0-w64.zip",
-            "hash": "338864ce8e28b194aaaf987b8022b2fe4450c47510d314ffa93bfec5833e0f30",
-            "extract_dir": "octave-6.4.0-w64",
+            "url": "https://ftp.gnu.org/gnu/octave/windows/octave-8.3.0-w64.zip",
+            "hash": "7240fc9cedf5dc35d30ab1fbb6ec7d06bce9ae1d74e567d15e64a2f38e6ee4eb",
+            "extract_dir": "octave-8.3.0-w64",
             "bin": [
+                [
+                    "post-install.bat",
+                    "octave-post-install"
+                ],
                 "mingw64\\bin\\octave.bat",
                 "mingw64\\bin\\octave-gui.exe",
                 "mingw64\\bin\\octave-cli.exe",
@@ -16,10 +26,14 @@
             ]
         },
         "32bit": {
-            "url": "https://ftp.gnu.org/gnu/octave/windows/octave-6.4.0-w32.zip",
-            "hash": "ab072fc91df508f95f080a63184d551dcd5ddd04eb96338068e952941ef25355",
-            "extract_dir": "octave-6.4.0-w32",
+            "url": "https://ftp.gnu.org/gnu/octave/windows/octave-8.3.0-w32.zip",
+            "hash": "eee80e9b7240b4929d07fd54e25ddb212a6010e45837fd2fe664c5f5dc39bf77",
+            "extract_dir": "octave-8.3.0-w32",
             "bin": [
+                [
+                    "post-install.bat",
+                    "octave-post-install"
+                ],
                 "mingw32\\bin\\octave.bat",
                 "mingw32\\bin\\octave-gui.exe",
                 "mingw32\\bin\\octave-cli.exe",
@@ -27,6 +41,12 @@
             ]
         }
     },
+    "shortcuts": [
+        [
+            "octave-launch.exe",
+            "Octave"
+        ]
+    ],
     "checkver": {
         "url": "https://wiki.octave.org/GNU_Octave_Wiki",
         "regex": "GNU Octave ([\\d.]+).*is the current stable release"

@@ -1,32 +1,32 @@
 {
-    "version": "3.27",
+    "version": "3.36",
     "description": "Flexible I/O Tester",
-    "homepage": "https://bsdio.com/fio/",
+    "homepage": "https://github.com/axboe/fio",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://bsdio.com/fio/releases/fio-3.27-x64.zip",
-            "hash": "4d17833d7ea009eb984d3e4f676a5ffc94ab98efbe9680c073b6e7c05dd524bf",
-            "extract_dir": "fio-3.27-x64"
+            "url": "https://github.com/axboe/fio/releases/download/fio-3.36/fio-3.36-x64.msi",
+            "hash": "951e9f2cb88a5eb2e672388d5472f5b8c43ae08309ad7bb290a47bf62c0fe75f"
         },
         "32bit": {
-            "url": "https://bsdio.com/fio/releases/fio-3.27-x86.zip",
-            "hash": "a2a09702d5e7311903e4097b61ee248e06a03de9fd27c04c3aec987afc5716e6",
-            "extract_dir": "fio-3.27-x86"
+            "url": "https://github.com/axboe/fio/releases/download/fio-3.36/fio-3.36-x86.msi",
+            "hash": "e37e06caa560ecc19283b7725183233bd5375d978cb65e975e8ba6648f0715f5"
         }
     },
+    "extract_dir": "fio",
     "bin": "fio.exe",
-    "checkver": "fio-([\\d.]+) released",
+    "checkver": {
+        "github": "https://github.com/axboe/fio",
+        "regex": "fio-(?<version>[\\d.]+)"
+    },
     "autoupdate": {
-       "architecture": {
-         "64bit": {
-             "url": "https://bsdio.com/fio/releases/fio-$version-x64.zip",
-             "extract_dir": "fio-$version-x64"
-         },
-         "32bit": {
-             "url": "https://bsdio.com/fio/releases/fio-$version-x86.zip",
-             "extract_dir": "fio-$version-x86"
-         }
-       }
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/axboe/fio/releases/download/fio-$version/fio-$version-x64.msi"
+            },
+            "32bit": {
+                "url": "https://github.com/axboe/fio/releases/download/fio-$version/fio-$version-x86.msi"
+            }
+        }
     }
 }

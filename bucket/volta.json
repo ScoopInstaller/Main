@@ -1,5 +1,5 @@
 {
-    "version": "1.0.5",
+    "version": "1.1.1",
     "description": "Volta is a hassle-free way to manage your JavaScript command-line tools",
     "homepage": "https://volta.sh/",
     "license": "BSD-2-Clause",
@@ -8,8 +8,8 @@
         "",
         "(& volta completions powershell) | Out-String | Invoke-Expression"
     ],
-    "url": "https://github.com/volta-cli/volta/releases/download/v1.0.5/volta-1.0.5-windows.zip",
-    "hash": "a5cdf34c8aba94ace8533370e5f2d1482df9f9f6b6ea7c43f7d832324dc47cb7",
+    "url": "https://github.com/volta-cli/volta/releases/download/v1.1.1/volta-1.1.1-windows.zip",
+    "hash": "5ad9bf1eee764edf2e341a3b616206bb4fb0449e1856ea6c7dbd646c912f2a1c",
     "installer": {
         "script": [
             "function UpdateExeFile([String] $original, [String] $file, [Switch] $Removal) {",
@@ -26,19 +26,20 @@
             "        Remove-Item \"$dir\\$original\" -Force",
             "    }",
             "}",
-            "UpdateExeFile 'volta-shim.exe' 'node.exe'",
-            "UpdateExeFile 'volta-shim.exe' 'npm.exe'",
-            "UpdateExeFile 'volta-shim.exe' 'npx.exe'",
-            "UpdateExeFile 'volta-shim.exe' 'yarn.exe'",
-            "UpdateExeFile 'volta.exe' 'volta.exe' -Removal",
-            "UpdateExeFile 'volta-migrate.exe' 'volta-migrate.exe' -Removal",
-            "UpdateExeFile 'volta-shim.exe' 'volta-shim.exe' -Removal"
+            "@('node', 'npm', 'npx', 'pnpm', 'yarn') | ForEach-Object {",
+            "    UpdateExeFile 'volta-shim.exe' \"$_.exe\"",
+            "    $content = \"@echo off`n`\"%~dpn0.exe`\" %*\"",
+            "    Set-Content \"$persist_dir\\appdata\\bin\\$_.cmd\" $content -Encoding ascii",
+            "}",
+            "@('volta', 'volta-migrate', 'volta-shim') | ForEach-Object {",
+            "    UpdateExeFile \"$_.exe\" \"$_.exe\" -Removal",
+            "}"
         ]
     },
+    "env_add_path": "appdata\\bin",
     "env_set": {
         "VOLTA_HOME": "$dir\\appdata"
     },
-    "env_add_path": "appdata\\bin",
     "persist": "appdata",
     "checkver": {
         "github": "https://github.com/volta-cli/volta"

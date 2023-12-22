@@ -1,76 +1,51 @@
 {
-    "version": "4.0.20220112",
+    "version": "4.3.5863.5818",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
     "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "license": "BSD-3-Clause",
-    "notes": "For R 3.3.x to 3.6.x, please use 'versions/rtools35'.",
+    "notes": [
+        "For R 3.3.x to 3.6.x, please use 'versions/rtools35'.",
+        "For R 4.0.x to 4.1.x, please use 'versions/rtools40'.",
+        "For R 4.2.x, please use 'versions/rtools42'."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/r-windows/rtools-installer/releases/download/2022-01-12/rtools40-x86_64.exe",
-            "hash": "5ed2f83ea6866ba527a75f1b76b14bcc06680a4e3b5f131eca612e59aa6f3023"
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-5863-5818.exe",
+            "hash": "4e2ea954260bcf50d33a13fc46c8ca41e09adf03419b79786b56ae1d35f6e580"
         }
     },
     "innosetup": true,
     "installer": {
         "script": [
-            "'r', 'mro' | ForEach-Object {",
-            "   if ((Select-CurrentVersion $_ $global) -match '^4') {",
-            "       $renvloc = (versiondir $_ (Select-CurrentVersion $_ $global) $global) + '\\etc\\Renviron.site'",
-            "       if (Test-Path $renvloc) {",
-            "           $renv = Get-Content $renvloc -Encoding ASCII",
-            "       } else {",
-            "           $renv = @()",
-            "       }",
-            "       $rtoolspath = \"$dir\\usr\\bin\"",
-            "       if ($renv -cmatch 'PATH=') {",
-            "           $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
-            "       } else {",
-            "           $renv += \"`r`nPATH=\", '\"', $rtoolspath, ';${PATH}\"' -join ''",
-            "       }",
-            "       $renv | Set-Content $renvloc -Encoding ASCII",
-            "   }",
-            "}",
-            "if (Test-Path 'C:\\rtools40') {",
-            "   if ($null -eq (Get-Item 'C:\\rtools40').LinkType) {",
-            "       Rename-Item -Path 'C:\\rtools40' -NewName 'rtools40.old' -Force",
+            "if (Test-Path 'C:\\rtools43') {",
+            "   if ($null -eq (Get-Item 'C:\\rtools43').LinkType) {",
+            "       Rename-Item -Path 'C:\\rtools43' -NewName 'rtools43.old' -Force",
             "   } else {",
-            "       Remove-Item -Path 'C:\\rtools40' -Force",
+            "       Remove-Item -Path 'C:\\rtools43' -Force",
             "   }",
             "}",
-            "New-Item -Path 'C:\\rtools40' -Target \"$dir\" -ItemType Junction | Out-Null"
+            "New-Item -Path 'C:\\rtools43' -Target \"$dir\" -ItemType Junction | Out-Null"
         ]
     },
     "uninstaller": {
         "script": [
-            "'r', 'mro' | ForEach-Object {",
-            "   if ((Select-CurrentVersion $_ $global) -match '^4') {",
-            "       $renvloc = (versiondir $_ (Select-CurrentVersion $_ $global) $global) + '\\etc\\Renviron.site'",
-            "       if (Test-Path $renvloc) {",
-            "           $renv = Get-Content $renvloc -Encoding ASCII",
-            "       } else {",
-            "           $renv = @()",
-            "       }",
-            "       $renv = $renv -replace '[^;\"]*rtools.*?;', ''",
-            "       $renv | Set-Content $renvloc -Encoding ASCII",
-            "   }",
+            "if ((Test-Path 'C:\\rtools43') -and ($null -ne (Get-Item 'C:\\rtools43').LinkType)) {",
+            "   Remove-Item -Path 'C:\\rtools43' -Force",
             "}",
-            "if ((Test-Path 'C:\\rtools40') -and ($null -ne (Get-Item 'C:\\rtools40').LinkType)) {",
-            "   Remove-Item -Path 'C:\\rtools40' -Force",
-            "}",
-            "if (Test-Path 'C:\\rtools40.old') {",
-            "   Rename-Item -Path 'C:\\rtools40.old' -NewName 'rtools40' -Force",
+            "if (Test-Path 'C:\\rtools43.old') {",
+            "   Rename-Item -Path 'C:\\rtools43.old' -NewName 'rtools43' -Force",
             "}"
         ]
     },
     "checkver": {
-        "github": "https://github.com/r-windows/rtools-installer",
-        "regex": "/tag/(\\d+)-(\\d+)-(\\d+)",
-        "replace": "4.0.${1}${2}${3}"
+        "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/",
+        "regex": ">rtools43\\-(\\d+)\\-(\\d+).exe<",
+        "replace": "4.3.${1}.${2}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/r-windows/rtools-installer/releases/download/$match1-$match2-$match3/rtools40-x86_64.exe"
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-$match1-$match2.exe"
             }
         }
     }

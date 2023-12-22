@@ -1,25 +1,25 @@
 {
-    "version": "3.8.0",
+    "version": "3.9.2",
     "description": "The package manager for Lua modules",
     "homepage": "https://luarocks.org",
     "license": "MIT",
     "depends": "lua",
     "architecture": {
         "64bit": {
-            "url": "https://luarocks.github.io/luarocks/releases/luarocks-3.8.0-windows-64.zip",
-            "hash": "d0bef92a9637df25bb86bad7ee3ae72e62a20a7b566d6f9cea175db0ebaecfd7",
-            "extract_dir": "luarocks-3.8.0-windows-64"
+            "url": "https://luarocks.github.io/luarocks/releases/luarocks-3.9.2-windows-64.zip",
+            "hash": "ab7e34332eedd6270b97f44df462e4584d3a60377205d88ea2806ecc547f074f",
+            "extract_dir": "luarocks-3.9.2-windows-64"
         },
         "32bit": {
-            "url": "https://luarocks.github.io/luarocks/releases/luarocks-3.8.0-windows-32.zip",
-            "hash": "017b606287f3192112e51e59333c91729be3e9bb9be0b84548d74903a620706a",
-            "extract_dir": "luarocks-3.8.0-windows-32"
+            "url": "https://luarocks.github.io/luarocks/releases/luarocks-3.9.2-windows-32.zip",
+            "hash": "e7bf11b9f7d3942db806b3f57d7dfacbe4f7a5b558f3e200b061a1d6e1f62255",
+            "extract_dir": "luarocks-3.9.2-windows-32"
         }
     },
     "pre_install": [
         "$file = 'config.lua'",
         "$lua = (versiondir 'lua' 'current' $global) -replace \"\\\\\", '/'",
-        "$v1 = (current_version 'lua' $global) -replace \"^(\\d.\\d).*\", '$1'",
+        "$v1 = (Select-CurrentVersion 'lua' $global) -replace \"^(\\d.\\d).*\", '$1'",
         "$v2 = $v1 -replace \"[.]\", ''",
         "$rocks = \"$(versiondir 'luarocks' 'current' $global)\\rocks\" -replace \"\\\\\", \"/\"",
         "if (!(Test-Path \"$persist_dir\\$file\")) {",

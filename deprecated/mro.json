@@ -1,0 +1,75 @@
+{
+    "version": "4.0.2",
+    "description": "Microsoft R Open: The enhanced distribution of R from Microsoft Corporation",
+    "homepage": "https://mran.microsoft.com/",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "For source packages installation, please install 'rtools'.",
+        "",
+        "You'll need to type 'r.ps1' or 'r.cmd' to run MRO, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
+        "",
+        "You can remove Powershell's 'r' command with:",
+        "    rm alias:\\r",
+        "",
+        "... but this only affects your current session: if you'd like to remove it for all future sessions you need to add the command above to your Powershell profile.",
+        "",
+        "Annoying, right?! You might want to check out Pshazz (scoop install pshazz)--this has a plugin to remove some crazy aliases from Powershell, as well as many other improvements."
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://mran.blob.core.windows.net/install/mro/4.0.2/Windows/microsoft-r-open-4.0.2.exe",
+            "hash": "eb4f0ddb009a5cf63a85024599238802e0f4e509be3a065a3eaed9d185de66b7",
+            "installer": {
+                "script": [
+                    "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\"",
+                    "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\ROpen.msi\" \"$dir\\_tmp\"",
+                    "movedir \"$dir\\_tmp\\Microsoft\\MRO-$version.0\" \"$dir\" | Out-Null",
+                    "Expand-7zipArchive \"$dir\\Setup\\*.cab\" \"$dir\\Setup\"",
+                    "Remove-Item \"$dir\\bin\\x64\\Rblas.dll\", \"$dir\\bin\\x64\\Rlapack.dll\" -Force",
+                    "movedir \"$dir\\Setup\\bin\\x64\" \"$dir\\bin\\x64\" | Out-Null",
+                    "movedir \"$dir\\Setup\\library\" \"$dir\\library\" | Out-Null",
+                    "Remove-Item \"$dir\\_tmp\", \"$dir\\Setup\", \"$dir\\$fname\" -Force -Recurse",
+                    "if (Test-Path (appdir 'rtools40' $global)) {",
+                    "   $renvloc = \"$dir\\etc\\Renviron.site\"",
+                    "   $rtoolsloc = versiondir 'rtools40' (Select-CurrentVersion 'rtools40' $global) $global",
+                    "   if (Test-Path $renvloc) {",
+                    "       $renv = Get-Content $renvloc -Encoding ASCII",
+                    "   } else {",
+                    "       $renv = @()",
+                    "   }",
+                    "   $rtoolspath = \"$rtoolsloc\\usr\\bin\"",
+                    "   if ($renv -cmatch 'PATH=') {",
+                    "       $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
+                    "   } else {",
+                    "       $renv += \"`r`nPATH=\", '\"', $rtoolspath, ';${PATH}\"' -join ''",
+                    "   }",
+                    "   $renv | Set-Content $renvloc -Encoding ASCII",
+                    "}"
+                ]
+            },
+            "bin": [
+                "bin\\x64\\r.exe",
+                "bin\\x64\\rterm.exe",
+                "bin\\x64\\rscript.exe"
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://mran.microsoft.com/assets/configurations/app.config.json",
+        "jsonpath": "$.latestMicrosoftRVersion"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mran.blob.core.windows.net/install/mro/$version/Windows/microsoft-r-open-$version.exe",
+                "hash": {
+                    "url": "https://mranapi.azurewebsites.net/api/download",
+                    "jsonpath": "$..versions[?(@.downloadText == '$basename')].sha256"
+                }
+            }
+        }
+    }
+}

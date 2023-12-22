@@ -1,0 +1,36 @@
+{
+    "version": "0.7.1",
+    "homepage": "https://github.com/charmbracelet/vhs",
+    "description": "A cli application that allows you to create terminal GIFs as code for integration testing and demoing your CLI tools (ex. neofetch/winfetch).",
+    "license": "MIT",
+    "depends": [
+        "ttyd",
+        "ffmpeg"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Windows_x86_64.zip",
+            "hash": "f1d6b58e4575dd79d04909c9359a0e51819f5dbda77b4c2d96a72da9a51c4973"
+        },
+        "32bit": {
+            "url": "https://github.com/charmbracelet/vhs/releases/download/v0.7.1/vhs_0.7.1_Windows_i386.zip",
+            "hash": "fafa1fc1ba3022f51e67d26c00477a1e0cc492a6a3f765d07a98327065bc41ae"
+        }
+    },
+    "bin": "vhs.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/charmbracelet/vhs/releases/download/v$version/vhs_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/charmbracelet/vhs/releases/download/v$version/vhs_$version_Windows_i386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "(?m)^$sha256.*?$basename$"
+        }
+    }
+}

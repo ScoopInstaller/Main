@@ -1,0 +1,45 @@
+{
+    "version": "2.2.1-rev0",
+    "description": "Multimedia framework developed for research and academic purposes",
+    "homepage": "https://gpac.wp.imt.fr/",
+    "license": "LGPL-2.1-or-later",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.tsi.telecom-paristech.fr/gpac/release/2.2.1/gpac-2.2.1-rev0-gb34e3851-release-2.2-x64.exe#/dl.7z",
+            "hash": "e50149fd8903999491d833a474b2cc656d9022be2effa6797029969368fbafe5"
+        },
+        "32bit": {
+            "url": "https://download.tsi.telecom-paristech.fr/gpac/release/2.2.1/gpac-2.2.1-rev0-gb34e3851-release-2.2-win32.exe#/dl.7z",
+            "hash": "f8166be45b93113f94814c3747eef900be7c216087fb56e1234f101dd1e784d7"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe\" -Force -Recurse",
+        "if (!(Test-Path \"$persist_dir\\GPAC.cfg\")) {New-Item \"$dir\\GPAC.cfg\" -ItemType File | Out-Null}"
+    ],
+    "bin": [
+        "gpac.exe",
+        "mp4box.exe"
+    ],
+    "persist": [
+        "Storage",
+        "GPAC.cfg"
+    ],
+    "checkver": {
+        "url": "https://gpac.wp.imt.fr/downloads/",
+        "regex": "gpac-([\\w.-]+)-(?<commit>\\w+)-release-([\\w.-]+)-x64\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchCommit-release-$majorVersion.$minorVersion-x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchCommit-release-$majorVersion.$minorVersion-win32.exe#/dl.7z"
+            }
+        }
+    }
+}

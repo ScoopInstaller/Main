@@ -1,15 +1,16 @@
 {
-    "version": "9.16.24",
+    "version": "9.16.45",
     "description": "Versatile, classic, complete name server software.",
     "homepage": "https://www.isc.org/bind/",
     "license": "MPL-2.0",
+    "notes": "The 9.16 branch is the last stable Windows release of BIND. It is recommended to use the latest stable version through WSL instead. Please read the following for more info: https://www.isc.org/blogs/bind-update-summer2021/",
     "suggest": {
-        "vcredist": "extras/vcredist2017"
+        "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://downloads.isc.org/isc/bind9/9.16.24/BIND9.16.24.x64.zip",
-            "hash": "df673541f5f66a5c60105a4417ae8995e3c247f99a72a90f7e8383a4bd17ab02"
+            "url": "https://downloads.isc.org/isc/bind9/9.16.45/BIND9.16.45.x64.zip",
+            "hash": "db60e64110875cdceeb33a4d7d55b0bf5f21f16b11867c8951867ea6da42552e"
         }
     },
     "installer": {
@@ -20,11 +21,42 @@
             "Remove-Item \"$dir\\*\" -Exclude 'bin'"
         ]
     },
-    "env_add_path": "bin",
+    "bin": [
+        "bin\\arpaname.exe",
+        "bin\\ddns-confgen.exe",
+        "bin\\delv.exe",
+        "bin\\dig.exe",
+        "bin\\dnssec-cds.exe",
+        "bin\\dnssec-dsfromkey.exe",
+        "bin\\dnssec-importkey.exe",
+        "bin\\dnssec-keyfromlabel.exe",
+        "bin\\dnssec-keygen.exe",
+        "bin\\dnssec-revoke.exe",
+        "bin\\dnssec-settime.exe",
+        "bin\\dnssec-signzone.exe",
+        "bin\\dnssec-verify.exe",
+        "bin\\host.exe",
+        "bin\\mdig.exe",
+        "bin\\named-checkconf.exe",
+        "bin\\named-checkzone.exe",
+        "bin\\named-compilezone.exe",
+        "bin\\named-journalprint.exe",
+        "bin\\named-rrchecker.exe",
+        "bin\\named.exe",
+        "bin\\nsec3hash.exe",
+        [
+            "bin\\nslookup.exe",
+            "nslookup-bind"
+        ],
+        "bin\\nsupdate.exe",
+        "bin\\rndc-confgen.exe",
+        "bin\\rndc.exe",
+        "bin\\tsig-keygen.exe"
+    ],
     "persist": "etc",
     "checkver": {
         "url": "https://www.isc.org/download/",
-        "regex": "(?sm)>Current-Stable.*?/([\\d.]+)/"
+        "regex": "BIND([\\d.]+).x64.zip"
     },
     "autoupdate": {
         "architecture": {
