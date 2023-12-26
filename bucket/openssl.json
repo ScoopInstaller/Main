@@ -1,5 +1,4 @@
 {
-    "##": "TODO: A script for create symlinks of lib files",
     "version": "3.2.0",
     "description": "TLS/SSL toolkit",
     "homepage": "https://slproweb.com/products/Win32OpenSSL.html",
@@ -18,14 +17,28 @@
             "hash": "4550f6d18cc359358436975db5f00f528e14860d6277da584fb7b60febd84a17"
         }
     },
+    "pre_install": [
+        "$arch = switch ($architecture) {",
+        "    '64bit' { 'x64'; break }",
+        "    '32bit' { 'x32'; break }",
+        "    'arm64' { $architecture; break }",
+        "}",
+        "if ([System.Environment]::OSVersion.Version -lt [Version]10.0.14972.0) {",
+        "    return $null = Get-ChildItem \"$dir/lib/VC/$arch/MT\" | ForEach-Object { Copy-Item $_.FullName \"$dir/lib/$($_.Name)\" }",
+        "}",
+        "Receive-Job -Wait (Start-Job {",
+        "    $kernel32 = Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName, byte dwFlags);' -Name '_' -PassThru",
+        "    $null = Get-ChildItem \"$Using:dir/lib/VC/$Using:arch/MT\" | ForEach-Object { $kernel32::CreateSymbolicLink(\"$Using:dir/lib/$($_.Name)\", $_.FullName, 2) }",
+        "})"
+    ],
     "innosetup": true,
     "env_add_path": "bin",
     "env_set": {
-        "OPENSSL_CONF": "$dir\\bin\\cnf\\openssl.cnf",
-        "OPENSSL_INCLUDE_DIR": "$dir\\include",
+        "OPENSSL_ROOT_DIR": "$dir",
         "OPENSSL_LIB_DIR": "$dir\\lib",
+        "OPENSSL_INCLUDE_DIR": "$dir\\include",
         "OPENSSL_MODULES": "$dir\\bin",
-        "OPENSSL_ROOT_DIR": "$dir"
+        "OPENSSL_CONF": "$dir\\bin\\cnf\\openssl.cnf"
     },
     "checkver": {
         "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
