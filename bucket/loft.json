@@ -1,16 +1,12 @@
 {
-    "version": "3.2.4",
+    "version": "3.3.3",
     "description": "Namespace & Virtual Cluster Manager for Kubernetes",
     "homepage": "https://github.com/loft-sh/loft",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/loft-sh/loft/releases/download/v3.2.4/loft-windows-amd64.exe#/loft.exe",
-            "hash": "b6efd22a9096279938d8f0a81e8b19c6bb440d4455b46c9559f8062b4bb0fff9"
-        },
-        "32bit": {
-            "url": "https://github.com/loft-sh/loft/releases/download/v3.2.4/loft-windows-386.exe#/loft.exe",
-            "hash": "7846bde6e6dfc2928daef048e8d498d08d499c3413c29c73768f7cadf9952d07"
+            "url": "https://github.com/loft-sh/loft/releases/download/v3.3.3/loft-windows-amd64.exe#/loft.exe",
+            "hash": "519b490a013db3c36f710bad0134cd98ece66f921f41c85d8806b2bb6b6ca7ad"
         }
     },
     "bin": "loft.exe",
@@ -19,13 +15,11 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/loft-sh/loft/releases/download/v$version/loft-windows-amd64.exe#/loft.exe"
-            },
-            "32bit": {
-                "url": "https://github.com/loft-sh/loft/releases/download/v$version/loft-windows-386.exe#/loft.exe"
             }
         },
         "hash": {
-            "url": "$url.sha256"
+            "url": "$baseurl/checksums.txt",
+            "regex": "$sha256  $basename\\n"
         }
     }
 }

@@ -1,23 +1,31 @@
 {
-    "version": "5.1.1",
+    "version": "5.3.0",
     "description": "Customize raw, template-free YAML files for multiple purposes, leaving the original YAML untouched and usable as is.",
     "homepage": "https://github.com/kubernetes-sigs/kustomize",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.1.1/kustomize_v5.1.1_windows_amd64.tar.gz",
-            "hash": "f3cfe226462d09ea9854793c5f6873cc451ae322b276dd290a99e5b5ddb9560d"
+            "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.3.0/kustomize_v5.3.0_windows_amd64.zip",
+            "hash": "649c770dd9b506cec77f3036c3374d58d86d69427f5329b28c68b49fa90188db"
+        },
+        "arm64": {
+            "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.3.0/kustomize_v5.3.0_windows_arm64.zip",
+            "hash": "9872714c4d88fbef07d9e52da31db66a596e2b95d06eadbd6a1d894fcd61fec9"
         }
     },
     "bin": "kustomize.exe",
     "checkver": {
-        "url": "https://github.com/kubernetes-sigs/kustomize/releases",
+        "url": "https://api.github.com/repos/kubernetes-sigs/kustomize/releases/latest",
+        "jsonpath": "$..name",
         "regex": "kustomize/v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v$version/kustomize_v$version_windows_amd64.tar.gz"
+                "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v$version/kustomize_v$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v$version/kustomize_v$version_windows_arm64.zip"
             }
         },
         "hash": {
