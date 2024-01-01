@@ -16,12 +16,16 @@
     ],
     "checkver": {
         "url": "http://www.doxygen.nl/download.html",
-        "regex": "The latest version of doxygen is ([\\d.]+)"
+        "regex": "doxygen-([\\d.]+).windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://doxygen.nl/files/doxygen-$version.windows.x64.bin.zip"
+                "url": "http://doxygen.nl/files/doxygen-$version.windows.x64.bin.zip",
+                "hash": {
+                    "url": "http://www.doxygen.nl/download.html",
+                    "regex": "doxygen-[\\d.]+.windows.x64.bin.zip.+$sha256"
+                }
             }
         }
     }
