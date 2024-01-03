@@ -1,5 +1,5 @@
 {
-    "version": "3.10.1.0",
+    "version": "3.10.2.0",
     "description": "Cabal is a system for building and packaging Haskell libraries and programs.",
     "homepage": "https://www.haskell.org/cabal/",
     "license": "BSD-3-Clause",
@@ -8,20 +8,23 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://downloads.haskell.org/~cabal/cabal-install-3.10.1.0/cabal-install-3.10.1.0-x86_64-windows.zip",
-            "hash": "31ca1cd173d4da675bc9790746d6b492cbe204e0332b282141d7ecc8ae43997b"
+            "url": "https://downloads.haskell.org/~cabal/cabal-install-latest/cabal-install-3.10.2.0-x86_64-windows.zip",
+            "hash": "b09e335b2ebeafa1db5e1e5614e3e10fb37da230a36865d76646ab27b2f3f46b"
         }
     },
     "bin": "cabal.exe",
     "checkver": {
-        "github": "https://github.com/haskell/cabal",
-        "regex": "/releases/tag/cabal-install-v([\\d.-]+)"
+        "url": "https://downloads.haskell.org/~cabal/cabal-install-latest/",
+        "regex": "cabal-install-([\\d.-]+)-x86_64-windows.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.haskell.org/~cabal/cabal-install-$version/cabal-install-$version-x86_64-windows.zip"
+                "url": "https://downloads.haskell.org/~cabal/cabal-install-latest/cabal-install-$version-x86_64-windows.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }
