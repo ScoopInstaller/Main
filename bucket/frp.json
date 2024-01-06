@@ -1,18 +1,18 @@
 {
-    "version": "0.33.0",
+    "version": "0.53.2",
     "description": "A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.",
     "homepage": "https://github.com/fatedier/frp",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_windows_amd64.zip",
-            "hash": "d7a078d84a70658dea878968d9083dc9bd68974f6015fcfaa48b0a8e7e42778c",
-            "extract_dir": "frp_0.33.0_windows_amd64"
+            "url": "https://github.com/fatedier/frp/releases/download/v0.53.2/frp_0.53.2_windows_amd64.zip",
+            "hash": "043cd981e81f756123ea4501569ad8d1fbb8166d1046b349ca423aa6ddc0ce31",
+            "extract_dir": "frp_0.53.2_windows_amd64"
         },
-        "32bit": {
-            "url": "https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_windows_386.zip",
-            "hash": "a1b0faaf998f1b873926e64f9e7ec913ab413b01e0eb5a9da904dc72a2394588",
-            "extract_dir": "frp_0.33.0_windows_386"
+        "arm64": {
+            "url": "https://github.com/fatedier/frp/releases/download/v0.53.2/frp_0.53.2_windows_arm64.zip",
+            "hash": "26eb992318437fad2d122ef76cfb3086f1339201486a1cdec910fe1a457ac383",
+            "extract_dir": "frp_0.53.2_windows_arm64"
         }
     },
     "bin": [
@@ -20,10 +20,8 @@
         "frps.exe"
     ],
     "persist": [
-        "frpc.ini",
-        "frpc_full.ini",
-        "frps.ini",
-        "frps_full.ini"
+        "frpc.toml",
+        "frps.toml"
     ],
     "checkver": "github",
     "autoupdate": {
@@ -32,10 +30,13 @@
                 "url": "https://github.com/fatedier/frp/releases/download/v$version/frp_$version_windows_amd64.zip",
                 "extract_dir": "frp_$version_windows_amd64"
             },
-            "32bit": {
-                "url": "https://github.com/fatedier/frp/releases/download/v$version/frp_$version_windows_386.zip",
-                "extract_dir": "frp_$version_windows_386"
+            "arm64": {
+                "url": "https://github.com/fatedier/frp/releases/download/v$version/frp_$version_windows_arm64.zip",
+                "extract_dir": "frp_$version_windows_arm64"
             }
+        },
+        "hash": {
+            "url": "$baseurl/frp_sha256_checksums.txt"
         }
     }
 }

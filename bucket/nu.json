@@ -1,32 +1,29 @@
 {
+    "version": "0.88.1",
+    "description": "A modern shell written in Rust",
     "homepage": "https://www.nushell.sh",
-    "version": "0.13.0",
     "license": "MIT",
-    "description": "A modern shell written in Rust.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/nushell/nushell/releases/download/0.13.0/nu_0_13_0_windows.zip",
-            "hash": "2e4271ceb803b38aea3f0d2607270e381ddb9c045497ae3b6bded441cd6d57dd",
-            "extract_dir": "nu_0_13_0_windows\\nushell_0_13_0",
-            "installer": {
-                "script": [
-                    "New-Item \"$dir\\Plugins\" -ItemType Directory | Out-Null",
-                    "Move-Item \"$dir\\nu_plugin_*\" \"$dir\\Plugins\""
-                ]
-            }
+            "url": "https://github.com/nushell/nushell/releases/download/0.88.1/nu-0.88.1-x86_64-windows-msvc-full.zip",
+            "hash": "d1844f6726deec4ab10f95554578ec093fc184db39e15fa29e621f3543b6f72b"
+        },
+        "arm64": {
+            "url": "https://github.com/nushell/nushell/releases/download/0.88.1/nu-0.88.1-aarch64-windows-msvc-full.zip",
+            "hash": "a088b8bb77c0deedad0da6eb39f3273bf878b2d460dea5632a065b3d4121b6c4"
         }
     },
     "bin": "nu.exe",
-    "env_add_path": "Plugins",
     "checkver": {
-        "github": "https://github.com/nushell/nushell",
-        "regex": "([\\d.]+) Release</a>"
+        "github": "https://github.com/nushell/nushell"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/nushell/nushell/releases/download/$version/nu_$underscoreVersion_windows.zip",
-                "extract_dir": "nu_$underscoreVersion_windows\\nushell_$underscoreVersion"
+                "url": "https://github.com/nushell/nushell/releases/download/$version/nu-$version-x86_64-windows-msvc-full.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/nushell/nushell/releases/download/$version/nu-$version-aarch64-windows-msvc-full.zip"
             }
         }
     }

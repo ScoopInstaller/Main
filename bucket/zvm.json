@@ -1,0 +1,56 @@
+{
+    "homepage": "https://github.com/tristanisham/zvm",
+    "version": "0.4.2",
+    "description": "Zig Version Manager (zvm) is a tool for managing your Zig installs",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tristanisham/zvm/releases/download/v0.4.2/zvm-windows-amd64.zip",
+            "hash": "cff1a71aaf3bc3ba06681e5ea1ee6ed09f1ddf0670580a3999d4778164e062c5",
+            "extract_dir": "zvm-windows-amd64"
+        },
+        "arm64": {
+            "url": "https://github.com/tristanisham/zvm/releases/download/v0.4.2/zvm-windows-arm64.zip",
+            "hash": "262c14dd9f2ccf109a1c95ad575007eadc138552863ac735bb325b2d1955a401",
+            "extract_dir": "zvm-windows-arm64"
+        }
+    },
+    "bin": "zvm.exe",
+    "checkver": {
+        "github": "https://github.com/tristanisham/zvm"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tristanisham/zvm/releases/download/v$version/zvm-windows-amd64.zip",
+                "extract_dir": "zvm-windows-amd64"
+            },
+            "arm64": {
+                "url": "https://github.com/tristanisham/zvm/releases/download/v$version/zvm-windows-arm64.zip",
+                "extract_dir": "zvm-windows-arm64"
+            }
+        }
+    },
+    "post_install": [
+        "if (Test-Path ~\\.zvm) {",
+        "   if ($null -eq (Get-Item ~\\.zvm).LinkType) {",
+        "       Rename-Item -Path ~\\.zvm -NewName ~\\.zvm.old -Force",
+        "   } else {",
+        "       Remove-Item -Path ~\\.zvm -Force",
+        "   }",
+        "}",
+        "New-Item -Path ~/.zvm -Target \"$dir\\data\" -ItemType Junction | Out-Null"
+    ],
+    "uninstaller": {
+        "script": [
+            "if ((Test-Path ~\\.zvm) -and ($null -ne (Get-Item ~\\.zvm).LinkType)) {",
+            "   Remove-Item -Path ~\\.zvm -Force",
+            "}",
+            "if (Test-Path ~\\.zvm.old) {",
+            "   Rename-Item -Path ~\\.zvm.old -NewName .zvm -Force",
+            "}"
+        ]
+    },
+    "persist": "data",
+    "env_add_path": "data\\bin"
+}

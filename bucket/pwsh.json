@@ -1,24 +1,58 @@
 {
-    "homepage": "https://github.com/PowerShell/PowerShell",
+    "version": "7.4.0",
     "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data.",
-    "version": "7.0.0",
+    "homepage": "https://github.com/PowerShell/PowerShell",
     "license": "MIT",
+    "notes": [
+        "Since Scoop uses pwsh.exe internally, to update PowerShell Core itself,",
+        "run `scoop update pwsh` from Windows PowerShell, i.e. powershell.exe.",
+        "",
+        "Add PowerShell Core as a explorer context menu by running: '$dir\\install-explorer-context.reg'",
+        "For file context menu, run '$dir\\install-file-context.reg'"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.0.0/PowerShell-7.0.0-win-x64.zip",
-            "hash": "cda2ca2227fbec2c753aa760859667b02007d14646a831bd908b8f749cbcc687"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x64.zip",
+            "hash": "62151db1d98a8b56aeb249cc8a3ce17948f1c83b4062dac8d0c4302de71cbd75"
         },
         "32bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.0.0/PowerShell-7.0.0-win-x86.zip",
-            "hash": "f33e852f7721e61ff3bae9fc04f1dfa48ce7b10cd59d649126d5ba9bfad9aecd"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-x86.zip",
+            "hash": "bccc24e1f1dfc5d837111f3894d0cba9a14cf9891ebc6645c63a7a584e54bc0a"
+        },
+        "arm64": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.4.0/PowerShell-7.4.0-win-arm64.zip",
+            "hash": "a47801a3fbb7e9343c2803e775098c2361e0fb134fa4a3facb8d81a811fa9873"
         }
     },
+    "pre_install": [
+        "'Microsoft.VSCode_profile.ps1', 'Microsoft.PowerShell_profile.ps1', 'profile.ps1' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "}"
+    ],
+    "post_install": [
+        "if ($architecture -eq '32bit') { $pwshArch = 'x86' } else { $pwshArch = 'x64' }",
+        "$pwshPath = \"$dir\\pwsh.exe\".Replace('\\', '\\\\')",
+        "'install-explorer-context', 'uninstall-explorer-context', 'install-file-context' , 'uninstall-file-context' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\pwsh\\$_.reg\") {",
+        "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\pwsh\\$_.reg\").Replace('$pwshPath', $pwshPath)",
+        "        $content = $content.Replace('$pwshArch', $pwshArch)",
+        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+        "    }",
+        "}"
+    ],
     "bin": "pwsh.exe",
     "shortcuts": [
         [
             "pwsh.exe",
-            "PowerShell Core"
+            "PowerShell Core",
+            "-WorkingDirectory ~"
         ]
+    ],
+    "persist": [
+        "Microsoft.VSCode_profile.ps1",
+        "Microsoft.PowerShell_profile.ps1",
+        "profile.ps1"
     ],
     "checkver": "github",
     "autoupdate": {
@@ -28,11 +62,13 @@
             },
             "32bit": {
                 "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-arm64.zip"
             }
         },
         "hash": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
-            "find": "$basename\\s*<ul>\\s*<li>([A-Fa-f\\d]{64})"
+            "url": "$baseurl/hashes.sha256"
         }
     }
 }

@@ -1,25 +1,33 @@
 {
-    "homepage": "https://github.com/jenkins-x/jx",
+    "version": "3.10.131",
     "description": "A command line tool for installing and using Jenkins X",
+    "homepage": "https://github.com/jenkins-x/jx",
     "license": "Apache-2.0",
-    "version": "2.1.20",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jenkins-x/jx/releases/download/v2.1.20/jx-windows-amd64.zip",
-            "hash": "7c53ebc04ed680137ee8862f1392c62a69fea026c812624b0101f24593b72b80"
+            "url": "https://github.com/jenkins-x/jx/releases/download/v3.10.131/jx-windows-amd64.zip",
+            "hash": "5ebcb1e1c1ef34d0038c6ae2ce1d2e1e4c36f8e6ecb2169873fbec722aecadc4"
+        },
+        "arm64": {
+            "url": "https://github.com/jenkins-x/jx/releases/download/v3.10.131/jx-windows-arm64.zip",
+            "hash": "ccc07ec95f15763e7c773d56cb6c02a802540e5a1b5b0d1e0f5a62a6c25a2aab"
         }
     },
+    "pre_install": "Stop-Process -Name 'jx' -ErrorAction 'Ignore' -Verbose",
     "bin": "jx.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/jenkins-x/jx/releases/download/v$version/jx-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jenkins-x/jx/releases/download/v$version/jx-windows-arm64.zip"
             }
         },
         "hash": {
-            "url": "$baseurl/jx-checksums.txt"
+            "url": "$baseurl/jx-checksums.txt",
+            "regex": "(?m)$checksum[\\x20\\t]+.*$basename(?:[\\x20\\t]+\\d+)?$"
         }
-    },
-    "pre_install": "Stop-Process -Name jx -Verbose -ErrorAction Ignore"
+    }
 }

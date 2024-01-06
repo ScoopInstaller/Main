@@ -1,0 +1,44 @@
+{
+    "version": "0.14",
+    "description": "Flexible customizable prompt for Clink",
+    "homepage": "https://github.com/chrisant996/clink-flex-prompt",
+    "license": "MIT",
+    "suggest": {
+        "Clink": "clink"
+    },
+    "url": "https://github.com/chrisant996/clink-flex-prompt/releases/download/v0.14/clink-flex-prompt-0.14.zip",
+    "hash": "f54da102e9aa373fae3510724e5a9dce142492ae4c69249d1ee1aa82202a2d11",
+    "pre_install": [
+        "ensure \"$persist_dir\" | Out-Null",
+        "if (!(Test-Path \"$persist_dir\\flexprompt_autoconfig.lua\")) { New-Item -Path \"$dir\\flexprompt_autoconfig.lua\" -Force -ErrorAction SilentlyContinue | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\flexprompt_config.lua\")) { New-Item -Path \"$dir\\flexprompt_config.lua\" -Force -ErrorAction SilentlyContinue | Out-Null }"
+    ],
+    "installer": {
+        "script": [
+            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+            "   clink installscripts \"$dir\"",
+            "} elseif ($Env:CMDER_ROOT) {",
+            "   & \"$Env:CMDER_ROOT\\vendor\\clink\\clink.bat\" installscripts \"$dir\"",
+            "} else {",
+            "   warn 'Clink or Cmder installation not found. Please manually install these scripts.'",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+            "   clink uninstallscripts \"$dir\"",
+            "} elseif ($Env:CMDER_ROOT) {",
+            "   & \"$Env:CMDER_ROOT\\vendor\\clink\\clink.bat\" uninstallscripts \"$dir\"",
+            "}"
+        ]
+    },
+    "persist": [
+        "flexprompt_autoconfig.lua",
+        "flexprompt_config.lua"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/chrisant996/clink-flex-prompt/releases/download/v$version/clink-flex-prompt-$version.zip"
+    }
+}

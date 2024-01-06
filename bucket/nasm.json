@@ -1,35 +1,26 @@
 {
+    "version": "2.16.01",
+    "description": "80x86 and x86-64 assembler designed for portability and modularity.",
     "homepage": "https://www.nasm.us",
     "license": "BSD-2-Clause",
-    "version": "2.14.02",
-    "description": "80x86 and x86-64 assembler designed for portability and modularity.",
-    "extract_dir": "nasm-2.14.02",
     "architecture": {
         "64bit": {
-            "url": "https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win64/nasm-2.14.02-win64.zip",
-            "hash": "18918ac906e29417b936466e7a2517068206c8db8c04b9762a5befa18bfea5f0"
+            "url": "https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/win64/nasm-2.16.01-win64.zip",
+            "hash": "029eed31faf0d2c5f95783294432cbea6c15bf633430f254bb3c1f195c67ca3a"
         },
         "32bit": {
-            "url": "https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/win32/nasm-2.14.02-win32.zip",
-            "hash": "250f9b5eeb2111e8c7b494a977490985b8604fe7518a6f5041cde37cc727a067"
+            "url": "https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/win32/nasm-2.16.01-win32.zip",
+            "hash": "e289fa70c88594b092c916344bb8bfcd6896b604bfab284ab57b1372997c820c"
         }
     },
+    "extract_dir": "nasm-2.16.01",
     "bin": [
         "nasm.exe",
-        "ndisasm.exe",
-        "rdoff/ldrdf.exe",
-        "rdoff/rdf2bin.exe",
-        "rdoff/rdf2com.exe",
-        "rdoff/rdf2ihx.exe",
-        "rdoff/rdf2ith.exe",
-        "rdoff/rdf2srec.exe",
-        "rdoff/rdfdump.exe",
-        "rdoff/rdflib.exe",
-        "rdoff/rdx.exe"
+        "ndisasm.exe"
     ],
     "checkver": {
         "url": "https://nasm.us/doc/nasmdocc.html",
-        "re": "version ([\\d.]+)"
+        "regex": "version ([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {

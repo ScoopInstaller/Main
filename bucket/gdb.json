@@ -1,19 +1,33 @@
 {
-    "homepage": "http://tdm-gcc.tdragon.net/",
-    "description": "GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed. (TDM port)",
-    "version": "7.9.1",
-    "license": "GPL-2.0-only|GPL-3.0-only",
+    "version": "11.1",
+    "description": "GNU Debugger",
+    "homepage": "https://www.gnu.org/software/gdb/",
+    "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/tdm-gcc/GDB/gdb-7.9.1-tdm64-2.zip",
-            "hash": "89186aa83143f47902b52f5673dd32421ec9c221e53e3227fd065a7e86c8c6f5",
-            "extract_dir": "gdb64"
-        },
-        "32bit": {
-            "url": "https://downloads.sourceforge.net/project/tdm-gcc/GDB/gdb32-7.9.1-tdm-1.zip",
-            "hash": "715604034bb269ecbfaf4577addac51b8ba798f93b2eca31cb21b114b7bc46e8",
-            "extract_dir": "gdb32"
+            "url": "https://nuwen.net/files/mingw/components-18.0.7z",
+            "hash": "50b7bddbceda793098f2fed3a249fb02911f4a46c5d9a2e6c77079fa7e40b2ad"
         }
     },
-    "env_add_path": "bin"
+    "extract_dir": "components-18.0",
+    "pre_install": [
+        "Expand-7ZipArchive \"$dir\\gdb-*.7z\" \"$dir\"",
+        "Get-ChildItem \"$dir\\*.7z\" | Remove-Item -Recurse -Force"
+    ],
+    "bin": [
+        "bin\\gdb.exe",
+        "bin\\gdbserver.exe"
+    ],
+    "checkver": {
+        "url": "https://nuwen.net/mingw.html",
+        "regex": "(?sm)>gdb (?<version>[\\d.]+)</a>.*?components-(?<components>[\\d.]+).7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nuwen.net/files/mingw/components-$matchComponents.7z"
+            }
+        },
+        "extract_dir": "components-$matchComponents"
+    }
 }

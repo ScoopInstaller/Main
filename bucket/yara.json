@@ -1,12 +1,12 @@
 {
-    "homepage": "https://virustotal.github.io/yara/",
+    "version": "4.3.2-2150",
     "description": "A malware samples pattern matching tool.",
+    "homepage": "https://virustotal.github.io/yara/",
     "license": "BSD-3-Clause",
-    "version": "4.0.0-1305",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/VirusTotal/yara/releases/download/v4.0.0/yara-v4.0.0-1305-win64.zip",
-            "hash": "c7308e0d58f0dc32a672060505ee68ff8441235555b1f0dfc18ebf0bced84747",
+            "url": "https://github.com/VirusTotal/yara/releases/download/v4.3.2/yara-4.3.2-2150-win64.zip",
+            "hash": "d878593371a0cdc0946a26e460c3bf0a0964018647a0e2239b1dc25ddc0d2365",
             "bin": [
                 [
                     "yara64.exe",
@@ -19,8 +19,8 @@
             ]
         },
         "32bit": {
-            "url": "https://github.com/VirusTotal/yara/releases/download/v4.0.0/yara-v4.0.0-1305-win32.zip",
-            "hash": "84d237aed1461950ef76bbcbfc589aa9a3835aa3ef2a7bc38ddc243951aacc92",
+            "url": "https://github.com/VirusTotal/yara/releases/download/v4.3.2/yara-4.3.2-2150-win32.zip",
+            "hash": "96cb75b77b0448af7f04689f9cddc90b349adfdace0beebd3639c22cec86a12b",
             "bin": [
                 [
                     "yara32.exe",
@@ -35,15 +35,15 @@
     },
     "checkver": {
         "github": "https://github.com/VirusTotal/yara",
-        "regex": "yara-v([\\d.-]+)-win64"
+        "regex": "yara-([\\d.-]+)-win64"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/VirusTotal/yara/releases/download/v$matchHead/yara-v$version-win64.zip"
+                "url": "https://github.com/VirusTotal/yara/releases/download/v$matchHead/yara-$version-win64.zip"
             },
             "32bit": {
-                "url": "https://github.com/VirusTotal/yara/releases/download/v$matchHead/yara-v$version-win32.zip"
+                "url": "https://github.com/VirusTotal/yara/releases/download/v$matchHead/yara-$version-win32.zip"
             }
         }
     }

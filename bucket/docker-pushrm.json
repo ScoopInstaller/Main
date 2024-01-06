@@ -1,0 +1,36 @@
+{
+    "version": "1.9.0",
+    "description": "Docker Push Readme - a Docker CLI plugin to update container repo docs.",
+    "homepage": "https://github.com/christian-korneck/docker-pushrm",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/christian-korneck/docker-pushrm/releases/download/v1.9.0/docker-pushrm_windows_amd64.exe#/docker-pushrm.exe",
+            "hash": "e1e084bc8968c0d4183c63d7c4090d4479e4c01e380454a52a798605d132e268"
+        },
+        "32bit": {
+            "url": "https://github.com/christian-korneck/docker-pushrm/releases/download/v1.9.0/docker-pushrm_windows_386.exe#/docker-pushrm.exe",
+            "hash": "dcad7f7ca308479eac9d326f67e4abd9b54cd3c6e90b7f8d3a96a08a29daec3a"
+        }
+    },
+    "bin": "docker-pushrm.exe",
+    "post_install": [
+        "echo 'Installing docker-pushrm as docker-cli plugin...'",
+        "New-Item -ItemType Directory -Force \"$Env:USERPROFILE\\.docker\\cli-plugins\" | Out-Null",
+        "Copy-Item \"$original_dir\\docker-pushrm.exe\" \"$Env:USERPROFILE\\.docker\\cli-plugins\\docker-pushrm.exe\""
+    ],
+    "uninstaller": {
+        "script": "Remove-Item -Force \"$Env:USERPROFILE\\.docker\\cli-plugins\\docker-pushrm.exe\""
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/christian-korneck/docker-pushrm/releases/download/v$version/docker-pushrm_windows_amd64.exe#/docker-pushrm.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/christian-korneck/docker-pushrm/releases/download/v$version/docker-pushrm_windows_386.exe#/docker-pushrm.exe"
+            }
+        }
+    }
+}

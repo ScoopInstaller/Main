@@ -1,33 +1,34 @@
 {
-    "homepage": "https://www.scala-lang.org/",
+    "version": "3.3.1",
     "description": "A modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way.",
-    "version": "2.13.2",
+    "homepage": "https://www.scala-lang.org/",
     "license": "BSD-3-Clause",
-    "url": "https://downloads.typesafe.com/scala/2.13.2/scala-2.13.2.zip",
-    "hash": "2ebb88d083f88f23b875df89f93993f9713065761b92a7c7158b6d2ed1e03612",
-    "extract_dir": "scala-2.13.2",
+    "notes": [
+        "Scala 3 has been installed. If you haven't migrated yet, install versions/scala2.",
+        "Or follow the migration guide: https://docs.scala-lang.org/scala3/guides/migration/compatibility-intro.html"
+    ],
+    "suggest": {
+        "JDK": "java/openjdk"
+    },
+    "url": "https://github.com/lampepfl/dotty/releases/download/3.3.1/scala3-3.3.1.zip",
+    "hash": "43af5326c5b6fa24ae13509edaff64451eb71e9675f5a1387f139e3036886ad9",
+    "extract_dir": "scala3-3.3.1",
     "bin": [
-        "bin\\fsc.bat",
         "bin\\scala.bat",
         "bin\\scalac.bat",
-        "bin\\scaladoc.bat",
-        "bin\\scalap.bat"
+        "bin\\scaladoc.bat"
     ],
     "env_set": {
         "SCALA_HOME": "$dir"
     },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
-    },
     "checkver": {
-        "url": "https://www.scala-lang.org/download/",
-        "re": "scala-([\\d.]+).zip"
+        "github": "https://github.com/lampepfl/dotty/"
     },
     "autoupdate": {
-        "url": "https://downloads.typesafe.com/scala/$version/scala-$version.zip",
-        "extract_dir": "scala-$version"
+        "url": "https://github.com/lampepfl/dotty/releases/download/$version/scala3-$version.zip",
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        },
+        "extract_dir": "scala3-$version"
     }
 }

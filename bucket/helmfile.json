@@ -1,16 +1,16 @@
 {
-    "version": "0.114.0",
+    "version": "0.160.0",
     "description": "Command line interface to deploy Kubernetes Helm Charts.",
-    "homepage": "https://github.com/roboll/helmfile/",
+    "homepage": "https://github.com/helmfile/helmfile",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/roboll/helmfile/releases/download/v0.114.0/helmfile_windows_amd64.exe#/helmfile.exe",
-            "hash": "87ca8379015d80a9ef1c76c6c770d46547af397906b41e75eb4e521922c392c4"
+            "url": "https://github.com/helmfile/helmfile/releases/download/v0.160.0/helmfile_0.160.0_windows_amd64.tar.gz",
+            "hash": "cc925da684418c27dfbfd97c46c2ea46be1338ae1cb24f32ee4a8d69ca02346d"
         },
         "32bit": {
-            "url": "https://github.com/roboll/helmfile/releases/download/v0.114.0/helmfile_windows_386.exe#/helmfile.exe",
-            "hash": "c488c7b139f8f23922075f60527e30db96e5389f51c248d9ec2c310880009150"
+            "url": "https://github.com/helmfile/helmfile/releases/download/v0.160.0/helmfile_0.160.0_windows_386.tar.gz",
+            "hash": "cb3df1094fec94880e418f51ca4c23f8001f1f010b30159da73ac419ac044bad"
         }
     },
     "bin": "helmfile.exe",
@@ -18,11 +18,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/roboll/helmfile/releases/download/v$version/helmfile_windows_amd64.exe#/helmfile.exe"
+                "url": "https://github.com/helmfile/helmfile/releases/download/v$version/helmfile_$version_windows_amd64.tar.gz"
             },
             "32bit": {
-                "url": "https://github.com/roboll/helmfile/releases/download/v$version/helmfile_windows_386.exe#/helmfile.exe"
+                "url": "https://github.com/helmfile/helmfile/releases/download/v$version/helmfile_$version_windows_386.tar.gz"
             }
+        },
+        "hash": {
+            "url": "$baseurl/helmfile_$version_checksums.txt"
         }
     }
 }

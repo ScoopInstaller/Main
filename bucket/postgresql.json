@@ -1,44 +1,51 @@
 {
-    "homepage": "https://www.postgresql.org/",
+    "version": "16.1",
     "description": "Object-relational database management system based on POSTGRES.",
-    "version": "12.2",
+    "homepage": "https://www.postgresql.org",
     "license": "PostgreSQL",
-    "architecture": {
-        "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-12.2-1-windows-x64-binaries.zip",
-            "hash": "6000cb43e17bfcaea4ec36dc115804285cd3a52d7d9bff2f385da3d43f385fdb"
-        }
-    },
-    "extract_dir": "pgsql",
-    "env_add_path": "bin",
-    "shortcuts": [
-        [
-            "pgAdmin 4\\bin\\pgAdmin4.exe",
-            "pgAdmin 4"
-        ]
-    ],
-    "persist": "data",
-    "env_set": {
-        "PGDATA": "$dir\\data"
-    },
-    "post_install": [
-        "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
-        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList \"--username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" | Out-Null",
-        "}"
-    ],
+    "depends": "7zip19.00-helper",
     "notes": [
         "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
         "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
         "Default superuser login: postgres, password: <blank>"
     ],
+    "architecture": {
+        "64bit": {
+            "url": "https://get.enterprisedb.com/postgresql/postgresql-16.1-1-windows-x64-binaries.zip#/dl.zip_",
+            "hash": "0179cc6d863139b68d1d1a69bdb58db766b040c6b6f2976dd1c5adf83dd0b6de"
+        }
+    },
+    "pre_install": [
+        "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"$dir\\dl.zip_\", \"-o$dir\") | Out-Null",
+        "Move-Item \"$dir\\pgsql\\*\" \"$dir\\\"",
+        "Remove-Item \"$dir\\pgsql\", \"$dir\\dl.zip_\" -Force -Recurse"
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
+        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList @('--username=postgres', '--encoding=UTF8', '--locale=en', '--lc-collate=C') | Out-Null",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "pgAdmin 4\\runtime\\pgAdmin4.exe",
+            "pgAdmin 4"
+        ]
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "PGDATA": "$dir\\data",
+        "PG_LIB_DIR": "$dir\\lib",
+        "PG_INCLUDE_DIR": "$dir\\include"
+    },
+    "persist": "data",
     "checkver": {
-        "url": "https://www.enterprisedb.com/download-postgresql-binaries",
-        "re": "<b>Version ([\\d.]+)"
+        "url": "https://www.postgresql.org/ftp/source/",
+        "regex": "v(?<version>[\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
+                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip#/dl.zip_"
             }
         }
     }

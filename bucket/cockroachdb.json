@@ -1,21 +1,29 @@
 {
-    "homepage": "https://www.cockroachlabs.com/",
+    "version": "23.1.13",
     "description": "The SQL database for global cloud services",
+    "homepage": "https://www.cockroachlabs.com/",
     "license": {
         "identifier": "Freeware,BSL-1.1,MIT,...",
         "url": "https://github.com/cockroachdb/cockroach/blob/master/LICENSE"
     },
-    "version": "19.2.6",
-    "url": "https://binaries.cockroachdb.com/cockroach-v19.2.6.windows-6.2-amd64.zip",
-    "hash": "6ac367bfc613186db904e708ee9a973617eb07d910078f6eef147634967eceee",
-    "extract_dir": "cockroach-v19.2.6.windows-6.2-amd64",
+    "architecture": {
+        "64bit": {
+            "url": "https://binaries.cockroachdb.com/cockroach-v23.1.13.windows-6.2-amd64.zip",
+            "hash": "beb3add1f329e94ff4975f0b436cba3998e7de431cc2b6a041ff67ef5747696a",
+            "extract_dir": "cockroach-v23.1.13.windows-6.2-amd64"
+        }
+    },
     "bin": "cockroach.exe",
     "checkver": {
         "url": "https://www.cockroachlabs.com/docs/stable/install-cockroachdb.html",
-        "re": "\"version-name\">v([\\d.]+)<"
+        "regex": "\"version-name\">v([\\d.]+)<"
     },
     "autoupdate": {
-        "url": "https://binaries.cockroachdb.com/cockroach-v$version.windows-6.2-amd64.zip",
-        "extract_dir": "cockroach-v$version.windows-6.2-amd64"
+        "architecture": {
+            "64bit": {
+                "url": "https://binaries.cockroachdb.com/cockroach-v$version.windows-6.2-amd64.zip",
+                "extract_dir": "cockroach-v$version.windows-6.2-amd64"
+            }
+        }
     }
 }

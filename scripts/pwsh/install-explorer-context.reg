@@ -1,0 +1,41 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\Background\shell\PowerShellCore$pwshArch]
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\PowerShellCore$pwshArch"
+"MUIVerb"="&PowerShell Core"
+"Icon"="$pwshPath"
+
+[HKEY_CURRENT_USER\Software\Classes\Drive\shell\PowerShellCore$pwshArch]
+"MUIVerb"="&PowerShell Core"
+"Icon"="$pwshPath"
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\PowerShellCore$pwshArch"
+
+[HKEY_CURRENT_USER\Software\Classes\DesktopBackground\Shell\PowerShellCore$pwshArch]
+"MUIVerb"="&PowerShell Core"
+"Icon"="$pwshPath"
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\PowerShellCore$pwshArch"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\PowerShellCore$pwshArch]
+"MUIVerb"="&PowerShell Core"
+"Icon"="$pwshPath"
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\PowerShellCore$pwshArch"
+
+[HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\PowerShellCore$pwshArch]
+"MUIVerb"="&PowerShell Core"
+"Icon"="$pwshPath"
+"ExtendedSubCommandsKey"="Directory\\ContextMenus\\PowerShellCore$pwshArch"
+
+[HKEY_CLASSES_ROOT\Directory\ContextMenus\PowerShellCore$pwshArch\shell\openpwsh]
+"MUIVerb"="Open &here"
+"Icon"="$pwshPath"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\ContextMenus\PowerShellCore$pwshArch\shell\openpwsh\command]
+@="$pwshPath -NoExit -RemoveWorkingDirectoryTrailingCharacter -WorkingDirectory \"%V!\" -Command \"$host.UI.RawUI.WindowTitle = 'PowerShell Core ($pwshArch)'\""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\ContextMenus\PowerShellCore$pwshArch\shell\runas]
+"MUIVerb"="Open here as &Administrator"
+"Icon"="$pwshPath"
+"HasLUAShield"=""
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\ContextMenus\PowerShellCore$pwshArch\shell\runas\command]
+@="$pwshPath -NoExit -RemoveWorkingDirectoryTrailingCharacter -WorkingDirectory \"%V!\" -Command \"$host.UI.RawUI.WindowTitle = 'PowerShell Core ($pwshArch)'\""

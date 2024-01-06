@@ -1,0 +1,55 @@
+{
+    "version": "0.9.0",
+    "description": "JPEG XL image format (.jxl) encode/decode tools",
+    "homepage": "https://jpeg.org/jpegxl",
+    "license": "BSD-3-Clause",
+    "notes": "If the shim for brotli.exe was overwritten by this app's version and you'd like to point it back to brotli's version, run `scoop reset brotli`.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/libjxl/libjxl/releases/download/v0.9.0/jxl-x64-windows-static.zip",
+            "hash": "97c58731bd4e3ed39b1ca6c1c321e4c6b9e4af2d78bc32c70c18aee061d94f37"
+        },
+        "32bit": {
+            "url": "https://github.com/libjxl/libjxl/releases/download/v0.9.0/jxl-x86-windows-static.zip",
+            "hash": "90f835138dc3d4cc6f2e2c173ccf8e7369fd2fe8e948e315bd5b6bb4d239786f"
+        }
+    },
+    "bin": [
+        "benchmark_xl.exe",
+        "brotli.exe",
+        "butteraugli_main.exe",
+        "cjpegli.exe",
+        "cjxl.exe",
+        "decode_and_encode.exe",
+        "display_to_hlg.exe",
+        "djpegli.exe",
+        "djxl_fuzzer_corpus.exe",
+        "djxl.exe",
+        "exr_to_pq.exe",
+        "generate_lut_template.exe",
+        "jpegli_dec_fuzzer_corpus.exe",
+        "jxl_from_tree.exe",
+        "jxlinfo.exe",
+        "local_tone_map.exe",
+        "pq_to_hlg.exe",
+        "render_hlg.exe",
+        "ssimulacra_main.exe",
+        "ssimulacra2.exe",
+        "texture_to_cube.exe",
+        "tone_map.exe",
+        "xyb_range.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/libjxl/libjxl"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x64-windows-static.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x86-windows-static.zip"
+            }
+        }
+    }
+}

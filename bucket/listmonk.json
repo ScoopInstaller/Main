@@ -1,14 +1,31 @@
 {
-    "homepage": "https://listmonk.app",
-    "version": "0.5.1-alpha",
-    "license": "AGPL-3.0-only",
+    "version": "2.5.1",
     "description": "Self-hosted newsletter and mailing list manager",
-    "url": "https://github.com/knadh/listmonk/releases/download/v0.5.1-alpha/listmonk_0.5.1-alpha_windows_amd64.tar.gz",
-    "hash": "3843393d4288a6a46e63659643fef138c844ecb4855a763b817f5394ea844206",
+    "homepage": "https://listmonk.app",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/knadh/listmonk/releases/download/v2.5.1/listmonk_2.5.1_windows_amd64.tar.gz",
+            "hash": "06b9e3cac70adae2af4025198561df341e28e2bfee31b33386112f039a073c04"
+        },
+        "arm64": {
+            "url": "https://github.com/knadh/listmonk/releases/download/v2.5.1/listmonk_2.5.1_windows_arm64.tar.gz",
+            "hash": "cc41d9b6e90d9517a603f31ec5adadd27bbeb44e464ab8daed205305a441bcdf"
+        }
+    },
     "bin": "listmonk.exe",
-    "checkver": "\\(v([\\w.-]+),",
+    "checkver": {
+        "github": "https://github.com/knadh/listmonk"
+    },
     "autoupdate": {
-        "url": "https://github.com/knadh/listmonk/releases/download/v$version/listmonk_$version_windows_amd64.tar.gz",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/knadh/listmonk/releases/download/v$version/listmonk_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/knadh/listmonk/releases/download/v$version/listmonk_$version_windows_arm64.tar.gz"
+            }
+        },
         "hash": {
             "url": "$baseurl/listmonk_$version_checksums.txt"
         }

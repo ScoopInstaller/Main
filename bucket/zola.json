@@ -1,15 +1,23 @@
 {
-    "homepage": "https://www.getzola.org/",
-    "description": "A fast static site generator in a single binary with everything built-in.",
-    "version": "0.10.1",
+    "version": "0.18.0",
+    "description": "A fast static site generator in a single binary with everything built-in",
+    "homepage": "https://www.getzola.org",
     "license": "MIT",
-    "url": "https://github.com/getzola/zola/releases/download/v0.10.1/zola-v0.10.1-x86_64-pc-windows-msvc.zip",
-    "hash": "459f358b4210a8d53a440f957a4c69b12c663dd4c4939c02d0d91ebc685ade2a",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/getzola/zola/releases/download/v0.18.0/zola-v0.18.0-x86_64-pc-windows-msvc.zip",
+            "hash": "9c0f2880ace47a723999a2b9a96fb12178d12d62cd5e56f3c975266552594949"
+        }
+    },
     "bin": "zola.exe",
     "checkver": {
         "github": "https://github.com/getzola/zola"
     },
     "autoupdate": {
-        "url": "https://github.com/getzola/zola/releases/download/v$version/zola-v$version-x86_64-pc-windows-msvc.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/getzola/zola/releases/download/v$version/zola-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        }
     }
 }

@@ -1,27 +1,39 @@
 {
-    "version": "0.68.0",
+    "version": "23.11.0-0",
     "description": "PDF rendering library",
-    "homepage": "http://blog.alivate.com.au/poppler-windows/",
-    "license": "GPL-2.0-only",
-    "extract_dir": "poppler-0.68.0",
-    "url": "http://blog.alivate.com.au/wp-content/uploads/2018/10/poppler-0.68.0_x86.7z",
-    "hash": "6a8fd0c4e7284dfa208c6f435a0a5cfd6d7445e59f29cae76e79dc079abf74d4",
-    "checkver": "Latest.*uploads/(?<date>\\d{4}/\\d{2})/poppler-(?<version>[\\d.]+)_x86.7z",
+    "homepage": "https://github.com/oschwartz10612/poppler-windows",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/v23.11.0-0/Release-23.11.0-0.zip",
+            "hash": "614babe4f96263d351a047a0ad32aa5eeb23435a614e2696b5d70414fcebc405"
+        }
+    },
+    "extract_dir": "poppler-23.11.0\\Library",
     "bin": [
-        "bin/pdfdetach.exe",
-        "bin/pdffonts.exe",
-        "bin/pdfimages.exe",
-        "bin/pdfinfo.exe",
-        "bin/pdfseparate.exe",
-        "bin/pdftocairo.exe",
-        "bin/pdftohtml.exe",
-        "bin/pdftoppm.exe",
-        "bin/pdftops.exe",
-        "bin/pdftotext.exe",
-        "bin/pdfunite.exe"
+        "bin\\pdfattach.exe",
+        "bin\\pdfdetach.exe",
+        "bin\\pdffonts.exe",
+        "bin\\pdfimages.exe",
+        "bin\\pdfinfo.exe",
+        "bin\\pdfseparate.exe",
+        "bin\\pdftocairo.exe",
+        "bin\\pdftohtml.exe",
+        "bin\\pdftoppm.exe",
+        "bin\\pdftops.exe",
+        "bin\\pdftotext.exe",
+        "bin\\pdfunite.exe"
     ],
+    "checkver": {
+        "github": "https://github.com/oschwartz10612/poppler-windows",
+        "regex": "tag/v([\\w.-]+)"
+    },
     "autoupdate": {
-        "url": "http://blog.alivate.com.au/wp-content/uploads/$matchDate/poppler-$version_x86.7z",
-        "extract_dir": "poppler-$version"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/v$version/Release-$version.zip"
+            }
+        },
+        "extract_dir": "poppler-$matchHead\\Library"
     }
 }

@@ -1,27 +1,21 @@
 {
-    "homepage": "https://github.com/Azure/draft",
+    "version": "0.0.33",
     "description": "Create cloud-native applications on Kubernetes.",
+    "homepage": "https://github.com/Azure/draft",
     "license": "MIT",
-    "version": "0.16.0",
     "architecture": {
         "64bit": {
-            "url": "https://azuredraft.blob.core.windows.net/draft/draft-v0.16.0-windows-amd64.tar.gz",
-            "hash": "3f2dd8d8216847be2978ac0091d65438652d131ee22e63b415ad86d7dd0354b2"
+            "url": "https://github.com/Azure/draft/releases/download/v0.0.33/draft-windows-amd64.exe#/draft.exe",
+            "hash": "5982effe65cca04598f169d4cd7467eaa107161ba34730a50a15621f6243a715"
         }
     },
-    "extract_dir": "windows-amd64",
     "bin": "draft.exe",
-    "checkver": {
-        "github": "https://github.com/Azure/draft"
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://azuredraft.blob.core.windows.net/draft/draft-v$version-windows-amd64.tar.gz"
+                "url": "https://github.com/Azure/draft/releases/download/v$version/draft-windows-amd64.exe#/draft.exe"
             }
-        },
-        "hash": {
-            "url": "$url.sha256"
         }
     }
 }

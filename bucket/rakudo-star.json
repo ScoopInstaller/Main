@@ -1,32 +1,34 @@
 {
-    "version": "2020.01-01",
-    "description": "Raku compiler for the MoarVM and JVM",
-    "homepage": "https://rakudo.org",
+    "version": "2023.12-01",
+    "description": "The Rakudo Star Bundle contains the Rakudo Compiler, a collection of modules from the Raku ecosystem, and the language documentation.",
+    "homepage": "https://rakudo.org/star",
     "license": "Artistic-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://rakudo.org/dl/star/rakudo-star-2020.01-01-win-x86_64-(JIT).msi",
-            "hash": "a4a728fff7c32d98790e4e12f145bfab89cc4dab56e268b2ced3c80f08bd4a30"
+            "url": "https://rakudo.org/dl/star/rakudo-star-2023.12-01-win-x86_64-msvc.msi",
+            "hash": "4e28859dc9042c3f8f4c973b63884c71f6fac8b86d946fde6de3ae1ebcbcb772"
         }
     },
     "extract_dir": "rakudo",
     "bin": [
         "bin\\perl6.exe",
         "bin\\raku.exe",
-        "bin\\rakudo.exe"
+        "bin\\rakudo.exe",
+        "share\\perl6\\site\\bin\\zef.bat"
     ],
     "checkver": {
         "url": "https://rakudo.org/downloads/star",
-        "regex": "rakudo-star-([\\d.-]+)-win-x86_64-\\(JIT\\)\\.msi"
+        "regex": "rakudo-star-([\\d.-]+)-win-x86_64-(?<compiler>\\w+)\\.msi"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://rakudo.org/dl/star/rakudo-star-$version-win-x86_64-(JIT).msi"
+                "url": "https://rakudo.org/dl/star/rakudo-star-$version-win-x86_64-$matchCompiler.msi"
             }
         },
         "hash": {
-            "url": "$url.sha256.txt"
+            "url": "$url.checksums.txt",
+            "regex": "SHA256\\s+$sha256"
         }
     }
 }

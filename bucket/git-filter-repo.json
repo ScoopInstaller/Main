@@ -1,21 +1,19 @@
 {
-    "version": "2.26.0",
+    "version": "2.38.0",
     "description": "git filter-branch replacement",
     "homepage": "https://github.com/newren/git-filter-repo",
     "license": "MIT",
-    "notes": "Using Python 3",
     "suggest": {
+        "Git": "git",
         "Python 3": "python"
     },
-    "url": "https://github.com/newren/git-filter-repo/archive/v2.26.0.zip",
-    "hash": "c2e248dc1fc0ece3a7bda651c1c4d87b3d2e5d4bfa0a7de2edabc7c138ae129b",
-    "extract_dir": "git-filter-repo-2.26.0",
-    "pre_install": "Set-Content -Path \"$dir\\git-filter-repo.ps1\" -Value \"python3 '$dir\\git-filter-repo' @args\"",
-    "post_install": "New-Item -ItemType SymbolicLink -Path \"$dir\\contrib\\filter-repo-demos\\git_filter_repo.py\" -Target \"$dir\\git-filter-repo\" | Out-Null",
-    "bin": "git-filter-repo.ps1",
+    "url": "https://github.com/newren/git-filter-repo/archive/v2.38.0.zip",
+    "hash": "b8c76eac0a20a0bac47d0321c5093f4a5d50f6312273c3f3a7d9a60791378212",
+    "pre_install": "Move-Item \"$dir\\git-filter-repo-*\\*\" \"$dir\"; Remove-Item \"$dir\\git-filter-repo-*\"",
+    "post_install": "Copy-Item \"$dir\\git-filter-repo\" \"$dir\\contrib\\filter-repo-demos\" | Out-Null",
+    "bin": "git-filter-repo",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/newren/git-filter-repo/archive/v$version.zip",
-        "extract_dir": "git-filter-repo-$version"
+        "url": "https://github.com/newren/git-filter-repo/archive/v$version.zip"
     }
 }

@@ -1,0 +1,34 @@
+{
+    "version": "0.14.3",
+    "description": "Simple and secure remote access for any system from anywhere based on user identity",
+    "homepage": "https://www.boundaryproject.io",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://releases.hashicorp.com/boundary/0.14.3/boundary_0.14.3_windows_amd64.zip",
+            "hash": "6b25abf0561ea507a304bbe09811715923b845cc11e724bf97282550b7c3c8fd"
+        },
+        "32bit": {
+            "url": "https://releases.hashicorp.com/boundary/0.14.3/boundary_0.14.3_windows_386.zip",
+            "hash": "3601490422e55b8bdf514feae9e149f5b41fa25fa1285d560e99551a74dd00b1"
+        }
+    },
+    "bin": "boundary.exe",
+    "checkver": {
+        "url": "https://releases.hashicorp.com/boundary/",
+        "regex": "boundary_([\\d.]+)</a>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://releases.hashicorp.com/boundary/$version/boundary_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://releases.hashicorp.com/boundary/$version/boundary_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/boundary_$version_SHA256SUMS"
+        }
+    }
+}

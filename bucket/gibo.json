@@ -1,15 +1,38 @@
 {
-    "version": "2.2.4",
+    "version": "3.0.11",
+    "description": "gibo (short for .gitignore boilerplates) is a shell script to help you easily access .gitignore boilerplates from github.com/github/gitignore",
     "homepage": "https://github.com/simonwhitaker/gibo",
     "license": "Unlicense",
-    "description": "gibo (short for .gitignore boilerplates) is a shell script to help you easily access .gitignore boilerplates from github.com/github/gitignore.",
-    "url": "https://github.com/simonwhitaker/gibo/archive/2.2.4.zip",
-    "hash": "4669227c5ec61dc1d60c373f11656dad30f9cf5d9d402129fc883165dcee9afc",
-    "extract_dir": "gibo-2.2.4",
-    "bin": "gibo.bat",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/simonwhitaker/gibo/releases/download/v3.0.11/gibo_Windows_x86_64.zip",
+            "hash": "c3d772164d76f376ede101be685846345a16dc877f0cdd04af71f31ffd0af4b8"
+        },
+        "32bit": {
+            "url": "https://github.com/simonwhitaker/gibo/releases/download/v3.0.11/gibo_Windows_i386.zip",
+            "hash": "cd0908c84268ee9b7af06c917c0c7c51ad1ed207d4d2b3a4a8a516cbe7c6c52d"
+        },
+        "arm64": {
+            "url": "https://github.com/simonwhitaker/gibo/releases/download/v3.0.11/gibo_Windows_arm64.zip",
+            "hash": "c47792f1f78f54563abaaf3830c74bdbd2600f170fe6c59cbdd6ae8beb94939e"
+        }
+    },
+    "bin": "gibo.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/simonwhitaker/gibo/archive/$version.zip",
-        "extract_dir": "gibo-$version"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/simonwhitaker/gibo/releases/download/v$version/gibo_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/simonwhitaker/gibo/releases/download/v$version/gibo_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/simonwhitaker/gibo/releases/download/v$version/gibo_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.windows.txt"
+        }
     }
 }

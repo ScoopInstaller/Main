@@ -1,18 +1,18 @@
 {
-    "homepage": "https://kompose.io",
-    "description": "Kompose is a conversion tool for Docker Compose to container orchestrators such as Kubernetes (or OpenShift).",
+    "version": "1.31.2",
+    "description": "Conversion tool for Docker Compose to container orchestrators such as Kubernetes (or OpenShift).",
+    "homepage": "https://kompose.io/",
     "license": "Apache-2.0",
-    "version": "1.21.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kubernetes/kompose/releases/download/v1.21.0/kompose-windows-amd64.exe#/kompose.exe",
-            "hash": "0a01f3eb0cb810b61a4d7aaa5b59824e829f2e9042f061ff27f3c419822f08d3"
+            "url": "https://github.com/kubernetes/kompose/releases/download/v1.31.2/kompose-windows-amd64.exe#/kompose.exe",
+            "hash": "796c2d64249e5c7a261f58df6e1b6dd8cd2bb2668ed332dbceffedba412d79df"
         }
     },
-    "bin": "kompose.exe",
     "checkver": {
         "github": "https://github.com/kubernetes/kompose"
     },
+    "bin": "kompose.exe",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -20,8 +20,8 @@
             }
         },
         "hash": {
-            "url": "https://github.com/kubernetes/kompose/releases/tag/v$version",
-            "find": ">kompose-windows-amd64.exe[^.]+([0-9a-fA-F]{64})"
+            "url": "$baseurl/SHA256_SUM",
+            "regex": "$sha256\\s+$basenameNoExt-windows-amd64"
         }
     }
 }

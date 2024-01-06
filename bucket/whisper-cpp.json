@@ -1,0 +1,41 @@
+{
+    "version": "1.5.4",
+    "description": "High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model",
+    "homepage": "https://github.com/ggerganov/whisper.cpp",
+    "license": "MIT",
+    "notes": [
+        "Whisper Model files are not included. You can download them here:",
+        "https://huggingface.co/ggerganov/whisper.cpp/tree/main"
+    ],
+    "bin": [
+        "bench.exe",
+        [
+            "main.exe",
+            "whisper"
+        ],
+        "quantize.exe"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ggerganov/whisper.cpp/releases/download/v1.5.4/whisper-bin-x64.zip",
+            "hash": "9cb13bbe167e0947afedd7ff9766575c4324b3cd01b4267be2ba9648dc7e8cc9"
+        },
+        "32bit": {
+            "url": "https://github.com/ggerganov/whisper.cpp/releases/download/v1.5.4/whisper-bin-Win32.zip",
+            "hash": "799d0213bcffc0759b0dccf8f254c004ff0dadb3cd157d8b4c1fd12a4599b3ae"
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/ggerganov/whisper.cpp"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ggerganov/whisper.cpp/releases/download/v$version/whisper-bin-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/ggerganov/whisper.cpp/releases/download/v$version/whisper-bin-Win32.zip"
+            }
+        }
+    }
+}

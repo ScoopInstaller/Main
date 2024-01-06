@@ -1,28 +1,24 @@
 {
-    "homepage": "https://www.terraform.io",
+    "version": "1.6.6",
     "description": "Create and manage infrastructure as code using simple declarative configuration files.",
-    "license": "MPL-2.0",
-    "version": "0.12.24",
+    "homepage": "https://www.terraform.io",
+    "license": "BUSL-1.1",
     "architecture": {
         "64bit": {
-            "url": "https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_windows_amd64.zip",
-            "hash": "fd1679999d4555639f7074ad0a86d1a627a6da5e52dacdb77d3ecbcd1b5bca0a",
-            "installer": {
-                "script": "New-Item -ItemType Directory -Force -Path \"$Env:APPDATA\\terraform.d\\plugins\\windows_amd64\" | Out-Null"
-            }
+            "url": "https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_windows_amd64.zip",
+            "hash": "086df90269a7169b9be9051834a8fe1459a6c7f8fea88f228434740c5820cabe",
+            "pre_install": "ensure \"$env:APPDATA\\terraform.d\\plugins\\windows_amd64\" | Out-Null"
         },
         "32bit": {
-            "url": "https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_windows_386.zip",
-            "hash": "2741f6027c7e07fbb51201985ede0e789eeba7777f4ddc065d064499c5dd8197",
-            "installer": {
-                "script": "New-Item -ItemType Directory -Force -Path \"$Env:APPDATA\\terraform.d\\plugins\\windows_386\" | Out-Null"
-            }
+            "url": "https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_windows_386.zip",
+            "hash": "56b03a9617c29862a8d9795c37613714ccea7b29e3a348d09ba37d23001c3b0e",
+            "pre_install": "ensure \"$env:APPDATA\\terraform.d\\plugins\\windows_386\" | Out-Null"
         }
     },
     "bin": "terraform.exe",
     "checkver": {
         "url": "https://releases.hashicorp.com/terraform/",
-        "re": "terraform_([\\d.]+)</a>"
+        "regex": "terraform_([\\d.]+)</a>"
     },
     "autoupdate": {
         "architecture": {

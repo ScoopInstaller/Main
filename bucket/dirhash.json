@@ -1,22 +1,22 @@
 {
-    "homepage": "https://idrassi.github.io/DirHash",
+    "version": "1.24.0",
     "description": "DirHash is a Windows console program that computes the hash of a given directory content or a single file",
+    "homepage": "https://idrassi.github.io/DirHash",
     "license": "BSD-3-Clause",
-    "version": "1.8.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/idrassi/DirHash/releases/download/DirHash_1.8.0/DirHash-1.8.0-x64.zip",
-            "hash": "182b74c356623ed761df5e2d5090588934731f4591f825d750c58b54228c5b45"
+            "url": "https://github.com/idrassi/DirHash/releases/download/DirHash_1.24.0/DirHash-1.24.0-x64.zip",
+            "hash": "379a3daa1c803568fb88858db94167e27a87b882c0830cdd7c0924dd409e3adf"
         },
         "32bit": {
-            "url": "https://github.com/idrassi/DirHash/releases/download/DirHash_1.8.0/DirHash-1.8.0-x86.zip",
-            "hash": "1d7c00830f99fde5169f62710fd608babdd5892e89110d158d2b541eb6426d78"
+            "url": "https://github.com/idrassi/DirHash/releases/download/DirHash_1.24.0/DirHash-1.24.0-x86.zip",
+            "hash": "07df60ba2d32b2fbb0435db1fcc1ce371bf709c9632c426faee242e3459bb77d"
         }
     },
     "bin": "DirHash.exe",
     "checkver": {
-        "url": "https://github.com/idrassi/DirHash/releases/latest",
-        "re": "DirHash-([\\d.]+)-x64.zip"
+        "github": "https://github.com/idrassi/DirHash",
+        "regex": "DirHash-([\\d.]+)-x64\\.zip"
     },
     "autoupdate": {
         "architecture": {
@@ -28,8 +28,8 @@
             }
         },
         "hash": {
-            "url": "https://github.com/idrassi/DirHash/releases/latest",
-            "find": "$basename:\\s+([0-9a-fA-F]{64})"
+            "url": "https://github.com/idrassi/DirHash/releases/tag/DirHash_$version",
+            "regex": "$basename:\\s*$sha256"
         }
     }
 }

@@ -1,0 +1,26 @@
+{
+    "version": "5.19.0",
+    "description": "Utility to help users find deprecated Kubernetes apiVersions in their code repositories and their helm releases.",
+    "homepage": "https://pluto.docs.fairwinds.com/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/FairwindsOps/pluto/releases/download/v5.19.0/pluto_5.19.0_windows_amd64.tar.gz",
+            "hash": "0134019ccfee5d673a5701d7eff3d46b8f51d62ff4ea76ef1e6edefb55db0113"
+        }
+    },
+    "bin": "pluto.exe",
+    "checkver": {
+        "github": "https://github.com/FairwindsOps/pluto"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/FairwindsOps/pluto/releases/download/v$version/pluto_$version_windows_amd64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

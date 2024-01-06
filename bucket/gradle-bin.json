@@ -1,27 +1,34 @@
 {
-    "homepage": "https://gradle.org",
+    "version": "8.5",
     "description": "An open-source build automation tool focused on flexibility and performance. (Binaries only without documentation)",
-    "version": "6.3",
+    "homepage": "https://gradle.org",
     "license": "Apache-2.0",
-    "hash": "038794feef1f4745c6347107b6726279d1c824f3fc634b60f86ace1e9fbd1768",
-    "url": "https://services.gradle.org/distributions/gradle-6.3-bin.zip",
-    "extract_dir": "gradle-6.3",
-    "bin": "bin\\gradle.bat",
     "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
+        "JDK": "java/openjdk"
     },
+    "url": "https://services.gradle.org/distributions/gradle-8.5-bin.zip",
+    "hash": "9d926787066a081739e8200858338b4a69e837c3a821a33aca9db09dd4a41026",
+    "extract_dir": "gradle-8.5",
+    "post_install": [
+        "$current_env = env GRADLE_USER_HOME $global",
+        "If ($null -eq $current_env) {",
+        "    $path = \"$dir\\.gradle\"",
+        "    env GRADLE_USER_HOME $global $path",
+        "    $Env:GRADLE_USER_HOME = $path",
+        "    Write-Host \"Environment variable 'GRADLE_USER_HOME' set to '$path'\"",
+        "}"
+    ],
+    "persist": ".gradle",
+    "bin": "bin\\gradle.bat",
     "checkver": {
         "url": "https://gradle.org/install/",
-        "re": "The current Gradle release is version ([\\d.]+)"
+        "regex": "The current Gradle release is version ([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://services.gradle.org/distributions/gradle-$version-bin.zip",
-        "extract_dir": "gradle-$version",
         "hash": {
             "url": "$url.sha256"
-        }
+        },
+        "extract_dir": "gradle-$version"
     }
 }

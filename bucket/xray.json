@@ -1,0 +1,34 @@
+{
+    "version": "1.8.6",
+    "description": "A platform for building proxies to bypass network restrictions",
+    "homepage": "https://github.com/XTLS/Xray-core",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/XTLS/Xray-core/releases/download/v1.8.6/Xray-windows-64.zip",
+            "hash": "71e8f4bc770e9b6477b1912af300b783dc5a643566b09db6c80f954b2e29585d"
+        },
+        "32bit": {
+            "url": "https://github.com/XTLS/Xray-core/releases/download/v1.8.6/Xray-windows-32.zip",
+            "hash": "00a734f793cbce239e68a4cfb7d548c47a0d8ea81b28c59fea4ba3167213c6cd"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.json\")) {",
+        "    Set-Content \"$dir\\config.json\" '{}' -Encoding 'Ascii'",
+        "}"
+    ],
+    "bin": "xray.exe",
+    "persist": "config.json",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-32.zip"
+            }
+        }
+    }
+}

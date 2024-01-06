@@ -1,10 +1,31 @@
 {
-    "homepage": "http://atomicparsley.sourceforge.net/",
+    "version": "20221229.172126.d813aa6",
     "description": "Lightweight command line program for reading, parsing and setting metadata into MPEG-4 files",
-    "version": "0.9.0",
+    "homepage": "https://github.com/wez/atomicparsley",
     "license": "GPL-2.0-only",
-    "url": "https://downloads.sourceforge.net/project/atomicparsley/atomicparsley/AtomicParsley%20v0.9.0/AtomicParsley-win32-0.9.0.zip",
-    "hash": "f363630462ea01d7de948c3e4d231159fa91916d8d7f971a7e8b3bc478dbe846",
-    "extract_dir": "AtomicParsley-win32-0.9.0",
-    "bin": "AtomicParsley.exe"
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/wez/atomicparsley/releases/download/20221229.172126.d813aa6/AtomicParsleyWindows.zip",
+            "hash": "39bec5d5c0b33044d8adf9f4c41f382da090c61a597ee3543ed62a03b6cb56c9"
+        },
+        "32bit": {
+            "url": "https://github.com/wez/atomicparsley/releases/download/20221229.172126.d813aa6/AtomicParsleyWindowsX86.zip",
+            "hash": "3f81defc8d52ffae8520362725bb96ed31be4faefe8bc25507e5b7cfe8cbf3c9"
+        }
+    },
+    "bin": "AtomicParsley.exe",
+    "checkver": {
+        "url": "https://github.com/wez/atomicparsley/releases",
+        "regex": "tree\\/([\\d.[a-f]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/wez/atomicparsley/releases/download/$version/AtomicParsleyWindows.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/wez/atomicparsley/releases/download/$version/AtomicParsleyWindowsX86.zip"
+            }
+        }
+    }
 }

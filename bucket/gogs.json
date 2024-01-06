@@ -1,16 +1,12 @@
 {
-    "version": "0.11.91",
+    "version": "0.13.0",
     "description": "A painless self-hosted Git service",
     "homepage": "https://gogs.io",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dl.gogs.io/0.11.91/gogs_0.11.91_windows_amd64_mws.zip",
-            "hash": "118763084c0b0fd28fac702c8e009e1a58c734fa86c06dd2ca46c0e9b4c14204"
-        },
-        "32bit": {
-            "url": "https://dl.gogs.io/0.11.91/gogs_0.11.91_windows_386_mws.zip",
-            "hash": "bdb954807df5933294bd516b19cc9d1c06c86df7d0a444640741752e3373bd87"
+            "url": "https://dl.gogs.io/0.13.0/gogs_0.13.0_windows_amd64_mws.zip",
+            "hash": "4323c6cba1aa522642772e051fb9e63df02566af93a7b85294a458a520bbc1eb"
         }
     },
     "extract_dir": "gogs",
@@ -41,16 +37,13 @@
     ],
     "checkver": {
         "url": "https://dl.gogs.io",
-        "regex": "\\./([\\d.]+)/",
+        "regex": "href=\"([\\d.]+)/",
         "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://dl.gogs.io/$version/gogs_$version_windows_amd64_mws.zip"
-            },
-            "32bit": {
-                "url": "https://dl.gogs.io/$version/gogs_$version_windows_386_mws.zip"
             }
         },
         "hash": {

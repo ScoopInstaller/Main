@@ -1,0 +1,28 @@
+{
+    "version": "0.8.0",
+    "description": "Distributed, offline-first bug tracker embedded in git, with bridges",
+    "homepage": "https://github.com/MichaelMure/git-bug",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/MichaelMure/git-bug/releases/download/v0.8.0/git-bug_windows_amd64.exe#/git-bug.exe",
+            "hash": "a6ab463c9cae012b819a1d50b2ba4dd14c6f4e6a917a3d7515a187c90d8f4207"
+        },
+        "32bit": {
+            "url": "https://github.com/MichaelMure/git-bug/releases/download/v0.8.0/git-bug_windows_386.exe#/git-bug.exe",
+            "hash": "7ba12dbbfd915f71f8384715a53e70652e1e89d8c705fa472cc26ff02fd01b63"
+        }
+    },
+    "bin": "git-bug.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/MichaelMure/git-bug/releases/download/v$version/git-bug_windows_amd64.exe#/git-bug.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/MichaelMure/git-bug/releases/download/v$version/git-bug_windows_386.exe#/git-bug.exe"
+            }
+        }
+    }
+}

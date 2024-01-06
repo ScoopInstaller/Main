@@ -1,0 +1,59 @@
+{
+    "version": "10.0.19712",
+    "description": "DynamoRIO is a runtime code manipulation system that supports code transformations on any part of a program, while it executes.",
+    "homepage": "https://dynamorio.org",
+    "license": "BSD-3-Clause-Clear",
+    "url": "https://github.com/DynamoRIO/dynamorio/releases/download/cronbuild-10.0.19712/DynamoRIO-Windows-10.0.19712.zip",
+    "hash": "73433ab14dfb8dbf16da88ca0bf43ae1cff5584d01259e78db6fa972397b2d5e",
+    "extract_dir": "DynamoRIO-Windows-10.0.19712",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                "bin64\\closewnd.exe",
+                "bin64\\create_process.exe",
+                "bin64\\drconfig.exe",
+                "bin64\\DRcontrol.exe",
+                "bin64\\drdisas.exe",
+                "bin64\\drinject.exe",
+                "bin64\\DRkill.exe",
+                "bin64\\DRload.exe",
+                "bin64\\drrun.exe",
+                "bin64\\DRstats.exe",
+                "bin64\\DRview.exe",
+                "bin64\\dummy.exe",
+                "bin32\\ldmp.exe",
+                "bin64\\svccntrl.exe",
+                "bin64\\winstats.exe",
+                "bin64\\balloon.exe"
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "bin32\\closewnd.exe",
+                "bin32\\create_process.exe",
+                "bin32\\drconfig.exe",
+                "bin32\\DRcontrol.exe",
+                "bin32\\drdisas.exe",
+                "bin32\\drinject.exe",
+                "bin32\\DRkill.exe",
+                "bin32\\DRload.exe",
+                "bin32\\drrun.exe",
+                "bin32\\DRstats.exe",
+                "bin32\\DRview.exe",
+                "bin32\\dummy.exe",
+                "bin32\\ldmp.exe",
+                "bin32\\svccntrl.exe",
+                "bin32\\winstats.exe",
+                "bin32\\balloon.exe"
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://github.com/DynamoRIO/dynamorio",
+        "regex": "tag/cronbuild-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/DynamoRIO/dynamorio/releases/download/cronbuild-$version/DynamoRIO-Windows-$version.zip",
+        "extract_dir": "DynamoRIO-Windows-$version"
+    }
+}

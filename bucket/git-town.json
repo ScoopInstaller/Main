@@ -1,32 +1,25 @@
 {
-    "homepage": "http://www.git-town.com/",
-    "description": "An open-source Git plugin, that adds Git commands that make collaborative software development more efficient and safe.",
-    "version": "7.3.0",
+    "version": "10.0.2",
+    "description": "Git plugin, that adds Git commands that make collaborative software development more efficient and safe.",
+    "homepage": "https://www.git-town.com",
     "license": "MIT",
-    "architecture": {
-        "32bit": {
-            "url": "https://github.com/Originate/git-town/releases/download/v7.3.0/git-town-windows-386.exe#/git-town.exe",
-            "hash": "3fd686a632dac99d33d0876224fef6da4bbc4914fce12c0a54012217a28d1f99"
-        },
-        "64bit": {
-            "url": "https://github.com/Originate/git-town/releases/download/v7.3.0/git-town-windows-amd64.exe#/git-town.exe",
-            "hash": "513fedffdf92e4c855843867911cfee01149af98c777afc22f9999175b18dd76"
-        }
-    },
     "suggest": {
         "git": "git"
     },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/git-town/git-town/releases/download/v10.0.2/git-town_10.0.2_windows_intel_64.zip",
+            "hash": "5f2c18dc2b7fef368dc40656dbe7abd32925b58e07ffd119b1c293f57d94a5e7"
+        }
+    },
     "bin": "git-town.exe",
     "checkver": {
-        "github": "https://github.com/Originate/git-town"
+        "github": "https://github.com/git-town/git-town"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://github.com/Originate/git-town/releases/download/v$version/git-town-windows-386.exe#/git-town.exe"
-            },
             "64bit": {
-                "url": "https://github.com/Originate/git-town/releases/download/v$version/git-town-windows-amd64.exe#/git-town.exe"
+                "url": "https://github.com/git-town/git-town/releases/download/v$version/git-town_$version_windows_intel_64.zip"
             }
         }
     }

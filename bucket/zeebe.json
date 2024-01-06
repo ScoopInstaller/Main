@@ -1,24 +1,25 @@
 {
-    "version": "0.23.1",
+    "version": "8.3.3",
     "description": "Distributed Workflow Engine for Microservices Orchestration",
-    "homepage": "https://zeebe.io",
+    "homepage": "https://camunda.com/products/cloud/workflow-engine/",
     "license": {
-        "identifier": "Zeebe Community License Version 1.0",
-        "url": "https://zeebe.io/legal/zeebe-community-license-1.0/"
+        "identifier": "Zeebe Community License v1.0",
+        "url": "https://camunda.com/legal/terms/cloud-terms-and-conditions/zeebe-community-license-v1-0/"
     },
+    "notes": [
+        "If you are upgrading from version 1.x, you can follow the instructions on this page to migrate the settings:",
+        "https://docs.camunda.io/docs/guides/update-guide/130-to-800/"
+    ],
     "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
+        "JDK": "java/openjdk"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/zeebe-io/zeebe/releases/download/0.23.1/zeebe-distribution-0.23.1.zip",
-            "hash": "sha1:9ece3e5e3a90dec6d660586deb5a3157af50249e"
+            "url": "https://github.com/camunda/camunda-platform/releases/download/8.3.3/camunda-zeebe-8.3.3.zip",
+            "hash": "sha1:e62e0b73ff87c85590c438cadbfdcf0e1e86e1f3"
         }
     },
-    "extract_dir": "zeebe-broker-0.23.1",
+    "extract_dir": "camunda-zeebe-8.3.3",
     "bin": [
         [
             "bin\\broker.bat",
@@ -31,17 +32,17 @@
         "bin\\zbctl.exe"
     ],
     "checkver": {
-        "github": "https://github.com/zeebe-io/zeebe"
+        "github": "https://github.com/camunda/camunda-platform"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/zeebe-io/zeebe/releases/download/$version/zeebe-distribution-$version.zip"
+                "url": "https://github.com/camunda/camunda-platform/releases/download/$version/camunda-zeebe-$version.zip"
             }
         },
         "hash": {
             "url": "$url.sha1sum"
         },
-        "extract_dir": "zeebe-broker-$version"
+        "extract_dir": "camunda-zeebe-$version"
     }
 }

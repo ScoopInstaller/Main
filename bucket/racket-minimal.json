@@ -1,23 +1,26 @@
 {
-    "version": "7.7",
+    "version": "8.11.1",
+    "description": "Minimal Racket installation, without DrRacket/docs",
     "homepage": "https://racket-lang.org",
     "license": "LGPL-3.0-or-later",
-    "description": "Minimal Racket installation, without DrRacket/docs.",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.racket-lang.org/installers/7.7/racket-minimal-7.7-x86_64-win32.exe#/dl.7z",
-            "hash": "sha1:89298ad295cd48adfb14ad98598b029590c08b80"
+            "url": "https://mirror.racket-lang.org/installers/8.11.1/racket-minimal-8.11.1-x86_64-win32.exe#/dl.7z",
+            "hash": "4843a6883cc526a1b9d65c1020d5c22e82acf083e765d4214527c0d702d0c650"
         },
         "32bit": {
-            "url": "https://mirror.racket-lang.org/installers/7.7/racket-minimal-7.7-i386-win32.exe#/dl.7z",
-            "hash": "sha1:4179d416ee8470719488cf3b1e11c2360f92d830"
+            "url": "https://mirror.racket-lang.org/installers/8.11.1/racket-minimal-8.11.1-i386-win32.exe#/dl.7z",
+            "hash": "332e65307c84108ac77dadd03a05dceb8b637da7e8223e8fcbbea5644285d461"
         }
     },
     "bin": [
         "racket.exe",
         "raco.exe"
     ],
-    "checkver": "Download Racket\\s+v([\\d.]+)",
+    "checkver": {
+        "url": "https://download.racket-lang.org/",
+        "regex": "Version ([\\d.]+)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

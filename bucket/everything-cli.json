@@ -1,0 +1,23 @@
+{
+    "version": "1.1.0.26",
+    "description": "Command line interface to Everything.",
+    "homepage": "https://www.voidtools.com/support/everything/command_line_interface/",
+    "license": "MIT",
+    "depends": "extras/everything",
+    "url": "https://www.voidtools.com/ES-1.1.0.26.zip",
+    "hash": "978bb07dd5ea1868c716ee17b2f36bd4cbb1e2a4c2e1c439163558506492d873",
+    "pre_install": [
+        "$manifest.persist | ForEach-Object {",
+        "    if (-not (Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType file | Out-Null }",
+        "}"
+    ],
+    "bin": "es.exe",
+    "persist": "es.ini",
+    "checkver": {
+        "url": "https://www.voidtools.com/downloads/",
+        "regex": "ES-([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://www.voidtools.com/ES-$version.zip"
+    }
+}

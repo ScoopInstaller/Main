@@ -1,0 +1,37 @@
+{
+    "version": "100.9.4",
+    "description": "A collection of command-line utilities for working with a MongoDB deployment.",
+    "homepage": "https://docs.mongodb.com/database-tools/",
+    "license": {
+        "identifier": "SSPL-1.0",
+        "url": "https://www.mongodb.com/licensing/server-side-public-license"
+    },
+    "suggest": {
+        "MongoDB": "mongodb"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-windows-x86_64-100.9.4.msi",
+            "hash": "575b0791fe4d26dfc60a4e059dbe05a7d8560c1fcfa07e3d508fad2c726fed16"
+        }
+    },
+    "extract_dir": "MongoDB\\Tools\\100",
+    "env_add_path": "bin",
+    "checkver": {
+        "url": "https://s3.amazonaws.com/downloads.mongodb.org/tools/db/release.json",
+        "jsonpath": "$.versions[0].version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://fastdl.mongodb.org/tools/db/mongodb-database-tools-windows-x86_64-$version.msi"
+            }
+        },
+        "extract_dir": "MongoDB\\Tools\\$majorVersion",
+        "hash": {
+            "url": "https://s3.amazonaws.com/downloads.mongodb.org/tools/db/release.json",
+            "mode": "json",
+            "jsonpath": "$.versions[0].downloads[?(@.name=='windows')].package.sha256"
+        }
+    }
+}

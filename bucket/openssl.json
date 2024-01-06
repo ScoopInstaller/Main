@@ -1,28 +1,51 @@
 {
-    "homepage": "https://slproweb.com/products/Win32OpenSSL.html",
-    "version": "1.1.1g",
-    "license": {
-        "identifier": "OpenSSL|Freeware",
-        "url": "https://www.openssl.org/source/license-openssl-ssleay.txt"
-    },
+    "version": "3.2.0",
     "description": "TLS/SSL toolkit",
+    "homepage": "https://slproweb.com/products/Win32OpenSSL.html",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://slproweb.com/download/Win64OpenSSL-1_1_1g.exe",
-            "hash": "c85a21661e6596e2a22799b7b56ba49ce8193a4fd89945b77086074ddad6065f"
+            "url": "https://slproweb.com/download/Win64OpenSSL-3_2_0.exe",
+            "hash": "dd438a78ce34f6ee99dfb3ebbc4776d88e1029e40cdbbf113a1a42dd6c6a8244"
         },
         "32bit": {
-            "url": "https://slproweb.com/download/Win32OpenSSL-1_1_1g.exe",
-            "hash": "77dcf6a6be30234c88a713b56cdb45d407bf92b9fd655bbd687ce171d3464fc6"
+            "url": "https://slproweb.com/download/Win32OpenSSL-3_2_0.exe",
+            "hash": "7546f34ab1457da4fe68187d4518ccd350d53d484bcfd6d65defb725deef0957"
+        },
+        "arm64": {
+            "url": "https://slproweb.com/download/Win64ARMOpenSSL-3_2_0.exe",
+            "hash": "4550f6d18cc359358436975db5f00f528e14860d6277da584fb7b60febd84a17"
         }
     },
+    "pre_install": [
+        "$arch = switch ($architecture) {",
+        "    '64bit' { 'x64'; break }",
+        "    '32bit' { 'x32'; break }",
+        "    'arm64' { $architecture; break }",
+        "}",
+        "if ([System.Environment]::OSVersion.Version -lt [Version]10.0.14972.0) {",
+        "    return $null = Get-ChildItem \"$dir/lib/VC/$arch/MT\" | ForEach-Object { Copy-Item $_.FullName \"$dir/lib/$($_.Name)\" }",
+        "}",
+        "Receive-Job -Wait (Start-Job {",
+        "    $kernel32 = Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName, byte dwFlags);' -Name '_' -PassThru",
+        "    $null = Get-ChildItem \"$Using:dir/lib/VC/$Using:arch/MT\" | ForEach-Object { $kernel32::CreateSymbolicLink(\"$Using:dir/lib/$($_.Name)\", $_.FullName, 2) }",
+        "})"
+    ],
     "innosetup": true,
-    "bin": "bin\\openssl.exe",
+    "env_add_path": "bin",
     "env_set": {
+        "OPENSSL_ROOT_DIR": "$dir",
+        "OPENSSL_LIB_DIR": "$dir\\lib",
+        "OPENSSL_INCLUDE_DIR": "$dir\\include",
+        "OPENSSL_MODULES": "$dir\\bin",
         "OPENSSL_CONF": "$dir\\bin\\cnf\\openssl.cnf"
     },
-    "env_add_path": "bin",
-    "checkver": "Win32 OpenSSL v([^\\s]+)",
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
+        "jsonpath": "$.files..basever",
+        "regex": "([\\d.]+)",
+        "reverse": true
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -30,12 +53,14 @@
             },
             "32bit": {
                 "url": "https://slproweb.com/download/Win32OpenSSL-$underscoreVersion.exe"
+            },
+            "arm64": {
+                "url": "https://slproweb.com/download/Win64ARMOpenSSL-$underscoreVersion.exe"
             }
         },
         "hash": {
-            "mode": "json",
-            "jp": "$.files.['$basename'].sha256",
-            "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json"
+            "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
+            "jsonpath": "$.files.['$basename'].sha256"
         }
     }
 }

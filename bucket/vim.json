@@ -1,33 +1,29 @@
 {
+    "version": "9.0",
+    "description": "A highly configurable text editor",
     "homepage": "https://www.vim.org",
-    "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
     "license": "Vim",
-    "version": "8.2",
-    "url": [
-        "https://ftp.nluug.nl/pub/vim/pc/gvim82.exe#/dl.7z",
-        "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/install-context.reg",
-        "https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/vim/uninstall-context.reg"
-    ],
-    "hash": [
-        "md5:aa84543492cd8260f44a5acf1ec35641",
-        "16a29881837047d783e8556506c73bbb292bdfefe042d77564d3c166d92b9d98",
-        "49225d3470bf4b397d3cab865eddca6e47610be356f812588588c2661a11557e"
-    ],
+    "notes": "Add gVim as a context menu option by running: \"$dir\\install-context.reg\"",
+    "suggest": {
+        "vimtutor": "vimtutor"
+    },
+    "url": "https://ftp.nluug.nl/pub/vim/pc/gvim90.exe#/dl.7z",
+    "hash": "57a5b0d3e42695eaeca962364cde3f257227e967436821b81c19434bf4e1042c",
     "extract_dir": "$0",
     "pre_install": [
-        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse",
-        "if (!(Test-Path \"$persist_dir\\_vimrc\")) {",
-        "    Copy-Item \"$dir\\vimrc_example.vim\" \"$dir\\_vimrc\"",
-        "    Copy-Item \"$dir\\gvimrc_example.vim\" \"$dir\\_gvimrc\"",
-        "    Add-Content \"$dir\\_vimrc\" \"set shell=$((Get-Command powershell).Path)\\ -ExecutionPolicy\\ Bypass\" -Encoding Ascii",
-        "}",
+        "Move-Item \"$dir\\`$R0\" \"$dir\\libgcc_s_sjlj-1.dll\"",
+        "Move-Item \"$dir\\GvimExt64\\`$R0\" \"$dir\\GvimExt64\\gvimext.dll\"",
+        "Move-Item \"$dir\\GvimExt64\\`$0\\GvimExt64\\*\" \"$dir\\GvimExt64\"",
+        "Move-Item \"$dir\\`$*\\*\" $dir",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\GvimExt32\", \"$dir\\GvimExt64\\`$0\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse"
+    ],
+    "post_install": [
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    $vimpath = \"$(current_dir $dir)\\gVim.exe\".Replace('\\', '\\\\')",
-        "    $content = (Get-Content \"$dir\\$_\").Replace('$vim', $vimpath)",
+        "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
+        "    $content = (Get-Content \"$bucketsdir\\main\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
         "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "    Set-Content \"$dir\\$_\" $content",
-        "}",
-        "if (!(Test-Path \"$persist_dir\\vimrc\")) { New-Item \"$dir\\vimrc\" -ItemType File | Out-Null }"
+        "}"
     ],
     "bin": [
         "vim.exe",
@@ -99,12 +95,6 @@
             "gVim"
         ]
     ],
-    "persist": [
-        "_vimrc",
-        "_gvimrc",
-        "vimfiles",
-        "vimrc"
-    ],
     "checkver": {
         "url": "https://ftp.nluug.nl/pub/vim/pc",
         "regex": "gvim(?<ver>[\\d-]+)\\.exe\\s+V([\\d.]+)"
@@ -114,8 +104,5 @@
         "hash": {
             "url": "$baseurl/MD5SUMS"
         }
-    },
-    "suggest": {
-        "vimtutor": "vimtutor"
     }
 }

@@ -1,0 +1,49 @@
+{
+    "version": "5.9.2",
+    "homepage": "https://www.swift.org/",
+    "description": "A general-purpose programming language built using a modern approach to safety, performance, and software design patterns.",
+    "license": "Apache-2.0",
+    "suggest": {
+        "python": "main/python",
+        "vcredist": "extras/vcredist2022"
+    },
+    "notes": [
+        "To make Swift toolchain work, you must have Visual Studio and Windows SDK components installed.",
+        "Read https://www.swift.org/getting-started/#support-files for Supporting Files installation guide."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://download.swift.org/swift-5.9.2-release/windows10/swift-5.9.2-RELEASE/swift-5.9.2-RELEASE-windows10.exe#/swiftsetup.exe",
+            "hash": "d78a717551c78e824c9b74b0cfb1ad86060fc286ea071fddb26df18f56dc7212"
+        }
+    },
+    "pre_install": [
+        "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
+        "Get-ChildItem \"$dir\\extract_folder\\AttachedContainer\\a*\" | ForEach-Object {",
+        "    Expand-MsiArchive $_ \"$dir\\extract_folder\"",
+        "}",
+        "Move-Item \"$dir\\extract_folder\\PFiles64\\Swift\" -Destination \"$dir\"",
+        "Move-Item \"$dir\\extract_folder\\Library\\Developer\" -Destination \"$dir\"",
+        "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
+    ],
+    "env_add_path": [
+        "Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
+        "Swift\\runtime-development\\usr\\bin"
+    ],
+    "env_set": {
+        "SDKROOT": "$dir\\Developer\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk",
+        "DEVELOPER_DIR": "$dir\\Developer"
+    },
+    "bin": "Swift\\runtime-development\\usr\\bin\\plutil.exe",
+    "checkver": {
+        "url": "https://github.com/apple/swift",
+        "regex": "/swift-([\\d.]+)-RELEASE"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.swift.org/swift-$version-release/windows10/swift-$version-RELEASE/swift-$version-RELEASE-windows10.exe#/swiftsetup.exe"
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "version": "1.6.1",
+    "description": "A very fast implementation of tldr in Rust.",
+    "homepage": "https://dbrgn.github.io/tealdeer",
+    "license": "Apache-2.0|MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/dbrgn/tealdeer/releases/download/v1.6.1/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
+            "hash": "abf2708b4932bc67bbee7c194d482146bad2fc880ee9d54dd0892524601bad31"
+        }
+    },
+    "pre_install": [
+        "$file = 'config.toml'",
+        "if (!(Test-Path \"$persist_dir\\$file\")) {",
+        "   Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
+        "   $CONT = @(",
+        "       '[directories]'",
+        "       \"cache_dir = `\"$persist_dir\\cache`\"\"",
+        "       \"custom_pages_dir = `\"$persist_dir\\custom-pages`\"\"",
+        "   ) -replace '\\\\', '\\\\'",
+        "   Set-Content \"$dir\\$file\" ($CONT -join \"`r`n\") -Encoding ASCII",
+        "}"
+    ],
+    "env_set": {
+        "TEALDEER_CONFIG_DIR": "$dir"
+    },
+    "bin": "tldr.exe",
+    "persist": [
+        "config.toml",
+        "cache",
+        "custom-pages"
+    ],
+    "checkver": {
+        "github": "https://github.com/dbrgn/tealdeer"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/dbrgn/tealdeer/releases/download/v$version/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "version": "0.1.1",
+    "description": "A command-line downloader using parallel requests",
+    "homepage": "https://github.com/Code-Hex/pget",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Code-Hex/pget/releases/download/v0.1.1/pget_0.1.1_Windows_x86_64.zip",
+            "hash": "71a80c387fe277f411e5ed314194a68699997e0c0b1530b80ea79b4072add8ed"
+        },
+        "32bit": {
+            "url": "https://github.com/Code-Hex/pget/releases/download/v0.1.1/pget_0.1.1_Windows_i386.zip",
+            "hash": "e20dc7a2e9d83a5df2edda75b85649efa105129820e6283cffbdf66bd549112a"
+        },
+        "arm64": {
+            "url": "https://github.com/Code-Hex/pget/releases/download/v0.1.1/pget_0.1.1_Windows_arm64.zip",
+            "hash": "3c0f584498c2495fc7904959fe365037be3416e00e2c4e6d300d53f3f09cbdda"
+        }
+    },
+    "bin": "pget.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Code-Hex/pget/releases/download/v$version/pget_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Code-Hex/pget/releases/download/v$version/pget_$version_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Code-Hex/pget/releases/download/v$version/pget_$version_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/pget_checksums.txt"
+        }
+    }
+}

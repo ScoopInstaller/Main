@@ -1,28 +1,11 @@
 {
-    "license": "MIT",
-    "homepage": "https://github.com/coreybutler/nvm-windows",
+    "version": "1.1.12",
     "description": "A node.js version management utility for Windows.",
-    "version": "1.1.7",
-    "url": "https://github.com/coreybutler/nvm-windows/releases/download/1.1.7/nvm-noinstall.zip",
-    "bin": "nvm.exe",
-    "persist": [
-        "nodejs",
-        [
-            "elevate.cmd",
-            "nodejs\\elevate.cmd"
-        ],
-        [
-            "elevate.vbs",
-            "nodejs\\elevate.vbs"
-        ],
-        "settings.txt"
-    ],
-    "env_add_path": "nodejs\\nodejs",
-    "env_set": {
-        "NVM_HOME": "$dir",
-        "NVM_SYMLINK": "$persist_dir\\nodejs\\nodejs"
-    },
-    "hash": "md5:00acf86e40c5f038cca8c383b9d2c207",
+    "homepage": "https://github.com/coreybutler/nvm-windows",
+    "license": "MIT",
+    "notes": "You'll need to restart powershell/cmd to have it reload Environment Variables so nvm will work correctly",
+    "url": "https://github.com/coreybutler/nvm-windows/releases/download/1.1.12/nvm-noinstall.zip",
+    "hash": "md5:43dec1fe0f30594fe236f6b0b7ae7173",
     "architecture": {
         "64bit": {
             "pre_install": [
@@ -39,13 +22,30 @@
             ]
         }
     },
-    "notes": "You'll need to restart powershell/cmd to have it reload Environment Variables so nvm will work correctly",
+    "bin": "nvm.exe",
+    "env_add_path": "nodejs\\nodejs",
+    "env_set": {
+        "NVM_HOME": "$dir",
+        "NVM_SYMLINK": "$persist_dir\\nodejs\\nodejs"
+    },
+    "persist": [
+        "nodejs",
+        [
+            "elevate.cmd",
+            "nodejs\\elevate.cmd"
+        ],
+        [
+            "elevate.vbs",
+            "nodejs\\elevate.vbs"
+        ],
+        "settings.txt"
+    ],
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/coreybutler/nvm-windows/releases/download/$version/nvm-noinstall.zip",
         "hash": {
             "url": "$url.checksum.txt",
-            "find": "([a-fA-F0-9]{32})"
+            "regex": "$md5"
         }
     }
 }

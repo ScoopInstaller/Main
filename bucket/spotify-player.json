@@ -1,0 +1,25 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+    "version": "0.16.3",
+    "description": "A Spotify player in the terminal with full feature parity",
+    "homepage": "https://github.com/aome510/spotify-player",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aome510/spotify-player/releases/download/v0.16.3/spotify_player-x86_64-pc-windows-msvc.zip",
+            "hash": "d6dfbae87f13858448ea134a6a919136e44d3c5af6484f6ee37e981ed72d1c6d"
+        }
+    },
+    "bin": "spotify_player.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aome510/spotify-player/releases/download/v$version/spotify_player-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$baseurl/spotify_player-x86_64-pc-windows-msvc.sha256"
+                }
+            }
+        }
+    }
+}

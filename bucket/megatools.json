@@ -1,44 +1,34 @@
 {
-    "version": "1.10.2",
+    "version": "1.11.1.20230212",
     "description": "Collection of programs for accessing Mega.nz service from a command line.",
     "homepage": "https://megatools.megous.com/",
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://megatools.megous.com/builds/megatools-1.10.2-win64.zip",
-            "hash": "0c2dc2bd509ca739ca7d734f381930a3c8c58c5ea4b385d408c775c4082aebd9",
-            "extract_dir": "megatools-1.10.2-win64"
+            "url": "https://megatools.megous.com/builds/builds/megatools-1.11.1.20230212-win64.zip",
+            "hash": "fd3ffb6330c89783a37df0b349edc95c8018e919680a6ad518d27d4fa789954f",
+            "extract_dir": "megatools-1.11.1.20230212-win64"
         },
         "32bit": {
-            "url": "https://megatools.megous.com/builds/megatools-1.10.2-win32.zip",
-            "hash": "2724dfbc91c764540b3d3b12261c11f74f706b40b114639472388edef0743069",
-            "extract_dir": "megatools-1.10.2-win32"
+            "url": "https://megatools.megous.com/builds/builds/megatools-1.11.1.20230212-win32.zip",
+            "hash": "d2389b59e798da384e44ae4d690a111ee422a9cdb4160f921b3385794839086c",
+            "extract_dir": "megatools-1.11.1.20230212-win32"
         }
     },
-    "bin": [
-        "megacopy.exe",
-        "megadf.exe",
-        "megadl.exe",
-        "megaget.exe",
-        "megals.exe",
-        "megamkdir.exe",
-        "megaput.exe",
-        "megareg.exe",
-        "megarm.exe"
-    ],
+    "bin": "megatools.exe",
     "persist": "mega.ini",
     "checkver": {
-        "url": "https://megatools.megous.com/",
-        "re": "megatools-([\\d.]+)-win"
+        "url": "https://megatools.megous.com/builds/builds/",
+        "regex": "megatools-([\\d.]+)-win32.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://megatools.megous.com/builds/megatools-$version-win64.zip",
+                "url": "https://megatools.megous.com/builds/builds/megatools-$version-win64.zip",
                 "extract_dir": "megatools-$version-win64"
             },
             "32bit": {
-                "url": "https://megatools.megous.com/builds/megatools-$version-win32.zip",
+                "url": "https://megatools.megous.com/builds/builds/megatools-$version-win32.zip",
                 "extract_dir": "megatools-$version-win32"
             }
         }

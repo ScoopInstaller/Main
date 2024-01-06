@@ -1,0 +1,40 @@
+{
+    "version": "0.33.0",
+    "description": "Feature-rich terminal-based text viewer",
+    "homepage": "https://noborus.github.io/ov",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/noborus/ov/releases/download/v0.33.0/ov_0.33.0_windows_amd64.zip",
+            "hash": "d183b4e9ff562569af48dc419a937b2a57e4a4a197be37a871f3dba2cfe83a3b"
+        },
+        "32bit": {
+            "url": "https://github.com/noborus/ov/releases/download/v0.33.0/ov_0.33.0_windows_386.zip",
+            "hash": "e9569004665dccab4e709bec2f88b1879ba43718426428478cfabbaa871599d5"
+        },
+        "arm64": {
+            "url": "https://github.com/noborus/ov/releases/download/v0.33.0/ov_0.33.0_windows_arm64.zip",
+            "hash": "465b46f7e0610872f0bc645030305841a61fab7e49739b697c56ad7feea0a5c4"
+        }
+    },
+    "bin": "ov.exe",
+    "checkver": {
+        "github": "https://github.com/noborus/ov"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/noborus/ov/releases/download/v$version/ov_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/noborus/ov/releases/download/v$version/ov_$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/noborus/ov/releases/download/v$version/ov_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/ov_$version_checksums.txt"
+        }
+    }
+}

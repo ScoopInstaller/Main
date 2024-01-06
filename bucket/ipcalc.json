@@ -1,0 +1,19 @@
+{
+    "version": "0.51",
+    "description": "Calculates IP broadcast, network, Cisco wildcard mask, and host ranges",
+    "homepage": "https://jodies.de/ipcalc",
+    "license": "GPL-2.0-or-later",
+    "suggest": {
+        "perl": "perl"
+    },
+    "url": "https://raw.githubusercontent.com/kjokjo/ipcalc/0.51/ipcalc",
+    "hash": "52cdeb286b7f62ac88a6613b792b526b5bf5a714c66c3225cefd412d19cb59e4",
+    "bin": "ipcalc.bat",
+    "pre_install": "Set-Content -Value '@perl.exe \"%~dp0ipcalc\" %*' -Path \"$dir\\ipcalc.bat\"",
+    "checkver": {
+        "github": "https://github.com/kjokjo/ipcalc"
+    },
+    "autoupdate": {
+        "url": "https://raw.githubusercontent.com/kjokjo/ipcalc/$version/ipcalc"
+    }
+}

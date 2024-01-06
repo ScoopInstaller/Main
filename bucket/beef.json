@@ -1,0 +1,27 @@
+{
+    "version": "0.43.4",
+    "description": "Performance-oriented compiled programming language which has been built hand-in-hand with its IDE environment.",
+    "homepage": "https://www.beeflang.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/beefytech/Beef/releases/download/0.43.4/BeefSetup_0_43_4.exe#/dl.7z",
+            "hash": "3b7c75200987f05ced9428635239a35abd5c2196c56b3c00d3a049ffe446896f"
+        }
+    },
+    "bin": [
+        "bin\\BeefBuild.exe",
+        [
+            "bin\\BeefIDE.exe",
+            "beef"
+        ]
+    ],
+    "checkver": ">Version ([\\d.]+)</",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/beefytech/Beef/releases/download/$version/BeefSetup_$underscoreVersion.exe#/dl.7z"
+            }
+        }
+    }
+}

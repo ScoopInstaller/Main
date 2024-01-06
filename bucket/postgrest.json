@@ -1,0 +1,28 @@
+{
+    "version": "12.0.2",
+    "description": "REST API for any Postgres database",
+    "homepage": "https://postgrest.org",
+    "license": "MIT",
+    "suggest": {
+        "PostgreSQL": "postgresql"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PostgREST/postgrest/releases/download/v12.0.2/postgrest-v12.0.2-windows-x64.zip",
+            "hash": "10a28acc87efa2a747a46455855c7789966108e351f91d4ef05ae709ac3871db",
+            "extract_dir": "artifacts\\postgrest-windows-x64"
+        }
+    },
+    "bin": "postgrest.exe",
+    "checkver": {
+        "github": "https://github.com/PostgREST/postgrest"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PostgREST/postgrest/releases/download/v$version/postgrest-v$version-windows-x64.zip",
+                "extract_dir": "artifacts\\postgrest-windows-x64"
+            }
+        }
+    }
+}

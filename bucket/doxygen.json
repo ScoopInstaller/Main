@@ -1,16 +1,12 @@
 {
-    "homepage": "http://www.doxygen.nl/",
+    "version": "1.10.0",
     "description": "Documentation generator from annotated source code.",
+    "homepage": "https://www.doxygen.nl/",
     "license": "GPL-2.0-only",
-    "version": "1.8.18",
     "architecture": {
         "64bit": {
-            "url": "http://doxygen.nl/files/doxygen-1.8.18.windows.x64.bin.zip",
-            "hash": "d83bf91ce448e4f935ce0a834360da7d767ef1805afef16d624ce9a86aa6f211"
-        },
-        "32bit": {
-            "url": "http://doxygen.nl/files/doxygen-1.8.18.windows.bin.zip",
-            "hash": "979106f0bdda354efce64e45c98eb5033ff020a30b026cb313af1501e6c8884f"
+            "url": "http://doxygen.nl/files/doxygen-1.10.0.windows.x64.bin.zip",
+            "hash": "2135c1d5bdd6e067b3d0c40a4daac5d63d0fee1b3f4d6ef1e4f092db0d632d5b"
         }
     },
     "bin": [
@@ -20,15 +16,16 @@
     ],
     "checkver": {
         "url": "http://www.doxygen.nl/download.html",
-        "re": "The latest version of doxygen is ([\\d.]+)"
+        "regex": "doxygen-([\\d.]+).windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://doxygen.nl/files/doxygen-$version.windows.x64.bin.zip"
-            },
-            "32bit": {
-                "url": "http://doxygen.nl/files/doxygen-$version.windows.bin.zip"
+                "url": "http://doxygen.nl/files/doxygen-$version.windows.x64.bin.zip",
+                "hash": {
+                    "url": "http://www.doxygen.nl/download.html",
+                    "regex": "doxygen-[\\d.]+.windows.x64.bin.zip.+$sha256"
+                }
             }
         }
     }

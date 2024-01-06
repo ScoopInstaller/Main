@@ -1,15 +1,31 @@
 {
-    "version": "2.091.1",
+    "version": "2.106.1",
     "description": "D is a general-purpose programming language with static typing, systems-level access, and C-like syntax",
-    "url": "http://downloads.dlang.org/releases/2.x/2.091.1/dmd.2.091.1.windows.7z",
-    "hash": "64c6824d65a680620b60b14d42aeb5f7be72713e34fdc70274e83679e2dfa0ad",
-    "license": "BSL-1.0",
-    "extract_dir": "dmd2",
-    "bin": [
-        "windows\\bin\\dmd.exe",
-        "windows\\bin\\dub.exe"
-    ],
     "homepage": "https://dlang.org/",
+    "license": "BSL-1.0",
+    "url": "http://downloads.dlang.org/releases/2.x/2.106.1/dmd.2.106.1.windows.7z",
+    "hash": "cf719f86b19feedfd1f43887b9a0f5b6d33e1339255926f08bbbc4ddb90b4e44",
+    "extract_dir": "dmd2",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                "windows\\bin\\ddemangle.exe",
+                "windows\\bin64\\dmd.exe",
+                "windows\\bin64\\dub.exe",
+                "windows\\bin\\dustmite.exe",
+                "windows\\bin\\rdmd.exe"
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "windows\\bin\\ddemangle.exe",
+                "windows\\bin\\dmd.exe",
+                "windows\\bin\\dub.exe",
+                "windows\\bin\\dustmite.exe",
+                "windows\\bin\\rdmd.exe"
+            ]
+        }
+    },
     "checkver": {
         "url": "http://downloads.dlang.org/releases/LATEST",
         "regex": "([\\d.]+)"

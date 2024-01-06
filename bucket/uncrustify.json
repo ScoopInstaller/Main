@@ -1,30 +1,30 @@
 {
-    "version": "0.70.1",
-    "homepage": "http://uncrustify.sourceforge.net",
+    "version": "0.78.1",
     "description": "A source code beautifier for C, C++, C#, ObjectiveC, D, Java, Pawn and VALA",
+    "homepage": "https://uncrustify.sourceforge.net",
     "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-0.70.1/uncrustify-0.70.1_f-win64.zip",
-            "hash": "sha1:eb95d5c36890352c772f387aea28d910fc5cbfef"
+            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-0.78.1/uncrustify-0.78.1_f-win64.zip",
+            "hash": "sha1:bf7905a4c925b7e681391ae9b8e55d249f11fd29"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-0.70.1/uncrustify-0.70.1_f-win32.zip",
-            "hash": "sha1:c8366484e493a080d59945492229d6821f263d13"
+            "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-0.78.1/uncrustify-0.78.1_f-win32.zip",
+            "hash": "sha1:3dae3cb01e611249c5d5a0cb12a3fd2fc9b5526b"
         }
     },
-    "bin": "uncrustify.exe",
+    "bin": "bin\\uncrustify.exe",
     "checkver": {
-        "url": "https://sourceforge.net/projects/uncrustify/rss?path=/",
-        "regex": "uncrustify-([\\d.]+)"
+        "sourceforge": "uncrustify",
+        "regex": "uncrustify-(?<fver>[\\d.]+)/uncrustify-([\\d.]+)_"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$version/uncrustify-$version_f-win64.zip"
+                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$matchFver/uncrustify-$version_f-win64.zip"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$version/uncrustify-$version_f-win32.zip"
+                "url": "https://downloads.sourceforge.net/project/uncrustify/uncrustify-$matchFver/uncrustify-$version_f-win32.zip"
             }
         }
     }

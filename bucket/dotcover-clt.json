@@ -1,0 +1,44 @@
+{
+    "version": "2023.3.2",
+    "description": "JetBrains dotCover Command Line Tools that enable analysing code coverage outside of Visual Studio.",
+    "homepage": "https://www.jetbrains.com/dotcover/download/#section=commandline",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.jetbrains.com/legal/docs/toolbox/user"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.jetbrains.com/resharper/dotUltimate.2023.3.2/JetBrains.dotCover.CommandLineTools.windows-x64.2023.3.2.zip",
+            "hash": "d8dad9cec5d8c9669a369edd85a452fe71746cdc37dbeb78339a0c87f628d414"
+        },
+        "32bit": {
+            "url": "https://download.jetbrains.com/resharper/dotUltimate.2023.3.2/JetBrains.dotCover.CommandLineTools.windows-x86.2023.3.2.zip",
+            "hash": "d76b06c7f73b388063a9bfa06ed23c7191271598598a8766153515764f9c09a4"
+        },
+        "arm64": {
+            "url": "https://download.jetbrains.com/resharper/dotUltimate.2023.3.2/JetBrains.dotCover.CommandLineTools.windows-arm64.2023.3.2.zip",
+            "hash": "76edef793b52a51afa3c597d17a999b90dd7542a97a9209c843bc77e3076eb6b"
+        }
+    },
+    "bin": "dotCover.exe",
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=DCCLT&latest=true&platform=zip&type=release",
+        "jsonpath": "$..version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.jetbrains.com/resharper/dotUltimate.$version/JetBrains.dotCover.CommandLineTools.windows-x64.$version.zip"
+            },
+            "32bit": {
+                "url": "https://download.jetbrains.com/resharper/dotUltimate.$version/JetBrains.dotCover.CommandLineTools.windows-x86.$version.zip"
+            },
+            "arm64": {
+                "url": "https://download.jetbrains.com/resharper/dotUltimate.$version/JetBrains.dotCover.CommandLineTools.windows-arm64.$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

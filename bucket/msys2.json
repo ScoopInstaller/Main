@@ -1,26 +1,17 @@
 {
-    "homepage": "http://msys2.github.io",
-    "description": "A software distro and building platform for Windows.",
     "##": "64-bit version is able to build both 32-bit and 64-bit packages",
-    "version": "20190524",
+    "version": "2023-10-26",
+    "description": "A software distro and building platform for Windows.",
+    "homepage": "http://www.msys2.org/",
     "license": "GPL-2.0-only|BSD-3-Clause",
+    "notes": "Please run 'msys2' now for the MSYS2 setup to complete!",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/msys2/Base/x86_64/msys2-base-x86_64-20190524.tar.xz",
-            "extract_dir": "msys64",
-            "hash": "sha1:cfe5035b1b81b43469d16bfc23be8006b9a44455"
-        },
-        "32bit": {
-            "url": "https://downloads.sourceforge.net/project/msys2/Base/i686/msys2-base-i686-20190524.tar.xz",
-            "extract_dir": "msys32",
-            "hash": "sha1:ff86c3e4ef8777074fd394510b95943d0c943956"
+            "url": "https://github.com/msys2/msys2-installer/releases/download/2023-10-26/msys2-base-x86_64-20231026.tar.xz",
+            "hash": "fa75120560563a311241c05882016978bd35612692c7f0d39815a27837bff27d",
+            "extract_dir": "msys64"
         }
     },
-    "pre_install": [
-        "if ($architecture -eq '32bit') {",
-        "   $manifest.bin += ,@('autorebase.bat', 'autorebase')",
-        "}"
-    ],
     "bin": [
         [
             "msys2_shell.cmd",
@@ -41,6 +32,26 @@
             "msys2_shell.cmd",
             "mingw64",
             "-mingw64 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "clang32",
+            "-clang32 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "clang64",
+            "-clang64 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "clangarm64",
+            "-clangarm64 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "ucrt64",
+            "-ucrt64 -defterm -here -full-path -no-start"
         ]
     ],
     "shortcuts": [
@@ -55,21 +66,33 @@
         [
             "mingw64.exe",
             "MinGW64"
+        ],
+        [
+            "clang32.exe",
+            "Clang32"
+        ],
+        [
+            "clang64.exe",
+            "Clang64"
+        ],
+        [
+            "clangarm64.exe",
+            "ClangArm64"
+        ],
+        [
+            "ucrt64.exe",
+            "UCRT64"
         ]
     ],
     "persist": "home",
-    "notes": "Please run 'msys2' now for the MSYS2 setup to complete!",
     "checkver": {
-        "url": "https://sourceforge.net/projects/msys2/files/Base/x86_64/",
-        "re": "/msys2-base-x86_64-(\\d+).tar.xz"
+        "url": "https://github.com/msys2/msys2-installer/releases",
+        "regex": "/releases/tag/(?<version>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}))"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/msys2/Base/x86_64/msys2-base-x86_64-$version.tar.xz"
-            },
-            "32bit": {
-                "url": "https://downloads.sourceforge.net/project/msys2/Base/i686/msys2-base-i686-$version.tar.xz"
+                "url": "https://github.com/msys2/msys2-installer/releases/download/$version/msys2-base-x86_64-$matchYear$matchMonth$matchDay.tar.xz"
             }
         }
     }

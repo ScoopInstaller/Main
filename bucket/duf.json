@@ -1,0 +1,38 @@
+{
+    "version": "0.8.1",
+    "description": "Disk Usage/Free Utility - a better 'df' alternative",
+    "homepage": "https://github.com/muesli/duf",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/muesli/duf/releases/download/v0.8.1/duf_0.8.1_Windows_x86_64.zip",
+            "hash": "61cb50b541b30b6b66f20453d8795e6395454224e1609fa8454682fcf8931926"
+        },
+        "32bit": {
+            "url": "https://github.com/muesli/duf/releases/download/v0.8.1/duf_0.8.1_Windows_i386.zip",
+            "hash": "1d8829b7f93dfe532bf29015b8826d6d384d6f25c751e9118a12b9ff63ae881a"
+        },
+        "arm64": {
+            "url": "https://github.com/muesli/duf/releases/download/v0.8.1/duf_0.8.1_Windows_arm64.zip",
+            "hash": "f56dae76498f543d7c6335ce77fae5661e3c6e085d5423f1d7af8be2f2bf96f1"
+        }
+    },
+    "bin": "duf.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/muesli/duf/releases/download/v$version/duf_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/muesli/duf/releases/download/v$version/duf_$version_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/muesli/duf/releases/download/v$version/duf_$version_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

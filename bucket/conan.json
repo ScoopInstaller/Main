@@ -1,38 +1,31 @@
 {
-    "version": "1.24.1",
-    "description": "The open-source, decentralized C/C++ package manager.",
-    "homepage": "https://conan.io/",
+    "version": "2.0.16",
+    "description": "The open-source, decentralized C/C++ package manager",
+    "homepage": "https://conan.io",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/conan-io/conan/releases/download/1.24.1/conan-win-64_1_24_1.exe",
-            "hash": "f5e96db4c9631ae480b814a4d84e039842f97bed2c21790d472b0f385e80f691"
+            "url": "https://github.com/conan-io/conan/releases/download/2.0.16/conan-win-64.exe",
+            "hash": "9c00ba0c5655a11067c185c815d71a3b200943408301c4660a98eae4afc1ddde"
         },
         "32bit": {
-            "url": "https://github.com/conan-io/conan/releases/download/1.24.1/conan-win-32_1_24_1.exe",
-            "hash": "2e38029671babadc248566eda934b8acfa8219ce84bd84cbe1eabfca48bc7cad"
+            "url": "https://github.com/conan-io/conan/releases/download/2.0.16/conan-win-32.exe",
+            "hash": "d983cdccdb1ac930da4d4df4aa660953924a0df68993f30bce823422f5eb77e2"
         }
     },
     "innosetup": true,
-    "bin": [
-        "conan\\conan.exe",
-        "conan\\conan_build_info.exe",
-        "conan\\conan_server.exe"
-    ],
+    "bin": "conan\\conan.exe",
     "checkver": {
-        "github": "https://github.com/conan-io/conan/"
+        "github": "https://github.com/conan-io/conan"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/conan-io/conan/releases/download/$version/conan-win-64_$underscoreVersion.exe"
+                "url": "https://github.com/conan-io/conan/releases/download/$version/conan-win-64.exe"
             },
             "32bit": {
-                "url": "https://github.com/conan-io/conan/releases/download/$version/conan-win-32_$underscoreVersion.exe"
+                "url": "https://github.com/conan-io/conan/releases/download/$version/conan-win-32.exe"
             }
-        },
-        "hash": {
-            "url": "https://dl.bintray.com/conan/installers/$basename.sha256"
         }
     }
 }

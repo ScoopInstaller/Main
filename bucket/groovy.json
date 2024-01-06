@@ -1,11 +1,15 @@
 {
-    "homepage": "http://www.groovy-lang.org/",
+    "version": "4.0.17",
     "description": "A powerful, optionally typed and dynamic language, with static-typing and static compilation capabilities, for the Java platform aimed at improving developer productivity thanks to a concise, familiar and easy to learn syntax.",
-    "version": "3.0.3",
+    "homepage": "https://www.groovy-lang.org",
     "license": "Apache-2.0",
-    "url": "https://dl.bintray.com/groovy/maven/apache-groovy-binary-3.0.3.zip",
-    "hash": "291078486c3277efbce39bc7b361f9979995bc095f21f0c647b2dd601638b575",
-    "extract_dir": "groovy-3.0.3",
+    "suggest": {
+        "JDK": "java/openjdk",
+        "groovyserv": "groovyserv"
+    },
+    "url": "https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips/apache-groovy-binary-4.0.17.zip",
+    "hash": "05d8fc8f3c3c583850fc7f46c235ca4c8b58024ec8d9d7c16f72548a2b2b5430",
+    "extract_dir": "groovy-4.0.17",
     "bin": [
         "bin\\grape.bat",
         "bin\\groovy.bat",
@@ -19,22 +23,15 @@
     "env_set": {
         "GROOVY_HOME": "$dir"
     },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ],
-        "groovyserv": "groovyserv"
-    },
     "checkver": {
-        "url": "http://www.groovy-lang.org/download.html",
-        "re": "apache-groovy-binary-([\\d.]+).zip"
+        "url": "https://groovy.apache.org/download.html",
+        "regex": "apache-groovy-binary-([\\d.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://dl.bintray.com/groovy/maven/apache-groovy-binary-$version.zip",
-        "extract_dir": "groovy-$version",
+        "url": "https://groovy.jfrog.io/artifactory/dist-release-local/groovy-zips/apache-groovy-binary-$version.zip",
         "hash": {
             "url": "$url.sha256"
-        }
+        },
+        "extract_dir": "groovy-$version"
     }
 }

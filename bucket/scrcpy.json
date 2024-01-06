@@ -1,38 +1,42 @@
 {
-    "version": "1.13",
-    "homepage": "https://github.com/Genymobile/scrcpy",
+    "version": "2.3.1",
     "description": "Display and control your Android device",
+    "homepage": "https://github.com/Genymobile/scrcpy",
     "license": "Apache-2.0",
-    "depends": "adb",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.13/scrcpy-win64-v1.13.zip",
-            "hash": "806aafc00d4db01513193addaa24f47858893ba5efe75770bfef6ae1ea987d27"
+            "url": "https://github.com/Genymobile/scrcpy/releases/download/v2.3.1/scrcpy-win64-v2.3.1.zip",
+            "hash": "f1f78ac98214078425804e524a1bed515b9d4b8a05b78d210a4ced2b910b262d",
+            "extract_dir": "scrcpy-win64-v2.3.1"
         },
         "32bit": {
-            "url": "https://github.com/Genymobile/scrcpy/releases/download/v1.13/scrcpy-win32-v1.13.zip",
-            "hash": "0fc5a702cc3aa5bf05108843a9cc443c63cb4754539b72f884defadca3d62da6"
+            "url": "https://github.com/Genymobile/scrcpy/releases/download/v2.3.1/scrcpy-win32-v2.3.1.zip",
+            "hash": "5dffc2d432e9b8b5b0e16f12e71428c37c70d9124cfbe7620df0b41b7efe91ff",
+            "extract_dir": "scrcpy-win32-v2.3.1"
         }
     },
-    "pre_install": "if (Test-Path \"$dir\\adb.exe\") { Remove-Item \"$dir\\adb.exe\" }",
     "bin": [
         "scrcpy.exe",
-        "scrcpy-noconsole.exe"
+        "scrcpy-console.bat"
     ],
     "shortcuts": [
         [
-            "scrcpy-noconsole.exe",
-            "scrcpy"
+            "scrcpy-noconsole.vbs",
+            "scrcpy",
+            "",
+            "scrcpy.exe"
         ]
     ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Genymobile/scrcpy/releases/download/v$version/scrcpy-win64-v$version.zip"
+                "url": "https://github.com/Genymobile/scrcpy/releases/download/v$version/scrcpy-win64-v$version.zip",
+                "extract_dir": "scrcpy-win64-v$version"
             },
             "32bit": {
-                "url": "https://github.com/Genymobile/scrcpy/releases/download/v$version/scrcpy-win32-v$version.zip"
+                "url": "https://github.com/Genymobile/scrcpy/releases/download/v$version/scrcpy-win32-v$version.zip",
+                "extract_dir": "scrcpy-win32-v$version"
             }
         },
         "hash": {

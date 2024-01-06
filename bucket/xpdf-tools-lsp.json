@@ -1,0 +1,58 @@
+{
+    "version": "2011-Aug-15",
+    "description": "All language support packages for xpdf-tools.",
+    "homepage": "https://www.xpdfreader.com",
+    "license": {
+        "identifier": "GPL-2.0-only|GPL-3.0-only",
+        "url": "https://www.xpdfreader.com/opensource.html"
+    },
+    "suggest": {
+        "xpdf-tools": "xpdf-tools"
+    },
+    "url": [
+        "https://dl.xpdfreader.com/xpdf-arabic.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-cyrillic.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-greek.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-hebrew.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-japanese.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-korean.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-latin2.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-chinese-simplified.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-chinese-traditional.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-thai.tar.gz",
+        "https://dl.xpdfreader.com/xpdf-turkish.tar.gz"
+    ],
+    "hash": [
+        "d2214728fa1940bc9b5f78d0b235e885199e999271cee0d540315e53e2583d49",
+        "50bee3b02b34b03b0be3ca8d08c31663f8e89dac934426b7148eba4e92c1f3a6",
+        "aa71214ce2ac26e0495dfb5a19f918ae21380a5c1bd9721ad028cc134bb0d76a",
+        "4e61cd67d1de292b4b8a8abe84790eec461be5f59165c605d004f8331eee88a2",
+        "c7f57c32e1634cf11ebe7cb55ea9d27cc9a55d5e7e54d3de7a662f2a8e56707f",
+        "4e9b0a8ea318ff54bc744aac5471b165344c72831c569f8e928fa55c26bcbfba",
+        "7b6c4b4c39302b043bb1dbb4567af3233901b5692a4c8883f0b3be14b1db49ac",
+        "99a848c3e2b17d6e862aa0d904bac7df3177efe093f07bb2c76b17e09cf6eb1a",
+        "c7b9a71a21bb81cb24078fa67be9ac645501413cd8d20aa589f28160cdf40af2",
+        "a59d81e1e496873058d11f59b7cdf8a8e8dabdb3056edde91e6721e6bd2c678e",
+        "4bce35b85b49c8e2698a2e01bede345b8e2936daf9622f8f2f4287e409e26256"
+    ],
+    "post_install": "Get-ChildItem -Path $dir -Filter 'xpdf-*' | ForEach-Object { Rename-Item -Path $_.FullName -NewName $_.Name.Replace('xpdf-','') }",
+    "checkver": {
+        "url": "https://www.xpdfreader.com/download.html",
+        "regex": "Latin2</a>\\n<small>\\[updated (.+?)]"
+    },
+    "autoupdate": {
+        "url": [
+            "https://dl.xpdfreader.com/xpdf-arabic.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-cyrillic.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-greek.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-hebrew.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-japanese.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-korean.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-latin2.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-chinese-simplified.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-chinese-traditional.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-thai.tar.gz",
+            "https://dl.xpdfreader.com/xpdf-turkish.tar.gz"
+        ]
+    }
+}

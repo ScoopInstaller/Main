@@ -1,21 +1,29 @@
 {
-    "homepage": "https://ddev.readthedocs.io/en/latest/",
+    "version": "1.22.6",
     "description": "An open source tool that makes it simple to get local PHP development environments up and running in minutes",
-    "version": "1.14.1",
+    "homepage": "https://ddev.readthedocs.io/en/latest/",
     "license": "Apache-2.0",
-    "url": "https://github.com/drud/ddev/releases/download/v1.14.1/ddev_windows.v1.14.1.zip",
-    "hash": "33c1c12ef23f76ec0c7f94e6599b1359b08dbe9ef38bb9de541b16fb53460b02",
-    "bin": "ddev.exe",
     "suggest": {
         "docker": "docker-compose"
     },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/drud/ddev/releases/download/v1.22.6/ddev_windows-amd64.v1.22.6.zip",
+            "hash": "a8cd1b8e36f6744763194021219dfd69abf59c8f2fa543a79cec135df813b4ed"
+        }
+    },
+    "bin": "ddev.exe",
     "checkver": {
         "github": "https://github.com/drud/ddev"
     },
     "autoupdate": {
-        "url": "https://github.com/drud/ddev/releases/download/v$version/ddev_windows.v$version.zip",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/drud/ddev/releases/download/v$version/ddev_windows-amd64.v$version.zip"
+            }
+        },
         "hash": {
-            "url": "https://github.com/drud/ddev/releases/download/v$version/ddev_windows.v$version.zip.sha256.txt"
+            "url": "$baseurl/checksums.txt"
         }
     }
 }

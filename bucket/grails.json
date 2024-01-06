@@ -1,23 +1,21 @@
 {
-    "homepage": "https://grails.org/",
+    "version": "5.3.5",
     "description": "A powerful Groovy-based web application framework for the JVM built on top of Spring Boot.",
-    "version": "4.0.3",
+    "homepage": "https://grails.org",
     "license": "Apache-2.0",
-    "url": "https://github.com/grails/grails-core/releases/download/v4.0.3/grails-4.0.3.zip",
-    "hash": "4a1b219451a4a64d0236ad1e1b6e1946ca916258db069c526eb751b1f9dbed80",
-    "extract_dir": "grails-4.0.3",
+    "suggest": {
+        "JDK": "java/openjdk"
+    },
+    "url": "https://github.com/grails/grails-core/releases/download/v5.3.5/grails-5.3.5.zip",
+    "hash": "067b7c1d964cb5aae12e544fcb1dd592c7f3914e7db4eeb17bb18445bd20bc5f",
+    "extract_dir": "grails-5.3.5",
     "bin": "bin\\grails.bat",
     "env_set": {
         "GRAILS_HOME": "$dir"
     },
-    "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
-    },
     "checkver": {
-        "github": "https://github.com/grails/grails-core"
+        "url": "https://api.github.com/repositories/512295/releases",
+        "regex": "/grails-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "url": "https://github.com/grails/grails-core/releases/download/v$version/grails-$version.zip",

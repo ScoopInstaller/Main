@@ -1,42 +1,39 @@
 {
+    "version": "7.94",
+    "description": "Network exploration and security auditing utility.",
     "homepage": "https://nmap.org",
-    "description": "Network exploration and security auditing utility. (includes Npcap)",
-    "version": "7.80",
     "license": {
         "identifier": "GPL-2.0-only",
         "url": "https://github.com/nmap/nmap/blob/master/COPYING"
     },
-    "url": "https://nmap.org/dist/nmap-7.80-setup.exe",
-    "hash": "3b4d726bd366e7439367fa78a186dfa9b641d3b2ad354fd915581b6567480f94",
-    "installer": {
-        "args": [
-            "/S",
-            "/D=$dir"
-        ]
+    "notes": [
+        "Please install 'Npcap' by manually running '$dir\\npcap.exe', otherwise Nmap will not function completely!",
+        "This however requires administrator rights because it will be installed in 'C:\\Program Files',",
+        "(which can be removed through Control Panel) - see https://github.com/ScoopInstaller/Main/pull/466.",
+        "Please import the network performance improvements by running 'regedt32 \"$dir\\nmap_performance.reg\"'",
+        "See: https://nmap.org/book/inst-windows.html"
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2008"
     },
-    "uninstaller": {
-        "file": "Uninstall.exe",
-        "args": "/S"
-    },
+    "url": "https://nmap.org/dist/nmap-7.94-setup.exe#/dl.7z",
+    "hash": "b99c4535e1603a2150e4dd97933b69bfddf23e8cceff5c36606ec0327c6f7193",
+    "pre_install": [
+        "Get-ChildItem \"$dir\\`$PLUGINSDIR\\npcap-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'npcap.exe'",
+        "Move-Item \"$dir\\`$PLUGINSDIR\\npcap.exe\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Recurse"
+    ],
     "bin": [
         "nmap.exe",
         "ncat.exe",
-        "ndiff.exe",
-        "zenmap.exe",
+        "ndiff.bat",
         "nping.exe"
     ],
-    "shortcuts": [
-        [
-            "zenmap.exe",
-            "Nmap - Zenmap GUI"
-        ]
-    ],
-    "notes": "'Npcap' has been installed automatically.",
     "checkver": {
         "url": "https://nmap.org/download.html",
-        "regex": "nmap-([\\d.]+)-setup.exe"
+        "regex": "nmap-([\\d.]+)-setup\\.exe"
     },
     "autoupdate": {
-        "url": "https://nmap.org/dist/nmap-$version-setup.exe"
+        "url": "https://nmap.org/dist/nmap-$version-setup.exe#/dl.7z"
     }
 }

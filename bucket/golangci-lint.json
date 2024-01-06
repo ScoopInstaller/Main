@@ -1,0 +1,46 @@
+{
+    "version": "1.55.2",
+    "description": "Go language linters aggregator",
+    "homepage": "https://golangci-lint.run/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/golangci/golangci-lint/releases/download/v1.55.2/golangci-lint-1.55.2-windows-amd64.zip",
+            "hash": "f57d434d231d43417dfa631587522f8c1991220b43c8ffadb9c7bd279508bf81",
+            "extract_dir": "golangci-lint-1.55.2-windows-amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/golangci/golangci-lint/releases/download/v1.55.2/golangci-lint-1.55.2-windows-386.zip",
+            "hash": "45b442f69fc8915c4500201c0247b7f3f69544dbc9165403a61f9095f2c57355",
+            "extract_dir": "golangci-lint-1.55.2-windows-386"
+        },
+        "arm64": {
+            "url": "https://github.com/golangci/golangci-lint/releases/download/v1.55.2/golangci-lint-1.55.2-windows-arm64.zip",
+            "hash": "fd7dc8f4c6829ee6fafb252a4d81d2155cd35da7833665cbb25d53ce7cecd990",
+            "extract_dir": "golangci-lint-1.55.2-windows-arm64"
+        }
+    },
+    "bin": "golangci-lint.exe",
+    "checkver": {
+        "github": "https://github.com/golangci/golangci-lint"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/golangci/golangci-lint/releases/download/v$version/golangci-lint-$version-windows-amd64.zip",
+                "extract_dir": "golangci-lint-$version-windows-amd64"
+            },
+            "32bit": {
+                "url": "https://github.com/golangci/golangci-lint/releases/download/v$version/golangci-lint-$version-windows-386.zip",
+                "extract_dir": "golangci-lint-$version-windows-386"
+            },
+            "arm64": {
+                "url": "https://github.com/golangci/golangci-lint/releases/download/v$version/golangci-lint-$version-windows-arm64.zip",
+                "extract_dir": "golangci-lint-$version-windows-arm64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/golangci-lint-$version-checksums.txt"
+        }
+    }
+}

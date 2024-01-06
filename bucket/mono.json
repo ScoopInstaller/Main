@@ -1,23 +1,29 @@
 {
-    "version": "6.8.0.105",
+    "version": "6.12.0.199",
     "description": "Cross platform, open source .NET framework.",
     "homepage": "https://www.mono-project.com/",
     "license": "MIT",
+    "suggest": {
+        "vcredist": [
+            "extras/vcredist2013",
+            "extras/vcredist2022"
+        ]
+    },
     "architecture": {
         "64bit": {
-            "url": "https://download.mono-project.com/archive/6.8.0/windows-installer/mono-6.8.0.105-x64-0.msi",
-            "hash": "dcbe043636f44623e397e43c8a552789cc747959bfcfbc202556cb6f32b47f1c"
+            "url": "https://download.mono-project.com/archive/6.12.0/windows-installer/mono-6.12.0.199-x64-0.msi",
+            "hash": "d3d103f56238c421a34d3cb17f5377139b1c075521024bb71da4aafefe4fba6d"
         },
         "32bit": {
-            "url": "https://download.mono-project.com/archive/6.8.0/windows-installer/mono-6.8.0.105-gtksharp-2.12.45-win32-0.msi",
-            "hash": "2e9431255d103bd63124fa43bd3a1b0f5a73f1dafb3e2fce5c102b2329b0be39"
+            "url": "https://download.mono-project.com/archive/6.12.0/windows-installer/mono-6.12.0.199-gtksharp-2.12.45-win32-0.msi",
+            "hash": "6eceda58480e87c097193969a2e5442ed7fd1134291a03fcfe525705a836a680"
         }
     },
     "extract_dir": "Mono",
     "env_add_path": "bin",
     "checkver": {
         "url": "http://www.mono-project.com/download/stable/",
-        "re": "(?<short>[\\d.]+)/windows-installer/(?<file>mono-(?<version>[\\d.]+).*win32.*).msi"
+        "regex": "(?<short>[\\d.]+)/windows-installer/(?<file>mono-(?<version>[\\d.]+).*win32.*)\\.msi"
     },
     "autoupdate": {
         "architecture": {
@@ -28,11 +34,5 @@
                 "url": "https://download.mono-project.com/archive/$matchShort/windows-installer/$matchFile.msi"
             }
         }
-    },
-    "suggest": {
-        "vcredist": [
-            "extras/vcredist2013",
-            "extras/vcredist2015"
-        ]
     }
 }

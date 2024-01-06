@@ -1,36 +1,26 @@
 {
+    "version": "6.2.6",
+    "description": "Advanced password recovery tool",
     "homepage": "https://hashcat.net/hashcat/",
-    "description": "Advanced password recovery tool.",
     "license": "MIT",
-    "version": "5.1.0",
-    "url": "https://hashcat.net/files/hashcat-5.1.0.7z",
-    "extract_dir": "hashcat-5.1.0",
     "architecture": {
         "64bit": {
-            "bin": [
-                [
-                    "hashcat64.exe",
-                    "hashcat",
-                    ""
-                ]
-            ]
-        },
-        "32bit": {
-            "bin": [
-                [
-                    "hashcat32.exe",
-                    "hashcat",
-                    ""
-                ]
-            ]
+            "url": "https://hashcat.net/files/hashcat-6.2.6.7z",
+            "hash": "96697e9ef6a795d45863c91d61be85a9f138596e3151e7c2cd63ccf48aaa8783"
         }
     },
-    "hash": "d3b98f183be2b676d1d9734ac40d80b79e9b53fac32045636682ca10970c8edb",
+    "extract_dir": "hashcat-6.2.6",
+    "pre_install": "Set-Content -Value \"@echo off`r`npushd $dir`r`nhashcat.exe %*`r`npopd\" -Path \"$dir\\hashcat.cmd\"",
+    "bin": "hashcat.cmd",
     "checkver": {
-        "github": "https://github.com/hashcat/hashcat/"
+        "github": "https://github.com/hashcat/hashcat"
     },
     "autoupdate": {
-        "url": "https://hashcat.net/files/hashcat-$version.7z",
+        "architecture": {
+            "64bit": {
+                "url": "https://hashcat.net/files/hashcat-$version.7z"
+            }
+        },
         "extract_dir": "hashcat-$version"
     }
 }

@@ -1,0 +1,29 @@
+{
+    "version": "0.11.0",
+    "description": "Zig language LSP server",
+    "homepage": "https://github.com/zigtools/zls",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/zigtools/zls/releases/download/0.11.0/zls-x86-windows.zip",
+            "hash": "e10b34a56c5c4c2cb87773c17cba599920c6f6f883d0170eff59fd79098439a2"
+        },
+        "64bit": {
+            "url": "https://github.com/zigtools/zls/releases/download/0.11.0/zls-x86_64-windows.zip",
+            "hash": "ef3ad6e9ec5efedba4f7f20d909fe70da89d2e302fbb06a72e989d54ac54f4b4"
+        }
+    },
+    "bin": "bin\\zls.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/zigtools/zls/releases/download/$version/zls-x86-windows.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/zigtools/zls/releases/download/$version/zls-x86_64-windows.zip"
+            }
+        }
+    }
+}
+

@@ -1,33 +1,32 @@
 {
-    "homepage": "http://www.sbcl.org/",
+    "version": "2.3.2",
     "description": "A high performance Common Lisp compiler.",
-    "version": "2.0.0",
+    "homepage": "https://www.sbcl.org/",
     "license": {
         "identifier": "BSD-3-Clause,MIT,Public Domain",
         "url": "https://sourceforge.net/p/sbcl/sbcl/ci/master/tree/COPYING"
     },
+    "notes": "Please restart your command line for SBCL_HOME to take effect. Please consider installing http://www.quicklisp.org/",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/sbcl/sbcl/2.0.0/sbcl-2.0.0-x86-64-windows-binary.msi",
-            "hash": "sha1:84cabea2267dba00058c24c0b62e865cb5e718b0",
-            "extract_dir": "PFiles\\Steel Bank Common Lisp\\2.0.0"
+            "url": "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.2/sbcl-2.3.2-x86-64-windows-binary.msi",
+            "hash": "sha1:5a217ad84b4a19a724ede3ade64438492defcee5"
         }
     },
+    "extract_dir": "PFiles\\Steel Bank Common Lisp",
+    "bin": "sbcl.exe",
     "env_set": {
         "SBCL_HOME": "$dir"
     },
-    "bin": "sbcl.exe",
     "checkver": {
         "url": "http://www.sbcl.org/platform-table.html",
-        "re": "sbcl-([\\d.]+)-x86-64-windows"
+        "regex": "sbcl-([\\d.]+)-x86-64-windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/sbcl/sbcl/$version/sbcl-$version-x86-64-windows-binary.msi",
-                "extract_dir": "PFiles\\Steel Bank Common Lisp\\$version"
+                "url": "https://downloads.sourceforge.net/project/sbcl/sbcl/$version/sbcl-$version-x86-64-windows-binary.msi"
             }
         }
-    },
-    "notes": "Please restart your command line for SBCL_HOME to take effect. Please consider installing http://www.quicklisp.org/"
+    }
 }

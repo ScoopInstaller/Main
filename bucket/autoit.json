@@ -1,17 +1,22 @@
 {
-    "homepage": "https://www.autoitscript.com/site/autoit/",
+    "version": "3.3.16.1",
     "description": "Scripting language designed for automating the Windows GUI and general scripting",
+    "homepage": "https://www.autoitscript.com/site/autoit/",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.autoitscript.com/autoit3/docs/license.htm"
     },
-    "version": "3.3.14.5",
-    "url": "https://www.autoitscript.com/files/autoit3/autoit-v3.zip",
-    "hash": "df9a20022998c7ac11af23fc69f5d42698ed187b4d03b75fa911570c648d9642",
-    "extract_dir": "install",
     "suggest": {
+        "vcredist": [
+            "extras/vcredist2005",
+            "extras/vcredist2008",
+            "extras/vcredist2022"
+        ],
         "AutoIt Script Editor": "extras/autoit-script-editor"
     },
+    "url": "https://www.autoitscript.com/files/autoit3/autoit-v3.zip",
+    "hash": "8b7098c44275d0203c23f2ce56c0e913c0d6b6d2264bc537e8a9f0a9f07badc9",
+    "extract_dir": "install",
     "architecture": {
         "64bit": {
             "bin": [
@@ -82,7 +87,7 @@
     ],
     "checkver": {
         "url": "https://www.autoitscript.com/site/autoit/downloads/",
-        "re": "<td>v([\\d.]+)</td>"
+        "regex": "<td>v([\\d.]+)</td>"
     },
     "autoupdate": {
         "url": "https://www.autoitscript.com/files/autoit3/autoit-v3.zip"

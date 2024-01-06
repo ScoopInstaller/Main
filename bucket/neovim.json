@@ -1,22 +1,21 @@
 {
-    "homepage": "https://neovim.io/",
-    "version": "0.4.3",
+    "version": "0.9.5",
     "description": "Vim-fork focused on extensibility and usability",
+    "homepage": "https://neovim.io/",
     "license": {
         "identifier": "Apache-2.0,Vim",
         "url": "https://github.com/neovim/neovim/blob/master/LICENSE"
     },
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-win64.zip",
-            "hash": "549fd985e3e6207dc3d52d17fb2bc7957adc264f20b525fc7e62f8dc8c597931"
-        },
-        "32bit": {
-            "url": "https://github.com/neovim/neovim/releases/download/v0.4.3/nvim-win32.zip",
-            "hash": "4f63f55697afaf4d9f82204768fd7ad3e98cc554f2745afd4a160d50a63d1025"
+            "url": "https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-win64.zip",
+            "hash": "de6dc1f0edb45f5f225ee24ce80a4fcbc3a337932037e98ae143975fca2556bf"
         }
     },
-    "extract_dir": "Neovim",
+    "extract_dir": "nvim-win64",
     "bin": [
         "bin\\nvim.exe",
         "bin\\nvim-qt.exe"
@@ -28,19 +27,19 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/neovim/neovim"
+        "url": "https://api.github.com/repositories/16408992/releases/latest",
+        "jsonpath": "$.body",
+        "regex": "NVIM v(?<majorVersion>[\\w.-]+)\\.(?<minorVersion>[\\w.-]+)\\.(?<patchVersion>[\\w.-]+)",
+        "replace": "${majorVersion}.${minorVersion}.${patchVersion}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/neovim/neovim/releases/download/v$version/nvim-win64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/neovim/neovim/releases/download/v$version/nvim-win32.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
         }
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2015"
     }
 }

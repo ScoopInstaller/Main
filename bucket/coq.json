@@ -1,43 +1,49 @@
 {
-    "homepage": "https://coq.inria.fr/",
+    "version": "2023.03.0",
     "description": "A formal proof management system. It provides a formal language to write mathematical definitions, executable algorithms and theorems together with an environment for semi-interactive development of machine-checked proofs.",
-    "version": "8.11.1",
-    "license": "LGPL-2.1-only",
+    "homepage": "https://coq.inria.fr/",
+    "license": {
+        "identifier": "Proprietary, LGPL-2.1-only, LGPL-3.0-or-later, MIT, GPL-2.0-only, BSD-2-Clause-FreeBSD, CECILL-C, BSD-3-Clause, CECILL-B, ...",
+        "url": "https://github.com/AbsInt/CompCert/blob/master/LICENSE"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/coq/coq/releases/download/V8.11.1/coq-8.11.1-installer-windows-x86_64.exe#/dl.7z",
-            "hash": "6b87c855395da2eeb8a703e762e0917016d91385b0e7c3a7508ed2c1aa24f26f"
+            "url": "https://github.com/coq/platform/releases/download/2023.03.0/Coq-Platform-release-2023.03.0-version.8.17.2023.08-Windows-x86_64.exe#/dl.7z",
+            "hash": "df421f69e452e5485e6839106f7dbfb997bc43865b7542d3afdf38dfd7e5a738"
         },
         "32bit": {
-            "url": "https://github.com/coq/coq/releases/download/V8.11.1/coq-8.11.1-installer-windows-i686.exe#/dl.7z",
-            "hash": "938f47bdecbff46ba7d6bcf4f457d73b4b4326f763a46bf7a283d78e4af9e782"
+            "url": "https://github.com/coq/platform/releases/download/2023.03.0/Coq-Platform-release-2023.03.0-version.8.17.2023.08-Windows-i686.exe#/dl.7z",
+            "hash": "64fb34373db4eb06d820954f2b4a39f2ad606da2e664b3f4228c83bd43029af7"
         }
     },
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse -Force",
     "bin": [
         "bin\\coqtop.exe",
         "bin\\coqc.exe",
-        "bin\\coqchk.exe"
+        "bin\\coqchk.exe",
+        "bin\\coqidetop.opt.exe"
     ],
-    "env_set": {
-        "COQBIN": "bin"
-    },
     "shortcuts": [
         [
             "bin\\coqide.exe",
             "CoqIDE"
         ]
     ],
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe.nsis\" -Recurse -Force",
+    "env_set": {
+        "COQBIN": "bin"
+    },
     "checkver": {
-        "github": "https://github.com/coq/coq"
+        "url": "https://api.github.com/repositories/212040108/releases/latest",
+        "regex": "Coq-Platform-release-([\\d.]+)-version.(?<coqver>[\\d.]+)-Windows-x86_64.exe",
+        "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/coq/coq/releases/download/V$version/coq-$version-installer-windows-x86_64.exe#/dl.7z"
+                "url": "https://github.com/coq/platform/releases/download/$version/Coq-Platform-release-$version-version.$matchCoqver-Windows-x86_64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://github.com/coq/coq/releases/download/V$version/coq-$version-installer-windows-i686.exe#/dl.7z"
+                "url": "https://github.com/coq/platform/releases/download/$version/Coq-Platform-release-$version-version.$matchCoqver-Windows-i686.exe#/dl.7z"
             }
         }
     }

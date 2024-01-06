@@ -1,16 +1,16 @@
 {
-    "version": "2.94",
+    "version": "4.0.5",
+    "description": "A fast, easy, and free BitTorrent client.",
     "homepage": "https://transmissionbt.com/",
     "license": "GPL-2.0-only|GPL-3.0-only",
-    "description": "A fast, easy, and free BitTorrent client.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/transmission/transmission-releases/raw/master/transmission-2.94-x64.msi",
-            "hash": "a35672252661f16382072fd0ae87b8eafd47f5535439336fe2f161a542f9a1ab"
+            "url": "https://github.com/transmission/transmission/releases/download/4.0.5/transmission-4.0.5-x64.msi",
+            "hash": "a698a6b39abf307c72f3a9152f320e290dc967927821161521f1460db74d7654"
         },
         "32bit": {
-            "url": "https://github.com/transmission/transmission-releases/raw/master/transmission-2.94-x86.msi",
-            "hash": "9083bed824d707e8791f53811aaa88def8047d40f221a8e823571c103cf3aff6"
+            "url": "https://github.com/transmission/transmission/releases/download/4.0.5/transmission-4.0.5-x86.msi",
+            "hash": "416f6d6fd96b7481c9cf75a89ba66d61a0d9c1237703bad799e5574404cf6b14"
         }
     },
     "extract_dir": "PFiles\\Transmission",
@@ -27,19 +27,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/transmission/transmission-releases/raw/master/transmission-$version-x64.msi",
-                "hash": {
-                    "url": "https://raw.githubusercontent.com/transmission/transmission.github.io/master/includes/js/constants.js",
-                    "regex": "sha256_msi64: \"$sha256\""
-                }
+                "url": "https://github.com/transmission/transmission/releases/download/$version/transmission-$version-x64.msi"
             },
             "32bit": {
-                "url": "https://github.com/transmission/transmission-releases/raw/master/transmission-$version-x86.msi",
-                "hash": {
-                    "url": "https://raw.githubusercontent.com/transmission/transmission.github.io/master/includes/js/constants.js",
-                    "regex": "sha256_msi32: \"$sha256\""
-                }
+                "url": "https://github.com/transmission/transmission/releases/download/$version/transmission-$version-x86.msi"
             }
+        },
+        "hash": {
+            "url": "https://transmissionbt.com/download",
+            "regex": "$sha256</a>  $basename"
         }
     }
 }

@@ -1,0 +1,41 @@
+{
+    "version": "1.13.1",
+    "description": "A cross-platform command-line tool to convert images into ascii art and print them on the console. Now supports braille art!",
+    "homepage": "https://github.com/TheZoraiz/ascii-image-converter/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.1/ascii-image-converter_Windows_amd64_64bit.zip",
+            "hash": "f1695fe93fafaf44b23ccc8470a4cdd4f60dba4ec8d04be5c17bffc7c8324e9b",
+            "extract_dir": "ascii-image-converter_Windows_amd64_64bit"
+        },
+        "32bit": {
+            "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.1/ascii-image-converter_Windows_i386_32bit.zip",
+            "hash": "9c395f8a4f38bc4070deb7c1c3d732f3dd0e092248c19e31ea3f55c074fd3787",
+            "extract_dir": "ascii-image-converter_Windows_i386_32bit"
+        },
+        "arm64": {
+            "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.1/ascii-image-converter_Windows_arm64_64bit.zip",
+            "hash": "4a4f27f3aeda9ab5d71c91c77c82ac7c9ff9050ebeaaab67e417ee87454d9152",
+            "extract_dir": "ascii-image-converter_Windows_arm64_64bit"
+        }
+    },
+    "bin": "ascii-image-converter.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_amd64_64bit.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_i386_32bit.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_arm64_64bit.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256_checksums.txt"
+        }
+    }
+}

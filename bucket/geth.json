@@ -1,0 +1,46 @@
+{
+    "version": "1.13.8",
+    "description": "Official Go implementation of the Ethereum protocol",
+    "homepage": "https://geth.ethereum.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-amd64-1.13.8-b20b4a71.zip",
+            "hash": "md5:bfb3f834240fd4ba2e2b7d72d8eabae0",
+            "extract_dir": "geth-alltools-windows-amd64-1.13.8-b20b4a71"
+        },
+        "32bit": {
+            "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-386-1.13.8-b20b4a71.zip",
+            "hash": "md5:3e4b968a82ca6ce5d6a0e6082718b25c",
+            "extract_dir": "geth-alltools-windows-386-1.13.8-b20b4a71"
+        }
+    },
+    "bin": [
+        "abigen.exe",
+        "bootnode.exe",
+        "clef.exe",
+        "evm.exe",
+        "geth.exe",
+        "rlpdump.exe"
+    ],
+    "checkver": {
+        "url": "https://github.com/ethereum/go-ethereum/releases/latest",
+        "regex": "(?sm)/tree/v([\\d.]+).*?/commit/(?<sha>[a-z\\d]{8})"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-amd64-$version-$matchSha.zip",
+                "extract_dir": "geth-alltools-windows-amd64-$version-$matchSha"
+            },
+            "32bit": {
+                "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-386-$version-$matchSha.zip",
+                "extract_dir": "geth-alltools-windows-386-$version-$matchSha"
+            }
+        },
+        "hash": {
+            "url": "https://gethstore.blob.core.windows.net/builds?restype=container&comp=list&maxresults=5&prefix=$basename",
+            "regex": "$basename.*?Content-MD5>$base64<"
+        }
+    }
+}

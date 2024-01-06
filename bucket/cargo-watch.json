@@ -1,0 +1,37 @@
+{
+    "version": "8.5.2",
+    "description": "Watches over your Cargo project's source. ",
+    "homepage": "https://watchexec.github.io/#cargo-watch",
+    "license": "CC0-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/watchexec/cargo-watch/releases/download/v8.5.2/cargo-watch-v8.5.2-x86_64-pc-windows-msvc.zip",
+            "hash": "sha512:9c982a3ce70aab3845b08cdd323a5a384107e7a17f8d8f30ad0e4e27ebdd930612745c3742340f3501b49dd5a2f4c47088138537d1790ec97f2bcb7aee4c710b",
+            "extract_dir": "cargo-watch-v8.5.2-x86_64-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/watchexec/cargo-watch/releases/download/v8.5.2/cargo-watch-v8.5.2-aarch64-pc-windows-msvc.zip",
+            "hash": "sha512:accf93d88462fcc392b8f7e0646f967541de12a4def07ee1a6d4cca653134abcd884a020b3ce7f94361eaddbb33e2db1db3b4346bcfd84886ef4fc0ea00f77a6",
+            "extract_dir": "cargo-watch-v8.5.2-aarch64-pc-windows-msvc"
+        }
+    },
+    "bin": "cargo-watch.exe",
+    "checkver": {
+        "github": "https://github.com/watchexec/cargo-watch"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/watchexec/cargo-watch/releases/download/v$version/cargo-watch-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "cargo-watch-v$version-x86_64-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://github.com/watchexec/cargo-watch/releases/download/v$version/cargo-watch-v$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "cargo-watch-v$version-aarch64-pc-windows-msvc"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA512SUMS"
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "version": "1.0.4",
+    "description": "Resource monitor that shows usage and stats for processor, memory, disks, network, processes and services (LibreHardwareMonitor version with full monitoring capabilities).",
+    "homepage": "https://github.com/aristocratos/btop4win",
+    "license": "Apache-2.0",
+    "notes": "This application requires admin rights to run.",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aristocratos/btop4win/releases/download/v1.0.4/btop4win-LHM-x64.zip",
+            "hash": "9e0b5716fa89a2a333e370beb97060d261952ab5de597d3678fbdace49626ae1"
+        }
+    },
+    "extract_dir": "btop4win",
+    "pre_install": [
+        "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
+        "if (!(Test-Path \"$persist_dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "sc.exe stop R0btop | Out-Null"
+    ],
+    "persist": [
+        "themes",
+        "btop.conf"
+    ],
+    "bin": "btop.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aristocratos/btop4win/releases/download/v$version/btop4win-LHM-x64.zip"
+            }
+        }
+    }
+}

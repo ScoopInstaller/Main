@@ -1,35 +1,35 @@
 {
-    "homepage": "https://nodejs.org",
+    "version": "20.10.0",
     "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications. (Long Term Support)",
-    "version": "12.16.3",
+    "homepage": "https://nodejs.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://nodejs.org/dist/v12.16.3/node-v12.16.3-win-x64.7z",
-            "hash": "743962e097d40383fac3c2e727251400e60185b294dad2a894dbce3687710f10",
-            "extract_dir": "node-v12.16.3-win-x64"
+            "url": "https://nodejs.org/dist/v20.10.0/node-v20.10.0-win-x64.7z",
+            "hash": "4d0f27ec72103f67eb904e7c17d2b7fb99816957b1cff9df1bd82a6507f1f265",
+            "extract_dir": "node-v20.10.0-win-x64"
         },
         "32bit": {
-            "url": "https://nodejs.org/dist/v12.16.3/node-v12.16.3-win-x86.7z",
-            "hash": "bbb46883746012693d6a4002281a62b5b401db0fb1961701e8e5b69f0b4c346b",
-            "extract_dir": "node-v12.16.3-win-x86"
+            "url": "https://nodejs.org/dist/v20.10.0/node-v20.10.0-win-x86.7z",
+            "hash": "567da0e16ac2f06757c735f14689b1a38ff38bb24df53561ada9ab71c9ba1f79",
+            "extract_dir": "node-v20.10.0-win-x86"
         }
     },
-    "persist": [
-        "bin",
-        "cache"
-    ],
-    "env_add_path": [
-        ".",
-        "bin"
-    ],
     "post_install": [
         "# Set npm prefix to install modules inside bin and npm cache so they persist",
         "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
     ],
+    "env_add_path": [
+        "bin",
+        "."
+    ],
+    "persist": [
+        "bin",
+        "cache"
+    ],
     "checkver": {
         "url": "https://nodejs.org/en/download/",
-        "re": "LTS Version: <strong>([\\d.]+)</strong>"
+        "regex": "LTS Version.*: <strong>([\\d.]+)</strong>"
     },
     "autoupdate": {
         "architecture": {

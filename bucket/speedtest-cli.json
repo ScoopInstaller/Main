@@ -1,6 +1,6 @@
 {
-    "version": "1.0.0",
-    "description": "Internet connection speed and performance tester.",
+    "version": "1.2.0",
+    "description": "Internet connection speed and performance tester",
     "homepage": "https://www.speedtest.net/apps/cli",
     "license": {
         "identifier": "Freeware",
@@ -8,21 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.bintray.com/ookla/download/ookla-speedtest-1.0.0-win64.zip",
-            "hash": "64054a021dd7d49e618799a35ddbc618dcfc7b3990e28e513a420741717ac1ad"
+            "url": "https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-win64.zip",
+            "hash": "13e3d888b845d301a556419e31f14ab9bff57e3f06089ef2fd3bdc9ba6841efa"
         }
     },
     "bin": "speedtest.exe",
-    "checkver": {
-        "regex": "speedtest-([\\d.]+)-win64.zip"
-    },
+    "checkver": "speedtest-([\\d.]+)-win64\\.zip",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.bintray.com/ookla/download/ookla-speedtest-$version-win64.zip",
-                "hash": {
-                    "url": "$url.sha256"
-                }
+                "url": "https://install.speedtest.net/app/cli/ookla-speedtest-$version-win64.zip"
             }
         }
     }

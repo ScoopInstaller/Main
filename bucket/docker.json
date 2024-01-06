@@ -1,40 +1,33 @@
 {
-    "version": "19.03.1",
+    "version": "24.0.7",
+    "description": "Docker CLI & Docker Engine for Windows containers. Docker is an open platform for developing, shipping, and running applications.",
+    "homepage": "https://docs.docker.com/engine",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/docker/toolbox/releases/download/v19.03.1/DockerToolbox-19.03.1.exe",
-            "hash": "bf39c167f1c2bfc18651c5ebcbc2deb044119dc527f49f3b0c1012c4fe8e9768"
+            "url": "https://download.docker.com/win/static/stable/x86_64/docker-24.0.7.zip",
+            "hash": "f958dbf13d4dbe7ab14d421c0de03c4c4d3c3565dcd04e1163a49a98bf99c6ee"
         }
     },
-    "homepage": "https://docker.com",
-    "description": "Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.",
-    "innosetup": true,
-    "post_install": "rm -r \"$dir\\installers\"",
+    "extract_dir": "docker",
     "bin": [
         "docker.exe",
-        "docker-compose.exe",
-        "docker-machine.exe"
-    ],
-    "shortcuts": [
-        [
-            "kitematic\\Kitematic.exe",
-            "Kitematic"
-        ]
+        "dockerd.exe"
     ],
     "checkver": {
-        "github": "https://github.com/docker/toolbox",
-        "re": "/releases/tag/(?:v)?([\\d\\w.-]+)"
+        "github": "https://github.com/moby/moby"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/docker/toolbox/releases/download/v$version/DockerToolbox-$version.exe"
+                "url": "https://download.docker.com/win/static/stable/x86_64/docker-$version.zip"
             }
-        },
-        "hash": {
-            "url": "$baseurl/sha256sum.txt",
-            "find": "([a-fA-F0-9]{64})\\s+DockerToolbox.exe"
         }
-    }
+    },
+    "notes": [
+        "The 'dockerd' binary here only supports running Windows containers.",
+        "However it is possible to connect to existing Linux containers using the 'docker' binary",
+        "To register Docker as a service, run `dockerd --register-service`",
+        "Similarly, to unregister, run `dockerd --unregister-service`"
+    ]
 }

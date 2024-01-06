@@ -1,31 +1,28 @@
 {
-    "homepage": "https://maven.apache.org/",
-    "version": "3.6.3",
-    "license": "Apache-2.0",
+    "version": "3.9.6",
     "description": "Software project management and comprehension tool",
-    "url": "https://www.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip",
-    "hash": "sha512:1c095ed556eda06c6d82fdf52200bc4f3437a1bab42387e801d6f4c56e833fb82b16e8bf0aab95c9708de7bfb55ec27f653a7cf0f491acebc541af234eded94d",
-    "extract_dir": "apache-maven-3.6.3",
-    "env_add_path": "bin",
+    "homepage": "https://maven.apache.org/",
+    "license": "Apache-2.0",
     "suggest": {
-        "JDK": [
-            "java/oraclejdk",
-            "java/openjdk"
-        ]
+        "JDK": "java/openjdk"
     },
-    "checkver": {
-        "url": "https://maven.apache.org/docs/history.html",
-        "re": "<b>([\\d.]+)</b>"
-    },
-    "autoupdate": {
-        "url": "https://www.apache.org/dist/maven/maven-$majorVersion/$version/binaries/apache-maven-$version-bin.zip",
-        "extract_dir": "apache-maven-$version",
-        "hash": {
-            "url": "$url.sha512"
-        }
-    },
+    "url": "https://archive.apache.org/dist/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip",
+    "hash": "sha512:0eb0432004a91ebf399314ad33e5aaffec3d3b29279f2f143b2f43ade26f4db7bd1c0f08e436e9445ac6dc4a564a2945d13072a160ae54a930e90581284d6461",
+    "extract_dir": "apache-maven-3.9.6",
+    "env_add_path": "bin",
     "persist": [
         "conf",
-        "lib/ext"
-    ]
+        "lib\\ext"
+    ],
+    "checkver": {
+        "url": "https://maven.apache.org/docs/history.html",
+        "regex": "<b>([\\d.]+)</b>"
+    },
+    "autoupdate": {
+        "url": "https://archive.apache.org/dist/maven/maven-$majorVersion/$version/binaries/apache-maven-$version-bin.zip",
+        "hash": {
+            "url": "$url.sha512"
+        },
+        "extract_dir": "apache-maven-$version"
+    }
 }

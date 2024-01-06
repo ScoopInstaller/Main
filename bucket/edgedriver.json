@@ -1,24 +1,29 @@
 {
+    "version": "120.0.2210.91",
+    "description": "Close the loop on your developer cycle by automating testing of your website in Microsoft Edge (Chromium).",
     "homepage": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver",
-    "version": "84.0.505.0",
     "license": {
         "identifier": "Freeware",
-        "url": "https://az813057.vo.msecnd.net/webdriver/license.html"
+        "url": "https://msedgedriver.azureedge.net/EULA"
     },
-    "description": "Close the loop on your developer cycle by automating testing of your website in Microsoft Edge (Chromium).",
+    "notes": "For legacy (EdgeHTML) version, see 'versions/edgedriver-legacy'.",
     "architecture": {
         "64bit": {
-            "url": "https://msedgedriver.azureedge.net/84.0.505.0/edgedriver_win64.zip",
-            "hash": "891e4fb20417a1b6ddc57388f145c96fc2844e2e6816574491ee7645bdc7a43b"
+            "url": "https://msedgedriver.azureedge.net/120.0.2210.91/edgedriver_win64.zip",
+            "hash": "61ad9a87d34aabcd1dce8e207d70748bdbd4c85aa311c29137351a3199a71f13"
         },
         "32bit": {
-            "url": "https://msedgedriver.azureedge.net/84.0.505.0/edgedriver_win32.zip",
-            "hash": "b5ca1b357e066939c843d854263978c16326d2937d7ed6628f188b25672438d7"
+            "url": "https://msedgedriver.azureedge.net/120.0.2210.91/edgedriver_win32.zip",
+            "hash": "4345cc2f6adbe7a7ec059ee41734a56b97dbe8e69c5c26569aff9ed57de02097"
+        },
+        "arm64": {
+            "url": "https://msedgedriver.azureedge.net/120.0.2210.91/edgedriver_arm64.zip",
+            "hash": "e06da7b31d617985df446474618d85c88adedfc1f089938cc54a24f566fac50d"
         }
     },
     "bin": "msedgedriver.exe",
     "checkver": {
-        "url": "https://msedgedriver.azureedge.net/LATEST_CANARY",
+        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_STABLE).Content))",
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
@@ -28,8 +33,10 @@
             },
             "32bit": {
                 "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win32.zip"
+            },
+            "arm64": {
+                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_arm64.zip"
             }
         }
-    },
-    "notes": "For legacy (EdgeHTML) version, see 'versions/edgedriver-legacy'."
+    }
 }

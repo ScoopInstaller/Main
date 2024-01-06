@@ -1,35 +1,32 @@
 {
+    "version": "2.7.5",
+    "description": "Scalable datastore for metrics, events, and real-time analytics.",
     "homepage": "https://www.influxdata.com/",
     "license": "MIT",
-    "version": "1.8.0",
-    "description": "Scalable datastore for metrics, events, and real-time analytics.",
+    "notes": [
+        "InfluxDB v1 has been moved to 'Versions' bucket, use 'scoop install versions/influxdb1' to install it.",
+        "For CLI, please install 'influx'."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/influxdb/releases/influxdb-1.8.0_windows_amd64.zip",
-            "hash": "77d954dd8dcd3ca7b312913fc670b14c0cfb2bd3b171f105fae2f451c9518752",
-            "extract_dir": "influxdb-1.8.0-1"
+            "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-2.7.5-windows.zip",
+            "hash": "93fc7c675bf7830c7b6a1108ae149ec45852eb6c771765583d4a5825c7cfaeac"
         }
     },
-    "persist": "influxdb.conf",
-    "bin": [
-        "influx.exe",
-        "influx_inspect.exe",
-        "influx_stress.exe",
-        "influx_tsm.exe",
-        "influxd.exe"
-    ],
+    "bin": "influxd.exe",
     "checkver": {
-        "url": "https://portal.influxdata.com/downloads",
-        "re": ">InfluxDB v([\\d.]+)<"
+        "url": "https://portal.influxdata.com/versions.json",
+        "jsonpath": "$.influxdb2.version",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/influxdb/releases/influxdb-$version_windows_amd64.zip",
+                "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-$version-windows.zip",
                 "hash": {
-                    "url": "$url.sha256"
-                },
-                "extract_dir": "influxdb-$version-1"
+                    "url": "https://portal.influxdata.com/versions.json",
+                    "jsonpath": "$.influxdb2.downloads[?(@.platform =~ /^Windows/)].sha256"
+                }
             }
         }
     }

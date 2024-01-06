@@ -1,24 +1,41 @@
 {
-    "homepage": "http://www.greenwoodsoftware.com/less/",
+    "version": "643",
     "description": "A terminal pager program used to view (but not change) the contents of a text file one screen at a time, similar to the 'more' command.",
-    "version": "551",
+    "homepage": "https://www.greenwoodsoftware.com/less/",
     "license": "GPL-3.0-only|BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jftuga/less-Windows/releases/download/less-v643/less-x64.zip",
+            "hash": "5eea8dac16352e0887ecb38a8a01e536faa02887c2538e0690f12c551364242f"
+        },
+        "32bit": {
+            "url": "https://github.com/jftuga/less-Windows/releases/download/less-v643/less-x86.zip",
+            "hash": "782d86fa52ad73109ea5823e7c12ae335165e180e804d8567e381e7e9ab284bf"
+        },
+        "arm64": {
+            "url": "https://github.com/jftuga/less-Windows/releases/download/less-v643/less-arm64.zip",
+            "hash": "43520dce3fc88944f47677af4a82fbd82ed53594c7e6d6db74aa0bee9844abea"
+        }
+    },
     "bin": [
         "less.exe",
         "lesskey.exe"
     ],
     "checkver": {
-        "url": "https://www.guysalias.tk/misc/less/",
-        "re": "less-([\\d]+)-"
+        "github": "https://github.com/jftuga/less-Windows",
+        "regex": "tag/less-v([\\d.]+)"
     },
-    "extract_dir": "less-551-win32-static-x86",
-    "hash": "8ec4eb52b6f8cedf48d18491fd161ea9039ba40fdbd8fb466aa978c55cf5a372",
-    "url": "https://raw.githubusercontent.com/ScoopInstaller/Binary/master/less/less-551-win32-static-x86.7z",
     "autoupdate": {
-        "extract_dir": "less-$version-win32-static-x86",
-        "url": "https://www.guysalias.tk/misc/less/less-$version-win32-static-x86.7z",
-        "hash": {
-            "url": "$url.sha256"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less-x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jftuga/less-Windows/releases/download/less-v$version/less-arm64.zip"
+            }
         }
     }
 }

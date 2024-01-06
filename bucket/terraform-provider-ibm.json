@@ -1,29 +1,33 @@
 {
-    "homepage": "https://ibm-cloud.github.io/tf-ibm-docs/",
-    "license": "MPL-2.0",
-    "version": "1.5.1",
+    "version": "1.61.0",
     "description": "The IBM Cloud provider is used to manage provisioning and orchestration of IBM Cloud resources with the Terraform provisioning engine",
+    "homepage": "https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform/",
+    "license": "MPL-2.0",
+    "depends": "versions/terraform011",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v1.5.1/windows_amd64.zip",
-            "hash": "7e41ea8ec068c3f475f12c5fb03bac26f300019db88c0768ad2d590751453dbd",
+            "url": "https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v1.61.0/terraform-provider-ibm_1.61.0_windows_amd64.zip",
+            "hash": "2d0f22d036bee35477c4078c8c34d741ea5dc2dd4cce2b8eff7e8f212f31334d",
             "installer": {
-                "script": "Copy-Item -Force \"$dir\\terraform-provider-ibm_v$version.exe\" \"$Env:APPDATA\\terraform.d\\plugins\\windows_amd64\""
+                "script": "Copy-Item -Force \"$dir\\terraform-provider-ibm_v$version.exe\" \"$env:APPDATA\\terraform.d\\plugins\\windows_amd64\""
             },
             "uninstaller": {
-                "script": "Remove-Item -Force \"$Env:APPDATA\\terraform.d\\plugins\\windows_amd64\\terraform-provider-ibm_v$version.exe\""
+                "script": "Remove-Item \"$env:APPDATA\\terraform.d\\plugins\\windows_amd64\\terraform-provider-ibm_v$version.exe\" -Force"
             }
         }
     },
-    "depends": "versions/terraform011",
     "checkver": {
-        "github": "https://github.com/IBM-Cloud/terraform-provider-ibm"
+        "url": "https://api.github.com/repositories/94801963/releases",
+        "regex": "releases/download/v([\\d.]+)/"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v$version/windows_amd64.zip"
+                "url": "https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v$version/terraform-provider-ibm_$version_windows_amd64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/terraform-provider-ibm_$version_SHA256SUMS"
         }
     }
 }

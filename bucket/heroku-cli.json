@@ -1,23 +1,23 @@
 {
-    "version": "7.40.0",
-    "homepage": "https://devcenter.heroku.com/articles/heroku-cli",
+    "version": "7.69.1",
     "description": "An essential part of using Heroku, which can perform nearly any Heroku-related task right from your terminal.",
+    "homepage": "https://devcenter.heroku.com/articles/heroku-cli",
     "license": "ISC",
     "architecture": {
         "64bit": {
             "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz",
-            "hash": "d7bf3f7e4e07975fbbf153d416fc817432f94fe59cc2da6c70dfc09cf00a24f6"
+            "hash": "5eeeb5a751dcd33b0b75bdd9f703da84a49aa02d015a165382d4575174a41a70"
         },
         "32bit": {
             "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz",
-            "hash": "7ea216dedcf0b37128a5341578711200358368882ec43814787f89bd474cb79e"
+            "hash": "a576a4f59b6239907b085929071e801b4f4076dec342252275bb6b0122c1eaa4"
         }
     },
     "pre_install": [
         "Invoke-ExternalCommand (Get-HelperPath '7zip') -ArgumentList @(",
         "    'x'",
         "    \"$dir\\dl\"",
-        "    \"-o`\"$dir\\dlo`\"\"",
+        "    \"-o$dir\\dlo\"",
         "    '-bso0'",
         "    '-bd'",
         "    '-bse0'",
