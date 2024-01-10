@@ -15,14 +15,15 @@
     "pre_install": [
         "Rename-Item \"$dir\\cmdline-tools\\cmdline-tools\" -NewName 'latest'",
         "# For `env_add_path`:",
-        "ensure \"$dir\\platform-tools\""
+        "ensure \"$dir\\platform-tools\" | Out-Null"
     ],
     "post_install": [
         "# Persistence",
         "Get-ChildItem \"$persist_dir\\cmdline-tools\" -Exclude 'latest' | Move-Item -Destination \"$dir\\cmdline-tools\" -Force",
         "@('emulator', 'ndk-bundle', 'platform-tools', 'tools') | ForEach-Object {",
         "  if (Test-Path \"$persist_dir\\$_\") {",
-        "    Move-Item \"$persist_dir\\$_\" \"$dir\" -Force",
+        "    ensure \"$dir\\$_\" | Out-Null",
+        "    Move-Item \"$persist_dir\\$_\\*\" \"$dir\\$_\" -Force",
         "  }",
         "}",
         "if (!(Get-Command 'java' -ErrorAction SilentlyContinue)) {",
