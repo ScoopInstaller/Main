@@ -1,0 +1,33 @@
+{
+    "version": "0.4.1",
+    "description": "Terminal-based slideshow tool",
+    "homepage": "https://github.com/mfontanini/presenterm",
+    "license": "BSD-2-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mfontanini/presenterm/releases/download/v0.4.1/presenterm-0.4.1-x86_64-pc-windows-msvc.zip",
+            "hash": "sha512:98ce179cc0cf87675aa96dc336c89868eb8230bed2ca0c284910cf41435abe436ac60c8e8134c5aa50f2d2a118cb1c12752fae703888fe5e2ca90aa6dbc85ca7"
+        },
+        "32bit": {
+            "url": "https://github.com/mfontanini/presenterm/releases/download/v0.4.1/presenterm-0.4.1-i686-pc-windows-msvc.zip",
+            "hash": "sha512:a892f1cc7710f4c792b40e37c0e9b6449dbe5dcac466e0c9d69514d8ade41c53ef47bdde0fef84957c9bd808722a53afbb0d7db5bfb62623cafbae5db54e0910"
+        }
+    },
+    "bin": "presenterm.exe",
+    "checkver": "github",
+    "extract_dir": "presenterm-0.4.1",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mfontanini/presenterm/releases/download/v$version/presenterm-$version-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/mfontanini/presenterm/releases/download/v$version/presenterm-$version-i686-pc-windows-msvc.zip"
+            }
+        },
+        "extract_dir": "presenterm-$version",
+        "hash": {
+            "url": "$url.sha512"
+        }
+    }
+}
