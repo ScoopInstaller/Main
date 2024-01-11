@@ -5,11 +5,13 @@
     "license": "MIT",
     "url": "https://github.com/Microsoft/WinAppDriver/releases/download/v1.2.1/WindowsApplicationDriver_1.2.1.msi",
     "hash": "a76a8f4e44b29bad331acf6b6c248fcc65324f502f28826ad2acd5f3c80857fe",
-    "bin": "Windows Application Driver\\WinAppDriver.exe",
-    "post_install": "mv $dir\\System\\* $dir\\Windows*",
     "env_set": {
         "APPIUM_WAD_PATH": "$dir\\Windows Application Driver\\WinAppDriver.exe"
     },
+    "post_install": [
+        "Move-Item \"$dir\\System\\*\", \"$dir\\Windows Application Driver\\*\" -Destination \"$dir\"",
+        "Remove-Item \"$dir\\System\", \"$dir\\Windows Application Driver\""
+    ],
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/Microsoft/WinAppDriver/releases/download/v$version/WindowsApplicationDriver_$version.msi"
