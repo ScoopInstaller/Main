@@ -10,7 +10,13 @@
         }
     },
     "extract_dir": "hashcat-6.2.6",
-    "pre_install": "Set-Content -Value \"@echo off`r`npushd $dir`r`nhashcat.exe %*`r`npopd\" -Path \"$dir\\hashcat.cmd\"",
+    "persist": "hashcat.potfile",
+    "pre_install": [
+        "Set-Content -Value \"@echo off`r`npushd $dir`r`nhashcat.exe %*`r`npopd\" -Path \"$dir\\hashcat.cmd\"",
+        "# potfile, https://hashcat.net/faq/potfile",
+        "$pot = 'hashcat.potfile'",
+        "if (!(Test-Path \"$persist_dir\\$pot\")) { New-Item \"$dir\\$pot\" }"
+    ],
     "bin": "hashcat.cmd",
     "checkver": {
         "github": "https://github.com/hashcat/hashcat"
