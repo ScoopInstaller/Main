@@ -1,0 +1,49 @@
+{
+    "version": "6842216289",
+    "description": "cc65 - a freeware C compiler for 6502 based systems",
+    "homepage": "https://cc65.github.io/",
+    "license": "zlib-acknowledgement",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/cc65/cc65-snapshot-win64.zip",
+            "hash": "sha1:91269e5230bd50ba3b17f79ea6118a266e6a95ab"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/cc65/cc65-snapshot-win32.zip",
+            "hash": "sha1:5c5049b08f96da682ea5a894b9bb3e866d069ce1"
+        }
+    },
+    "bin": [
+        "bin/ar65.exe",
+        "bin/ca65.exe",
+        "bin/cc65.exe",
+        "bin/chrcvt65.exe",
+        "bin/cl65.exe",
+        "bin/co65.exe",
+        "bin/da65.exe",
+        "bin/grc65.exe",
+        "bin/ld65.exe",
+        "bin/od65.exe",
+        "bin/sim65.exe",
+        "bin/sp65.exe"
+    ],
+    "env_set": {
+        "CC65_HOME": "$dir",
+        "LD65_LIB": "$dir\\lib",
+        "LD65_CFG": "$dir\\cfg"
+    },
+    "checkver": {
+        "url": "https://api.github.com/repositories/8932489/actions/workflows/snapshot-on-push-master.yml/runs?branch=master&status=success",
+        "jsonpath": "$.workflow_runs[0].id"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/cc65/cc65-snapshot-win64.zip"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/cc65/cc65-snapshot-win32.zip"
+            }
+        }
+    }
+}
