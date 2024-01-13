@@ -1,0 +1,36 @@
+{
+    "version": "0.2.1",
+    "description": "Wraps kubectl with colorful output",
+    "homepage": "https://github.com/kubecolor/kubecolor",
+    "license": "MIT",
+    "suggest": {
+        "kubectl": "kubectl"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kubecolor/kubecolor/releases/download/v0.2.1/kubecolor_0.2.1_windows_amd64.zip",
+            "hash": "9876ce28f2c842131dce555db3ccaead5a5510ae3735621162282aed4e84b2fc"
+        },
+        "arm64": {
+            "url": "https://github.com/kubecolor/kubecolor/releases/download/v0.2.1/kubecolor_0.2.1_windows_arm64.zip",
+            "hash": "620ecf1d2bf2705cb14494667785265c66dd2f5afe8dbbfa841507cea1cf30c9"
+        }
+    },
+    "bin": "kubecolor.exe",
+    "checkver": {
+        "github": "https://github.com/kubecolor/kubecolor"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kubecolor/kubecolor/releases/download/v$version/kubecolor_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/kubecolor/kubecolor/releases/download/v$version/kubecolor_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
