@@ -18,8 +18,9 @@
     "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
     "env_add_path": "bin",
     "checkver": {
-        "github": "https://github.com/niXman/mingw-builds-binaries",
-        "regex": "tag/([\\d.]+)-(?<build>[a-z0-9_\\-]+)",
+        "url": "https://api.github.com/repos/niXman/mingw-builds-binaries/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "([\\d.]+)-(?<build>[a-z0-9_\\-]+)",
         "replace": "${1}-${build}"
     },
     "autoupdate": {
