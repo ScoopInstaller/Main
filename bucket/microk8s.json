@@ -1,0 +1,30 @@
+{
+    "version": "1.29",
+    "description": "A small, fast, single-package Kubernetes for datacenters and the edge",
+    "homepage": "https://microk8s.io",
+    "license": "Apache-2.0",
+    "suggest": {
+        "multipass": "multipass"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://microk8s.io/microk8s-installer.exe#/dl.7z",
+            "hash": "bc7a3a1cdb215ed6ee27fb84e1b197e2ffd2b62dead4985fcfecba69cd992edc"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\", \"$dir\\multipass*\" -Force -Recurse",
+    "bin": [
+        "kubectl.exe",
+        "microk8s.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/canonical/microk8s"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://microk8s.io/microk8s-installer.exe#/dl.7z"
+            }
+        }
+    }
+}
