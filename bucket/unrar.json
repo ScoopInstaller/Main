@@ -1,5 +1,5 @@
 {
-    "version": "7.00 beta 3",
+    "version": "7.00-beta-3",
     "description": "Decompress RAR files",
     "homepage": "https://www.rarlab.com/",
     "license": {
@@ -13,7 +13,20 @@
         }
     },
     "bin": "UnRAR.exe",
-    "checkver": "RAR ([\\d.]+\\s*[\\w]*\\s*[\\d.]*) version",
+    "checkver": {
+        "script": [
+            "$base_url = 'https://www.rarlab.com/'",
+            "$ver_regex = 'RAR ([\\d.]+\\s*[\\w]*\\s*[\\d.]*) version'",
+            "",
+            "$page = $(Invoke-WebRequest $base_url).Content",
+            "if (!($page -match $ver_regex)) { error \"Could not match '$ver_regex' in '$base_url'\"; continue }",
+            "$script_ver = $matches[1]",
+            "",
+            "$ver = ($script_ver).replace(' ', '-')",
+            "Write-Output $ver"
+        ],
+        "regex": "(\\S+)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
