@@ -6,8 +6,8 @@
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://www.apache.org/dist/ant/binaries/apache-ant-1.10.14-bin.zip",
-    "hash": "sha512:477a420be66a4e9df1dd46f60f69731d2fd91980dd85d312349daf76dc86dbe7fb1db4a0c330f522690cea967b8c489ed69c9c9a8e838eb37e139a0c6180d4c6",
+    "url": "https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.14-bin.zip",
+    "hash": "sha512:6e85cf45726ee88c916976aba07488b79da84be1a31b5c5441a65c28bb4436b5a5a373402c78ac6a3827bd261fb924124bb9534e52d6429162eaf57b9737124c",
     "extract_dir": "apache-ant-1.10.14",
     "pre_install": [
         "# Record built-in libs in builtin_libs.json",
@@ -35,11 +35,11 @@
         ]
     },
     "checkver": {
-        "url": "https://ant.apache.org/bindownload.cgi",
-        "regex": "Currently, Apache Ant (?:[\\d.]+ and )?([\\d.]+) (?:is|are) the best"
+        "url": "https://dlcdn.apache.org//ant/README.html",
+        "regex": "Release Notes of Apache Ant ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://www.apache.org/dist/ant/binaries/apache-ant-$version-bin.zip",
+        "url": "https://dlcdn.apache.org//ant/binaries/apache-ant-$version-bin.zip",
         "hash": {
             "url": "$url.sha512"
         },
