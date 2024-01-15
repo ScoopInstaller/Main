@@ -15,7 +15,7 @@
     },
     "pre_install": [
         "# Workaround for #4980",
-        "Start-Process lessmsi -ArgumentList @('x', \"$dir\\$fname\", \"$dir\\\") -Wait -NoNewWindow",
+        "Start-Process lessmsi -ArgumentList @('x', \"`\"$dir\\$fname`\"\", \"`\"$dir\\`\"\") -Wait -NoNewWindow",
         "Move-Item \"$dir\\SourceDir\\Amazon\\AWSSAMCLI\\**\" \"$dir\"",
         "Remove-Item \"$dir\\SourceDir\", \"$dir\\$fname\" -Force -Recurse"
     ],
