@@ -1,0 +1,44 @@
+{
+    "version": "0.1.2",
+    "description": "This is a terminal UI for learning for the UKW-Sprechfunkzeugnis für den Binnenschiffahrtsfunk.",
+    "homepage": "https://github.com/WyvernIXTL/ubilerntui",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/WyvernIXTL/ubilerntui/releases/download/v0.1.2/ubilerntui-v0.1.2-x86_64-pc-windows-msvc.zip",
+            "hash": "afb0c329ea5e49f6e2cb4ef8255ef827ac4d78156afbfe50598743ab807d029e"
+        },
+        "32bit": {
+            "url": "https://github.com/WyvernIXTL/ubilerntui/releases/download/v0.1.2/ubilerntui-v0.1.2-i686-pc-windows-msvc.zip",
+            "hash": "58049372ef1f08dc787c642d2eac7877a1f611e58d2a357665cbd92d3cdeba33"
+        },
+        "arm64": {
+            "url": "https://github.com/WyvernIXTL/ubilerntui/releases/download/v0.1.2/ubilerntui-v0.1.2-aarch64-pc-windows-msvc.zip",
+            "hash": "ab6ee898af937963ca79051daef9946afef5722f0ff34f3dfa84022578101981"
+        }
+    },
+    "bin": "ubilerntui.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/WyvernIXTL/ubilerntui/releases/download/v$version/ubilerntui-v$version-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$urlNoExt.sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/WyvernIXTL/ubilerntui/releases/download/v$version/ubilerntui-v$version-i686-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$urlNoExt.sha256"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/WyvernIXTL/ubilerntui/releases/download/v$version/ubilerntui-v$version-aarch64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$urlNoExt.sha256"
+                }
+            }
+        }
+    }
+}
