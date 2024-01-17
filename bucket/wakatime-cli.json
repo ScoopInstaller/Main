@@ -11,6 +11,10 @@
         "32bit": {
             "url": "https://github.com/wakatime/wakatime-cli/releases/download/v1.88.4/wakatime-cli-windows-386.zip",
             "hash": "f07c79f66bffadbfc9a05bddc63fbd2a525157ed001d91e6909bfa81983df58c"
+        },
+        "arm64": {
+            "url": "https://github.com/wakatime/wakatime-cli/releases/download/v1.88.4/wakatime-cli-windows-arm64.zip",
+            "hash": "3708d5a2b4bbc75ddf7bfc10c0a72fe9ea20ac11ebf844ac31b06e82125a64a6"
         }
     },
     "pre_install": "Get-ChildItem \"$dir\\wakatime-cli-windows-*.exe\" | Rename-Item -NewName 'wakatime-cli.exe'",
@@ -25,7 +29,13 @@
             },
             "32bit": {
                 "url": "https://github.com/wakatime/wakatime-cli/releases/download/v$version/wakatime-cli-windows-386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/wakatime/wakatime-cli/releases/download/v$version/wakatime-cli-windows-arm64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksums_sha256.txt"
         }
     }
 }
