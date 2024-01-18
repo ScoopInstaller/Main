@@ -1,0 +1,32 @@
+{
+    "version": "1.7.5",
+    "homepage": "https://github.com/aws-cloudformation/rain",
+    "description": "A development workflow tool for working with AWS CloudFormation.",
+    "license": "Apache-2.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/aws-cloudformation/rain/releases/download/v1.7.5/rain-v1.7.5_windows-i386.zip",
+            "hash": "df0ef0917d73964907246b6ba4be5e9ea319517c84e5d201005a197e08b17ded",
+            "extract_dir": "rain-v1.7.5_windows-i386"
+        },
+        "64bit": {
+            "url": "https://github.com/aws-cloudformation/rain/releases/download/v1.7.5/rain-v1.7.5_windows-amd64.zip",
+            "hash": "7eb8d18d5308d24b48bcb942a7dc6e0f6ee883a1bc1474601d4b0646c4778235",
+            "extract_dir": "rain-v1.7.5_windows-amd64"
+        }
+    },
+    "bin": "rain.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/aws-cloudformation/rain/releases/download/v$version/rain-v$version_windows-i386.zip",
+                "extract_dir": "rain-v$version_windows-i386"
+            },
+            "64bit": {
+                "url": "https://github.com/aws-cloudformation/rain/releases/download/v$version/rain-v$version_windows-amd64.zip",
+                "extract_dir": "rain-v$version_windows-amd64"
+            }
+        }
+    }
+}
