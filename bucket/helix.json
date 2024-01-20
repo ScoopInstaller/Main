@@ -13,27 +13,11 @@
             "extract_dir": "helix-23.10-x86_64-windows"
         }
     },
-    "pre_install": [
-        "# NOTE: Remove the migration script after 6 months (2024-01-22)",
-        "if ((Test-Path \"$env:APPDATA\\helix\\config.toml\") -and (!(Test-Path \"$persist_dir\\config.toml\"))) {",
-        "  info 'Migrating config file...'",
-        "  info \"Previous config path: '$env:APPDATA\\helix\\config.toml'\"",
-        "  info \"Current config path: '$persist_dir\\config.toml'\"",
-        "  ensure \"$persist_dir\"",
-        "  Copy-Item \"$env:APPDATA\\helix\\config.toml\" \"$persist_dir\\config.toml\"",
-        "}",
-        "# END"
-    ],
     "bin": [
+        "hx.exe",
         [
             "hx.exe",
-            "hx",
-            "--config \"$persist_dir\\config.toml\""
-        ],
-        [
-            "hx.exe",
-            "helix",
-            "--config \"$persist_dir\\config.toml\""
+            "helix"
         ]
     ],
     "checkver": {
