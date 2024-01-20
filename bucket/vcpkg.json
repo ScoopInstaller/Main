@@ -18,7 +18,7 @@
         "    Write-Output \"gitdir: $persist_dir/.git\" | Out-File -FilePath $dir/.git",
         "}",
         "git -C $dir fetch --quiet --tags",
-        "git -C $dir reset --quiet --hard 2024.01.12"
+        "git -C $dir reset --quiet --hard $version"
     ],
     "installer": {
         "file": "bootstrap-vcpkg.bat",
@@ -43,19 +43,6 @@
     },
     "autoupdate": {
         "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/$version.zip",
-        "extract_dir": "vcpkg-$version",
-        "pre_install": [
-            "if (!(Test-Path $persist_dir)) {",
-            "    New-Item -ItemType Directory -Path $persist_dir | Out-Null",
-            "}",
-            "if (!(Test-Path $persist_dir/.git)) {",
-            "    git -C $dir init --quiet --separate-git-dir $persist_dir/.git",
-            "    git -C $dir remote add -t master origin https://github.com/microsoft/vcpkg",
-            "} else {",
-            "    Write-Output \"gitdir: $persist_dir/.git\" | Out-File -FilePath $dir/.git",
-            "}",
-            "git -C $dir fetch --quiet --tags",
-            "git -C $dir reset --quiet --hard $version"
-        ]
+        "extract_dir": "vcpkg-$version"
     }
 }
