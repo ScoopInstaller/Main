@@ -9,7 +9,7 @@
         "$arch = if ($architecture -eq '32bit') { $architecture.Substring(0, 2) } else { '64' }",
         "$rename = [System.Collections.ArrayList]::new()",
         "$remove = [System.Collections.ArrayList]::new()",
-        "Get-ChildItem \"$dir\" | ForEach-Object { if ($_ -clike \"*$arch.exe\") { $rename.Add($_) } else { $remove.Add($_) } } | Out-Null",
+        "Get-ChildItem \"$dir\" | ForEach-Object { if ($_ -clike \"*$arch.exe\") { $rename.Add($_) } else { $remove.Add($_.FullName) } } | Out-Null",
         "Remove-Item -Recurse $remove",
         "$rename | Rename-Item -NewName { $_.name.Replace($arch, '') }"
     ],
