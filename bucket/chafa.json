@@ -13,13 +13,13 @@
     "bin": "chafa.exe",
     "checkver": {
         "url": "https://hpjansson.org/chafa/download/",
-        "regex": "Get Chafa ([\\d.]+) for Windows"
+        "regex": "releases/static/chafa-([\\d.]+)-(?<rel>\\d)-x86_64-windows.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://hpjansson.org/chafa/releases/static/chafa-$version-2-x86_64-windows.zip",
-                "extract_dir": "chafa-$version-2-x86_64-win"
+                "url": "https://hpjansson.org/chafa/releases/static/chafa-$version-$matchRel-x86_64-windows.zip",
+                "extract_dir": "chafa-$version-$matchRel-x86_64-win"
             }
         }
     }
