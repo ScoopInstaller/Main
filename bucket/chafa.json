@@ -5,21 +5,21 @@
     "license": "LGPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://hpjansson.org/chafa/releases/static/chafa-1.14.0-1-x86_64-windows.zip",
-            "hash": "35c8c507940540c3269a0a4d97344ae9c1ac791134aec1c3cdaace9a9d65d028",
-            "extract_dir": "chafa-1.14.0-1-x86_64-win"
+            "url": "https://hpjansson.org/chafa/releases/static/chafa-1.14.0-2-x86_64-windows.zip",
+            "hash": "004f906a0d37624a0bfab5f4f4695e23001187303d3827aeadd80226901e5705",
+            "extract_dir": "chafa-1.14.0-2-x86_64-win"
         }
     },
     "bin": "chafa.exe",
     "checkver": {
         "url": "https://hpjansson.org/chafa/download/",
-        "regex": "Get Chafa ([\\d.]+) for Windows"
+        "regex": "releases/static/chafa-([\\d.]+)-(?<rel>\\d)-x86_64-windows.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://hpjansson.org/chafa/releases/static/chafa-$version-1-x86_64-windows.zip",
-                "extract_dir": "chafa-$version-1-x86_64-win"
+                "url": "https://hpjansson.org/chafa/releases/static/chafa-$version-$matchRel-x86_64-windows.zip",
+                "extract_dir": "chafa-$version-$matchRel-x86_64-win"
             }
         }
     }
