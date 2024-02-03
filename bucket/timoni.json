@@ -1,0 +1,28 @@
+{
+  "version": "3.14.0",
+  "description": "The package manager for Kubernetes",
+  "homepage": "https://timoni.sh",
+  "license": "Apache-2.0",
+  "depends": "cue",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/stefanprodan/timoni/releases/download/v0.19.0/timoni_0.19.0_windows_amd64.zip",
+      "hash": "ab037ecc679fcbdfcf62203752182480d6a09a13a7560081bd9bce181bd5664d",
+      "extract_dir": "windows-amd64"
+    }
+  },
+  "bin": "timoni.exe",
+  "checkver": {
+    "url": "https://github.com/stefanprodan/timoni/releases"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/stefanprodan/timoni/releases/"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/timoni_${version}_checksums.txt"
+    }
+  }
+}
