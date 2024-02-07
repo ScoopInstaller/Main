@@ -3,20 +3,40 @@
     "description": "C/C++ dependency manager from Microsoft For all platforms, buildsystems, and workflows",
     "homepage": "https://vcpkg.io/",
     "license": "MIT",
+    "suggest": {
+        "Git": "git"
+    },
     "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2024.01.12.zip",
     "hash": "7d954679548c2b149e101b69223937bb2949fc64d405b31465d07db8363b7f73",
     "extract_dir": "vcpkg-2024.01.12",
+    "pre_install": [
+        "if (Get-Command \"git.exe\" -ErrorAction SilentlyContinue) {",
+        "    if (!(Test-Path \"$persist_dir\")) {",
+        "        New-Item -ItemType Directory -Path \"$persist_dir\" | Out-Null",
+        "    }",
+        "    if (!(Test-Path \"$persist_dir\\.git\")) {",
+        "        git -C \"$dir\" init --quiet --separate-git-dir \"$persist_dir\\.git\"",
+        "        git -C \"$dir\" remote add -t master origin https://github.com/microsoft/vcpkg",
+        "    } else {",
+        "        Write-Output \"gitdir: $persist_dir\\.git\" | Out-File -FilePath \"$dir\\.git\"",
+        "    }",
+        "    git -C \"$dir\" fetch --quiet --tags",
+        "    git -C \"$dir\" reset --quiet --hard $version",
+        "} else {",
+        "    Write-Host -F Yellow \"Git was not detected in PATH, skipping repository setup.\"",
+        "}"
+    ],
     "installer": {
         "file": "bootstrap-vcpkg.bat",
         "keep": true
     },
-    "bin": "vcpkg.exe",
-    "env_set": {
-        "VCPKG_ROOT": "$dir"
-    },
     "post_install": "vcpkg integrate install",
     "uninstaller": {
         "script": "vcpkg integrate remove"
+    },
+    "bin": "vcpkg.exe",
+    "env_set": {
+        "VCPKG_ROOT": "$dir"
     },
     "persist": [
         "buildtrees",
