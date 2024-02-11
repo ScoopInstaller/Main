@@ -1,0 +1,28 @@
+{
+    "version": "1.51",
+    "description": "An open source speech synthesizer that supports more than hundred languages and accents.",
+    "homepage": "https://github.com/espeak-ng/espeak-ng",
+    "license": "GPL-3.0 and 3 other licenses found",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/espeak-ng/espeak-ng/releases/download/1.51/espeak-ng-X64.msi",
+            "hash": "5368d9dab4e1371f35b2cdc4f4053e28060d450c3328038a783bdb9d2476e3bf"
+        },
+        "32bit": {
+            "url": "https://github.com/espeak-ng/espeak-ng/releases/download/1.51/espeak-ng-X86.msi",
+            "hash": "e73966dd050e84794169fe2cbe095fbfcb771c2b1f1ee5bae3fd3e3242438383"
+        }
+    },
+    "bin": "eSpeak NG\\espeak-ng.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/espeak-ng/espeak-ng/releases/download/$version/espeak-ng-X64.msi"
+            },
+            "32bit": {
+                "url": "https://github.com/espeak-ng/espeak-ng/releases/download/$version/espeak-ng-X86.msi"
+            }
+        }
+    }
+}
