@@ -1,16 +1,16 @@
 {
-    "version": "3.0.1",
-    "description": "a JPEG image codec that uses SIMD instructions",
-    "homepage": "https://github.com/libjpeg-turbo/libjpeg-turbo",
+    "version": "3.0.2",
+    "description": "A JPEG image codec that uses SIMD instructions",
+    "homepage": "https://libjpeg-turbo.org/",
     "license": "IJG,BSD-3-Clause,Zlib",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/libjpeg-turbo/3.0.1/libjpeg-turbo-3.0.1-vc64.exe#/dl.7z",
-            "hash": "sha1:007059d9c2eb5a741f88313d5333a38abf503071"
+            "url": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.0.2/libjpeg-turbo-3.0.2-vc64.exe#/dl.7z",
+            "hash": "e3fbbb3b0055478cc33f4895c887d36d38a9818b58cdfa9b84e59ddeec3ab4b3"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/libjpeg-turbo/3.0.1/libjpeg-turbo-3.0.1-vc.exe#/dl.7z",
-            "hash": "sha1:d77bddbbf252fdb71973196ca97a94e60f650824"
+            "url": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.0.2/libjpeg-turbo-3.0.2-vc.exe#/dl.7z",
+            "hash": "a96e27531fed2807ff679e4c854c15d12542c354af6d2a4d1f5ca1c821e6f0d4"
         }
     },
     "pre_install": "'PLUGINS', 'SYS' | ForEach-Object { Remove-Item -Recurse \"$dir/`$$_`DIR\" }",
@@ -25,14 +25,16 @@
     "env_set": {
         "TurboJPEG_ROOT": "$dir"
     },
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/libjpeg-turbo/libjpeg-turbo"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/libjpeg-turbo/$version/libjpeg-turbo-$version-vc64.exe#/dl.7z"
+                "url": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/$version/libjpeg-turbo-$version-vc64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/libjpeg-turbo/$version/libjpeg-turbo-$version-vc.exe#/dl.7z"
+                "url": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/$version/libjpeg-turbo-$version-vc.exe#/dl.7z"
             }
         }
     }
