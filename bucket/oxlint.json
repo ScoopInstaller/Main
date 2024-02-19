@@ -5,14 +5,15 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v0.2.9/oxlint-win32-x64.exe#/oxlint.exe",
-            "hash": "483fd7c4f34bfc782631a4a541d1ce477db13a1efa36a6a9fe9f653bc6833813"
+            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v0.2.9/oxlint-win32-x64.zip",
+            "hash": "ec69f7c1fcbc7b2ee4bb1d4489d88f3775a8e889baf3944764b1cb31fdd0e199"
         },
         "arm64": {
-            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v0.2.9/oxlint-win32-arm64.exe#/oxlint.exe",
-            "hash": "b9fc93a539e56e529a82ed434b8f2e0e1fbc96e54581c1fef6215762663a6fb0"
+            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v0.2.9/oxlint-win32-arm64.zip",
+            "hash": "aa25fd57de66f282a53aabf89cfe30c188cb581dc5900a25a8b475f8b20bb035"
         }
     },
+    "pre_install": "Rename-Item \"$dir\\oxlint-*.exe\" \"$dir\\oxlint.exe\"",
     "bin": "oxlint.exe",
     "checkver": {
         "url": "https://api.github.com/repositories/599431918/releases",
@@ -21,10 +22,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-win32-x64.exe#/oxlint.exe"
+                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-win32-x64.zip"
             },
             "arm64": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-win32-arm64.exe#/oxlint.exe"
+                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-win32-arm64.zip"
             }
         }
     }
