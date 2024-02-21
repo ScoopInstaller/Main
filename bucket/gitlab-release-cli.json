@@ -1,0 +1,31 @@
+{
+    "version": "0.16.0",
+    "description": "Interacts with GitLab's Releases API through the command line and through GitLab CI/CD's configuration file, .gitlab-ci.yml",
+    "homepage": "https://gitlab.com/gitlab-org/release-cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gitlab.com/gitlab-org/release-cli/-/releases/v0.16.0/downloads/bin/release-cli-windows-amd64.exe#/release-cli.exe",
+            "hash": "176dc191e9d4d592271a10df2209abf1db315c942c44a89fe67560ba6654926a"
+        },
+        "32bit": {
+            "url": "https://gitlab.com/gitlab-org/release-cli/-/releases/v0.16.0/downloads/bin/release-cli-windows-386.exe#/release-cli.exe",
+            "hash": "b30a81ac1c8d5584e90e21eb5052b0a95c56dd56354b0b208e5d8814d2419cf3"
+        }
+    },
+    "bin": "release-cli.exe",
+    "checkver": {
+        "url": "https://gitlab.com/gitlab-org/release-cli/-/tags?format=atom",
+        "regex": "/tags/v([\\d.]+)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gitlab.com/gitlab-org/release-cli/-/releases/v$version/downloads/bin/release-cli-windows-amd64.exe#/release-cli.exe"
+            },
+            "32bit": {
+                "url": "https://gitlab.com/gitlab-org/release-cli/-/releases/v$version/downloads/bin/release-cli-windows-386.exe#/release-cli.exe"
+            }
+        }
+    }
+}
