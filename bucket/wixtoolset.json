@@ -3,15 +3,15 @@
     "description": "Set of tools for windows installer creation.",
     "homepage": "https://wixtoolset.org/",
     "license": "MS-RL",
-    "url": "https://www.nuget.org/api/v2/package/wix/4.0.4#/wix.4.0.4.nupkg1",
+    "url": "https://api.nuget.org/v3-flatcontainer/wix/4.0.4/wix.4.0.4.nupkg",
     "hash": "a9ca12214e61bb49430a8c6e5e48ac5ae6f27dc82573b5306955c4d35f2d34e2",
-    "pre_install": "Expand-7zipArchive -Path \"$dir\\wix.*.nupkg1\" -ExtractDir \"tools\\net6.0\\any\" -Removal",
+    "extract_dir": "tools\\net6.0\\any",
     "bin": "wix.exe",
     "checkver": {
-        "url": "https://www.nuget.org/packages/wix",
-        "regex": "--version ([\\d.]+)"
+        "url": "https://api.nuget.org/v3-flatcontainer/wix/index.json",
+        "jsonpath": "$.versions[-1:]"
     },
     "autoupdate": {
-        "url": "https://www.nuget.org/api/v2/package/wix/$version#/wix.$version.nupkg1"
+        "url": "https://api.nuget.org/v3-flatcontainer/wix/$version/wix.$version.nupkg"
     }
 }
