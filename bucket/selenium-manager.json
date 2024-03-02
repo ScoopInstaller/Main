@@ -1,29 +1,30 @@
 {
-    "version": "0.4.17",
+    "version": "4.18.0",
     "description": "Selenium Manager is a command-line tool developed in Rust to allow cross platform execution.",
     "homepage": "https://www.selenium.dev/blog/2022/introducing-selenium-manager",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe",
-            "hash": "887de02450c96c8b772e8b70079ebffdb2827b3d0135e0cf2aead5465acf380f"
+            "url": "https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/selenium-manager-8fab886/selenium-manager-windows.exe#/selenium-manager.exe",
+            "hash": "c85785e6738ad1759c1e424b2a96f79f0f3ad3a5b5def8a7130dd98c290731c4"
         }
     },
     "bin": "selenium-manager.exe",
     "checkver": {
         "script": [
-            "$executable = \"selenium-manager.exe\"",
-            "Invoke-WebRequest -URI \"https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/$executable\" -OutFile $executable",
-            "[array] $cmdOutput = Invoke-Expression \".\\$executable --version\"",
-            "Remove-Item $executable",
-            "$cmdOutput"
+            "# This script was written based on the conversation here https://github.com/SeleniumHQ/selenium/issues/11694. Once binaries are released, we won't need this script.",
+            "$request = ((Invoke-WebRequest -Uri 'https://github.com/SeleniumHQ/selenium/').Content -split \"`n\" | Select-String 'selenium-([\\d.]+)')",
+            "$selenium_ver_string = $request.Matches[0].Value",
+            "$selenium_ver = $request.Matches.Groups[1].Value",
+            "$selenium_manager_ver_string = @((Invoke-WebRequest -Uri ('https://github.com/SeleniumHQ/selenium/raw/' + $selenium_ver_string + '/common/selenium_manager.bzl')).Content -split \"`n\" | Select-String 'selenium-manager-([a-z0-9]+)').Matches.Value[0]",
+            "Write-Output $selenium_ver $selenium_manager_ver_string"
         ],
-        "regex": "selenium-manager (.+)"
+        "regex": "(?<version>.+)\\s(?<managerversion>.+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe"
+                "url": "https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/$matchManagerversion/selenium-manager-windows.exe#/selenium-manager.exe"
             }
         }
     }
