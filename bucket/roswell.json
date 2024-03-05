@@ -11,10 +11,7 @@
     },
     "extract_dir": "roswell",
     "bin": "ros.exe",
-    "checkver": {
-        "url": "https://github.com/roswell/roswell/releases/latest",
-        "regex": "Release\\s+v([\\d.]+)"
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -23,7 +20,7 @@
         },
         "hash": {
             "url": "$url.hash",
-            "regex": "sha256sum\\s+$sha256"
+            "regex": "$sha256"
         }
     }
 }
