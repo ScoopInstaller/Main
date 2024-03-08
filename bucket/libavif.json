@@ -1,19 +1,15 @@
 {
-    "version": "0.9.0",
+    "version": "1.0.4",
     "description": "Tools and library for encoding and decoding AV1 video streams (.avif)",
     "homepage": "https://github.com/AOMediaCodec/libavif",
     "license": "BSD-2-Clause",
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/AOMediaCodec/libavif/releases/download/v0.9.0/avifdec.exe",
-                "https://github.com/AOMediaCodec/libavif/releases/download/v0.9.0/avifenc.exe",
-                "https://github.com/AOMediaCodec/libavif/releases/download/v0.9.0/libavif_vs2019_x64_4fedf0bb_Release.zip"
+                "https://github.com/AOMediaCodec/libavif/releases/download/v1.0.4/libavif-v1.0.4-avifenc-avifdec-windows.zip"
             ],
             "hash": [
-                "e199d58a505257758db05f4246069b7ca596fc89bcbbfc2f99691571457c00b0",
-                "753b8ed9f292c95acc7600345e5c4ff765337587ced9cea2058cf6272fe0fb2f",
-                "4aa41b3dfc9c91d4bd47bad39922a9239bb1b3732d4d6f3a2cb2c22d131c9d0e"
+                "bb9d6adb68f4f11ba9524613bd5984eaecd2f425a686e3c5b0ed51293b5f41ea"
             ]
         }
     },
@@ -21,15 +17,12 @@
         "avifdec.exe",
         "avifenc.exe"
     ],
-    "checkver": {
-        "url": "https://api.github.com/repositories/191218735/releases",
-        "regex": "v([\\d.]+)/libavif_vs(?<vs>\\d+)_x64_(?<commit>\\w+)_Release\\.zip"
-    },
+    "checkver": "github",
     "autoupdate": {
-        "url": [
-            "https://github.com/AOMediaCodec/libavif/releases/download/v$version/avifdec.exe",
-            "https://github.com/AOMediaCodec/libavif/releases/download/v$version/avifenc.exe",
-            "https://github.com/AOMediaCodec/libavif/releases/download/v$version/libavif_vs$matchVs_x64_$matchCommit_Release.zip"
-        ]
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/AOMediaCodec/libavif/releases/download/v$version/libavif-v$version-avifenc-avifdec-windows.zip"
+            }
+        }
     }
 }
