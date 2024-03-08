@@ -6,6 +6,8 @@
     "url": "https://github.com/mikf/gallery-dl/releases/download/v1.26.8/gallery-dl.exe",
     "hash": "4d9f51c71196600de56bfb79e496ec9bc38edd5a00f09e43925d97276d49950d",
     "bin": "gallery-dl.exe",
+    "pre_install": "if (-not (Test-Path \"$persist_dir\\gallery-dl.conf\")) { Set-Content \"$dir\\gallery-dl.conf\" '{}' -Encoding Ascii | Out-Null }",
+    "persist": "gallery-dl.conf",
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/mikf/gallery-dl/releases/download/v$version/gallery-dl.exe"
