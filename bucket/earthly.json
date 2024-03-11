@@ -1,0 +1,27 @@
+{
+    "version": "0.8.4",
+    "description": "Super simple build framework with fast, repeatable builds and an instantly familiar syntax - like Dockerfile and Makefile had a baby.",
+    "bin": "earthly.exe",
+    "homepage": "https://earthly.dev",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/earthly/earthly/releases/download/v0.8.4/earthly-windows-amd64.exe#/earthly.exe",
+            "hash": "8138271cf3c64c614c2d0b11311257ff4af8b7a93cb8bd081fec7787a61cae6f"
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/earthly/earthly"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/earthly/earthly/releases/download/v$version/earthly-windows-amd64.exe#/earthly.exe",
+                "hash": {
+                    "url": "$baseurl/checksum.asc",
+                    "regex": "$sha256\\s+\\earthly-windows-amd64.exe"
+                }
+            }
+        }
+    }
+}
