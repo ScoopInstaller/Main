@@ -1,5 +1,5 @@
 {
-    "version": "2023.03.0",
+    "version": "2023.11.0",
     "description": "A formal proof management system. It provides a formal language to write mathematical definitions, executable algorithms and theorems together with an environment for semi-interactive development of machine-checked proofs.",
     "homepage": "https://coq.inria.fr/",
     "license": {
@@ -8,12 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/coq/platform/releases/download/2023.03.0/Coq-Platform-release-2023.03.0-version.8.17.2023.08-Windows-x86_64.exe#/dl.7z",
-            "hash": "df421f69e452e5485e6839106f7dbfb997bc43865b7542d3afdf38dfd7e5a738"
-        },
-        "32bit": {
-            "url": "https://github.com/coq/platform/releases/download/2023.03.0/Coq-Platform-release-2023.03.0-version.8.17.2023.08-Windows-i686.exe#/dl.7z",
-            "hash": "64fb34373db4eb06d820954f2b4a39f2ad606da2e664b3f4228c83bd43029af7"
+            "url": "https://github.com/coq/platform/releases/download/2023.11.0/Coq-Platform-release-2023.11.0-version.8.18.2023.11-Windows-x86_64.exe#/dl.7z",
+            "hash": "e63dfaec68a3bb2c5766433c0d9b9e76e9a5ea422227e9a76614eca6bde9f193"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse -Force",
@@ -26,7 +22,9 @@
     "shortcuts": [
         [
             "bin\\coqide.exe",
-            "CoqIDE"
+            "CoqIDE",
+            "",
+            "bin\\coq.ico"
         ]
     ],
     "env_set": {
@@ -41,9 +39,6 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/coq/platform/releases/download/$version/Coq-Platform-release-$version-version.$matchCoqver-Windows-x86_64.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://github.com/coq/platform/releases/download/$version/Coq-Platform-release-$version-version.$matchCoqver-Windows-i686.exe#/dl.7z"
             }
         }
     }
