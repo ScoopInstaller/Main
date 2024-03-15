@@ -19,22 +19,29 @@
     },
     "pre_install": [
         "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
-        "Get-ChildItem \"$dir\\extract_folder\\AttachedContainer\\a*\" | ForEach-Object {",
-        "    Expand-MsiArchive $_ \"$dir\\extract_folder\"",
+        "$xml = [xml](Get-Content -Raw \"$dir\\extract_folder\\UX\\manifest.xml\" -Encoding utf8)",
+        "$xml.BurnManifest.Payload | ForEach-Object {",
+        "    Move-Item -Path \"$dir\\extract_folder\\AttachedContainer\\$($_.SourcePath)\" -Destination \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\"",
         "}",
-        "Move-Item \"$dir\\extract_folder\\PFiles64\\Swift\" -Destination \"$dir\"",
-        "Move-Item \"$dir\\extract_folder\\Library\\Developer\" -Destination \"$dir\"",
+        "$xml.BurnManifest.Payload | Where-Object { $_.FilePath.EndsWith(\".msi\") } | ForEach-Object {",
+        "    if ($($_.FilePath) -eq \"rtl.msi\") {",
+        "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\\Runtimes\\5.10.0\\usr\\bin\"",
+        "    } else {",
+        "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\"",
+        "    }",
+        "}",
+        "Move-Item -Path \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\" -Destination \"$dir\"",
         "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
     ],
     "env_add_path": [
-        "Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
-        "Swift\\runtime-development\\usr\\bin"
+        "Swift\\Runtimes\\5.10.0\\usr\\bin",
+        "Swift\\Toolchains\\5.10.0+Asserts\\usr\\bin",
+        "Swift\\Tools\\5.10.0\\"
     ],
     "env_set": {
-        "SDKROOT": "$dir\\Developer\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk",
-        "DEVELOPER_DIR": "$dir\\Developer"
+        "SDKROOT": "$dir\\Swift\\Platforms\\5.10.0\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
     },
-    "bin": "Swift\\runtime-development\\usr\\bin\\plutil.exe",
+    "bin": "Swift\\Runtimes\\5.10.0\\usr\\bin\\plutil.exe",
     "checkver": {
         "url": "https://github.com/apple/swift",
         "regex": "/swift-([\\d.]+)-RELEASE"
