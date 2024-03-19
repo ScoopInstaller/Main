@@ -35,18 +35,20 @@
         "Move-Item -Path \"$dir\\Swift\\Platforms\\$ver\\Windows.platform\" -Destination \"$dir\\Swift\\Platforms\"",
         "Move-Item -Path \"$dir\\Swift\\Toolchains\\$($ver)+Asserts\\usr\" -Destination \"$dir\\Swift\\Toolchains\"",
         "Move-Item -Path \"$dir\\Swift\\Tools\\$ver\\*\" -Destination \"$dir\\Swift\\Tools\"",
-        "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" -Recurse | Out-Null",
-        "Remove-Item \"$dir\\Swift\\Toolchains\\$ver+Asserts\" -Recurse | Out-Null",
-        "Remove-Item \"$dir\\Swift\\Tools\\$ver\" -Recurse | Out-Null",
-        "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
+        "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" | Out-Null",
+        "Remove-Item \"$dir\\Swift\\Toolchains\\$ver+Asserts\" | Out-Null",
+        "Remove-Item \"$dir\\Swift\\Tools\\$ver\" | Out-Null",
+        "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null",
+        "Move-Item -Path \"$dir\\Swift\\*\" -Destination \"$dir\"",
+        "Remove-Item \"$dir\\Swift\" | Out-Null"
     ],
     "env_add_path": [
-        "Swift\\Runtimes\\usr\\bin",
-        "Swift\\Toolchains\\usr\\bin",
-        "Swift\\Tools"
+        "Runtimes\\usr\\bin",
+        "Toolchains\\usr\\bin",
+        "Tools"
     ],
     "env_set": {
-        "SDKROOT": "$dir\\Swift\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
+        "SDKROOT": "$dir\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
     },
     "checkver": {
         "url": "https://github.com/apple/swift",
