@@ -25,21 +25,28 @@
         "}",
         "$xml.BurnManifest.Payload | Where-Object { $_.FilePath.EndsWith(\".msi\") } | ForEach-Object {",
         "    if ($($_.FilePath) -eq \"rtl.msi\") {",
-        "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\\Runtimes\\5.10.0\\usr\\bin\"",
+        "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\\Runtimes\\usr\\bin\"",
         "    } else {",
         "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\"",
         "    }",
         "}",
+        "$ver = $xml.BurnManifest.Registration.Version",
         "Move-Item -Path \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\" -Destination \"$dir\"",
+        "Move-Item -Path \"$dir\\Swift\\Platforms\\$ver\\Windows.platform\" -Destination \"$dir\\Swift\\Platforms\"",
+        "Move-Item -Path \"$dir\\Swift\\Toolchains\\$($ver)+Asserts\\usr\" -Destination \"$dir\\Swift\\Toolchains\"",
+        "Move-Item -Path \"$dir\\Swift\\Tools\\$ver\\*\" -Destination \"$dir\\Swift\\Tools\"",
+        "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" -Recurse | Out-Null",
+        "Remove-Item \"$dir\\Swift\\Toolchains\\$ver+Asserts\" -Recurse | Out-Null",
+        "Remove-Item \"$dir\\Swift\\Tools\\$ver\" -Recurse | Out-Null",
         "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
     ],
     "env_add_path": [
-        "Swift\\Runtimes\\5.10.0\\usr\\bin",
-        "Swift\\Toolchains\\5.10.0+Asserts\\usr\\bin",
-        "Swift\\Tools\\5.10.0\\"
+        "Swift\\Runtimes\\usr\\bin",
+        "Swift\\Toolchains\\usr\\bin",
+        "Swift\\Tools"
     ],
     "env_set": {
-        "SDKROOT": "$dir\\Swift\\Platforms\\5.10.0\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
+        "SDKROOT": "$dir\\Swift\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
     },
     "checkver": {
         "url": "https://github.com/apple/swift",
