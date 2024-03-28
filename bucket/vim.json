@@ -1,108 +1,59 @@
 {
-    "version": "9.0",
-    "description": "A highly configurable text editor",
-    "homepage": "https://www.vim.org",
-    "license": "Vim",
-    "notes": "Add gVim as a context menu option by running: \"$dir\\install-context.reg\"",
-    "suggest": {
-        "vimtutor": "vimtutor"
-    },
-    "url": "https://ftp.nluug.nl/pub/vim/pc/gvim90.exe#/dl.7z",
-    "hash": "57a5b0d3e42695eaeca962364cde3f257227e967436821b81c19434bf4e1042c",
-    "extract_dir": "$0",
-    "pre_install": [
-        "Move-Item \"$dir\\`$R0\" \"$dir\\libgcc_s_sjlj-1.dll\"",
-        "Move-Item \"$dir\\GvimExt64\\`$R0\" \"$dir\\GvimExt64\\gvimext.dll\"",
-        "Move-Item \"$dir\\GvimExt64\\`$0\\GvimExt64\\*\" \"$dir\\GvimExt64\"",
-        "Move-Item \"$dir\\`$*\\*\" $dir",
-        "Remove-Item \"$dir\\`$*\", \"$dir\\GvimExt32\", \"$dir\\GvimExt64\\`$0\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse"
-    ],
-    "post_install": [
-        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
-        "    $content = (Get-Content \"$bucketsdir\\main\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
-        "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
-        "    Set-Content \"$dir\\$_\" $content",
-        "}"
-    ],
-    "bin": [
-        "vim.exe",
-        [
-            "vim.exe",
-            "vi"
-        ],
-        [
-            "vim.exe",
-            "ex",
-            "-e"
-        ],
-        [
-            "vim.exe",
-            "view",
-            "-R"
-        ],
-        [
-            "vim.exe",
-            "rvim",
-            "-Z"
-        ],
-        [
-            "vim.exe",
-            "rview",
-            "-RZ"
-        ],
-        [
-            "vim.exe",
-            "vimdiff",
-            "-d"
-        ],
-        "gvim.exe",
-        [
-            "gvim.exe",
-            "gview",
-            "-R"
-        ],
-        [
-            "gvim.exe",
-            "evim",
-            "-y"
-        ],
-        [
-            "gvim.exe",
-            "eview",
-            "-Ry"
-        ],
-        [
-            "gvim.exe",
-            "rgvim",
-            "-Z"
-        ],
-        [
-            "gvim.exe",
-            "rgview",
-            "-RZ"
-        ],
-        [
-            "gvim.exe",
-            "gvimdiff",
-            "-d"
-        ],
-        "xxd.exe"
-    ],
-    "shortcuts": [
-        [
-            "gvim.exe",
-            "gVim"
-        ]
-    ],
-    "checkver": {
-        "url": "https://ftp.nluug.nl/pub/vim/pc",
-        "regex": "gvim(?<ver>[\\d-]+)\\.exe\\s+V([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://ftp.nluug.nl/pub/vim/pc/gvim$matchVer.exe#/dl.7z",
-        "hash": {
-            "url": "$baseurl/MD5SUMS"
-        }
+  "version": "9.0",
+  "description": "A highly configurable text editor",
+  "homepage": "https://www.vim.org",
+  "license": "Vim",
+  "notes": "Add gVim as a context menu option by running: \"$dir\\install-context.reg\"",
+  "suggest": {
+    "vimtutor": "vimtutor"
+  },
+  "url": "https://ftp.nluug.nl/pub/vim/pc/gvim90.exe#/dl.7z",
+  "hash": "57a5b0d3e42695eaeca962364cde3f257227e967436821b81c19434bf4e1042c",
+  "extract_dir": "$0",
+  "pre_install": [
+    "Move-Item \"$dir\\`$R0\" \"$dir\\libgcc_s_sjlj-1.dll\"",
+    "Move-Item \"$dir\\GvimExt64\\`$R0\" \"$dir\\GvimExt64\\gvimext.dll\"",
+    "Move-Item \"$dir\\GvimExt64\\`$0\\GvimExt64\\*\" \"$dir\\GvimExt64\"",
+    "Move-Item \"$dir\\`$*\\*\" $dir",
+    "Remove-Item \"$dir\\`$*\", \"$dir\\GvimExt32\", \"$dir\\GvimExt64\\`$0\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse"
+  ],
+  "post_install": [
+    "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+    "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
+    "    $content = (Get-Content \"$bucketsdir\\main\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
+    "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+    "    Set-Content \"$dir\\$_\" $content",
+    "}"
+  ],
+  "bin": [
+    "vim.exe",
+    ["vim.exe", "vi"],
+    ["vim.exe", "ex", "-e"],
+    ["vim.exe", "view", "-R"],
+    ["vim.exe", "rvim", "-Z"],
+    ["vim.exe", "rview", "-RZ"],
+    ["vim.exe", "vimdiff", "-d"],
+    "gvim.exe",
+    ["gvim.exe", "gview", "-R"],
+    ["gvim.exe", "evim", "-y"],
+    ["gvim.exe", "eview", "-Ry"],
+    ["gvim.exe", "rgvim", "-Z"],
+    ["gvim.exe", "rgview", "-RZ"],
+    ["gvim.exe", "gvimdiff", "-d"],
+    "xxd.exe"
+  ],
+  "shortcuts": [
+    ["gvim.exe", "gVim"],
+    ["vim.exe", "vim"]
+  ],
+  "checkver": {
+    "url": "https://ftp.nluug.nl/pub/vim/pc",
+    "regex": "gvim(?<ver>[\\d-]+)\\.exe\\s+V([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://ftp.nluug.nl/pub/vim/pc/gvim$matchVer.exe#/dl.7z",
+    "hash": {
+      "url": "$baseurl/MD5SUMS"
     }
+  }
 }
