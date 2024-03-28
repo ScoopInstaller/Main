@@ -9,6 +9,10 @@
             "hash": "0e492431ef836091d34f44a6de8caf2a0aaef1737ba7b8202fa54285a5db4101"
         }
     },
+    "env_set": {
+        "PX_CONFIG": "$dir\\px.ini"
+    },
+    "pre_install": "Push-Location $dir && ./px --save && Pop-Location",
     "bin": "px.exe",
     "persist": "px.ini",
     "checkver": "github",
