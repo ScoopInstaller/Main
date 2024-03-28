@@ -1,0 +1,35 @@
+{
+    "version": "7.0.15",
+    "description": "In-memory data structure store, used as a database, cache and message broker, with windows service",
+    "homepage": "https://redis.io",
+    "license": "BSD-3-Clause",
+    "notes": [
+        "To install the redis service, please run the following command as administrator:",
+        "'sc.exe create Redis binpath=\"$dir\\RedisService.exe\" start= auto'",
+        "To uninstall the redis service, please run the following command as administrator:",
+        "'sc.exe delete Redis'"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/redis-windows/redis-windows/releases/download/7.0.15/Redis-7.0.15-Windows-x64-with-Service.tar.gz",
+            "hash": "4e15811a5806077b0a170733261c9e1e9e96aa8d346df89bfc67f22738764287",
+            "extract_dir": "Redis-7.0.15-Windows-x64-with-Service"
+        }
+    },
+    "bin": [
+        "redis-benchmark.exe",
+        "redis-cli.exe",
+        "redis-server.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/redis-windows/redis-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/redis-windows/redis-windows/releases/download/$version/Redis-$version-Windows-x64-with-Service.tar.gz",
+                "extract_dir": "Redis-$version-Windows-x64-with-Service"
+            }
+        }
+    }
+}
