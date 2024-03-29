@@ -15,8 +15,7 @@
     },
     "extract_to": "__temp",
     "pre_install": [
-        "Expand-7zipArchive \"$dir\\__temp\\zstd-v$version*.zip\" \"$dir\\__temp\\extracted\"",
-        "Move-Item \"$dir\\__temp\\extracted\\zstd-v$version*\\*\" \"$dir\" -Force",
+        "Move-Item \"$dir\\__temp\\zstd-v$version-win*\\*\" \"$dir\" -Force",
         "Remove-Item \"$dir\\__temp\" -Force -Recurse"
     ],
     "bin": "zstd.exe",
