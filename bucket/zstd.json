@@ -6,18 +6,15 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-v1.5.6-win64.zip",
-            "hash": "7b4eff6719990e38aca93a4844c2e86a1935090625c4611f7e89675e999c56cc"
+            "hash": "7b4eff6719990e38aca93a4844c2e86a1935090625c4611f7e89675e999c56cc",
+            "extract_dir": "zstd-v1.5.6-win64"
         },
         "32bit": {
             "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-v1.5.6-win32.zip",
-            "hash": "d274d937b9b5c422c72c2689a92dae1642ddfd520aad4e0038e5b5a0fa657f8f"
+            "hash": "d274d937b9b5c422c72c2689a92dae1642ddfd520aad4e0038e5b5a0fa657f8f",
+            "extract_dir": "zstd-v1.5.6-win32"
         }
     },
-    "extract_to": "__temp",
-    "pre_install": [
-        "Move-Item \"$dir\\__temp\\zstd-v$version-win*\\*\" \"$dir\" -Force",
-        "Remove-Item \"$dir\\__temp\" -Force -Recurse"
-    ],
     "bin": "zstd.exe",
     "checkver": {
         "github": "https://github.com/facebook/zstd"
@@ -25,10 +22,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip"
+                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip",
+                "extract_dir": "zstd-v$version-win64"
             },
             "32bit": {
-                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win32.zip"
+                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win32.zip",
+                "extract_dir": "zstd-v$version-win32"
             }
         }
     }
