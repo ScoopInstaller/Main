@@ -6,15 +6,15 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-v1.5.6-win64.zip",
-            "hash": "e84baaa9f8902bed43b4446405a9b59bf922d357475a281305c4885d8c83c4c2",
-            "extract_to": "__temp\\outer",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\__temp\\outer\\zstd-v$version-win64.zip\" \"$dir\\__temp\\inner\"",
-                "Move-Item \"$dir\\__temp\\inner\\zstd-v$version-win64\\*\" \"$dir\" -Force",
-                "Remove-Item \"$dir\\__temp\" -Force -Recurse"
-            ]
+            "hash": "e84baaa9f8902bed43b4446405a9b59bf922d357475a281305c4885d8c83c4c2"
         }
     },
+    "extract_to": "__temp\\outer",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\__temp\\outer\\zstd-v$version-win64.zip\" \"$dir\\__temp\\inner\"",
+        "Move-Item \"$dir\\__temp\\inner\\zstd-v$version-win64\\*\" \"$dir\" -Force",
+        "Remove-Item \"$dir\\__temp\" -Force -Recurse"
+    ],
     "bin": "zstd.exe",
     "checkver": {
         "github": "https://github.com/facebook/zstd"
