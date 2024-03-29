@@ -7,12 +7,17 @@
         "64bit": {
             "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-v1.5.6-win64.zip",
             "hash": "e84baaa9f8902bed43b4446405a9b59bf922d357475a281305c4885d8c83c4c2"
+        },
+        "32bit": {
+            "url": "https://github.com/facebook/zstd/releases/download/v1.5.6/zstd-v1.5.6-win32.zip",
+            "hash": "d274d937b9b5c422c72c2689a92dae1642ddfd520aad4e0038e5b5a0fa657f8f"
         }
     },
-    "extract_to": "__temp\\outer",
+    "extract_to": "__temp",
     "pre_install": [
-        "Expand-7zipArchive \"$dir\\__temp\\outer\\zstd-v$version-win64.zip\" \"$dir\\__temp\\inner\"",
-        "Move-Item \"$dir\\__temp\\inner\\zstd-v$version-win64\\*\" \"$dir\" -Force",
+        "Move-Item \"$dir\\__temp\\zstd-v$version*.zip\" \"$dir\\__temp\\zstd-v$version.zip\" -Force",
+        "Expand-7zipArchive \"$dir\\__temp\\zstd-v$version.zip\" \"$dir\\__temp\\extracted\"",
+        "Move-Item \"$dir\\__temp\\extracted\\zstd-v$version*\\*\" \"$dir\" -Force",
         "Remove-Item \"$dir\\__temp\" -Force -Recurse"
     ],
     "bin": "zstd.exe",
@@ -22,8 +27,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip",
-                "extract_dir": "zstd-v$version-win64"
+                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/facebook/zstd/releases/download/v$version/zstd-v$version-win64.zip"
             }
         }
     }
