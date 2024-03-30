@@ -1,5 +1,5 @@
 {
-    "version": "9.0",
+    "version": "9.1.0228",
     "description": "A highly configurable text editor",
     "homepage": "https://www.vim.org",
     "license": "Vim",
@@ -7,16 +7,18 @@
     "suggest": {
         "vimtutor": "vimtutor"
     },
-    "url": "https://ftp.nluug.nl/pub/vim/pc/gvim90.exe#/dl.7z",
-    "hash": "57a5b0d3e42695eaeca962364cde3f257227e967436821b81c19434bf4e1042c",
-    "extract_dir": "$0",
-    "pre_install": [
-        "Move-Item \"$dir\\`$R0\" \"$dir\\libgcc_s_sjlj-1.dll\"",
-        "Move-Item \"$dir\\GvimExt64\\`$R0\" \"$dir\\GvimExt64\\gvimext.dll\"",
-        "Move-Item \"$dir\\GvimExt64\\`$0\\GvimExt64\\*\" \"$dir\\GvimExt64\"",
-        "Move-Item \"$dir\\`$*\\*\" $dir",
-        "Remove-Item \"$dir\\`$*\", \"$dir\\GvimExt32\", \"$dir\\GvimExt64\\`$0\", \"$dir\\uninstal.*\", \"$dir\\install.exe\", \"$dir\\vim[0-9]*\" -Recurse"
-    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.1.0228/gvim_9.1.0228_x64.zip",
+            "hash": "79a35bb20195cb9cbf58776eda4c7a8627eba70dd4d927da618d1541e2e2e9d7",
+            "extract_dir": "vim/vim91"
+        },
+        "32bit": {
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.1.0228/gvim_9.1.0228_x86.zip",
+            "hash": "2ad2dbb7dbfe053b8518af564e9d8798b27ba0566f4621fa1b407980181b4f80",
+            "extract_dir": "vim/vim91"
+        }
+    },
     "post_install": [
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
         "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
@@ -96,13 +98,18 @@
         ]
     ],
     "checkver": {
-        "url": "https://ftp.nluug.nl/pub/vim/pc",
-        "regex": "gvim(?<ver>[\\d-]+)\\.exe\\s+V([\\d.]+)"
+        "github": "https://github.com/vim/vim-win32-installer"
     },
     "autoupdate": {
-        "url": "https://ftp.nluug.nl/pub/vim/pc/gvim$matchVer.exe#/dl.7z",
-        "hash": {
-            "url": "$baseurl/MD5SUMS"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64.zip",
+                "extract_dir": "vim/vim$majorVersion$minorVersion"
+            },
+            "32bit": {
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86.zip",
+                "extract_dir": "vim/vim$majorVersion$minorVersion"
+            }
         }
     }
 }
