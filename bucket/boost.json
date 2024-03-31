@@ -14,7 +14,7 @@
         }
     },
     "innosetup": true,
-    "pre_install": "Rename-Item \"$dir/lib$($architecture.Substring(0, 2))-msvc-*.*\" lib",
+    "pre_install": "Get-ChildItem \"$dir/lib$($architecture.Substring(0, 2))-msvc-*.*\" | Rename-Item -NewName lib",
     "env_set": {
         "BOOST_ROOT": "$dir",
         "Boost_INCLUDE_DIR": "$dir\\boost"
