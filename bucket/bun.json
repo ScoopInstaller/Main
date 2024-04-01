@@ -12,6 +12,12 @@
             "hash": "60e9291d09657ab315bcc6bc07cbf67d2e9b9b18c21bb7cf9ce2d9fa983c9719"
         }
     },
+    "pre_install": [
+        "if (-not (Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);'-Name 'Kernel32'-Namespace 'Win32'-PassThru)::IsProcessorFeaturePresent(40)) {",
+        "    Write-Host -Foreground Red \"This CPU does not support the AVX2 instruction set. Please install 'bun-baseline' instead.\"",
+        "    break",
+        "}"
+    ],
     "extract_dir": "bun-windows-x64",
     "bin": [
         "bun.exe",
