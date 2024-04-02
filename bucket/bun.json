@@ -13,7 +13,11 @@
         }
     },
     "pre_install": [
-        "if (-not (Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);'-Name 'Kernel32'-Namespace 'Win32'-PassThru)::IsProcessorFeaturePresent(40)) {",
+        "$avx2 = Start-Job -ScriptBlock {",
+        "    Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
+        "    return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
+        "} | Receive-Job -Wait -AutoRemoveJob",
+        "if (-not $avx2) {",
         "    Write-Host -Foreground Red \"This CPU does not support the AVX2 instruction set. Please install 'bun-baseline' instead.\"",
         "    break",
         "}"
