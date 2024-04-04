@@ -8,8 +8,14 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.1.0/bun-windows-x64.zip",
-            "hash": "60e9291d09657ab315bcc6bc07cbf67d2e9b9b18c21bb7cf9ce2d9fa983c9719"
+            "url": [
+                "https://github.com/oven-sh/bun/releases/download/bun-v1.1.0/bun-windows-x64.zip",
+                "https://github.com/oven-sh/bun/releases/download/bun-v1.1.0/bun-windows-x64-baseline.zip"
+            ],
+            "hash": [
+                "60e9291d09657ab315bcc6bc07cbf67d2e9b9b18c21bb7cf9ce2d9fa983c9719",
+                "b4e1e0051a18bc6d104a4990e9abfa9b802d1ecd4d52752c6c9154e17bf987cb"
+            ]
         }
     },
     "pre_install": [
@@ -17,12 +23,13 @@
         "    Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
         "    return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
         "} | Receive-Job -Wait -AutoRemoveJob",
+        "$target = 'bun-windows-x64'",
         "if (-not $avx2) {",
-        "    Write-Host -Foreground Red \"This CPU does not support the AVX2 instruction set. Please install 'bun-baseline' instead.\"",
-        "    break",
-        "}"
+        "    $target += '-baseline'",
+        "}",
+        "Move-Item \"$dir\\$target\\bun.exe\" \"$dir\\bun.exe\"",
+        "Remove-Item \"$dir\\bun-windows-*\" -Recurse"
     ],
-    "extract_dir": "bun-windows-x64",
     "bin": [
         "bun.exe",
         [
@@ -38,7 +45,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64.zip"
+                "url": [
+                    "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64.zip",
+                    "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64-baseline.zip"
+                ]
             }
         },
         "hash": {
