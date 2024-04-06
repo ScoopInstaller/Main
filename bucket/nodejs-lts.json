@@ -1,23 +1,23 @@
 {
-    "version": "20.12.0",
+    "version": "20.12.1",
     "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications. (Long Term Support)",
     "homepage": "https://nodejs.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://nodejs.org/dist/v20.12.0/node-v20.12.0-win-x64.7z",
-            "hash": "2f623dac976071ef7a9cbf26081fd21b07349d234287bc863d690d4cf2adbe01",
-            "extract_dir": "node-v20.12.0-win-x64"
+            "url": "https://nodejs.org/dist/v20.12.1/node-v20.12.1-win-x64.7z",
+            "hash": "2628e9698f3bdada3fd36096fba0433fbd8f85832350bd5d2537f8f0ac50320f",
+            "extract_dir": "node-v20.12.1-win-x64"
         },
         "32bit": {
-            "url": "https://nodejs.org/dist/v20.12.0/node-v20.12.0-win-x86.7z",
-            "hash": "47e57d5409b6dba0ab72868fc6691345ded1a54c3f6b0d724410bfdcb976d383",
-            "extract_dir": "node-v20.12.0-win-x86"
+            "url": "https://nodejs.org/dist/v20.12.1/node-v20.12.1-win-x86.7z",
+            "hash": "552c6fec6a0b28e9c49ad8574e4e67c35d9cfa718a3f940552e594e948caa6d9",
+            "extract_dir": "node-v20.12.1-win-x86"
         },
         "arm64": {
-            "url": "https://nodejs.org/dist/v20.12.0/node-v20.12.0-win-arm64.7z",
-            "hash": "96690fd6580aa8df8883ae7283c5702d7774441d7ba6b761901047d51760017d",
-            "extract_dir": "node-v20.12.0-win-arm64"
+            "url": "https://nodejs.org/dist/v20.12.1/node-v20.12.1-win-arm64.7z",
+            "hash": "17efd39f30e46b82ce94061ccee058fce3e1c3f1e5538a3f30463c52e5ab82e8",
+            "extract_dir": "node-v20.12.1-win-arm64"
         }
     },
     "post_install": [
@@ -33,8 +33,9 @@
         "cache"
     ],
     "checkver": {
-        "url": "https://nodejs.org/en/",
-        "regex": "Downloads Node.js <b>v([\\d.]+)</b>"
+        "url": "https://nodejs.org/dist/index.json",
+        "jsonpath": "$..[?(@.lts != false)].version",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
