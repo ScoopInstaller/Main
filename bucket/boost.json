@@ -1,5 +1,5 @@
 {
-    "version": "1_84_0",
+    "version": "1.84.0",
     "description": "Boost C++ Libraries",
     "homepage": "https://www.boost.org/",
     "license": "BSL-1.0",
@@ -14,22 +14,22 @@
         }
     },
     "innosetup": true,
-    "pre_install": "Rename-Item \"$dir/lib$($architecture.Substring(0, 2))-msvc-*.*\" lib",
+    "pre_install": "Get-ChildItem \"$dir/lib$($architecture.Substring(0, 2))-msvc-*.*\" | Rename-Item -NewName lib",
     "env_set": {
         "BOOST_ROOT": "$dir",
         "Boost_INCLUDE_DIR": "$dir\\boost"
     },
     "checkver": {
         "sourceforge": "boost/boost-binaries",
-        "regex": "(?<short>[\\d.]+)+/boost_(\\w+)-msvc-(?<msvc>[\\d.]+)-64\\.exe"
+        "regex": "([\\d.]+)+/boost_(?:[\\d_]+)-msvc-(?<msvc>[\\d.]+)-64\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/boost/boost-binaries/$matchShort/boost_$version-msvc-$matchMsvc-64.exe"
+                "url": "https://downloads.sourceforge.net/project/boost/boost-binaries/$version/boost_$underscoreVersion-msvc-$matchMsvc-64.exe"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/boost/boost-binaries/$matchShort/boost_$version-msvc-$matchMsvc-32.exe"
+                "url": "https://downloads.sourceforge.net/project/boost/boost-binaries/$version/boost_$underscoreVersion-msvc-$matchMsvc-32.exe"
             }
         }
     }
