@@ -20,9 +20,6 @@
     "pre_install": [
         "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
         "$xml = [xml](Get-Content -Raw \"$dir\\extract_folder\\UX\\manifest.xml\" -Encoding utf8)",
-        "$xml.BurnManifest.Payload | ForEach-Object {",
-        "    Move-Item -Path \"$dir\\extract_folder\\AttachedContainer\\$($_.SourcePath)\" -Destination \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\"",
-        "}",
         "$xml.BurnManifest.Payload | Where-Object { $_.FilePath.EndsWith(\".msi\") } | ForEach-Object {",
         "    if ($($_.FilePath) -eq \"rtl.msi\") {",
         "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\\Runtimes\\usr\\bin\"",
@@ -38,9 +35,8 @@
         "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" | Out-Null",
         "Remove-Item \"$dir\\Swift\\Toolchains\\$ver+Asserts\" | Out-Null",
         "Remove-Item \"$dir\\Swift\\Tools\\$ver\" | Out-Null",
-        "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null",
         "Move-Item -Path \"$dir\\Swift\\*\" -Destination \"$dir\"",
-        "Remove-Item \"$dir\\Swift\" | Out-Null"
+        "Remove-Item \"$dir\\Swift\", \"$dir\\extract_folder\" -Recurse | Out-Null"
     ],
     "env_add_path": [
         "Runtimes\\usr\\bin",
