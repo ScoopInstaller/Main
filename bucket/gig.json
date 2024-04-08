@@ -1,0 +1,39 @@
+{
+    "version": "0.8.3",
+    "description": "Generate .gitignore files from your terminal (mostly) offline!",
+    "homepage": "https://github.com/shihanng/gig",
+    "license": "MIT",
+    "depends": ["fzf"],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/shihanng/gig/releases/download/v0.8.3/gig_0.8.3_Windows_x86_64.tar.gz",
+            "hash": "e2dfa2759b87c503f509e9468704803893b41d56fb04127460ee9607f2eabf23"
+        },
+        "32bit": {
+            "url": "https://github.com/shihanng/gig/releases/download/v0.8.3/gig_0.8.3_Windows_386.tar.gz",
+            "hash": "d64831338e3689b9141de0a727ed2e7afa3d5a7862a21f5272ab686b13ca2d1e"
+        },
+        "arm64": {
+            "url": "https://github.com/shihanng/gig/releases/download/v0.8.3/gig_0.8.3_Windows_arm64.tar.gz",
+            "hash": "c54b1d9d18dcaa88c13b9fc2017cacf0e5b1b70941455df6dbec6dbe8dec43b5"
+        }
+    },
+    "bin": "gig.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/shihanng/gig/releases/download/v$version/gig_$version_Windows_x86_64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/shihanng/gig/releases/download/v$version/gig_$version_Windows_386.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/shihanng/gig/releases/download/v$version/gig_$version_Windows_arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/shihanng/gig/releases/download/v$version/checksums.txt"
+        }
+    }
+}

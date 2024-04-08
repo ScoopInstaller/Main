@@ -1,0 +1,33 @@
+{
+    "version": "2024_03_13",
+    "description": "Download and manage Zig compilers",
+    "homepage": "https://github.com/marler8997/zigup",
+    "license": "MIT-0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/marler8997/zigup/releases/download/v2024_03_13/zigup.windows-latest-x86_64.zip",
+            "hash": "f4c518ca9a6f16f0514eb9406c6b8bbe491d2b28bd8e9cd41830fe2ec06e7c51"
+        }
+    },
+    "env_add_path": "zig",
+    "bin": [
+        [
+            "zigup.exe",
+            "zigup",
+            "--path-link",
+            "\"$persist_dir\\zig\\zig.exe\""
+        ]
+    ],
+    "persist": "zig",
+    "checkver": {
+        "url": "https://api.github.com/repos/marler8997/zigup/releases",
+        "regex": "v([\\d_]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/marler8997/zigup/releases/download/v$version/zigup.windows-latest-x86_64.zip"
+            }
+        }
+    }
+}

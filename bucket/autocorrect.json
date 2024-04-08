@@ -1,0 +1,29 @@
+{
+    "version": "2.9.0",
+    "description": "AutoCorrect is a linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean).",
+    "homepage": "https://huacnlee.github.io/autocorrect",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/huacnlee/autocorrect/releases/download/v2.9.0/autocorrect-windows-amd64.zip",
+            "hash": "175450372ebce308db1337d1373e8f69f862681364a39dcccaef25e78de6b80a"
+        }
+    },
+    "bin": "autocorrect.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/267024149/releases",
+        "regex": "tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/huacnlee/autocorrect/releases/download/v$version/autocorrect-windows-amd64.zip",
+                "hash": {
+                    "url": "$url.sha256",
+                    "mode": "extract",
+                    "regex": "$sha256"
+                }
+            }
+        }
+    }
+}

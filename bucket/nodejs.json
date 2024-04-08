@@ -1,23 +1,23 @@
 {
-    "version": "21.6.2",
+    "version": "21.7.2",
     "description": "An asynchronous event driven JavaScript runtime designed to build scalable network applications.",
     "homepage": "https://nodejs.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://nodejs.org/dist/v21.6.2/node-v21.6.2-win-x64.7z",
-            "hash": "d450d170009d272c98765af3abf2bbc2903c1c08856f9e3730be03cc9d9b2bc5",
-            "extract_dir": "node-v21.6.2-win-x64"
+            "url": "https://nodejs.org/dist/v21.7.2/node-v21.7.2-win-x64.7z",
+            "hash": "a532dd8dae519c78100497f398621574431757afa933ab32d39b1ba3fcf44d9b",
+            "extract_dir": "node-v21.7.2-win-x64"
         },
         "32bit": {
-            "url": "https://nodejs.org/dist/v21.6.2/node-v21.6.2-win-x86.7z",
-            "hash": "44dee171378d7ac9967e772a8f114be5fdf59a163f65ec5faa7411c8be3bc961",
-            "extract_dir": "node-v21.6.2-win-x86"
+            "url": "https://nodejs.org/dist/v21.7.2/node-v21.7.2-win-x86.7z",
+            "hash": "9987f8a12d2cb0439a9def11b449793b372d4ff96acceb9321a736f5c57e5f41",
+            "extract_dir": "node-v21.7.2-win-x86"
         },
         "arm64": {
-            "url": "https://nodejs.org/dist/v21.6.2/node-v21.6.2-win-arm64.7z",
-            "hash": "a0cdada31786f6ff1f82e8fd91bda23cd4f615a56acd3c9605cd468b60b8437a",
-            "extract_dir": "node-v21.6.2-win-arm64"
+            "url": "https://nodejs.org/dist/v21.7.2/node-v21.7.2-win-arm64.7z",
+            "hash": "f9e642aa9e729842b289c0314be8c7d468aca2994b1b8d8a8c2143382f1c4136",
+            "extract_dir": "node-v21.7.2-win-arm64"
         }
     },
     "persist": [
@@ -33,8 +33,9 @@
         "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
     ],
     "checkver": {
-        "url": "https://nodejs.org/dist/latest/",
-        "regex": "node-v([\\d.]+)-win-x64\\.7z"
+        "url": "https://nodejs.org/dist/index.json",
+        "jsonpath": "$..version",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {

@@ -1,0 +1,52 @@
+{
+    "version": "0.3.1",
+    "description": "Manage multiple SDK versions with a single CLI tool, extendable via plugins",
+    "homepage": "https://vfox.lhan.me/",
+    "license": "Apache-2.0",
+    "notes": [
+        "Important: You also need to add an activation script in your shell profile to make version fox to work!",
+        "Check the documentation for more details: https://vfox.lhan.me/guides/quick-start.html#_2-hook-vfox-to-your-shell"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/version-fox/vfox/releases/download/v0.3.1/vfox_0.3.1_windows_x86_64.zip",
+            "hash": "c9152aa5d1726206deb497429519aa444655ff2e3b8b572854ab8979f1a97118",
+            "extract_dir": "vfox_0.3.1_windows_x86_64"
+        },
+        "32bit": {
+            "url": "https://github.com/version-fox/vfox/releases/download/v0.3.1/vfox_0.3.1_windows_i386.zip",
+            "hash": "33c6621fdbfcd3e5a0c83028b71db7f42eb467f02b1b6d6a0b6d7f55286956f2",
+            "extract_dir": "vfox_0.3.1_windows_i386"
+        },
+        "arm64": {
+            "url": "https://github.com/version-fox/vfox/releases/download/v0.3.1/vfox_0.3.1_windows_aarch64.zip",
+            "hash": "8fca301721674b91a530d094e22f8d737d25e110e32d646d985f8146c4059d5a",
+            "extract_dir": "vfox_0.3.1_windows_aarch64"
+        }
+    },
+    "bin": "vfox.exe",
+    "checkver": {
+        "url": "https://github.com/version-fox/vfox/raw/main/internal/version.go",
+        "regex": "\"([\\d\\.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/version-fox/vfox/releases/download/v$version/vfox_$version_windows_x86_64.zip",
+                "extract_dir": "vfox_$version_windows_x86_64"
+            },
+            "32bit": {
+                "url": "https://github.com/version-fox/vfox/releases/download/v$version/vfox_$version_windows_i386.zip",
+                "extract_dir": "vfox_$version_windows_i386"
+            },
+            "arm64": {
+                "url": "https://github.com/version-fox/vfox/releases/download/v$version/vfox_$version_windows_aarch64.zip",
+                "extract_dir": "vfox_$version_windows_aarch64"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/version-fox/vfox/releases/download/v$version/checksums.txt",
+            "find": "$sha256[\\S\\s]+$basename"
+        }
+    }
+}
