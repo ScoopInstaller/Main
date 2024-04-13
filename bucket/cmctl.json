@@ -20,15 +20,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/cert-manager/cmctl/releases/download/v$version/cmctl_windows_amd64.exe"
+                "url": "https://github.com/cert-manager/cmctl/releases/download/v$version/cmctl_windows_amd64.exe#/cmctl.exe"
             },
             "arm64": {
-                "url": "https://github.com/cert-manager/cmctl/releases/download/v$version/cmctl_windows_arm64.exe"
+                "url": "https://github.com/cert-manager/cmctl/releases/download/v$version/cmctl_windows_arm64.exe#/cmctl.exe"
             }
         },
         "hash": {
             "mode": "json",
-            "jp": "$.files[?(@.filename == '/cmctl.exe')].checksums[?(@.algorithm == 'sha256')].checksumvalue",
+            "jp": "$.files[?(@.fileName == '/cmctl.exe')].checksums[?(@.algorithm == 'SHA256')].checksumValue",
             "url": "$url.spdx.sbom"
         }
     }
