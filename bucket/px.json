@@ -9,6 +9,10 @@
             "hash": "0e492431ef836091d34f44a6de8caf2a0aaef1737ba7b8202fa54285a5db4101"
         }
     },
+    "pre_install": [
+        "if (Test-Path -PathType Container \"$persist_dir\\px.ini\") { Remove-Item \"$persist_dir\\px.ini\" } # removes folder px.ini if exists",
+        "if (!(Test-Path \"$persist_dir\\px.ini\")) { New-Item \"$dir\\px.ini\" | Out-Null } # creates config file px.ini if doesn't exist"
+    ],
     "bin": "px.exe",
     "persist": "px.ini",
     "checkver": "github",
