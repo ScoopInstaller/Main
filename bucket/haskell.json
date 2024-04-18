@@ -29,14 +29,16 @@
     ],
     "env_add_path": "lib\\bin",
     "checkver": {
-        "url": "https://downloads.haskell.org/~ghc/",
-        "regex": ">(\\d(\\.\\d)*)/",
-        "reverse": true
+        "url": "https://www.haskell.org/ghc/download.html",
+        "regex": "(?s)Current Stable Releases.*?>([\\d.]+)<"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://downloads.haskell.org/~ghc/$version/ghc-$version-x86_64-unknown-mingw32.tar.xz",
+                "hash": {
+                    "url": "$baseurl/SHA256SUMS"
+                },
                 "extract_dir": "ghc-$version-x86_64-unknown-mingw32"
             }
         }
