@@ -35,12 +35,12 @@
     ],
     "checkver": {
         "url": "https://fossies.org/windows/www/",
-        "regex": "httpd-([\\d.]+)-win64-VS17\\.zip"
+        "regex": "httpd-([\\d.]+)-(?<date>[\\d]+)-win64-VS17\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://fossies.org/windows/www/httpd-$version-win64-VS17.zip"
+                "url": "https://fossies.org/windows/www/httpd-$version-$matchDate-win64-VS17.zip"
             }
         },
         "hash": {
