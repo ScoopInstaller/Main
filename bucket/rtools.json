@@ -1,51 +1,60 @@
 {
-    "version": "4.3.5958.5975",
+    "version": "4.4.6104.6039",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
     "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "license": "BSD-3-Clause",
     "notes": [
         "For R 3.3.x to 3.6.x, please use 'versions/rtools35'.",
         "For R 4.0.x to 4.1.x, please use 'versions/rtools40'.",
-        "For R 4.2.x, please use 'versions/rtools42'."
+        "For R 4.2.x, please use 'versions/rtools42'.",
+        "For R 4.3.x, please use 'versions/rtools43'."
     ],
     "architecture": {
         "64bit": {
-            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-5958-5975.exe",
-            "hash": "bc25c0c8ce9716f7d13b31c255d19c21104c6b5ae18b374ce71ad50fcee05584"
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6104-6039.exe",
+            "hash": "a842dfc1108f416946a059a1b2dd511d8f426d589956ed1ff4a72721364a84f0"
+        },
+        "arm64": {
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-6104-6039.exe",
+            "hash": "2a5c1cc64dde0904844098aed5f7b72c0c02feb26a40013957db2e3124f9f469"
         }
     },
     "innosetup": true,
     "installer": {
         "script": [
-            "if (Test-Path 'C:\\rtools43') {",
-            "   if ($null -eq (Get-Item 'C:\\rtools43').LinkType) {",
-            "       Rename-Item -Path 'C:\\rtools43' -NewName 'rtools43.old' -Force",
+            "if (Test-Path 'C:\\rtools44') {",
+            "   if ($null -eq (Get-Item 'C:\\rtools44').LinkType) {",
+            "       Rename-Item -Path 'C:\\rtools44' -NewName 'rtools44.old' -Force",
             "   } else {",
-            "       Remove-Item -Path 'C:\\rtools43' -Force",
+            "       Remove-Item -Path 'C:\\rtools44' -Force",
             "   }",
             "}",
-            "New-Item -Path 'C:\\rtools43' -Target \"$dir\" -ItemType Junction | Out-Null"
+            "New-Item -Path \"$dir\\tmp\" -ItemType Directory | Out-Null",
+            "New-Item -Path 'C:\\rtools44' -Target \"$dir\" -ItemType Junction | Out-Null"
         ]
     },
     "uninstaller": {
         "script": [
-            "if ((Test-Path 'C:\\rtools43') -and ($null -ne (Get-Item 'C:\\rtools43').LinkType)) {",
-            "   Remove-Item -Path 'C:\\rtools43' -Force",
+            "if ((Test-Path 'C:\\rtools44') -and ($null -ne (Get-Item 'C:\\rtools44').LinkType)) {",
+            "   Remove-Item -Path 'C:\\rtools44' -Force",
             "}",
-            "if (Test-Path 'C:\\rtools43.old') {",
-            "   Rename-Item -Path 'C:\\rtools43.old' -NewName 'rtools43' -Force",
+            "if (Test-Path 'C:\\rtools44.old') {",
+            "   Rename-Item -Path 'C:\\rtools44.old' -NewName 'rtools44' -Force",
             "}"
         ]
     },
     "checkver": {
-        "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/",
-        "regex": ">rtools43\\-(\\d+)\\-(\\d+).exe<",
-        "replace": "4.3.${1}.${2}"
+        "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/",
+        "regex": ">rtools44\\-(\\d+)\\-(\\d+).exe<",
+        "replace": "4.4.${1}.${2}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-$match1-$match2.exe"
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-$match1-$match2.exe"
+            },
+            "arm64": {
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-$match1-$match2.exe"
             }
         }
     }
