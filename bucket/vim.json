@@ -1,5 +1,5 @@
 {
-    "version": "9.1.0381",
+    "version": "9.1.0",
     "description": "A highly configurable text editor",
     "homepage": "https://www.vim.org",
     "license": "Vim",
@@ -9,13 +9,13 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.1.0381/gvim_9.1.0381_x64.zip",
-            "hash": "acc670a895da405ab73441171325dafba80811ebd89a4da1a7dd47355269b531",
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.1.0/gvim_9.1.0_x64_signed.zip",
+            "hash": "72002de6d790b6013efe3f38b11b5f8f0f9e7621fdcc91e2ef3ad183718e3569",
             "extract_dir": "vim/vim91"
         },
         "32bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.1.0381/gvim_9.1.0381_x86.zip",
-            "hash": "bc0fefb52206802d216a4c256e30be637340cf81b011b9cba0a38f202c4a7d59",
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.1.0/gvim_9.1.0_x86_signed.zip",
+            "hash": "9be536a1aec970c822177594c6d2ccec739ef344e8b2871c0d174a7f75aa5357",
             "extract_dir": "vim/vim91"
         }
     },
@@ -98,16 +98,17 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/vim/vim-win32-installer"
+        "url": "https://www.vim.org/download.php",
+        "regex": "gvim_([\\d.]+)_x\\d{2}_signed.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64.zip",
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64_signed.zip",
                 "extract_dir": "vim/vim$majorVersion$minorVersion"
             },
             "32bit": {
-                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86.zip",
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86_signed.zip",
                 "extract_dir": "vim/vim$majorVersion$minorVersion"
             }
         }
