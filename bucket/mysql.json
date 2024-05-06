@@ -1,7 +1,7 @@
 {
     "version": "8.4.0",
-    "description": "The world's most popular open-source database, supported by an active community.",
-    "homepage": "https://dev.mysql.com/downloads/mysql/",
+    "description": "The world's most popular open-source database",
+    "homepage": "https://dev.mysql.com/downloads/mysql/#info-tab",
     "license": "GPL-2.0-only",
     "notes": [
         "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
@@ -12,13 +12,14 @@
         "To stop and/or delete the Service run 'sc stop MySQL' and 'sc delete MySQL'."
     ],
     "suggest": {
-        "vcredist": "extras/vcredist2022"
+        "vcredist": "extras/vcredist2022",
+        "mysql-shell": "mysql-shell"
     },
     "architecture": {
         "64bit": {
-            "url": "https://dev.mysql.com/get/Downloads/MySQL-8.4/mysql-8.4.0-winx64.zip",
-            "hash": "md5:23fa293db80b5d49f9e97d34c2037a82",
-            "extract_dir": "mysql-8.4.0-winx64"
+            "url": "https://dev.mysql.com/get/Downloads/MySQL-8.4/mysql-8.4.0-winx64.msi",
+            "hash": "md5:53c9781e14f106f4551d4d8c06654bc3",
+            "extract_dir": "PFiles64\\MySQL\\MySQL Server 8.4"
         }
     },
     "pre_install": [
@@ -34,14 +35,13 @@
     "post_install": [
         "if (!(Test-Path \"$dir\\data\\auto.cnf\")) {",
         "    warn 'Initializing data directory ...'",
-        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysqld.exe\" -ArgumentList '--initialize-insecure'",
+        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysqld.exe\" -ArgumentList '--initialize-insecure' | Out-Null",
         "    warn 'Database has been initialized (username: root, password: <blank>)'",
         "}"
     ],
     "bin": [
         "bin\\ibd2sdi.exe",
         "bin\\innochecksum.exe",
-        "bin\\lz4_decompress.exe",
         "bin\\myisamchk.exe",
         "bin\\myisamlog.exe",
         "bin\\myisampack.exe",
@@ -53,32 +53,34 @@
         "bin\\mysqld.exe",
         "bin\\mysqldump.exe",
         "bin\\mysqlimport.exe",
-        "bin\\mysqlpump.exe",
         "bin\\mysqlshow.exe",
         "bin\\mysqlslap.exe",
         "bin\\mysql_config_editor.exe",
         "bin\\mysql_secure_installation.exe",
-        "bin\\mysql_ssl_rsa_setup.exe",
         "bin\\mysql_tzinfo_to_sql.exe",
-        "bin\\mysql_upgrade.exe",
         "bin\\my_print_defaults.exe",
-        "bin\\perror.exe",
-        "bin\\zlib_decompress.exe"
+        "bin\\perror.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\mysql_configurator.exe",
+            "MySQL Configurator"
+        ]
     ],
     "persist": [
         "data",
         "my.ini"
     ],
-    "checkver": "<h1>MySQL Community Server ([\\d.]+)",
+    "checkver": "MySQL Community Server ([\\d.]+)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dev.mysql.com/get/Downloads/MySQL-$majorVersion.$minorVersion/mysql-$version-winx64.zip",
+                "url": "https://dev.mysql.com/get/Downloads/MySQL-$majorVersion.$minorVersion/mysql-$version-winx64.msi",
                 "hash": {
                     "url": "https://dev.mysql.com/downloads/mysql/",
-                    "regex": "md5\">$md5"
+                    "regex": "(?s)$basename.*?$md5"
                 },
-                "extract_dir": "mysql-$version-winx64"
+                "extract_dir": "PFiles64\\MySQL\\MySQL Server $majorVersion.$minorVersion"
             }
         }
     }
