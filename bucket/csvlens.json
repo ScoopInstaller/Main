@@ -1,0 +1,25 @@
+{
+    "version": "0.9.0",
+    "description": "Command line csv viewer",
+    "homepage": "https://github.com/YS-L/csvlens",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/YS-L/csvlens/releases/download/v0.9.0/csvlens-x86_64-pc-windows-msvc.zip",
+            "hash": "3757d6205d9c08ced920f5d09d28519bf29f6d672a6bc7aa1b2cf29edff7f953"
+        }
+    },
+    "bin": "csvlens.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/YS-L/csvlens/releases/download/v$version/csvlens-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
+
