@@ -1,0 +1,18 @@
+{
+    "version":  "20180511",
+    "description": "Pointofix is ​​the screen marker to support your lectures, training and presentations.",
+    "homepage": "https://www.pointofix.de/",
+    "url":  "https://www.pointofix.de/download/pointofix180de-20180511-direkt.zip",
+    "extract_dir":  "",
+    "post_install": [
+        "curl -o $dir\\pointofix-translation-20220120.zip https://www.pointofix.de/download/pointofix-translation-20220120.zip", 
+        "cd $dir",
+        "7z x '-i!pointofix_translation_en.ini' pointofix-translation-20220120.zip -y",
+        "Remove-Item -Path $dir\\pointofix-translation-20220120.zip -Recurse -ErrorAction Ignore",
+        "Rename-Item -Path $dir\\pointofix_translation_en.ini -NewName $dir\\pointofix_translation.ini -Force"
+    ],
+    "bin":  "Pointofix.exe",
+    "depends": ["curl","7zip"]
+}
+
+
