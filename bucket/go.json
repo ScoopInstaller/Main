@@ -23,7 +23,7 @@
             "$envgopath = \"$env:USERPROFILE\\go\"",
             "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
             "info \"Adding '$envgopath\\bin' to PATH...\"",
-            "add_first_in_path \"$envgopath\\bin\" $global"
+            "Add-Path \"$envgopath\\bin\" $global"
         ]
     },
     "uninstaller": {
@@ -31,7 +31,7 @@
             "$envgopath = \"$env:USERPROFILE\\go\"",
             "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
             "info \"Removing '$envgopath\\bin' from PATH...\"",
-            "remove_from_path \"$envgopath\\bin\" $global"
+            "Remove-Path \"$envgopath\\bin\" $global"
         ]
     },
     "bin": [
