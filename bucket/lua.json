@@ -1,28 +1,16 @@
 {
-    "version": "5.4.2",
+    "version": "5.4.6-2",
     "description": "A powerful, efficient, lightweight, embeddable scripting language",
     "homepage": "https://www.lua.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": [
-                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Tools%20Executables/lua-5.4.2_Win64_bin.zip",
-                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Windows%20Libraries/Dynamic/lua-5.4.2_Win64_dllw6_lib.zip"
-            ],
-            "hash": [
-                "sha1:31f5380006244e045c9aa2119feed8d353be72cb",
-                "sha1:e313a05e498b77b5e259737fe4ec851fe2b9d23e"
-            ]
+            "url": "https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-lua-5.4.6-2-any.pkg.tar.zst",
+            "hash": "adffa6a29188dd4715c493e47a575bcd28e898c6d2c1300e48d3a7e14d12f101"
         },
         "32bit": {
-            "url": [
-                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Tools%20Executables/lua-5.4.2_Win32_bin.zip",
-                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Windows%20Libraries/Dynamic/lua-5.4.2_Win32_dllw6_lib.zip"
-            ],
-            "hash": [
-                "sha1:d5cb6359710413a71ba517617654f1c15229d61f",
-                "sha1:c13d772ebe44157d55279b04b93b67b5f8805a4f"
-            ]
+            "url": "https://mirror.msys2.org/mingw/mingw32/mingw-w64-i686-lua-5.4.6-2-any.pkg.tar.zst",
+            "hash": "29423bbe672606230e03ef9b9a73574123491f5fe535fcf1c4f18b7263a8e453"
         }
     },
     "bin": [
@@ -42,22 +30,16 @@
         "LUA_CPATH": "$dir"
     },
     "checkver": {
-        "url": "http://luabinaries.sourceforge.net/download.html",
-        "regex": "LuaBinaries ([\\d.]+)"
+        "url": "https://packages.msys2.org/api/search?query=mingw-w64-x86_64-lua&qtype=binpkg",
+        "jsonpath": "$.results.exact.version"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": [
-                    "https://downloads.sourceforge.net/project/luabinaries/$version/Tools%20Executables/lua-$version_Win64_bin.zip",
-                    "https://downloads.sourceforge.net/project/luabinaries/$version/Windows%20Libraries/Dynamic/lua-$version_Win64_dllw6_lib.zip"
-                ]
+                "url": "https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-lua-$version-any.pkg.tar.zst"
             },
             "32bit": {
-                "url": [
-                    "https://downloads.sourceforge.net/project/luabinaries/$version/Tools%20Executables/lua-$version_Win32_bin.zip",
-                    "https://downloads.sourceforge.net/project/luabinaries/$version/Windows%20Libraries/Dynamic/lua-$version_Win32_dllw6_lib.zip"
-                ]
+                "url": "https://mirror.msys2.org/mingw/mingw32/mingw-w64-i686-lua-$version-any.pkg.tar.zst"
             }
         },
         "bin": [
