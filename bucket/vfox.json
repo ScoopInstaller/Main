@@ -26,8 +26,7 @@
     },
     "bin": "vfox.exe",
     "checkver": {
-        "url": "https://github.com/version-fox/vfox/raw/main/internal/version.go",
-        "regex": "\"([\\d\\.]+)\""
+        "github": "https://github.com/version-fox/vfox"
     },
     "autoupdate": {
         "architecture": {
@@ -45,8 +44,7 @@
             }
         },
         "hash": {
-            "url": "https://github.com/version-fox/vfox/releases/download/v$version/checksums.txt",
-            "find": "$sha256[\\S\\s]+$basename"
+            "url": "$baseurl/checksums.txt"
         }
     }
 }
