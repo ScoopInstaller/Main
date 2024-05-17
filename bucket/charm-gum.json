@@ -13,6 +13,10 @@
             "hash": "faa0e75a4d2f2541e0556f5dc9378c82b5e6eb3d3f618ebe4be685376d7c7d82"
         }
     },
+    "pre_install": [
+        "Move-Item \"$dir\\gum_*_Windows*\\*\" \"$dir\"",
+        "Remove-Item \"$dir\\gum_*_Windows*\""
+    ],
     "bin": "gum.exe",
     "checkver": "github",
     "autoupdate": {
