@@ -1,0 +1,28 @@
+{
+    "version": "2.10.3",
+    "description": "A fast, simple, recursive content discovery tool written in Rust",
+    "homepage": "https://github.com/epi052/feroxbuster",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/epi052/feroxbuster/releases/download/v2.10.3/x86_64-windows-feroxbuster.exe.zip",
+            "hash": "6e75cd31771957b2fb3ee0f0826ea630224d1fd038d5823a91093e8e2a956546"
+        },
+        "32bit": {
+            "url": "https://github.com/epi052/feroxbuster/releases/download/v2.10.3/x86-windows-feroxbuster.exe.zip",
+            "hash": "3f8386750f26d0784ee6134c2820fe26f7fd70dc5ec1518b3fe0edee83fbb841"
+        }
+    },
+    "bin": "feroxbuster.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/epi052/feroxbuster/releases/download/v$version/x86_64-windows-feroxbuster.exe.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/epi052/feroxbuster/releases/download/v$version/x86-windows-feroxbuster.exe.zip"
+            }
+        }
+    }
+}
