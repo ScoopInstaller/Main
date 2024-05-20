@@ -10,10 +10,10 @@
     "hash": "194717442575a6f96e1c1befa2c30e9a4fc90f701d7aee33eb879b79e7ff05c0",
     "extract_dir": "gradle-8.7",
     "post_install": [
-        "$current_env = env GRADLE_USER_HOME $global",
+        "$current_env = Get-EnvVar -Name GRADLE_USER_HOME -Global:$global",
         "If ($null -eq $current_env) {",
         "    $path = \"$dir\\.gradle\"",
-        "    env GRADLE_USER_HOME $global $path",
+        "    Set-EnvVar -Name GRADLE_USER_HOME -Value $path -Global:$global",
         "    $Env:GRADLE_USER_HOME = $path",
         "    Write-Host \"Environment variable 'GRADLE_USER_HOME' set to '$path'\"",
         "}"
