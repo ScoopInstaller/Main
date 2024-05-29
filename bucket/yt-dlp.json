@@ -1,5 +1,5 @@
 {
-    "version": "2024.04.09",
+    "version": "2024.05.27",
     "description": "A youtube-dl fork with additional features and fixes.",
     "homepage": "https://github.com/yt-dlp/yt-dlp",
     "license": "Unlicense",
@@ -8,19 +8,20 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2024.04.09/yt-dlp.exe",
-            "hash": "sha512:f1a6f2cbb4da864feff6c2dc5de2e9c8c59efa20e091b4d6557eaccc06b2b32f71b1bfcd51eb86de563fed62ff466b6c8bf699f880fd19980da2c18c1ed92a10"
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2024.05.27/yt-dlp.exe",
+            "hash": "sha512:4b786138bbea8664cdec97da44d0bc6521ac17c9277bc6a08f845a1c037a3d3c19642c06dc2ffa23f4267f17222f7950ec293fc42e90ad7e9cf85521e375cac9"
         },
         "32bit": {
-            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2024.04.09/yt-dlp_x86.exe#/yt-dlp.exe",
-            "hash": "sha512:205b40554b2b5cdcb2ab360f36d9a28f1adb230ef1dfd3e1fb2e7c1f3e40aedceca4d3d2fc84445952b9012b11a041f068b04a231b6270144d93d3eb1af0223f"
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2024.05.27/yt-dlp_x86.exe#/yt-dlp.exe",
+            "hash": "sha512:0a9442b3b590b3e5cd50f38bad80e69623f5cc3db402005516eb50a63ff09b482cf723b1c530df8008a186f3fda1afc6751dbeb9748faf7b163f6b7f58394824"
         }
     },
     "bin": "yt-dlp.exe",
     "pre_install": "if (-not (Test-Path \"$persist_dir\\yt-dlp.conf\")) { New-Item \"$dir\\yt-dlp.conf\" -ItemType file | Out-Null }",
     "persist": [
         "yt-dlp.conf",
-        "ytdlp_plugins"
+        "ytdlp_plugins",
+        "yt-dlp-plugins"
     ],
     "checkver": "github",
     "autoupdate": {

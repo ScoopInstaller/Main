@@ -9,12 +9,12 @@
     },
     "depends": "cacert",
     "url": [
-        "https://invisible-island.net/datafiles/current/lynx-newssl-setup.exe",
-        "https://slproweb.com/download/Win32OpenSSL_Light-1_1_1w.exe"
+        "https://invisible-island.net/archives/lynx/current/lynx-newssl2.9.1-setup.exe",
+        "https://slproweb.com/download/Win32OpenSSL_Light-3_3_0.exe"
     ],
     "hash": [
         "f15fddc787a7de375d6257a724c96f721429af1b42c1f8ac7ec8da06d6418cb5",
-        "613ea3572ca0dffe0ab93c1e7918502887973b97207e33b6a1bfa341c5f1eddc"
+        "031590db73ad684218e2967ebb8542ec700b180a9c8fc72038aa1aaf8dc2bf8a"
     ],
     "innosetup": true,
     "pre_install": "if (!(Test-Path \"$persist_dir\\lynx.cfg\")) { Add-Content \"$dir\\lynx.cfg\" -Value @(\"SSL_CERT_FILE:`\"$(appdir cacert $global)\\current\\cacert.pem`\"\", \"FORCE_SSL_PROMPT:PROMPT\") -Encoding Ascii }",
@@ -41,6 +41,6 @@
         "regex": "[\\d-]{10}\\s+\\(([\\w.]+)\\)"
     },
     "autoupdate": {
-        "url": "https://invisible-island.net/datafiles/current/lynx-newssl-setup.exe"
+        "url": "https://invisible-island.net/archives/lynx/current/lynx-newssl$version-setup.exe"
     }
 }
