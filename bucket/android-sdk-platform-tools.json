@@ -1,0 +1,17 @@
+{
+    "version": "35.0.1",
+    "description": "It includes tools that interface with the Android platform, primarily adb and fastboot.",
+    "homepage": "https://developer.android.com/tools/releases/platform-tools",
+    "license": "Apache-2.0",
+    "url": "https://dl.google.com/android/repository/platform-tools-latest-windows.zip",
+    "hash": "fecc3f9dd1b4072717c44476314b5c83cf66c46f81ff9a4c91e659f9080c5140",
+    "extract_dir": "platform-tools",
+    "bin": [
+        "adb.exe",
+        "fastboot.exe"
+    ],
+    "checkver": "<h2[^>]*>.*?</h2>\\s*<h4[^>]*data-text=\"([^\"]+?)\\s*\\([^\"]*\\)\"[^>]*>",
+    "autoupdate": {
+        "url": "https://dl.google.com/android/repository/platform-tools-latest-windows.zip"
+    }
+}
