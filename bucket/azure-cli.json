@@ -9,20 +9,15 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://azcliprod.blob.core.windows.net/msi/azure-cli-2.61.0-x64.msi",
-            "hash": "e6906997110d6acfb51a934b1d18b21fb2f314dab6b653644fd7d769e72e668c"
-        },
-        "32bit": {
-            "url": "https://azcliprod.blob.core.windows.net/msi/azure-cli-2.61.0.msi",
-            "hash": "f765b484f8279fdd909d884539ada5baf2aaf897e30c2ef3de33cdae42180956"
+            "url": "https://azcliprod.blob.core.windows.net/zip/azure-cli-2.61.0-x64.zip",
+            "hash": "8b5f12064aaf40eeccd17c5043df9cb5676a3845ea1bce4adde33261f4af05cd"
         }
     },
-    "extract_dir": "Microsoft SDKs\\Azure\\CLI2",
     "env_set": {
-        "AZURE_CLI_PATH": "$dir\\wbin",
-        "AzureCLIPath": "$dir\\wbin"
+        "AZURE_CLI_PATH": "$dir\\bin",
+        "AzureCLIPath": "$dir\\bin"
     },
-    "bin": "wbin\\az.cmd",
+    "bin": "bin\\az.cmd",
     "checkver": {
         "github": "https://github.com/Azure/azure-cli",
         "regex": "/releases/tag/azure-cli-([\\d.]+)"
@@ -30,10 +25,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://azcliprod.blob.core.windows.net/msi/azure-cli-$version-x64.msi"
-            },
-            "32bit": {
-                "url": "https://azcliprod.blob.core.windows.net/msi/azure-cli-$version.msi"
+                "url": "https://azcliprod.blob.core.windows.net/zip/azure-cli-$version-x64.zip"
             }
         }
     }
