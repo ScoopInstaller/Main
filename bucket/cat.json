@@ -4,9 +4,16 @@
     "homepage": "https://github.com/RushiChaganti/psutils",
     "license": "MIT",
     "url": "https://github.com/RushiChaganti/psutils/blob/main/cat.ps1",
+    "hash": "21F814CA14D7F08ACB6F6601D05389B9296A29F6B78766496FACBC84012873C6",
     "bin": "cat.ps1",
-    "checkver": "github",
+    "checkver":{
+        "github": "https://github.com/RushiChaganti/psutils",
+        "regex": "tag/v([\\d.]+)"
+    },
     "autoupdate": {
-        "url": "https://github.com/RushiChaganti/psutils/raw/main/cat.ps1"
+        "url": "https://github.com/RushiChaganti/psutils/raw/main/cat.ps1",
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
 }
