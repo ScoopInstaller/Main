@@ -1,21 +1,21 @@
 {
-    "version": "3.12.2",
+    "version": "3.12.4",
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
     "license": "Python-2.0",
     "notes": "Allow applications and third-party installers to find python by running: \"$dir\\install-pep-514.reg\"",
     "architecture": {
         "64bit": {
-            "url": "https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe#/setup.exe",
-            "hash": "md5:44abfae489d87cc005d50a9267b5d58d"
+            "url": "https://www.python.org/ftp/python/3.12.4/python-3.12.4-amd64.exe#/setup.exe",
+            "hash": "md5:f3df1be26cc7cbd8252ab5632b62d740"
         },
         "32bit": {
-            "url": "https://www.python.org/ftp/python/3.12.2/python-3.12.2.exe#/setup.exe",
-            "hash": "md5:bc4d721cf44a52fa9e19c1209d45e8c3"
+            "url": "https://www.python.org/ftp/python/3.12.4/python-3.12.4.exe#/setup.exe",
+            "hash": "md5:d9c98b529889aba04ca5ec1c6b5f986f"
         },
         "arm64": {
-            "url": "https://www.python.org/ftp/python/3.12.2/python-3.12.2-arm64.exe#/setup.exe",
-            "hash": "md5:f769b05cd9d336d2d6e3f6399cb573be"
+            "url": "https://www.python.org/ftp/python/3.12.4/python-3.12.4-arm64.exe#/setup.exe",
+            "hash": "md5:f3c2064f11c5f4eee475928a0fc62199"
         }
     },
     "pre_install": [
@@ -55,8 +55,8 @@
             "}",
             "Remove-Item \"$dir\\_tmp\", \"$dir\\setup.exe\" -Force -Recurse",
             "if ($global) {",
-            "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
-            "    env 'PATHEXT' $true \"$pathext;.PY;.PYW\"",
+            "    $pathext = (Get-EnvVar -Name PATHEXT -Global) -replace ';.PYW?', ''",
+            "    Set-EnvVar -Name PATHEXT -Value \"$pathext;.PY;.PYW\" -Global",
             "}"
         ]
     },
@@ -67,8 +67,8 @@
     "uninstaller": {
         "script": [
             "if ($global) {",
-            "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
-            "    env 'PATHEXT' $true \"$pathext\"",
+            "    $pathext = (Get-EnvVar -Name PATHEXT -Global) -replace ';.PYW?', ''",
+            "    Set-EnvVar -Name PATHEXT -Value \"$pathext\" -Global",
             "}"
         ]
     },

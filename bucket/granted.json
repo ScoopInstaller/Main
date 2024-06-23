@@ -1,0 +1,39 @@
+{
+    "version": "0.28.0",
+    "description": "Granted is a command line interface (CLI) application which simplifies access to cloud roles and allows multiple cloud accounts to be opened in your web browser simultaneously.",
+    "homepage": "https://github.com/common-fate/granted",
+    "license": "MIT",
+    "depends": "aws",
+    "architecture": {
+        "32bit": {
+            "url": "https://releases.commonfate.io/granted/v0.28.0/granted_0.28.0_windows_i386.zip",
+            "hash": "81eef06e5eb138407394a9c7beefa37a93dd81596f3405e97fd12eed27944f7b"
+        },
+        "64bit": {
+            "url": "https://releases.commonfate.io/granted/v0.28.0/granted_0.28.0_windows_x86_64.zip",
+            "hash": "330fae2561c450f2ce9b9d415f4545349eb12ea1bbc25b7dfedc31359393b908"
+        },
+        "arm64": {
+            "url": "https://releases.commonfate.io/granted/v0.28.0/granted_0.28.0_windows_arm64.zip",
+            "hash": "647437eec9b473c01cf3b59025c90241763eb7fea1319014312da2d8c0a7e055"
+        }
+    },
+    "bin": [
+        "assume.ps1",
+        "granted.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://releases.commonfate.io/granted/v$version/granted_$version_windows_i386.zip"
+            },
+            "64bit": {
+                "url": "https://releases.commonfate.io/granted/v$version/granted_$version_windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://releases.commonfate.io/granted/v$version/granted_$version_windows_arm64.zip"
+            }
+        }
+    }
+}

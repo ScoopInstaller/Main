@@ -1,16 +1,18 @@
 {
-    "version": "0.13.0",
+    "version": "0.14.1",
     "homepage": "https://github.com/charmbracelet/gum",
     "description": "A tool for glamorous shell scripts 🎀.",
     "license": "MIT",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/charmbracelet/gum/releases/download/v0.13.0/gum_0.13.0_Windows_i386.zip",
-            "hash": "abd256a07bd1298389961a10ff6e7e6060a2b12b22a8a19ba76d94c028edfb90"
+            "url": "https://github.com/charmbracelet/gum/releases/download/v0.14.1/gum_0.14.1_Windows_i386.zip",
+            "hash": "3abd943e02398a8e69944f13298dde6355d3834a0186b9ff7bfdfe43189d16db",
+            "extract_dir": "gum_0.14.1_Windows_i386"
         },
         "64bit": {
-            "url": "https://github.com/charmbracelet/gum/releases/download/v0.13.0/gum_0.13.0_Windows_x86_64.zip",
-            "hash": "f362019e494ccf0b21449a5166dfdc86bf7ce1883ff5e2499a3c75d10ca6e1fd"
+            "url": "https://github.com/charmbracelet/gum/releases/download/v0.14.1/gum_0.14.1_Windows_x86_64.zip",
+            "hash": "2d01d6e5d87e502d71867bf20e4c95cf712759068ac34f61a60ded6657ed2c09",
+            "extract_dir": "gum_0.14.1_Windows_x86_64"
         }
     },
     "bin": "gum.exe",
@@ -19,18 +21,16 @@
         "architecture": {
             "32bit": {
                 "url": "https://github.com/charmbracelet/gum/releases/download/v$version/gum_$version_Windows_i386.zip",
-                "hash": {
-                    "url": "$baseurl/checksums.txt",
-                    "regex": "($sha256)\\s+gum_[\\d.]+_Windows_i386\\.zip"
-                }
+                "extract_dir": "gum_$version_Windows_i386"
             },
             "64bit": {
                 "url": "https://github.com/charmbracelet/gum/releases/download/v$version/gum_$version_Windows_x86_64.zip",
-                "hash": {
-                    "url": "$baseurl/checksums.txt",
-                    "regex": "($sha256)\\s+gum_[\\d.]+_Windows_x86_64\\.zip"
-                }
+                "extract_dir": "gum_$version_Windows_x86_64"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "($sha256).*?$basename"
         }
     }
 }
