@@ -4,29 +4,17 @@
     "homepage": "https://github.com/RushiChaganti/psutils",
     "license": "MIT",
     "url": "https://raw.githubusercontent.com/RushiChaganti/psutils/main/cat.ps1",
-    "hash": "21f814ca14d7f08acb6f6601d05389b9296a29f6b78766496facbc84012873c6",
+    "hash": {
+        "url": "https://github.com/RushiChaganti/psutils/releases/download/v$version/cat.ps1.sha256",
+        "regex": "(?<sha>[0-9a-f]{64})"
+    },
     "bin": "cat.ps1",
     "checkver": {
-        "url": "https://github.com/RushiChaganti/psutils/commits/main/cat.ps1.atom",
-        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
-        "replace": "0.${1}.${2}.${3}"
+        "url": "https://api.github.com/repos/RushiChaganti/psutils/git/refs/tags",
+        "regex": "refs/tags/v(\\d+\\.\\d+\\.\\d+)",
+        "replace": "$1"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/RushiChaganti/psutils/releases/download/v$version/cat.ps1",
-                "hash": {
-                    "url": "https://github.com/RushiChaganti/psutils/releases/download/v$version/cat.ps1.sha256",
-                    "regex": "$sha256"
-                }
-            },
-            "32bit": {
-                "url": "https://github.com/RushiChaganti/psutils/releases/download/v$version/cat.ps1",
-                "hash": {
-                    "url": "https://github.com/RushiChaganti/psutils/releases/download/v$version/cat.ps1.sha256",
-                    "regex": "$sha256"
-                }
-            }
-        }
+        "url": "https://github.com/RushiChaganti/psutils/releases/download/v$version/cat.ps1"
     }
 }
