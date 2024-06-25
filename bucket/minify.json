@@ -14,7 +14,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/tdewolff/minify/releases/download/v$version/minify_windows_amd64.zip"
+                "url": "https://github.com/tdewolff/minify/releases/download/v$version/minify_windows_amd64.zip",
+                "hash": {
+                    "url": "https://github.com/tdewolff/minify/releases/download/v$version/checksums.txt",
+                    "find": "$sha256  $basename"
+                }
             }
         }
     }
