@@ -1,0 +1,40 @@
+{
+    "version": "0.17.6",
+    "description": "Compose with Mutagen integration",
+    "homepage": "https://mutagen.io/documentation/orchestration/compose",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mutagen-io/mutagen-compose/releases/download/v0.17.6/mutagen-compose_windows_amd64_v0.17.6.zip",
+            "hash": "56544f93fa1a6e956bf41312a3a63784fa98ec9914e75fca25059754c4bf19ba"
+        },
+        "32bit": {
+            "url": "https://github.com/mutagen-io/mutagen-compose/releases/download/v0.17.6/mutagen-compose_windows_386_v0.17.6.zip",
+            "hash": "bd949e3abaed7249d997df45af009b834be24e7a971b0bc5a6fd6c79e560273f"
+        },
+        "arm64": {
+            "url": "https://github.com/mutagen-io/mutagen-compose/releases/download/v0.17.6/mutagen-compose_windows_arm64_v0.17.6.zip",
+            "hash": "e3861bd84bfa55223545abb82fdc91b1fe9b932b7c50fe2802c62da477ac13a1"
+        }
+    },
+    "bin": "mutagen-compose.exe",
+    "checkver": {
+        "github": "https://github.com/mutagen-io/mutagen-compose"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mutagen-io/mutagen-compose/releases/download/v$version/mutagen-compose_windows_amd64_v$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/mutagen-io/mutagen-compose/releases/download/v$version/mutagen-compose_windows_386_v$version.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/mutagen-io/mutagen-compose/releases/download/v$version/mutagen-compose_windows_arm64_v$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
