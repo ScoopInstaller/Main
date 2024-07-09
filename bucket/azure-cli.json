@@ -5,7 +5,7 @@
     "license": "MIT",
     "notes": [
         "* Known issue:",
-        "  - Cannot be extracted due to long path: https://github.com/ScoopInstaller/Main/issues/5300"
+        "  - Extracted can fail due to long path: https://github.com/ScoopInstaller/Main/issues/5300"
     ],
     "architecture": {
         "64bit": {
@@ -18,6 +18,28 @@
         "AzureCLIPath": "$dir\\bin"
     },
     "bin": "bin\\az.cmd",
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        ('{0}\\.azure\\cliextensions' -f $env:USERPROFILE)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if ([System.IO.Directory]::Exists($_)) {",
+        "            $null = [System.IO.Directory]::Delete($_,$true)",
+        "        }",
+        "    }",
+        "    $Files = [string[]](",
+        "        ('{0}\\.azure\\config' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\extensionCommandTree.json' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\versionCheck.json' -f $env:USERPROFILE)",
+        "    )",
+        "    $Files.ForEach{",
+        "       if ([System.IO.File]::Exists($_)) {",
+        "           $null = [System.IO.File]::Delete($_)",
+        "       }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/Azure/azure-cli",
         "regex": "/releases/tag/azure-cli-([\\d.]+)"
