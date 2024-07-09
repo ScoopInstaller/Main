@@ -18,10 +18,16 @@
         "AzureCLIPath": "$dir\\bin"
     },
     "bin": "bin\\az.cmd",
+    "pre_uninstall": [
+        "if ($purge -and [bool]$(Try{$null = Get-Command -Name 'az' 2>$null; $?}Catch{$false})) {",
+        "    Start-Process -FilePath 'az' -ArgumentList 'account', 'clear' -NoNewWindow -Wait",
+        "}"
+    ],
     "post_uninstall": [
         "if ($purge) {",
         "    $Directories = [string[]](",
-        "        ('{0}\\.azure\\cliextensions' -f $env:USERPROFILE)",
+        "        ('{0}\\.azure\\cliextensions' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\commands' -f $env:USERPROFILE)",
         "    )",
         "    $Directories.ForEach{",
         "        if ([System.IO.Directory]::Exists($_)) {",
@@ -29,6 +35,7 @@
         "        }",
         "    }",
         "    $Files = [string[]](",
+        "        ('{0}\\.azure\\commandIndex.json' -f $env:USERPROFILE),",
         "        ('{0}\\.azure\\config' -f $env:USERPROFILE),",
         "        ('{0}\\.azure\\extensionCommandTree.json' -f $env:USERPROFILE),",
         "        ('{0}\\.azure\\versionCheck.json' -f $env:USERPROFILE)",
