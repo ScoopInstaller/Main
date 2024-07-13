@@ -1,35 +1,33 @@
 {
-  "version": "1.83.1",
-  "description": "Terraform Orchestration Tool for DevOps. Keep environment configuration DRY with hierarchical imports of configurations, inheritance, and WAY more. Native support for Terraform and Helmfile.",
-  "homepage": "https://github.com/cloudposse/atmos/",
-  "license": "Apache-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/cloudposse/atmos/releases/download/v1.83.1/atmos_1.83.1_windows_amd64.exe",
-      "hash": "6008ada9a269e24d47055ec574a58c9cc401113fa6e1e3d1fdbc45a8a8fa9d36"
-    },
-    "32bit": {
-      "url": "https://github.com/cloudposse/atmos/releases/download/v1.83.1/atmos_1.83.1_windows_386.exe",
-      "hash": "4f387f458447af07cd691e34e468f34e81c582f02c977cb7da97c16838a65736"
-    }
-  },
-  "pre_install": [
-    "$bin_name = if ($architecture -eq '64bit') {'amd64'} else {'386'}",
-    "Rename-Item \"$dir\\atmos_$($version)_windows_$bin_name.exe\" \"atmos.exe\""
-  ],
-  "bin": "atmos.exe",
-  "checkver": "github",
-  "autoupdate": {
+    "version": "1.84.0",
+    "description": "Terraform Orchestration Tool for DevOps",
+    "homepage": "https://atmos.tools",
+    "license": "Apache-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/cloudposse/atmos/releases/download/v$version/atmos_$version_windows_amd64.exe"
-      },
-      "32bit": {
-        "url": "https://github.com/cloudposse/atmos/releases/download/v$version/atmos_$version_windows_386.exe"
-      }
+        "64bit": {
+            "url": "https://github.com/cloudposse/atmos/releases/download/v1.84.0/atmos_1.84.0_windows_amd64.exe#/atmos.exe",
+            "hash": "dcd819162846cc5d6b41c3bc93ca456c14b5e465d9927da57a50c3ad2534e313"
+        },
+        "32bit": {
+            "url": "https://github.com/cloudposse/atmos/releases/download/v1.84.0/atmos_1.84.0_windows_386.exe#/atmos.exe",
+            "hash": "9d9c6483994ca28c94b51f2c436b49b05cdb5624a67411c58cf84239c8edb932"
+        }
     },
-    "hash": {
-      "url": "$baseurl/atmos_$version_SHA256SUMS"
+    "bin": "atmos.exe",
+    "checkver": {
+        "github": "https://github.com/cloudposse/atmos"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cloudposse/atmos/releases/download/v$version/atmos_$version_windows_amd64.exe#/atmos.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/cloudposse/atmos/releases/download/v$version/atmos_$version_windows_386.exe#/atmos.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/atmos_$version_SHA256SUMS"
+        }
     }
-  }
 }
