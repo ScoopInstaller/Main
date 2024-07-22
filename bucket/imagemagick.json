@@ -24,7 +24,13 @@
         "MAGICK_CODER_MODULE_PATH": "$dir\\modules\\coders"
     },
     "env_add_path": ".",
-    "notes": "'convert.exe' is deprecated in v7 (it also conflicts with the builtin Windows 'convert' utility). Use 'magick convert ...' instead.",
+    "notes": [
+        "ImageMagick requires Ghostscript to handle PDF files properly.",
+        "You can install it by: scoop install ghostscript",
+        "",
+        "'convert.exe' is deprecated in v7 (it also conflicts with the builtin Windows 'convert' utility).",
+        "Use 'magick convert ...' instead."
+    ],
     "checkver": {
         "url": "https://imagemagick.org/archive/binaries/digest.rdf",
         "reverse": true,
