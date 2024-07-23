@@ -11,10 +11,10 @@
     },
     "bin": "stack.exe",
     "installer": {
-        "script": "add_first_in_path \"$env:APPDATA\\local\\bin\" $global"
+        "script": "Add-Path -Path \"$env:APPDATA\\local\\bin\" -Global:$global"
     },
     "uninstaller": {
-        "script": "remove_from_path \"$env:APPDATA\\local\\bin\" $global"
+        "script": "Remove-Path -Path \"$env:APPDATA\\local\\bin\" -Global:$global"
     },
     "checkver": {
         "github": "https://github.com/commercialhaskell/stack"
