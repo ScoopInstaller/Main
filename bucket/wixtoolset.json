@@ -1,36 +1,17 @@
 {
-    "version": "3.11.2",
+    "version": "5.0.1",
     "description": "Set of tools for windows installer creation.",
     "homepage": "https://wixtoolset.org/",
     "license": "MS-RL",
-    "url": "https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip",
-    "hash": "2c1888d5d1dba377fc7fa14444cf556963747ff9a0a289a3599cf09da03b9e2e",
-    "bin": [
-        "candle.exe",
-        "dark.exe",
-        "heat.exe",
-        "insignia.exe",
-        "light.exe",
-        "lit.exe",
-        "lux.exe",
-        "melt.exe",
-        "nit.exe",
-        "pyro.exe",
-        "retina.exe",
-        "shine.exe",
-        "smoke.exe",
-        "ThmViewer.exe",
-        "torch.exe",
-        "WixCop.exe"
-    ],
-    "env_set": {
-        "WixToolPath": "$dir"
-    },
+    "url": "https://api.nuget.org/v3-flatcontainer/wix/5.0.1/wix.5.0.1.nupkg",
+    "hash": "ba3a96f9d35e9e6f861611d903eb43399c84de4ba741dd522b7a2006e2ec702a",
+    "extract_dir": "tools\\net6.0\\any",
+    "bin": "wix.exe",
     "checkver": {
-        "url": "https://wixtoolset.org/releases/",
-        "regex": "releases/v([\\d.]+)/stable"
+        "url": "https://api.nuget.org/v3-flatcontainer/wix/index.json",
+        "jsonpath": "$.versions[-1:]"
     },
     "autoupdate": {
-        "url": "https://github.com/wixtoolset/wix3/releases/download/wix$cleanVersionrtm/wix$majorVersion$minorVersion-binaries.zip"
+        "url": "https://api.nuget.org/v3-flatcontainer/wix/$version/wix.$version.nupkg"
     }
 }

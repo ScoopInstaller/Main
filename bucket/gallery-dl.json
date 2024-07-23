@@ -1,11 +1,13 @@
 {
-    "version": "1.26.7",
+    "version": "1.27.1",
     "description": "Command-line program to download image-galleries and -collections from several image hosting sites.",
     "homepage": "https://github.com/mikf/gallery-dl",
     "license": "GPL-2.0-or-later",
-    "url": "https://github.com/mikf/gallery-dl/releases/download/v1.26.7/gallery-dl.exe",
-    "hash": "d4bb6b7097d03cd305b07e07d64938dc51ac02d52b7521538b9ceedbd3e8f583",
+    "url": "https://github.com/mikf/gallery-dl/releases/download/v1.27.1/gallery-dl.exe",
+    "hash": "5c52d11b4490969fa82039ff27f7c674d2161a204b8590a3fb277ff087340689",
     "bin": "gallery-dl.exe",
+    "pre_install": "if (-not (Test-Path \"$persist_dir\\gallery-dl.conf\")) { Set-Content \"$dir\\gallery-dl.conf\" '{}' -Encoding Ascii | Out-Null }",
+    "persist": "gallery-dl.conf",
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/mikf/gallery-dl/releases/download/v$version/gallery-dl.exe"

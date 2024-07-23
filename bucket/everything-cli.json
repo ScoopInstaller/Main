@@ -1,11 +1,19 @@
 {
-    "version": "1.1.0.26",
+    "version": "1.1.0.27",
     "description": "Command line interface to Everything.",
     "homepage": "https://www.voidtools.com/support/everything/command_line_interface/",
     "license": "MIT",
     "depends": "extras/everything",
-    "url": "https://www.voidtools.com/ES-1.1.0.26.zip",
-    "hash": "978bb07dd5ea1868c716ee17b2f36bd4cbb1e2a4c2e1c439163558506492d873",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.voidtools.com/ES-1.1.0.27.x64.zip",
+            "hash": "16058ccaa225d2b40bf2fc67acf64fd2d928a4ba485def7277885d66b6dc8a6a"
+        },
+        "32bit": {
+            "url": "https://www.voidtools.com/ES-1.1.0.27.x86.zip",
+            "hash": "c8502d7c54a90340f3a1fdf6ca46783e3d548b6791f532ef98172d640a7b6449"
+        }
+    },
     "pre_install": [
         "$manifest.persist | ForEach-Object {",
         "    if (-not (Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType file | Out-Null }",
@@ -15,9 +23,16 @@
     "persist": "es.ini",
     "checkver": {
         "url": "https://www.voidtools.com/downloads/",
-        "regex": "ES-([\\d.]+)\\.zip"
+        "regex": "ES-([\\d.]+)\\.x64\\.zip"
     },
     "autoupdate": {
-        "url": "https://www.voidtools.com/ES-$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://www.voidtools.com/ES-$version.x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.voidtools.com/ES-$version.x86.zip"
+            }
+        }
     }
 }

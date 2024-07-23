@@ -1,20 +1,20 @@
 {
-    "version": "1.21.6",
+    "version": "1.22.5",
     "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
     "homepage": "https://golang.org",
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://dl.google.com/go/go1.21.6.windows-amd64.zip",
-            "hash": "27ac9dd6e66fb3fd0acfa6792ff053c86e7d2c055b022f4b5d53bfddec9e3301"
+            "url": "https://dl.google.com/go/go1.22.5.windows-amd64.zip",
+            "hash": "59968438b8d90f108fd240d4d2f95b037e59716995f7409e0a322dcb996e9f42"
         },
         "32bit": {
-            "url": "https://dl.google.com/go/go1.21.6.windows-386.zip",
-            "hash": "65b38857135cf45c80e1d267e0ce4f80fe149326c68835217da4f2da9b7943fe"
+            "url": "https://dl.google.com/go/go1.22.5.windows-386.zip",
+            "hash": "c44fc421075022add78fbf8db38519dd5520a11832749be2189e64b3cf4f02f9"
         },
         "arm64": {
-            "url": "https://dl.google.com/go/go1.21.6.windows-arm64.zip",
-            "hash": "b93aff8f3c882c764c66a39b7a1483b0460e051e9992bf3435479129e5051bcd"
+            "url": "https://dl.google.com/go/go1.22.5.windows-arm64.zip",
+            "hash": "6717d5841162aa8c05f932eb74a643f1310b8a88f80f0830e86d194289734bbf"
         }
     },
     "extract_dir": "go",
@@ -23,7 +23,7 @@
             "$envgopath = \"$env:USERPROFILE\\go\"",
             "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
             "info \"Adding '$envgopath\\bin' to PATH...\"",
-            "add_first_in_path \"$envgopath\\bin\" $global"
+            "Add-Path -Path \"$envgopath\\bin\" -Global:$global -Force"
         ]
     },
     "uninstaller": {
@@ -31,7 +31,7 @@
             "$envgopath = \"$env:USERPROFILE\\go\"",
             "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
             "info \"Removing '$envgopath\\bin' from PATH...\"",
-            "remove_from_path \"$envgopath\\bin\" $global"
+            "Remove-Path -Path \"$envgopath\\bin\" -Global:$global"
         ]
     },
     "bin": [

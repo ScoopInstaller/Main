@@ -1,23 +1,23 @@
 {
-    "version": "0.19.2",
+    "version": "0.20.1",
     "description": "An interactive shell and an expressive programming language",
     "homepage": "https://elv.sh",
     "license": "BSD-2-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://dl.elv.sh/windows-amd64/elvish-v0.19.2.zip",
-            "hash": "7d13e04cb8e513e307acf889fbd2c97453764992dd7099dedac164d83750e910"
+            "url": "https://dl.elv.sh/windows-amd64/elvish-v0.20.1.zip",
+            "hash": "eda9d20cb16f0195860ce14fe827610722d507b1864703855cc0db3b5e39426d"
         },
         "32bit": {
-            "url": "https://dl.elv.sh/windows-386/elvish-v0.19.2.zip",
-            "hash": "663e60c7cf5f22b2283b5c3fd7e13c6e112538103d359a1e48dcd4503e48431e"
+            "url": "https://dl.elv.sh/windows-386/elvish-v0.20.1.zip",
+            "hash": "dfd3c59fe4cee7d24e4a30e1a4f26d49f17d7a8c0883eb7c56d28cb05f369b87"
         }
     },
     "pre_install": "Rename-Item \"$dir\\elvish-v$version.exe\" 'elvish.exe'",
     "bin": "elvish.exe",
     "checkver": {
         "url": "https://elv.sh/get/",
-        "regex": "\\s+([\\d.]+) \\(<a"
+        "regex": "\"v([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
