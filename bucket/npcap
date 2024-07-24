@@ -1,0 +1,30 @@
+{
+    "version": "1.79",
+    "description": "Nmap Project's Windows packet capture and transmission library",
+    "homepage": "https://npcap.com/",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://npcap.com/dist/npcap-1.79.exe#/npcap_setup.exe",
+            "hash": "a95577ebbc67fc45b319e2ef3a55f4e9b211fe82ed4cb9d8be6b1a9e2425ce53"
+        }
+    },
+    "pre_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Write-Host 'THIS APPLICATION INSTALLER HAS NO SILENT INSTALLATION SWITCH, A INSTALLATION PROMPT WILL APPEAR IN A FEW MOMENTS.'",
+        "Start-Process \"$dir\\npcap_setup.exe\" -Wait -Verb 'RunAs'; Remove-Item \"$dir\\npcap_setup.exe\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$env:ProgramFiles\\Npcap\\uninstall.exe\" -Wait -Verb 'RunAs' -Args '/S'",
+        "Remove-Item  \"$env:ProgramFiles\\Npcap\" -Recurse -Force"
+    ],
+    "checkver": "Npcap\\s([\\d.]+)\\s",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://npcap.com/dist/npcap-$version.exe#/npcap_setup.exe"
+            }
+        }
+    }
+}
