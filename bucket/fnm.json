@@ -1,4 +1,5 @@
 {
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
     "version": "1.37.1",
     "description": "Cross-platform Node.js version switcher",
     "homepage": "https://github.com/Schniz/fnm",
@@ -11,6 +12,19 @@
         }
     },
     "bin": "fnm.exe",
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        ('{0}\\fnm_multishells' -f $env:LOCALAPPDATA),",
+        "        ('{0}\\fnm' -f $env:APPDATA)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if ([System.IO.Directory]::Exists($_)) {",
+        "            $null = Remove-Item -Path $_ -Recurse -Force",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
