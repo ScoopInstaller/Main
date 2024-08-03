@@ -19,7 +19,7 @@
         "        ('{0}\\fnm' -f $env:APPDATA)",
         "    )",
         "    $Directories.ForEach{",
-        "        if ([System.IO.Directory]::Exists($_)) {",
+        "        if (Test-Path -Path $_ -PathType 'Container') {",
         "            $null = Remove-Item -Path $_ -Recurse -Force",
         "        }",
         "    }",
