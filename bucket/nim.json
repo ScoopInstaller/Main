@@ -51,9 +51,9 @@
         }
     },
     "installer": {
-        "script": "add_first_in_path \"$env:USERPROFILE\\.nimble\\bin\" $global"
+        "script": "Add-Path -Path \"$env:USERPROFILE\\.nimble\\bin\" -Global:$global"
     },
     "uninstaller": {
-        "script": "remove_from_path \"$env:USERPROFILE\\.nimble\\bin\" $global"
+        "script": "Remove-Path -Path \"$env:USERPROFILE\\.nimble\\bin\" -Global:$global"
     }
 }
