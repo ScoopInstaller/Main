@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/wasmerio/wasmer/releases/download/v4.3.5/wasmer-windows.exe",
-            "hash": "7ebc26c5f845ab5a5ea9085418a95b282385d098b0f8b825abe9b9f3eca7a61c"
+            "url": "https://github.com/wasmerio/wasmer/releases/download/v4.3.5/wasmer-windows-amd64.tar.gz",
+            "hash": "e1acb2367b8d42736f4cb62fa405cd64dd55ad7844acf92231fe4454ba834976"
         }
     },
     "env_set": {
@@ -17,15 +17,13 @@
         "WASMER_CACHE_DIR": "$dir\\cache"
     },
     "bin": "bin\\wasmer.exe",
-    "innosetup": true,
     "checkver": {
-        "github": "https://github.com/wasmerio/wasmer",
-        "regex": "tag/([\\w.-]+)"
+        "github": "https://github.com/wasmerio/wasmer"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/wasmerio/wasmer/releases/download/$version/wasmer-windows.exe"
+                "url": "https://github.com/wasmerio/wasmer/releases/download/v$version/wasmer-windows-amd64.tar.gz"
             }
         }
     }
