@@ -1,0 +1,21 @@
+{
+    "version": "0.10",
+    "description": "Open source software suite for reading bar codes from various sources, including webcam",
+    "homepage": "https://zbar.sourceforge.net/",
+    "license": "LGPL-2.1-only",
+    "depends": "7zip",
+    "url": "https://excellmedia.dl.sourceforge.net/project/zbar/zbar/0.10/zbar-0.10-setup.exe",
+    "hash": "3404793b7ebeb59f2f44db131fa9e31ab736ca38816d6b449664ff43e23d8aea",
+    "pre_install": "7z x $dir\\zbar-$version-setup.exe",
+    "bin": [
+        "bin\\zbarimg.exe",
+        "bin\\zbarcam.exe"
+    ],
+    "checkver": {
+        "url": "https://zbar.sourceforge.net/download.html",
+        "regex": "ZBar ([\\d.]+) Windows"
+    },
+    "autoupdate": {
+        "url": "https://excellmedia.dl.sourceforge.net/project/zbar/zbar/$version/zbar-$version-setup.exe"
+    }
+}
