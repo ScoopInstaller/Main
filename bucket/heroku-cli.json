@@ -1,16 +1,16 @@
 {
-    "version": "7.69.1",
+    "version": "9.1.0",
     "description": "An essential part of using Heroku, which can perform nearly any Heroku-related task right from your terminal.",
     "homepage": "https://devcenter.heroku.com/articles/heroku-cli",
     "license": "ISC",
     "architecture": {
         "64bit": {
-            "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz",
-            "hash": "5eeeb5a751dcd33b0b75bdd9f703da84a49aa02d015a165382d4575174a41a70"
+            "url": "https://cli-assets.heroku.com/versions/9.1.0/e1e5252/heroku-v9.1.0-e1e5252-win32-x64.tar.xz#/dl.xz",
+            "hash": "a20691787f8ad8745fe40233071d62589f2e2256889cb273f09a7da7ce71c3e5"
         },
         "32bit": {
-            "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz",
-            "hash": "a576a4f59b6239907b085929071e801b4f4076dec342252275bb6b0122c1eaa4"
+            "url": "https://cli-assets.heroku.com/versions/9.1.0/e1e5252/heroku-v9.1.0-e1e5252-win32-x86.tar.xz#/dl.xz",
+            "hash": "e4628b5ca2fad7ddaa8ea3ef0cebf29724e5dd27b4d036797d73098c58997667"
         }
     },
     "pre_install": [
@@ -27,23 +27,24 @@
     ],
     "bin": "bin\\heroku.cmd",
     "checkver": {
-        "url": "https://cli-assets.heroku.com/version",
-        "jsonpath": "$.version"
+        "url": "https://cli-assets.heroku.com/channels/stable/heroku-win32-x64-buildmanifest",
+        "jsonpath": "$.xz",
+        "regex": "heroku-v([\\d.]+)-(?<commit>\\w+)-win32"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz",
+                "url": "https://cli-assets.heroku.com/versions/$version/$matchCommit/heroku-v$version-$matchCommit-win32-x64.tar.xz#/dl.xz",
                 "hash": {
-                    "url": "https://cli-assets.heroku.com/win32-x64",
-                    "jsonpath": "$.sha256xz"
+                    "url": "https://cli-assets.heroku.com/channels/stable/heroku-win32-x64-buildmanifest",
+                    "regex": "sha256xz.*$sha256"
                 }
             },
             "32bit": {
-                "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz",
+                "url": "https://cli-assets.heroku.com/versions/$version/$matchCommit/heroku-v$version-$matchCommit-win32-x86.tar.xz#/dl.xz",
                 "hash": {
-                    "url": "https://cli-assets.heroku.com/win32-x86",
-                    "jsonpath": "$.sha256xz"
+                    "url": "https://cli-assets.heroku.com/channels/stable/heroku-win32-x86-buildmanifest",
+                    "regex": "sha256xz.*$sha256"
                 }
             }
         }
