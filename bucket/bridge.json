@@ -1,0 +1,31 @@
+{
+    "version": "2.7.36",
+    "description": "Bridge. The IDE for Minecraft Add-Ons",
+    "homepage": "https://bridge-core.app/",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bridge-core/editor/releases/download/v2.7.36/bridge_2.7.36_x64_en-US.msi",
+            "hash": "a9b68f144cc686e413983d71fd58f1e0c396dd7dd0d4facfdd37997cda12ce87",
+            "extract_dir": "PFiles/bridge"
+        }
+    },
+    "shortcuts": [
+        [
+            "bridge.exe",
+            "Bridge"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/bridge-core/editor/releases/latest",
+        "regex": "v(\\d+(?:\\.\\d+)+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+            "url": "https://github.com/bridge-core/editor/releases/download/v$version/bridge_$version_x64_en-US.msi",
+            "extract_dir": "PFiles/bridge"
+            }
+        }
+    }
+}
