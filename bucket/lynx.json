@@ -1,22 +1,23 @@
 {
-    "##": "Version 2.8.3 was moved to https://github.com/ScoopInstaller/Versions/blob/master/bucket/lynx283.json",
+    "##": "Lynx declares that it requires Win32/32bit OpenSSL 3.0.x lib.",
     "version": "2.9.2",
     "description": "Text web browser.",
     "homepage": "https://invisible-island.net/lynx/lynx.html",
     "license": "GPL-2.0-only",
-    "suggest": {
-        "vcredist": "extras/vcredist2013"
-    },
+    "notes": "Version 2.8.3 was moved to 'version/lynx283'",
     "depends": "cacert",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "innosetup": true,
     "url": [
         "https://invisible-island.net/archives/lynx/current/lynx-newssl2.9.2-setup.exe",
-        "https://slproweb.com/download/Win32OpenSSL_Light-3_3_0.exe"
+        "https://slproweb.com/download/Win32OpenSSL_Light-3_0_14.exe"
     ],
     "hash": [
         "12165dfb4e0608a7cd25a088e439a64b6573fff07c32757e989211a04d3b20d7",
-        "031590db73ad684218e2967ebb8542ec700b180a9c8fc72038aa1aaf8dc2bf8a"
+        "75ebba9e835c28343c3fdfecca82c5a46089c1f14b6c182f5ef03170f2735c00"
     ],
-    "innosetup": true,
     "pre_install": "if (!(Test-Path \"$persist_dir\\lynx.cfg\")) { Add-Content \"$dir\\lynx.cfg\" -Value @(\"SSL_CERT_FILE:`\"$(appdir cacert $global)\\current\\cacert.pem`\"\", \"FORCE_SSL_PROMPT:PROMPT\") -Encoding Ascii }",
     "bin": [
         [

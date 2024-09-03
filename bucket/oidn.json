@@ -1,0 +1,27 @@
+{
+    "version": "2.3.0",
+    "description": "Intel Open Image Denoise library",
+    "homepage": "https://github.com/RenderKit/oidn",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/RenderKit/oidn/releases/download/v2.3.0/oidn-2.3.0.x64.windows.zip",
+            "hash": "272781c9398eec7aeef9cd1be5b5aad7bb3debfc574308ce930b8e55ee51effd"
+        }
+    },
+    "extract_dir": "oidn-2.3.0.x64.windows\\bin",
+    "bin": [
+        "oidnBenchmark.exe",
+        "oidnDenoise.exe",
+        "oidnTest.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/RenderKit/oidn/releases/download/v$version/oidn-$version.x64.windows.zip"
+            }
+        },
+        "extract_dir": "oidn-$version.x64.windows\\bin"
+    }
+}

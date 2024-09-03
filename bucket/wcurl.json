@@ -1,0 +1,28 @@
+{
+    "version": "2024.07.10",
+    "homepage": "https://curl.se/wcurl/",
+    "description": "A simple wrapper around curl to easily download files",
+    "license": "MIT",
+    "depends": [
+        "curl",
+        "busybox"
+    ],
+    "url": "https://github.com/curl/wcurl/archive/2024.07.10.zip",
+    "hash": "67e93b65cf27eb2f3f52f0e4fb7ce104e9e93899b87495512e1d861ba998ea7d",
+    "extract_dir": "wcurl-2024.07.10",
+    "bin": [
+        [
+            "sh.exe",
+            "wcurl",
+            "$dir\\wcurl"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/curl/wcurl/tags",
+        "regex": "tag/([\\d.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/curl/wcurl/archive/$version.zip",
+        "extract_dir": "wcurl-$version"
+    }
+}
