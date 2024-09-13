@@ -22,13 +22,12 @@
     "checkver": {
         "url": "https://strawberryperl.com/releases.json",
         "jsonpath": "$[0].edition.portable.url",
-        "regex": "(?<url>https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/(?<tag>\\w+)/strawberry-perl-(?<version>[\\d.]+)-64bit-portable.zip)",
-        "replace": "${version}"
+        "regex": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/(?<tag>\\w+)/strawberry-perl-(?<version>[\\d.]+)-64bit-portable.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "$matchUrl",
+                "url": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/$matchTag/strawberry-perl-$version-64bit-portable.zip",
                 "hash": {
                     "mode": "json",
                     "url": "https://strawberryperl.com/releases.json",
