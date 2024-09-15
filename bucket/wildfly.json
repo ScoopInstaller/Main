@@ -1,0 +1,20 @@
+{
+    "version": "33.0.1.Final",
+    "description": "WildFly Application Server. A Java EE 8 certified application server for developing and testing enterprise applications.",
+    "homepage": "https://github.com/wildfly/wildfly",
+    "license": "Apache-2.0",
+    "url": "https://github.com/wildfly/wildfly/releases/download/33.0.1.Final/wildfly-33.0.1.Final.zip",
+    "hash": "564d3c7fce9476ea0977da778c3299fd39b8ec36de694b4d318c9aa060a14d9f",
+    "extract_dir": "wildfly-33.0.1.Final",
+    "env_set": {
+        "JBOSS_HOME": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/wildfly/wildfly",
+        "regex": "([\\d.]+\\.(?:Final|Beta\\d+|Alpha\\d+))"
+    },
+    "autoupdate": {
+        "url": "https://github.com/wildfly/wildfly/releases/download/$version/wildfly-$version.zip",
+        "extract_dir": "wildfly-$version"
+    }
+}
