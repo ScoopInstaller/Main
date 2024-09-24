@@ -4,6 +4,10 @@
     "homepage": "https://github.com/Azure/bicep",
     "license": "MIT",
     "architecture": {
+        "arm64": {
+            "url": "https://github.com/Azure/bicep/releases/download/v0.30.3/bicep-win-arm64.exe#/bicep.exe",
+            "hash": "1ef5ebc66cbe501f817e6abe1bf6d4c4ca29d55d7b199a099c0c622a051633c0"
+        },
         "64bit": {
             "url": "https://github.com/Azure/bicep/releases/download/v0.30.3/bicep-win-x64.exe#/bicep.exe",
             "hash": "8483fa5dca04fbe435b1e13c6d41faf7f29649d3e6941cde99142823e0eb4105"
@@ -13,6 +17,9 @@
     "checkver": "github",
     "autoupdate": {
         "architecture": {
+            "arm64": {
+                "url": "https://github.com/Azure/bicep/releases/download/v$version/bicep-win-arm64.exe#/bicep.exe"
+            },
             "64bit": {
                 "url": "https://github.com/Azure/bicep/releases/download/v$version/bicep-win-x64.exe#/bicep.exe"
             }
