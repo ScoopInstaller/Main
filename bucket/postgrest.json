@@ -8,11 +8,25 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PostgREST/postgrest/releases/download/v12.2.3/postgrest-v12.2.3-windows-x64.zip",
-            "hash": "a850cd1cf5b208972f4db2803656c645436ad333882480685e052d45706c1966",
-            "extract_dir": "artifacts\\postgrest-windows-x64"
+            "url": [
+                "https://github.com/PostgREST/postgrest/releases/download/v12.2.3/postgrest-v12.2.3-windows-x64.zip",
+                "https://ftp.postgresql.org/pub/odbc/versions.old/dll/psqlodbc_16_00_0000-x64.zip"
+            ],
+            "hash": [
+                "a850cd1cf5b208972f4db2803656c645436ad333882480685e052d45706c1966",
+                "b5261663e69097ee911a35871bced5e02a643a011c8877f570e83db9047ba1e0"
+            ],
+            "extract_dir": [
+                "artifacts\\postgrest-windows-x64",
+                "psqlodbc"
+            ]
         }
     },
+    "pre_install": [
+        "param($dir)",
+        "$filesToKeep = @('libpq.dll', 'libintl-9.dll', 'libwinpthread-1.dll', 'libssl-3-x64.dll', 'libcrypto-3-x64.dll', 'vcruntime140.dll', 'msvcp140.dll')",
+        "Get-ChildItem -Path $dir -File | Where-Object { $filesToKeep -notcontains $_.Name } | ForEach-Object { Remove-Item $_.FullName -Force; $_.Name }"
+    ],
     "bin": "postgrest.exe",
     "checkver": {
         "github": "https://github.com/PostgREST/postgrest"
