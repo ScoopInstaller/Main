@@ -24,8 +24,8 @@
     },
     "pre_install": [
         "param($dir)",
-        "$filesToKeep = @('libpq.dll', 'libintl-9.dll', 'libwinpthread-1.dll', 'libssl-3-x64.dll', 'libcrypto-3-x64.dll', 'vcruntime140.dll', 'msvcp140.dll')",
-        "Get-ChildItem -Path $dir -File | Where-Object { $filesToKeep -notcontains $_.Name } | ForEach-Object { Remove-Item $_.FullName -Force; $_.Name }"
+        "$filesToKeep = @('libpq.dll', 'libintl-9.dll', 'libwinpthread-1.dll', 'libssl-3-x64.dll', 'libcrypto-3-x64.dll', 'vcruntime140.dll', 'msvcp140.dll', 'libiconv-2.dll')",
+        "Get-ChildItem -Path $dir -File | Where-Object { $filesToKeep -notcontains $_.Name } | ForEach-Object { Remove-Item $_.FullName -Force }"
     ],
     "bin": "postgrest.exe",
     "checkver": {
