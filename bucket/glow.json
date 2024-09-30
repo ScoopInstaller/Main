@@ -1,16 +1,18 @@
 {
-    "version": "1.5.1",
+    "version": "2.0.0",
     "description": "Markdown reader for the terminal with a TUI and encrypted cloud stash",
     "homepage": "https://github.com/charmbracelet/glow",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/charmbracelet/glow/releases/download/v1.5.1/glow_Windows_x86_64.zip",
-            "hash": "cc5b195457237385e6000fb61d471732cc1f89c10fcdfd20c0463ba7a5aa7a5d"
+            "url": "https://github.com/charmbracelet/glow/releases/download/v2.0.0/glow_2.0.0_Windows_x86_64.zip",
+            "hash": "cdb2c65c57a4137097f2dfb5aa3af52364e3aeb26961a5ef84889f45ae1cc6c0",
+            "extract_dir": "glow_2.0.0_Windows_x86_64"
         },
         "32bit": {
-            "url": "https://github.com/charmbracelet/glow/releases/download/v1.5.1/glow_Windows_i386.zip",
-            "hash": "22ef6d17e9f46f56e6724f408fec850db67e712a1f0e4ee8b7f6bab2bf4c0b6e"
+            "url": "https://github.com/charmbracelet/glow/releases/download/v2.0.0/glow_2.0.0_Windows_i386.zip",
+            "hash": "6910e2ef6f4a8d0ef97e4b8bf526bcc710bb3e573f05c0724b8ed792dae81afd",
+            "extract_dir": "glow_2.0.0_Windows_i386"
         }
     },
     "bin": "glow.exe",
@@ -18,10 +20,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/charmbracelet/glow/releases/download/v$version/glow_Windows_x86_64.zip"
+                "url": "https://github.com/charmbracelet/glow/releases/download/v$version/glow_$version_Windows_x86_64.zip",
+                "extract_dir": "glow_$version_Windows_x86_64"
+
             },
             "32bit": {
-                "url": "https://github.com/charmbracelet/glow/releases/download/v$version/glow_Windows_i386.zip"
+                "url": "https://github.com/charmbracelet/glow/releases/download/v$version/glow_$version_Windows_i386.zip",
+                "extract_dir": "glow_$version_Windows_i386"
             }
         },
         "hash": {
