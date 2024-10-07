@@ -1,20 +1,17 @@
 {
-    "version": "18.1.8",
+    "version": "19.1.1",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org",
     "license": "NCSA",
+    "notes": "Since upstream does NOT provide pre-compiled binary of arm64 for every release, LLVM arm64 is now a separate manifest: 'llvm-arm64'.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/LLVM-18.1.8-win64.exe#/dl.7z",
-            "hash": "94af030060d88cc17e9f00ef1663ebdc1126b35e16bebdfa1e807984b70abd8f"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.1/LLVM-19.1.1-win64.exe#/dl.7z",
+            "hash": "95f03b6a8a0049e29898b0fadf84a0ea252f2e7f1b36db15a81aae11e912f675"
         },
         "32bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/LLVM-18.1.8-win32.exe#/dl.7z",
-            "hash": "4ce39685d593a33cdbcdd10bec2288b65e020b38995d684c19cb56cad0fa43ac"
-        },
-        "arm64": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/LLVM-18.1.8-woa64.exe#/dl.7z",
-            "hash": "e25bf44d67fe86708490cf08de085fe1d6e1e50f3249c212c9077a06247cdc9e"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.1/LLVM-19.1.1-win32.exe#/dl.7z",
+            "hash": "afa2c594f74f9fd3a93db1e0fe7c9c92a76486482cf26458d0d36ab0d48453fd"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
@@ -34,9 +31,6 @@
             },
             "32bit": {
                 "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
-            },
-            "arm64": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-woa64.exe#/dl.7z"
             }
         }
     }
