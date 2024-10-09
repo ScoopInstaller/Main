@@ -1,0 +1,34 @@
+{
+    "version": "17.00.0002",
+    "description": "The official PostgreSQL ODBC Driver",
+    "homepage": "https://odbc.postgresql.org/",
+    "license": "LGPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ftp.postgresql.org/pub/odbc/releases/REL-17_00_0002/psqlodbc_x64.msi",
+            "hash": "1a40e11282b55efac329888af837cca5f567ff2ab0e272d386fad4319dd915cd"
+        },
+        "32bit": {
+            "url": "https://ftp.postgresql.org/pub/odbc/releases/REL-17_00_0002/psqlodbc_x86.msi",
+            "hash": "e626f266f679a5840e92d7d859ac2f3a11fd08ae10f1933ee4e500e70f35c557"
+        }
+    },
+    "extract_dir": "PFiles\\psqlODBC\\1700",
+    "env_add_path": "bin",
+    "checkver": {
+        "url": "https://www.postgresql.org/ftp/odbc/releases/",
+        "regex": "REL-(?<major>\\d+)_(?<minor>\\d+)_(?<patch>\\d+)",
+        "replace": "${major}.${minor}.${patch}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ftp.postgresql.org/pub/odbc/releases/REL-$matchMajor_$matchMinor_$matchPatch/psqlodbc_x64.msi"
+            },
+            "32bit": {
+                "url": "https://ftp.postgresql.org/pub/odbc/releases/REL-$matchMajor_$matchMinor_$matchPatch/psqlodbc_x86.msi"
+            }
+        },
+        "extract_dir": "PFiles\\psqlODBC\\$matchMajor$matchMinor"
+    }
+}
