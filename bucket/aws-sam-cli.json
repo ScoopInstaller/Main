@@ -14,9 +14,10 @@
         }
     },
     "pre_install": [
-        "# Workaround for #4980",
-        "Start-Process lessmsi -ArgumentList @('x', \"`\"$dir\\$fname`\"\", \"`\"$dir\\`\"\") -Wait -NoNewWindow",
-        "Move-Item \"$dir\\SourceDir\\Amazon\\AWSSAMCLI\\**\" \"$dir\"",
+        "# Workaround for #4980, #4980",
+        "$msi = \"$dir\\$fname\"; $extracted = \"$dir\\\"",
+        "Invoke-ExternalCommand 'lessmsi' -Args @('x', $msi, $extracted) -Quiet",
+        "Move-Item \"$dir\\SourceDir\\PFiles64\\Amazon\\AWSSAMCLI\\**\" \"$dir\"",
         "Remove-Item \"$dir\\SourceDir\", \"$dir\\$fname\" -Force -Recurse"
     ],
     "bin": [
