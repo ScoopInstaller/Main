@@ -1,0 +1,24 @@
+{
+    "version": "v0.12.0",
+    "description": "The Grammar Checker for Developers",
+    "homepage": "https://github.com/elijah-potter/harper",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/elijah-potter/harper/releases/download/v0.12.0/harper-ls-x86_64-pc-windows-msvc.zip",
+            "hash": "ddb8855c84855373cad5b246b70f27909726ebd96a6b5cc2c8ff8e733c965d7c"
+        }
+    },
+    "bin": "harper-ls.exe",
+    "checkver": {
+        "github": "https://github.com/elijah-potter/harper",
+        "regex": "releases/tag/([\\d-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/elijah-potter/harper/releases/download/$version/harper-ls-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
