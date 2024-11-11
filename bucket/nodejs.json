@@ -1,23 +1,18 @@
 {
-    "version": "22.9.0",
+    "version": "23.1.0",
     "description": "An asynchronous event driven JavaScript runtime designed to build scalable network applications.",
     "homepage": "https://nodejs.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://nodejs.org/dist/v22.9.0/node-v22.9.0-win-x64.7z",
-            "hash": "805d4f842b2f85907fc28d1d631971bac5c1df691d7040cfa5e46d02534f98df",
-            "extract_dir": "node-v22.9.0-win-x64"
-        },
-        "32bit": {
-            "url": "https://nodejs.org/dist/v22.9.0/node-v22.9.0-win-x86.7z",
-            "hash": "3a6b798464794a0ac2452cf51e55df6f60f09598f724dd3eb890d64d99d81e5b",
-            "extract_dir": "node-v22.9.0-win-x86"
+            "url": "https://nodejs.org/dist/v23.1.0/node-v23.1.0-win-x64.7z",
+            "hash": "3af98fb098d8801a93cc178a95cee2bb828cdac5f680413b7e43fd9a42824a73",
+            "extract_dir": "node-v23.1.0-win-x64"
         },
         "arm64": {
-            "url": "https://nodejs.org/dist/v22.9.0/node-v22.9.0-win-arm64.7z",
-            "hash": "7a0a0a3998d989fe117f358e17ae0542ba264d2ae5c5681fc9d9ce8a666ce7b2",
-            "extract_dir": "node-v22.9.0-win-arm64"
+            "url": "https://nodejs.org/dist/v23.1.0/node-v23.1.0-win-arm64.7z",
+            "hash": "7d4132d56bb852ddb2e85f51dbd10f8f2b0da363f992ef60a094dd88954c0a46",
+            "extract_dir": "node-v23.1.0-win-arm64"
         }
     },
     "persist": [
@@ -34,7 +29,7 @@
     ],
     "checkver": {
         "url": "https://nodejs.org/dist/index.json",
-        "jsonpath": "$..version",
+        "jsonpath": "$[0].version",
         "regex": "v([\\d.]+)"
     },
     "autoupdate": {
@@ -42,10 +37,6 @@
             "64bit": {
                 "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z",
                 "extract_dir": "node-v$version-win-x64"
-            },
-            "32bit": {
-                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x86.7z",
-                "extract_dir": "node-v$version-win-x86"
             },
             "arm64": {
                 "url": "https://nodejs.org/dist/v$version/node-v$version-win-arm64.7z",
