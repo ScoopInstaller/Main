@@ -1,0 +1,23 @@
+{
+    "version": "2.3.0",
+    "description": "opam is a source-based package manager for OCaml.",
+    "homepage": "https://opam.ocaml.org/",
+    "license": "LGPL-2.1-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ocaml/opam/releases/download/2.3.0/opam-2.3.0-x86_64-windows.exe#/opam.exe",
+            "hash": "925e7059ae6e5aefae729dd8ea66cd92b21450b50d8e6564d185443e41c1cd84"
+        }
+    },
+    "bin": "opam.exe",
+    "checkver": {
+        "github": "https://github.com/ocaml/opam"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ocaml/opam/releases/download/$version/opam-$version-x86_64-windows.exe#/opam.exe"
+            }
+        }
+    }
+}
