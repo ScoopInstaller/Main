@@ -1,5 +1,5 @@
 {
-    "version": "1.127.0",
+    "version": "1.131.0",
     "description": "Build, test, debug, and deploy Serverless applications from CLI",
     "homepage": "https://aws.amazon.com/serverless/sam/",
     "license": "Apache-2.0",
@@ -9,14 +9,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.127.0/AWS_SAM_CLI_64_PY3.msi#/dl.msi_",
-            "hash": "8a56c7e8e6450e9589b23a27222e585b927e62b48b72b2f95fcd71346dc10bca"
+            "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.131.0/AWS_SAM_CLI_64_PY3.msi#/dl.msi_",
+            "hash": "d832dcfd865cc3c7ade9703f0cc91190f080911dbb3d8afdcc51064bc9457cce"
         }
     },
     "pre_install": [
-        "# Workaround for #4980",
-        "Start-Process lessmsi -ArgumentList @('x', \"`\"$dir\\$fname`\"\", \"`\"$dir\\`\"\") -Wait -NoNewWindow",
-        "Move-Item \"$dir\\SourceDir\\Amazon\\AWSSAMCLI\\**\" \"$dir\"",
+        "# Workaround for #4980, #5653",
+        "$msi = \"$dir\\$fname\"; $extracted = \"$dir\\\"",
+        "Invoke-ExternalCommand 'lessmsi' -Args @('x', $msi, $extracted) -Quiet",
+        "Move-Item \"$dir\\SourceDir\\PFiles64\\Amazon\\AWSSAMCLI\\**\" \"$dir\"",
         "Remove-Item \"$dir\\SourceDir\", \"$dir\\$fname\" -Force -Recurse"
     ],
     "bin": [
