@@ -1,22 +1,25 @@
 {
-    "version": "1.23.2",
-    "description": "Simple management solution for Docker",
+    "version": "2.21.4",
+    "description": "Making Docker and Kubernetes management easy.",
     "homepage": "https://portainer.io/",
     "license": "Zlib",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/portainer/portainer/releases/download/1.23.2/portainer-1.23.2-windows-amd64.tar.gz",
-            "hash": "fb194fbdb2474a573bfe4b1f0f7c174711bb21fdfe932c7eaf3924fab4848d03"
+            "url": "https://github.com/portainer/portainer/releases/download/2.21.4/portainer-2.21.4-windows1809-amd64.tar.gz",
+            "hash": "88636b30fb38483d87fe6d0ef9be1e2fc9216b925700ce2ef2f1ca8828d62ee7"
         }
     },
     "extract_dir": "portainer",
     "bin": "portainer.exe",
+    "checkver": {
+        "github": "https://github.com/portainer/portainer"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/portainer/portainer/releases/download/$version/portainer-$version-windows-amd64.tar.gz",
+                "url": "https://github.com/portainer/portainer/releases/download/$version/portainer-$version-windows1809-amd64.tar.gz",
                 "hash": {
-                    "url": "$baseurl/portainer-$version-windows-amd64-checksum.txt",
+                    "url": "$baseurl/portainer-$version-windows1809-amd64-checksum.txt",
                     "regex": "$sha256"
                 }
             }
