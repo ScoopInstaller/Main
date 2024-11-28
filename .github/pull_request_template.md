@@ -10,9 +10,9 @@
 
 <!--
 Closes #XXXX
-or 
+or
 Relates to #XXXX
 -->
 
-- [ ] I have read the [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md).
 - [ ] Use conventional PR title: `<manifest-name[@version]|chore>: <general summary of the pull request>`
+- [ ] I have read the [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md) <!-- where the first check box is documented, in case you don't read. -->
