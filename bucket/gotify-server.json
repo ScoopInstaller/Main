@@ -3,6 +3,7 @@
     "description": "A simple server for sending and receiving messages in real-time per WebSocket, with a sleek web UI",
     "homepage": "https://gotify.net/",
     "license": "MIT",
+    "notes": "Get gotify default configuration by running: \"$dir\\get_default_config.ps1\"",
     "architecture": {
         "64bit": {
             "url": "https://github.com/gotify/server/releases/download/v2.6.1/gotify-windows-amd64.exe.zip",
@@ -13,8 +14,35 @@
             "hash": "af7b1978abd44a870e22286da0ba78a85912e7b2e575e6576cd918829c8320f6"
         }
     },
-    "pre_install": "Get-ChildItem \"$dir\\gotify-windows-*\" | Rename-Item -NewName gotify.exe",
-    "bin": "gotify.exe",
+    "pre_install": [
+        "Get-ChildItem \"$dir\\gotify-windows-*\" | Rename-Item -NewName gotify.exe",
+        "$content = \"Push-Location `\"`$PSScriptRoot`\"; try { & .\\gotify.exe } finally { Pop-Location }\"",
+        "Set-Content \"$dir\\gotify.ps1\" \"$content\" -Encoding Ascii",
+        "$configFile = \"$persist_dir\\config.yml\"",
+        "New-Item -Path \"$configFile\" -ItemType File -ErrorAction SilentlyContinue",
+        "$configUrl = \"https://raw.githubusercontent.com/gotify/server/master/config.example.yml\"",
+        "if ((Get-Content -Path \"$configUrl\" -ErrorAction SilentlyContinue | Measure-Object -Line).Lines -eq 0) {",
+        "    try {",
+        "        Invoke-WebRequest -Uri \"$configUrl\" -OutFile \"$configFile\"",
+        "        Write-Output ''",
+        "        info \"Default configuration retrieved successfully.\"",
+        "    } catch {",
+        "        New-Item -Path \"$configFile\" -ItemType File -Force | Out-Null",
+        "        Write-Output ''",
+        "        warn \"Failed to retrieve default configuration. Please take action based on the Notes prompt.\"",
+        "    }",
+        "}"
+    ],
+    "post_install": [
+        "$configUrl = \"https://raw.githubusercontent.com/gotify/server/master/config.example.yml\"",
+        "$content = \"Invoke-WebRequest $configUrl -OutFile `\"`$PSScriptRoot\\config.yml`\"\"",
+        "Set-Content \"$dir\\get_default_config.ps1\" $content -Encoding Ascii"
+    ],
+    "persist": [
+        "data",
+        "config.yml"
+    ],
+    "bin": "gotify.ps1",
     "checkver": {
         "github": "https://github.com/gotify/server/"
     },
