@@ -30,6 +30,12 @@
             "url": "$baseurl/SHASUMS256.txt"
         }
     },
+    "installer": {
+        "script": "Add-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
+    },
+    "uninstaller": {
+        "script": "Remove-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
+    },
     "post_uninstall": [
         "if ($purge) {",
         "    $Directories = [string[]](",
