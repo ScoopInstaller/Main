@@ -29,5 +29,18 @@
         "hash": {
             "url": "$baseurl/SHASUMS256.txt"
         }
-    }
+    },
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        ('{0}\\mise' -f $env:LOCALAPPDATA),",
+        "        ('{0}\\Temp\\mise' -f $env:LOCALAPPDATA)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if (Test-Path -Path $_ -PathType 'Container') {",
+        "            $null = Remove-Item -Path $_ -Recurse -Force",
+        "        }",
+        "    }",
+        "}"
+    ]
 }
