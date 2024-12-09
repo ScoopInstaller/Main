@@ -1,0 +1,33 @@
+{
+    "version": "2024.12.3",
+    "description": "Mise-En-Place, The front-end to your dev env.",
+    "homepage": "https://mise.jdx.dev/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jdx/mise/releases/download/v2024.12.3/mise-v2024.12.3-windows-x64.zip",
+            "hash": "8a494e44d168cc8e81be6b44f9ebd6ce68c3ae62e61e4d5ab51560065bf94439"
+        },
+        "arm64": {
+            "url": "https://github.com/jdx/mise/releases/download/v2024.12.3/mise-v2024.12.3-windows-arm64.zip",
+            "hash": "13f7f8a215dce703af71a15eeac432f8db520d0accbb46fdbbb2a2796193e025"
+        }
+    },
+    "bin": "mise/bin/mise.exe",
+    "checkver": {
+        "github": "https://github.com/jdx/mise"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt"
+        }
+    }
+}
