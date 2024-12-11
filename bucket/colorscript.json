@@ -9,9 +9,13 @@
     "man": ["colorscript.1"],
     "checkver": {
         "url": "https://github.com/theamallalgi/colorscripts/releases/latest",
-        "regex": "tag/v([\\d.]+)"
+        "regex": "/tag/(v[\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/theamallalgi/colorscripts/archive/v$version.tar.gz"
+        "url": "https://github.com/theamallalgi/colorscripts/archive/refs/heads/main.zip",
+        "hash": {
+            "url": "https://github.com/theamallalgi/colorscripts/releases/latest",
+            "regex": "SHA256: ([a-f0-9]+)"
+        }
     }
 }
