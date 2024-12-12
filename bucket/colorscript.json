@@ -1,0 +1,20 @@
+{
+  "version": "v1.0.0",
+  "url": "https://github.com/theamallalgi/colorscripts/archive/refs/tags/v1.0.0.tar.gz",
+  "hash": "9fb1975063a9d9277c6bac378ebc67b4ca1f56015aa138fcafcb28e9c7eeb777",
+  "description": "A CLI tool to run beautiful shell color scripts.",
+  "homepage": "https://github.com/theamallalgi/colorscripts",
+  "license": "MIT",
+  "bin": ["colorscript"],
+  "checkver": {
+    "url": "https://github.com/theamallalgi/colorscripts/releases",
+    "regex": "/tags/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://github.com/theamallalgi/colorscripts/archive/refs/tags/v$version.tar.gz",
+    "hash": {
+      "url": "https://github.com/theamallalgi/colorscripts/releases/tag/v$version",
+      "regex": "SHA256:\\s*([a-f0-9]{64})"
+    }
+  }
+}
