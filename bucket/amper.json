@@ -1,0 +1,48 @@
+{
+    "version": "0.5.0",
+    "description": "a project configuration and build tool with a focus on the user experience and the IDE support",
+    "homepage": "https://github.com/JetBrains/amper",
+    "license": "Apache-2.0",
+    "url": [
+        "https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/0.5.0/cli-0.5.0-wrapper.bat#/amper.bat",
+        "https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/0.5.0/cli-0.5.0-dist.tgz"
+    ],
+    "hash": [
+        "6a5627ab242e5acdde2573146854d65858535eceffa7397bd0677576ed342370",
+        "054f8a3a009d1f5bd749efff7fc97fb3c773d3ad6505120eb320ddb2ed17fb9b"
+    ],
+    "suggest": {
+        "JDK": "java/intellij-jbr21"
+    },
+    "extract_to": "dist",
+    "bin": "amper.bat",
+    "env_set": {
+        "AMPER_JAVA_HOME": "$env:JAVA_HOME",
+        "AMPER_BOOTSTRAP_CACHE_DIR": "$persist_dir\\cache"
+    },
+    "persist": "cache",
+    "checkver": "github",
+    "post_install": [
+        "Invoke-WebRequest -Uri https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/0.5.0/cli-0.5.0-dist.tgz.sha256 -OutFile $dir\\dist\\.flag",
+        "New-Item -ItemType Junction -Path $persist_dir\\cache\\amper-cli-0.5.0 -Target $dir\\dist | Out-Null"
+    ],
+    "uninstaller": {
+        "script": "Remove-Item $persist_dir\\cache\\amper-cli-0.5.0 -Force -Recurse"
+    },
+    "autoupdate": {
+        "url": [
+            "https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/$version/cli-$version-wrapper.bat#/amper.bat",
+            "https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/$version/cli-$version-dist.tgz"
+        ],
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "post_install": [
+            "Invoke-WebRequest -Uri https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/$version/cli-$version-dist.tgz.sha256 -OutFile $dir\\dist\\.flag",
+            "New-Item -ItemType Junction -Path $persist_dir\\cache\\amper-cli-$version -Target $dir\\dist | Out-Null"
+        ],
+        "uninstaller": {
+            "script": "Remove-Item $persist_dir\\cache\\amper-cli-$version -Force -Recurse"
+        }
+    }
+}
