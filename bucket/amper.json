@@ -23,11 +23,11 @@
     "persist": "cache",
     "checkver": "github",
     "post_install": [
-        "Invoke-WebRequest -Uri https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/0.5.0/cli-0.5.0-dist.tgz.sha256 -OutFile $dir\\dist\\.flag",
-        "New-Item -ItemType Junction -Path $persist_dir\\cache\\amper-cli-0.5.0 -Target $dir\\dist | Out-Null"
+        "Invoke-WebRequest -Uri https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/$version/cli-$version-dist.tgz.sha256 -OutFile $dir\\dist\\.flag",
+        "New-Item -ItemType Junction -Path $persist_dir\\cache\\amper-cli-$version -Target $dir\\dist | Out-Null"
     ],
     "uninstaller": {
-        "script": "Remove-Item $persist_dir\\cache\\amper-cli-0.5.0 -Force -Recurse"
+        "script": "Remove-Item $persist_dir\\cache\\amper-cli-$version -Force -Recurse"
     },
     "autoupdate": {
         "url": [
@@ -36,13 +36,6 @@
         ],
         "hash": {
             "url": "$url.sha256"
-        },
-        "post_install": [
-            "Invoke-WebRequest -Uri https://packages.jetbrains.team/maven/p/amper/amper/org/jetbrains/amper/cli/$version/cli-$version-dist.tgz.sha256 -OutFile $dir\\dist\\.flag",
-            "New-Item -ItemType Junction -Path $persist_dir\\cache\\amper-cli-$version -Target $dir\\dist | Out-Null"
-        ],
-        "uninstaller": {
-            "script": "Remove-Item $persist_dir\\cache\\amper-cli-$version -Force -Recurse"
         }
     }
 }
