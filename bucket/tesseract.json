@@ -1,7 +1,7 @@
 {
-    "version": "5.4.0.20240606",
+    "version": "5.5.0.20241111",
     "description": "Open Source OCR Engine",
-    "homepage": "https://github.com/UB-Mannheim/tesseract/wiki",
+    "homepage": "https://tesseract-ocr.github.io",
     "license": "Apache-2.0",
     "notes": [
         "Recognition data files can be installed via \"scoop install tesseract-languages\"",
@@ -12,8 +12,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-5.4.0.20240606.exe#/dl.7z",
-            "hash": "c885fff6998e0608ba4bb8ab51436e1c6775c2bafc2559a19b423e18678b60c9"
+            "url": "https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe#/dl.7z",
+            "hash": "f3fc4236425b690c8be756f35793f77394ee004be0a6460a440c754d892f68bc"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
@@ -47,13 +47,13 @@
     ],
     "persist": "tessdata",
     "checkver": {
-        "url": "https://digi.bib.uni-mannheim.de/tesseract/?C=M;O=D",
-        "regex": "tesseract-ocr-w64-setup-([\\d.]+)\\.exe"
+        "github": "https://github.com/tesseract-ocr/tesseract",
+        "regex": "tesseract-ocr-w64-setup-([\\d.]+).exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-$version.exe#/dl.7z"
+                "url": "https://github.com/tesseract-ocr/tesseract/releases/download/$matchHead/tesseract-ocr-w64-setup-$version.exe#/dl.7z"
             }
         }
     }
