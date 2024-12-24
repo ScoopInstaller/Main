@@ -6,37 +6,22 @@
     "notes": "Refer to 'https://ohmyposh.dev/docs/installation/prompt' for shell specific configurations.",
     "architecture": {
         "64bit": {
-            "url": [
-                "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/themes.zip",
-                "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/posh-windows-amd64.exe#/oh-my-posh.exe"
-            ],
-            "hash": [
-                "3253af9af05779103c267aec254dafdab51d8d82e1ab3c2d4cc691fdd4b5e13f",
-                "75a13fa533058d22a04b0c2922091f006100a38791cf28b0e46afbdcb7dfccd7"
-            ]
+            "url": "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/posh-windows-amd64.exe#/oh-my-posh.exe",
+            "hash": "75a13fa533058d22a04b0c2922091f006100a38791cf28b0e46afbdcb7dfccd7"
         },
         "32bit": {
-            "url": [
-                "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/themes.zip",
-                "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/posh-windows-386.exe#/oh-my-posh.exe"
-            ],
-            "hash": [
-                "3253af9af05779103c267aec254dafdab51d8d82e1ab3c2d4cc691fdd4b5e13f",
-                "47fa8d7c56a084e8a459c5a73b5d8e698acc6a9646a3bf144225ad2d8e8cca39"
-            ]
+            "url": "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/posh-windows-386.exe#/oh-my-posh.exe",
+            "hash": "47fa8d7c56a084e8a459c5a73b5d8e698acc6a9646a3bf144225ad2d8e8cca39"
         },
         "arm64": {
-            "url": [
-                "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/themes.zip",
-                "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/posh-windows-arm64.exe#/oh-my-posh.exe"
-            ],
-            "hash": [
-                "3253af9af05779103c267aec254dafdab51d8d82e1ab3c2d4cc691fdd4b5e13f",
-                "11b106e7e49c423694db325633a296c4ff1340540eab11f41397f25b735d3a3f"
-            ]
+            "url": "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v24.17.1/posh-windows-arm64.exe#/oh-my-posh.exe",
+            "hash": "11b106e7e49c423694db325633a296c4ff1340540eab11f41397f25b735d3a3f"
         }
     },
-    "extract_to": "themes",
+    "pre_install": [
+        "Invoke-WebRequest -Uri https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/themes.zip -OutFile $dir\\themes.zip",
+        "Expand-7ZipArchive \"$dir\\themes.zip\" \"$dir\\themes\" -Removal"
+    ],
     "env_set": {
         "POSH_THEMES_PATH": "$dir\\themes"
     },
@@ -47,26 +32,18 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": [
-                    "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/themes.zip",
-                    "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/posh-windows-amd64.exe#/oh-my-posh.exe"
-                ]
+                "url": "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/posh-windows-amd64.exe#/oh-my-posh.exe"
             },
             "32bit": {
-                "url": [
-                    "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/themes.zip",
-                    "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/posh-windows-386.exe#/oh-my-posh.exe"
-                ]
+                "url": "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/posh-windows-386.exe#/oh-my-posh.exe"
             },
             "arm64": {
-                "url": [
-                    "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/themes.zip",
-                    "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/posh-windows-arm64.exe#/oh-my-posh.exe"
-                ]
+                "url": "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$version/posh-windows-arm64.exe#/oh-my-posh.exe"
             }
         },
         "hash": {
-            "url": "$url.sha256"
+            "url": "$baseurl/checksums.txt",
+            "regex": "$sha256.*?$basename"
         }
     }
 }
