@@ -1,0 +1,27 @@
+{
+    "version": "v0.120.0",
+    "description": "Simple gRPC benchmarking and load testing tool",
+    "homepage": "https://ghz.sh/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bojand/ghz/releases/download/v0.120.0/ghz-windows-x86_64.zip",
+            "hash": "sha1:1da6ba30b23784c725561efaaeac76848bce4c29"
+        }
+    },
+    "bin": [
+        "ghz.exe",
+        "ghz-web.exe"
+    ],
+    "notes": [
+        "For more infomations, please refer to:",
+        "https://ghz.sh/docs/examples",
+        "",
+        "A simple insecure unary call:",
+        "ghz --insecure \\",
+        "\t--proto ./greeter.proto \\",
+        "\t--call helloworld.Greeter.SayHello \\",
+        "\t-d '{\"name\":\"Joe\"}' \\",
+        "\t0.0.0.0:50051"
+    ]
+}
