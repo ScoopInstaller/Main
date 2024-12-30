@@ -15,22 +15,6 @@
     },
     "extract_dir": "mise",
     "bin": "bin/mise.exe",
-    "checkver": {
-        "github": "https://github.com/jdx/mise"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-x64.zip"
-            },
-            "arm64": {
-                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-arm64.zip"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHASUMS256.txt"
-        }
-    },
     "installer": {
         "script": "Add-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
     },
@@ -49,5 +33,21 @@
         "        }",
         "    }",
         "}"
-    ]
+    ],
+    "checkver": {
+        "github": "https://github.com/jdx/mise"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt"
+        }
+    }
 }
