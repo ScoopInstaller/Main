@@ -20,20 +20,18 @@
         }
     },
     "pre_install": [
-        "if (!(Test-Path \"$persist_dir$($cfg = '/config')\")) {",
-        "    Copy-Item -ErrorAction Ignore \"$env:APPDATA/$app$cfg\" \"$dir$cfg\"",
-        "    $null = New-Item -ErrorAction Ignore \"$dir$cfg\"",
+        "if (!(Test-Path \"$persist_dir\\config\")) {",
+        "    Copy-Item -ErrorAction Ignore \"$env:APPDATA\\bat\\config\" \"$dir\\config\"",
+        "    New-Item -ErrorAction Ignore \"$dir\\config\" | Out-Null",
         "}",
         "'syntaxes', 'themes' | ForEach-Object {",
-        "    if (!(Test-Path \"$persist_dir/$_\")) {",
-        "        Copy-Item -ErrorAction Ignore -Recurse \"$env:APPDATA/$app/$_\" \"$dir/$_\"",
-        "        $null = New-Item -ErrorAction Ignore \"$dir/$_\" -ItemType Directory",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) {",
+        "        Copy-Item -ErrorAction Ignore -Recurse \"$env:APPDATA\\bat\\$_\" \"$dir\\$_\"",
         "    }",
         "}"
     ],
     "env_set": {
-        "BAT_CONFIG_DIR": "$dir",
-        "BAT_CONFIG_PATH": "$dir\\config"
+        "BAT_CONFIG_DIR": "$dir"
     },
     "persist": [
         "config",
