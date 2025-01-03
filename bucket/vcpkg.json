@@ -1,14 +1,14 @@
 {
-    "version": "2024.10.21",
+    "version": "2024.12.16",
     "description": "C/C++ dependency manager from Microsoft For all platforms, buildsystems, and workflows",
     "homepage": "https://vcpkg.io/",
     "license": "MIT",
     "suggest": {
         "Git": "git"
     },
-    "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2024.10.21.zip",
-    "hash": "3dd7d6f28cfddd79a7a94cd0d207ba9d8661f1ff217de362b853be54284d3e94",
-    "extract_dir": "vcpkg-2024.10.21",
+    "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2024.12.16.zip",
+    "hash": "2ab59e10bd843084a5f5f7e5e2f21bb582236f076112382911cfef5dd6078bca",
+    "extract_dir": "vcpkg-2024.12.16",
     "pre_install": [
         "if (Get-Command \"git.exe\" -ErrorAction SilentlyContinue) {",
         "    if (!(Test-Path \"$persist_dir\")) {",
@@ -28,6 +28,7 @@
     ],
     "installer": {
         "file": "bootstrap-vcpkg.bat",
+        "args": ["-disableMetrics"],
         "keep": true
     },
     "post_install": "vcpkg integrate install",
