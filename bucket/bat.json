@@ -19,6 +19,25 @@
             "extract_dir": "bat-v0.24.0-i686-pc-windows-msvc"
         }
     },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config\")) {",
+        "    Copy-Item -ErrorAction Ignore \"$env:APPDATA\\bat\\config\" \"$dir\\config\"",
+        "    New-Item -ErrorAction Ignore \"$dir\\config\" | Out-Null",
+        "}",
+        "'syntaxes', 'themes' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) {",
+        "        Copy-Item -ErrorAction Ignore -Recurse \"$env:APPDATA\\bat\\$_\" \"$dir\\$_\"",
+        "    }",
+        "}"
+    ],
+    "env_set": {
+        "BAT_CONFIG_DIR": "$dir"
+    },
+    "persist": [
+        "config",
+        "syntaxes",
+        "themes"
+    ],
     "bin": "bat.exe",
     "checkver": "github",
     "autoupdate": {
