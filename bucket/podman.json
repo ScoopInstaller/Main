@@ -10,6 +10,7 @@
         }
     },
     "bin": "podman.exe",
+    "pre_install": "if (Test-Path \"$persist_dir\\config\\*\") { Copy-Item \"$persist_dir\\config\\*\" \"$Env:UserProfile\\.config\\containers\"  -Recurse }",
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\podman-$version-setup.exe\" \"$dir\\_tmp\" -Removal",
@@ -20,9 +21,42 @@
             "Add-Path -Path $original_dir -TargetEnvVar $scoopPathEnvVar -Global:$global -Force"
         ]
     },
+    "post_install": [
+        "if ((Test-Path \"$Env:UserProfile\\.local\\share\\containers\\cache\\*\") -and !(Test-Path \"$dir\\data\\cache\\*\")) {",
+        "    info '[Persist Data]: Moving data (cache) from default data directory to scoop persist directory . . .'",
+        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\cache\\*\" \"$dir\\data\\cache\"",
+        "}",
+        "if ((Test-Path \"$Env:UserProfile\\.local\\share\\containers\\podman\\*\") -and !(Test-Path \"$dir\\data\\podman\\*\")) {",
+        "    info '[Persist Data]: Moving data (podman) from default data directory to scoop persist directory . . .'",
+        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\podman\\*\" \"$dir\\data\\podman\"",
+        "}",
+        "if ((Test-Path \"$Env:UserProfile\\.local\\share\\containers\\storage\\*\") -and !(Test-Path \"$dir\\data\\storage\\*\")) {",
+        "    info '[Persist Data]: Moving data (storage) from default data directory to scoop persist directory . . .'",
+        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\storage\\*\" \"$dir\\data\\storage\"",
+        "}",
+        "if ((Test-Path \"$Env:AppData\\containers\\*\") -and !(Test-Path \"$dir\\connections\\*\")) {",
+        "    info '[Persist Data]: Moving connections from default data directory to scoop persist directory . . .'",
+        "    Move-Item \"$Env:AppData\\containers\\*\" \"$dir\\connections\"",
+        "}"
+    ],
+    "pre_uninstall": [
+        "if (Test-Path \"$Env:UserProfile\\.config\\containers\\*\") {",
+        "    Remove-Item \"$dir\\config\\*\" -Recurse -Force",
+        "    Move-Item \"$Env:UserProfile\\.config\\containers\\*\" \"$dir\\config\"",
+        "}"
+    ],
     "uninstaller": {
         "script": "Remove-Path -Path $dir -TargetEnvVar $scoopPathEnvVar -Global:$global -Force"
     },
+    "env_set": {
+        "XDG_DATA_HOME": "$dir\\data",
+        "PODMAN_CONNECTIONS_CONF": "$dir\\connections\\podman-connections.json"
+    },
+    "persist": [
+        "data",
+        "config",
+        "connections"
+    ],
     "checkver": {
         "github": "https://github.com/containers/podman"
     },
