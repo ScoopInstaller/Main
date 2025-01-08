@@ -1,49 +1,39 @@
 {
-    "version": "21.15.0.0.0",
+    "version": "23.6.0.24.10",
     "description": "Connect to a local or remote Oracle Database for development and production deployment.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.oracle.com/downloads/licenses/instant-client-lic.html"
     },
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2115000/instantclient-basic-windows.x64-21.15.0.0.0dbru.zip",
-            "hash": "9cb28a535f3b19cb95cc2d14b5e67c7ea4efeaa1b1358913c1ce60183debd2c5",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2360000/instantclient-basic-windows.x64-23.6.0.24.10.zip",
+            "hash": "33dde93f8ccc29f4520af4d9426b957ac0a1551e848569bb32b8ba1d99ac2769",
             "env_set": {
                 "OCI_LIB64": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
             }
-        },
-        "32bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2115000/instantclient-basic-nt-21.15.0.0.0dbru.zip",
-            "hash": "74b86a60faff68a9978e1a5f1516408fcbd0ba05f45b708c79a7d1c49fda90f5",
-            "env_set": {
-                "OCI_LIB32": "$dir",
-                "TNS_ADMIN": "$dir\\network\\admin"
-            }
         }
     },
-    "suggest": {
-        "vcredist": "extras/vcredist2022"
-    },
-    "extract_dir": "instantclient_21_15",
+    "extract_dir": "instantclient_23_6",
     "env_add_path": ".",
     "persist": "network\\admin",
     "checkver": {
-        "url": "https://www.oracle.com/database/technologies/instant-client/microsoft-windows-32-downloads.html",
+        "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
         "regex": "Version ([\\d.]+)",
         "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-windows.x64-$versiondbru.zip"
-            },
-            "32bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-nt-$versiondbru.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$majorVersion$minorVersion$patchVersion000/instantclient-basic-windows.x64-$version.zip"
             }
         },
         "extract_dir": "instantclient_$majorVersion_$minorVersion"
-    }
+    },
+    "notes": "For 32bit, use 'versions/oracle-instant-client21'."
 }
