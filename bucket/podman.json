@@ -11,10 +11,22 @@
     },
     "bin": "podman.exe",
     "pre_install": [
-        "if (Test-Path \"$persist_dir\\config\\*\") { Copy-Item \"$persist_dir\\config\\*\" \"$Env:UserProfile\\.config\\containers\" -Recurse }",
-        "if (Test-Path \"$persist_dir\\data\\cache\\*\") { Copy-Item \"$persist_dir\\data\\cache\\*\" \"$Env:UserProfile\\.local\\share\\containers\\cache\" -Recurse }",
-        "if (Test-Path \"$persist_dir\\data\\podman\\*\") { Copy-Item \"$persist_dir\\data\\podman\\*\" \"$Env:UserProfile\\.local\\share\\containers\\podman\" -Recurse }",
-        "if (Test-Path \"$persist_dir\\data\\storage\\*\") { Copy-Item \"$persist_dir\\data\\storage\\*\" \"$Env:UserProfile\\.local\\share\\containers\\storage\" -Recurse }"
+        "if (Test-Path \"$persist_dir\\config\\*\") {",
+        "    New-Item \"$Env:UserProfile\\.config\\containers\" -ItemType Directory -Force | Out-Null",
+        "    Copy-Item \"$persist_dir\\config\\*\" \"$Env:UserProfile\\.config\\containers\" -Recurse",
+        "}",
+        "if (Test-Path \"$persist_dir\\data\\cache\\*\") {",
+        "    New-Item \"$Env:UserProfile\\.local\\share\\containers\\cache\" -ItemType Directory -Force | Out-Null",
+        "    Copy-Item \"$persist_dir\\data\\cache\\*\" \"$Env:UserProfile\\.local\\share\\containers\\cache\" -Recurse",
+        "}",
+        "if (Test-Path \"$persist_dir\\data\\podman\\*\") {",
+        "    New-Item \"$Env:UserProfile\\.local\\share\\containers\\podman\" -ItemType Directory -Force | Out-Null",
+        "    Copy-Item \"$persist_dir\\data\\podman\\*\" \"$Env:UserProfile\\.local\\share\\containers\\podman\" -Recurse",
+        "}",
+        "if (Test-Path \"$persist_dir\\data\\storage\\*\") {",
+        "    New-Item \"$Env:UserProfile\\.local\\share\\containers\\storage\" -ItemType Directory -Force | Out-Null",
+        "    Copy-Item \"$persist_dir\\data\\storage\\*\" \"$Env:UserProfile\\.local\\share\\containers\\storage\" -Recurse",
+        "}"
     ],
     "installer": {
         "script": [
