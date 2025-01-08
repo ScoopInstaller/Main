@@ -10,7 +10,12 @@
         }
     },
     "bin": "podman.exe",
-    "pre_install": "if (Test-Path \"$persist_dir\\config\\*\") { Copy-Item \"$persist_dir\\config\\*\" \"$Env:UserProfile\\.config\\containers\"  -Recurse }",
+    "pre_install": [
+        "if (Test-Path \"$persist_dir\\config\\*\") { Copy-Item \"$persist_dir\\config\\*\" \"$Env:UserProfile\\.config\\containers\" -Recurse }",
+        "if (Test-Path \"$persist_dir\\data\\cache\\*\") { Copy-Item \"$persist_dir\\data\\cache\\*\" \"$Env:UserProfile\\.local\\share\\containers\\cache\" -Recurse }",
+        "if (Test-Path \"$persist_dir\\data\\podman\\*\") { Copy-Item \"$persist_dir\\data\\podman\\*\" \"$Env:UserProfile\\.local\\share\\containers\\podman\" -Recurse }",
+        "if (Test-Path \"$persist_dir\\data\\storage\\*\") { Copy-Item \"$persist_dir\\data\\storage\\*\" \"$Env:UserProfile\\.local\\share\\containers\\storage\" -Recurse }"
+    ],
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\podman-$version-setup.exe\" \"$dir\\_tmp\" -Removal",
@@ -22,18 +27,6 @@
         ]
     },
     "post_install": [
-        "if ((Test-Path \"$Env:UserProfile\\.local\\share\\containers\\cache\\*\") -and !(Test-Path \"$dir\\data\\cache\\*\")) {",
-        "    info '[Persist Data]: Moving data (cache) from default data directory to scoop persist directory . . .'",
-        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\cache\\*\" \"$dir\\data\\cache\"",
-        "}",
-        "if ((Test-Path \"$Env:UserProfile\\.local\\share\\containers\\podman\\*\") -and !(Test-Path \"$dir\\data\\podman\\*\")) {",
-        "    info '[Persist Data]: Moving data (podman) from default data directory to scoop persist directory . . .'",
-        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\podman\\*\" \"$dir\\data\\podman\"",
-        "}",
-        "if ((Test-Path \"$Env:UserProfile\\.local\\share\\containers\\storage\\*\") -and !(Test-Path \"$dir\\data\\storage\\*\")) {",
-        "    info '[Persist Data]: Moving data (storage) from default data directory to scoop persist directory . . .'",
-        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\storage\\*\" \"$dir\\data\\storage\"",
-        "}",
         "if ((Test-Path \"$Env:AppData\\containers\\*\") -and !(Test-Path \"$dir\\connections\\*\")) {",
         "    info '[Persist Data]: Moving connections from default data directory to scoop persist directory . . .'",
         "    Move-Item \"$Env:AppData\\containers\\*\" \"$dir\\connections\"",
@@ -43,13 +36,24 @@
         "if (Test-Path \"$Env:UserProfile\\.config\\containers\\*\") {",
         "    Remove-Item \"$dir\\config\\*\" -Recurse -Force",
         "    Move-Item \"$Env:UserProfile\\.config\\containers\\*\" \"$dir\\config\"",
+        "}",
+        "if (Test-Path \"$Env:UserProfile\\.local\\share\\containers\\cache\\*\") {",
+        "    Remove-Item \"$dir\\data\\cache\\*\" -Recurse -Force",
+        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\cache\\*\" \"$dir\\data\\cache\"",
+        "}",
+        "if (Test-Path \"$Env:UserProfile\\.local\\share\\containers\\podman\\*\") {",
+        "    Remove-Item \"$dir\\data\\podman\\*\" -Recurse -Force",
+        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\podman\\*\" \"$dir\\data\\podman\"",
+        "}",
+        "if (Test-Path \"$Env:UserProfile\\.local\\share\\containers\\storage\\*\") {",
+        "    Remove-Item \"$dir\\data\\storage\\*\" -Recurse -Force",
+        "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\storage\\*\" \"$dir\\data\\storage\"",
         "}"
     ],
     "uninstaller": {
         "script": "Remove-Path -Path $dir -TargetEnvVar $scoopPathEnvVar -Global:$global -Force"
     },
     "env_set": {
-        "XDG_DATA_HOME": "$dir\\data",
         "PODMAN_CONNECTIONS_CONF": "$dir\\connections\\podman-connections.json"
     },
     "persist": [
