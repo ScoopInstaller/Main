@@ -1,7 +1,7 @@
 {
     "version": "2025.1.6",
-    "description": "Dev tools, env vars, task runner",
-    "homepage": "https://mise.jdx.dev/",
+    "description": "Polyglot tool version manager and task runner",
+    "homepage": "https://mise.jdx.dev",
     "license": "MIT",
     "architecture": {
         "64bit": {
@@ -15,25 +15,11 @@
     },
     "extract_dir": "mise",
     "bin": "bin/mise.exe",
-    "installer": {
-        "script": "Add-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
+    "env_set": {
+        "MISE_DATA_DIR": "$dir\\mise"
     },
-    "uninstaller": {
-        "script": "Remove-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
-    },
-    "post_uninstall": [
-        "if ($purge) {",
-        "    $Directories = [string[]](",
-        "        ('{0}\\mise' -f $env:LOCALAPPDATA),",
-        "        ('{0}\\Temp\\mise' -f $env:LOCALAPPDATA)",
-        "    )",
-        "    $Directories.ForEach{",
-        "        if (Test-Path -Path $_ -PathType 'Container') {",
-        "            $null = Remove-Item -Path $_ -Recurse -Force",
-        "        }",
-        "    }",
-        "}"
-    ],
+    "env_add_path": "mise\\shims",
+    "persist": "mise",
     "checkver": {
         "github": "https://github.com/jdx/mise"
     },
