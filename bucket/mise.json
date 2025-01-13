@@ -16,10 +16,15 @@
     "extract_dir": "mise",
     "bin": "bin/mise.exe",
     "env_set": {
-        "MISE_DATA_DIR": "$dir\\mise"
+        "MISE_DATA_DIR": "$dir\\mise",
+        "MISE_GLOBAL_CONFIG_ROOT": "$dir\\config"
     },
     "env_add_path": "mise\\shims",
-    "persist": "mise",
+    "persist": [
+        "mise",
+        "config"
+    ],
+    "notes": "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html",
     "checkver": {
         "github": "https://github.com/jdx/mise"
     },
