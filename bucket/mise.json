@@ -16,7 +16,7 @@
     "extract_dir": "mise",
     "bin": "bin/mise.exe",
     "pre_install": [
-        "if (![IO.File]::Exists(\"$dir\\config.toml\")) {",
+        "if (!(Test-Path \"$persist_dir\\config.toml\") -and !(Test-Path \"$dir\\config.toml\")) {",
         "  New-Item -Path \"$dir\\config.toml\" -ItemType File -ea 0 | Out-Null",
         "}"
     ],
