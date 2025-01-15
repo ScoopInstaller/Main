@@ -1,0 +1,53 @@
+{
+    "version": "2025.1.7",
+    "description": "Dev tools, env vars, task runner",
+    "homepage": "https://mise.jdx.dev/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jdx/mise/releases/download/v2025.1.7/mise-v2025.1.7-windows-x64.zip",
+            "hash": "ee0d7c2f84c0ad0067145aa0e8d9a7c21a538480139eced38c270444e172fbcd"
+        },
+        "arm64": {
+            "url": "https://github.com/jdx/mise/releases/download/v2025.1.7/mise-v2025.1.7-windows-arm64.zip",
+            "hash": "79dd072cee4a9431f949509c7a9af66caeeeaaea73be3d84b486a0b91ac8da3b"
+        }
+    },
+    "extract_dir": "mise",
+    "bin": "bin/mise.exe",
+    "installer": {
+        "script": "Add-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
+    },
+    "uninstaller": {
+        "script": "Remove-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
+    },
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        ('{0}\\mise' -f $env:LOCALAPPDATA),",
+        "        ('{0}\\Temp\\mise' -f $env:LOCALAPPDATA)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if (Test-Path -Path $_ -PathType 'Container') {",
+        "            $null = Remove-Item -Path $_ -Recurse -Force",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/jdx/mise"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt"
+        }
+    }
+}
