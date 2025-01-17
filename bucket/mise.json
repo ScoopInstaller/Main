@@ -1,6 +1,6 @@
 {
     "version": "2025.1.8",
-    "description": "Dev tools, env vars, task runner",
+    "description": "Polyglot tool version manager and task runner",
     "homepage": "https://mise.jdx.dev/",
     "license": "MIT",
     "architecture": {
@@ -15,25 +15,21 @@
     },
     "extract_dir": "mise",
     "bin": "bin/mise.exe",
-    "installer": {
-        "script": "Add-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
-    },
-    "uninstaller": {
-        "script": "Remove-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
-    },
-    "post_uninstall": [
-        "if ($purge) {",
-        "    $Directories = [string[]](",
-        "        ('{0}\\mise' -f $env:LOCALAPPDATA),",
-        "        ('{0}\\Temp\\mise' -f $env:LOCALAPPDATA)",
-        "    )",
-        "    $Directories.ForEach{",
-        "        if (Test-Path -Path $_ -PathType 'Container') {",
-        "            $null = Remove-Item -Path $_ -Recurse -Force",
-        "        }",
-        "    }",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.toml\") -and !(Test-Path \"$dir\\config.toml\")) {",
+        "    New-Item -Path \"$dir\\config.toml\" -ItemType File -ea 0 | Out-Null",
         "}"
     ],
+    "env_set": {
+        "MISE_DATA_DIR": "$dir\\mise",
+        "MISE_GLOBAL_CONFIG_FILE": "$dir\\config.toml"
+    },
+    "env_add_path": "mise\\shims",
+    "persist": [
+        "mise",
+        "config.toml"
+    ],
+    "notes": "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html",
     "checkver": {
         "github": "https://github.com/jdx/mise"
     },
