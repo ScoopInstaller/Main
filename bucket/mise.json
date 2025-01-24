@@ -17,6 +17,7 @@
     "bin": "bin/mise.exe",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\config.toml\") -and !(Test-Path \"$dir\\config.toml\")) {",
+        "    Write-Warning -wa 2 \"This manifest does not currently migrate any previous mise installations!`n`nSuggested:`n * Backup existing config.toml before fully uninstalling mise as documented.`n * Install with scoop then manually add the backed up options to the new config.toml that scoop now manages in persist\"",
         "    New-Item -Path \"$dir\\config.toml\" -ItemType File -ea 0 | Out-Null",
         "}"
     ],
