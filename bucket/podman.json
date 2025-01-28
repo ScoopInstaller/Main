@@ -11,6 +11,11 @@
     },
     "bin": "podman.exe",
     "pre_install": [
+        "if (Get-Command -ErrorAction SilentlyContinue podman) {",
+        "    if ((podman machine info --format '{{.Host.MachineState}}') -like '*ing') {",
+        "        error 'Podman virtual machine is still running. Stop it and try again.'; break",
+        "    }",
+        "}",
         "if (Test-Path \"$persist_dir\\config\\*\") {",
         "    New-Item \"$Env:UserProfile\\.config\\containers\" -ItemType Directory -Force | Out-Null",
         "    Copy-Item \"$persist_dir\\config\\*\" \"$Env:UserProfile\\.config\\containers\" -Recurse",
@@ -45,6 +50,11 @@
         "}"
     ],
     "pre_uninstall": [
+        "if (Get-Command -ErrorAction SilentlyContinue podman) {",
+        "    if ((podman machine info --format '{{.Host.MachineState}}') -like '*ing') {",
+        "        error 'Podman virtual machine is still running. Stop it and try again.'; break",
+        "    }",
+        "}",
         "if (Test-Path \"$Env:UserProfile\\.config\\containers\\*\") {",
         "    Remove-Item \"$dir\\config\\*\" -Recurse -Force",
         "    Move-Item \"$Env:UserProfile\\.config\\containers\\*\" \"$dir\\config\"",
