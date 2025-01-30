@@ -7,7 +7,12 @@
         "64bit": {
             "url": "https://github.com/jedisct1/minisign/releases/download/0.12/minisign-0.12-win64.zip",
             "hash": "37b600344e20c19314b2e82813db2bfdcc408b77b876f7727889dbd46d539479",
-            "extract_dir": "minisign-win64"
+            "extract_dir": "minisign-win64/x86_64"
+        },
+        "arm64": {
+            "url": "https://github.com/jedisct1/minisign/releases/download/0.12/minisign-0.12-win64.zip",
+            "hash": "37b600344e20c19314b2e82813db2bfdcc408b77b876f7727889dbd46d539479",
+            "extract_dir": "minisign-win64/aarch64"
         }
     },
     "bin": "minisign.exe",
@@ -17,6 +22,9 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
+                "url": "https://github.com/jedisct1/minisign/releases/download/$version/minisign-$version-win64.zip"
+            },
+            "arm64": {
                 "url": "https://github.com/jedisct1/minisign/releases/download/$version/minisign-$version-win64.zip"
             }
         }
