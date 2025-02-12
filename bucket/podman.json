@@ -13,15 +13,8 @@
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\podman-$version-setup.exe\" \"$dir\\_tmp\" -Removal",
-            "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles64\\RedHat\\Podman'",
-            "if (get_config USE_ISOLATED_PATH) {",
-            "    Add-Path -Path ('%' + $scoopPathEnvVar + '%') -Global:$global",
-            "}",
-            "Add-Path -Path $original_dir -TargetEnvVar $scoopPathEnvVar -Global:$global -Force"
+            "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles64\\RedHat\\Podman'"
         ]
-    },
-    "uninstaller": {
-        "script": "Remove-Path -Path $dir -TargetEnvVar $scoopPathEnvVar -Global:$global -Force"
     },
     "checkver": {
         "github": "https://github.com/containers/podman"
