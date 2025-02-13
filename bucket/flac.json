@@ -7,7 +7,7 @@
         "url": "https://xiph.org/flac/license.html"
     },
     "url": "https://github.com/xiph/flac/releases/download/1.5.0/flac-1.5.0-win.zip",
-    "hash": "53F1500F0D6E7C61379D7FEE50D4A9F7F504C650009506D9BA015530D76C0DDE",
+    "hash": "53f1500f0d6e7c61379d7fee50d4a9f7f504c650009506d9ba015530d76c0dde",
     "architecture": {
         "64bit": {
             "extract_dir": "flac-1.5.0-win\\win64"
@@ -22,9 +22,13 @@
     ],
     "checkver": {
         "github": "https://github.com/xiph/flac"
-      },
+    },
     "autoupdate": {
         "url": "https://github.com/xiph/flac/releases/download/$version/flac-$version-win.zip",
+        "hash": {
+            "url": "https://github.com/xiph/flac/releases/$version",
+            "regex": "$sha256.*?$basename"
+        },
         "architecture": {
             "64bit": {
                 "extract_dir": "flac-$version-win\\win64"
