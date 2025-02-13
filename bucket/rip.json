@@ -1,0 +1,28 @@
+{
+    "version": "0.9.3",
+    "description": "A safe and ergonomic alternative to rm.",
+    "homepage": "https://github.com/MilesCranmer/rip2",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/MilesCranmer/rip2/releases/download/v0.9.3/rip-Windows-x86_64.zip",
+            "hash": "6f0a1e8888e1fb61f3eeb60ceae97e593fd833baa11669046d53a7a2901ce7a8"
+        },
+        "32bit": {
+            "url": "https://github.com/MilesCranmer/rip2/releases/download/v0.9.3/rip-Windows-i686.zip",
+            "hash": "2e98138cdd20bfe3846c9b0c7b6ff131d12de6fa323ebcf70f01fcc338e9916e"
+        }
+    },
+    "bin": "rip.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/MilesCranmer/rip2/releases/download/v$version/rip-Windows-x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/MilesCranmer/rip2/releases/download/v$version/rip-Windows-i686.zip"
+            }
+        }
+    }
+}
