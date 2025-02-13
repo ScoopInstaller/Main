@@ -1,12 +1,12 @@
 {
-    "version": "5.3.1",
+    "version": "5.4.0",
     "description": "A tool for managing OCI containers and pods.",
     "homepage": "https://podman.io/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/containers/podman/releases/download/v5.3.1/podman-5.3.1-setup.exe",
-            "hash": "c63edc48fbbce0f5650a49701c8a96e5842d83cd73f4c41514ede5ea35efc11d"
+            "url": "https://github.com/containers/podman/releases/download/v5.4.0/podman-5.4.0-setup.exe",
+            "hash": "6043131f88e40a862a8a08058441dec459813a3117a1a2e6f1148540a2e73877"
         }
     },
     "bin": "podman.exe",
@@ -36,11 +36,7 @@
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\podman-$version-setup.exe\" \"$dir\\_tmp\" -Removal",
-            "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles64\\RedHat\\Podman'",
-            "if (get_config USE_ISOLATED_PATH) {",
-            "    Add-Path -Path ('%' + $scoopPathEnvVar + '%') -Global:$global",
-            "}",
-            "Add-Path -Path $original_dir -TargetEnvVar $scoopPathEnvVar -Global:$global -Force"
+            "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles64\\RedHat\\Podman'"
         ]
     },
     "post_install": [
@@ -72,9 +68,6 @@
         "    Move-Item \"$Env:UserProfile\\.local\\share\\containers\\storage\\*\" \"$dir\\data\\storage\"",
         "}"
     ],
-    "uninstaller": {
-        "script": "Remove-Path -Path $dir -TargetEnvVar $scoopPathEnvVar -Global:$global -Force"
-    },
     "env_set": {
         "PODMAN_CONNECTIONS_CONF": "$dir\\connections\\podman-connections.json"
     },

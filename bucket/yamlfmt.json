@@ -1,0 +1,39 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+    "version": "0.16.0",
+    "description": "An extensible command line tool or library to format yaml files.",
+    "homepage": "https://github.com/google/yamlfmt",
+    "license": "Apache-2.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/google/yamlfmt/releases/download/v0.16.0/yamlfmt_0.16.0_Windows_i386.tar.gz",
+            "hash": "de013077d923d9064cdd1ffedfd6d56274271772007fe214c6db7afdf571228d"
+        },
+        "64bit": {
+            "url": "https://github.com/google/yamlfmt/releases/download/v0.16.0/yamlfmt_0.16.0_Windows_x86_64.tar.gz",
+            "hash": "dea055eb85a30d923850e46b462bb5f0e8f3ca9aee3b33b76a55f22995224e1b"
+        },
+        "arm64": {
+            "url": "https://github.com/google/yamlfmt/releases/download/v0.16.0/yamlfmt_0.16.0_Windows_arm64.tar.gz",
+            "hash": "1adc6fa71e6e2fad3da09df409e2454e96a5c4a61a8669a6ae4023c163fc2a14"
+        }
+    },
+    "bin": "yamlfmt.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/google/yamlfmt/releases/download/v$version/yamlfmt_$version_Windows_i386.tar.gz"
+            },
+            "64bit": {
+                "url": "https://github.com/google/yamlfmt/releases/download/v$version/yamlfmt_$version_Windows_x86_64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/google/yamlfmt/releases/download/v$version/yamlfmt_$version_Windows_arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
