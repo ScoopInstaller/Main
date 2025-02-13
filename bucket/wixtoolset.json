@@ -12,8 +12,8 @@
         "regex": "([\\d.]+)",
         "script": [
             "$Response = [PSCustomObject[]](Invoke-RestMethod -Method 'Get' -Uri 'https://api.nuget.org/v3-flatcontainer/wix/index.json')",
-            "$Response.versions.Where{[System.Version]::TryParse($_,[ref]$null)} |`",
-            "    Sort-Object -Property @{'Expression'={[System.Version]$_}} |`",
+            "$Response.versions.Where{[System.Version]::TryParse($_,[ref]$null)} | `",
+            "    Sort-Object -Property @{'Expression'={[System.Version]$_}} | `",
             "    Select-Object -Last 1"
         ]
     },
