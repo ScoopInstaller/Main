@@ -1,0 +1,43 @@
+{
+    "version": "2.1.2",
+    "description": "GitKraken CLI",
+    "homepage": "https://www.gitkraken.com/cli",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://github.com/gitkraken/gk-cli/blob/main/LICENSE"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/gitkraken/gk-cli/releases/download/v2.1.2/gk_2.1.2_Windows_i386.zip",
+            "hash": "17cfb0f67174a8cb83eee61424dba75efbd0513a9deeab7f2b101aa130a13e1e"
+        },
+        "64bit": {
+            "url": "https://github.com/gitkraken/gk-cli/releases/download/v2.1.2/gk_2.1.2_Windows_x86_64.zip",
+            "hash": "e39c63abe11567da4be2e846e6ce84c11aa2d7f8ad778c0d37811e853baeafb7"
+        },
+        "arm64": {
+            "url": "https://github.com/gitkraken/gk-cli/releases/download/v2.1.2/gk_2.1.2_Windows_arm64.zip",
+            "hash": "595883251e0c62933691526437bfb0f2057e4b12f94bec868d4f1b85ff29420d"
+        }
+    },
+    "bin": "gk.exe",
+    "checkver": {
+        "github": "https://github.com/gitkraken/gk-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/gitkraken/gk-cli/releases/download/v$version/gk_$version_Windows_i386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/gitkraken/gk-cli/releases/download/v$version/gk_$version_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/gitkraken/gk-cli/releases/download/v$version/gk_$version_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
