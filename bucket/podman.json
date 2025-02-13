@@ -40,9 +40,14 @@
         ]
     },
     "post_install": [
-        "if ((Test-Path \"$Env:AppData\\containers\\*\") -and !(Test-Path \"$dir\\connections\\*\")) {",
-        "    info '[Persist Data]: Copying connections from default data directory to scoop persist directory . . .'",
-        "    Copy-Item \"$Env:AppData\\containers\\*\" \"$dir\\connections\"",
+        "if ((Test-Path \"$Env:AppData\\containers\\podman-connections*\") -and !(Test-Path \"$dir\\connections\\podman-connections*\")) {",
+        "    # [Persist Data]: Moving connections from default data directory to scoop persist directory ...",
+        "    Move-Item \"$Env:AppData\\containers\\podman-connections*\" \"$dir\\connections\"",
+        "}",
+        "'cache', 'podman', 'storage' | ForEach-Object {",
+        "    if (!(Test-Path \"$dir\\data\\$_\")) {",
+        "        New-Item \"$dir\\data\\$_\" -ItemType Directory -Force | Out-Null",
+        "    }",
         "}"
     ],
     "pre_uninstall": [
