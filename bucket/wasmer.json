@@ -1,5 +1,5 @@
 {
-    "version": "v4.3.5",
+    "version": "5.0.4",
     "description": "The leading WebAssembly Runtime supporting WASI and Emscripten",
     "homepage": "https://wasmer.io/",
     "license": "MIT",
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/wasmerio/wasmer/releases/download/v4.3.5/wasmer-windows.exe",
-            "hash": "7ebc26c5f845ab5a5ea9085418a95b282385d098b0f8b825abe9b9f3eca7a61c"
+            "url": "https://github.com/wasmerio/wasmer/releases/download/v5.0.4/wasmer-windows-amd64.tar.gz",
+            "hash": "7b958e82cfba3bdfce07a4ae338bf0de1ba3d7dca94d0347b8d6308ca85dcc64"
         }
     },
     "env_set": {
@@ -17,15 +17,13 @@
         "WASMER_CACHE_DIR": "$dir\\cache"
     },
     "bin": "bin\\wasmer.exe",
-    "innosetup": true,
     "checkver": {
-        "github": "https://github.com/wasmerio/wasmer",
-        "regex": "tag/([\\w.-]+)"
+        "github": "https://github.com/wasmerio/wasmer"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/wasmerio/wasmer/releases/download/$version/wasmer-windows.exe"
+                "url": "https://github.com/wasmerio/wasmer/releases/download/v$version/wasmer-windows-amd64.tar.gz"
             }
         }
     }

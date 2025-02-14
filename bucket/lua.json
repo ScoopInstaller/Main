@@ -1,76 +1,51 @@
 {
-    "version": "5.4.2",
+    "version": "5.4.7-2",
     "description": "A powerful, efficient, lightweight, embeddable scripting language",
     "homepage": "https://www.lua.org",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": [
-                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Tools%20Executables/lua-5.4.2_Win64_bin.zip",
-                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Windows%20Libraries/Dynamic/lua-5.4.2_Win64_dllw6_lib.zip"
-            ],
-            "hash": [
-                "sha1:31f5380006244e045c9aa2119feed8d353be72cb",
-                "sha1:e313a05e498b77b5e259737fe4ec851fe2b9d23e"
-            ]
+            "url": "https://mirror.msys2.org/mingw/clang64/mingw-w64-clang-x86_64-lua-5.4.7-2-any.pkg.tar.zst",
+            "hash": "28c382c7f33162deaa19d4722d611301ccc6825b097cb0504e3ff60ee27c392a",
+            "extract_dir": "clang64"
         },
         "32bit": {
-            "url": [
-                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Tools%20Executables/lua-5.4.2_Win32_bin.zip",
-                "https://downloads.sourceforge.net/project/luabinaries/5.4.2/Windows%20Libraries/Dynamic/lua-5.4.2_Win32_dllw6_lib.zip"
-            ],
-            "hash": [
-                "sha1:d5cb6359710413a71ba517617654f1c15229d61f",
-                "sha1:c13d772ebe44157d55279b04b93b67b5f8805a4f"
-            ]
+            "url": "https://mirror.msys2.org/mingw/clang32/mingw-w64-clang-i686-lua-5.4.7-2-any.pkg.tar.zst",
+            "hash": "6d3a4555be01eac5056d574c15f6b8459b428915f09b80f037a80c4281d66439",
+            "extract_dir": "clang32"
+        },
+        "arm64": {
+            "url": "https://mirror.msys2.org/mingw/clangarm64/mingw-w64-clang-aarch64-lua-5.4.7-2-any.pkg.tar.zst",
+            "hash": "b00c1a7818ac6f7ef20c3b1ea75c01b205d049dc302da8fa85d609b875ee7dd2",
+            "extract_dir": "clangarm64"
         }
     },
     "bin": [
-        "lua54.exe",
-        [
-            "lua54.exe",
-            "lua"
-        ],
-        "luac54.exe",
-        [
-            "luac54.exe",
-            "luac"
-        ]
+        "bin\\lua.exe",
+        "bin\\luac.exe"
     ],
     "env_set": {
-        "LUA_EXE_PATH": "$dir",
-        "LUA_CPATH": "$dir"
+        "LUA_EXE_PATH": "$dir\\bin",
+        "LUA_CPATH": "$dir\\bin"
     },
     "checkver": {
-        "url": "http://luabinaries.sourceforge.net/download.html",
-        "regex": "LuaBinaries ([\\d.]+)"
+        "url": "https://packages.msys2.org/api/search?query=lua&qtype=binpkg",
+        "jsonpath": "$.results.exact.version"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": [
-                    "https://downloads.sourceforge.net/project/luabinaries/$version/Tools%20Executables/lua-$version_Win64_bin.zip",
-                    "https://downloads.sourceforge.net/project/luabinaries/$version/Windows%20Libraries/Dynamic/lua-$version_Win64_dllw6_lib.zip"
-                ]
+                "url": "https://mirror.msys2.org/mingw/clang64/mingw-w64-clang-x86_64-lua-$version-any.pkg.tar.zst",
+                "extract_dir": "clang64"
             },
             "32bit": {
-                "url": [
-                    "https://downloads.sourceforge.net/project/luabinaries/$version/Tools%20Executables/lua-$version_Win32_bin.zip",
-                    "https://downloads.sourceforge.net/project/luabinaries/$version/Windows%20Libraries/Dynamic/lua-$version_Win32_dllw6_lib.zip"
-                ]
+                "url": "https://mirror.msys2.org/mingw/clang32/mingw-w64-clang-i686-lua-$version-any.pkg.tar.zst",
+                "extract_dir": "clang32"
+            },
+            "arm64": {
+                "url": "https://mirror.msys2.org/mingw/clangarm64/mingw-w64-clang-aarch64-lua-$version-any.pkg.tar.zst",
+                "extract_dir": "clangarm64"
             }
-        },
-        "bin": [
-            "lua$majorVersion$minorVersion.exe",
-            [
-                "lua$majorVersion$minorVersion.exe",
-                "lua"
-            ],
-            "luac$majorVersion$minorVersion.exe",
-            [
-                "luac$majorVersion$minorVersion.exe",
-                "luac"
-            ]
-        ]
+        }
     }
 }
