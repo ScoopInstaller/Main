@@ -1,0 +1,38 @@
+{
+    "version": "12.12.0",
+    "description": "Versatile HTTP load testing tool",
+    "homepage": "https://github.com/tsenart/vegeta",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/tsenart/vegeta/releases/download/v12.12.0/vegeta_12.12.0_windows_386.zip",
+            "hash": "25589ec09e15def046c710867d20f51c0b73eb940f75da4580c549c2052b7aaf"
+        },
+        "64bit": {
+            "url": "https://github.com/tsenart/vegeta/releases/download/v12.12.0/vegeta_12.12.0_windows_amd64.zip",
+            "hash": "42bc5ba2842b2f5c4ceb380a547039af0f50a008e48f88dfce4ace4bdfec6760"
+        },
+        "arm64": {
+            "url": "https://github.com/tsenart/vegeta/releases/download/v12.12.0/vegeta_12.12.0_windows_arm64.zip",
+            "hash": "a8c657a7a61432e31e17f456ba956ce475063bc74812947a36828a945cf588bf"
+        }
+    },
+    "bin": "vegeta.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/tsenart/vegeta/releases/download/v$version/vegeta_$version_windows_386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/tsenart/vegeta/releases/download/v$version/vegeta_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/tsenart/vegeta/releases/download/v$version/vegeta_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/vegeta_$version_checksums.txt"
+        }
+    }
+}
