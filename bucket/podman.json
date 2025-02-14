@@ -58,7 +58,7 @@
         "    if (Test-Path \"$Env:UserProfile\\.local\\share\\containers\\$_\\*\") {",
         "        Remove-Item \"$dir\\data\\$_\\*\" -Recurse -Force",
         "        Move-Item \"$Env:UserProfile\\.local\\share\\containers\\$_\\*\" \"$dir\\data\\$_\" -ErrorAction Continue",
-        "        error \"Cannot move '$Env:UserProfile\\.local\\share\\containers\\$_\\*' to '$dir\\data\\$_'\"",
+        "        if (-not $?) { error \"Cannot move '$Env:UserProfile\\.local\\share\\containers\\$_\\*' to '$dir\\data\\$_'\" }",
         "    }",
         "}"
     ],
