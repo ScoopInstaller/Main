@@ -1,0 +1,30 @@
+{
+    "version": "0.18.1",
+    "description": "Arguably a Terminal API Client based on well-known clients such as Postman, Insomnia, or even Bruno.",
+    "homepage": "https://atac.julien-cpsn.com/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v0.18.1/atac-v0.18.1-x86_64-pc-windows-msvc.zip",
+            "hash": "f30c12a568d197ce58af1608b82b59cbb6cf2ed038848315f0a82036239c9b96"
+        },
+        "arm64": {
+            "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v0.18.1/atac-v0.18.1-aarch64-pc-windows-msvc.zip",
+            "hash": "a73580ca3113f3245e2f2423d0d908a189466cb8eccfa130b3d36680dad989e9"
+        }
+    },
+    "bin": "atac.exe",
+    "checkver": {
+        "github": "https://github.com/Julien-cpsn/ATAC"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v$version/atac-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v$version/atac-v$version-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
