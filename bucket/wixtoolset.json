@@ -9,7 +9,8 @@
     "bin": "wix.exe",
     "checkver": {
         "url": "https://api.nuget.org/v3-flatcontainer/wix/index.json",
-        "jsonpath": "$.versions[-1:]"
+        "regex": "\"([\\d.]+)\"",
+        "reverse": true
     },
     "autoupdate": {
         "url": "https://api.nuget.org/v3-flatcontainer/wix/$version/wix.$version.nupkg"

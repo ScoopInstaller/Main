@@ -1,0 +1,49 @@
+{
+    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+    "version": "1.12.0",
+    "description": "A developer CLI that reduces the time it takes to get started on Azure",
+    "homepage": "https://aka.ms/azd",
+    "license": "MIT",
+    "notes": [
+        "1. Shell completion requires additional setup, see: https://github.com/Azure/azure-dev",
+        "2. Telemetry is enabled by default, it can be disabled by setting env variable \"AZURE_DEV_COLLECT_TELEMETRY\" to \"no\""
+    ],
+    "architecture": {
+        "arm64": {
+            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.12.0/azd-windows-arm64-alpha.zip",
+            "hash": "d2db3805ff540d0554a9e12ec13ce74df48d2e9ff42c527922916b0a975f5bdc"
+        },
+        "64bit": {
+            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.12.0/azd-windows-amd64.zip",
+            "hash": "1730bf967e14f31eae3de3369206a7e5c56bf95e1078eabc33945529676d0d50"
+        }
+    },
+    "pre_install": "Rename-Item -Path \"$dir\\azd-*.exe\" -NewName \"azd.exe\"",
+    "bin": "azd.exe",
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        [System.IO.Path]::Combine($env:USERPROFILE,'.azd')",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if ([System.IO.Directory]::Exists($_)) {",
+        "            $null = [System.IO.Directory]::Delete($_,$true)",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/Azure/azure-dev",
+        "regex": "azure-dev-cli_([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "arm64": {
+                "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-arm64-alpha.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-amd64.zip"
+            }
+        }
+    }
+}
