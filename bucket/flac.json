@@ -6,7 +6,7 @@
         "identifier": "BSD-3-Clause,GPL-3.0-or-later",
         "url": "https://xiph.org/flac/license.html"
     },
-    "url": "https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.5.0-win.zip",
+    "url": "https://github.com/xiph/flac/releases/download/1.5.0/flac-1.5.0-win.zip",
     "hash": "53f1500f0d6e7c61379d7fee50d4a9f7f504c650009506d9ba015530d76c0dde",
     "architecture": {
         "64bit": {
@@ -21,13 +21,13 @@
         "metaflac.exe"
     ],
     "checkver": {
-        "url": "https://ftp.osuosl.org/pub/xiph/releases/flac/?C=M;O=D",
-        "regex": ">flac-([\\d.]+)-win\\.zip"
+        "github": "https://github.com/xiph/flac"
     },
     "autoupdate": {
-        "url": "https://ftp.osuosl.org/pub/xiph/releases/flac/flac-$version-win.zip",
+        "url": "https://github.com/xiph/flac/releases/download/$version/flac-$version-win.zip",
         "hash": {
-            "url": "$baseurl/SHA256SUMS.txt"
+            "url": "https://github.com/xiph/flac/releases/$version",
+            "regex": "$sha256.*?$basename"
         },
         "architecture": {
             "64bit": {
