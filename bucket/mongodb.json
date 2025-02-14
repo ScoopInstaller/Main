@@ -31,7 +31,7 @@
         "    $cfg = Get-Content \"$dir\\bin\\mongod.cfg\"",
         "    $cfg = $cfg -replace '%MONGO_DATA_PATH%', \"$dir\\data\"",
         "    $cfg = $cfg -replace '%MONGO_LOG_PATH%', \"$dir\\log\"",
-        "    Set-Content \"$dir\\bin\\mongod.cfg\" $cfg -Encoding Ascii -Force",
+        "    Set-Content -Path \"$dir\\bin\\mongod.cfg\" -Value \"$cfg\" -Encoding Ascii -Force",
         "}"
     ],
     "bin": [
