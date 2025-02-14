@@ -14,6 +14,26 @@
         }
     },
     "bin": "nu.exe",
+    "shortcuts": [
+        [
+            "nu.exe",
+            "Nushell",
+            "--execute \"cd ~\""
+        ]
+    ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        [System.IO.Path]::Combine($env:APPDATA,'nushell'),",
+        "        [System.IO.Path]::Combine($env:LOCALAPPDATA,'nushell')",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if ([System.IO.Directory]::Exists($_)) {",
+        "            $null = [System.IO.Directory]::Delete($_,$true)",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/nushell/nushell"
     },
@@ -25,6 +45,9 @@
             "arm64": {
                 "url": "https://github.com/nushell/nushell/releases/download/$version/nu-$version-aarch64-pc-windows-msvc.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }
