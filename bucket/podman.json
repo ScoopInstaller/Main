@@ -10,12 +10,66 @@
         }
     },
     "bin": "podman.exe",
+    "pre_install": [
+        "if (Get-Command -ErrorAction SilentlyContinue podman) {",
+        "    if ((podman machine info --format '{{.Host.MachineState}}') -like '*ing') {",
+        "        error 'Podman virtual machine is still running. Stop it and try again.'; break",
+        "    }",
+        "}",
+        "if (Test-Path \"$persist_dir\\config\\*\") {",
+        "    New-Item \"$Env:UserProfile\\.config\\containers\" -ItemType Directory -Force | Out-Null",
+        "    Copy-Item \"$persist_dir\\config\\*\" \"$Env:UserProfile\\.config\\containers\" -Recurse",
+        "}",
+        "'cache', 'podman', 'storage' | ForEach-Object {",
+        "    if (Test-Path \"$persist_dir\\data\\$_\\*\") {",
+        "        New-Item \"$Env:UserProfile\\.local\\share\\containers\\$_\" -ItemType Directory -Force | Out-Null",
+        "        Copy-Item \"$persist_dir\\data\\$_\\*\" \"$Env:UserProfile\\.local\\share\\containers\\$_\" -Recurse",
+        "    }",
+        "}"
+    ],
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\podman-$version-setup.exe\" \"$dir\\_tmp\" -Removal",
             "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles64\\RedHat\\Podman'"
         ]
     },
+    "post_install": [
+        "if ((Test-Path \"$Env:AppData\\containers\\podman-connections*\") -and !(Test-Path \"$dir\\connections\\podman-connections*\")) {",
+        "    # [Persist Data]: Moving connections from default data directory to scoop persist directory ...",
+        "    Move-Item \"$Env:AppData\\containers\\podman-connections*\" \"$dir\\connections\"",
+        "}",
+        "'cache', 'podman', 'storage' | ForEach-Object {",
+        "    if (!(Test-Path \"$dir\\data\\$_\")) {",
+        "        New-Item \"$dir\\data\\$_\" -ItemType Directory -Force | Out-Null",
+        "    }",
+        "}"
+    ],
+    "pre_uninstall": [
+        "if (Get-Command -ErrorAction SilentlyContinue podman) {",
+        "    if ((podman machine info --format '{{.Host.MachineState}}') -like '*ing') {",
+        "        abort 'Podman virtual machine is still running. Stop it and try again.'",
+        "    }",
+        "}",
+        "if (Test-Path \"$Env:UserProfile\\.config\\containers\\*\") {",
+        "    Remove-Item \"$dir\\config\\*\" -Recurse -Force",
+        "    Move-Item \"$Env:UserProfile\\.config\\containers\\*\" \"$dir\\config\"",
+        "}",
+        "'cache', 'podman', 'storage' | ForEach-Object {",
+        "    if (Test-Path \"$Env:UserProfile\\.local\\share\\containers\\$_\\*\") {",
+        "        Remove-Item \"$dir\\data\\$_\\*\" -Recurse -Force",
+        "        Move-Item \"$Env:UserProfile\\.local\\share\\containers\\$_\\*\" \"$dir\\data\\$_\" -ErrorAction Continue",
+        "        if (-not $?) { error \"Cannot move '$Env:UserProfile\\.local\\share\\containers\\$_\\*' to '$dir\\data\\$_'\" }",
+        "    }",
+        "}"
+    ],
+    "env_set": {
+        "PODMAN_CONNECTIONS_CONF": "$dir\\connections\\podman-connections.json"
+    },
+    "persist": [
+        "data",
+        "config",
+        "connections"
+    ],
     "checkver": {
         "github": "https://github.com/containers/podman"
     },
