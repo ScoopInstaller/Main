@@ -7,12 +7,17 @@
         "Git": "git",
         "Python 3": "python"
     },
-    "url": "https://github.com/newren/git-filter-repo/archive/v2.47.0.zip#/dl.7z",
+    "url": "https://github.com/newren/git-filter-repo/archive/v2.47.0.zip#/dl.zip_",
     "hash": "8f3d099bf91ceac6cae60d79aac701e9bc08fd0eed67c601cc5dd401d5788871",
-    "pre_install": "Move-Item \"$dir\\git-filter-repo-*\\*\" \"$dir\"; Remove-Item \"$dir\\git-filter-repo-*\"",
+    "installer": {
+        "script": [
+            "Expand-ZipArchive -Path \"$dir\\dl.zip_\" -DestinationPath \"$dir\" -Removal",
+            "Move-Item \"$dir\\git-filter-repo-*\\*\" \"$dir\"; Remove-Item \"$dir\\git-filter-repo-*\""
+        ]
+    },
     "bin": "git-filter-repo",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/newren/git-filter-repo/archive/v$version.zip#/dl.7z"
+        "url": "https://github.com/newren/git-filter-repo/archive/v$version.zip#/dl.zip_"
     }
 }
