@@ -1,0 +1,29 @@
+{
+    "version": "1.0.1",
+    "description": "A file list program that supports multiple storage, powered by Gin and Solidjs.",
+    "homepage": "https://cherry-ai.com",
+    "license": "Apache License 2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.0.1/Cherry-Studio-1.0.1-portable.exe",
+            "hash":"2E64712A447C4A2072104D1E4C84FD5087B8EBD4AAA018C291D8985D28926774"
+        }
+    },
+    "bin": "Cherry-Studio-1.0.1-portable.exe",
+    "shortcuts": [
+        [
+            "Cherry-Studio-1.0.1-portable.exe",
+            "Cherry-Studio"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/CherryHQ/cherry-studio"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-portable.exe"
+            }
+        }
+    }
+}
