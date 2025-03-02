@@ -11,8 +11,9 @@
     "extract_dir": "clink-completions-0.6.2",
     "installer": {
         "script": [
+            "$luapath = Join-Path (Split-Path -Path \"$dir\" -Parent) \"current\"",
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink installscripts \"$dir\"",
+            "   clink installscripts \"$luapath\"",
             "} else {",
             "   warn 'Clink installation not found. Please manually install these scripts.'",
             "}"
@@ -20,8 +21,9 @@
     },
     "uninstaller": {
         "script": [
+            "$luapath = Join-Path (Split-Path -Path \"$dir\" -Parent) \"current\"",
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink uninstallscripts \"$dir\"",
+            "   clink uninstallscripts \"$luapath\"",
             "}"
         ]
     },
