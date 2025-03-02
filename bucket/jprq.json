@@ -1,0 +1,37 @@
+{
+    "version": "2.4",
+    "description": "jprq - Secure public URLs for local servers",
+    "homepage": "https://github.com/azimjohn/jprq",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/azimjohn/jprq/releases/download/2.4/jprq-windows-amd64.exe",
+            "hash": "4BAF20EB564946AF3CE0D6A33BDA1A08036728E24E8024388B5595AF6859BCC1"
+        },
+        "32bit": {
+            "url": "https://github.com/azimjohn/jprq/releases/download/2.4/jprq-windows-386.exe",
+            "hash": "3EEF9C81B6B0B71E6F3A0C0DC6488052F864FE2074CA0B6F18054471D423364A"
+        }
+    },
+    "bin": [
+        ["jprq-windows-amd64.exe", "jprq"],
+        ["jprq-windows-386.exe", "jprq"]
+    ],
+    "shortcuts": [
+        ["jprq-windows-amd64.exe", "jprq"],
+        ["jprq-windows-386.exe", "jprq"]
+    ],
+    "checkver": {
+        "github": "https://github.com/azimjohn/jprq"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/azimjohn/jprq/releases/download/$version/jprq-windows-amd64.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/azimjohn/jprq/releases/download/$version/jprq-windows-386.exe"
+            }
+        }
+    }
+}
