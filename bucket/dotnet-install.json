@@ -16,7 +16,7 @@
     "checkver": {
         "regex": "([\\d.]+-[a-f0-9]{32})",
         "script": [
-            "$null = Invoke-RestMethod -Method 'Head' -Uri 'https://dot.net/v1/dotnet-install.ps1' -ResponseHeadersVariable 'ResponseHeaders'",
+            "$ResponseHeaders = (Invoke-WebRequest -Method 'Head' -Uri 'https://dot.net/v1/dotnet-install.ps1').'Headers'",
             "[string]::Format(",
             "    '{0}-{1}',",
             "    [datetime]::Parse($ResponseHeaders.'Last-Modified'[0]).ToUniversalTime().ToString('yyyy\\.MM\\.dd\\.HHmmss'),",
