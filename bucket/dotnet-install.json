@@ -1,0 +1,30 @@
+{
+    "##": [
+        "dotnet-install.ps1 is not versioned, version is created from metadata from a REST HEAD request.",
+        "* See: <https://github.com/dotnet/install-scripts/issues/580>.",
+        "Source is available on GitHub, but it's not signed. Thus using Microsoft official URL.",
+        "dotnet-install.ps1 is not in PowerShell Gallery.",
+        "* See: <https://github.com/dotnet/install-scripts/issues/121>."
+    ],
+    "version": "2025.02.11.161846-fd134bd16e2247c230b85bebbe135a63",
+    "description": "Microsoft official dotnet CLI and SDK install script",
+    "homepage": "https://github.com/dotnet/install-scripts",
+    "license": "MIT",
+    "url": "https://dot.net/v1/dotnet-install.ps1",
+    "hash": "2b32cef94919665b01f46cfc71454bd8ea468e3754d0357a7e9e229cdc11eb8b",
+    "bin": "dotnet-install.ps1",
+    "checkver": {
+        "regex": "([\\d.]+-[a-f0-9]{32})",
+        "script": [
+            "$null = Invoke-RestMethod -Method 'Head' -Uri 'https://dot.net/v1/dotnet-install.ps1' -ResponseHeadersVariable 'ResponseHeaders'",
+            "[string]::Format(",
+            "    '{0}-{1}',",
+            "    [datetime]::Parse($ResponseHeaders.'Last-Modified'[0]).ToUniversalTime().ToString('yyyy\\.MM\\.dd\\.HHmmss'),",
+            "    [BitConverter]::ToString([System.Convert]::FromBase64String($ResponseHeaders.'Content-MD5')).Replace('-','').ToLower()",
+            ")"
+        ]
+    },
+    "autoupdate": {
+        "url": "https://dot.net/v1/dotnet-install.ps1"
+    }
+}
