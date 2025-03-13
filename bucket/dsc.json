@@ -1,0 +1,31 @@
+{
+    "version": "3.0.0",
+    "homepage": "https://github.com/PowerShell/dsc",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PowerShell/DSC/releases/download/v3.0.0/DSC-3.0.0-x86_64-pc-windows-msvc.zip",
+            "hash": "16989f94feb276b1f24bd3b6d69483de631cc8a38110b0ec559f56b2e09e9f17"
+        },
+        "arm64": {
+            "url": "https://github.com/PowerShell/DSC/releases/download/v3.0.0/DSC-3.0.0-aarch64-pc-windows-msvc.zip",
+            "hash": "29dbcc7db22efb43d54e3907aba87816d9b8881bc03ba4ca75ae1162003318c5"
+        }
+    },
+    "bin": "dsc.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PowerShell/DSC/releases/download/v$version/DSC-$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/PowerShell/DSC/releases/download/v$version/DSC-$version-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/PowerShell/DSC/releases/tag/v$version",
+            "regex": "(?s)$basename.*?$sha256"
+        }
+    }
+}
