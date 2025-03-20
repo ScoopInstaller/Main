@@ -4,7 +4,7 @@
     "homepage": "https://microsoft.github.io/garnet",
     "license": "MIT",
     "notes": [
-        "Garnet requires .NET 8 SDK.",
+        "Garnet requires .NET 9 SDK.",
         "Existing Redis clients are compatible with Garnet.",
         "config directory is created for storing persist files conveniently.",
         "To run Garnet with configuration file, For garnet.conf file format:",
@@ -13,7 +13,7 @@
         "GarnetServer.exe --config-import-path redis.conf --config-import-format RedisConf"
     ],
     "suggest": {
-        "dotnet8-sdk": "main/dotnet-sdk"
+        "dotnet-sdk": "main/dotnet-sdk"
     },
     "architecture": {
         "64bit": {
@@ -25,6 +25,8 @@
             "hash": "a210b7f7ed86d2037abf1a6a49b6d54a4d473ca4f8e23fa600b220e699f8937f"
         }
     },
+    "extract_dir": "net9.0",
+    "post_install": "Remove-Item -Path \"$dir\\Service\" -Recurse -Force -ErrorAction SilentlyContinue",
     "bin": "GarnetServer.exe",
     "persist": [
         "garnet.conf",
