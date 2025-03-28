@@ -1,0 +1,40 @@
+{
+    "version": "1.3.1",
+    "description": "CLI utility to send messages and media files to Telegram chats and channels — directly from your terminal.",
+    "homepage": "https://github.com/beeyev/telegram-owl",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/beeyev/telegram-owl/releases/download/v1.3.1/telegram-owl_v1.3.1_Windows_64bit.zip",
+            "hash": "60ec8303dc4d00667528eba77c746448d2d0a82c7a33a29ee6e2515edb1e6ae8"
+        },
+        "32bit": {
+            "url": "https://github.com/beeyev/telegram-owl/releases/download/v1.3.1/telegram-owl_v1.3.1_Windows_32bit.zip",
+            "hash": "f584a2c5618e6121323b35852d5513a9d1a18003ed6f0f97808395927cadfe0c"
+        },
+        "arm64": {
+            "url": "https://github.com/beeyev/telegram-owl/releases/download/v1.3.1/telegram-owl_v1.3.1_Windows_ARM64.zip",
+            "hash": "e1a6dbd323377fe5daca8b01339363936a98e716e4a3af129a421922b3fbbbd0"
+        }
+    },
+    "bin": "telegram-owl.exe",
+    "checkver": {
+        "github": "https://github.com/beeyev/telegram-owl"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/beeyev/telegram-owl/releases/download/v$version/telegram-owl_v$version_Windows_64bit.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/beeyev/telegram-owl/releases/download/v$version/telegram-owl_v$version_Windows_32bit.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/beeyev/telegram-owl/releases/download/v$version/telegram-owl_v$version_Windows_ARM64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/telegram-owl_v$version_checksums.txt"
+        }
+    }
+}
