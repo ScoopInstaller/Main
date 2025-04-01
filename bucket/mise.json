@@ -1,39 +1,35 @@
 {
-    "version": "2025.1.7",
-    "description": "Dev tools, env vars, task runner",
+    "version": "2025.3.11",
+    "description": "Polyglot tool version manager and task runner",
     "homepage": "https://mise.jdx.dev/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jdx/mise/releases/download/v2025.1.7/mise-v2025.1.7-windows-x64.zip",
-            "hash": "ee0d7c2f84c0ad0067145aa0e8d9a7c21a538480139eced38c270444e172fbcd"
+            "url": "https://github.com/jdx/mise/releases/download/v2025.3.11/mise-v2025.3.11-windows-x64.zip",
+            "hash": "c0a61c22e69eb6e91a68b6b4e340192c19625b3ea814e38ed4201891b842c2dd"
         },
         "arm64": {
-            "url": "https://github.com/jdx/mise/releases/download/v2025.1.7/mise-v2025.1.7-windows-arm64.zip",
-            "hash": "79dd072cee4a9431f949509c7a9af66caeeeaaea73be3d84b486a0b91ac8da3b"
+            "url": "https://github.com/jdx/mise/releases/download/v2025.3.11/mise-v2025.3.11-windows-arm64.zip",
+            "hash": "82c3fd7f51251406c3a65dfcbc1d02254a7237aaff6381bc563d5f21bab19ca7"
         }
     },
     "extract_dir": "mise",
     "bin": "bin/mise.exe",
-    "installer": {
-        "script": "Add-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
-    },
-    "uninstaller": {
-        "script": "Remove-Path -Path \"$env:LOCALAPPDATA\\mise\\shims\" -Global:$global"
-    },
-    "post_uninstall": [
-        "if ($purge) {",
-        "    $Directories = [string[]](",
-        "        ('{0}\\mise' -f $env:LOCALAPPDATA),",
-        "        ('{0}\\Temp\\mise' -f $env:LOCALAPPDATA)",
-        "    )",
-        "    $Directories.ForEach{",
-        "        if (Test-Path -Path $_ -PathType 'Container') {",
-        "            $null = Remove-Item -Path $_ -Recurse -Force",
-        "        }",
-        "    }",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.toml\") -and !(Test-Path \"$dir\\config.toml\")) {",
+        "    New-Item -Path \"$dir\\config.toml\" -ItemType File -ea 0 | Out-Null",
         "}"
     ],
+    "env_set": {
+        "MISE_DATA_DIR": "$dir\\mise",
+        "MISE_GLOBAL_CONFIG_FILE": "$dir\\config.toml"
+    },
+    "env_add_path": "mise\\shims",
+    "persist": [
+        "mise",
+        "config.toml"
+    ],
+    "notes": "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html",
     "checkver": {
         "github": "https://github.com/jdx/mise"
     },

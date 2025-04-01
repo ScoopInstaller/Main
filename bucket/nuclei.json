@@ -1,0 +1,31 @@
+{
+    "version": "3.4.1",
+    "description": "Fast and customizable vulnerability scanner based on simple YAML based DSL.",
+    "homepage": "https://github.com/projectdiscovery/nuclei",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/projectdiscovery/nuclei/releases/latest/download/nuclei_3.4.1_windows_amd64.zip",
+            "hash": "34d73dde90fb5756242977a47e7240f7475135e334e1534e4ef040058219392a"
+        },
+        "32bit": {
+            "url": "https://github.com/projectdiscovery/nuclei/releases/latest/download/nuclei_3.4.1_windows_386.zip",
+            "hash": "61c2c39be8a6f1d8b20df2cc7c63ba177c3b5bbfacbe3d8ad60cb4c234c354dc"
+        }
+    },
+    "bin": "nuclei.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/projectdiscovery/nuclei/releases/latest/download/nuclei_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/projectdiscovery/nuclei/releases/latest/download/nuclei_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/nuclei_$version_checksums.txt"
+        }
+    }
+}
