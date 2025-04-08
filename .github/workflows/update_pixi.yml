@@ -1,0 +1,83 @@
+name: Auto Update pixi
+on:
+  schedule:
+    - cron: '30 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  check-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup jq
+        run: sudo apt-get install -y jq
+
+      - name: Get latest version of pixi
+        id: version-check-pixi
+        run: |
+          LATEST_VER=$(curl -s "https://api.github.com/repos/prefix-dev/pixi/releases/latest" | jq -r '.tag_name | sub("^v"; "")')
+          CURRENT_VER=$(jq -r '.version' bucket/pixi.json)
+          echo "latest_version=$LATEST_VER" >> $GITHUB_OUTPUT
+          echo "current_version=$CURRENT_VER" >> $GITHUB_OUTPUT
+          echo "$CURRENT_VER -> $LATEST_VER"
+
+      - name: Update manifest of pixi
+        if: steps.version-check-pixi.outputs.current_version != steps.version-check-pixi.outputs.latest_version
+        run: |
+          DOWNLOAD_URL="https://github.com/prefix-dev/pixi/releases/download/v${{ steps.version-check.outputs.latest_version }}/pixi-x86_64-pc-windows-msvc.zip"
+          HASH=$(curl -L $DOWNLOAD_URL | sha256sum | cut -d' ' -f1)
+          CURRENT_VER="${{ steps.version-check.outputs.current_version }}"
+          LATEST_VER="${{ steps.version-check.outputs.latest_version }}"
+
+          jq --arg ver "$LATEST_VER" --arg current_ver "$CURRENT_VER" --arg hash "$HASH" '
+            .version = $ver |
+            .hash = $hash |
+            .url = "https://github.com/prefix-dev/pixi/releases/download/v\($ver)/pixi-x86_64-pc-windows-msvc.zip" |
+            (.architecture."64bit".installer.script[], .architecture."64bit".uninstaller.script[]) |= (
+              gsub($current_ver; $ver)
+            )
+          ' bucket/pixi.json > tmp.json && mv tmp.json bucket/pixi.json
+
+          DOWNLOAD_URL="https://github.com/prefix-dev/pixi/releases/download/v${{ steps.version-check.outputs.latest_version }}/pixi-aarch64-pc-windows-msvc.zip"
+          HASH=$(curl -L $DOWNLOAD_URL | sha256sum | cut -d' ' -f1)
+          CURRENT_VER="${{ steps.version-check.outputs.current_version }}"
+          LATEST_VER="${{ steps.version-check.outputs.latest_version }}"
+
+          jq --arg ver "$LATEST_VER" --arg current_ver "$CURRENT_VER" --arg hash "$HASH" '
+            .version = $ver |
+            .hash = $hash |
+            .url = "https://github.com/prefix-dev/pixi/releases/download/v\($ver)/pixi-aarch64-pc-windows-msvc.zip" |
+            (.architecture."arm64".installer.script[], .architecture."arm64".uninstaller.script[]) |= (
+              gsub($current_ver; $ver)
+            )
+          ' bucket/pixi.json > tmp.json && mv tmp.json bucket/pixi.json
+
+      - name: Commit changes for pixi
+        if: steps.version-check-pixi.outputs.current_version != steps.version-check-pixi.outputs.latest_version
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add bucket/pixi.json
+          git commit -m "chore: auto update pixi to ${{ steps.version-check.outputs.latest_version }}"
+          git push
+
+  simple-test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Test pixi
+        run: |
+          Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+          Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+          $scoopPath = "$env:USERPROFILE\scoop\shims"
+          $env:Path += ";$scoopPath"
+          Write-Output "Scoop path: $(Get-Command scoop | Select-Object -ExpandProperty Source)"
+
+          scoop install bucket\pixi.json
+          pixi -h
+          scoop uninstall pixi
