@@ -1,0 +1,33 @@
+{
+    "homepage": "https://github.com/icann/icann-rdap",
+    "license": "Apache-2.0",
+    "description": "ICANN implementation of the Registry Data Access Protocol (RDAP).",
+    "version": "0.0.22",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/icann/icann-rdap/releases/download/v0.0.22/icann-rdap-x86_64-pc-windows-msvc.tar.gz",
+            "hash": "29059c33eb18e5464aefd6357d56ebd1e26d755dba25f99d952539fc09aae6d7"
+        },
+        "64bit": {
+            "url": "https://github.com/icann/icann-rdap/releases/download/v0.0.22/icann-rdap-x86_64-pc-windows-msvc.tar.gz",
+            "hash": "29059c33eb18e5464aefd6357d56ebd1e26d755dba25f99d952539fc09aae6d7"
+        }
+    },
+    "installer": {
+        "script": [
+            "Rename-Item \"$dir\\rdap\" \"$dir\\rdap.exe\""
+        ]
+    },
+    "bin": "rdap.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/icann/icann-rdap/releases/download/v$version/icann-rdap-x86_64-pc-windows-msvc.tar.gz"
+            },
+            "64bit": {
+                "url": "https://github.com/icann/icann-rdap/releases/download/v$version/icann-rdap-x86_64-pc-windows-msvc.tar.gz"
+            }
+        }
+    }
+}
