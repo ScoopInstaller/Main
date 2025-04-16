@@ -1,24 +1,28 @@
 {
-    "version": "1.28.1",
+    "version": "1.28.2",
     "description": "Manage multiple rust installations with ease",
     "homepage": "https://rustup.rs",
     "license": "MIT|Apache-2.0",
     "notes": "This package defaults to using the GCC toolchain on install/update; use \"rustup set default-host\" to configure it",
     "architecture": {
         "64bit": {
-            "url": "https://static.rust-lang.org/rustup/archive/1.28.1/x86_64-pc-windows-msvc/rustup-init.exe",
+            "url": "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe",
             "hash": "7b83039a1b9305b0c50f23b2e2f03319b8d7859b28106e49ba82c06d81289df6"
         },
         "32bit": {
-            "url": "https://static.rust-lang.org/rustup/archive/1.28.1/i686-pc-windows-msvc/rustup-init.exe",
+            "url": "https://static.rust-lang.org/rustup/dist/i686-pc-windows-msvc/rustup-init.exe",
             "hash": "494bbeb52bd102891be4e7e5adc74eeb1c532adfdc33d51ae1aa9fd2ff5f1048"
+        },
+        "arm64": {
+            "url": "https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe",
+            "hash": "9054ad509637940709107920176f14cee334bc5cfe50bc0a24a3dc59b6f4d458"
         }
     },
     "installer": {
         "script": [
             "[Environment]::SetEnvironmentVariable('CARGO_HOME', \"$persist_dir\\.cargo\", 'Process')",
             "[Environment]::SetEnvironmentVariable('RUSTUP_HOME', \"$persist_dir\\.rustup\", 'Process')",
-            "$host_arch = if ($architecture -eq '64bit') {'x86_64'} else {'i686'}",
+            "$host_arch = switch ($architecture) { '64bit' { 'x86_64' } '32bit' { 'i686' } 'arm64' { 'arm64' } }",
             "Invoke-ExternalCommand -Path \"$dir\\rustup-init.exe\" -Args @('-y', '--no-modify-path', '--default-host', \"$host_arch-pc-windows-gnu\") | Out-Null"
         ]
     },
@@ -38,10 +42,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://static.rust-lang.org/rustup/archive/$version/x86_64-pc-windows-msvc/rustup-init.exe"
+                "url": "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe"
             },
             "32bit": {
-                "url": "https://static.rust-lang.org/rustup/archive/$version/i686-pc-windows-msvc/rustup-init.exe"
+                "url": "https://static.rust-lang.org/rustup/dist/i686-pc-windows-msvc/rustup-init.exe"
+            },
+            "arm64": {
+                "url": "https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe"
             }
         },
         "hash": {
