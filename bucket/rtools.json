@@ -1,5 +1,5 @@
 {
-    "version": "4.4.6459.6401",
+    "version": "4.5.6536.6492",
     "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
     "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
     "license": "BSD-3-Clause",
@@ -7,54 +7,55 @@
         "For R 3.3.x to 3.6.x, please use 'versions/rtools35'.",
         "For R 4.0.x to 4.1.x, please use 'versions/rtools40'.",
         "For R 4.2.x, please use 'versions/rtools42'.",
-        "For R 4.3.x, please use 'versions/rtools43'."
+        "For R 4.3.x, please use 'versions/rtools43'.",
+        "For R 4.4.x, please use 'versions/rtools44'."
     ],
     "architecture": {
         "64bit": {
-            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-6459-6401.exe",
-            "hash": "de9602992848faaeddca41f118dd6dc3de9bbfb00b8d87ebe5522af1dad1904b"
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-6536-6492.exe",
+            "hash": "053aa53c159fb9290719290b3b8693ab57b89806551be75b88340bb2546578c8"
         },
         "arm64": {
-            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-6459-6401.exe",
-            "hash": "8d7104523f11a4e1a8c3ff4b78ace665cbcc54ed032a6c679574f55cd128f13f"
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-aarch64-6536-6492.exe",
+            "hash": "59665a4f74d8e80ff7d375a6257305ab704adb74d9da1b47cebbea6e6488d82e"
         }
     },
     "innosetup": true,
     "installer": {
         "script": [
-            "if (Test-Path 'C:\\rtools44') {",
-            "   if ($null -eq (Get-Item 'C:\\rtools44').LinkType) {",
-            "       Rename-Item -Path 'C:\\rtools44' -NewName 'rtools44.old' -Force",
+            "if (Test-Path 'C:\\rtools45') {",
+            "   if ($null -eq (Get-Item 'C:\\rtools45').LinkType) {",
+            "       Rename-Item -Path 'C:\\rtools45' -NewName 'rtools45.old' -Force",
             "   } else {",
-            "       Remove-Item -Path 'C:\\rtools44' -Force",
+            "       Remove-Item -Path 'C:\\rtools45' -Force",
             "   }",
             "}",
             "New-Item -Path \"$dir\\tmp\" -ItemType Directory | Out-Null",
-            "New-Item -Path 'C:\\rtools44' -Target \"$dir\" -ItemType Junction | Out-Null"
+            "New-Item -Path 'C:\\rtools45' -Target \"$dir\" -ItemType Junction | Out-Null"
         ]
     },
     "uninstaller": {
         "script": [
-            "if ((Test-Path 'C:\\rtools44') -and ($null -ne (Get-Item 'C:\\rtools44').LinkType)) {",
-            "   Remove-Item -Path 'C:\\rtools44' -Force",
+            "if ((Test-Path 'C:\\rtools45') -and ($null -ne (Get-Item 'C:\\rtools45').LinkType)) {",
+            "   Remove-Item -Path 'C:\\rtools45' -Force",
             "}",
-            "if (Test-Path 'C:\\rtools44.old') {",
-            "   Rename-Item -Path 'C:\\rtools44.old' -NewName 'rtools44' -Force",
+            "if (Test-Path 'C:\\rtools45.old') {",
+            "   Rename-Item -Path 'C:\\rtools45.old' -NewName 'rtools45' -Force",
             "}"
         ]
     },
     "checkver": {
-        "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/",
-        "regex": ">rtools44\\-(\\d+)\\-(\\d+).exe<",
-        "replace": "4.4.${1}.${2}"
+        "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/",
+        "regex": ">rtools45\\-(\\d+)\\-(\\d+).exe<",
+        "replace": "4.5.${1}.${2}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-$match1-$match2.exe"
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-$match1-$match2.exe"
             },
             "arm64": {
-                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools44/files/rtools44-aarch64-$match1-$match2.exe"
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-aarch64-$match1-$match2.exe"
             }
         }
     }
