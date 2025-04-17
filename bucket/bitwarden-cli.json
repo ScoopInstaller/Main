@@ -3,6 +3,11 @@
     "description": "The powerful command-line tool (CLI) to write and execute scripts on your Bitwarden vault.",
     "homepage": "https://bitwarden.com/",
     "license": "GPL-3.0-or-later",
+    "notes": [
+        "Scoop persists data since version 2025.4.0. You may need to move data by yourself.",
+        "Before: '$env:APPDATA\\Bitwarden CLI'",
+        "After : '$persist_dir\\bitwarden-cli\\bw-data'"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/bitwarden/clients/releases/download/cli-v2025.1.2/bw-windows-2025.1.2.zip",
@@ -10,6 +15,7 @@
         }
     },
     "bin": "bw.exe",
+    "persist": "bw-data",
     "checkver": {
         "url": "https://github.com/bitwarden/clients/releases.atom",
         "regex": "\\/cli-v([\\d.]+)<\\/id>"
