@@ -1,15 +1,16 @@
 {
-    "version": "5.0.1",
+    "version": "6.0.0",
     "description": "Set of tools for windows installer creation.",
     "homepage": "https://wixtoolset.org/",
     "license": "MS-RL",
-    "url": "https://api.nuget.org/v3-flatcontainer/wix/5.0.1/wix.5.0.1.nupkg",
-    "hash": "ba3a96f9d35e9e6f861611d903eb43399c84de4ba741dd522b7a2006e2ec702a",
+    "url": "https://api.nuget.org/v3-flatcontainer/wix/6.0.0/wix.6.0.0.nupkg",
+    "hash": "24ec4b996a50462b62c4ec0709527b2d2a0e4bf98e3db829fdf5f512cf274eb9",
     "extract_dir": "tools\\net6.0\\any",
     "bin": "wix.exe",
     "checkver": {
         "url": "https://api.nuget.org/v3-flatcontainer/wix/index.json",
-        "jsonpath": "$.versions[-1:]"
+        "regex": "\"([\\d.]+)\"",
+        "reverse": true
     },
     "autoupdate": {
         "url": "https://api.nuget.org/v3-flatcontainer/wix/$version/wix.$version.nupkg"

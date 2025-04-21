@@ -1,0 +1,29 @@
+{
+    "version": "20.1.1",
+    "description": "Collection of modular and reusable compiler and toolchain technologies. (arm64/aarch64 only)",
+    "homepage": "https://www.llvm.org",
+    "license": "NCSA",
+    "architecture": {
+        "arm64": {
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.1/LLVM-20.1.1-woa64.exe#/dl.7z",
+            "hash": "b3ccda1eb9c8b3a1cb6d061ead07705043115dfde2c1c92670fc8ea631a10262"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
+    "env_add_path": "bin",
+    "env_set": {
+        "LIBCLANG_PATH": "$dir\\bin",
+        "LLVM_LIB_DIR": "$dir\\lib"
+    },
+    "checkver": {
+        "github": "https://github.com/llvm/llvm-project",
+        "regex": "tag/llvmorg-([\\d._]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "arm64": {
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-woa64.exe#/dl.7z"
+            }
+        }
+    }
+}

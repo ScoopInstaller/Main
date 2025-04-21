@@ -1,24 +1,24 @@
 {
-    "version": "1.27.12",
+    "version": "1.29.5",
     "description": "Open Source Continuous File Synchronization.",
     "homepage": "https://syncthing.net/",
     "license": "MPL-2.0",
     "notes": "To start syncthing automatically, use a method described at https://docs.syncthing.net/users/autostart.html#windows",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v1.27.12/syncthing-windows-amd64-v1.27.12.zip",
-            "hash": "2120d49d92f32da8996b92dea607308977283a1cb54b26ac595954b483118cc6",
-            "extract_dir": "syncthing-windows-amd64-v1.27.12"
+            "url": "https://github.com/syncthing/syncthing/releases/download/v1.29.5/syncthing-windows-amd64-v1.29.5.zip",
+            "hash": "5c7347c6c32b39654e9f60772135eeaa76438a9d627ffb0fb41fe15f8aecfd0d",
+            "extract_dir": "syncthing-windows-amd64-v1.29.5"
         },
         "32bit": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v1.27.12/syncthing-windows-386-v1.27.12.zip",
-            "hash": "16a282d4889a3a8c42cb2046b107ad29d1eb2fc135a61d817dae4dd12a876ac7",
-            "extract_dir": "syncthing-windows-386-v1.27.12"
+            "url": "https://github.com/syncthing/syncthing/releases/download/v1.29.5/syncthing-windows-386-v1.29.5.zip",
+            "hash": "1138c573ca53cd604a2bdf1bd128551a83e74fd3c307073eecf41ece100791c6",
+            "extract_dir": "syncthing-windows-386-v1.29.5"
         },
         "arm64": {
-            "url": "https://github.com/syncthing/syncthing/releases/download/v1.27.12/syncthing-windows-arm64-v1.27.12.zip",
-            "hash": "92aa1213b70e0b5059a0d622be2ff814005b8fe4bcc82e4fe391669189de8405",
-            "extract_dir": "syncthing-windows-arm64-v1.27.12"
+            "url": "https://github.com/syncthing/syncthing/releases/download/v1.29.5/syncthing-windows-arm64-v1.29.5.zip",
+            "hash": "11bb9ec9a24a39ecf93d1ed19ad5f5570b82bc1e70ecf822717e84eef89b2bcb",
+            "extract_dir": "syncthing-windows-arm64-v1.29.5"
         }
     },
     "pre_install": [
@@ -32,7 +32,7 @@
         [
             "syncthing.exe",
             "syncthing",
-            "-home \"$dir\\config\""
+            "--home \"$dir\\config\" --no-upgrade"
         ]
     ],
     "persist": "config",
