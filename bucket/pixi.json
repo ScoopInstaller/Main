@@ -1,16 +1,16 @@
 {
-    "version": "0.45.0",
+    "version": "0.46.0",
     "description": "Package management made easy",
     "homepage": "https://pixi.sh",
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/prefix-dev/pixi/releases/download/v0.45.0/pixi-x86_64-pc-windows-msvc.zip",
-            "hash": "b8d12fd55f60dc6aeed1605fdc925fcf68a8293d0f29f6b04aef585aa5261fd8"
+            "url": "https://github.com/prefix-dev/pixi/releases/download/v0.46.0/pixi-x86_64-pc-windows-msvc.zip",
+            "hash": "efaa2869ca3ff6128311213899e2f83c6ea06c71bc4bc1d626382b1cfac166c6"
         },
         "arm64": {
-            "url": "https://github.com/prefix-dev/pixi/releases/download/v0.45.0/pixi-aarch64-pc-windows-msvc.zip",
-            "hash": "689f77e40f12a7a3d535c01c5dde09bb9e2a0031fa249f14a89cbf79e6aefa42"
+            "url": "https://github.com/prefix-dev/pixi/releases/download/v0.46.0/pixi-aarch64-pc-windows-msvc.zip",
+            "hash": "02b3b576797f7c454fbf4bf88d58baa04992f54efb03e057b4289d613505f9ce"
         }
     },
     "bin": "pixi.exe",
@@ -20,10 +20,16 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/prefix-dev/pixi/releases/download/v$version/pixi-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/prefix-dev/pixi/releases/download/v$version/pixi-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
             },
             "arm64": {
-                "url": "https://github.com/prefix-dev/pixi/releases/download/v$version/pixi-aarch64-pc-windows-msvc.zip"
+                "url": "https://github.com/prefix-dev/pixi/releases/download/v$version/pixi-aarch64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
             }
         }
     }
