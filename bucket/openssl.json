@@ -20,7 +20,7 @@
     "pre_install": [
         "$arch = switch ($architecture) {",
         "    '64bit' { 'x64'; break }",
-        "    '32bit' { 'x32'; break }",
+        "    '32bit' { 'x86'; break }",
         "    'arm64' { $architecture; break }",
         "}",
         "$null = Get-ChildItem \"$dir/lib/VC/$arch/MT\" | ForEach-Object { New-Item -ItemType HardLink -Target $_.FullName -Path \"$dir/lib/$($_.Name)\" }"
