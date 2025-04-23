@@ -10,7 +10,11 @@
         }
     },
     "bin":  "aptos.exe",
-    "checkver": "github",
+    "checkver": {
+        "url": "https://api.github.com/repos/aptos-labs/aptos-core/releases/tags/aptos-cli-v7.2.0",
+        "jsonpath": "$.tag_name",
+        "regex": "aptos-cli-v([\\d.]+)"
+    },
     "autoupdate": {
         "url": "https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v$version/aptos-cli-$version-Windows-x86_64.zip"
     }
