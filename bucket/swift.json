@@ -1,24 +1,28 @@
 {
     "version": "6.1",
-    "homepage": "https://www.swift.org/",
     "description": "A general-purpose programming language built using a modern approach to safety, performance, and software design patterns.",
+    "homepage": "https://www.swift.org/",
     "license": "Apache-2.0",
-    "suggest": {
-        "python": "main/python",
-        "vcredist": "extras/vcredist2022"
-    },
     "notes": [
         "To make Swift toolchain work, you must have Visual Studio and Windows SDK components installed.",
         "Read https://www.swift.org/getting-started/#support-files for Supporting Files installation guide."
     ],
+    "suggest": {
+        "python": "versions/python39",
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://download.swift.org/swift-6.1-release/windows10/swift-6.1-RELEASE/swift-6.1-RELEASE-windows10.exe#/swiftsetup.exe",
+            "url": "https://download.swift.org/swift-6.1-release/windows10/swift-6.1-RELEASE/swift-6.1-RELEASE-windows10.exe",
             "hash": "8c8aef8b4a449ebeefd74482ac767e269f8cbe7e520871c1d103c7079c5f4c6a"
+        },
+        "arm64": {
+            "url": "https://download.swift.org/swift-6.1-release/windows10-arm64/swift-6.1-RELEASE/swift-6.1-RELEASE-windows10-arm64.exe",
+            "hash": "c0ad594e3e033c30b9f472b1a689a2d05ff20f265a4fc44acd1b5eae3751a341"
         }
     },
     "pre_install": [
-        "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
+        "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\extract_folder\" -Removal",
         "$xml = [xml](Get-Content -Raw \"$dir\\extract_folder\\UX\\manifest.xml\" -Encoding utf8)",
         "$xml.BurnManifest.Payload | Where-Object { $_.FilePath.EndsWith(\".msi\") } | ForEach-Object {",
         "    if ($($_.FilePath) -eq \"rtl.msi\") {",
@@ -31,17 +35,16 @@
         "Move-Item -Path \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\" -Destination \"$dir\"",
         "Move-Item -Path \"$dir\\Swift\\Platforms\\$ver\\Windows.platform\" -Destination \"$dir\\Swift\\Platforms\"",
         "Move-Item -Path \"$dir\\Swift\\Toolchains\\$($ver)+Asserts\\usr\" -Destination \"$dir\\Swift\\Toolchains\"",
-        "Move-Item -Path \"$dir\\Swift\\Tools\\$ver\\*\" -Destination \"$dir\\Swift\\Tools\"",
+        "# Move-Item -Path \"$dir\\Swift\\Tools\\$ver\\*\" -Destination \"$dir\\Swift\\Tools\"",
         "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" | Out-Null",
         "Remove-Item \"$dir\\Swift\\Toolchains\\$ver+Asserts\" | Out-Null",
-        "Remove-Item \"$dir\\Swift\\Tools\\$ver\" | Out-Null",
+        "# Remove-Item \"$dir\\Swift\\Tools\\$ver\" | Out-Null",
         "Move-Item -Path \"$dir\\Swift\\*\" -Destination \"$dir\"",
         "Remove-Item \"$dir\\Swift\", \"$dir\\extract_folder\" -Recurse | Out-Null"
     ],
     "env_add_path": [
         "Runtimes\\usr\\bin",
-        "Toolchains\\usr\\bin",
-        "Tools"
+        "Toolchains\\usr\\bin"
     ],
     "env_set": {
         "SDKROOT": "$dir\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
@@ -53,7 +56,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.swift.org/swift-$version-release/windows10/swift-$version-RELEASE/swift-$version-RELEASE-windows10.exe#/swiftsetup.exe"
+                "url": "https://download.swift.org/swift-$version-release/windows10/swift-$version-RELEASE/swift-$version-RELEASE-windows10.exe"
+            },
+            "arm64": {
+                "url": "https://download.swift.org/swift-$version-release/windows10-arm64/swift-$version-RELEASE/swift-$version-RELEASE-windows10-arm64.exe"
             }
         }
     }
