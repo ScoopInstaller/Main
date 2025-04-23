@@ -1,36 +1,26 @@
 {
-    "version": "2025.1.13",
+    "version": "2025.4.6",
     "description": "Polyglot tool version manager and task runner",
     "homepage": "https://mise.jdx.dev/",
     "license": "MIT",
+    "notes": [
+        "Persistence and environment variables settings of the manifest have been revoked, you can find persisted data at '$persist_dir', if you have installed the manifest before.",
+        "",
+        "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jdx/mise/releases/download/v2025.1.13/mise-v2025.1.13-windows-x64.zip",
-            "hash": "add8b79589fbd29853d5f0a42813f3ddd4bbbfbde6a759195527f6db1d460cd0"
+            "url": "https://github.com/jdx/mise/releases/download/v2025.4.6/mise-v2025.4.6-windows-x64.zip",
+            "hash": "3452fdf31661baacb07f90c1f863fe37f756cd48e57fa88c0a32afb3d8dde546"
         },
         "arm64": {
-            "url": "https://github.com/jdx/mise/releases/download/v2025.1.13/mise-v2025.1.13-windows-arm64.zip",
-            "hash": "24c70cff027557ec4e8377d659b423671952b9cbcdd23565b811e43cb6588297"
+            "url": "https://github.com/jdx/mise/releases/download/v2025.4.6/mise-v2025.4.6-windows-arm64.zip",
+            "hash": "fe58eb90592802231268a972cca146e67fddd72b5fac59339324160b0c453a8f"
         }
     },
     "extract_dir": "mise",
-    "bin": "bin/mise.exe",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config.toml\") -and !(Test-Path \"$dir\\config.toml\")) {",
-        "    Write-Warning -wa 2 \"This manifest does not currently migrate any previous mise installations!`n`nSuggested:`n * Backup existing config.toml before fully uninstalling mise as documented.`n * Install with scoop then manually add the backed up options to the new config.toml that scoop now manages in persist\"",
-        "    New-Item -Path \"$dir\\config.toml\" -ItemType File -ea 0 | Out-Null",
-        "}"
-    ],
-    "env_set": {
-        "MISE_DATA_DIR": "$dir\\mise",
-        "MISE_GLOBAL_CONFIG_FILE": "$dir\\config.toml"
-    },
     "env_add_path": "mise\\shims",
-    "persist": [
-        "mise",
-        "config.toml"
-    ],
-    "notes": "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html",
+    "bin": "bin/mise.exe",
     "checkver": {
         "github": "https://github.com/jdx/mise"
     },
