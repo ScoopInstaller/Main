@@ -1,5 +1,5 @@
 {
-    "version": "10.04.0",
+    "version": "10.07.0",
     "description": "An interpreter for the PostScript language and for PDF",
     "homepage": "https://www.ghostscript.com",
     "license": {
@@ -45,8 +45,8 @@
     ],
     "env_add_path": "lib",
     "post_uninstall": [
-        "$reg_app = \"HKCU:\\SOFTWARE\\Artifex\\GPL Ghostscript\\$version\"",
-        "$reg_lib = \"HKCU:\\SOFTWARE\\GPL Ghostscript\\$version\"",
+        "$reg_app = \"HKCU:\\SOFTWARE\\Artifex\\GPL Ghostscript\"",
+        "$reg_lib = \"HKCU:\\SOFTWARE\\GPL Ghostscript\"",
         "if ($global) { $reg_app = $reg_app.Replace('HKCU:','HKLM:'); $reg_lib = $reg_lib.Replace('HKCU:','HKLM:') }",
         "Remove-Item -Path $reg_app -Force -Recurse",
         "Remove-Item -Path $reg_lib -Force -Recurse"
