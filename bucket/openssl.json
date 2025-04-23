@@ -20,16 +20,10 @@
     "pre_install": [
         "$arch = switch ($architecture) {",
         "    '64bit' { 'x64'; break }",
-        "    '32bit' { 'x32'; break }",
+        "    '32bit' { 'x86'; break }",
         "    'arm64' { $architecture; break }",
         "}",
-        "if ([System.Environment]::OSVersion.Version -lt [Version]10.0.14972.0) {",
-        "    return $null = Get-ChildItem \"$dir/lib/VC/$arch/MT\" | ForEach-Object { Copy-Item $_.FullName \"$dir/lib/$($_.Name)\" }",
-        "}",
-        "Receive-Job -Wait (Start-Job {",
-        "    $kernel32 = Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName, byte dwFlags);' -Name '_' -PassThru",
-        "    $null = Get-ChildItem \"$Using:dir/lib/VC/$Using:arch/MT\" | ForEach-Object { $kernel32::CreateSymbolicLink(\"$Using:dir/lib/$($_.Name)\", $_.FullName, 2) }",
-        "})"
+        "$null = Get-ChildItem \"$dir/lib/VC/$arch/MT\" | ForEach-Object { New-Item -ItemType HardLink -Target $_.FullName -Path \"$dir/lib/$($_.Name)\" }"
     ],
     "innosetup": true,
     "env_add_path": "bin",
