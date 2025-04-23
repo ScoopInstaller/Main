@@ -3,6 +3,11 @@
     "description": "Polyglot tool version manager and task runner",
     "homepage": "https://mise.jdx.dev/",
     "license": "MIT",
+    "notes": [
+        "Persistence and environment variables settings of the manifest have been revoked, you can find persisted data at '$persist_dir', if you have installed the manifest before.",
+        "",
+        "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/jdx/mise/releases/download/v2025.4.6/mise-v2025.4.6-windows-x64.zip",
@@ -14,14 +19,8 @@
         }
     },
     "extract_dir": "mise",
-    "bin": "bin/mise.exe",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config.toml\") -and !(Test-Path \"$dir\\config.toml\")) {",
-        "    New-Item -Path \"$dir\\config.toml\" -ItemType File -ea 0 | Out-Null",
-        "}"
-    ],
     "env_add_path": "mise\\shims",
-    "notes": "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html",
+    "bin": "bin/mise.exe",
     "checkver": {
         "github": "https://github.com/jdx/mise"
     },
