@@ -3,6 +3,7 @@
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
+    "notes": "Do not run 'pnpm setup' if you want scoop to manage the installation",
     "architecture": {
         "64bit": {
             "url": "https://github.com/pnpm/pnpm/releases/download/v10.9.0/pnpm-win-x64.exe#/pnpm.exe",
@@ -10,6 +11,11 @@
         }
     },
     "bin": "pnpm.exe",
+    "env_add_path": "pnpm_data",
+    "env_set": {
+        "PNPM_HOME": "$dir\\pnpm_data"
+    },
+    "persist": "pnpm_data",
     "checkver": {
         "script": [
             "# Using checkver script to check through all release tags",
