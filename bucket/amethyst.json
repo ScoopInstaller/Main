@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+  "version": "2.0.7",
+  "description": "Amethyst is an Electron-based audio player with a node-based audio routing system, the main goal of this project is to make a music player in Typescript that has pro-level features as most DAWs / DAEs, while also providing useful tools and customizability to the end-user to deal with audio.",
+  "license": "MIT",
+  "homepage": "https://github.com/Geoxor/amethyst",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Geoxor/Amethyst/releases/download/v2.0.7/Amethyst-Setup-2.0.7.exe",
+      "extract_dir": "Files\\Amethyst"
+    },
+    "32bit": {
+      "url": "https://github.com/Geoxor/Amethyst/releases/download/v2.0.7/Amethyst-Setup-2.0.7.exe",
+      "extract_dir": "Files\\Amethyst"
+    }
+  },
+  "pre_install": [
+    "Invoke-ExternalCommand \"$dir\\Amethyst-Setup-2.0.7.exe\" | Out-Null",
+    "info 'Amethyst has been installed'"
+  ],
+  "post_install": [
+    "Remove-Item \"$dir\\Amethyst-Setup-2.0.7.exe\""
+  ],
+  "uninstaller": {
+    "script": "Invoke-ExternalCommand \"C:\\Users\\$env:username\\AppData\\Local\\Programs\\amethyst\\Uninstall Amethyst.exe\" | Out-Null"
+  }
+}
