@@ -1,27 +1,32 @@
 {
-    "version": "1.17.13",
+    "version": "1.17.19",
     "description": "Julia installer and version multiplexer",
     "homepage": "https://github.com/JuliaLang/juliaup",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/JuliaLang/juliaup/releases/download/v1.17.13/juliaup-1.17.13-x86_64-pc-windows-gnu-portable.tar.gz",
-            "hash": "e49faada5e48932d8519e15d9f1c4baab9169217bc65a8166843998c740cbf3e"
+            "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v1.17.19-x64.msi",
+            "hash": "25d88a8bef4130fd65f5b9f37b74660f3061461a7f3d66eb0a2159abdabe9306",
+            "extract_dir": "PFiles64\\Julia"
         },
         "32bit": {
-            "url": "https://github.com/JuliaLang/juliaup/releases/download/v1.17.13/juliaup-1.17.13-i686-pc-windows-gnu-portable.tar.gz",
-            "hash": "80f279c1ddbb3a60d40d2dbf4e3c88078b6fe1da8977bec323d84890bc3c0f2a"
+            "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v1.17.19-x86.msi",
+            "hash": "cd15fe536213e15af03a9cdc975fe83b10cd74d6793a13dca30524debd13236d",
+            "extract_dir": "PFiles\\Julia"
         }
     },
-    "bin": "juliaup.exe",
+    "bin": [
+        "juliaup.exe",
+        "julia.exe"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/JuliaLang/juliaup/releases/download/v$version/juliaup-$version-x86_64-pc-windows-gnu-portable.tar.gz"
+                "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v$version-x64.msi"
             },
             "32bit": {
-                "url": "https://github.com/JuliaLang/juliaup/releases/download/v$version/juliaup-$version-i686-pc-windows-gnu-portable.tar.gz"
+                "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v$version-x86.msi"
             }
         }
     }
