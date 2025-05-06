@@ -1,0 +1,27 @@
+{
+    "version": "0.10.0",
+    "description": "A self-hosted BitTorrent indexer, DHT crawler, content classifier and torrent search engine with web UI, GraphQL API and Servarr stack integration.",
+    "homepage": "https://github.com/bitmagnet-io/bitmagnet",
+    "license": "MIT",
+    "suggest": {
+        "DB": "main/postgresql"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bitmagnet-io/bitmagnet/releases/download/v0.10.0/bitmagnet_0.10.0_windows_x86_64.zip",
+            "hash": "fa6d2bb7ccdcf5ee61e6fa0e52c79100b3ff1d6a2b83dddb137efcb345f22f67"
+        }
+    },
+    "bin": "bitmagnet.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bitmagnet-io/bitmagnet/releases/download/v$version/bitmagnet_$version_windows_x86_64.zip",
+                "hash": {
+                    "url": "https://github.com/bitmagnet-io/bitmagnet/releases/download/v$version/bitmagnet_$version_checksums.txt"
+                }
+            }
+        }
+    }
+}
