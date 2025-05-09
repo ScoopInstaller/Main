@@ -13,7 +13,7 @@
         "Allow vulkan applications to find VK layers provided by Khronos, run \"$dir\\install-vk-layers.ps1\"",
         "(\"powershell \"$dir\\install-vk-layers.ps1\"\" under cmd)"
     ],
-    "url": "https://sdk.lunarg.com/sdk/download/1.4.313.0/windows/vulkansdk-windows-X64-1.4.313.0.exe#/dl.7z",
+    "url": "https://sdk.lunarg.com/sdk/download/1.4.313.0/windows/vulkansdk-windows-X64-1.4.313.0.exe",
     "hash": "b643ca8ab4aea5c47b9c4e021a0b33b3a13871bf1d8131e162a9e48c257c4694",
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstal*\" -Recurse",
     "post_install": [
@@ -25,7 +25,20 @@
         "   $content = $content.Replace('$global', $(if ($global) { '$true' } else { '$false' }))",
         "   $content = $content.Replace('$is_admin', $(if (is_admin) { '$true' } else { '$false' }))",
         "}",
-        "Set-Content -Path \"$dir\\install-vk-layers.ps1\" -Value $content -Encoding UTF8"
+        "Set-Content -Path \"$dir\\install-vk-layers.ps1\" -Value $content -Encoding UTF8",
+        "$UninstallRegistryPath = \"HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\"",
+        "$keys = @()",
+        "Get-ChildItem -Path $UninstallRegistryPath -Recurse | ForEach-Object {",
+        "   $key = $_.Name",
+        "   Get-ItemProperty -Path $_.PSPath | ForEach-Object {",
+        "      if ($_.PSObject.Properties[\"DisplayName\"].Value.Contains(\"Vulkan SDK\")) {",
+        "         $keys += $key",
+        "      }",
+        "   }",
+        "}",
+        "foreach ($key in $keys) {",
+        "   reg delete $key /va /f",
+        "}"
     ],
     "architecture": {
         "64bit": {
@@ -62,10 +75,21 @@
         "jsonpath": "$.windows"
     },
     "autoupdate": {
-        "url": "https://sdk.lunarg.com/sdk/download/$version/windows/vulkansdk-windows-X64-$version.exe#/dl.7z",
+        "url": "https://sdk.lunarg.com/sdk/download/$version/windows/vulkansdk-windows-X64-$version.exe",
         "hash": {
             "url": "https://vulkan.lunarg.com/sdk/files.json",
             "jsonpath": "$.windows['$version'].files[?(@.file_name == '$basename')].sha"
         }
+    },
+    "installer": {
+        "args": [
+            "--root",
+            "$dir",
+            "--accept-licenses",
+            "--accept-messages",
+            "--confirm-command",
+            "install",
+            "copy_only=1"
+        ]
     }
 }
