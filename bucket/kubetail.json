@@ -1,5 +1,5 @@
 {
-    "version": "cli/v0.5.1",
+    "version": "0.5.1",
     "description": "Real-time logging dashboard for Kubernetes",
     "homepage": "https://www.kubetail.com",
     "license": "Apache-2.0",
@@ -15,15 +15,17 @@
     },
     "bin": "kubetail.exe",
     "checkver": {
-        "github": "https://github.com/kubetail-org/kubetail"
+        "github": "https://github.com/kubetail-org/kubetail",
+        "regex": "cli/v([0-9]+(?:\\.[0-9]+)*)",
+        "replace": "$1"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/kubetail-org/kubetail/releases/download/$version/kubetail-windows-amd64"
+                "url": "https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv$version/kubetail-windows-amd64"
             },
             "arm64": {
-                "url": "https://github.com/kubetail-org/kubetail/releases/download/$version/kubetail-windows-arm64"
+                "url": "https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv$version/kubetail-windows-arm64"
             }
         },
         "hash": {
