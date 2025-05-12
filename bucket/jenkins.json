@@ -3,13 +3,26 @@
     "description": "An automation server which enables developers around the world to reliably build, test, and deploy their software.",
     "homepage": "https://www.jenkins.io",
     "license": "MIT",
+    "notes": [
+        "To install a Windows Service run:",
+        "",
+        "set \"JENKINS_HOME=$dir\\home\"",
+        "java -jar $dir\\jenkins.jar --webroot=%JENKINS_HOME%\\war",
+        "",
+        "and follow the instructions at https://wiki.jenkins.io/display/JENKINS/Installing+Jenkins+as+a+Windows+service"
+    ],
     "suggest": {
-        "Java 11": "java/openjdk11",
-        "Java 17": "java/openjdk17"
+        "Java 21": "java/openjdk21"
     },
     "url": "https://get.jenkins.io/war/2.509/jenkins.war#/jenkins.jar",
     "hash": "32c0cb0c9e030cb0472c80ed4e1e4eb252a10fbed59de8c987d6aaba6718b1b2",
     "bin": "jenkins.jar",
+    "env_set": {
+        "JENKINS_HOME": "$dir\\home"
+    },
+    "persist": [
+        "home"
+    ],
     "checkver": {
         "url": "https://www.jenkins.io/changelog/rss.xml",
         "xpath": "/rss/channel/item/title",
