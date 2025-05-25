@@ -8,7 +8,7 @@
     "pre_install": [
         "if ($architecture -eq '32bit') {",
         "  Move-Item \"$dir\\ISx-x86.exe\" \"$dir\\ISx.exe\" -Force",
-        "}"
+        "} else { Remove-Item \"$dir\\ISx-x86.exe\" }"
     ],
     "bin": "ISx.exe",
     "checkver": "github",
