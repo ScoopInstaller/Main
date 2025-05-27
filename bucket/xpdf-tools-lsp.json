@@ -1,13 +1,13 @@
 {
-    "version": "2011-Aug-15",
-    "description": "All language support packages for xpdf-tools.",
-    "homepage": "https://www.xpdfreader.com",
+    "version": "2023-Dec-05",
+    "description": "All language support packages for xpdf-tools",
+    "homepage": "https://www.xpdfreader.com/",
     "license": {
         "identifier": "GPL-2.0-only|GPL-3.0-only",
         "url": "https://www.xpdfreader.com/opensource.html"
     },
     "suggest": {
-        "xpdf-tools": "xpdf-tools"
+        "xpdf-tools": "main/xpdf-tools"
     },
     "url": [
         "https://dl.xpdfreader.com/xpdf-arabic.tar.gz",
@@ -28,17 +28,24 @@
         "aa71214ce2ac26e0495dfb5a19f918ae21380a5c1bd9721ad028cc134bb0d76a",
         "4e61cd67d1de292b4b8a8abe84790eec461be5f59165c605d004f8331eee88a2",
         "c7f57c32e1634cf11ebe7cb55ea9d27cc9a55d5e7e54d3de7a662f2a8e56707f",
-        "4e9b0a8ea318ff54bc744aac5471b165344c72831c569f8e928fa55c26bcbfba",
+        "9e6df03aec105006766423d40889631343ca9864d29326d28ce47912d0ffc32d",
         "7b6c4b4c39302b043bb1dbb4567af3233901b5692a4c8883f0b3be14b1db49ac",
-        "99a848c3e2b17d6e862aa0d904bac7df3177efe093f07bb2c76b17e09cf6eb1a",
+        "f946b8d1659812d7ed25d235ae9d693b37cd6927f34d72f32284d286ce2813b4",
         "c7b9a71a21bb81cb24078fa67be9ac645501413cd8d20aa589f28160cdf40af2",
         "a59d81e1e496873058d11f59b7cdf8a8e8dabdb3056edde91e6721e6bd2c678e",
         "4bce35b85b49c8e2698a2e01bede345b8e2936daf9622f8f2f4287e409e26256"
     ],
     "post_install": "Get-ChildItem -Path $dir -Filter 'xpdf-*' | ForEach-Object { Rename-Item -Path $_.FullName -NewName $_.Name.Replace('xpdf-','') }",
     "checkver": {
-        "url": "https://www.xpdfreader.com/download.html",
-        "regex": "Latin2</a>\\n<small>\\[updated (.+?)]"
+        "script": [
+            "$url = 'https://www.xpdfreader.com/download.html'",
+            "$resp = (Invoke-WebRequest -Uri $url).Content",
+            "$updateds = @()",
+            "($resp | Select-String -Pattern '\\[updated (.+?)\\]' -AllMatches).Matches | ForEach-Object { $updateds += $_.Groups[1].Value }",
+            "$sorted = $updateds | Sort-Object @{ Expression = { [datetime]::ParseExact($_, 'yyyy-MMM-dd', $null) } } -Descending",
+            "Write-Output $sorted[0]"
+        ],
+        "regex": "(\\d{4}-\\w{3}-\\d{2})"
     },
     "autoupdate": {
         "url": [
