@@ -7,15 +7,18 @@
     "architecture": {
         "64bit": {
             "url": "http://www.andre-simon.de/zip/highlight-4.16-x64.zip",
-            "hash": "c8950a0660e528aec0094818ee2483ce0b433e14872dda597de66e2ea42b0419",
-            "extract_dir": "highlight-4.16 -x64"
+            "hash": "c8950a0660e528aec0094818ee2483ce0b433e14872dda597de66e2ea42b0419"
         },
         "32bit": {
             "url": "http://www.andre-simon.de/zip/highlight-4.16.zip",
-            "hash": "5aa5e1aa785a4cab82b1bca7e726b99aac77b3054a404c0d153c00a4e2d50f38",
-            "extract_dir": "highlight-4.16"
+            "hash": "5aa5e1aa785a4cab82b1bca7e726b99aac77b3054a404c0d153c00a4e2d50f38"
         }
     },
+    "pre_install": [
+        "# Temporary solution for https://github.com/ScoopInstaller/Scoop/issues/6372",
+        "Get-ChildItem \"$dir\\highlight*\\*\" | Move-Item -Destination \"$dir\"",
+        "Remove-Item \"$dir\\highlight-$version*\" -ErrorAction SilentlyContinue"
+    ],
     "bin": "highlight.exe",
     "shortcuts": [
         [
@@ -30,21 +33,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://www.andre-simon.de/zip/highlight-$version-x64.zip",
-                "hash": {
-                    "url": "http://www.andre-simon.de/zip/download.php",
-                    "regex": "$sha256</code>\\s+\\|\\s+<a href=\"highlight-[\\d.]+-x64\\.zip"
-                },
-                "extract_dir": "highlight-$version-x64"
+                "url": "http://www.andre-simon.de/zip/highlight-$version-x64.zip"
             },
             "32bit": {
-                "url": "http://www.andre-simon.de/zip/highlight-$version.zip",
-                "hash": {
-                    "url": "http://www.andre-simon.de/zip/download.php",
-                    "regex": "$sha256</code>\\s+\\|\\s+<a href=\"highlight-[\\d.]+\\.zip"
-                },
-                "extract_dir": "highlight-$version"
+                "url": "http://www.andre-simon.de/zip/highlight-$version.zip"
             }
+        },
+        "hash": {
+            "url": "http://andre-simon.de/zip/download.php",
+            "regex": "$sha256\\s+$basename"
         }
     }
 }
