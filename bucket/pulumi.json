@@ -6,7 +6,11 @@
     "architecture": {
         "64bit": {
             "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.173.0-windows-x64.zip",
-            "hash": "8ca2d91052dbc847ac17a9dbbb38b75c6418bd20cff0ea622a70b6a7ae897c9b"
+            "hash": "sha512:4030c071fcc53e8f7eb33230f03d0e34b42f507386f2cc35cb5739f5a2ae986bad0641037b8f0b735bb37361634c67e0ed7da09a66b5812d7f70d8529001e644"
+        },
+        "arm64": {
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.173.0-windows-x64.zip",
+            "hash": "sha512:4030c071fcc53e8f7eb33230f03d0e34b42f507386f2cc35cb5739f5a2ae986bad0641037b8f0b735bb37361634c67e0ed7da09a66b5812d7f70d8529001e644"
         }
     },
     "extract_dir": "Pulumi\\bin",
@@ -21,8 +25,6 @@
         "pulumi-language-python-exec",
         "pulumi-language-python.exe",
         "pulumi-language-yaml.exe",
-        "pulumi-python-shim.cmd",
-        "pulumi-python3-shim.cmd",
         "pulumi-resource-pulumi-nodejs.cmd",
         "pulumi-resource-pulumi-python.cmd",
         "pulumi-watch.exe"
@@ -35,7 +37,13 @@
         "architecture": {
             "64bit": {
                 "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/pulumi/pulumi/releases/download/v$version/SHA512SUMS"
         }
     }
 }
