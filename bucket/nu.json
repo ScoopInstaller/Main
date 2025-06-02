@@ -1,19 +1,39 @@
 {
-    "version": "0.98.0",
+    "version": "0.104.1",
     "description": "A modern shell written in Rust",
     "homepage": "https://www.nushell.sh",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/nushell/nushell/releases/download/0.98.0/nu-0.98.0-x86_64-pc-windows-msvc.zip",
-            "hash": "fed5996abef6d4415dfb93217379f4d9bdfb2ce913e3b9503ad69377b14dd887"
+            "url": "https://github.com/nushell/nushell/releases/download/0.104.1/nu-0.104.1-x86_64-pc-windows-msvc.zip",
+            "hash": "d98ecf68ccb2b0a7a233f72bb5ed01c1c80a39724e57a8ed05837d7d50a5a060"
         },
         "arm64": {
-            "url": "https://github.com/nushell/nushell/releases/download/0.98.0/nu-0.98.0-aarch64-pc-windows-msvc.zip",
-            "hash": "e3dcb9c3b7e15208e83037da1fcc4ac656b92b96098c9f63e87c497d83da8781"
+            "url": "https://github.com/nushell/nushell/releases/download/0.104.1/nu-0.104.1-aarch64-pc-windows-msvc.zip",
+            "hash": "7c078a0efc0caf8a9f6e67b79c9ba9af38925a411edbc952f3cae7a40d1b5824"
         }
     },
     "bin": "nu.exe",
+    "shortcuts": [
+        [
+            "nu.exe",
+            "Nushell",
+            "--execute \"cd ~\""
+        ]
+    ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        [System.IO.Path]::Combine($env:APPDATA,'nushell'),",
+        "        [System.IO.Path]::Combine($env:LOCALAPPDATA,'nushell')",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if ([System.IO.Directory]::Exists($_)) {",
+        "            $null = [System.IO.Directory]::Delete($_,$true)",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/nushell/nushell"
     },
@@ -25,6 +45,9 @@
             "arm64": {
                 "url": "https://github.com/nushell/nushell/releases/download/$version/nu-$version-aarch64-pc-windows-msvc.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }

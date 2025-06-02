@@ -1,0 +1,26 @@
+{
+    "version": "1.6.0",
+    "description": "Podman Terminal UI",
+    "homepage": "https://github.com/containers/podman-tui",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/containers/podman-tui/releases/download/v1.6.0/podman-tui-release-windows_amd64.zip",
+            "hash": "2e1c33d90f8674cd5a468a882522fc5ad3fac12d097f395d53086754fc9b62c5",
+            "extract_dir": "podman-tui-release-windows_amd64/podman-tui-1.6.0"
+        }
+    },
+    "bin": "podman-tui.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/containers/podman-tui/releases/download/v$version/podman-tui-release-windows_amd64.zip",
+                "hash": {
+                    "url": "$baseurl/shasums"
+                },
+                "extract_dir": "podman-tui-release-windows_amd64/podman-tui-$version"
+            }
+        }
+    }
+}
