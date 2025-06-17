@@ -1,5 +1,5 @@
 {
-    "version": "1.4.309.0",
+    "version": "1.4.313.0",
     "description": "SDK for new generation graphics and compute API",
     "homepage": "https://www.vulkan.org",
     "license": {
@@ -13,8 +13,8 @@
         "Allow vulkan applications to find VK layers provided by Khronos, run \"$dir\\install-vk-layers.ps1\"",
         "(\"powershell \"$dir\\install-vk-layers.ps1\"\" under cmd)"
     ],
-    "url": "https://sdk.lunarg.com/sdk/download/1.4.309.0/windows/VulkanSDK-1.4.309.0-Installer.exe#/dl.7z",
-    "hash": "48b132169b64fe65cdb0f20970195335a65354e73f1ea5373032c2a8bbad4297",
+    "url": "https://sdk.lunarg.com/sdk/download/1.4.313.0/windows/vulkansdk-windows-X64-1.4.313.0.exe#/dl.7z",
+    "hash": "b643ca8ab4aea5c47b9c4e021a0b33b3a13871bf1d8131e162a9e48c257c4694",
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstal*\" -Recurse",
     "post_install": [
         "$script_path = \"$bucketsdir\\main\\scripts\\$app\\install-vk-layers.ps1\"",
@@ -62,7 +62,7 @@
         "jsonpath": "$.windows"
     },
     "autoupdate": {
-        "url": "https://sdk.lunarg.com/sdk/download/$version/windows/VulkanSDK-$version-Installer.exe#/dl.7z",
+        "url": "https://sdk.lunarg.com/sdk/download/$version/windows/vulkansdk-windows-X64-$version.exe#/dl.7z",
         "hash": {
             "url": "https://vulkan.lunarg.com/sdk/files.json",
             "jsonpath": "$.windows['$version'].files[?(@.file_name == '$basename')].sha"
