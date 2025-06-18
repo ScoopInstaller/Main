@@ -8,7 +8,8 @@
     },
     "url": "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.13.0/openapi-generator-cli-7.13.0.jar#/openapi-generator-cli.jar",
     "hash": "sha1:a72c42381d7bba007d7fb17d57a6ed7bff93ce64",
-    "bin": "openapi-generator-cli.jar",
+    "pre_install": "Set-Content \"$dir\\openapi-generator-cli.cmd\" -Value \"@java -jar \"\"$dir\\openapi-generator-cli.jar\"\" %*\" -Encoding ascii",
+    "bin": "openapi-generator-cli.cmd",
     "checkver": {
         "url": "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/maven-metadata.xml",
         "xpath": "/metadata/versioning/latest"
