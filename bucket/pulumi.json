@@ -1,12 +1,16 @@
 {
-    "version": "3.160.0",
+    "version": "3.177.0",
     "description": "Create, deploy, and manage infrastructure on any cloud using any language.",
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.160.0-windows-x64.zip",
-            "hash": "4f8473e73c9bb65abc0962fc472fe8b34c1d935f7e5edb9ba5ecaf92103d2590"
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.177.0-windows-x64.zip",
+            "hash": "sha512:ec593e39f3fafe33b9122b16884b7525cea2c949e0934e5c1d05147ed704c3124bc79199df67a85f717b033ab178bcd5799a93265a61dae5e9dc93129bcc6e5e"
+        },
+        "arm64": {
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.177.0-windows-x64.zip",
+            "hash": "sha512:ec593e39f3fafe33b9122b16884b7525cea2c949e0934e5c1d05147ed704c3124bc79199df67a85f717b033ab178bcd5799a93265a61dae5e9dc93129bcc6e5e"
         }
     },
     "extract_dir": "Pulumi\\bin",
@@ -21,8 +25,6 @@
         "pulumi-language-python-exec",
         "pulumi-language-python.exe",
         "pulumi-language-yaml.exe",
-        "pulumi-python-shim.cmd",
-        "pulumi-python3-shim.cmd",
         "pulumi-resource-pulumi-nodejs.cmd",
         "pulumi-resource-pulumi-python.cmd",
         "pulumi-watch.exe"
@@ -35,7 +37,13 @@
         "architecture": {
             "64bit": {
                 "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/pulumi/pulumi/releases/download/v$version/SHA512SUMS"
         }
     }
 }

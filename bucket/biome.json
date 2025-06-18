@@ -15,8 +15,9 @@
     },
     "bin": "biome.exe",
     "checkver": {
-        "url": "https://github.com/biomejs/biome/tags",
-        "regex": "/releases/tag/cli%2F(?:v|V)?([\\d.]+)"
+        "url": "https://api.github.com/repos/biomejs/biome/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "cli/[vV]([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
