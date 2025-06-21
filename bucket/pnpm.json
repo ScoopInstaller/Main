@@ -3,12 +3,24 @@
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
+    "notes": [
+        "Scoop persists data since version 10.12.1. You may need to move data yourself.",
+        "Before: '$Env:LOCALAPPDATA\\pnpm\\global'",
+        "After : '$dir\\pnpm_data'",
+        "",
+        "Do not run 'pnpm setup' if you want scoop to manage the installation"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/pnpm/pnpm/releases/download/v10.12.1/pnpm-win-x64.exe#/pnpm.exe",
             "hash": "9b802759436b3bccfe0a78cb0b86e937ac44902ec16597260f59d5394602f092"
         }
     },
+    "env_add_path": "pnpm_data",
+    "env_set": {
+        "PNPM_HOME": "$dir\\pnpm_data"
+    },
+    "persist": "pnpm_data",
     "bin": [
         "pnpm.exe",
         [
