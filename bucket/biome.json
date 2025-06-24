@@ -17,15 +17,15 @@
     "checkver": {
         "url": "https://api.github.com/repos/biomejs/biome/releases",
         "jsonpath": "$..tag_name",
-        "regex": "cli/[vV]([\\d.]+)\""
+        "regex": "@biomejs/biome@([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv$version/biome-win32-x64.exe#/biome.exe"
+                "url": "https://github.com/biomejs/biome/releases/download/%40biomejs%2Fbiome%40$version/biome-win32-x64.exe#/biome.exe"
             },
             "arm64": {
-                "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv$version/biome-win32-arm64.exe#/biome.exe"
+                "url": "https://github.com/biomejs/biome/releases/download/%40biomejs%2Fbiome%40$version/biome-win32-arm64.exe#/biome.exe"
             }
         }
     }
