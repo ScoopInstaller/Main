@@ -13,42 +13,63 @@
         "Allow vulkan applications to find VK layers provided by Khronos, run \"$dir\\install-vk-layers.ps1\"",
         "(\"powershell \"$dir\\install-vk-layers.ps1\"\" under cmd)"
     ],
-    "url": "https://sdk.lunarg.com/sdk/download/1.4.313.2/windows/vulkansdk-windows-X64-1.4.313.2.exe#/dl.7z",
-    "hash": "34a921d951858274ca8e470e9d0a3b7624db41216b3908ccea9f73c8a1b7500e",
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstal*\" -Recurse",
     "post_install": [
         "$script_path = \"$bucketsdir\\main\\scripts\\$app\\install-vk-layers.ps1\"",
         "if (Test-Path $script_path) {",
-        "   $vulkan_bin = if ($architecture -eq '64bit') { \"$dir\\Bin\" } else { \"$dir\\Bin32\" }",
+        "   $vulkan_bin = \"$dir\\Bin\"",
         "   $content = Get-Content $script_path",
         "   $content = $content.Replace('$vulkan_bin', \"\"\"$vulkan_bin\"\"\")",
         "   $content = $content.Replace('$global', $(if ($global) { '$true' } else { '$false' }))",
         "   $content = $content.Replace('$is_admin', $(if (is_admin) { '$true' } else { '$false' }))",
         "}",
-        "Set-Content -Path \"$dir\\install-vk-layers.ps1\" -Value $content -Encoding UTF8"
+        "Set-Content -Path \"$dir\\install-vk-layers.ps1\" -Value $content -Encoding UTF8",
+        "$UninstallRegistryPath = \"HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\"",
+        "$keys = @()",
+        "Get-ChildItem -Path $UninstallRegistryPath -Recurse | ForEach-Object {",
+        "   $key = $_.Name",
+        "   Get-ItemProperty -Path $_.PSPath | ForEach-Object {",
+        "      if ($_.PSObject.Properties[\"DisplayName\"].Value.Contains(\"Vulkan SDK\")) {",
+        "         $keys += $key",
+        "      }",
+        "   }",
+        "}",
+        "foreach ($key in $keys) {",
+        "   reg delete $key /va /f",
+        "}"
     ],
     "architecture": {
         "64bit": {
-            "env_add_path": [
-                "Bin",
-                "Tools"
-            ]
+            "url": "https://sdk.lunarg.com/sdk/download/1.4.313.2/windows/vulkansdk-windows-X64-1.4.313.2.exe",
+            "hash": "34a921d951858274ca8e470e9d0a3b7624db41216b3908ccea9f73c8a1b7500e"
         },
-        "32bit": {
-            "env_add_path": [
-                "Bin32",
-                "Tools32"
-            ]
+        "arm64": {
+            "url": "https://sdk.lunarg.com/sdk/download/1.4.313.2/warm/vulkansdk-windows-ARM64-1.4.313.2.exe",
+            "hash": "29c3e7b9ff9c9d38455708bed7e744f879c770c15f3fedae55c409817c375515"
         }
     },
+    "env_add_path": [
+        "Bin",
+        "Tools"
+    ],
     "env_set": {
         "VULKAN_SDK": "$dir",
         "VK_SDK_PATH": "$dir"
     },
+    "shortcuts": [
+        [
+            "Bin\\vkconfig-gui.exe",
+            "vkconfig-gui"
+        ],
+        [
+            "Bin\\vulkanCapsViewer.exe",
+            "vulkanCapsViewer"
+        ]
+    ],
     "pre_uninstall": [
         "$reg_root = if ($global) { [Microsoft.Win32.Registry]::LocalMachine } else { [Microsoft.Win32.Registry]::CurrentUser }",
         "$vk_explicit_reg_path = 'SOFTWARE\\Khronos\\Vulkan\\ExplicitLayers'",
-        "$bin_dir = if ($architecture -eq '64bit') { 'Bin' } else { 'Bin32' }",
+        "$bin_dir = 'Bin'",
         "$vulkan_bin = if ($global) { \"$globaldir\\apps\\$app\\current\\$bin_dir\" } else { \"$scoopdir\\apps\\$app\\current\\$bin_dir\" }",
         "$vk_layers = Get-ChildItem -Path $vulkan_bin -Filter '*.json' | ForEach-Object { $_.FullName }",
         "$vk_explicit_reg = $reg_root.CreateSubKey($vk_explicit_reg_path)",
@@ -62,10 +83,32 @@
         "jsonpath": "$.windows"
     },
     "autoupdate": {
-        "url": "https://sdk.lunarg.com/sdk/download/$version/windows/vulkansdk-windows-X64-$version.exe#/dl.7z",
-        "hash": {
-            "url": "https://vulkan.lunarg.com/sdk/files.json",
-            "jsonpath": "$.windows['$version'].files[?(@.file_name == '$basename')].sha"
+        "architecture": {
+            "64bit": {
+                "url": "https://sdk.lunarg.com/sdk/download/$version/windows/vulkansdk-windows-X64-$version.exe",
+                "hash": {
+                    "url": "https://vulkan.lunarg.com/sdk/files.json",
+                    "jsonpath": "$.windows['$version'].files[?(@.file_name == '$basename')].sha"
+                }
+            },
+            "arm64": {
+                "url": "https://sdk.lunarg.com/sdk/download/$version/warm/vulkansdk-windows-ARM64-$version.exe",
+                "hash": {
+                    "url": "https://vulkan.lunarg.com/sdk/files.json",
+                    "jsonpath": "$.warm['$version'].files[?(@.file_name == '$basename')].sha"
+                }
+            }
         }
+    },
+    "installer": {
+        "args": [
+            "--root",
+            "$dir",
+            "--accept-licenses",
+            "--accept-messages",
+            "--confirm-command",
+            "install",
+            "copy_only=1"
+        ]
     }
 }
