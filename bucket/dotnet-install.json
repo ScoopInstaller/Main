@@ -4,19 +4,21 @@
         "* See: <https://github.com/dotnet/install-scripts/issues/580>.",
         "Source is available on GitHub, but it's not signed. Thus using Microsoft official URL.",
         "dotnet-install.ps1 is not in PowerShell Gallery.",
-        "* See: <https://github.com/dotnet/install-scripts/issues/121>."
+        "* See: <https://github.com/dotnet/install-scripts/issues/121>.",
+        "Redirect from 'https://dot.net/v1/dotnet-install.ps1' to 'https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.ps1' is sometimes very slow",
+        "* Thus using 'builds.dotnet.microsoft.com' directly instead, which is not likely to change any time soon."
     ],
-    "version": "2025.02.11.161846-fd134bd16e2247c230b85bebbe135a63",
+    "version": "2025.06.16.182847-11e9649f6a6b3f8f415d10fc920e9350",
     "description": "Microsoft official dotnet CLI and SDK install script",
     "homepage": "https://github.com/dotnet/install-scripts",
     "license": "MIT",
-    "url": "https://dot.net/v1/dotnet-install.ps1",
-    "hash": "2b32cef94919665b01f46cfc71454bd8ea468e3754d0357a7e9e229cdc11eb8b",
+    "url": "https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.ps1",
+    "hash": "c437c543c98ee5bc9cfac6c627c18871a35020d8e3623c06eec0694c92531357",
     "bin": "dotnet-install.ps1",
     "checkver": {
         "regex": "([\\d.]+-[a-f0-9]{32})",
         "script": [
-            "$ResponseHeaders = (Invoke-WebRequest -Method 'Head' -Uri 'https://dot.net/v1/dotnet-install.ps1').'Headers'",
+            "$ResponseHeaders = (Invoke-WebRequest -Method 'Head' -Uri 'https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.ps1').'Headers'",
             "[string]::Format(",
             "    '{0}-{1}',",
             "    [datetime]::Parse($ResponseHeaders.'Last-Modified'[0]).ToUniversalTime().ToString('yyyy\\.MM\\.dd\\.HHmmss'),",
@@ -25,6 +27,6 @@
         ]
     },
     "autoupdate": {
-        "url": "https://dot.net/v1/dotnet-install.ps1"
+        "url": "https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.ps1"
     }
 }
