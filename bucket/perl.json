@@ -1,12 +1,12 @@
 {
-    "version": "5.40.0.1",
+    "version": "5.40.2.2",
     "description": "A programming language suitable for writing simple scripts as well as complex applications.",
     "homepage": "https://strawberryperl.com",
     "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_54001_64bit_UCRT/strawberry-perl-5.40.0.1-64bit-portable.zip",
-            "hash": "754f3e2a8e473dc68d1540c7802fb166a025f35ef18960c4564a31f8b5933907"
+            "url": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_54022_64bit/strawberry-perl-5.40.2.2-64bit-portable.zip",
+            "hash": "7df5cdc41e8638c00b2aa00cccc69ec8cd5a5ad0ec265c81f389beffb53b6920"
         }
     },
     "post_install": [
@@ -20,8 +20,8 @@
         "perl\\bin"
     ],
     "checkver": {
-        "url": "https://strawberryperl.com/releases.json",
-        "regex": "releases/download/(?<tag>.+)/strawberry-perl-([\\d.]+)-64bit-portable\\.zip"
+        "url": "https://api.github.com/repositories/23202375/releases/latest",
+        "regex": "releases/download/(?<tag>\\w+)/strawberry-perl-([\\d.]+)-64bit-portable\\.zip\""
     },
     "autoupdate": {
         "architecture": {
@@ -29,7 +29,7 @@
                 "url": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/$matchTag/strawberry-perl-$version-64bit-portable.zip",
                 "hash": {
                     "url": "https://strawberryperl.com/releases.json",
-                    "jsonpath": "$..[0].edition.portable.sha256"
+                    "jsonpath": "$[?(@.version == '$version')].edition.portable.sha256"
                 }
             }
         }

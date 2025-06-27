@@ -1,13 +1,18 @@
 {
-    "version": "0.3.8",
+    "version": "0.3.10",
     "description": "InstallShield installer extractor. Continuation of 'ISXUnpack'.",
     "homepage": "https://github.com/lifenjoiner/ISx",
     "license": "MIT",
-    "url": "https://github.com/lifenjoiner/ISx/releases/download/v0.3.8/ISx-v0.3.8-win32.7z",
-    "hash": "727c57b7839f5a8f16180546abc1914c418bfc058a27b6daed59be991cc31364",
+    "url": "https://github.com/lifenjoiner/ISx/releases/download/v0.3.10/ISx-v0.3.10.7z",
+    "hash": "4ad0a19b986799c7454efaf7edd12b777800acf066b6ca49c73f961f11faf797",
+    "pre_install": [
+        "if ($architecture -eq '32bit') {",
+        "  Move-Item \"$dir\\ISx-x86.exe\" \"$dir\\ISx.exe\" -Force",
+        "} else { Remove-Item \"$dir\\ISx-x86.exe\" }"
+    ],
     "bin": "ISx.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/lifenjoiner/ISx/releases/download/v$version/ISx-v$version-win32.7z"
+        "url": "https://github.com/lifenjoiner/ISx/releases/download/v$version/ISx-v$version.7z"
     }
 }

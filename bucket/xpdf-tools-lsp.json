@@ -1,13 +1,13 @@
 {
-    "version": "2011-Aug-15",
-    "description": "All language support packages for xpdf-tools.",
-    "homepage": "https://www.xpdfreader.com",
+    "version": "2023-Dec-05",
+    "description": "All language support packages for xpdf-tools",
+    "homepage": "https://www.xpdfreader.com/",
     "license": {
         "identifier": "GPL-2.0-only|GPL-3.0-only",
         "url": "https://www.xpdfreader.com/opensource.html"
     },
     "suggest": {
-        "xpdf-tools": "xpdf-tools"
+        "xpdf-tools": "main/xpdf-tools"
     },
     "url": [
         "https://dl.xpdfreader.com/xpdf-arabic.tar.gz",
@@ -37,8 +37,15 @@
     ],
     "post_install": "Get-ChildItem -Path $dir -Filter 'xpdf-*' | ForEach-Object { Rename-Item -Path $_.FullName -NewName $_.Name.Replace('xpdf-','') }",
     "checkver": {
-        "url": "https://www.xpdfreader.com/download.html",
-        "regex": "Latin2</a>\\n<small>\\[updated (.+?)]"
+        "script": [
+            "$url = 'https://www.xpdfreader.com/download.html'",
+            "$resp = (Invoke-WebRequest -Uri $url).Content",
+            "$updateds = @()",
+            "($resp | Select-String -Pattern '\\[updated (.+?)\\]' -AllMatches).Matches | ForEach-Object { $updateds += $_.Groups[1].Value }",
+            "$sorted = $updateds | Sort-Object @{ Expression = { [datetime]::ParseExact($_, 'yyyy-MMM-dd', $null) } } -Descending",
+            "Write-Output $sorted[0]"
+        ],
+        "regex": "(\\d{4}-\\w{3}-\\d{2})"
     },
     "autoupdate": {
         "url": [

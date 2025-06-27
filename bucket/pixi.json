@@ -1,0 +1,36 @@
+{
+    "version": "0.48.2",
+    "description": "Package management made easy",
+    "homepage": "https://pixi.sh",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/prefix-dev/pixi/releases/download/v0.48.2/pixi-x86_64-pc-windows-msvc.zip",
+            "hash": "1d91033aeab21c83538f34aa6288aa862d55a32e0d45aa6a4dd9f89c7e0ddb92"
+        },
+        "arm64": {
+            "url": "https://github.com/prefix-dev/pixi/releases/download/v0.48.2/pixi-aarch64-pc-windows-msvc.zip",
+            "hash": "10f7db54662d5452ff4c543793d79de5014b96711c69ea448de86bbd17d62616"
+        }
+    },
+    "bin": "pixi.exe",
+    "checkver": {
+        "github": "https://github.com/prefix-dev/pixi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/prefix-dev/pixi/releases/download/v$version/pixi-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/prefix-dev/pixi/releases/download/v$version/pixi-aarch64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        }
+    }
+}
