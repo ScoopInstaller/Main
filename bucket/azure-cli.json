@@ -3,13 +3,10 @@
     "description": "A cross-platform command-line tool to connect to Azure and execute administrative commands on Azure resources",
     "homepage": "https://aka.ms/cli",
     "license": "MIT",
-    "notes": [
-        "* Known issue:",
-        "  - Cannot be extracted due to long path: https://github.com/ScoopInstaller/Main/issues/5300"
-    ],
+    "notes": "Extraction can fail due to long paths: https://github.com/ScoopInstaller/Main/issues/5300",
     "architecture": {
         "64bit": {
-            "url": "https://azcliprod.blob.core.windows.net/zip/azure-cli-2.75.0-x64.zip",
+            "url": "https://github.com/Azure/azure-cli/releases/download/azure-cli-2.75.0/azure-cli-2.75.0-x64.zip",
             "hash": "4752e9e00fb1c9e53e94c521aa4ff5e7f60c07bfe21319fc0be2a2f58dc458ed"
         }
     },
@@ -18,6 +15,35 @@
         "AzureCLIPath": "$dir\\bin"
     },
     "bin": "bin\\az.cmd",
+    "pre_uninstall": [
+        "if ($purge -and [bool]$(Try{$null = Get-Command -Name 'az' 2>$null; $?}Catch{$false})) {",
+        "    Start-Process -FilePath 'az' -ArgumentList 'account', 'clear' -NoNewWindow -Wait",
+        "}"
+    ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        ('{0}\\.azure\\cliextensions' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\commands' -f $env:USERPROFILE)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if ([System.IO.Directory]::Exists($_)) {",
+        "            $null = [System.IO.Directory]::Delete($_,$true)",
+        "        }",
+        "    }",
+        "    $Files = [string[]](",
+        "        ('{0}\\.azure\\commandIndex.json' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\config' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\extensionCommandTree.json' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\versionCheck.json' -f $env:USERPROFILE)",
+        "    )",
+        "    $Files.ForEach{",
+        "       if ([System.IO.File]::Exists($_)) {",
+        "           $null = [System.IO.File]::Delete($_)",
+        "       }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/Azure/azure-cli",
         "regex": "/releases/tag/azure-cli-([\\d.]+)"
@@ -25,8 +51,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://azcliprod.blob.core.windows.net/zip/azure-cli-$version-x64.zip"
+                "url": "https://github.com/Azure/azure-cli/releases/download/azure-cli-$version/azure-cli-$version-x64.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/Azure/azure-cli/releases/tag/azure-cli-$version",
+            "regex": "$sha256.*?$basename"
         }
     }
 }
