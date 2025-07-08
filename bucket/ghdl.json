@@ -1,0 +1,24 @@
+{
+    "version": "5.1.1",
+    "description": "Free and open-source analyzer, compiler, simulator and (experimental) synthesizer for VHDL",
+    "homepage": "https://github.com/ghdl/ghdl/",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ghdl/ghdl/releases/download/v5.1.1/ghdl-mcode-5.1.1-ucrt64.zip",
+            "hash": "ac82b10bed0754db466640f49079e736da1de0b43b1196564aff5d8ebf435aaf"
+        }
+    },
+    "bin": [
+        "bin\\ghdl.exe",
+        "bin\\ghwdump.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ghdl/ghdl/releases/download/v$version/ghdl-mcode-$version-ucrt64.zip"
+            }
+        }
+    }
+}
