@@ -1,0 +1,33 @@
+{
+    "version": "1.0.0",
+    "description": "A command-line tool that consolidates multiple text files into a single portable archive",
+    "homepage": "https://github.com/liifi/paktxt",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/liifi/paktxt/releases/download/v1.0.0/paktxt_windows_amd64.zip",
+            "hash": "d4cee707e91421007c87d7b8ed89324e01e9460cac0b495bfe36792b23df9bf7"
+        },
+        "arm64": {
+            "url": "https://github.com/liifi/paktxt/releases/download/v1.0.0/paktxt_windows_arm64.zip",
+            "hash": "ceda2efeb963b7fc0830250814a130b3de214397a5235be61aba9e15a07d3a82"
+        }
+    },
+    "bin": "paktxt.exe",
+    "suggest": {
+        "Git (for git-aware file scanning)": "git"
+    },
+    "checkver": {
+        "github": "https://github.com/liifi/paktxt"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/liifi/paktxt/releases/download/v$version/paktxt_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/liifi/paktxt/releases/download/v$version/paktxt_windows_arm64.zip"
+            }
+        }
+    }
+}
