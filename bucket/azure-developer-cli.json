@@ -18,7 +18,7 @@
             "hash": "e2ccee624eea3a7eeea3163c60acd7fa897eaa0b2a5f4fa53f1dcbe0d799fffe"
         }
     },
-    "pre_install": "Rename-Item -Path \"$dir\\azd-*.exe\" -NewName \"azd.exe\"",
+    "pre_install": "Get-Item \"$dir\\azd-*.exe\" | Rename-Item -NewName \"azd.exe\"",
     "bin": "azd.exe",
     "post_uninstall": [
         "if ($purge) {",
