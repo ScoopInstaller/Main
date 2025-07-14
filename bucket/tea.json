@@ -9,7 +9,7 @@
             "hash": "629db62c343fcda355f602cce9cdf107426d0ee91b1935ab50ef834fa091f923"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\tea-*.exe\" \"$dir\\tea.exe\"",
+    "pre_install": "Get-Item \"$dir\\tea-*.exe\" | Rename-Item  -NewName \"$dir\\tea.exe\"",
     "bin": "tea.exe",
     "checkver": {
         "github": "https://gitea.com/gitea/tea"
