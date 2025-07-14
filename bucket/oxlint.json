@@ -13,7 +13,7 @@
             "hash": "ada373ef1f1508f725fb10c503d71702b81a560138f6e2369cf52ff181c6f4c9"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\oxlint-*.exe\" \"$dir\\oxlint.exe\"",
+    "pre_install": "Get-Item \"$dir\\oxlint-*.exe\" | Rename-Item -NewName \"$dir\\oxlint.exe\"",
     "bin": "oxlint.exe",
     "checkver": {
         "url": "https://api.github.com/repositories/599431918/releases",
