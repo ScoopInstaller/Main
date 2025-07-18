@@ -1,31 +1,24 @@
 {
-    "version": "0.133.1",
+    "version": "6.0.1",
     "description": "A command line CSV data-wrangling toolkit",
-    "homepage": "https://github.com/jqnatividad/qsv",
+    "homepage": "https://qsv.dathere.com",
     "license": "Unlicense|MIT",
+    "notes": "Only the full featured \"qsv\" build is included",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jqnatividad/qsv/releases/download/0.133.1/qsv-0.133.1-x86_64-pc-windows-msvc.zip",
-            "hash": "686174efb57f2dbeca9e7da7aa50ea0802a323a16fc503c044b04eb8ccea7733"
-        },
-        "32bit": {
-            "url": "https://github.com/jqnatividad/qsv/releases/download/0.133.1/qsv-0.133.1-i686-pc-windows-msvc.zip",
-            "hash": "4f4036028b5e1bcdd4cefb7db5036d5bec49922d2cc8a1a71ce76122f12b85b9"
+            "url": "https://github.com/dathere/qsv/releases/download/6.0.1/qsv-6.0.1-x86_64-pc-windows-msvc.zip",
+            "hash": "3c9612c4d5750fda125b594a30ad832e0e4da24d7b942cb677dbd7ef4363c0d3"
         }
     },
-    "bin": [
-        "qsv.exe",
-        "qsvdp.exe",
-        "qsvlite.exe"
-    ],
-    "checkver": "github",
+    "pre_install": "Get-ChildItem -Path \"$dir\" -Exclude README,qsv.exe | Remove-Item -Force",
+    "bin": "qsv.exe",
+    "checkver": {
+        "github": "https://github.com/dathere/qsv"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/jqnatividad/qsv/releases/download/$version/qsv-$version-x86_64-pc-windows-msvc.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/jqnatividad/qsv/releases/download/$version/qsv-$version-i686-pc-windows-msvc.zip"
+                "url": "https://github.com/dathere/qsv/releases/download/$version/qsv-$version-x86_64-pc-windows-msvc.zip"
             }
         }
     }
