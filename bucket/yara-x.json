@@ -1,0 +1,28 @@
+{
+    "version": "1.4.0",
+    "description": "A rewrite of YARA in Rust.",
+    "homepage": "https://virustotal.github.io/yara-x/",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/VirusTotal/yara-x/releases/download/v1.4.0/yara-x-v1.4.0-x86_64-pc-windows-msvc.zip",
+            "hash": "3e219fb3cdb9eb1c5f6ce4dd18460dc590a1e8fd07674aed4e0887bdf7bf11cf",
+            "bin": [
+                [
+                    "yr.exe",
+                    "yr"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/VirusTotal/yara-x"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/VirusTotal/yara-x/releases/download/v$version/yara-x-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
