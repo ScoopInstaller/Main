@@ -11,6 +11,19 @@
         }
     },
     "bin": "fnm.exe",
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        ('{0}\\fnm_multishells' -f $env:LOCALAPPDATA),",
+        "        ('{0}\\fnm' -f $env:APPDATA)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if (Test-Path -Path $_ -PathType 'Container') {",
+        "            $null = Remove-Item -Path $_ -Recurse -Force",
+        "        }",
+        "    }",
+        "}"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
