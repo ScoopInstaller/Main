@@ -1,0 +1,22 @@
+{
+    "version": "1.8.3",
+    "description": "Argo Rollouts kubectl plugin",
+    "homepage": "https://github.com/argoproj/argo-rollouts",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/argoproj/argo-rollouts/releases/download/v1.8.3/kubectl-argo-rollouts-windows-amd64",
+            "hash": "b02566c538b0d8ec564544e5899795e4e4136adfecbc8d467c5dce74b102c697"
+        }
+    },
+    "pre_install": "if ($architecture -eq '64bit') { Rename-Item \"$dir\\kubectl-argo-rollouts-windows-amd64\" \"$dir\\kubectl-argo-rollouts.exe\" }",
+    "bin": "kubectl-argo-rollouts.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/argoproj/argo-rollouts/releases/download/v$version/kubectl-argo-rollouts-windows-amd64"
+            }
+        }
+    }
+}
