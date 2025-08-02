@@ -1,0 +1,35 @@
+{
+    "version": "2.7.1",
+    "description": "a stream-oriented XML parser library written in C",
+    "homepage": "https://libexpat.github.io/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/libexpat/libexpat/releases/download/R_2_7_1/expat-win64bin-2.7.1.zip",
+            "hash": "73a2441bc4dcd6230827282eb6cf2927b88eec17d07e20ff582849b372095b8f"
+        },
+        "32bit": {
+            "url": "https://github.com/libexpat/libexpat/releases/download/R_2_7_1/expat-win32bin-2.7.1.zip",
+            "hash": "7266af1a21d5645d06433763c6bcf8510557f1c41460baa2cc6687490d74138b"
+        }
+    },
+    "env_set": {
+        "EXPAT_INCLUDE_DIR": "$dir\\Source\\lib",
+        "EXPAT_LIBRARY": "$dir\\Bin"
+    },
+    "bin": "Bin/xmlwf.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/80314213/releases/latest",
+        "jsonpath": "$.name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/libexpat/libexpat/releases/download/R_$underscoreVersion/expat-win64bin-$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/libexpat/libexpat/releases/download/R_$underscoreVersion/expat-win32bin-$version.zip"
+            }
+        }
+    }
+}
