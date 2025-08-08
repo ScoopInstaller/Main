@@ -1,0 +1,28 @@
+{
+    "version": "1.4.2",
+    "description": "A next-generation continuous delivery and application lifecycle orchestration platform for Kubernetes. (CLI)",
+    "homepage": "https://github.com/akuity/kargo",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/akuity/kargo/releases/download/v1.4.2/kargo-windows-amd64.exe#/kargo.exe",
+            "hash": "faf3b9a74a1c5a95426c34c354e0227c608b79948df8b2ab4deb26200bad9187"
+        },
+        "arm64": {
+            "url": "https://github.com/akuity/kargo/releases/download/v1.4.2/kargo-windows-arm64.exe#/kargo.exe",
+            "hash": "22f7063807d63b81c2518a7401092080f048e4ba9e12ced60166f76487da8203"
+        }
+    },
+    "bin": "kargo.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/akuity/kargo/releases/download/v$version/kargo-windows-amd64.exe#/kargo.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/akuity/kargo/releases/download/v$version/kargo-windows-arm64.exe#/kargo.exe"
+            }
+        }
+    }
+}
