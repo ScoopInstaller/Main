@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://qemu.weilnetz.de/w64/2025/qemu-w64-setup-20250422.exe#/dl.7z",
             "hash": "sha512:1db9a723e241547a0c63fddbc52dca2d39c3c7d4e0c205019c931d33e2f9e8cc476522b4d3303e8586e67c58ae757a594911cf511aa21bacea7d4f2e56f99e77"
+        },
+        "arm64": {
+            "url": "https://qemu.weilnetz.de/aarch64/2025/qemu-arm-setup-20250422.exe#/dl.7z",
+            "hash": "sha512:8f211390fa3423ce7d59d3cdccca0b067946021ef35c0faf44bf2d8c9661d87d05331873699ca9195eb9e04e8cfdbfe1a80dcdf2aa595fb26f57e51209ffa55a"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\qemu-uninstall.exe\" -Force -Recurse",
@@ -15,11 +19,17 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z"
+                "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/qemu-w64-setup-$matchYear$matchMonth$matchDay.sha512"
+                }
+            },
+            "arm64": {
+                "url": "https://qemu.weilnetz.de/aarch64/$matchYear/qemu-arm-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/qemu-arm-setup-$matchYear$matchMonth$matchDay.sha512"
+                }
             }
-        },
-        "hash": {
-            "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.sha512"
         }
     }
 }
