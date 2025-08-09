@@ -1,0 +1,21 @@
+{
+    "version": "3.0.1",
+    "description": "This free RAM cleaner uses native Windows features to optimize memory areas. It's a compact, portable, and smart application.",
+    "homepage": "https://github.com/IgorMundstein/WinMemoryCleaner",
+    "license": "GPL-3.0",
+    "url": "https://github.com/IgorMundstein/WinMemoryCleaner/releases/download/3.0.1/WinMemoryCleaner.exe",
+    "hash": "0bc48a12a717d38310717bda8ed445f192f136b36430e2ac506c90a651858015",
+    "bin": "WinMemoryCleaner.exe",
+    "shortcuts": [
+        [
+            "WinMemoryCleaner.exe",
+            "WinMemoryCleaner"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/IgorMundstein/WinMemoryCleaner/releases/download/v$version/WinMemoryCleaner.exe"
+    },
+    "pre_update": "stop-process -Name 'WinMemoryCleaner' -Force -ErrorAction SilentlyContinue",
+    "post_update": "start-process 'WinMemoryCleaner'"
+}
