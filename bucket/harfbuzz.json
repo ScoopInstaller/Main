@@ -6,15 +6,17 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/harfbuzz/harfbuzz/releases/download/11.3.3/harfbuzz-win64-11.3.3.zip",
-            "hash": "d6c6d740b7c82d6725f7c21f66627aaa1aa254daf6debabd0268c6924649919e",
-            "extract_dir": "harfbuzz-win64"
+            "hash": "d6c6d740b7c82d6725f7c21f66627aaa1aa254daf6debabd0268c6924649919e"
         },
         "32bit": {
             "url": "https://github.com/harfbuzz/harfbuzz/releases/download/11.3.3/harfbuzz-win32-11.3.3.zip",
-            "hash": "58c361a48595f3ea5f1c34c2c2fe46326019cf8633dfcca512f90cea46792a1d",
-            "extract_dir": "harfbuzz-win32"
+            "hash": "58c361a48595f3ea5f1c34c2c2fe46326019cf8633dfcca512f90cea46792a1d"
         }
     },
+    "pre_install": [
+        "$innerdir = if ($architecture -eq '32bit') { 'harfbuzz-win32' } else { 'harfbuzz-win64' }",
+        "Expand-ZipArchive -Path \"$dir\\$innerdir.zip\" -DestinationPath \"$dir\" -ExtractDir $innerdir -Removal"
+    ],
     "bin": [
         "hb-shape.exe",
         "hb-subset.exe",
