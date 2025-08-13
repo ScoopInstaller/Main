@@ -5,7 +5,7 @@
     "license": "GPL-3.0-only",
     "notes": [
         "Don't forget to add \"fnm env --use-on-cd | Out-String | Invoke-Expression\" to your powershell profile.",
-        "The FNM_DIR has been set and persisted by Scoop since v1.38.1.",
+        "The FNM_DIR environment variable has been set and the data persisted by Scoop since v1.38.1.",
         "* Before: $env:APPDATA\\fnm",
         "* After: $persist_dir\\fnm"
     ],
@@ -15,6 +15,7 @@
             "hash": "377796e8f2f51eb8b5de8983974caa8922b83c167197b68b33962775703ad4a0"
         }
     },
+    "post_install": "[System.Environment]::SetEnvironmentVariable('FNM_DIR', $dir, 'Process')",
     "env_set": {
         "FNM_DIR": "$dir"
     },
@@ -42,8 +43,8 @@
         "    }.ForEach{",
         "        [System.Environment]::SetEnvironmentVariable(",
         "            $_.'Name',",
-        "            $EnvScope,",
-        "            $null",
+        "            $null,",
+        "            $EnvScope",
         "        )",
         "    }",
         "}"
