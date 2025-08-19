@@ -1,0 +1,32 @@
+{
+    "version": "0.3.16",
+    "description": "Manage Procfile-based applications",
+    "homepage": "https://github.com/mattn/goreman",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mattn/goreman/releases/download/v0.3.16/goreman_v0.3.16_windows_amd64.zip",
+            "hash": "9b3f77db0b1004d721668f415503aa8fbc369e311f0f069e6adf0471fe9d2efa",
+            "extract_dir": "goreman_v0.3.16_windows_amd64"
+        },
+        "arm64": {
+            "url": "https://github.com/mattn/goreman/releases/download/v0.3.16/goreman_v0.3.16_windows_arm64.zip",
+            "hash": "5264903149bd304d1eefd2a9633ef59f8e3fa6aef4c8111120477425224b2018",
+            "extract_dir": "goreman_v0.3.16_windows_arm64"
+        }
+    },
+    "bin": "goreman.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mattn/goreman/releases/download/v$version/goreman_v$version_windows_amd64.zip",
+                "extract_dir": "goreman_v$version_windows_amd64"
+            },
+            "arm64": {
+                "url": "https://github.com/mattn/goreman/releases/download/v$version/goreman_v$version_windows_arm64.zip",
+                "extract_dir": "goreman_v$version_windows_arm64"
+            }
+        }
+    }
+}
