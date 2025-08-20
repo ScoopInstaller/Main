@@ -1,21 +1,23 @@
 {
-    "version": "1.8.2",
+    "version": "1.8.1",
     "description": "A tool to validate the syntax of configuration files",
     "homepage": "https://boeing.github.io/config-file-validator/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Boeing/config-file-validator/releases/download/v1.8.2/validator-v1.8.2-windows-amd64.zip",
-            "hash": "md5:cc9882d2c66e7f96ec38f3fc8a82996a"
+            "url": "https://github.com/Boeing/config-file-validator/releases/download/v1.8.1/validator-v1.8.1-windows-amd64.zip",
+            "hash": "f6b004eda4507221a77a862cd78a640cd6cc8e658cf5464d6310c4fe60df442a"
         },
         "32bit": {
-            "url": "https://github.com/Boeing/config-file-validator/releases/download/v1.8.2/validator-v1.8.2-windows-386.zip",
-            "hash": "md5:12fb6f1481d6265d1652cf765f67a8ad"
+            "url": "https://github.com/Boeing/config-file-validator/releases/download/v1.8.1/validator-v1.8.1-windows-386.zip",
+            "hash": "345831abb6ca33a7088265407927d9b41c6b0919966a1634286072ed43eb8daa"
         }
     },
     "bin": "validator.exe",
     "checkver": {
-        "github": "https://github.com/Boeing/config-file-validator"
+        "url": "https://api.github.com/repos/Boeing/config-file-validator/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "(?:v|V)?([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -25,9 +27,6 @@
             "32bit": {
                 "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$version-windows-386.zip"
             }
-        },
-        "hash": {
-            "url": "$url.md5"
         }
     }
 }
