@@ -1,0 +1,30 @@
+{
+    "version": "0.3.4",
+    "description": "Universal file conversor for multimedia files (audio, video, pdf, docs, etc)",
+    "homepage": "https://github.com/andre-romano/file_conversor",
+    "license": "Apache-2.0",
+    "depends": [],
+    "url": "https://github.com/andre-romano/file_conversor/releases/download/v0.3.4/file_conversor-v0.3.4-Win_x64-Installer.exe",
+    "hash": "f120ec6197107600bc9973b690f58907d231399ecb4b81f94e28bc23f496bd07",
+    "bin": "file_conversor.exe",
+    "pre_install": [
+        "$exePath = Get-ChildItem -Path \"$dir\" -Filter *-Installer.exe  | Select-Object -ExpandProperty FullName",
+        "Start-Process -FilePath \"$exePath\" -ArgumentList \"/DIR=$dir\", \"/SUPPRESSMSGBOXES\", \"/VERYSILENT\", \"/NORESTART\", \"/SP-\" -Wait",
+        "if (!(Test-Path \"$dir\\file_conversor.exe\")) {throw \"Install failed: executable file_conversor.exe not found\"}",
+        "Remove-Item -Path \"$exePath\""
+    ],
+    "pre_uninstall": [
+        "$exePath = Get-ChildItem -Path \"$dir\" -Filter unins000.exe  | Select-Object -ExpandProperty FullName",
+        "Start-Process -FilePath \"$exePath\" -ArgumentList \"/SUPPRESSMSGBOXES\", \"/VERYSILENT\", \"/NORESTART\", \"/SP-\" -Wait",
+        "if (Test-Path \"$dir\\file_conversor.exe\") {throw \"Uninstall failed: executable still exists\"}"
+    ],
+    "checkver": {
+        "github": "https://github.com/andre-romano/file_conversor"
+    },
+    "autoupdate": {
+        "url": "https://github.com/andre-romano/file_conversor/releases/download/v$version/file_conversor-v$version-Win_x64-Installer.exe",
+        "hash": {
+            "url": "https://github.com/andre-romano/file_conversor/releases/download/v$version/file_conversor-v$version-Win_x64-Installer.sha256"
+        }
+    }
+}
