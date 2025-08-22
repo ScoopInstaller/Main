@@ -1,0 +1,34 @@
+{
+    "version": "0.13.22",
+    "description": "A brand-new language server for Typst",
+    "homepage": "https://github.com/Myriad-Dreamin/tinymist",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.13.22/tinymist-x86_64-pc-windows-msvc.zip",
+            "hash": "137c5b117a82b91de7f10c97e0f68e8110434c0b6f850ad326fb3e59e003bb82"
+        },
+        "arm64": {
+            "url": "https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.13.22/tinymist-aarch64-pc-windows-msvc.zip",
+            "hash": "b578d8cafc6bcd58c876c290fb1f097308ce25351bbb1605f23d16fdf627423d"
+        }
+    },
+    "bin": "tinymist.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "arm64": {
+                "url": "https://github.com/Myriad-Dreamin/tinymist/releases/download/v$version/tinymist-aarch64-pc-windows-msvc.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/Myriad-Dreamin/tinymist/releases/download/v$version/tinymist-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256.sum"
+        }
+    }
+}
