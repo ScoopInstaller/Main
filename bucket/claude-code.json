@@ -1,5 +1,5 @@
 {
-    "version": "1.0.107",
+"version": "1.0.107",
     "description": "Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.",
     "homepage": "https://www.anthropic.com/claude-code",
     "license": {
@@ -36,14 +36,18 @@
         "}"
     ],
     "checkver": {
-        "jsonpath": "$.version",
-        "url": "https://registry.npmjs.org/@anthropic-ai/claude-code/latest"
+        "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/stable",
+        "regex": "(.*)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/win32-x64/claude.exe"
             }
+        },
+        "hash": {
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/manifest.json",
+            "jsonpath": "$.platforms['win32-x64'].checksum"
         }
     }
 }
