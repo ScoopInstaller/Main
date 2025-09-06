@@ -1,0 +1,32 @@
+{
+    "version": "3.1.0",
+    "description": "DSC since v3 is an open source command line application that abstracts the management of software components declaratively and idempotently.",
+    "homepage": "https://github.com/PowerShell/dsc",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PowerShell/DSC/releases/download/v3.1.0/DSC-3.1.0-x86_64-pc-windows-msvc.zip",
+            "hash": "78bb454040c1838a2ad62cfc3827c1cbc3d4eda0f60f5ef65c85b8c3472a0963"
+        },
+        "arm64": {
+            "url": "https://github.com/PowerShell/DSC/releases/download/v3.1.0/DSC-3.1.0-aarch64-pc-windows-msvc.zip",
+            "hash": "c7bbc59d5b9baa2aef72d58565fd2651091cda364a6e15012072819850059d97"
+        }
+    },
+    "bin": "dsc.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PowerShell/DSC/releases/download/v$version/DSC-$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/PowerShell/DSC/releases/download/v$version/DSC-$version-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/PowerShell/DSC/releases/tag/v$version",
+            "regex": "(?s)$basename.*?$sha256"
+        }
+    }
+}
