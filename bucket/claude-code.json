@@ -1,20 +1,37 @@
 {
-    "version": "1.0.107",
+    "version": "1.0.108",
     "description": "An agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows.",
     "homepage": "https://www.anthropic.com/claude-code",
     "license": {
         "identifier": "Proprietary",
         "url": "https://www.anthropic.com/legal/commercial-terms"
     },
+    "suggest": {
+        "git": "main/git"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/1.0.107/win32-x64/claude.exe",
-            "hash": "1f3e0a13f45ffb6b96b688f47766b7be8a8e7335d8e38a0677ccd7dee7d6f5b4"
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/1.0.108/win32-x64/claude.exe",
+            "hash": "94345a76febd94108beb3b1023eab12993359f2855d77b0abe51e2f79731b779"
         }
     },
-    "env_set": {
-        "CLAUDE_CODE_GIT_BASH_PATH": "$scoopdir\\shims\\bash.exe"
-    },
+    "post_install": [
+        "$GitBashPath = [string] '{0}\\shims\\bash.exe' -f $scoopdir",
+        "$EnvVarName = [string] 'CLAUDE_CODE_GIT_BASH_PATH'",
+        "if (",
+        "    [System.IO.File]::Exists($GitBashPath) -and",
+        "    [string]::IsNullOrWhiteSpace(([System.Environment]::GetEnvironmentVariable($EnvVarName, 'User')))",
+        ") {",
+        "    'User','Process' | ForEach-Object -Process {",
+        "        [System.Environment]::SetEnvironmentVariable($EnvVarName, $GitBashPath, $_)",
+        "    }",
+        "}",
+        "if (",
+        "    [string]::IsNullOrWhiteSpace(([System.Environment]::GetEnvironmentVariable($EnvVarName, 'User')))",
+        ") {",
+        "    info ('Claude Code requires environment variable \"{0}\" to be set to git bash.' -f $EnvVarName)",
+        "}"
+    ],
     "bin": "claude.exe",
     "shortcuts": [
         [
@@ -23,6 +40,16 @@
         ]
     ],
     "post_uninstall": [
+        "# Clean up environment variable if set to git installed by Scoop",
+        "$GitBashPath = [string] '{0}\\shims\\bash.exe' -f $scoopdir",
+        "$EnvVarName = [string] 'CLAUDE_CODE_GIT_BASH_PATH'",
+        "$Scopes = [string[]]('Process', 'User')",
+        "foreach ($Scope in $Scopes) {",
+        "    if ([System.Environment]::GetEnvironmentVariable($EnvVarName, $Scope) -eq $GitBashPath) {",
+        "        [System.Environment]::SetEnvironmentVariable($EnvVarName, $null, $Scope)",
+        "    }",
+        "}",
+        "# Purge",
         "if ($purge) {",
         "    $Directories = [string[]](",
         "        [System.IO.Path]::Combine($env:LOCALAPPDATA,'claude-cli-nodejs'),",
