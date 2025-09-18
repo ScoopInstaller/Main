@@ -5,23 +5,21 @@
     "license": "https://itefix.net/simplified-bsd-license",
     "architecture": {
         "64bit": {
-            "url": "https://itefix.net/download/free/cwrsync_6.4.5_x64_free.zip",
-            "hash": "b9d7ca3fa4b95e13a89000d7ddda8701441264721f64d262d849f6b051ac97be",
+            "url": "https://github.com/itefixnet/download/releases/download/cwrsync-client-v6.4.5/cwrsync_6.4.5_x64_free.zip",
+            "hash": "2fb0c9d1932c51d98c2ea0f09a581bd093b8a83741f3f933a263ada29007a67a",
             "extract_dir": "cwrsync_6.4.5_x64_free"
         }
     },
     "bin": "bin\\rsync.exe",
     "checkver": {
-        "url": "https://itefix.net/cwrsync/client/downloads",
-        "regex": "cwrsync_([\\d.]+)_x64_free\\.zip"
+        "url": "https://api.github.com/repos/itefixnet/download/releases",
+        "jsonpath": "$[?(@.tag_name =~ /cwrsync-client-v[\\d.]+/)].tag_name",
+        "regex": "cwrsync-client-v(?<version>[\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://itefix.net/download/free/cwrsync_$version_x64_free.zip",
-                "hash": {
-                    "url": "https://verify.itefix.net/$basename.sha256.asc"
-                },
+                "url": "https://github.com/itefixnet/download/releases/download/cwrsync-client-v$version/cwrsync_$version_x64_free.zip",
                 "extract_dir": "cwrsync_$version_x64_free"
             }
         }
