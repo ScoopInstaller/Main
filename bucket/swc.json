@@ -5,34 +5,39 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-x64-msvc.exe",
+            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-x64-msvc.exe#/swc.exe",
             "hash": "7f5a4059391f059b64e7eef65bf97b04842e9943cfd688c7d671d8388185f784"
         },
         "32bit": {
-            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-ia32-msvc.exe",
+            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-ia32-msvc.exe#/swc.exe",
             "hash": "1f23986b58161c91291a02aaa81f44a24f1af7674b0d0c5bb507e1f0b7958842"
         },
         "arm64": {
-            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-arm64-msvc.exe",
+            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-arm64-msvc.exe#/swc.exe",
             "hash": "501f5a712519a7c2b93b95604b59408cc78024cc8295999012d61a970195f31e"
         }
     },
-    "pre_install": "Get-ChildItem -Path \"$dir\" -Filter '*swc*' | Rename-Item -NewName 'swc.exe' -Force",
     "bin": "swc.exe",
     "checkver": {
-        "github": "https://github.com/swc-project/swc"
+        "url": "https://api.github.com/repositories/115110181/releases/latest",
+        "jsonpath": "$.assets[?(@.name =~ /swc-win32.+(?:exe)$/i)].browser_download_url",
+        "regex": "download/v?([\\d._-]+)/(?<archarm64>[^\"/]+arm64[^\"/]+).+?(?<archx32>[^\"/]+32[^\"/]+).+?(?<archx64>[^\"/]+x64[^\"/]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-x64-msvc.exe"
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/$matchArchx64#/swc.exe"
             },
             "32bit": {
-                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-ia32-msvc.exe"
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/$matchArchx32#/swc.exe"
             },
             "arm64": {
-                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-arm64-msvc.exe"
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/$matchArcharm64#/swc.exe"
             }
+        },
+        "hash": {
+            "url": "https://api.github.com/repositories/115110181/releases/latest",
+            "jsonpath": "$.assets[?(@.name == '$basename')].digest"
         }
     }
 }
