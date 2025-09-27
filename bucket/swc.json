@@ -1,27 +1,27 @@
 {
-    "version": "1.13.19",
+    "version": "1.13.20",
     "description": "A super-fast TypeScript / JavaScript compiler written in Rust",
     "homepage": "https://swc.rs",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-x64-msvc.exe#/swc.exe",
-            "hash": "7f5a4059391f059b64e7eef65bf97b04842e9943cfd688c7d671d8388185f784"
+            "url": "https://github.com/swc-project/swc/releases/download/v1.13.20/swc-win32-x64-msvc.exe#/swc.exe",
+            "hash": "0d6d483a4aa830ca1b7d73b1f090de8700a3942fbd3de7295816c747c3e117ab"
         },
         "32bit": {
-            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-ia32-msvc.exe#/swc.exe",
-            "hash": "1f23986b58161c91291a02aaa81f44a24f1af7674b0d0c5bb507e1f0b7958842"
+            "url": "https://github.com/swc-project/swc/releases/download/v1.13.20/swc-win32-ia32-msvc.exe#/swc.exe",
+            "hash": "0fca1d4c81cdf3b8b47984ff942ba2b7bf43b3cad8358d91ed9283cc4b9d4824"
         },
         "arm64": {
-            "url": "https://github.com/swc-project/swc/releases/download/v1.13.19/swc-win32-arm64-msvc.exe#/swc.exe",
-            "hash": "501f5a712519a7c2b93b95604b59408cc78024cc8295999012d61a970195f31e"
+            "url": "https://github.com/swc-project/swc/releases/download/v1.13.20/swc-win32-arm64-msvc.exe#/swc.exe",
+            "hash": "2cb8ce03cba8b2b43e9b9adc5220b3382911bef9b6d55ef807da7a9a73b41554"
         }
     },
     "bin": "swc.exe",
     "checkver": {
         "url": "https://api.github.com/repositories/115110181/releases/latest",
         "jsonpath": "$.assets[?(@.name =~ /swc-win32.+(?:exe)$/i)].browser_download_url",
-        "regex": "download/v?([\\d._-]+)/(?<archarm64>[^\"/]+arm64[^\"/]+).+?(?<archx32>[^\"/]+32[^\"/]+).+?(?<archx64>[^\"/]+x64[^\"/]+)"
+        "regex": "download/v?([\\d._-]+)/(?<archarm64>[^\"/]+arm64[^\"/]+).+?(?<archx32>[^\"/]+(?:x|ia)32[^\"/]+).+?(?<archx64>[^\"/]+x64[^\"/]+)"
     },
     "autoupdate": {
         "architecture": {
