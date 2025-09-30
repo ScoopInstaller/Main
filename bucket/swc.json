@@ -19,25 +19,19 @@
     },
     "bin": "swc.exe",
     "checkver": {
-        "url": "https://api.github.com/repositories/115110181/releases/latest",
-        "jsonpath": "$.assets[?(@.name =~ /swc-win32.+(?:exe)$/i)].browser_download_url",
-        "regex": "download/v?([\\d._-]+)/(?<archarm64>[^\"/]+arm64[^\"/]+).+?(?<archx32>[^\"/]+(?:x|ia)32[^\"/]+).+?(?<archx64>[^\"/]+x64[^\"/]+)"
+        "github": "https://github.com/swc-project/swc"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/swc-project/swc/releases/download/v$version/$matchArchx64#/swc.exe"
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-x64-msvc.exe#/swc.exe"
             },
             "32bit": {
-                "url": "https://github.com/swc-project/swc/releases/download/v$version/$matchArchx32#/swc.exe"
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-ia32-msvc.exe#/swc.exe"
             },
             "arm64": {
-                "url": "https://github.com/swc-project/swc/releases/download/v$version/$matchArcharm64#/swc.exe"
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-arm64-msvc.exe#/swc.exe"
             }
-        },
-        "hash": {
-            "url": "https://api.github.com/repositories/115110181/releases/latest",
-            "jsonpath": "$.assets[?(@.name == '$basename')].digest"
         }
     }
 }
