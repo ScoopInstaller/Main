@@ -3,26 +3,21 @@
     "description": "Object-relational database management system based on POSTGRES.",
     "homepage": "https://www.postgresql.org",
     "license": "PostgreSQL",
-    "depends": "7zip19.00-helper",
     "notes": [
-        "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
-        "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
+        "Run 'pg_ctl start' to start the database and 'pg_ctl stop' to stop it.",
+        "Register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
         "Default superuser login: postgres, password: <blank>"
     ],
     "architecture": {
         "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-18.0-1-windows-x64-binaries.zip#/dl.zip_",
+            "url": "https://get.enterprisedb.com/postgresql/postgresql-18.0-1-windows-x64-binaries.zip",
             "hash": "4a1ea6e6ecbde1747103c7b5bc0674cc415b9aa8ef7b7bad3a4ee38c37c051b1"
         }
     },
-    "pre_install": [
-        "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"$dir\\dl.zip_\", \"-o$dir\") | Out-Null",
-        "Move-Item \"$dir\\pgsql\\*\" \"$dir\\\"",
-        "Remove-Item \"$dir\\pgsql\", \"$dir\\dl.zip_\" -Force -Recurse"
-    ],
+    "extract_dir": "pgsql",
     "post_install": [
         "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
-        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList @('--username=postgres', '--encoding=UTF8', '--locale=en', '--lc-collate=C') | Out-Null",
+        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList @('--username=postgres', '--encoding=UTF8', '--locale=C') | Out-Null",
         "}"
     ],
     "shortcuts": [
@@ -39,13 +34,13 @@
     },
     "persist": "data",
     "checkver": {
-        "url": "https://www.postgresql.org/ftp/source/",
-        "regex": "v(?<version>[\\d.]+)"
+        "url": "https://www.enterprisedb.com/downloads/postgres-postgresql-downloads",
+        "regex": ">(?<version>\\d+\\.[\\d.]+)<"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip#/dl.zip_"
+                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
             }
         }
     }
