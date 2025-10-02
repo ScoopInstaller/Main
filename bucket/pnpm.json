@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/pnpm/pnpm/releases/download/v10.18.0/pnpm-win-x64.exe#/pnpm.exe",
             "hash": "e2efc41c02da69eaf5e871df7152d115418736c155e4bd2d4ec5e5365b042ede"
+        },
+        "arm64": {
+            "url": "https://github.com/pnpm/pnpm/releases/download/v10.18.0/pnpm-win-arm64.exe#/pnpm.exe",
+            "hash": "750f6d2bbe7a9753394d949b83f70489860fbc6d8c91c76327a21cf7d4a4d453"
         }
     },
     "bin": [
@@ -38,6 +42,13 @@
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-arm64.exe#/pnpm.exe"
+            }
+        }
     }
 }
