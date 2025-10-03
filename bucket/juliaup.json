@@ -3,6 +3,10 @@
     "description": "Julia installer and version multiplexer",
     "homepage": "https://github.com/JuliaLang/juliaup",
     "license": "MIT",
+    "notes": [
+        "The julia depot has now been persisted.",
+        "If you have files in '$env:USERPROFILE\\.julia', move them to '$persist_dir\\.julia'"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v1.18.0-x64.msi",
@@ -19,6 +23,11 @@
         "juliaup.exe",
         "julia.exe"
     ],
+    "env_set": {
+        "JULIA_DEPOT_PATH": "$persist_dir\\.julia;",
+        "JULIAUP_DEPOT_PATH": "$persist_dir\\.julia"
+    },
+    "persist": ".julia",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
