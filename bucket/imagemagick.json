@@ -3,27 +3,6 @@
     "description": "Create, edit, compose, and convert 200+ bitmap image formats.",
     "homepage": "https://imagemagick.org/",
     "license": "ImageMagick",
-    "architecture": {
-        "64bit": {
-            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.2-5-Q16-HDRI-x64-dll.exe",
-            "hash": "02e69bc0848b6eca50264ccfc5bb6d2024e1f9a0913a196244158bf0f01a1b29"
-        },
-        "32bit": {
-            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.2-5-Q16-HDRI-x86-dll.exe",
-            "hash": "0afe175b85a1248fc84c1ef7ec48ac682acaa7ca7c7a072611664e408cb6c642"
-        },
-        "arm64": {
-            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.2-5-Q16-HDRI-arm64-dll.exe",
-            "hash": "1779e3574b2c1ff7a6867be1979c4a78f295e8c4f1c0b60e919458a4181874c2"
-        }
-    },
-    "innosetup": true,
-    "env_set": {
-        "MAGICK_HOME": "$dir",
-        "MAGICK_CONFIGURE_PATH": "$dir",
-        "MAGICK_CODER_MODULE_PATH": "$dir\\modules\\coders"
-    },
-    "env_add_path": ".",
     "notes": [
         "ImageMagick requires Ghostscript to handle PDF files properly.",
         "You can install it by: scoop install ghostscript",
@@ -31,26 +10,42 @@
         "'convert.exe' is deprecated in v7 (it also conflicts with the builtin Windows 'convert' utility).",
         "Use 'magick convert ...' instead."
     ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ImageMagick/ImageMagick/releases/download/7.1.2-5/ImageMagick-7.1.2-5-Q16-HDRI-x64-dll.exe",
+            "hash": "da6c3b614d0881898f8a61570397a77b573a0386a198488defac77b62e4d5ba1"
+        },
+        "32bit": {
+            "url": "https://github.com/ImageMagick/ImageMagick/releases/download/7.1.2-5/ImageMagick-7.1.2-5-Q16-HDRI-x86-dll.exe",
+            "hash": "5debcd338ed21b0465bfea684a094d277cc8d9897316c3ee2ca13ca4abf2bb66"
+        },
+        "arm64": {
+            "url": "https://github.com/ImageMagick/ImageMagick/releases/download/7.1.2-5/ImageMagick-7.1.2-5-Q16-HDRI-arm64-dll.exe",
+            "hash": "688cf6b117d17c6c182521196afcc9a55c2c8226ff217fba6c1cdd0ddb50f60c"
+        }
+    },
+    "innosetup": true,
+    "env_add_path": ".",
+    "env_set": {
+        "MAGICK_HOME": "$dir",
+        "MAGICK_CONFIGURE_PATH": "$dir",
+        "MAGICK_CODER_MODULE_PATH": "$dir\\modules\\coders"
+    },
     "checkver": {
-        "url": "https://imagemagick.org/archive/binaries/digest.rdf",
-        "reverse": true,
-        "regex": "ImageMagick-([\\d.-]+)-Q16-HDRI-x64-dll\\.exe"
+        "url": "https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest",
+        "jsonpath": "$.tag_name"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-Q16-HDRI-x64-dll.exe"
+                "url": "https://github.com/ImageMagick/ImageMagick/releases/download/$version/ImageMagick-$version-Q16-HDRI-x64-dll.exe"
             },
             "32bit": {
-                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-Q16-HDRI-x86-dll.exe"
+                "url": "https://github.com/ImageMagick/ImageMagick/releases/download/$version/ImageMagick-$version-Q16-HDRI-x86-dll.exe"
             },
             "arm64": {
-                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-Q16-HDRI-arm64-dll.exe"
+                "url": "https://github.com/ImageMagick/ImageMagick/releases/download/$version/ImageMagick-$version-Q16-HDRI-arm64-dll.exe"
             }
-        },
-        "hash": {
-            "mode": "rdf",
-            "url": "https://imagemagick.org/archive/binaries/digest.rdf"
         }
     }
 }
