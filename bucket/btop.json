@@ -9,14 +9,11 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/aristocratos/btop4win/releases/download/v1.0.5/btop4win-x64.zip",
-            "hash": "b2a2c5ba813ca2a834fb1043a390421e4387389cb6e5d837c1c2f77fd521f0bd"
+            "hash": "b2a2c5ba813ca2a834fb1043a390421e4387389cb6e5d837c1c2f77fd521f0bd",
+            "extract_dir": "btop4win-x64"
         }
     },
-    "extract_dir": "btop4win",
-    "pre_install": [
-        "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
-        "if (!(Test-Path \"$persist_dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
-    ],
+    "pre_install": "Rename-Item \"$dir\\btop4win.exe\" btop.exe",
     "persist": [
         "themes",
         "btop.conf"
