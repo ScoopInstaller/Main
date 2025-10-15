@@ -1,0 +1,32 @@
+{
+    "version": "5.8.0",
+    "description": "A completion manager for better and simpler use PowerShell completions.",
+    "homepage": "https://pscompletions.abgox.com/",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/abgox/PSCompletions/blob/main/LICENSE"
+    },
+    "notes": [
+        "Import the module: Import-Module PSCompletions",
+        "Add it to your $Profile to make it permanent."
+    ],
+    "url": "https://cdn.powershellgallery.com/packages/pscompletions.5.8.0.nupkg",
+    "hash": "1e94f2e8528c03e490866fb98c92acb9d20a8bceb4f1a8e28049103b81456308",
+    "pre_install": [
+        "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*Content*.xml\" -Recurse",
+        "if (!(Test-Path \"$persist_dir\\data.json\")) { '{}' | Out-File \"$persist_dir\\data.json\" -Encoding utf8 -Force }"
+    ],
+    "psmodule": {
+        "name": "PSCompletions"
+    },
+    "persist": [
+        "completions",
+        "data.json"
+    ],
+    "checkver": {
+        "github": "https://github.com/abgox/PSCompletions"
+    },
+    "autoupdate": {
+        "url": "https://cdn.powershellgallery.com/packages/pscompletions.$version.nupkg"
+    }
+}
