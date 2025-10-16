@@ -1,0 +1,34 @@
+{
+    "version": "2.0.19",
+    "description": "An agentic coding tool that lives in your terminal",
+    "homepage": "https://claude.com/product/claude-code",
+    "license": "Proprietary",
+    "suggest": {
+        "git": "main/git"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.0.19/win32-x64/claude.exe",
+            "hash": "aca6aa073313b77633415e9a2dbdbb3e51c0605e1ffe09a2d03af9f9ae17d9b9"
+        }
+    },
+    "env_set": {
+        "CLAUDE_CODE_GIT_BASH_PATH": "$env:GIT_INSTALL_ROOT\\bin\\bash.exe"
+    },
+    "bin": "claude.exe",
+    "checkver": {
+        "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/stable",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/win32-x64/claude.exe"
+            }
+        },
+        "hash": {
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/manifest.json",
+            "jsonpath": "$.platforms['win32-x64'].checksum"
+        }
+    }
+}
