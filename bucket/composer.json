@@ -25,9 +25,13 @@
     "bin": "composer.ps1",
     "env_add_path": "home\\vendor\\bin",
     "env_set": {
-        "COMPOSER_HOME": "$persist_dir\\home"
+        "COMPOSER_HOME": "$persist_dir\\home",
+        "COMPOSER_CACHE_DIR": "$persist_dir\\cache"
     },
-    "persist": "home",
+    "persist": [
+        "home",
+        "cache"
+    ],
     "checkver": "Latest: <strong>\\s*([\\d.]+)\\s*</strong>",
     "autoupdate": {
         "url": "https://getcomposer.org/download/$version/composer.phar",
