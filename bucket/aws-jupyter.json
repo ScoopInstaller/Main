@@ -1,0 +1,33 @@
+{
+    "version": "0.4.0",
+    "description": "CLI tool for launching Jupyter Lab instances on AWS EC2 Graviton processors with automatic idle detection and cost optimization",
+    "homepage": "https://github.com/scttfrdmn/aws-jupyter",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/scttfrdmn/aws-jupyter/releases/download/v0.4.0/aws-jupyter_Windows_x86_64.zip",
+            "hash": "424625b4ad19226b258814d49da01597968cef940570a5a2f06d122c64143e14"
+        },
+        "arm64": {
+            "url": "https://github.com/scttfrdmn/aws-jupyter/releases/download/v0.4.0/aws-jupyter_Windows_arm64.zip",
+            "hash": "5817f3e5ccf883df90d61d4559c4d5b0febea6ebaf4e081126fd445480fc6fb9"
+        }
+    },
+    "bin": "aws-jupyter.exe",
+    "checkver": {
+        "github": "https://github.com/scttfrdmn/aws-jupyter"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/scttfrdmn/aws-jupyter/releases/download/v$version/aws-jupyter_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/scttfrdmn/aws-jupyter/releases/download/v$version/aws-jupyter_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
