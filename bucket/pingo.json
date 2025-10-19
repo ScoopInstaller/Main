@@ -1,5 +1,5 @@
 {
-    "version": "1.25.1",
+    "version": "1.25.1-50314",
     "description": "Image optimizer for web",
     "homepage": "https://css-ig.net/pingo",
     "license": {
@@ -10,8 +10,27 @@
     "hash": "50314804953e6dbdc01781e4448296cca3042222d79f9725fccff1a43e04efac",
     "bin": "pingo.exe",
     "checkver": {
-        "url": "https://css-ig.net/pingo",
-        "regex": "v([\\d+.]+)"
+        "script": [
+            "<#",
+            "   Create version with first 5ch of SHA256 checksum,",
+            "   because the author have multiple times updated the ZIP file,",
+            "   without incrementing the version number.",
+            "#>",
+            "# Get stated version from webpage",
+            "$Html = Invoke-RestMethod -Method 'Get' -Uri 'https://css-ig.net/pingo'",
+            "$Version = [string] [regex]::Matches($Html, 'v([\\d+.]+)')[0].'Value'.TrimStart('v')",
+            "# Get SHA256 checksum",
+            "$WebClient = [System.Net.WebClient]::new()",
+            "$Sha256 = [string](",
+            "    (Get-FileHash -InputStream ($WebClient.OpenRead('https://css-ig.net/bin/pingo-win64.zip')) -Algorithm 'SHA256').'Hash'.ToLower()",
+            ")",
+            "if ($null -ne $WebClient) {",
+            "    $WebClient.Dispose()",
+            "}",
+            "# Output stated version with first 5 characters of the SHA256 checksum",
+            "[string]::Format('{0}-{1}', $Version, $Sha256.Substring(0, 5))"
+        ],
+        "regex": "([\\d+.]+-[\\da-f]{5})"
     },
     "autoupdate": {
         "url": "https://css-ig.net/bin/pingo-win64.zip"
