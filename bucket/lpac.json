@@ -1,0 +1,30 @@
+{
+    "version": "2.3.0",
+    "description": "C-based eUICC LPA",
+    "homepage": "https://github.com/estkme-group/lpac",
+    "license": "AGPL-3.0-only",
+     "architecture": {
+        "64bit": {
+            "url": "https://github.com/estkme-group/lpac/releases/download/v2.3.0/lpac-windows-x86_64-mingw.zip",
+            "hash": "4781e8673d19c08c41cd104e8bc59f901e352eb10e8c952bcf2aa199a915ea6f"
+        },
+        "arm64": {
+            "url": "https://github.com/estkme-group/lpac/releases/download/v$version/lpac-windows-arm64-mingw.zip",
+            "hash": "9b0ef205d60b4fbe459459123e38ff7cb8b29b7091b33a62d267947b10d501ad"
+        }
+    },
+    "bin": [
+        "lpac.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/estkme-group/lpac/releases/download/v$version/lpac-windows-x86_64-mingw.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/estkme-group/lpac/releases/download/v$version/lpac-windows-arm64-mingw.zip"
+            }
+        }
+    }
+}
