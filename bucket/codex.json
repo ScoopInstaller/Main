@@ -1,0 +1,47 @@
+{
+    "version": "0.50.0",
+    "description": "OpenAI's Codex AI coding assistant",
+    "homepage": "https://github.com/openai/codex",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/openai/codex/releases/download/rust-v0.50.0/codex-x86_64-pc-windows-msvc.exe.zip",
+            "hash": "41fd1cbca86c79aee1d9c185ba3d32ec9f9a6a418f5b6d99ccb1644e1ed17a5e"
+        },
+        "arm64": {
+            "url": "https://github.com/openai/codex/releases/download/rust-v0.50.0/codex-aarch64-pc-windows-msvc.exe.zip",
+            "hash": "669d300b2b09836329d57442ebd8056e2e60613fbdd223b341c53e6fa876adeb"
+        }
+    },
+    "pre_install": "Rename-Item \"$dir\\codex-*.exe\" \"$dir\\codex.exe\"",
+    "bin": [
+        [
+            "codex.exe",
+            "codex"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/openai/codex/releases",
+        "regex": "rust-v(\\d+\\.\\d+\\.\\d+)(?![^\\d]*alpha|[^\\d]*beta|[^\\d]*rc|[^\\d]*preview)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/openai/codex/releases/download/rust-v$version/codex-x86_64-pc-windows-msvc.exe.zip",
+                "hash": {
+                    "url": "https://api.github.com/repos/openai/codex/releases",
+                    "jsonpath": "$[?(@.tag_name=='rust-v$version')].assets[?(@.name=='codex-x86_64-pc-windows-msvc.exe.zip')].digest",
+                    "regex": "(?<=sha256:)([a-fA-F0-9]{64})"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/openai/codex/releases/download/rust-v$version/codex-aarch64-pc-windows-msvc.exe.zip",
+                "hash": {
+                    "url": "https://api.github.com/repos/openai/codex/releases",
+                    "jsonpath": "$[?(@.tag_name=='rust-v$version')].assets[?(@.name=='codex-aarch64-pc-windows-msvc.exe.zip')].digest",
+                    "regex": "(?<=sha256:)([a-fA-F0-9]{64})"
+                }
+            }
+        }
+    }
+}
