@@ -1,0 +1,21 @@
+{
+    "version":  "7.3.0",
+    "license":  "Apache-2.0",
+    "description": "Aptos is a layer 1 blockchain built to support the widespread use of blockchain through better technology and user experience. (CLI)",
+    "homepage":  "https://github.com/aptos-labs/aptos-core/",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v7.3.0/aptos-cli-7.3.0-Windows-x86_64.zip",
+            "hash": "d20395e6b4cdb07d508f7ff66db0ce0fa19725ce72db4068b4a95f1785535843"
+        }
+    },
+    "bin":  "aptos.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/aptos-labs/aptos-core/releases/tags/aptos-cli-v7.3.0",
+        "jsonpath": "$.tag_name",
+        "regex": "aptos-cli-v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/aptos-labs/aptos-core/releases/download/aptos-cli-v$version/aptos-cli-$version-Windows-x86_64.zip"
+    }
+}
