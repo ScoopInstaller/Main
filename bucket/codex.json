@@ -13,7 +13,7 @@
             "hash": "cd879b170ba827c59a44a530a09fae0d133f146c40dc179c6b52c5455b52c04f"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\codex-*.exe\" \"$dir\\codex.exe\"",
+    "pre_install": "Get-Item \"$dir\\codex-*.exe\" | Rename-Item -NewName \"$dir\\codex.exe\"",
     "bin": [
         [
             "codex.exe",
