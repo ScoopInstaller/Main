@@ -1,12 +1,12 @@
 {
     "version": "11.16.0",
     "description": "Database migration tool that favors simplicity and convention over configuration.",
-    "homepage": "https://flywaydb.org/",
+    "homepage": "https://github.com/flyway/flyway",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/11.16.0/flyway-commandline-11.16.0-windows-x64.zip",
-            "hash": "sha1:0a60fd1a7b311725c14bc2dec67d014fdef8abbc"
+            "url": "https://github.com/flyway/flyway/releases/download/flyway-11.16.0/flyway-commandline-11.16.0-windows-x64.zip",
+            "hash": "sha256:acfee302be049479f8fdba8126753ef34f7f44168b51bf306b29ccef548a00bb"
         }
     },
     "extract_dir": "flyway-11.16.0",
@@ -17,17 +17,14 @@
         "jars"
     ],
     "checkver": {
-        "url": "https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/maven-metadata.xml",
-        "regex": "<release>(\\S+)</release>"
+        "url": "https://github.com/flyway/flyway/releases/latest",
+        "regex": "flyway-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/$version/flyway-commandline-$version-windows-x64.zip"
+                "url": "https://github.com/flyway/flyway/releases/download/flyway-$version/flyway-commandline-$version-windows-x64.zip"
             }
-        },
-        "hash": {
-            "url": "$url.sha1"
         },
         "extract_dir": "flyway-$version"
     }
