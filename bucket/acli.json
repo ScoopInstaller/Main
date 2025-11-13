@@ -1,0 +1,24 @@
+{
+    "version": "1.3.6",
+    "description": "Atlassian CLI - command-line interface for Jira/Confluence/Bitbucket",
+    "homepage": "https://developer.atlassian.com/cloud/acli/",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://acli.atlassian.com/windows/latest/acli_windows_amd64/acli.exe",
+            "hash": "5D5AFB915E4376E93CBBC616943D54F8C13246362EBC6BF9A8450562D66EA583"
+        }
+    },
+    "bin": "acli.exe",
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/atlassian/homebrew-acli/main/Formula/acli.rb",
+        "regex": "version \"([\\d.]+)-stable\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://acli.atlassian.com/windows/latest/acli_windows_amd64/acli.exe"
+            }
+        }
+    }
+}
