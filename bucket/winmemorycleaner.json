@@ -1,0 +1,41 @@
+{
+  "version": "3.0.4",
+  "description": "Portable RAM cleaner using native Windows APIs to release memory.",
+  "homepage": "https://github.com/IgorMundstein/WinMemoryCleaner",
+  "license": {
+    "url": "https://github.com/IgorMundstein/WinMemoryCleaner/blob/main/LICENSE",
+    "identifier": "GPL-3.0-or-later"
+  },
+  "notes": [
+    "Requires administrator privileges (UAC prompt).",
+    "Requires .NET Framework 4.x runtime."
+  ],
+  "architecture": {
+    "64bit": {
+      "hash": "b276eaa5685a6b35fa927a86345637e0cf9b336330869afebf6435a809806bf6",
+      "url": "https://github.com/IgorMundstein/WinMemoryCleaner/releases/download/3.0.4/WinMemoryCleaner.exe"
+    },
+    "32bit": {
+      "hash": "b276eaa5685a6b35fa927a86345637e0cf9b336330869afebf6435a809806bf6",
+      "url": "https://github.com/IgorMundstein/WinMemoryCleaner/releases/download/3.0.4/WinMemoryCleaner.exe"
+    }
+  },
+  "bin": "WinMemoryCleaner.exe",
+  "shortcuts": [
+    [
+      "WinMemoryCleaner.exe",
+      "WinMemoryCleaner"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/IgorMundstein/WinMemoryCleaner/releases/download/$version/WinMemoryCleaner.exe"
+      },
+      "32bit": {
+        "url": "https://github.com/IgorMundstein/WinMemoryCleaner/releases/download/$version/WinMemoryCleaner.exe"
+      }
+    }
+  }
+}
