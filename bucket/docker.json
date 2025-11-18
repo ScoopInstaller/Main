@@ -1,12 +1,12 @@
 {
-    "version": "28.5.2",
+    "version": "29.0.2",
     "description": "Docker CLI & Docker Engine for Windows containers. Docker is an open platform for developing, shipping, and running applications.",
     "homepage": "https://docs.docker.com/engine",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://download.docker.com/win/static/stable/x86_64/docker-28.5.2.zip",
-            "hash": "be76f32e6d92f4d3c64b8eb5e0e86e9597c00eb75ee41b5cc23e7674c5514810"
+            "url": "https://download.docker.com/win/static/stable/x86_64/docker-29.0.2.zip",
+            "hash": "e2d6c27f310c0d0157cb9d41beb0c2d5dd866d3d4d9923524c6e6232b1ae6acd"
         }
     },
     "extract_dir": "docker",
@@ -15,7 +15,8 @@
         "dockerd.exe"
     ],
     "checkver": {
-        "github": "https://github.com/moby/moby"
+        "github": "https://github.com/moby/moby",
+        "regex": "docker-v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
