@@ -11,13 +11,17 @@
     },
     "bin": "k0s.exe",
     "checkver": {
-        "url": "https://github.com/k0sproject/k0s/releases",
-        "regex": "v([\\d.]+\\+k0s[\\d.]+)"
+        "github": "https://github.com/k0sproject/k0s",
+        "regex": "v(\\d+\\.\\d+\\.\\d+\\+k0s\\.\\d+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/k0sproject/k0s/releases/download/v$version/k0s-v$version-amd64.exe#/k0s.exe"
+                "url": "https://github.com/k0sproject/k0s/releases/download/v$version/k0s-v$version-amd64.exe#/k0s.exe",
+                "hash": {
+                    "url": "$baseurl/sha256sums.txt",
+                    "regex": "$sha256\\s\\*k0s-v$version-amd64.exe"
+                }
             }
         }
     }
