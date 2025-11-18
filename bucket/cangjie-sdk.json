@@ -1,0 +1,44 @@
+{
+    "version": "1.0.4",
+    "description": "Cangjie programming language SDK for Windows.",
+    "homepage": "https://cangjie-lang.cn",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-windows-x64-1.0.4.zip&objectKey=691154c8a1061e7e7ef142de#/cangjie-sdk-windows-x64-1.0.4.zip",
+            "hash": "17d5ab1090f9a1419e670b4e15448402e8a5e4a2a9dbc2722290e8734ff514f7"
+        }
+    },
+    "extract_dir": "cangjie",
+    "bin": [
+        "bin\\cjc.exe",
+        "bin\\cjc-frontend.exe"
+    ],
+    "env_set": {
+        "CANGJIE_HOME": "$dir"
+    },
+    "env_add_path": [
+        "bin",
+        "lib\\windows_x86_64_llvm",
+        "runtime\\lib\\windows_x86_64_llvm",
+        "tools\\bin",
+        "tools\\lib"
+    ],
+    "checkver": {
+        "url": "https://csdnimg.cn/release/devpress-cangjie/public/js/chunk/organization/download/version.0562c58e.js",
+        "regex": "cangjie-sdk-windows-x64-([0-9.]+)\\.zip\"\\s*,\\s*url:\"([^\"]+)\"",
+        "replace": "$1"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cangjie-lang.cn$match2#/cangjie-sdk-windows-x64-$match1.zip"
+            }
+        },
+        "hash": {
+            "url": "https://csdnimg.cn/release/devpress-cangjie/public/js/chunk/organization/download/version.0562c58e.js",
+            "find": "cangjie-sdk-windows-x64-$version\\.zip\"\\s*,\\s*url:\"[^\"]+\"[\\s\\S]*?sha:\"([0-9A-Fa-f]{64})\""
+        },
+        "extract_dir": "cangjie"
+    }
+}
