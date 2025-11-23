@@ -11,6 +11,10 @@
         "32bit": {
             "url": "https://mirror.racket-lang.org/installers/9.0/racket-minimal-9.0-i386-win32.exe#/dl.7z",
             "hash": "3f9a624a362ffe2a6a38f079f36f1465e3e313ba2fd20d1b85d8c17dc1ddf2ed"
+        },
+        "arm64": {
+            "url": "https://mirror.racket-lang.org/installers/9.0/racket-minimal-9.0-arm64-win32.exe#/dl.7z",
+            "hash": "aae41337dd1c530d8b7b7d6252b9b2ce05f537af9f62b285ad7eb95d8a8929a8"
         }
     },
     "bin": [
@@ -28,11 +32,14 @@
             },
             "32bit": {
                 "url": "https://mirror.racket-lang.org/installers/$version/racket-minimal-$version-i386-win32.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://mirror.racket-lang.org/installers/$version/racket-minimal-$version-arm64-win32.exe#/dl.7z"
             }
         },
         "hash": {
             "url": "https://download.racket-lang.org/releases/$version/",
-            "regex": "$basename.*?\"checksum\">$sha1</span>"
+            "regex": "$basenameNoExt.*?$sha256"
         }
     }
 }
