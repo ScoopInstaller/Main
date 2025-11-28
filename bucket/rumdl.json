@@ -1,0 +1,26 @@
+{
+    "version": "0.0.183",
+    "description": "High-performance Markdown linter, written in Rust.",
+    "homepage": "https://github.com/rvben/rumdl",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rvben/rumdl/releases/download/v0.0.183/rumdl-v0.0.183-x86_64-pc-windows-msvc.zip",
+            "hash": "1a5b14a40c88d007f1fb6e098f01acbae55463e2e44661319be44a296b7102e0"
+        }
+    },
+    "bin": "rumdl.exe",
+    "checkver": {
+        "github": "https://github.com/rvben/rumdl"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rvben/rumdl/releases/download/v$version/rumdl-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
