@@ -5,26 +5,33 @@
     "license": "BSD-2-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://www.fossil-scm.org/index.html/uv/fossil-w64-2.27.zip",
+            "url": "https://www.fossil-scm.org/home/uv/fossil-w64-2.27.zip",
             "hash": "c682e656130f6c050e5001db82c365b401c4db4b933ec7a703366fb86929c1ab"
         },
         "32bit": {
-            "url": "https://www.fossil-scm.org/index.html/uv/fossil-w32-2.27.zip",
+            "url": "https://www.fossil-scm.org/home/uv/fossil-w32-2.27.zip",
             "hash": "b19c695a2ebfbce83e9416e60982a23956e957bf362c14f015a6998ec5b055a3"
+        },
+        "arm64": {
+            "url": "https://www.fossil-scm.org/home/uv/fossil-win-arm-2.27.zip",
+            "hash": "674c51da717683998a30632d3fe8341d3ce3a4909d0a3152d3f7708f119cbecb"
         }
     },
     "bin": "fossil.exe",
     "checkver": {
-        "url": "https://www.fossil-scm.org/index.html/uv/download.js",
+        "url": "https://fossil-scm.org/home/uv/download.js",
         "regex": "p=version-([0-9.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.fossil-scm.org/index.html/uv/fossil-w64-$version.zip"
+                "url": "https://www.fossil-scm.org/home/uv/fossil-w64-$version.zip"
             },
             "32bit": {
-                "url": "https://www.fossil-scm.org/index.html/uv/fossil-w32-$version.zip"
+                "url": "https://www.fossil-scm.org/home/uv/fossil-w32-$version.zip"
+            },
+            "arm64": {
+                "url": "https://www.fossil-scm.org/home/uv/fossil-win-arm-$version.zip"
             }
         }
     }
