@@ -6,13 +6,17 @@
         "identifier": "Freeware",
         "url": "https://www.numberworld.org/y-cruncher/license.html"
     },
-    "url": "https://www.numberworld.org/y-cruncher/y-cruncher%20v0.8.7.9547b.zip",
+    "url": "https://github.com/Mysticial/y-cruncher/releases/download/v0.8.7.9547b/y-cruncher.v0.8.7.9547b.zip",
     "hash": "3be696c1cc44907f2ea73aac35de4a5d45048255308f34ed4410a743163a4f87",
-    "extract_dir": "y-cruncher v0.8.7.9547",
+    "extract_dir": "y-cruncher v0.8.7.9547b",
     "bin": "y-cruncher.exe",
-    "checkver": "y-cruncher v((?<ver>[\\d.]+)(?<rel>\\w{0,1}))\\.zip",
+    "checkver": {
+        "url": "https://api.github.com/repositories/108079709/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "\\Av(\\S+)\\Z"
+    },
     "autoupdate": {
-        "url": "https://www.numberworld.org/y-cruncher/y-cruncher%20v$version.zip",
-        "extract_dir": "y-cruncher v$matchVer"
+        "url": "https://github.com/Mysticial/y-cruncher/releases/download/v$version/y-cruncher.v$version.zip",
+        "extract_dir": "y-cruncher v$version"
     }
 }
