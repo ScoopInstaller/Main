@@ -1,0 +1,86 @@
+{
+    "version": "1.0.108",
+    "description": "An agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows.",
+    "homepage": "https://www.anthropic.com/claude-code",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.anthropic.com/legal/commercial-terms"
+    },
+    "suggest": {
+        "git": "main/git"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/1.0.108/win32-x64/claude.exe",
+            "hash": "94345a76febd94108beb3b1023eab12993359f2855d77b0abe51e2f79731b779"
+        }
+    },
+    "post_install": [
+        "if ($global) {",
+        "    info ('Claude Code requires environment variable \"{0}\" to be set to git bash.' -f $EnvVarName)",
+        "}",
+        "else {",
+        "    $GitBashPath = [string] '{0}\\shims\\bash.exe' -f $scoopdir",
+        "    $EnvVarName = [string] 'CLAUDE_CODE_GIT_BASH_PATH'",
+        "    if (",
+        "        [System.IO.File]::Exists($GitBashPath) -and",
+        "        [string]::IsNullOrWhiteSpace(([System.Environment]::GetEnvironmentVariable($EnvVarName, 'User')))",
+        "    ) {",
+        "        foreach ($Scope in 'Process', 'User') {",
+        "            [System.Environment]::SetEnvironmentVariable($EnvVarName, $GitBashPath, $Scope)",
+        "        }",
+        "    }",
+        "    if (",
+        "        [string]::IsNullOrWhiteSpace(([System.Environment]::GetEnvironmentVariable($EnvVarName, 'User')))",
+        "    ) {",
+        "        info ('Claude Code requires environment variable \"{0}\" to be set to git bash.' -f $EnvVarName)",
+        "    }",
+        "}"
+    ],
+    "bin": "claude.exe",
+    "shortcuts": [
+        [
+            "claude.exe",
+            "Claude Code"
+        ]
+    ],
+    "post_uninstall": [
+        "if (-not $global) {",
+        "    # Clean up environment variable if set to git installed by Scoop",
+        "    $GitBashPath = [string] '{0}\\shims\\bash.exe' -f $scoopdir",
+        "    $EnvVarName = [string] 'CLAUDE_CODE_GIT_BASH_PATH'",
+        "    foreach ($Scope in 'Process', 'User') {",
+        "        if ([System.Environment]::GetEnvironmentVariable($EnvVarName, $Scope) -eq $GitBashPath) {",
+        "            [System.Environment]::SetEnvironmentVariable($EnvVarName, $null, $Scope)",
+        "        }",
+        "    }",
+        "    # Purge",
+        "    if ($purge) {",
+        "        $Directories = [string[]](",
+        "            [System.IO.Path]::Combine($env:LOCALAPPDATA,'claude-cli-nodejs'),",
+        "            [System.IO.Path]::Combine($env:USERPROFILE,'.claude')",
+        "        )",
+        "        $Directories.ForEach{",
+        "            if ([System.IO.Directory]::Exists($_)) {",
+        "                $null = [System.IO.Directory]::Delete($_,$true)",
+        "            }",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/stable",
+        "regex": "(.*)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/win32-x64/claude.exe"
+            }
+        },
+        "hash": {
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/manifest.json",
+            "jsonpath": "$.platforms['win32-x64'].checksum"
+        }
+    }
+}
