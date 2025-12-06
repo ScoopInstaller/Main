@@ -1,12 +1,16 @@
 {
-    "version": "8.18",
+    "version": "9.0",
     "description": "A general-purpose, feature-rich programming language developed from Scheme Lisp, also the family of the core language and its dialects. It includes an extensive macro system for creating and implementing language constructs and dialects; eventspaces and custodians for resource management; units, modules and classes for programming in the large; paritial continuation; the first contract system for higher-order functions, and more.",
     "homepage": "https://racket-lang.org",
     "license": "LGPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.racket-lang.org/installers/8.18/racket-8.18-x86_64-win32.exe#/dl.7z",
-            "hash": "93512374a4f0b029c4cc46520ddf258a744ccf86e92c0d59eb9ea1813f868610"
+            "url": "https://mirror.racket-lang.org/installers/9.0/racket-9.0-x86_64-win32.exe#/dl.7z",
+            "hash": "856bf9e82ad588d01fafdbf6002b2fd00137e687b140072506b92a35427851a8"
+        },
+        "arm64": {
+            "url": "https://mirror.racket-lang.org/installers/9.0/racket-9.0-arm64-win32.exe#/dl.7z",
+            "hash": "2fcc2c27584c2e3529f76d8155d90a5440b605794787b5d3238fb809df8ac5d6"
         }
     },
     "bin": [
@@ -31,11 +35,14 @@
         "architecture": {
             "64bit": {
                 "url": "https://mirror.racket-lang.org/installers/$version/racket-$version-x86_64-win32.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://mirror.racket-lang.org/installers/$version/racket-$version-arm64-win32.exe#/dl.7z"
             }
         },
         "hash": {
             "url": "https://download.racket-lang.org/releases/$version/",
-            "regex": "(?is)<tr\\b.*?href=\"[^\"]*racket-(?!minimal)[^\"]*x86_64-win32[^\"]*\".*?class=\"checksum\"[^>]*>\\s*([0-9a-f]{64})"
+            "regex": "$basenameNoExt.*?$sha256"
         }
     }
 }
