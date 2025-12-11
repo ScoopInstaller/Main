@@ -1,12 +1,12 @@
 {
-    "version": "2024.07-01",
+    "version": "2025.11-01",
     "description": "The Rakudo Star Bundle contains the Rakudo Compiler, a collection of modules from the Raku ecosystem, and the language documentation.",
     "homepage": "https://rakudo.org/star",
     "license": "Artistic-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://rakudo.org/dl/star/rakudo-star-2024.07-01-win-x86_64-msvc.msi",
-            "hash": "8e0bd429d297a98616003aa517debdbcafe5a2f7769728be31919f9842ec343f"
+            "url": "https://rakudo.org/dl/star/rakudo-star-2025.11-01-win-x86_64-msvc.msi",
+            "hash": "57cd0ae6735a884dc445f26ddb1d303da22c712b9e32696428ec8b901c9fcfcb"
         }
     },
     "extract_dir": "rakudo",
@@ -14,7 +14,7 @@
         "bin\\perl6.exe",
         "bin\\raku.exe",
         "bin\\rakudo.exe",
-        "share\\perl6\\site\\bin\\zef.bat"
+        "share\\perl6\\site\\bin\\zef.exe"
     ],
     "checkver": {
         "url": "https://rakudo.org/downloads/star",
@@ -28,7 +28,7 @@
         },
         "hash": {
             "url": "$url.checksums.txt",
-            "regex": "SHA256\\s+$sha256"
+            "regex": "SHA256\\s\\(\\S+\\)\\s=\\s$sha256"
         }
     }
 }

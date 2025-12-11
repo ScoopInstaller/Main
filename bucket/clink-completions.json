@@ -1,18 +1,19 @@
 {
-    "version": "0.5.4",
+    "version": "0.6.7",
     "description": "Completions for various commands through Clink",
     "homepage": "https://github.com/vladimir-kotikov/clink-completions",
     "license": "MIT",
     "suggest": {
         "Clink": "clink"
     },
-    "url": "https://github.com/vladimir-kotikov/clink-completions/archive/v0.5.4.zip",
-    "hash": "33a32f1bb403c449d263c150710d693d84241dbcdbcacfb8d7d558f41346abbe",
-    "extract_dir": "clink-completions-0.5.4",
+    "url": "https://github.com/vladimir-kotikov/clink-completions/archive/v0.6.7.zip",
+    "hash": "a0f1cfe4a22bbd947ebc1b840b5971f54f168e3c43e6cf31863b4f2d92c12ae3",
+    "extract_dir": "clink-completions-0.6.7",
     "installer": {
         "script": [
+            "$luapath = Join-Path (Split-Path -Path \"$dir\" -Parent) \"current\"",
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink installscripts \"$dir\"",
+            "   clink installscripts \"$luapath\"",
             "} else {",
             "   warn 'Clink installation not found. Please manually install these scripts.'",
             "}"
@@ -20,8 +21,9 @@
     },
     "uninstaller": {
         "script": [
+            "$luapath = Join-Path (Split-Path -Path \"$dir\" -Parent) \"current\"",
             "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink uninstallscripts \"$dir\"",
+            "   clink uninstallscripts \"$luapath\"",
             "}"
         ]
     },

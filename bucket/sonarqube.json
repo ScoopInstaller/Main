@@ -1,22 +1,23 @@
 {
-    "version": "9.9.6.92038",
+    "version": "25.12.0.117093",
     "description": "Platform for continuous inspection of code quality and security using static analysis for 20+ programming languages.",
-    "homepage": "https://www.sonarqube.org",
+    "homepage": "https://www.sonarsource.com/products/sonarqube/",
     "license": "LGPL-3.0-only",
+    "notes": [
+        "Start the SonarQube server via: \"StartSonar\" or \"$dir\\bin\\windows-x86-64\\StartSonar.bat\".",
+        "Requires Java 17 or 21. Using Java 24 or newer currently causes startup failure.",
+        "For more information, see:",
+        "https://docs.sonarsource.com/sonarqube-server/latest/server-installation/server-host-requirements/#software-requirements",
+        "https://docs.oracle.com/en/java/javase/24/security/security-manager-is-permanently-disabled.html"
+    ],
     "suggest": {
-        "JDK": "java/openjdk"
+        "Java 17": "java/openjdk17",
+        "Java 21": "java/openjdk21"
     },
-    "url": "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.9.6.92038.zip",
-    "hash": "4b50b568de84e94f43638059a6f746d4c9347b07458f3318840664408e8178d5",
-    "extract_dir": "sonarqube-9.9.6.92038",
-    "architecture": {
-        "64bit": {
-            "bin": "bin\\windows-x86-64\\StartSonar.bat"
-        },
-        "32bit": {
-            "bin": "bin\\windows-x86-32\\StartSonar.bat"
-        }
-    },
+    "url": "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.12.0.117093.zip",
+    "hash": "09215f6f6a56db484946e4355c9801fa357eb92eedc99a2bebedf1d7ae21a341",
+    "extract_dir": "sonarqube-25.12.0.117093",
+    "bin": "bin\\windows-x86-64\\StartSonar.bat",
     "persist": [
         "conf",
         "data",
@@ -25,13 +26,13 @@
         "temp"
     ],
     "checkver": {
-        "url": "https://www.sonarqube.org/downloads/",
-        "regex": "sonarqube-([\\d.]+)\\.zip"
+        "url": "https://www.sonarsource.com/products/sonarqube/downloads/",
+        "regex": "Community Build.*?Release (?<version>[\\d.]+)"
     },
     "autoupdate": {
         "url": "https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-$version.zip",
         "hash": {
-            "url": "$url.sha"
+            "url": "$url.sha256"
         },
         "extract_dir": "sonarqube-$version"
     }

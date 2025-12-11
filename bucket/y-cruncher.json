@@ -1,18 +1,22 @@
 {
-    "version": "0.8.5.9543",
+    "version": "0.8.7.9547b",
     "description": "Scalable multi-threaded benchmark calculating multiple mathematical constants to trillions of digits.",
-    "homepage": "http://www.numberworld.org/y-cruncher/",
+    "homepage": "https://www.numberworld.org/y-cruncher/",
     "license": {
         "identifier": "Freeware",
-        "url": "http://www.numberworld.org/y-cruncher/license.html"
+        "url": "https://www.numberworld.org/y-cruncher/license.html"
     },
-    "url": "http://www.numberworld.org/y-cruncher/y-cruncher%20v0.8.5.9543.zip",
-    "hash": "d6cf31162202a3099f90e9a2d64d376f3568e456ed9c2819205668f195878e47",
-    "extract_dir": "y-cruncher v0.8.5.9543",
+    "url": "https://github.com/Mysticial/y-cruncher/releases/download/v0.8.7.9547b/y-cruncher.v0.8.7.9547b.zip",
+    "hash": "3be696c1cc44907f2ea73aac35de4a5d45048255308f34ed4410a743163a4f87",
+    "extract_dir": "y-cruncher v0.8.7.9547b",
     "bin": "y-cruncher.exe",
-    "checkver": "y-cruncher v([\\d.]+)\\.zip",
+    "checkver": {
+        "url": "https://api.github.com/repositories/108079709/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "\\Av(\\S+)\\Z"
+    },
     "autoupdate": {
-        "url": "http://www.numberworld.org/y-cruncher/y-cruncher%20v$version.zip",
+        "url": "https://github.com/Mysticial/y-cruncher/releases/download/v$version/y-cruncher.v$version.zip",
         "extract_dir": "y-cruncher v$version"
     }
 }

@@ -1,13 +1,17 @@
 {
-    "version": "2.3.0",
+    "version": "2.4.1",
     "description": "An improved sequence editor for Git",
     "homepage": "https://gitrebasetool.mitmaro.ca",
     "license": "GPL-3.0-only",
     "notes": "Run 'git config --global sequence.editor interactive-rebase-tool' to configure as your rebase tool.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/MitMaro/git-interactive-rebase-tool/releases/download/2.3.0/interactive-rebase-tool.exe",
-            "hash": "e3c2603e8d5b564e14bfb243514b2dc4eccf7c593a8ba7290af56e2fc9d8ef3d"
+            "url": "https://github.com/MitMaro/git-interactive-rebase-tool/releases/download/2.4.1/git-interactive-rebase-tool-2.4.1-windows-_x86_64.exe#/interactive-rebase-tool.exe",
+            "hash": "c1ed22c2fe4d6f5d642714ad0c3bdad877805680460f5ada87ecd006d4d73440"
+        },
+        "arm64": {
+            "url": "https://github.com/MitMaro/git-interactive-rebase-tool/releases/download/2.4.1/git-interactive-rebase-tool-2.4.1-windows-_aarch64.exe#/interactive-rebase-tool.exe",
+            "hash": "06453849463185e461dcc002ccfb52e3c1c5bebd61bf9853db9f9b7995cd534c"
         }
     },
     "bin": "interactive-rebase-tool.exe",
@@ -17,7 +21,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/MitMaro/git-interactive-rebase-tool/releases/download/$version/interactive-rebase-tool.exe"
+                "url": "https://github.com/MitMaro/git-interactive-rebase-tool/releases/download/$version/git-interactive-rebase-tool-$version-windows-_x86_64.exe#/interactive-rebase-tool.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/MitMaro/git-interactive-rebase-tool/releases/download/$version/git-interactive-rebase-tool-$version-windows-_aarch64.exe#/interactive-rebase-tool.exe"
             }
         }
     }

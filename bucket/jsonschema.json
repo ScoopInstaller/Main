@@ -1,0 +1,29 @@
+{
+    "version": "12.10.1",
+    "description": "JSON Schema formatting, linting, testing, bundling and more for local development and CI/CD pipelines.",
+    "homepage": "https://github.com/sourcemeta/jsonschema",
+    "license": "AGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sourcemeta/jsonschema/releases/download/v12.10.1/jsonschema-12.10.1-windows-x86_64.zip",
+            "hash": "208fb78688652c46cdde3d582c9e088d56ac03ede2ef6f2e716e26d9d123e66c",
+            "extract_dir": "jsonschema-12.10.1-windows-x86_64"
+        }
+    },
+    "bin": "bin\\jsonschema.exe",
+    "checkver": {
+        "github": "https://github.com/sourcemeta/jsonschema"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sourcemeta/jsonschema/releases/download/v$version/jsonschema-$version-windows-x86_64.zip",
+                "extract_dir": "jsonschema-$version-windows-x86_64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/CHECKSUMS.txt",
+            "regex": "SHA256\\s+\\($basename\\)\\s+=\\s+([a-fA-F0-9]{32,128})"
+        }
+    }
+}

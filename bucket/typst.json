@@ -1,24 +1,31 @@
 {
-    "version": "0.11.1",
+    "version": "0.14.1",
     "description": "A markup-based typesetting system for the sciences.",
     "homepage": "https://typst.app",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/typst/typst/releases/download/v0.11.1/typst-x86_64-pc-windows-msvc.zip",
-            "hash": "6f6896f199649717f0e1ff4aff0d5f62531e140796c1891304168fd546be2516"
+            "url": "https://github.com/typst/typst/releases/download/v0.14.1/typst-x86_64-pc-windows-msvc.zip",
+            "hash": "4e35ffaeb40067019bea5d26291cd3b71628659912d23ea3958dcc84c8545623",
+            "extract_dir": "typst-x86_64-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/typst/typst/releases/download/v0.14.1/typst-aarch64-pc-windows-msvc.zip",
+            "hash": "c39cecc1094a8d06e3409bad88909a0ba043c9e5de1dfc9061234525d9af86c3",
+            "extract_dir": "typst-aarch64-pc-windows-msvc"
         }
     },
-    "extract_dir": "typst-x86_64-pc-windows-msvc",
     "bin": "typst.exe",
     "checkver": {
-        "url": "https://github.com/typst/typst/releases",
-        "regex": "tag/v?([\\d.-]+)"
+        "github": "https://github.com/typst/typst"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/typst/typst/releases/download/v$version/typst-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/typst/typst/releases/download/v$version/typst-aarch64-pc-windows-msvc.zip"
             }
         }
     }

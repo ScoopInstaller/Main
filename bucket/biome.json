@@ -1,30 +1,31 @@
 {
-    "version": "1.8.3",
+    "version": "2.3.8",
     "description": "Formatter, linter, bundler, and more for JavaScript, TypeScript, JSON, HTML, Markdown, and CSS.",
     "homepage": "https://biomejs.dev/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv1.8.3/biome-win32-x64.exe#/biome.exe",
-            "hash": "541f9a1caa226e6fbb872f16009ac554b16e149c10f9096ebe3f08867c9dbf31"
+            "url": "https://github.com/biomejs/biome/releases/download/%40biomejs%2Fbiome%402.3.8/biome-win32-x64.exe#/biome.exe",
+            "hash": "e1f3afc0c5ee0de0c642c198dfa4d380d7c1a0003e370fbe7ed6a083e3985552"
         },
         "arm64": {
-            "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv1.8.3/biome-win32-arm64.exe#/biome.exe",
-            "hash": "d888438925f2d5627afb6be11389c0893070c75b7d9b2d10f196fba910dc3b37"
+            "url": "https://github.com/biomejs/biome/releases/download/%40biomejs%2Fbiome%402.3.8/biome-win32-arm64.exe#/biome.exe",
+            "hash": "d7e1b57393fe72ab390c91950119c129f82c86ff083fd43bc3e86fc674b7b5ae"
         }
     },
     "bin": "biome.exe",
     "checkver": {
-        "url": "https://github.com/biomejs/biome/tags",
-        "regex": "/releases/tag/cli%2F(?:v|V)?([\\d.]+)"
+        "url": "https://api.github.com/repos/biomejs/biome/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "@biomejs/biome@([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv$version/biome-win32-x64.exe#/biome.exe"
+                "url": "https://github.com/biomejs/biome/releases/download/%40biomejs%2Fbiome%40$version/biome-win32-x64.exe#/biome.exe"
             },
             "arm64": {
-                "url": "https://github.com/biomejs/biome/releases/download/cli%2Fv$version/biome-win32-arm64.exe#/biome.exe"
+                "url": "https://github.com/biomejs/biome/releases/download/%40biomejs%2Fbiome%40$version/biome-win32-arm64.exe#/biome.exe"
             }
         }
     }

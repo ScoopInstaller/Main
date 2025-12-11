@@ -1,30 +1,37 @@
 {
-    "version": "2.24",
+    "version": "2.27",
     "description": "A simple, high-reliability, distributed software configuration management system.",
     "homepage": "https://www.fossil-scm.org/",
     "license": "BSD-2-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://www.fossil-scm.org/index.html/uv/fossil-w64-2.24.zip",
-            "hash": "2bdfddc4e62186bff373777c499e01d0dfadae617d50603b7f6974fde2c9123c"
+            "url": "https://www.fossil-scm.org/home/uv/fossil-w64-2.27.zip",
+            "hash": "c682e656130f6c050e5001db82c365b401c4db4b933ec7a703366fb86929c1ab"
         },
         "32bit": {
-            "url": "https://www.fossil-scm.org/index.html/uv/fossil-w32-2.24.zip",
-            "hash": "d0d0d3c3194d83b76530f3d4a044388262c6fd97768f3040e0a2393513ede810"
+            "url": "https://www.fossil-scm.org/home/uv/fossil-w32-2.27.zip",
+            "hash": "b19c695a2ebfbce83e9416e60982a23956e957bf362c14f015a6998ec5b055a3"
+        },
+        "arm64": {
+            "url": "https://www.fossil-scm.org/home/uv/fossil-win-arm-2.27.zip",
+            "hash": "674c51da717683998a30632d3fe8341d3ce3a4909d0a3152d3f7708f119cbecb"
         }
     },
     "bin": "fossil.exe",
     "checkver": {
-        "url": "https://www.fossil-scm.org/index.html/uv/download.js",
+        "url": "https://fossil-scm.org/home/uv/download.js",
         "regex": "p=version-([0-9.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.fossil-scm.org/index.html/uv/fossil-w64-$version.zip"
+                "url": "https://www.fossil-scm.org/home/uv/fossil-w64-$version.zip"
             },
             "32bit": {
-                "url": "https://www.fossil-scm.org/index.html/uv/fossil-w32-$version.zip"
+                "url": "https://www.fossil-scm.org/home/uv/fossil-w32-$version.zip"
+            },
+            "arm64": {
+                "url": "https://www.fossil-scm.org/home/uv/fossil-win-arm-$version.zip"
             }
         }
     }

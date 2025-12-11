@@ -1,0 +1,26 @@
+{
+    "version": "1.21.0",
+    "description": "Release projects quickly and easily with JReleaser",
+    "homepage": "https://jreleaser.org",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "url": "https://github.com/jreleaser/jreleaser/releases/download/v1.21.0/jreleaser-1.21.0.zip",
+    "hash": "5d126a7e7f8e8b973832fae83aa3938fbfef4ae17432573be410691c96a4f073",
+    "extract_dir": "jreleaser-1.21.0",
+    "bin": "bin\\jreleaser.bat",
+    "checkver": {
+        "github": "https://github.com/jreleaser/jreleaser/"
+    },
+    "autoupdate": {
+        "url": "https://github.com/jreleaser/jreleaser/releases/download/v$version/jreleaser-$version.zip",
+        "extract_dir": "jreleaser-$version",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

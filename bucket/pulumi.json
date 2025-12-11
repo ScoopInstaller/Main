@@ -1,16 +1,34 @@
 {
-    "version": "3.129.0",
+    "version": "3.210.0",
     "description": "Create, deploy, and manage infrastructure on any cloud using any language.",
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.129.0-windows-x64.zip",
-            "hash": "57020a7778287addeb8a82c55831a4031fdc77c1e98565a08be43d527bf0ba11"
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.210.0-windows-x64.zip",
+            "hash": "sha512:90e6062692589c4e1f070735d42bda76b62deb86025b47b260e560e1074c1f12dda74f03907d71343cafd132fa85df5bf9a1368bee57df2b38c803ff18735941"
+        },
+        "arm64": {
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.210.0-windows-x64.zip",
+            "hash": "sha512:90e6062692589c4e1f070735d42bda76b62deb86025b47b260e560e1074c1f12dda74f03907d71343cafd132fa85df5bf9a1368bee57df2b38c803ff18735941"
         }
     },
     "extract_dir": "Pulumi\\bin",
-    "bin": "pulumi.exe",
+    "bin": [
+        "pulumi.exe",
+        "pulumi-analyzer-policy-python.cmd",
+        "pulumi-analyzer-policy.cmd",
+        "pulumi-language-dotnet.exe",
+        "pulumi-language-go.exe",
+        "pulumi-language-java.exe",
+        "pulumi-language-nodejs.exe",
+        "pulumi-language-python-exec",
+        "pulumi-language-python.exe",
+        "pulumi-language-yaml.exe",
+        "pulumi-resource-pulumi-nodejs.cmd",
+        "pulumi-resource-pulumi-python.cmd",
+        "pulumi-watch.exe"
+    ],
     "checkver": {
         "url": "https://www.pulumi.com/docs/get-started/install/versions",
         "regex": "<strong>([\\d.]+)"
@@ -19,7 +37,13 @@
         "architecture": {
             "64bit": {
                 "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/pulumi/pulumi/releases/download/v$version/SHA512SUMS"
         }
     }
 }

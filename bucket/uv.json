@@ -1,23 +1,30 @@
 {
-    "version": "0.2.37",
+    "version": "0.9.17",
     "description": "An extremely fast Python package installer and resolver, written in Rust.",
-    "homepage": "https://github.com/astral-sh/uv",
+    "homepage": "https://docs.astral.sh/uv/",
     "license": "Apache-2.0|MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/astral-sh/uv/releases/download/0.2.37/uv-x86_64-pc-windows-msvc.zip",
-            "hash": "ea51e0dfdc0c1884d116b5a12b589e65bb47d0b2d071d6da4a23f453585be144"
+            "url": "https://github.com/astral-sh/uv/releases/download/0.9.17/uv-x86_64-pc-windows-msvc.zip",
+            "hash": "ebc76197bf3e1a58f9dac6f70f49b0ebd3e6907ab35289ce228bce5ba8a3f201"
         },
         "32bit": {
-            "url": "https://github.com/astral-sh/uv/releases/download/0.2.37/uv-i686-pc-windows-msvc.zip",
-            "hash": "4c024f88c23359f8c0a61a31f93197e1fcc0b6e2ed2ea17733b99494b75078c8"
+            "url": "https://github.com/astral-sh/uv/releases/download/0.9.17/uv-i686-pc-windows-msvc.zip",
+            "hash": "6e93737710e31bf73fcc3b4b6da616bd341e9c6baf1162ddc1e7f65884063f50"
+        },
+        "arm64": {
+            "url": "https://github.com/astral-sh/uv/releases/download/0.9.17/uv-aarch64-pc-windows-msvc.zip",
+            "hash": "28423a27ad1d82347c00411a6792567119b3c1cfe775d3312c0e08a6b489be5b"
         }
     },
     "bin": [
         "uv.exe",
-        "uvx.exe"
+        "uvx.exe",
+        "uvw.exe"
     ],
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/astral-sh/uv"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -25,6 +32,9 @@
             },
             "32bit": {
                 "url": "https://github.com/astral-sh/uv/releases/download/$version/uv-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/astral-sh/uv/releases/download/$version/uv-aarch64-pc-windows-msvc.zip"
             }
         },
         "hash": {

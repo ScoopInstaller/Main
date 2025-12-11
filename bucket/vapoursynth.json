@@ -1,31 +1,16 @@
 {
-    "version": "69",
+    "version": "73",
     "description": "A video processing framework with simplicity in mind",
-    "homepage": "https://www.vapoursynth.com",
+    "homepage": "https://www.vapoursynth.com/",
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
     "license": "LGPL-2.1-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R69/VapourSynth64-Portable-R69.zip",
-            "hash": "f1c3f5e1e6a9f9d9c4c82462a4e6e04cf40aded1346bcef605b39e01c251571b"
-        },
-        "32bit": {
-            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R69/VapourSynth64-Portable-R69.zip",
-            "hash": "f1c3f5e1e6a9f9d9c4c82462a4e6e04cf40aded1346bcef605b39e01c251571b"
+            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R73/VapourSynth64-Portable-R73.zip",
+            "hash": "3326f10d0fdcdec45649a474cbc9810795ab3da422634d0f134bca6089afbb91"
         }
-    },
-    "pre_install": [
-        "$arch = $architecture.SubString(0,2)",
-        "if(Test-Path \"$persist_dir\\vapoursynth$arch\") {Copy-Item \"$persist_dir\\*\" \"$dir\\\" -Force -Recurse}"
-    ],
-    "uninstaller": {
-        "script": [
-            "$arch = $architecture.SubString(0,2)",
-            "ensure \"$persist_dir\" | Out-Null",
-            "Copy-Item \"$dir\\vapoursynth$arch\" \"$persist_dir\\\" -Force -Recurse"
-        ]
     },
     "bin": [
         "AVFS.exe",
@@ -40,9 +25,6 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R$version/VapourSynth64-Portable-R$version.zip"
-            },
-            "32bit": {
                 "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R$version/VapourSynth64-Portable-R$version.zip"
             }
         }

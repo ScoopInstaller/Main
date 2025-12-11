@@ -1,53 +1,42 @@
 {
-    "version": "7.1.1-36",
+    "version": "7.1.2-10",
     "description": "Create, edit, compose, and convert 200+ of bitmap images formats.",
     "homepage": "https://imagemagick.org/",
     "license": "ImageMagick",
-    "architecture": {
-        "64bit": {
-            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.1-36-portable-Q16-HDRI-x64.zip",
-            "hash": "3e785c87573937c5a1405eee26db6a9d2124ae468737d9350923f85980b0b2a7",
-            "extract_dir": "ImageMagick-7.1.1-36-portable-Q16-HDRI-x64"
-        },
-        "32bit": {
-            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.1-36-portable-Q16-HDRI-x86.zip",
-            "hash": "90ab8a74a1a00573984fca0d079e4744b0689d2d7a282afddedab3a38c59d7c2",
-            "extract_dir": "ImageMagick-7.1.1-36-portable-Q16-HDRI-x86"
-        },
-        "arm64": {
-            "url": "https://imagemagick.org/archive/binaries/ImageMagick-7.1.1-36-portable-Q16-HDRI-arm64.zip",
-            "hash": "489cd45c4db0e69834b11cb3b9deb84276c02457e59fa765a1fc9541e0fe6e47",
-            "extract_dir": "ImageMagick-7.1.1-36-portable-Q16-HDRI-arm64"
-        }
-    },
-    "bin": "magick.exe",
     "notes": [
         "- This manifest contains the barebones ImageMagick installation.",
         "- For appropriate programming DLLs and environment variables, install 'imagemagick' instead."
     ],
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/ImageMagick/ImageMagick/releases/download/7.1.2-10/ImageMagick-7.1.2-10-portable-Q16-HDRI-x86.7z",
+            "hash": "827af4f94a39a0bffa987ab4a8826db864dc79acc970d82cc760a5f29af34587"
+        },
+        "64bit": {
+            "url": "https://github.com/ImageMagick/ImageMagick/releases/download/7.1.2-10/ImageMagick-7.1.2-10-portable-Q16-HDRI-x64.7z",
+            "hash": "ad10ae61833b074043dfeb5499e047f06553b6479498632766107bcfa99c773c"
+        },
+        "arm64": {
+            "url": "https://github.com/ImageMagick/ImageMagick/releases/download/7.1.2-10/ImageMagick-7.1.2-10-portable-Q16-HDRI-arm64.7z",
+            "hash": "46f0356e7a4b6146f841b7dd845c8b87cfb49c981990cb3ead7d7960516fb591"
+        }
+    },
+    "bin": "magick.exe",
     "checkver": {
-        "url": "https://imagemagick.org/archive/binaries/digest.rdf",
-        "reverse": true,
-        "regex": "ImageMagick-([\\d.-]+)-portable-Q16-HDRI-x64\\.zip"
+        "url": "https://api.github.com/repos/ImageMagick/ImageMagick/releases/latest",
+        "jsonpath": "$.tag_name"
     },
     "autoupdate": {
         "architecture": {
-            "64bit": {
-                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-portable-Q16-HDRI-x64.zip",
-                "extract_dir": "ImageMagick-$version-portable-Q16-HDRI-x64"
-            },
             "32bit": {
-                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-portable-Q16-HDRI-x86.zip",
-                "extract_dir": "ImageMagick-$version-portable-Q16-HDRI-x86"
+                "url": "https://github.com/ImageMagick/ImageMagick/releases/download/$version/ImageMagick-$version-portable-Q16-HDRI-x86.7z"
+            },
+            "64bit": {
+                "url": "https://github.com/ImageMagick/ImageMagick/releases/download/$version/ImageMagick-$version-portable-Q16-HDRI-x64.7z"
             },
             "arm64": {
-                "url": "https://imagemagick.org/archive/binaries/ImageMagick-$version-portable-Q16-HDRI-arm64.zip",
-                "extract_dir": "ImageMagick-$version-portable-Q16-HDRI-arm64"
+                "url": "https://github.com/ImageMagick/ImageMagick/releases/download/$version/ImageMagick-$version-portable-Q16-HDRI-arm64.7z"
             }
-        },
-        "hash": {
-            "mode": "rdf",
-            "url": "https://imagemagick.org/archive/binaries/digest.rdf"
         }
     }
 }

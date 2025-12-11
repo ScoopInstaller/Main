@@ -9,10 +9,9 @@
             "hash": "7b965ea00514fc329a9b09d277445629f3bb5394e500ef4ae2c3dddd296de699"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\influx\" influx.exe",
     "bin": "influx.exe",
     "checkver": {
-        "url": "https://portal.influxdata.com/versions.json",
+        "url": "https://www.influxdata.com/versions.json",
         "jsonpath": "$.influxdb2_cloud_cli.version",
         "regex": "([\\d.]+)"
     },
@@ -21,7 +20,7 @@
             "64bit": {
                 "url": "https://dl.influxdata.com/influxdb/releases/influxdb2-client-$version-windows-amd64.zip",
                 "hash": {
-                    "url": "https://portal.influxdata.com/versions.json",
+                    "url": "https://www.influxdata.com/versions.json",
                     "jsonpath": "$.influxdb2_cloud_cli.downloads[?(@.platform =~ /^Windows/)].sha256"
                 }
             }
