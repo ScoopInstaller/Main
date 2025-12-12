@@ -1,0 +1,25 @@
+{
+    "version": "1.5.1",
+    "description": "Command-line tool for publishing a site to a git-pages server",
+    "homepage": "https://codeberg.org/git-pages/git-pages-cli",
+    "license": "0BSD",
+    "architecture": {
+        "64bit": {
+            "url": "https://codeberg.org/git-pages/git-pages-cli/releases/download/v1.5.1/git-pages-cli.windows-amd64.exe#/git-pages-cli.exe",
+            "hash": "b85ffb3ca439b09c31e709b39c7ddb3a0b70dc6e6816440c3e4059b7405e4e2b"
+        }
+    },
+    "bin": "git-pages-cli.exe",
+    "checkver": {
+        "url": "https://codeberg.org/api/v1/repos/git-pages/git-pages-cli/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://codeberg.org/git-pages/git-pages-cli/releases/download/v$version/git-pages-cli.windows-amd64.exe#/git-pages-cli.exe"
+            }
+        }
+    }
+}
