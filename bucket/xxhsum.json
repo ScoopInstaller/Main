@@ -1,0 +1,21 @@
+{
+    "version": "0.8.3",
+    "description": "xxhsum creates or verifies checksums using a fast non-cryptographic xxHash algorithm such as XXH32, XXH64X, XXH128 (aka XXH3_128bits) or XXH3 (aka XXH3_64bits)",
+    "homepage": "https://github.com/Cyan4973/xxHash",
+    "license": "GPL v2",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Cyan4973/xxHash/releases/download/v0.8.3/xxhsum_win64_v0_8_3.zip",
+            "hash": "a6a6170d07ca37d74151dbea9cd6e1dbb881b5ceea34b9447e01f62b1442d40a"
+        }
+    },
+    "bin": "xxhsum.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Cyan4973/xxHash/releases/download/v$version/xxhsum_win64_v$underscoreVersion.zip"
+            }
+        }
+    }
+}
