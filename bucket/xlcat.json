@@ -1,0 +1,28 @@
+{
+    "version": "0.1.85",
+    "description": "xlcat is like cat except for Excel files",
+    "homepage": "https://github.com/xlprotips/xl/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/xlprotips/xl/releases/download/v0.1.85/xlcat-v0.1.85-windows64.zip",
+            "hash": "sha256:b3eeb0f6df18a24cc6a89f32563e671753a40c7717c40aef62a1c402e81c9520"
+        },
+        "32bit": {
+            "url": "https://github.com/xlprotips/xl/releases/download/v0.1.85/xlcat-v0.1.85-windows32.zip",
+            "hash": "sha256:b60b23b079b5d8be704eee64f3fd882c19f979a783c11466fac8f2cc5105cb46"
+        }
+    },
+    "bin": "xlcat.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/xlprotips/xl/releases/download/v$version/xlcat-v$version-windows64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/xlprotips/xl/releases/download/v$version/xlcat-v$version-windows32.zip"
+            }
+        }
+    }
+}
