@@ -1,8 +1,14 @@
 {
     "version": "0.5.0",
-    "description": "Rust implementation of GNU coreutils (binaries compiled with MSVC)",
+    "description": "A cross-platform Rust reimplementation of GNU coreutils (binaries compiled with MSVC), with some options or behaviors potentially differing from GNU coreutils.",
     "homepage": "https://uutils.github.io/coreutils/",
-    "license": "MIT",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/uutils/coreutils/blob/HEAD/LICENSE"
+    },
+    "suggest": {
+        "Microsoft Visual C++ 2015-2022 Redistributable": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/uutils/coreutils/releases/download/0.5.0/coreutils-0.5.0-x86_64-pc-windows-msvc.zip",
@@ -24,10 +30,6 @@
         "coreutils.exe",
         [
             "coreutils.exe",
-            "uutils"
-        ],
-        [
-            "coreutils.exe",
             "arch",
             "arch"
         ],
@@ -35,11 +37,6 @@
             "coreutils.exe",
             "b2sum",
             "b2sum"
-        ],
-        [
-            "coreutils.exe",
-            "b3sum",
-            "b3sum"
         ],
         [
             "coreutils.exe",
@@ -318,48 +315,13 @@
         ],
         [
             "coreutils.exe",
-            "sha3-224sum",
-            "sha3-224sum"
-        ],
-        [
-            "coreutils.exe",
-            "sha3-256sum",
-            "sha3-256sum"
-        ],
-        [
-            "coreutils.exe",
-            "sha3-384sum",
-            "sha3-384sum"
-        ],
-        [
-            "coreutils.exe",
-            "sha3-512sum",
-            "sha3-512sum"
-        ],
-        [
-            "coreutils.exe",
             "sha384sum",
             "sha384sum"
         ],
         [
             "coreutils.exe",
-            "sha3sum",
-            "sha3sum"
-        ],
-        [
-            "coreutils.exe",
             "sha512sum",
             "sha512sum"
-        ],
-        [
-            "coreutils.exe",
-            "shake128sum",
-            "shake128sum"
-        ],
-        [
-            "coreutils.exe",
-            "shake256sum",
-            "shake256sum"
         ],
         [
             "coreutils.exe",
