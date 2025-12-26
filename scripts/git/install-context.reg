@@ -1,51 +1,53 @@
 Windows Registry Editor Version 5.00
 
-; -----------------------------------------------------------------------------
-;  context menu entry  'Git GUI Here'
-; -----------------------------------------------------------------------------
+; Register context menu entry: 'Open Git GUI here'
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\git_gui]
-@="Git &GUI Here"
-"Icon"="$git_root\\cmd\\git-gui.exe"
+@="Open Git &GUI here"
+"Icon"="\"{{git_dir}}\\cmd\\git-gui.exe\",0"
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\git_gui\command]
-@="\"$git_root\\cmd\\git-gui.exe\" \"--working-dir\" \"%v.\""
+@="\"{{git_dir}}\\cmd\\git-gui.exe\" \"--working-dir\" \"%v.\""
+
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\shell\git_gui]
-@="Git &GUI Here"
-"Icon"="$git_root\\cmd\\git-gui.exe"
+@="Open Git &GUI here"
+"Icon"="\"{{git_dir}}\\cmd\\git-gui.exe\",0"
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\shell\git_gui\command]
-@="\"$git_root\\cmd\\git-gui.exe\" \"--working-dir\" \"%1\""
+@="\"{{git_dir}}\\cmd\\git-gui.exe\" \"--working-dir\" \"%1\""
+
 
 [HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\git_gui]
-@="Git &GUI Here"
-"Icon"="$git_root\\cmd\\git-gui.exe"
+@="Open Git &GUI here"
+"Icon"="\"{{git_dir}}\\cmd\\git-gui.exe\",0"
 
 [HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\git_gui\command]
-@="\"$git_root\\cmd\\git-gui.exe\" \"--working-dir\" \"%v.\""
+@="\"{{git_dir}}\\cmd\\git-gui.exe\" \"--working-dir\" \"%v.\""
 
-; -----------------------------------------------------------------------------
-;  context menu entry  'Git Bash Here'
-; -----------------------------------------------------------------------------
+
+
+; Register context menu entry: 'Open Git Bash here'
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\git_shell]
-@="Git Ba&sh Here"
-"Icon"="$git_root\\git-bash.exe"
+@="Open Git Ba&sh here"
+"Icon"="\"{{git_dir}}\\git-bash.exe\",0"
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\git_shell\command]
-@="\"$git_root\\git-bash.exe\" \"--cd=%v.\""
+@="\"{{git_dir}}\\git-bash.exe\" \"--cd=%v.\""
+
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\shell\git_shell]
-@="Git Ba&sh Here"
-"Icon"="$git_root\\git-bash.exe"
+@="Open Git Ba&sh here"
+"Icon"="\"{{git_dir}}\\git-bash.exe\",0"
 
 [HKEY_CURRENT_USER\Software\Classes\Directory\shell\git_shell\command]
-@="\"$git_root\\git-bash.exe\" \"--cd=%1\""
+@="\"{{git_dir}}\\git-bash.exe\" \"--cd=%1\""
+
 
 [HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\git_shell]
-@="Git Ba&sh Here"
-"Icon"="$git_root\\git-bash.exe"
+@="Open Git Ba&sh here"
+"Icon"="\"{{git_dir}}\\git-bash.exe\",0"
 
 [HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\git_shell\command]
-@="\"$git_root\\git-bash.exe\" \"--cd=%v.\""
+@="\"{{git_dir}}\\git-bash.exe\" \"--cd=%v.\""
