@@ -1,7 +1,6 @@
 {
-    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
     "version": "1.22.5",
-    "description": "A developer CLI that reduces the time it takes to get started on Azure",
+    "description": "A developer CLI that provides commands for working with Azure resources that map to key workflow stages: code, build, deploy, monitor, repeat.",
     "homepage": "https://aka.ms/azd",
     "license": "MIT",
     "notes": [
@@ -9,13 +8,13 @@
         "2. Telemetry is enabled by default, it can be disabled by setting env variable \"AZURE_DEV_COLLECT_TELEMETRY\" to \"no\""
     ],
     "architecture": {
-        "arm64": {
-            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.22.5/azd-windows-arm64-alpha.zip",
-            "hash": "8bcfb8ef29138dc60b6853a9864d50ba0fd76c0825cae21e66ae46f45131d485"
-        },
         "64bit": {
             "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.22.5/azd-windows-amd64.zip",
             "hash": "bba46afac0a8b0c06c0c1ea5556512f4ca0ee08ba9c7b464d43847840fd6206e"
+        },
+        "arm64": {
+            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.22.5/azd-windows-arm64-alpha.zip",
+            "hash": "8bcfb8ef29138dc60b6853a9864d50ba0fd76c0825cae21e66ae46f45131d485"
         }
     },
     "pre_install": "Get-Item \"$dir\\azd-*.exe\" | Rename-Item -NewName \"azd.exe\"",
@@ -38,11 +37,11 @@
     },
     "autoupdate": {
         "architecture": {
-            "arm64": {
-                "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-arm64-alpha.zip"
-            },
             "64bit": {
                 "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-arm64-alpha.zip"
             }
         }
     }
