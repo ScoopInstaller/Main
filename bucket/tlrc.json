@@ -1,16 +1,48 @@
 {
     "version": "1.12.0",
-    "description": "a tldr client written in rust",
+    "description": "A tldr client written in rust.",
     "homepage": "https://github.com/tldr-pages/tlrc",
-    "license": "MIT",
-    "notes": "pages not bundled with app, they will be downloaded the first time you use tldr",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/tldr-pages/tlrc/blob/HEAD/LICENSE"
+    },
+    "notes": "Pages are not bundled with the application and will be automatically downloaded on first use.",
+    "suggest": {
+        "Microsoft Visual C++ 2015-2022 Redistributable": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/tldr-pages/tlrc/releases/download/v1.12.0/tlrc-v1.12.0-x86_64-pc-windows-msvc.zip",
             "hash": "2de760afeba2d9cf1cc999714942263098d93c4e56fd4260f7c64e5a50956b7e"
         }
     },
+    "pre_install": [
+        "$original_cfg_dir = $env:TLRC_CONFIG, \"$env:APPDATA\\tlrc\\config.toml\" | Select-Object -First 1",
+        "$is_different = $original_cfg_dir -ne \"$persist_dir\\config.toml\"",
+        "if ($is_different -and (Test-Path -Path $original_cfg_dir -PathType Leaf)) {",
+        "    Copy-Item -Path $original_cfg_dir -Destination \"$dir\\config.toml\"",
+        "}",
+        "$remove_list = $env:APPDATA, $env:LOCALAPPDATA | ForEach-Object { \"$_\\$app\" }",
+        "$remove_list + @($original_cfg_dir) * $is_different | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue"
+    ],
+    "installer": {
+        "script": [
+            "$cfg_dir = \"$dir\\config.toml\"",
+            "if (Test-Path -Path \"$persist_dir\\config.toml\" -PathType Leaf) { return }",
+            "if (-not (Test-Path -Path $cfg_dir -PathType Leaf)) {",
+            "    $output_options = @{ NoNewWindow = $true; RedirectStandardOutput = $cfg_dir }",
+            "    Start-Process -FilePath \"$dir\\tldr.exe\" -ArgumentList '--gen-config' @output_options -Wait",
+            "}",
+            "$cfg = Get-Content -Path $cfg_dir -Encoding ascii",
+            "$cfg = $cfg -replace '(?<=dir = '').+(?='')', \"$persist_dir\\.cache\"",
+            "$cfg -join \"`n\" | Set-Content -Path $cfg_dir -Encoding ascii"
+        ]
+    },
+    "env_set": {
+        "TLRC_CONFIG": "$persist_dir\\config.toml"
+    },
     "bin": "tldr.exe",
+    "persist": "config.toml",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
