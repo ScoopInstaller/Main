@@ -3,6 +3,11 @@
     "description": "An open source tool that makes it simple to get local PHP development environments up and running in minutes",
     "homepage": "https://ddev.readthedocs.io/en/latest/",
     "license": "Apache-2.0",
+    "notes": [
+        "If you need to use HTTPS, install the custom root certificate.",
+        "$dir\\mkcert.exe -install",
+        ""
+    ],
     "suggest": {
         "docker": "docker-compose"
     },
@@ -12,7 +17,10 @@
             "hash": "cc3fa894bea7298bc6df3bb83b90668c7c9e88b031fa32d5757b9365a5d491d6"
         }
     },
-    "bin": "ddev.exe",
+    "bin": [
+        "ddev.exe",
+        "ddev-hostname.exe"
+    ],
     "checkver": {
         "github": "https://github.com/drud/ddev"
     },
