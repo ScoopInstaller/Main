@@ -1,6 +1,6 @@
 # Made by rafaeloledo (rafaeloliveiraledo@gmail.com)
 
-# Usage: powershell -ExecutionPolicy Bypass -FIle install-profile.ps1
+# Usage: powershell -ExecutionPolicy Bypass -File install-profile.ps1
 
 $packagesPath = "$env:LOCALAPPDATA\Packages"
 
