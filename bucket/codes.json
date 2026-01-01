@@ -1,0 +1,28 @@
+{
+    "version": "0.1.3",
+    "description": "Codes CLI - Manage multiple Claude Code configurations with ease. Switch between different Claude API endpoints (official, proxies, alternative providers), handle authentication tokens, and streamline your AI-powered development workflow.",
+    "homepage": "https://github.com/ourines/codes",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ourines/codes/releases/download/v0.1.3/codes-windows-amd64.exe#/codes.exe",
+            "hash": "sha256:bb33258d65ec4a27541bd547331e6d67e7362dfb6621d9dbb6bb0ab9412d60a6"
+        },
+        "arm64": {
+            "url": "https://github.com/ourines/codes/releases/download/v0.1.3/codes-windows-arm64.exe#/codes.exe",
+            "hash": "sha256:bb33258d65ec4a27541bd547331e6d67e7362dfb6621d9dbb6bb0ab9412d60a6"
+        }
+    },
+    "bin": "codes.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ourines/codes/releases/download/v$version/codes-windows-amd64.exe#/codes.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/ourines/codes/releases/download/v$version/codes-windows-arm64.exe#/codes.exe"
+            }
+        }
+    }
+}
