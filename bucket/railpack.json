@@ -1,0 +1,31 @@
+{
+    "version": "0.15.4",
+    "description": "Zero-config application builder that automatically analyzes and turns your code into an image",
+    "homepage": "https://github.com/railwayapp/railpack",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/railwayapp/railpack/releases/download/v0.15.4/railpack-v0.15.4-x86_64-pc-windows-msvc.zip",
+            "hash": "05b0da9f03ae647ee9e374f933b78103e30e492222cba91c90d206b51242ee34"
+        },
+        "arm64": {
+            "url": "https://github.com/railwayapp/railpack/releases/download/v0.15.4/railpack-v0.15.4-arm64-pc-windows-msvc.zip",
+            "hash": "c1f846c172d2c0a8a6bf784951b943335d155715f013b2b4eabbc9b7a5c46142"
+        }
+    },
+    "bin": "railpack.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/railwayapp/railpack/releases/download/v$version/railpack-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/railwayapp/railpack/releases/download/v$version/railpack-v$version-arm64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
