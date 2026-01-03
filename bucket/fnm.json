@@ -3,14 +3,51 @@
     "description": "Cross-platform Node.js version switcher",
     "homepage": "https://github.com/Schniz/fnm",
     "license": "GPL-3.0-only",
-    "notes": "Don't forget to add \"fnm env --use-on-cd | Out-String | Invoke-Expression\" to your powershell profile.",
+    "notes": [
+        "Don't forget to add \"fnm env --use-on-cd | Out-String | Invoke-Expression\" to your powershell profile.",
+        "The FNM_DIR environment variable has been set and the data persisted by Scoop since v1.38.1.",
+        "* Before: $env:APPDATA\\fnm",
+        "* After: $persist_dir\\fnm"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/Schniz/fnm/releases/download/v1.38.1/fnm-windows.zip",
             "hash": "377796e8f2f51eb8b5de8983974caa8922b83c167197b68b33962775703ad4a0"
         }
     },
+    "env_set": {
+        "FNM_DIR": "$dir"
+    },
     "bin": "fnm.exe",
+    "persist": [
+        "aliases",
+        "node-versions"
+    ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    # Directories",
+        "    $Directories = [string[]](",
+        "        ('{0}\\fnm_multishells' -f $env:LOCALAPPDATA),",
+        "        ('{0}\\fnm' -f $env:APPDATA)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if (Test-Path -Path $_ -PathType 'Container') {",
+        "            $null = Remove-Item -Path $_ -Recurse -Force",
+        "        }",
+        "    }",
+        "    # Environment variables",
+        "    $EnvScope = [string]$(if($global){'Machine'}else{'User'})",
+        "    [System.Environment]::GetEnvironmentVariables($EnvScope).GetEnumerator().Where{",
+        "        $_.'Name' -like 'FNM_*'",
+        "    }.ForEach{",
+        "        [System.Environment]::SetEnvironmentVariable(",
+        "            $_.'Name',",
+        "            $null,",
+        "            $EnvScope",
+        "        )",
+        "    }",
+        "}"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {

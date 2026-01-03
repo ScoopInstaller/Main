@@ -1,16 +1,20 @@
 {
-    "version": "1.10.1",
+    "version": "1.11.3",
     "description": "A fast TCP tunnel over HTTP",
     "homepage": "https://github.com/jpillora/chisel",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jpillora/chisel/releases/download/v1.10.1/chisel_1.10.1_windows_amd64.gz",
-            "hash": "42fd40bb0e6e8e0072a83f3a824de5045636c1cc8e3819daa3c9b7a985a2cc58"
+            "url": "https://github.com/jpillora/chisel/releases/download/v1.11.3/chisel_1.11.3_windows_amd64.zip",
+            "hash": "e07f1cfd3ac5f77134e5289fb33a5096d037d165da56bd473744bdae2bc2fd2d"
+        },
+        "arm64": {
+            "url": "https://github.com/jpillora/chisel/releases/download/v1.11.3/chisel_1.11.3_windows_arm64.zip",
+            "hash": "861e3b6f39ddeb823b90aac7ca9b4bb29e09895159d429b6765935485e321997"
         },
         "32bit": {
-            "url": "https://github.com/jpillora/chisel/releases/download/v1.10.1/chisel_1.10.1_windows_386.gz",
-            "hash": "9af93373a3cfb8a43dd857050d3b265b70270b23184ce7ae47674c69ca44fd3c"
+            "url": "https://github.com/jpillora/chisel/releases/download/v1.11.3/chisel_1.11.3_windows_386.zip",
+            "hash": "aed093436dc7d4d56f444d7a1af9fe96dcc3b48b84af51577b802736c85cedbf"
         }
     },
     "bin": "chisel.exe",
@@ -18,10 +22,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/jpillora/chisel/releases/download/v$version/chisel_$version_windows_amd64.gz"
+                "url": "https://github.com/jpillora/chisel/releases/download/v$version/chisel_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jpillora/chisel/releases/download/v$version/chisel_$version_windows_arm64.zip"
             },
             "32bit": {
-                "url": "https://github.com/jpillora/chisel/releases/download/v$version/chisel_$version_windows_386.gz"
+                "url": "https://github.com/jpillora/chisel/releases/download/v$version/chisel_$version_windows_386.zip"
             }
         },
         "hash": {

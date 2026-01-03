@@ -1,15 +1,26 @@
 {
-    "version": "10.7.1",
+    "version": "10.27.0",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.7.1/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "4281075ed211c027454a1643e5a0c3e12dbf1710dfe7ee4fa7a024417ed2db46"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v10.27.0/pnpm-win-x64.exe#/pnpm.exe",
+            "hash": "921af6e7fce0cf67d2b035c2d81bfa4d9ed774780aa32dd63162fa726fecd859"
+        },
+        "arm64": {
+            "url": "https://github.com/pnpm/pnpm/releases/download/v10.27.0/pnpm-win-arm64.exe#/pnpm.exe",
+            "hash": "f8479a346f888860457e004cc3510a3b54505b287fd1d6960e0d128a1f6e8953"
         }
     },
-    "bin": "pnpm.exe",
+    "bin": [
+        "pnpm.exe",
+        [
+            "pnpm.exe",
+            "pnpx",
+            "dlx"
+        ]
+    ],
     "checkver": {
         "script": [
             "# Using checkver script to check through all release tags",
@@ -31,6 +42,13 @@
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-arm64.exe#/pnpm.exe"
+            }
+        }
     }
 }

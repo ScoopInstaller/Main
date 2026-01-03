@@ -1,17 +1,21 @@
 {
-    "version": "0.11.2",
-    "description": "Blazingly fast interpolated LUT generator and applicator for arbitrary and popular color palettes.",
-    "homepage": "https://github.com/ozwaldorf/lutgen-rs",
+    "version": "1.0.1",
+    "description": "Blazingly fast interpolated LUT generator and applicator for arbitrary and popular color palettes. (CLI version)",
+    "homepage": "http://lut.sh",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/ozwaldorf/lutgen-rs/releases/download/v0.11.2/lutgen-0.11.2-x86_64-windows.zip",
-            "hash": "d91fadf04ce8ef2c1d7ce4befc79657bd700210f898486740c52349269089945"
+            "url": "https://github.com/ozwaldorf/lutgen-rs/releases/download/lutgen-v1.0.1/lutgen-cli-v1.0.1-x86_64-pc-windows-msvc.exe#/lutgen.exe",
+            "hash": "197be902f1d430ebe7c2808a99e9f3cf355c8fc6b30199f068ee04bc64213a26"
         }
     },
     "bin": "lutgen.exe",
-    "checkver": "github",
+    "checkver": {
+        "url": "https://api.github.com/repositories/640093933/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "lutgen-v([\\d.]+)"
+    },
     "autoupdate": {
-        "url": "https://github.com/ozwaldorf/lutgen-rs/releases/download/v$version/lutgen-$version-x86_64-windows.zip"
+        "url": "https://github.com/ozwaldorf/lutgen-rs/releases/download/lutgen-v$version/lutgen-cli-v$version-x86_64-pc-windows-msvc.exe#/lutgen.exe"
     }
 }

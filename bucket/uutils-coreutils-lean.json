@@ -1,18 +1,23 @@
 {
-    "version": "0.0.30",
+    "version": "0.5.0",
     "description": "Rust implementation of GNU coreutils (binaries compiled with MSVC)",
     "homepage": "https://uutils.github.io/coreutils/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.0.30/coreutils-0.0.30-x86_64-pc-windows-msvc.zip",
-            "hash": "3931f570ff2665db09b30614521712cc1d31426793e189a5db704d2c40599ba9",
-            "extract_dir": "coreutils-0.0.30-x86_64-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.5.0/coreutils-0.5.0-x86_64-pc-windows-msvc.zip",
+            "hash": "ba0a319a2acf0ab2c1786fb75a246090d905f49762638e903b4f8ff3195b72be",
+            "extract_dir": "coreutils-0.5.0-x86_64-pc-windows-msvc"
         },
         "32bit": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.0.30/coreutils-0.0.30-i686-pc-windows-msvc.zip",
-            "hash": "8cfe11cd0cd043099ab4598d943f786a0b5727677d5f418f8525481ea3d26f10",
-            "extract_dir": "coreutils-0.0.30-i686-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.5.0/coreutils-0.5.0-i686-pc-windows-msvc.zip",
+            "hash": "99c60f408f9b2ba243a6ae31e635cbc62a319573a103d56c154ae038479ba7e2",
+            "extract_dir": "coreutils-0.5.0-i686-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/uutils/coreutils/releases/download/0.5.0/coreutils-0.5.0-aarch64-pc-windows-msvc.zip",
+            "hash": "96538e06f0092b23cb0f368426fc2b1132f494ce7195ccc53e0fc8071436f73c",
+            "extract_dir": "coreutils-0.5.0-aarch64-pc-windows-msvc"
         }
     },
     "bin": [
@@ -34,6 +39,10 @@
             "32bit": {
                 "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-i686-pc-windows-msvc.zip",
                 "extract_dir": "coreutils-$version-i686-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "coreutils-$version-aarch64-pc-windows-msvc"
             }
         }
     }

@@ -9,9 +9,9 @@
             "hash": "sha1:1b08609af86ad9744689068f0104fd8d0db491bb"
         }
     },
+    "pre_install": "'$PLUGINSDIR', 'Uninstall.exe' | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force }",
     "bin": [
         "bochs.exe",
-        "bochsdbg.exe",
         "bxhub.exe",
         "bximage.exe",
         "niclist.exe",

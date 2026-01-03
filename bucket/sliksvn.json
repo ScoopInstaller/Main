@@ -1,25 +1,23 @@
 {
-    "version": "1.14.2b",
+    "version": "1.14.5",
     "description": "A software versioning and revision control system.",
     "homepage": "https://sliksvn.com/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2b-x64.zip",
-            "hash": "1c5b992b0d2b065bdbbea9939980cd5111519f1588de4a853d5e3115d7c1ea9d"
+            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.5-x64.zip",
+            "hash": "77d4fe02999dda3bdc3a20e86243ae6ede99aaf072b4c12b0cdedb54d88e954a"
         },
         "32bit": {
-            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2b-win32.zip",
-            "hash": "2774b536a769aa4be5330c68b126b27acbac0b2e08d4b86b0635eb958894ec9a"
+            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.5-win32.zip",
+            "hash": "033a4cfd484b6bb43f08d52d99c93748c40e2cb3bcbc30b63912872b6eb8cacc"
         },
         "arm64": {
-            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2b-ARM64.zip",
-            "hash": "cceb88655824577ff8b956fb0752f5de0d2f07e9a12bba55255227bd89fe5e1f"
+            "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.5-ARM64.zip",
+            "hash": "a912bff8358bbde801e1cf4b0b32b80a977bc0b3a5e06e1bc726de05d0e600b6"
         }
     },
-    "pre_install": [
-        "Get-Item \"$dir\\Slik-Subversion-*.msi\" | Expand-MsiArchive -Destination \"$dir\" -ExtractDir 'PFiles' -Removal | Out-Null"
-    ],
+    "pre_install": "Get-Item \"$dir\\Slik-Subversion-*.msi\" | Expand-MsiArchive -Destination \"$dir\" -ExtractDir 'PFiles' -Removal | Out-Null",
     "bin": [
         "bin\\svn.exe",
         "bin\\svnadmin.exe",
