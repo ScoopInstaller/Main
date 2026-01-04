@@ -12,10 +12,15 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-win64.zip",
-            "hash": "718e731326e7759cf17bbbb33f38975707a2ac85642614686b818ef5fde38f48"
+            "hash": "718e731326e7759cf17bbbb33f38975707a2ac85642614686b818ef5fde38f48",
+            "extract_dir": "nvim-win64"
+        },
+        "arm64": {
+            "url": "https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-win-arm64.zip",
+            "hash": "3446d204a97ec83eb4af0fe530a09c6d6b7392c0f0c36706e2c7dac6e1feb0ff",
+            "extract_dir": "nvim-win-arm64"
         }
     },
-    "extract_dir": "nvim-win64",
     "bin": "bin\\nvim.exe",
     "checkver": {
         "url": "https://api.github.com/repositories/16408992/releases/latest",
@@ -27,10 +32,10 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/neovim/neovim/releases/download/v$version/nvim-win64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/neovim/neovim/releases/download/v$version/nvim-win-arm64.zip"
             }
-        },
-        "hash": {
-            "url": "$url.sha256sum"
         }
     }
 }

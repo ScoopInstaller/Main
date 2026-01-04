@@ -1,24 +1,31 @@
 {
-    "version": "3.19.0",
-    "description": "The package manager for Kubernetes",
+    "version": "4.0.4",
+    "description": "The package manager for Kubernetes.",
     "homepage": "https://helm.sh",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://get.helm.sh/helm-v3.19.0-windows-amd64.zip",
-            "hash": "6488630c2e5d5945ed990fa02fd9e99f9c6792cdbcd79eb264b6cfb90179d2d1",
+            "url": "https://get.helm.sh/helm-v4.0.4-windows-amd64.zip",
+            "hash": "135bffadd3c87aff8856e06efb366bea2a48ac4d1742d73af80250410246f14d",
             "extract_dir": "windows-amd64"
+        },
+        "arm64": {
+            "url": "https://get.helm.sh/helm-v4.0.4-windows-arm64.zip",
+            "hash": "b65d05f15260e78311f463773f54fe68f6d74444b3c3e84cecf270cdb927cd8a",
+            "extract_dir": "windows-arm64"
         }
     },
     "bin": "helm.exe",
     "checkver": {
-        "url": "https://github.com/kubernetes/helm/releases",
-        "regex": "/tag/v(3\\.[\\d.]+)\""
+        "github": "https://github.com/helm/helm"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://get.helm.sh/helm-v$version-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://get.helm.sh/helm-v$version-windows-arm64.zip"
             }
         },
         "hash": {
