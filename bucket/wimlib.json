@@ -1,0 +1,31 @@
+{
+    "homepage": "https://wimlib.net/",
+    "description": "wimlib is an open source, cross-platform library for creating, extracting, and modifying Windows Imaging (WIM) archives.",
+    "license": "GPL-3.0-or-later",
+    "version": "1.14.4",
+    "architecture": {
+        "64bit": {
+            "url": "https://wimlib.net/downloads/wimlib-1.14.4-windows-x86_64-bin.zip",
+            "hash": "6d99e242bfbc6d36fc987d433d63772180551b7f2d8de43e9561535a3e2c16d8"
+        },
+        "32bit": {
+            "url": "https://wimlib.net/downloads/wimlib-1.14.4-windows-i686-bin.zip",
+            "hash": "9f2c938b5cc7770eb2fb9c8e769eae05506d4ccd4f82a4677371d8877d0f32b1"
+        }
+    },
+    "env_add_path": ".",
+    "checkver": {
+        "url": "https://wimlib.net/",
+        "regex": "Current release: wimlib-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://wimlib.net/downloads/wimlib-$version-windows-x86_64-bin.zip"
+            },
+            "32bit": {
+                "url": "https://wimlib.net/downloads/wimlib-$version-windows-i686-bin.zip"
+            }
+        }
+    }
+}
