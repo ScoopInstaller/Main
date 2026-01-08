@@ -1,0 +1,28 @@
+{
+    "version": "0.9.19",
+    "description": "PDF to DjVu converter",
+    "homepage": "https://jwilk.net/software/pdf2djvu",
+    "license": "GPL-2.0-only",
+    "url": "https://github.com/jwilk/pdf2djvu/releases/download/0.9.19/pdf2djvu-win32-0.9.19.zip",
+    "hash": "1050bbbe1427e7005106e7e744bf1a2ae38de18ef49726a951ba164a426f4568",
+    "extract_dir": "pdf2djvu-0.9.19",
+    "bin": [
+        "pdf2djvu.exe",
+        "bzz.exe",
+        "c44.exe",
+        "cjb2.exe",
+        "csepdjvu.exe",
+        "djvmcvt.exe",
+        "djvuextract.exe",
+        "djvumake.exe",
+        "djvused.exe"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repositories/36523035/releases",
+        "regex": "pdf2djvu-win32-([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://github.com/jwilk/pdf2djvu/releases/download/$version/pdf2djvu-win32-$version.zip",
+        "extract_dir": "pdf2djvu-$version"
+    }
+}

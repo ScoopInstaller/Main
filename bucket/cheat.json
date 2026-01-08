@@ -1,0 +1,46 @@
+{
+    "version": "4.4.2",
+    "description": "Create and view interactive cheatsheets on the command-line",
+    "homepage": "https://github.com/cheat/cheat",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cheat/cheat/releases/download/4.4.2/cheat-windows-amd64.exe.zip",
+            "hash": "9234a4e3c1748537b6f16dd83ba1de573556dfca34fcbf837f216c25dc3160b9"
+        }
+    },
+    "pre_install": [
+        "Rename-Item \"$dir\\cheat-windows-amd64.exe\" 'cheat.exe'",
+        "$file = 'conf.yml'",
+        "if (!(Test-Path \"$persist_dir\\$file\")) {",
+        "   Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
+        "   New-Item -ItemType File -Force -Path \"$dir\\$file\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\cheatsheets\")) {",
+        "   Write-Host 'Adding community cheatsheets...' -f Yellow",
+        "   New-item -ItemType Directory -Force -Path \"$persist_dir\\cheatsheets\\personal\" | Out-Null",
+        "   git clone -q 'https://github.com/cheat/cheatsheets.git' \"$persist_dir\\cheatsheets\\community\"",
+        "}"
+    ],
+    "post_install": [
+        "$file = 'conf.yml'",
+        "$CONT = $(& \"$dir\\cheat\" --init) -replace 'editor: EDITOR_PATH', 'editor: notepad' -replace 'pager: PAGER_PATH', 'pager: more'",
+        "Set-Content \"$dir\\$file\" $CONT -Encoding ASCII"
+    ],
+    "env_set": {
+        "CHEAT_CONFIG_PATH": "$dir\\conf.yml"
+    },
+    "bin": "cheat.exe",
+    "persist": [
+        "conf.yml",
+        "cheatsheets"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cheat/cheat/releases/download/$version/cheat-windows-amd64.exe.zip"
+            }
+        }
+    }
+}

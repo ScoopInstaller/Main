@@ -1,0 +1,19 @@
+{
+    "version": "7.8.10",
+    "description": "PowerShell module to import/export Excel spreadsheets, without Excel",
+    "homepage": "https://github.com/dfinke/ImportExcel",
+    "license": "Apache-2.0",
+    "url": "https://cdn.powershellgallery.com/packages/importexcel.7.8.10.nupkg",
+    "hash": "d8a1d79dc8cf10c0eea30b68b70459b3fb4cac0042fb756fcb23890671857e4c",
+    "pre_install": "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*Content*.xml\" -Recurse",
+    "psmodule": {
+        "name": "ImportExcel"
+    },
+    "checkver": {
+        "url": "https://www.powershellgallery.com/packages/ImportExcel",
+        "regex": "<h2>([\\d.]+)</h2>"
+    },
+    "autoupdate": {
+        "url": "https://cdn.powershellgallery.com/packages/importexcel.$version.nupkg"
+    }
+}

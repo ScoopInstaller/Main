@@ -1,0 +1,76 @@
+{
+    "version": "2.935",
+    "description": "A large collection of GNU and Open Source tools which provide functionality similar to a Linux distribution on Windows",
+    "homepage": "https://cygwin.com/",
+    "license": {
+        "identifier": "GPL-3.0-or-later,X11,Public Domain",
+        "url": "https://cygwin.com/faq.html#faq.what.free"
+    },
+    "notes": "To start a Cygwin shell, type \"cygwin\".",
+    "architecture": {
+        "64bit": {
+            "url": "https://cygwin.com/setup-x86_64.exe#/cygwin-setup.exe",
+            "hash": "46993d76d756bde18564f72a4ee07384cd82b447527ca406c8bfc034cb05c664"
+        },
+        "32bit": {
+            "url": "https://cygwin.com/setup-x86.exe#/cygwin-setup.exe",
+            "hash": "5b33dbe58ae8d34d1445a859c73d077e0c0b349306e40834d637f7540499234d"
+        }
+    },
+    "pre_install": "persist_data @{persist = @('packages', 'root')} $original_dir $persist_dir",
+    "installer": {
+        "args": [
+            "--no-admin",
+            "--no-shortcuts",
+            "--quiet-mode",
+            "--local-package-dir",
+            "$dir\\packages",
+            "--root",
+            "$dir\\root",
+            "--site",
+            "https://mirrors.kernel.org/sourceware/cygwin/"
+        ],
+        "keep": true
+    },
+    "bin": [
+        [
+            "root\\bin\\bash.exe",
+            "cygwin",
+            "--login -i"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "root\\Cygwin.bat",
+            "Cygwin",
+            "",
+            "root\\Cygwin-Terminal.ico"
+        ],
+        [
+            "cygwin-setup.exe",
+            "Cygwin Setup",
+            "--no-admin --no-shortcuts --root \"$persist_dir\\root\" --local-package-dir \"$persist_dir\\packages\""
+        ],
+        [
+            "root\\bin\\mintty.exe",
+            "Cygwin Terminal",
+            "-i \"$dir\\root\\Cygwin-Terminal.ico\" -",
+            "root\\Cygwin-Terminal.ico"
+        ]
+    ],
+    "pre_uninstall": "unlink_persist_data @{persist = @('packages', 'root')} $dir",
+    "checkver": {
+        "url": "https://cygwin.com/git/?p=cygwin-apps/setup.git;a=tags",
+        "regex": ">release_([\\d.]+)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cygwin.com/setup-x86_64.exe#/cygwin-setup.exe"
+            },
+            "32bit": {
+                "url": "https://cygwin.com/setup-x86.exe#/cygwin-setup.exe"
+            }
+        }
+    }
+}

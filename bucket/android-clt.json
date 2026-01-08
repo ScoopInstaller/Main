@@ -1,0 +1,71 @@
+{
+    "version": "13114758",
+    "description": "The official Android command line tools",
+    "homepage": "https://developer.android.com/studio#command-line-tools-only",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://developer.android.com/studio/terms.html"
+    },
+    "suggest": {
+        "Java": "java/openjdk17"
+    },
+    "url": "https://dl.google.com/android/repository/commandlinetools-win-13114758_latest.zip",
+    "hash": "98b565cb657b012dae6794cefc0f66ae1efb4690c699b78a614b4a6a3505b003",
+    "extract_to": "cmdline-tools",
+    "pre_install": [
+        "Rename-Item \"$dir\\cmdline-tools\\cmdline-tools\" -NewName 'latest'",
+        "# For `env_add_path`:",
+        "ensure \"$dir\\platform-tools\" | Out-Null"
+    ],
+    "post_install": [
+        "# Persistence",
+        "Get-ChildItem \"$persist_dir\\cmdline-tools\" -Exclude 'latest' | Move-Item -Destination \"$dir\\cmdline-tools\" -Force",
+        "@('emulator', 'ndk-bundle', 'platform-tools', 'tools') | ForEach-Object {",
+        "  if (Test-Path \"$persist_dir\\$_\") {",
+        "    ensure \"$dir\\$_\" | Out-Null",
+        "    Move-Item \"$persist_dir\\$_\\*\" \"$dir\\$_\" -Force",
+        "  }",
+        "}",
+        "if (!(Get-Command 'java' -ErrorAction SilentlyContinue)) {",
+        "  warn \"'Java' is required to run Android SDK Commandline tools.\"",
+        "}"
+    ],
+    "env_add_path": [
+        "cmdline-tools\\latest\\bin",
+        "platform-tools"
+    ],
+    "env_set": {
+        "ANDROID_HOME": "$dir"
+    },
+    "persist": [
+        "add-ons",
+        "build-tools",
+        "cmake",
+        "extras",
+        "licenses",
+        "ndk",
+        "patcher",
+        "platforms",
+        "skiaparser",
+        "sources",
+        "system-images"
+    ],
+    "pre_uninstall": [
+        "# Persistence",
+        "ensure \"$persist_dir\\cmdline-tools\" | Out-Null",
+        "Get-ChildItem \"$dir\\cmdline-tools\" -Exclude 'latest' | Copy-Item -Destination \"$persist_dir\\cmdline-tools\" -Force -Recurse",
+        "@('emulator', 'ndk-bundle', 'platform-tools', 'tools') | ForEach-Object {",
+        "  if ((Test-Path \"$dir\\$_\") -and ((Get-ChildItem \"$dir\\$_\").Count -gt 0)) {",
+        "    Copy-Item \"$dir\\$_\" \"$persist_dir\" -Force -Recurse",
+        "  }",
+        "}"
+    ],
+    "checkver": "commandlinetools-win-(\\d+)",
+    "autoupdate": {
+        "url": "https://dl.google.com/android/repository/commandlinetools-win-$version_latest.zip",
+        "hash": {
+            "url": "https://developer.android.com/studio",
+            "regex": "commandlinetools-win(?:.*\\n){3}.*<td>($sha256)"
+        }
+    }
+}

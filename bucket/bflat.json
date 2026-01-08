@@ -1,0 +1,32 @@
+{
+    "version": "8.0.2",
+    "description": "C# as you know it but with Go-inspired tooling that produces small, selfcontained, and native executables out of the box.",
+    "homepage": "https://github.com/bflattened/bflat",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bflattened/bflat/releases/download/v8.0.2/bflat-8.0.2-windows-x64.zip",
+            "hash": "25b03214c6085607ec2ec5fc86139c93e054edd60266296e708f763455961e7e"
+        },
+        "arm64": {
+            "url": "https://github.com/bflattened/bflat/releases/download/v8.0.2/bflat-8.0.2-windows-arm64.zip",
+            "hash": "d44b87fdd00d3414d6032bfaf2cadb9ef8d22f342b61d5573d03ac4e7649c5e4"
+        }
+    },
+    "bin": "bflat.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/bflattened/bflat/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bflattened/bflat/releases/download/v$version/bflat-$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/bflattened/bflat/releases/download/v$version/bflat-$version-windows-arm64.zip"
+            }
+        }
+    }
+}

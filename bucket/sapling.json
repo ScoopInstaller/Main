@@ -1,0 +1,39 @@
+{
+    "version": "0.2.20250521.115337.25ed6ac4",
+    "description": "Sapling SCM is a cross-platform, highly scalable, Git-compatible source control system.",
+    "homepage": "https://sapling-scm.com/",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "The name of the Sapling CLI sl.exe conflicts with the sl shell built-in in PowerShell (sl is an alias for Set-Location, which is equivalent to cd).",
+        "If you want to use sl to run sl.exe in PowerShell, you must reassign the alias to PowerShell $PROFILE by running:",
+        "Add-Content -Path $Profile -Value \"`nSet-Alias -Name sl -Value `\"`$(scoop prefix sapling)\\sl.exe`\" -Force -Option Constant,ReadOnly,AllScope\""
+    ],
+    "suggest": {
+        "Node.js": [
+            "nodejs",
+            "nodejs-lts"
+        ],
+        "Git": "git"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/facebook/sapling/releases/download/0.2.20250521-115337+25ed6ac4/sapling_windows_0.2.20250521-115337+25ed6ac4_amd64.zip",
+            "hash": "da706ae9989cea31003346ad1ed69ebd82cedf86050e13efb6598ebcdf5cba2e"
+        }
+    },
+    "extract_dir": "Sapling",
+    "bin": "sl.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/58146669/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "(?<tag>(?<ver>[\\d.]+)\\.(?<date>[\\d]{8})-(?<time>[\\d]{6})\\+(?<hash>[\\da-f]{8}))",
+        "replace": "${ver}.${date}.${time}.${hash}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/facebook/sapling/releases/download/$matchTag/sapling_windows_$matchTag_amd64.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "version": "0.11.0",
+    "description": "Static analysis tool for shell scripts",
+    "homepage": "https://shellcheck.net/",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.zip",
+    "hash": "8a4e35ab0b331c85d73567b12f2a444df187f483e5079ceffa6bda1faa2e740e",
+    "pre_install": "Get-ChildItem \"$dir\\shellcheck-*.exe\" | Rename-Item -NewName 'shellcheck.exe'",
+    "bin": "shellcheck.exe",
+    "checkver": {
+        "github": "https://github.com/koalaman/shellcheck"
+    },
+    "autoupdate": {
+        "url": "https://github.com/koalaman/shellcheck/releases/download/v$version/shellcheck-v$version.zip"
+    }
+}

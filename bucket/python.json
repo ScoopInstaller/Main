@@ -1,0 +1,115 @@
+{
+    "version": "3.14.2",
+    "description": "A programming language that lets you work quickly and integrate systems more effectively.",
+    "homepage": "https://www.python.org/",
+    "license": "Python-2.0",
+    "notes": "Allow applications and third-party installers to find python by running: \"$dir\\install-pep-514.reg\"",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.python.org/ftp/python/3.14.2/python-3.14.2-amd64.exe#/setup.exe",
+            "hash": "md5:c887e19e66e66e6961c444283dafaa33"
+        },
+        "32bit": {
+            "url": "https://www.python.org/ftp/python/3.14.2/python-3.14.2.exe#/setup.exe",
+            "hash": "md5:ae1ef59db6af34ec0e1ff4c6e5e2668a"
+        },
+        "arm64": {
+            "url": "https://www.python.org/ftp/python/3.14.2/python-3.14.2-arm64.exe#/setup.exe",
+            "hash": "md5:30ab0c9e39b339c557c3f325488b869e"
+        }
+    },
+    "pre_install": [
+        "$py_root = \"$dir\".Replace('\\', '\\\\')",
+        "$py_archLabel = '64-bit'",
+        "$bit = '64'",
+        "if ($architecture -eq '32bit') {",
+        "    $py_archLabel = '32-bit'",
+        "    $bit = '32'",
+        "}",
+        "if ($architecture -eq 'arm64') { $py_archLabel = 'ARM64' }",
+        "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
+        "    $py_version = ($version -split '\\.')[0..1] -join '.'",
+        "    $content = Get-Content \"$bucketsdir\\main\\scripts\\python\\$_\"",
+        "    $content = $content.Replace('$py_root', $py_root)",
+        "    $content = $content.Replace('$py_version', $py_version)",
+        "    $content = $content.Replace('$py_fullversion', $version)",
+        "    $content = $content.Replace('$py_cleanVersion', $version -replace '\\.')",
+        "    $content = $content.Replace('$py_archLabel', $py_archLabel)",
+        "    $content = $content.Replace('$py_arch', \"$bit\")",
+        "    if ($global) {",
+        "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
+        "}"
+    ],
+    "installer": {
+        "script": [
+            "Expand-DarkArchive \"$dir\\setup.exe\" \"$dir\\_tmp\"",
+            "@('path.msi', 'pip.msi') | ForEach-Object {",
+            "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
+            "}",
+            "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object {",
+            "    # appendpath.msi does not contain any file, which causes 'msiexec /a' to fail",
+            "    if($((Get-Item $_).Basename) -eq 'appendpath') { return }",
+            "    Expand-MsiArchive $_ \"$dir\" ",
+            "}",
+            "Remove-Item \"$dir\\_tmp\", \"$dir\\setup.exe\" -Force -Recurse",
+            "if ($global) {",
+            "    $pathext = (Get-EnvVar -Name PATHEXT -Global) -replace ';.PYW?', ''",
+            "    Set-EnvVar -Name PATHEXT -Value \"$pathext;.PY;.PYW\" -Global",
+            "}"
+        ]
+    },
+    "post_install": [
+        "python -E -s -m ensurepip -U --default-pip | Out-Null",
+        "Write-Output \"$([char]0x1b)[0m\" # Reset ansi to prevent color leak from installer"
+    ],
+    "uninstaller": {
+        "script": [
+            "if ($global) {",
+            "    $pathext = (Get-EnvVar -Name PATHEXT -Global) -replace ';.PYW?', ''",
+            "    Set-EnvVar -Name PATHEXT -Value \"$pathext\" -Global",
+            "}"
+        ]
+    },
+    "bin": [
+        [
+            "python.exe",
+            "python3"
+        ],
+        "Lib\\idlelib\\idle.bat",
+        [
+            "Lib\\idlelib\\idle.bat",
+            "idle3"
+        ]
+    ],
+    "env_add_path": [
+        "Scripts",
+        "."
+    ],
+    "persist": [
+        "Scripts",
+        "Lib\\site-packages"
+    ],
+    "checkver": {
+        "url": "https://www.python.org/downloads/windows/",
+        "regex": "Latest Python 3 Release - Python ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.python.org/ftp/python/$version/python-$version-amd64.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://www.python.org/ftp/python/$version/python-$version.exe#/setup.exe"
+            },
+            "arm64": {
+                "url": "https://www.python.org/ftp/python/$version/python-$version-arm64.exe#/setup.exe"
+            }
+        },
+        "hash": {
+            "url": "https://www.python.org/downloads/release/python-$cleanVersion/",
+            "regex": "(?sm)$basename.*?$md5"
+        }
+    }
+}

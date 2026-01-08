@@ -1,0 +1,45 @@
+{
+    "version": "23.9.0.25.07",
+    "description": "Additional libraries for enabling ODBC applications with Oracle Instant Client.",
+    "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.oracle.com/downloads/licenses/instant-client-lic.html"
+    },
+    "depends": "oracle-instant-client",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2390000/instantclient-odbc-windows.x64-23.9.0.25.07.zip",
+            "hash": "46da115c4c322c412ec4c9e684fa6cae09fc29b990dd83f9417e2b442a8ea0f4"
+        }
+    },
+    "extract_dir": "instantclient_23_9",
+    "pre_install": [
+        "$instantclient = currentdir 'oracle-instant-client'",
+        "Copy-Item -Path \"$dir\\*\" -Destination \"$instantclient\" -Force -Recurse | Out-Null"
+    ],
+    "uninstaller": {
+        "script": [
+            "$instantclient = currentdir 'oracle-instant-client'",
+            "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$instantclient\\$($_.Name)\" -Recurse -Force -ErrorAction SilentlyContinue }"
+        ]
+    },
+    "checkver": {
+        "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
+        "regex": "Version ([\\d.]+)",
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$majorVersion$minorVersion$patchVersion000/instantclient-odbc-windows.x64-$version.zip"
+            }
+        },
+        "extract_dir": "instantclient_$majorVersion_$minorVersion"
+    },
+    "notes": [
+        "Note: The following steps requir Administrator privileges.",
+        "Use 'odbc_install.exe' in Oracle Instant Client's dir to install ODBC.",
+        "Use 'odbc_uninstall.exe' in above dir to uninstall it."
+    ]
+}

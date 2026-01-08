@@ -1,0 +1,75 @@
+{
+    "version": "1.24.2",
+    "description": "A validating, recursive, caching DNS resolver",
+    "homepage": "https://nlnetlabs.nl/projects/unbound/about/",
+    "license": "BSD-3-Clause",
+    "suggest": {
+        "openssl": [
+            "openssl",
+            "openssl-light"
+        ],
+        "wget": "wget"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.24.2.exe#/dl.7z",
+            "hash": "fcc5ce7ab71419131aa7335a974651e9a483a7d5141bd74b90006f2bd5dfbd82"
+        },
+        "32bit": {
+            "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.24.2-w32.exe#/dl.7z",
+            "hash": "803456a3642c7798669191b8c25bb8925d64a3edb796c36a2f6ecea7fb8b1cce"
+        }
+    },
+    "pre_install": [
+        "$content = Get-Content \"$dir\\unbound-control-setup.cmd\"",
+        "$content = $content -replace 'C:\\\\Program Files( \\(x86\\))?', (Convert-Path \"$dir\\..\")",
+        "$content = $content -replace '%prefix%\\\\Unbound', '%prefix%\\current'",
+        "Set-Content \"$dir\\unbound-control-setup.cmd\" $content -Encoding Ascii",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse"
+    ],
+    "bin": [
+        [
+            "unbound.exe",
+            "unbound",
+            "-c \"$dir\\service.conf\""
+        ],
+        [
+            "unbound-anchor.exe",
+            "unbound-anchor",
+            "-a \"$dir\\root.key\""
+        ],
+        [
+            "unbound-checkconf.exe",
+            "unbound-checkconf",
+            "\"$dir\\service.conf\""
+        ],
+        [
+            "unbound-control.exe",
+            "unbound-control",
+            "-c \"$dir\\service.conf\""
+        ],
+        "unbound-control-setup.cmd",
+        "unbound-host.exe"
+    ],
+    "persist": [
+        "service.conf",
+        "root.key"
+    ],
+    "checkver": {
+        "url": "https://nlnetlabs.nl/projects/unbound/download/",
+        "regex": "Unbound ([\\d.]+) \\(Current version\\)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version-w32.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

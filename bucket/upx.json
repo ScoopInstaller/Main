@@ -1,0 +1,34 @@
+{
+    "version": "5.1.0",
+    "description": "UPX is a free, portable, extendable, high-performance executable packer for several executable formats",
+    "homepage": "https://upx.github.io/",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/upx/upx/releases/download/v5.1.0/upx-5.1.0-win64.zip",
+            "hash": "41c7492edeed0f7e67d347ca9e8d2131e2af7ca7a7695f92283a8e655c251c13",
+            "extract_dir": "upx-5.1.0-win64"
+        },
+        "32bit": {
+            "url": "https://github.com/upx/upx/releases/download/v5.1.0/upx-5.1.0-win32.zip",
+            "hash": "9a0d3dcbcfd56ef1a5fa922af0978d445cc1a4ec25609639ccb8db369a49be03",
+            "extract_dir": "upx-5.1.0-win32"
+        }
+    },
+    "bin": "upx.exe",
+    "checkver": {
+        "github": "https://github.com/upx/upx"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/upx/upx/releases/download/v$version/upx-$version-win64.zip",
+                "extract_dir": "upx-$version-win64"
+            },
+            "32bit": {
+                "url": "https://github.com/upx/upx/releases/download/v$version/upx-$version-win32.zip",
+                "extract_dir": "upx-$version-win32"
+            }
+        }
+    }
+}

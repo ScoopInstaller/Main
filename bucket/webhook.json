@@ -1,0 +1,30 @@
+{
+    "version": "2.8.2",
+    "description": "A lightweight incoming webhook server to run shell commands.",
+    "homepage": "https://github.com/adnanh/webhook",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/adnanh/webhook/releases/download/2.8.2/webhook-windows-amd64.tar.gz",
+            "hash": "cbba045cda61597c8876dd4a60c1c0f857d85b10cfac876e7c7eecd189eb8cd8",
+            "extract_dir": "webhook-windows-amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/adnanh/webhook/releases/download/2.8.2/webhook-windows-386.tar.gz",
+            "hash": "1f3fff8cd6a5d4e34b44b92960cc43f8d5635994b2d62f5730a22769b9b87156",
+            "extract_dir": "webhook-windows-386"
+        }
+    },
+    "bin": "webhook.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/adnanh/webhook/releases/download/$version/webhook-windows-amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/adnanh/webhook/releases/download/$version/webhook-windows-386.tar.gz"
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "version": "3.8.4",
+    "description": "GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them.",
+    "homepage": "https://www.gnutls.org",
+    "license": "LGPL-2.1-or-later,GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.4-w64.zip",
+            "hash": "433f05625ff41a4c4a8d6ef101f00eaadede8f65fd222077742a4307b8d016f3",
+            "extract_dir": "win64-build"
+        },
+        "32bit": {
+            "url": "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.4-w32.zip",
+            "hash": "ae84a6d1bd0ce16519f3353ae8daedf13457dd0c62c31fc674bde13f8d775e81",
+            "extract_dir": "win32-build"
+        }
+    },
+    "env_add_path": "bin",
+    "checkver": {
+        "url": "https://www.gnutls.org/manual/gnutls.html",
+        "regex": "GnuTLS ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.gnupg.org/ftp/gcrypt/gnutls/v$majorVersion.$minorVersion/gnutls-$version-w64.zip"
+            },
+            "32bit": {
+                "url": "https://www.gnupg.org/ftp/gcrypt/gnutls/v$majorVersion.$minorVersion/gnutls-$version-w32.zip"
+            }
+        }
+    }
+}

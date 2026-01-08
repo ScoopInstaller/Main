@@ -1,0 +1,57 @@
+{
+    "version": "r40",
+    "description": "A terminal file manager written in Go",
+    "homepage": "https://godoc.org/github.com/gokcehan/lf",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/gokcehan/lf/releases/download/r40/lf-windows-amd64.zip",
+                "https://raw.githubusercontent.com/gokcehan/lf/r40/etc/lfcd.cmd",
+                "https://raw.githubusercontent.com/gokcehan/lf/r40/etc/lfcd.ps1"
+            ],
+            "hash": [
+                "378291e196e6ac0642497d94358eb66fc5c0ae6f2f509c36aea77fdf40c97c2c",
+                "b3900464be408d70004418046887169d2245dea8263ff5170bcd9505bd9f0815",
+                "82b7fad042f68b97bedf646c01d3ac3f9e138ca46f192a1b459719749f9bf1ff"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://github.com/gokcehan/lf/releases/download/r40/lf-windows-386.zip",
+                "https://raw.githubusercontent.com/gokcehan/lf/r40/etc/lfcd.cmd",
+                "https://raw.githubusercontent.com/gokcehan/lf/r40/etc/lfcd.ps1"
+            ],
+            "hash": [
+                "e87537df3d2044bb71b0e030c9c954b64d641a46028fc903517df0d40c5b27e7",
+                "b3900464be408d70004418046887169d2245dea8263ff5170bcd9505bd9f0815",
+                "82b7fad042f68b97bedf646c01d3ac3f9e138ca46f192a1b459719749f9bf1ff"
+            ]
+        }
+    },
+    "bin": "lf.exe",
+    "pre_install": "Move-Item $dir\\lfcd.cmd, $dir\\lfcd.ps1 $scoopdir\\shims\\",
+    "post_uninstall": "Remove-Item $scoopdir\\shims\\lfcd.cmd, $scoopdir\\shims\\lfcd.ps1",
+    "checkver": {
+        "github": "https://github.com/gokcehan/lf/",
+        "regex": "tag/(r[\\d]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/gokcehan/lf/releases/download/$version/lf-windows-amd64.zip",
+                    "https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.cmd",
+                    "https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.ps1"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "https://github.com/gokcehan/lf/releases/download/$version/lf-windows-386.zip",
+                    "https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.cmd",
+                    "https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.ps1"
+                ]
+            }
+        }
+    }
+}

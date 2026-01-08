@@ -1,0 +1,28 @@
+{
+    "version": "1.9.0",
+    "description": "sqlcmd is a multi-platform command line experience for Microsoft SQL Server and Azure SQL",
+    "homepage": "https://github.com/microsoft/go-sqlcmd",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/microsoft/go-sqlcmd/releases/download/v1.9.0/sqlcmd-windows-amd64.zip",
+            "hash": "e4d6c74a7dd2322d7890e36dca8d5d8484b4d2540706a6603086d5920c09009c"
+        },
+        "arm64": {
+            "url": "https://github.com/microsoft/go-sqlcmd/releases/download/v1.9.0/sqlcmd-windows-arm64.zip",
+            "hash": "d7c500714872aea45f2f4a1e82cc5c5bcb50be5318f9a2fdc46c5d62c6ace099"
+        }
+    },
+    "bin": "sqlcmd.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/go-sqlcmd/releases/download/v$version/sqlcmd-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/microsoft/go-sqlcmd/releases/download/v$version/sqlcmd-windows-arm64.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "version": "2.1.25-M23",
+    "description": "Pure Scala Artifact Fetching",
+    "homepage": "https://github.com/coursier/coursier",
+    "license": "Apache-2.0",
+    "url": "https://github.com/coursier/coursier/releases/download/v2.1.25-M23/coursier#/coursier.jar",
+    "hash": "5924073323e27e88d0f5b994f712e6ad019495f2594c68750b2465f5b228f59e",
+    "bin": "coursier.jar",
+    "env_set": {
+        "COURSIER_CACHE": "$dir\\cache",
+        "COURSIER_BIN_DIR": "$dir\\bin"
+    },
+    "env_add_path": "bin",
+    "persist": [
+        "cache",
+        "bin"
+    ],
+    "checkver": {
+        "url": "https://github.com/coursier/coursier/releases",
+        "regex": "tag/v([\\w\\.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/coursier/coursier/releases/download/v$version/coursier#/coursier.jar"
+    }
+}

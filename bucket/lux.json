@@ -1,0 +1,39 @@
+{
+    "version": "0.24.1",
+    "description": "A fast, simple and clean video downloader built with Go.",
+    "homepage": "https://github.com/iawia002/lux",
+    "license": "MIT",
+    "depends": "ffmpeg",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/iawia002/lux/releases/download/v0.24.1/lux_0.24.1_Windows_x86_64.zip",
+            "hash": "bc487da29bac7c0d76607b8ebbe5ca43d6d94c927e551165344eeae713b02098"
+        },
+        "32bit": {
+            "url": "https://github.com/iawia002/lux/releases/download/v0.24.1/lux_0.24.1_Windows_i386.zip",
+            "hash": "1d61f543fc057ac49d96f7542f4b52ac68159a1258eb72df60f055aab4c009ec"
+        },
+        "arm64": {
+            "url": "https://github.com/iawia002/lux/releases/download/v0.24.1/lux_0.24.1_Windows_arm64.zip",
+            "hash": "8920adababa3d76448a1fd4a2cbfd45d148a738c5ed1682c015d800e28e0787f"
+        }
+    },
+    "bin": "lux.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/iawia002/lux/releases/download/v$version/lux_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/iawia002/lux/releases/download/v$version/lux_$version_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/iawia002/lux/releases/download/v$version/lux_$version_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/lux_$version_checksums.txt"
+        }
+    }
+}

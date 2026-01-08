@@ -1,0 +1,123 @@
+{
+    "version": "2.3.0",
+    "description": "Manage MEGA.nz account and files from command line.",
+    "homepage": "https://mega.nz/cmd",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/meganz/MEGAcmd/blob/master/LICENSE"
+    },
+    "url": "https://mega.nz/MEGAcmdSetup.exe#/dl.7z",
+    "hash": "fed94d5ae19bd5983ee92efb2044d268b05dcba808f79c4372f226cb89c32c25",
+    "post_install": [
+        "Remove-Item \"$dir\\`$*\", \"$dir\\unins*\" -Recurse",
+        "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
+        "if (!(Test-Path \"$datapath\\MEGAcmd\")) {",
+        "    & \"$env:COMSPEC\" /c mklink /j \"$datapath\\MEGAcmd\" \"$dir\\\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\.megaCmd\\megacmd.cfg\")) {",
+        "    Set-Content \"$dir\\.megaCmd\\megacmd.cfg\" 'updaterregistered=1', 'autoupdate=0' -Encoding Ascii",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
+            "if ((Get-Item \"$datapath\\MEGAcmd\" -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
+            "    & \"$env:COMSPEC\" /c \"rmdir `\"$datapath\\MEGAcmd`\"\"",
+            "}"
+        ]
+    },
+    "bin": [
+        "MEGAclient.exe",
+        [
+            "MEGAcmdServer.exe",
+            "mega-cmd-server"
+        ],
+        [
+            "MEGAcmdShell.exe",
+            "mega-cmd"
+        ],
+        [
+            "MEGAclient.exe",
+            "mega-exec"
+        ],
+        [
+            "MEGAclient.exe",
+            "mega-exit",
+            "exit"
+        ],
+        "mega-attr.bat",
+        "mega-backup.bat",
+        "mega-cancel.bat",
+        "mega-cat.bat",
+        "mega-cd.bat",
+        "mega-confirm.bat",
+        "mega-confirmcancel.bat",
+        "mega-cp.bat",
+        "mega-debug.bat",
+        "mega-deleteversions.bat",
+        "mega-df.bat",
+        "mega-du.bat",
+        "mega-errorcode.bat",
+        "mega-exclude.bat",
+        "mega-export.bat",
+        "mega-find.bat",
+        "mega-ftp.bat",
+        "mega-get.bat",
+        "mega-graphics.bat",
+        "mega-help.bat",
+        "mega-https.bat",
+        "mega-import.bat",
+        "mega-invite.bat",
+        "mega-ipc.bat",
+        "mega-killsession.bat",
+        "mega-lcd.bat",
+        "mega-log.bat",
+        "mega-login.bat",
+        "mega-logout.bat",
+        "mega-lpwd.bat",
+        "mega-ls.bat",
+        "mega-mediainfo.bat",
+        "mega-mkdir.bat",
+        "mega-mount.bat",
+        "mega-mv.bat",
+        "mega-passwd.bat",
+        "mega-preview.bat",
+        "mega-put.bat",
+        "mega-pwd.bat",
+        "mega-quit.bat",
+        "mega-reload.bat",
+        "mega-rm.bat",
+        "mega-session.bat",
+        "mega-share.bat",
+        "mega-showpcr.bat",
+        "mega-signup.bat",
+        "mega-speedlimit.bat",
+        "mega-sync.bat",
+        "mega-thumbnail.bat",
+        "mega-transfers.bat",
+        "mega-tree.bat",
+        "mega-userattr.bat",
+        "mega-users.bat",
+        "mega-version.bat",
+        "mega-webdav.bat",
+        "mega-whoami.bat"
+    ],
+    "shortcuts": [
+        [
+            "MEGAcmdServer.exe",
+            "MEGAcmd Server"
+        ],
+        [
+            "MEGAcmdShell.exe",
+            "MEGAcmd Shell"
+        ]
+    ],
+    "persist": ".megaCmd",
+    "checkver": {
+        "url": "https://github.com/meganz/MEGAcmd/tags",
+        "regex": "tag/([\\d.]+)_Win"
+    },
+    "autoupdate": {
+        "url": "https://mega.nz/MEGAcmdSetup.exe#/dl.7z"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "version": "1.3.0",
+    "description": "Print any text using ASCII art in FIGlet.",
+    "homepage": "https://github.com/arsham/figurine",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/arsham/figurine/releases/download/v1.3.0/figurine_windows_amd64_v1.3.0.zip",
+            "hash": "287c809ccb0dbbbb7a9e0b5cf044ccdd2ffd81a10faebd3f6eae4c0bbb40610f"
+        }
+    },
+    "extract_dir": "deploy",
+    "bin": "figurine.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/arsham/figurine/releases/download/v$version/figurine_windows_amd64_v$version.zip",
+                "hash": {
+                    "url": "https://github.com/arsham/figurine/releases/tag/v$version"
+                }
+            }
+        }
+    }
+}

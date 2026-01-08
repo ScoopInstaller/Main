@@ -1,0 +1,46 @@
+{
+    "version": "1.22.22",
+    "description": "Node.js dependency manager",
+    "homepage": "https://yarnpkg.com/",
+    "license": "BSD-2-Clause",
+    "suggest": {
+        "Node.js": [
+            "nodejs",
+            "nodejs-lts",
+            "nvm",
+            "nvs"
+        ]
+    },
+    "url": "https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn-v1.22.22.tar.gz",
+    "hash": "88268464199d1611fcf73ce9c0a6c4d44c7d5363682720d8506f6508addf36a0",
+    "extract_dir": "yarn-v1.22.22",
+    "post_install": [
+        "yarn config set cache-folder \"$dir\\cache\"",
+        "yarn config set yarn-offline-mirror \"$dir\\mirror\"",
+        "yarn config set global-folder \"$dir\\global\"",
+        "yarn config set prefix \"$dir\\global\""
+    ],
+    "uninstaller": {
+        "script": "Remove-Item \"$env:LOCALAPPDATA\\Yarn\", \"$env:USERPROFILE\\.yarnrc\" -Recurse -Force"
+    },
+    "env_add_path": [
+        "global\\node_modules\\.bin",
+        "bin"
+    ],
+    "env_set": {
+        "NODE_PATH": "$dir\\global\\node_modules"
+    },
+    "persist": [
+        "cache",
+        "global",
+        "mirror"
+    ],
+    "checkver": {
+        "url": "https://classic.yarnpkg.com/latest-version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/yarnpkg/yarn/releases/download/v$version/yarn-v$version.tar.gz",
+        "extract_dir": "yarn-v$version"
+    }
+}

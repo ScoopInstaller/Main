@@ -1,0 +1,49 @@
+{
+    "version": "10.0.0.0p2",
+    "description": "The premier connectivity tool for remote login with the SSH protocol. (Microsoft build)",
+    "homepage": "https://www.openssh.com",
+    "license": "SSH-OpenSSH",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/10.0.0.0p2-Preview/OpenSSH-Win64.zip",
+            "hash": "23f50f3458c4c5d0b12217c6a5ddfde0137210a30fa870e98b29827f7b43aba5",
+            "extract_dir": "OpenSSH-Win64"
+        },
+        "32bit": {
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/10.0.0.0p2-Preview/OpenSSH-Win32.zip",
+            "hash": "c61d7fea20ddfe0fc50eb56210a66464557721120f7794ff9cc883b5ba526abd",
+            "extract_dir": "OpenSSH-Win32"
+        }
+    },
+    "bin": [
+        "scp.exe",
+        "sftp.exe",
+        "sftp-server.exe",
+        "ssh.exe",
+        "ssh-add.exe",
+        "ssh-agent.exe",
+        "ssh-keygen.exe",
+        "ssh-keyscan.exe",
+        "ssh-shellhost.exe",
+        "sshd.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/PowerShell/Win32-OpenSSH",
+        "regex": "tag/(?:v)?([\\d.]+p\\d)-Preview"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/$version-Preview/OpenSSH-Win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/$version-Preview/OpenSSH-Win32.zip"
+            }
+        }
+    },
+    "notes": [
+        "Windows 10 or higher includes this build of OpenSSH in the system itself, hence it is recommended to use the system OpenSSH there.",
+        "Run 'sudo $dir\\install-sshd.ps1' to install sshd and ssh-agent as a service.",
+        "Run 'sudo $dir\\uninstall-sshd.ps1' to uninstall the services."
+    ]
+}

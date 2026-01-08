@@ -1,0 +1,35 @@
+{
+    "version": "2.1.1",
+    "description": "Markdown reader for the terminal with a TUI and encrypted cloud stash",
+    "homepage": "https://github.com/charmbracelet/glow",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/charmbracelet/glow/releases/download/v2.1.1/glow_2.1.1_Windows_x86_64.zip",
+            "hash": "b552952daa03afdfffa80be3f79ba8aec43426f8e78c026eb8502c7e6b604ed0",
+            "extract_dir": "glow_2.1.1_Windows_x86_64"
+        },
+        "32bit": {
+            "url": "https://github.com/charmbracelet/glow/releases/download/v2.1.1/glow_2.1.1_Windows_i386.zip",
+            "hash": "3acd9fc245f04aa88c6beb045c4afab2ac14ccaca5f8d8ee5bb3b49a9d2ae151",
+            "extract_dir": "glow_2.1.1_Windows_i386"
+        }
+    },
+    "bin": "glow.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/charmbracelet/glow/releases/download/v$version/glow_$version_Windows_x86_64.zip",
+                "extract_dir": "glow_$version_Windows_x86_64"
+            },
+            "32bit": {
+                "url": "https://github.com/charmbracelet/glow/releases/download/v$version/glow_$version_Windows_i386.zip",
+                "extract_dir": "glow_$version_Windows_i386"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

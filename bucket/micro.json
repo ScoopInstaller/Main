@@ -1,0 +1,32 @@
+{
+    "version": "2.0.15",
+    "description": "A terminal-based text editor that aims to be easy to use and intuitive, while also taking advantage of the full capabilities of modern terminals.",
+    "homepage": "https://micro-editor.github.io/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/zyedidia/micro/releases/download/v2.0.15/micro-2.0.15-win64.zip",
+            "hash": "90635c53c11aa2a0d997f5e3ed43528877740725500207640b29551cef18479b"
+        },
+        "32bit": {
+            "url": "https://github.com/zyedidia/micro/releases/download/v2.0.15/micro-2.0.15-win32.zip",
+            "hash": "0001be61d9751af4b1f370cc4422dd62894a3285b91d43a50ccf5d6c607f7668"
+        }
+    },
+    "extract_dir": "micro-2.0.15",
+    "bin": "micro.exe",
+    "checkver": {
+        "github": "https://github.com/zyedidia/micro"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/zyedidia/micro/releases/download/v$version/micro-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/zyedidia/micro/releases/download/v$version/micro-$version-win32.zip"
+            }
+        },
+        "extract_dir": "micro-$version"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "version": "0.11",
+    "description": "DFU is intended to download and upload firmware to/from devices connected over USB",
+    "homepage": "https://dfu-util.sourceforge.net/",
+    "license": "GPL-2.0-only",
+    "url": "https://dfu-util.sourceforge.net/releases/dfu-util-0.11-binaries.tar.xz",
+    "hash": "6450de30a7dcd8d8c1273f43f0b153f054fd24d85f7f38296b1ad8edbd2ddb25",
+    "extract_dir": "dfu-util-0.11-binaries",
+    "pre_install": [
+        "Get-ChildItem \"$dir\" -Exclude 'win*' -Directory | Remove-Item -Recurse",
+        "if ($architecture -eq '32bit') { Remove-Item \"$dir\\win64\" -Recurse } else { Remove-Item \"$dir\\win32\" -Recurse }",
+        "Get-ChildItem \"$dir\\win*\" -Directory | Rename-Item -NewName 'bin'",
+        "Get-ChildItem \"$dir\\bin\" -Exclude '*.exe' | Remove-Item",
+        "Get-ChildItem \"$dir\\bin\" | Where-Object 'Name' -Match '-static' | foreach {",
+        "    Move-Item $_.FullName -Destination $_.FullName.Replace('-static', '') -Force",
+        "}"
+    ],
+    "bin": [
+        "bin\\dfu-prefix.exe",
+        "bin\\dfu-suffix.exe",
+        "bin\\dfu-util.exe",
+        "bin\\lsusb.exe"
+    ],
+    "checkver": {
+        "url": "https://gitlab.com/api/v4/projects/188452/repository/tags",
+        "jsonpath": "$.[0].name",
+        "regex": "v([\\w.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://dfu-util.sourceforge.net/releases/dfu-util-$version-binaries.tar.xz",
+        "extract_dir": "dfu-util-$version-binaries"
+    }
+}

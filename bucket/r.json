@@ -1,0 +1,56 @@
+{
+    "version": "4.5.2",
+    "description": "A free software environment for statistical computing and graphics.",
+    "homepage": "https://www.r-project.org",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "This version requires UCRT, which is part of Windows since Windows 10 and Windows Server 2016.",
+        "",
+        "For source packages installation, please install 'rtools'.",
+        "For 32bit edition, please install 'versions/r41'.",
+        "",
+        "You'll need to type 'r.exe' to run R, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
+        "",
+        "You can remove Powershell's 'r' command with:",
+        "    rm alias:\\r",
+        "",
+        "... but this only affects your current session: if you'd like to remove it for all future sessions you need to add the command above to your Powershell profile.",
+        "",
+        "Annoying, right?! You might want to check out Pshazz (scoop install pshazz)--this has a plugin to remove some crazy aliases from Powershell, as well as many other improvements."
+    ],
+    "innosetup": true,
+    "architecture": {
+        "64bit": {
+            "url": "https://cloud.r-project.org/bin/windows/base/old/4.5.2/R-4.5.2-win.exe",
+            "hash": "md5:bc35c78e0a6c9790d7d540b44089f31f",
+            "bin": [
+                "bin\\x64\\R.exe",
+                "bin\\x64\\Rcmd.exe",
+                "bin\\x64\\Rgui.exe",
+                "bin\\x64\\Rscript.exe",
+                "bin\\x64\\Rterm.exe"
+            ],
+            "shortcuts": [
+                [
+                    "bin\\x64\\Rgui.exe",
+                    "R"
+                ]
+            ]
+        }
+    },
+    "persist": "site-library",
+    "checkver": {
+        "url": "https://cloud.r-project.org/bin/windows/base/",
+        "regex": "R-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cloud.r-project.org/bin/windows/base/old/$version/R-$version-win.exe",
+                "hash": {
+                    "url": "$baseurl/md5sum.R-$version.txt"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "version": "10.0.2.0",
+    "description": "The Ruby Programming Language on the JVM.",
+    "homepage": "https://www.jruby.org/",
+    "license": {
+        "identifier": "EPL-1.0|GPL-2.0-only|LGPL-2.1-only",
+        "url": "https://github.com/jruby/jruby/blob/master/COPYING"
+    },
+    "notes": [
+        "Install a JDK and set JAVA_HOME if you don't already have. JRuby won't work without it.",
+        "Also note that this installation overrides GEM_HOME and GEM_PATH from any previous Ruby or JRuby installation."
+    ],
+    "suggest": {
+        "JDK": "java/openjdk"
+    },
+    "url": "https://repo1.maven.org/maven2/org/jruby/jruby-dist/10.0.2.0/jruby-dist-10.0.2.0-bin.zip",
+    "hash": "cc85bc72152d29629585e53ebf85723725bbd506d985695c3ad3822aadbf8202",
+    "extract_dir": "jruby-10.0.2.0",
+    "env_add_path": [
+        "bin",
+        "gems\\bin"
+    ],
+    "env_set": {
+        "JRUBY_HOME": "$dir",
+        "GEM_HOME": "$dir\\gems",
+        "GEM_PATH": "$dir\\gems"
+    },
+    "persist": "gems",
+    "checkver": {
+        "url": "https://www.jruby.org/download",
+        "regex": "Current Release:\\s+JRuby\\s+([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://repo1.maven.org/maven2/org/jruby/jruby-dist/$version/jruby-dist-$version-bin.zip",
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "jruby-$version"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "version": "0.13.0",
+    "description": "Keyless Git signing with Sigstore!",
+    "homepage": "https://github.com/sigstore/gitsign",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sigstore/gitsign/releases/download/v0.13.0/gitsign_0.13.0_windows_amd64.exe#/gitsign.exe",
+            "hash": "da5f80ca35cd1faefb6d796571fe051e8365440ee28e50fd9b190f30942bca65"
+        },
+        "arm64": {
+            "url": "https://github.com/sigstore/gitsign/releases/download/v0.13.0/gitsign_0.13.0_windows_arm64.exe#/gitsign.exe",
+            "hash": "b578cb40238ba94fe67bbb3e12617ec0a79be6d34ea4b6217ecf9ec653b431aa"
+        }
+    },
+    "bin": "gitsign.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sigstore/gitsign/releases/download/v$version/gitsign_$version_windows_amd64.exe#/gitsign.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/sigstore/gitsign/releases/download/v$version/gitsign_$version_windows_arm64.exe#/gitsign.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "(?im)^$sha256\\s+$basename$"
+        }
+    }
+}

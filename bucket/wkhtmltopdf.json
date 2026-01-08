@@ -1,0 +1,36 @@
+{
+    "version": "0.12.6-1",
+    "description": "Render HTML into PDF",
+    "homepage": "https://wkhtmltopdf.org/",
+    "license": "LGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.mxe-cross-win64.7z",
+            "hash": "6ce994c89d5f6018fa158e149a2de8fbbbeb14d8ff5cb656c89893bc556e0557"
+        },
+        "32bit": {
+            "url": "https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox-0.12.6-1.mxe-cross-win32.7z",
+            "hash": "073f2918339e6e0cd4119f7fdb9dc4c68dc7196b4d8be9a57e47a381408d1fae"
+        }
+    },
+    "extract_dir": "wkhtmltox\\bin",
+    "bin": [
+        "wkhtmltoimage.exe",
+        "wkhtmltopdf.exe"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repositories/131323182/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "/wkhtmltox-([\\d.-]+)\\.mxe-cross-"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/wkhtmltopdf/packaging/releases/download/$version/wkhtmltox-$version.mxe-cross-win64.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/wkhtmltopdf/packaging/releases/download/$version/wkhtmltox-$version.mxe-cross-win32.7z"
+            }
+        }
+    }
+}

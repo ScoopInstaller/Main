@@ -1,0 +1,24 @@
+{
+    "version": "7.5",
+    "description": "Read SMART data from disks",
+    "homepage": "https://www.smartmontools.org",
+    "license": "GPL-2.0-only",
+    "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/7.5/smartmontools-7.5.win32-setup.exe#/dl.7z",
+    "hash": "sha1:68e56713c4a347eaba42020c9324419758898263",
+    "bin": [
+        "bin\\runcmdu.exe",
+        "bin\\smartctl.exe",
+        "bin\\smartctl-nc.exe",
+        "bin\\smartd.exe",
+        "bin\\smartd_warning.cmd",
+        "bin\\update-smart-drivedb.ps1",
+        "bin\\wtssendmsg.exe"
+    ],
+    "checkver": {
+        "url": "https://sourceforge.net/projects/smartmontools/files/smartmontools/",
+        "regex": "smartmontools-([\\d.-]+)\\.win32"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/$matchHead/smartmontools-$version.win32-setup.exe#/dl.7z"
+    }
+}

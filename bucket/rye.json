@@ -1,0 +1,55 @@
+{
+    "version": "0.44.0",
+    "description": "A comprehensive project and package management solution for Python",
+    "homepage": "https://rye.astral.sh/",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/astral-sh/rye/releases/download/0.44.0/rye-x86_64-windows.exe#/rye.exe",
+            "hash": "f48d3f3e4eddcaf39c4665e7953e177589006e8ed86772ce782f2b1c4ffb4c0f"
+        },
+        "32bit": {
+            "url": "https://github.com/astral-sh/rye/releases/download/0.44.0/rye-x86-windows.exe#/rye.exe",
+            "hash": "12c08e74a69f8fef1ee4bb80c92994f7d906049451ffe4a9a2548565ed282c75"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.toml\")) {",
+        "    New-Item -Path \"$dir\\config.toml\" | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "& \"$dir\\rye.exe\" self install --yes",
+        "Remove-Item \"$dir\\rye.exe\""
+    ],
+    "env_add_path": "shims",
+    "env_set": {
+        "RYE_HOME": "$persist_dir"
+    },
+    "persist": [
+        "self",
+        "shims",
+        "py",
+        "tools",
+        "config.toml"
+    ],
+    "checkver": {
+        "github": "https://github.com/astral-sh/rye"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/astral-sh/rye/releases/download/$version/rye-x86_64-windows.exe#/rye.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/astral-sh/rye/releases/download/$version/rye-x86-windows.exe#/rye.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

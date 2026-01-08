@@ -1,0 +1,47 @@
+{
+    "version": "2025.12.08",
+    "description": "A youtube-dl fork with additional features and fixes.",
+    "homepage": "https://github.com/yt-dlp/yt-dlp",
+    "license": "Unlicense",
+    "suggest": {
+        "ffmpeg": "ffmpeg"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2025.12.08/yt-dlp.exe",
+            "hash": "86c3280caa696b567c917ac138bbe0d17e45dc2b329f67562302ee4c3973a06f"
+        },
+        "32bit": {
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2025.12.08/yt-dlp_x86.exe#/yt-dlp.exe",
+            "hash": "1aae06771a8bc9fc4c3da0b962cf1d483ef2fdf7dbeda19b1b78780ad91cb8e3"
+        },
+        "arm64": {
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2025.12.08/yt-dlp_arm64.exe#/yt-dlp.exe",
+            "hash": "ccf68da4624c6996d30c35607edbe07eb4916528959b3d183b89925d68417fa7"
+        }
+    },
+    "bin": "yt-dlp.exe",
+    "pre_install": "if (-not (Test-Path \"$persist_dir\\yt-dlp.conf\")) { New-Item \"$dir\\yt-dlp.conf\" -ItemType file | Out-Null }",
+    "persist": [
+        "yt-dlp.conf",
+        "ytdlp_plugins",
+        "yt-dlp-plugins"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp_x86.exe#/yt-dlp.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp_arm64.exe#/yt-dlp.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA2-256SUMS"
+        }
+    }
+}

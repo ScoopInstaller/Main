@@ -1,0 +1,24 @@
+{
+    "version": "1.8.0",
+    "description": "Open source STM32 MCU programming toolset",
+    "homepage": "https://github.com/stlink-org/stlink",
+    "license": "BSD-3-Clause",
+    "url": "https://github.com/stlink-org/stlink/releases/download/v1.8.0/stlink-1.8.0-win32.zip",
+    "hash": "134e479b4039d52376378f2eb5b97e6028ab5b36b178ea32e49f75693e51aae3",
+    "extract_dir": "stlink-1.8.0-win32",
+    "bin": [
+        "bin/st-flash.exe",
+        "bin/st-info.exe",
+        "bin/st-trace.exe",
+        "bin/st-util.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/stlink-org/stlink/releases/download/v$version/stlink-$version-win32.zip",
+                "extract_dir": "stlink-$version-win32.zip"
+            }
+        }
+    }
+}

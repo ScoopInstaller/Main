@@ -1,0 +1,24 @@
+{
+    "version": "1.14.0",
+    "description": "A friendly language for building type-safe, scalable systems",
+    "homepage": "https://gleam.run/",
+    "license": "Apache-2.0",
+    "depends": "erlang",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gleam-lang/gleam/releases/download/v1.14.0/gleam-v1.14.0-x86_64-pc-windows-msvc.zip",
+            "hash": "0531746b964de611da660c4e65a635dc0f7a4e9147e4b2e89b8c58ec316501b8"
+        }
+    },
+    "bin": "gleam.exe",
+    "checkver": {
+        "github": "https://github.com/gleam-lang/gleam/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gleam-lang/gleam/releases/download/v$version/gleam-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

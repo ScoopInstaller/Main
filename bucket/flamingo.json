@@ -1,0 +1,31 @@
+{
+    "version": "0.10.2",
+    "description": "Flamingo enhances ArgoCD by providing Flux subsystem capabilities, enabling visualization and management of Flux workloads alongside ArgoCD while ensuring timely backporting of CVEs for a secure environment.",
+    "homepage": "https://github.com/flux-subsystem-argo/flamingo",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/flux-subsystem-argo/flamingo/releases/download/v0.10.2/flamingo_0.10.2_windows_amd64.zip",
+            "hash": "8b4161422f1aae9c5adee0d5c7c3812661dc295c190b2ea056cd6ddd74c2a873"
+        },
+        "arm64": {
+            "url": "https://github.com/flux-subsystem-argo/flamingo/releases/download/v0.10.2/flamingo_0.10.2_windows_arm64.zip",
+            "hash": "b2020c599533e9f1207c4027e5cedac3ea10a902150f31238d816fe1ec3f6011"
+        }
+    },
+    "bin": "flamingo.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/flux-subsystem-argo/flamingo/releases/download/v$version/flamingo_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/flux-subsystem-argo/flamingo/releases/download/v$version/flamingo_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/flamingo_$version_checksums.txt"
+        }
+    }
+}

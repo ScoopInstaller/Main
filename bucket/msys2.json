@@ -1,0 +1,90 @@
+{
+    "##": "64-bit version is able to build both 32-bit and 64-bit packages",
+    "version": "2025-12-13",
+    "description": "A software distro and building platform for Windows.",
+    "homepage": "http://www.msys2.org/",
+    "license": "GPL-2.0-only|BSD-3-Clause",
+    "notes": "Please run 'msys2' now for the MSYS2 setup to complete!",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/msys2/msys2-installer/releases/download/2025-12-13/msys2-base-x86_64-20251213.tar.xz",
+            "hash": "999f63c2fc7525af5cd41b55e9ea704471a4f9d0278a257fff3b0d1183c441b9",
+            "extract_dir": "msys64"
+        }
+    },
+    "bin": [
+        [
+            "msys2_shell.cmd",
+            "msys2",
+            "-msys2 -defterm -here -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "mingw",
+            "-mingw -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "mingw32",
+            "-mingw32 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "mingw64",
+            "-mingw64 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "clang64",
+            "-clang64 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "clangarm64",
+            "-clangarm64 -defterm -here -full-path -no-start"
+        ],
+        [
+            "msys2_shell.cmd",
+            "ucrt64",
+            "-ucrt64 -defterm -here -full-path -no-start"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "msys2.exe",
+            "MSYS2"
+        ],
+        [
+            "mingw32.exe",
+            "MinGW32"
+        ],
+        [
+            "mingw64.exe",
+            "MinGW64"
+        ],
+        [
+            "clang64.exe",
+            "Clang64"
+        ],
+        [
+            "clangarm64.exe",
+            "ClangArm64"
+        ],
+        [
+            "ucrt64.exe",
+            "UCRT64"
+        ]
+    ],
+    "persist": "home",
+    "checkver": {
+        "url": "https://github.com/msys2/msys2-installer/releases",
+        "regex": "/releases/tag/(?<version>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}))"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/msys2/msys2-installer/releases/download/$version/msys2-base-x86_64-$matchYear$matchMonth$matchDay.tar.xz"
+            }
+        }
+    }
+}

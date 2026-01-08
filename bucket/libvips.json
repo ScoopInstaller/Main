@@ -1,0 +1,32 @@
+{
+    "version": "8.18.0",
+    "description": "A demand-driven, horizontally threaded image processing library",
+    "homepage": "https://www.libvips.org/",
+    "license": "LGPL-2.1-only",
+    "architecture": {
+        "64bit": {
+            "hash": "c0f18eee6fd52bc8dc5c51dce484de5823ebaff018903d1fb9d030d2c24013a0",
+            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.18.0/vips-dev-w64-all-8.18.0.zip"
+        },
+        "32bit": {
+            "hash": "17bb59fe98b3ac89e10578b27d3aeee4133cca4b61573cc0524bbbe2922e3b2a",
+            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.18.0/vips-dev-w32-all-8.18.0.zip"
+        }
+    },
+    "extract_dir": "vips-dev-8.18",
+    "env_add_path": "bin",
+    "checkver": {
+        "github": "https://github.com/libvips/build-win64-mxe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/libvips/build-win64-mxe/releases/download/v$version/vips-dev-w64-all-$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/libvips/build-win64-mxe/releases/download/v$version/vips-dev-w32-all-$version.zip"
+            }
+        },
+        "extract_dir": "vips-dev-$majorVersion.$minorVersion"
+    }
+}

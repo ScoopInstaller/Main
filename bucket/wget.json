@@ -1,0 +1,33 @@
+{
+    "version": "1.21.4",
+    "description": "A command-line utility for retrieving files using HTTP, HTTPS, FTP, and FTPS protocols.",
+    "homepage": "https://eternallybored.org/misc/wget/",
+    "license": "GPL-3.0-or-later",
+    "depends": "cacert",
+    "architecture": {
+        "64bit": {
+            "url": "https://eternallybored.org/misc/wget/releases/wget-1.21.4-win64.zip",
+            "hash": "7b0addf04edd370307aa6005f0c08a171a319cccd4403663daca5478860b3056"
+        },
+        "32bit": {
+            "url": "https://eternallybored.org/misc/wget/releases/wget-1.21.4-win32.zip",
+            "hash": "0b43382593eb164e78dc68234ffb2e6048df91a548d5c8e9e61c78a0de13407f"
+        }
+    },
+    "post_install": "\"ca_certificate=$(appdir cacert $global)\\current\\cacert.pem\" | out-file \"$dir\\wget.ini\" -encoding default",
+    "bin": "wget.exe",
+    "checkver": {
+        "url": "https://eternallybored.org/misc/wget/releases/?C=M;O=D",
+        "regex": ">wget-([\\d.-]+)-win64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://eternallybored.org/misc/wget/releases/wget-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://eternallybored.org/misc/wget/releases/wget-$version-win32.zip"
+            }
+        }
+    }
+}

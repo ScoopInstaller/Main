@@ -1,0 +1,53 @@
+Windows Registry Editor Version 5.00
+
+; Register context menu entry: 'Open Git GUI here'
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\git_gui]
+@="Open Git &GUI here"
+"Icon"="\"{{git_dir}}\\cmd\\git-gui.exe\",0"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\git_gui\command]
+@="\"{{git_dir}}\\cmd\\git-gui.exe\" \"--working-dir\" \"%v.\""
+
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\git_gui]
+@="Open Git &GUI here"
+"Icon"="\"{{git_dir}}\\cmd\\git-gui.exe\",0"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\git_gui\command]
+@="\"{{git_dir}}\\cmd\\git-gui.exe\" \"--working-dir\" \"%1\""
+
+
+[HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\git_gui]
+@="Open Git &GUI here"
+"Icon"="\"{{git_dir}}\\cmd\\git-gui.exe\",0"
+
+[HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\git_gui\command]
+@="\"{{git_dir}}\\cmd\\git-gui.exe\" \"--working-dir\" \"%v.\""
+
+
+
+; Register context menu entry: 'Open Git Bash here'
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\git_shell]
+@="Open Git Ba&sh here"
+"Icon"="\"{{git_dir}}\\git-bash.exe\",0"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\background\shell\git_shell\command]
+@="\"{{git_dir}}\\git-bash.exe\" \"--cd=%v.\""
+
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\git_shell]
+@="Open Git Ba&sh here"
+"Icon"="\"{{git_dir}}\\git-bash.exe\",0"
+
+[HKEY_CURRENT_USER\Software\Classes\Directory\shell\git_shell\command]
+@="\"{{git_dir}}\\git-bash.exe\" \"--cd=%1\""
+
+
+[HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\git_shell]
+@="Open Git Ba&sh here"
+"Icon"="\"{{git_dir}}\\git-bash.exe\",0"
+
+[HKEY_CURRENT_USER\Software\Classes\LibraryFolder\background\shell\git_shell\command]
+@="\"{{git_dir}}\\git-bash.exe\" \"--cd=%v.\""

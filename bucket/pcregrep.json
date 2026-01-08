@@ -1,0 +1,36 @@
+{
+    "version": "8.45",
+    "description": "Regular expression pattern matching utility using the same syntax and semantics as Perl 5.",
+    "homepage": "https://pcre.org/",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "http://www.rexegg.com/dl/stuff/pcregrep-845.zip",
+                "http://www.rexegg.com/dl/stuff/pcretest-845.zip"
+            ],
+            "hash": [
+                "70200cc2d9f71897d8abf333e067caa8b4ca9fbada9a73f45c5e840fe3544de4",
+                "732d0609c850ff12edacbd3cd391c4fd19137568f444af74e97bdd0bd73201d4"
+            ]
+        }
+    },
+    "bin": [
+        "pcregrep.exe",
+        "pcretest.exe"
+    ],
+    "checkver": {
+        "url": "http://www.rexegg.com/pcregrep-pcretest.html",
+        "regex": "(?sm)>PCRE1 Branch</h2>.*?<td>([\\d.]+) \\("
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "http://www.rexegg.com/dl/stuff/pcregrep-$cleanVersion.zip",
+                    "http://www.rexegg.com/dl/stuff/pcretest-$cleanVersion.zip"
+                ]
+            }
+        }
+    }
+}

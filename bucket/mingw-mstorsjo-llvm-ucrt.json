@@ -1,0 +1,46 @@
+{
+    "version": "21.1.8-20251216",
+    "description": "LLVM toolchain based on mingw-w64. (UCRT, mstorsjo build)",
+    "homepage": "https://github.com/mstorsjo/llvm-mingw/",
+    "license": "GPL-3.0-or-later,ZPL-2.1,Apache-2.0 WITH LLVM-exception,ISC",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20251216/llvm-mingw-20251216-ucrt-x86_64.zip",
+            "hash": "2d96a4b758f7f8deaec5065833fe025aa53cfc5f704d0524002510984da0ccf4",
+            "extract_dir": "llvm-mingw-20251216-ucrt-x86_64"
+        },
+        "32bit": {
+            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20251216/llvm-mingw-20251216-ucrt-i686.zip",
+            "hash": "c6b17faa808f412ec8ef2086994b3fc3c16e8c7292bbaf275254d0acfa18f54d",
+            "extract_dir": "llvm-mingw-20251216-ucrt-i686"
+        },
+        "arm64": {
+            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20251216/llvm-mingw-20251216-ucrt-aarch64.zip",
+            "hash": "60c06bd255feb2ef1eb6fce7ee6b307d8f78ee6639660f49861c7c10a8a86164",
+            "extract_dir": "llvm-mingw-20251216-ucrt-aarch64"
+        }
+    },
+    "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
+    "env_add_path": "bin",
+    "checkver": {
+        "github": "https://github.com/mstorsjo/llvm-mingw/",
+        "regex": "llvm-mingw\\s+(?<time>\\d+)\\swith\\s+LLVM\\s+(?<llvm>[\\d.]+)",
+        "replace": "${llvm}-${time}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-x86_64.zip",
+                "extract_dir": "llvm-mingw-$matchTime-ucrt-x86_64"
+            },
+            "32bit": {
+                "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-i686.zip",
+                "extract_dir": "llvm-mingw-$matchTime-ucrt-i686"
+            },
+            "arm64": {
+                "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-aarch64.zip",
+                "extract_dir": "llvm-mingw-$matchTime-ucrt-aarch64"
+            }
+        }
+    }
+}

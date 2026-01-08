@@ -1,0 +1,47 @@
+{
+    "version": "4.18",
+    "description": "Converts source code to formatted text with syntax highlighting.",
+    "homepage": "http://www.andre-simon.de/doku/highlight/en/highlight.php",
+    "license": "GPL-3.0-only",
+    "notes": "You need to set the working directory of the shortcut to '$dir'",
+    "architecture": {
+        "64bit": {
+            "url": "http://www.andre-simon.de/zip/highlight-4.18-x64.zip",
+            "hash": "a9d7ec3ab8a1fde0e7ed3f7d16dc3cf7ca39529a2b20aa80fb17155a9149f578"
+        },
+        "32bit": {
+            "url": "http://www.andre-simon.de/zip/highlight-4.18.zip",
+            "hash": "43c203210b9c64ce7508d6c5f5fb9600a096b5aaf042a617bb76075b0e9e843b"
+        }
+    },
+    "pre_install": [
+        "# Temporary solution for https://github.com/ScoopInstaller/Scoop/issues/6372",
+        "Get-ChildItem \"$dir\\highlight*\\*\" | Move-Item -Destination \"$dir\"",
+        "Remove-Item \"$dir\\highlight-$version*\" -ErrorAction SilentlyContinue"
+    ],
+    "bin": "highlight.exe",
+    "shortcuts": [
+        [
+            "highlight-gui.exe",
+            "Highlight"
+        ]
+    ],
+    "checkver": {
+        "url": "https://gitlab.com/saalen/highlight/-/tags",
+        "regex": "v([\\d.]+)</a>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://www.andre-simon.de/zip/highlight-$version-x64.zip"
+            },
+            "32bit": {
+                "url": "http://www.andre-simon.de/zip/highlight-$version.zip"
+            }
+        },
+        "hash": {
+            "url": "http://andre-simon.de/zip/download.php",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}

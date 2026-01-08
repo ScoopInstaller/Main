@@ -1,0 +1,25 @@
+{
+    "version": "253.28294.334",
+    "description": "Allows to run HTTP requests from a terminal, without the IDE, or include HTTP request testing in a CI workflow.",
+    "homepage": "https://www.jetbrains.com/help/idea/http-client-cli.html",
+    "suggest": {
+        "JDK 17": "java/openjdk17"
+    },
+    "license": {
+        "identifier": "Freeware"
+    },
+    "url": "https://download.jetbrains.com/resources/intellij/http-client/253.28294.334/intellij-http-client.zip",
+    "hash": "65cce0e911f93dfe88c9933b37264f8a883081782a38fe3177691769d2ad4145",
+    "extract_dir": "ijhttp",
+    "bin": "ijhttp.bat",
+    "checkver": {
+        "script": [
+            "$resp = [System.Net.WebRequest]::Create('https://jb.gg/ijhttp/latest').GetResponse()",
+            "Write-Output = $resp.ResponseUri.LocalPath"
+        ],
+        "regex": "/http-client/([\\d.]+)/"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/resources/intellij/http-client/$version/intellij-http-client.zip"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "version": "3.2.2",
+    "description": "Open Source Enterprise Deployment for Shiny and data science apps",
+    "homepage": "https://shinyproxy.io",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "java/openjdk",
+        "R": "r"
+    },
+    "url": "https://shinyproxy.io/downloads/shinyproxy-3.2.2.jar#/shinyproxy.jar",
+    "hash": "feca9b2ebabe0be9f61c4f2b67077e45425488bf932b4d3745aba0a1680699d0",
+    "bin": "shinyproxy.jar",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\application.yml\")) { New-Item \"$dir\\application.yml\" -ItemType File | Out-Null }",
+    "persist": "application.yml",
+    "checkver": {
+        "url": "https://shinyproxy.io/downloads/",
+        "regex": ">([\\d.]+)</h"
+    },
+    "autoupdate": {
+        "url": "https://shinyproxy.io/downloads/shinyproxy-$version.jar#/shinyproxy.jar",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "version": "4.5.4",
+    "description": "A malware samples pattern matching tool.",
+    "homepage": "https://virustotal.github.io/yara/",
+    "license": "BSD-3-Clause",
+    "suggest": {
+        "vcredist": "extras/vcredist"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/VirusTotal/yara/releases/download/v4.5.4/yara-master-v4.5.4-win64.zip",
+            "hash": "1981616eddb144d37a5e2b1f27ad80ca436af4bb0c04ed58e959f5fcd045cc00",
+            "bin": [
+                [
+                    "yara64.exe",
+                    "yara"
+                ],
+                [
+                    "yarac64.exe",
+                    "yarac"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/VirusTotal/yara/releases/download/v4.5.4/yara-master-v4.5.4-win32.zip",
+            "hash": "abfdf18969a0d51a8fc48767c46d605f5784a53faa912d80ddacc3184fd3a3b8",
+            "bin": [
+                [
+                    "yara32.exe",
+                    "yara"
+                ],
+                [
+                    "yarac32.exe",
+                    "yarac"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/VirusTotal/yara"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/VirusTotal/yara/releases/download/v$version/yara-master-v$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/VirusTotal/yara/releases/download/v$version/yara-master-v$version-win32.zip"
+            }
+        }
+    }
+}

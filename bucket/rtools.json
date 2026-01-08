@@ -1,0 +1,62 @@
+{
+    "version": "4.5.6691.6492",
+    "description": "Tools for building packages for R under Microsoft Windows, or for building R itself.",
+    "homepage": "https://cloud.r-project.org/bin/windows/Rtools",
+    "license": "BSD-3-Clause",
+    "notes": [
+        "For R 3.3.x to 3.6.x, please use 'versions/rtools35'.",
+        "For R 4.0.x to 4.1.x, please use 'versions/rtools40'.",
+        "For R 4.2.x, please use 'versions/rtools42'.",
+        "For R 4.3.x, please use 'versions/rtools43'.",
+        "For R 4.4.x, please use 'versions/rtools44'."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-6691-6492.exe",
+            "hash": "9e027aa86171e48fdf6963c3975890820ac1b7421ed11478260608fd1f6cbee8"
+        },
+        "arm64": {
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-aarch64-6691-6492.exe",
+            "hash": "815dd903ef3b81cbb0772684e08c74cc332c89cbe67518cf22f593c4a195b27e"
+        }
+    },
+    "innosetup": true,
+    "installer": {
+        "script": [
+            "if (Test-Path 'C:\\rtools45') {",
+            "   if ($null -eq (Get-Item 'C:\\rtools45').LinkType) {",
+            "       Rename-Item -Path 'C:\\rtools45' -NewName 'rtools45.old' -Force",
+            "   } else {",
+            "       Remove-Item -Path 'C:\\rtools45' -Force",
+            "   }",
+            "}",
+            "New-Item -Path \"$dir\\tmp\" -ItemType Directory | Out-Null",
+            "New-Item -Path 'C:\\rtools45' -Target \"$dir\" -ItemType Junction | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if ((Test-Path 'C:\\rtools45') -and ($null -ne (Get-Item 'C:\\rtools45').LinkType)) {",
+            "   Remove-Item -Path 'C:\\rtools45' -Force",
+            "}",
+            "if (Test-Path 'C:\\rtools45.old') {",
+            "   Rename-Item -Path 'C:\\rtools45.old' -NewName 'rtools45' -Force",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/",
+        "regex": ">rtools45\\-(\\d+)\\-(\\d+).exe<",
+        "replace": "4.5.${1}.${2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-$match1-$match2.exe"
+            },
+            "arm64": {
+                "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools45/files/rtools45-aarch64-$match1-$match2.exe"
+            }
+        }
+    }
+}

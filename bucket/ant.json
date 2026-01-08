@@ -1,0 +1,48 @@
+{
+    "version": "1.10.15",
+    "description": "Apache Ant is a Java library and command-line tool for compiling, assembling, testing and running Java and non-Java applications.",
+    "homepage": "https://ant.apache.org/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "java/openjdk"
+    },
+    "url": "https://dlcdn.apache.org//ant/binaries/apache-ant-1.10.15-bin.zip",
+    "hash": "sha512:1de7facbc9874fa4e5a2f045d5c659f64e0b89318c1dbc8acc6aae4595c4ffaf90a7b1ffb57f958dd08d6e086d3fff07aa90e50c77342a0aa5c9b4c36bff03a9",
+    "extract_dir": "apache-ant-1.10.15",
+    "pre_install": [
+        "# Record built-in libs in builtin_libs.json",
+        "$builtin_libs = Get-ChildItem \"$dir\\lib\" | Select -ExpandProperty Name",
+        "$builtin_libs | ConvertTo-Json | Out-File \"$dir\\lib\\builtin_libs.json\" -Encoding Ascii",
+        "# Copy user libs to $dir",
+        "if (Test-Path \"$persist_dir\\lib\") {",
+        "    Get-ChildItem \"$persist_dir\\lib\" | Select -ExpandProperty Name | ForEach-Object {",
+        "        if (!(Test-Path \"$dir\\lib\\$_\")) { Copy-Item \"$persist_dir\\lib\\$_\" \"$dir\\lib\" }",
+        "    }",
+        "}"
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "ANT_HOME": "$dir"
+    },
+    "uninstaller": {
+        "script": [
+            "# Only persist libs that were added by the user, but not built-in ones",
+            "ensure \"$persist_dir\\lib\" | Out-Null",
+            "$builtin_libs = Get-Content \"$dir\\lib\\builtin_libs.json\" | ConvertFrom-Json",
+            "Get-ChildItem \"$dir\\lib\" -Exclude builtin_libs.json | Select -ExpandProperty Name | ForEach-Object {",
+            "    if (!($builtin_libs -contains \"$_\")) { Copy-Item \"$dir\\lib\\$_\" \"$persist_dir\\lib\" }",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://dlcdn.apache.org//ant/README.html",
+        "regex": "Release Notes of Apache Ant ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://dlcdn.apache.org//ant/binaries/apache-ant-$version-bin.zip",
+        "hash": {
+            "url": "$url.sha512"
+        },
+        "extract_dir": "apache-ant-$version"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "version": "3.9.1",
+    "description": "The Haskell Tool Stack",
+    "homepage": "https://www.haskellstack.org",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/commercialhaskell/stack/releases/download/v3.9.1/stack-3.9.1-windows-x86_64.zip",
+            "hash": "1a922d6fa0f0b85a2eacc30a5fd71118ad93ca03038c70abd71b238866587fd8"
+        }
+    },
+    "bin": "stack.exe",
+    "installer": {
+        "script": "Add-Path -Path \"$env:APPDATA\\local\\bin\" -Global:$global"
+    },
+    "uninstaller": {
+        "script": "Remove-Path -Path \"$env:APPDATA\\local\\bin\" -Global:$global"
+    },
+    "checkver": {
+        "github": "https://github.com/commercialhaskell/stack"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/commercialhaskell/stack/releases/download/v$version/stack-$version-windows-x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

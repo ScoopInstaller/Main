@@ -1,0 +1,38 @@
+{
+    "version": "1.0.10",
+    "description": "A multi-platform command line tool to send mail via SMTP protocol.",
+    "homepage": "https://github.com/muquit/mailsend-go",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/muquit/mailsend-go/releases/download/v1.0.10/mailsend-go_1.0.10_windows-64bit.zip",
+            "hash": "07f884229dd98b2268ab128c8a8ed894c071f4a51f2d2c3e35a788214848201e"
+        },
+        "32bit": {
+            "url": "https://github.com/muquit/mailsend-go/releases/download/v1.0.10/mailsend-go_1.0.10_windows-32bit.zip",
+            "hash": "4e4d4566f995cc203aa7d79c356a7c64b2f7aa4c766fd1b4521ca9abb4cff386"
+        }
+    },
+    "extract_dir": "mailsend-go-dir",
+    "bin": [
+        "mailsend-go.exe",
+        [
+            "mailsend-go.exe",
+            "mailsend"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/muquit/mailsend-go/releases/download/v$version/mailsend-go_$version_windows-64bit.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/muquit/mailsend-go/releases/download/v$version/mailsend-go_$version_windows-32bit.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/mailsend-go_$version_checksums.txt"
+        }
+    }
+}

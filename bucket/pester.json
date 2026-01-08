@@ -1,0 +1,39 @@
+{
+    "version": "5.7.1",
+    "description": "Pester is a test and mock framework for PowerShell.",
+    "homepage": "https://pester.dev",
+    "license": "Apache-2.0",
+    "notes": [
+        "'Pester' is currently installed as a PS module",
+        "For more information, visit: 'https://pester.dev/docs/quick-start'"
+    ],
+    "url": "https://globalcdn.nuget.org/packages/pester.5.7.1.nupkg",
+    "hash": "3c6dad5fb143faf19709dfb28c31c873989944705a087e160e23b7ce462e37a1",
+    "extract_dir": "tools",
+    "psmodule": {
+        "name": "Pester"
+    },
+    "checkver": {
+        "script": [
+            "# Using checkver script to check through all release tags",
+            "$auth = Get-GitHubToken",
+            "$head = @{}",
+            "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
+            "$url = 'https://api.github.com/repositories/1213474/releases'",
+            "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
+            "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
+            "$releases | ForEach-Object {",
+            "    if (!($_.tag_name -match '([\\d.]+)')) { return }",
+            "    if ($_.prerelease) { return }",
+            "    $ver = [Version]::new($matches[1])",
+            "    if ($ver -gt $latest_ver) { $latest_ver = $ver }",
+            "}",
+            "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; continue }",
+            "Write-Output $latest_ver"
+        ],
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://globalcdn.nuget.org/packages/pester.$version.nupkg"
+    }
+}

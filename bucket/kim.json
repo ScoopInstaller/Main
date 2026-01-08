@@ -1,0 +1,24 @@
+{
+    "version": "0.1.0-beta.7",
+    "description": "Enables building images locally, natively on your k3s cluster",
+    "homepage": "https://github.com/rancher/kim",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rancher/kim/releases/download/v0.1.0-beta.7/kim-windows-amd64.exe#/kim.exe",
+            "hash": "f0414968cc41b4c2276dd7a3a6e369e268742b5594e5f4a2e228882d5b6cbfe2"
+        }
+    },
+    "bin": "kim.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/333185595/releases",
+        "regex": "download/v([\\w.-]+)/kim-windows-amd64.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rancher/kim/releases/download/v$version/kim-windows-amd64.exe#/kim.exe"
+            }
+        }
+    }
+}

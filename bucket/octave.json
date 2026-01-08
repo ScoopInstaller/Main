@@ -1,0 +1,47 @@
+{
+    "version": "10.3.0",
+    "description": "A high-level language primarily intended for numerical computations.",
+    "homepage": "https://octave.org",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "* Known issue:",
+        "  - Spaces or non-ASCII characters in the path are discouraged and may cause program errors.",
+        "------",
+        "Please run 'octave-post-install' now to reduce plot delays due to the Windows font cache and make the pre-installed packages visible to the system."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ftpmirror.gnu.org/octave/windows/octave-10.3.0-w64.7z",
+            "hash": "4595b055c73de090839f5b86f289b0ac22b69549676b3452252306fffdc37ac6",
+            "extract_dir": "octave-10.3.0-w64",
+            "bin": [
+                [
+                    "post-install.bat",
+                    "octave-post-install"
+                ],
+                "mingw64\\bin\\octave.bat",
+                "mingw64\\bin\\octave-gui.exe",
+                "mingw64\\bin\\octave-cli.exe",
+                "mingw64\\bin\\octave-config.exe"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "octave-launch.exe",
+            "Octave"
+        ]
+    ],
+    "checkver": {
+        "url": "https://wiki.octave.org/GNU_Octave_Wiki",
+        "regex": "GNU Octave ([\\d.]+).*is the current stable release"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ftpmirror.gnu.org/octave/windows/octave-$version-w64.7z",
+                "extract_dir": "octave-$version-w64"
+            }
+        }
+    }
+}

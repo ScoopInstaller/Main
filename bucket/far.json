@@ -1,0 +1,53 @@
+{
+    "version": "3.0.6600",
+    "description": "A text-mode files and archives manager",
+    "homepage": "https://farmanager.com/",
+    "license": {
+        "identifier": "BSD-3-Clause",
+        "url": "https://farmanager.com/license.php"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://farmanager.com/files/Far30b6600.x64.20251124.7z",
+            "hash": "65198af173353f6e574f04710e696b33b544311de25cc4c136d5a9375da86b0a"
+        },
+        "32bit": {
+            "url": "https://farmanager.com/files/Far30b6600.x86.20251124.7z",
+            "hash": "ad2c79919a5839ae87eb093af05d9b6ae248e51564f67c136410fe0ad919a53e"
+        }
+    },
+    "pre_install": [
+        "$ini = 'Far.exe.ini'",
+        "if (!(Test-Path \"$persist_dir\\$ini\")) {",
+        "    Copy-Item \"$dir\\Far.exe.example.ini\" \"$dir\\$ini\"",
+        "    (Get-Content \"$dir\\$ini\") -replace ';(UseSystemProfiles=)1', '${1}0' | Set-Content \"$dir\\$ini\" -Encoding Ascii",
+        "    # Migrate from system wide configuration",
+        "    $env:LOCALAPPDATA, $env:APPDATA | ForEach-Object {",
+        "        if (Test-Path \"$_\\Far Manager\") {",
+        "            warn \"Copying system wide profile from $_ into $dir\"",
+        "            Copy-Item \"$_\\Far Manager\\*\" \"$dir\" -Recurse -Force",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "bin": "far.exe",
+    "persist": [
+        "Profile",
+        "Far.exe.ini"
+    ],
+    "checkver": {
+        "url": "https://farmanager.com/download.php",
+        "regex": "(?s)Stable.*?Far Manager v(?<version>[\\d.]+) build (?<build>[\\d]+).*?.x64.(?<date>\\d+).7z",
+        "replace": "${version}.${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://farmanager.com/files/Far$majorVersion$minorVersionb$patchVersion.x64.$matchDate.7z"
+            },
+            "32bit": {
+                "url": "https://farmanager.com/files/Far$majorVersion$minorVersionb$patchVersion.x86.$matchDate.7z"
+            }
+        }
+    }
+}

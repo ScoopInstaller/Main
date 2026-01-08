@@ -1,0 +1,46 @@
+{
+    "version": "10.31.1",
+    "description": "Command-line utility to download/upload blobs and files from Microsoft Azure storage accounts",
+    "homepage": "https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/Azure/azure-storage-azcopy/blob/main/LICENSE"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/Azure/azure-storage-azcopy/releases/download/v10.31.1/azcopy_windows_386_10.31.1.zip#/dl.zip",
+            "hash": "d45bd7c18bd11e33124e3047c788bc915cba7547efe8b40361a280629c01e547",
+            "extract_dir": "azcopy_windows_386_10.31.1"
+        },
+        "64bit": {
+            "url": "https://github.com/Azure/azure-storage-azcopy/releases/download/v10.31.1/azcopy_windows_amd64_10.31.1.zip/#dl.zip",
+            "hash": "bb71e8e3d2834c803f2a91ee0827d023e933b74554793debdc60cd3b11b74b87",
+            "extract_dir": "azcopy_windows_amd64_10.31.1"
+        },
+        "arm64": {
+            "url": "https://github.com/Azure/azure-storage-azcopy/releases/download/v10.31.1/azcopy_windows_arm64_10.31.1.zip/#dl.zip",
+            "hash": "ceeccf3e9f01b490f3f56b225d063b27cbe558df5417cf0c31f22dca0df11edb",
+            "extract_dir": "azcopy_windows_arm64_10.31.1"
+        }
+    },
+    "bin": "azcopy.exe",
+    "checkver": {
+        "github": "https://github.com/Azure/azure-storage-azcopy"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/Azure/azure-storage-azcopy/releases/download/v$version/azcopy_windows_386_$version.zip#/dl.zip",
+                "extract_dir": "azcopy_windows_386_$version"
+            },
+            "64bit": {
+                "url": "https://github.com/Azure/azure-storage-azcopy/releases/download/v$version/azcopy_windows_amd64_$version.zip/#dl.zip",
+                "extract_dir": "azcopy_windows_amd64_$version"
+            },
+            "arm64": {
+                "url": "https://github.com/Azure/azure-storage-azcopy/releases/download/v$version/azcopy_windows_arm64_$version.zip/#dl.zip",
+                "extract_dir": "azcopy_windows_arm64_$version"
+            }
+        }
+    }
+}

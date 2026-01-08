@@ -1,0 +1,37 @@
+{
+    "version": "0.11.1",
+    "description": "A PDF processor written in Go, supporting encryption.",
+    "homepage": "https://pdfcpu.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/pdfcpu/pdfcpu/releases/download/v0.11.1/pdfcpu_0.11.1_Windows_x86_64.zip",
+            "hash": "b728436d173c6278286df5feb6ebf39e9fabca0951ca106c6e8678c7af14e9a8",
+            "extract_dir": "pdfcpu_0.11.1_Windows_x86_64"
+        },
+        "32bit": {
+            "url": "https://github.com/pdfcpu/pdfcpu/releases/download/v0.11.1/pdfcpu_0.11.1_Windows_i386.zip",
+            "hash": "37ea74cbc25626581930d4156b091ef3b9a6eb6108c49f660d8bf7653693d1f5",
+            "extract_dir": "pdfcpu_0.11.1_Windows_i386"
+        }
+    },
+    "bin": "pdfcpu.exe",
+    "checkver": {
+        "github": "https://github.com/pdfcpu/pdfcpu"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pdfcpu/pdfcpu/releases/download/v$version/pdfcpu_$version_Windows_x86_64.zip",
+                "extract_dir": "pdfcpu_$version_Windows_x86_64"
+            },
+            "32bit": {
+                "url": "https://github.com/pdfcpu/pdfcpu/releases/download/v$version/pdfcpu_$version_Windows_i386.zip",
+                "extract_dir": "pdfcpu_$version_Windows_i386"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/pdfcpu/pdfcpu/releases/download/v$version/checksums.txt"
+        }
+    }
+}

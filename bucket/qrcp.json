@@ -1,0 +1,33 @@
+{
+    "version": "0.11.3",
+    "description": "Transfers files over wifi from computer to mobile device by scanning a QR code without leaving the terminal.",
+    "homepage": "https://qrcp.sh/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/claudiodangelis/qrcp/releases/download/0.11.3/qrcp_0.11.3_windows_amd64.tar.gz",
+            "hash": "9eb907d1874966d475df66d5e2494b9280cced318a3260d9e8638c037d3981b7"
+        },
+        "32bit": {
+            "url": "https://github.com/claudiodangelis/qrcp/releases/download/0.11.3/qrcp_0.11.3_windows_386.tar.gz",
+            "hash": "9d902324724c00d5eb1d9d15f30d986458713e8429e312fa9c9738adffa2edc0"
+        }
+    },
+    "bin": "qrcp.exe",
+    "checkver": {
+        "github": "https://github.com/claudiodangelis/qrcp"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/claudiodangelis/qrcp/releases/download/$version/qrcp_$version_windows_amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/claudiodangelis/qrcp/releases/download/$version/qrcp_$version_windows_386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

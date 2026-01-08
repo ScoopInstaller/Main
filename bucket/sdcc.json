@@ -1,0 +1,25 @@
+{
+    "version": "4.5.0",
+    "description": "Small Device C Compiler",
+    "homepage": "https://sdcc.sourceforge.net",
+    "license": "GPL-2.0-only,LGPL-2.1-only,GPL-3.0-only,Zlib,Libpng,BSL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win64/4.5.0/sdcc-4.5.0-x64-setup.exe#/dl.7z",
+            "hash": "sha1:fe688b106d2432cdbe94bcd66275a0458255cb94"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall*\" -Force -Recurse",
+    "bin": "bin\\sdcc.exe",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/sdcc/rss?path=/sdcc-win64",
+        "regex": "sdcc-([\\d.]+)-x64-setup\\.exe\\]\\]"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win64/$version/sdcc-$version-x64-setup.exe#/dl.7z"
+            }
+        }
+    }
+}

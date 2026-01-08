@@ -1,0 +1,19 @@
+{
+    "version": "0.2025.10.02",
+    "description": "Import/export Windows console settings",
+    "homepage": "https://github.com/lukesampson/concfg",
+    "license": "MIT",
+    "url": "https://github.com/lukesampson/concfg/archive/e3b1d7aeb08c0db9e24109d1063b8d2e4f2f9729.zip",
+    "hash": "ee31f10f65a4d89a3dcb8b4e81f3331531ff3fa8d8bf59c1e444828c87219f28",
+    "extract_dir": "concfg-e3b1d7aeb08c0db9e24109d1063b8d2e4f2f9729",
+    "bin": "bin\\concfg.ps1",
+    "checkver": {
+        "url": "https://github.com/lukesampson/concfg/commits/master.atom",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
+        "replace": "0.${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/lukesampson/concfg/archive/$matchSha.zip",
+        "extract_dir": "concfg-$matchSha"
+    }
+}

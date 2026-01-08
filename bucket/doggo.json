@@ -1,0 +1,37 @@
+{
+    "version": "1.1.4",
+    "description": "Command-line DNS Client for Humans",
+    "homepage": "https://doggo.mrkaran.dev/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mr-karan/doggo/releases/download/v1.1.4/doggo_1.1.4_Windows_x86_64.zip",
+            "hash": "479d3cf06b4aa131a2b48b252bc3df5c2eb1191713a2df218c88720372d8a79c",
+            "extract_dir": "doggo_1.1.4_Windows_x86_64"
+        },
+        "32bit": {
+            "url": "https://github.com/mr-karan/doggo/releases/download/v1.1.4/doggo_1.1.4_Windows_i386.zip",
+            "hash": "79779716c631628ad1c4c890d22cb1d6e3cc0dce534ead5dbcfb89d8c1454ec4",
+            "extract_dir": "doggo_1.1.4_Windows_i386"
+        }
+    },
+    "bin": "doggo.exe",
+    "checkver": {
+        "github": "https://github.com/mr-karan/doggo"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mr-karan/doggo/releases/download/v$version/doggo_$version_Windows_x86_64.zip",
+                "extract_dir": "doggo_$version_Windows_x86_64"
+            },
+            "32bit": {
+                "url": "https://github.com/mr-karan/doggo/releases/download/v$version/doggo_$version_Windows_i386.zip",
+                "extract_dir": "doggo_$version_Windows_i386"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/doggo_$version_checksums.txt"
+        }
+    }
+}

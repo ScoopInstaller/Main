@@ -1,0 +1,31 @@
+{
+    "version": "4.14.0",
+    "description": "Selenium WebDriver for Internet Explorer 11",
+    "homepage": "https://selenium.dev",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.14.0/IEDriverServer_x64_4.14.0.zip",
+            "hash": "24ddc5f6b081de05d65367020a6e89bc98146fb19b2abc8fafcde4d3dc3fc31c"
+        },
+        "32bit": {
+            "url": "https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.14.0/IEDriverServer_Win32_4.14.0.zip",
+            "hash": "542547970163c91080b6908cd223840743a4ac18f8197a44ea41be7cf1d41e48"
+        }
+    },
+    "bin": "IEDriverServer.exe",
+    "checkver": {
+        "url": "https://selenium.dev/downloads/",
+        "regex": "IEDriverServer_x64_([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/SeleniumHQ/selenium/releases/download/selenium-$majorVersion.$minorVersion.0/IEDriverServer_x64_$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/SeleniumHQ/selenium/releases/download/selenium-$majorVersion.$minorVersion.0/IEDriverServer_Win32_$version.zip"
+            }
+        }
+    }
+}

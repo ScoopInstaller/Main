@@ -1,0 +1,29 @@
+{
+    "version": "1.23.8",
+    "description": "A static code analysis tool for the Kotlin programming language",
+    "homepage": "https://github.com/detekt/detekt",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "url": "https://github.com/detekt/detekt/releases/download/v1.23.8/detekt-cli-1.23.8.zip",
+    "hash": "ff9f9258879ff2ec4349114740221498afec46a85cf6302c9f80b06eb4429501",
+    "extract_dir": "detekt-cli-1.23.8",
+    "bin": [
+        [
+            "bin\\detekt-cli.bat",
+            "detekt"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repositories/71729669/releases",
+        "regex": "detekt-cli-(?<version>[\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://github.com/detekt/detekt/releases/download/v$version/detekt-cli-$version.zip",
+        "extract_dir": "detekt-cli-$version"
+    }
+}

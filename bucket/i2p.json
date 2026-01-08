@@ -1,0 +1,63 @@
+{
+    "version": "0.9.50",
+    "description": "An anonymizing network.",
+    "homepage": "https://geti2p.net",
+    "license": {
+        "identifier": "Public Domain,...",
+        "url": "https://github.com/i2p/i2p.i2p/blob/master/LICENSE.txt"
+    },
+    "suggest": {
+        "JDK": "java/openjdk"
+    },
+    "url": "https://launchpad.net/i2p/trunk/0.9.50/%2Bdownload/i2pinstall_0.9.50_windows.exe#/dl.7z",
+    "hash": "92e38abf0650671e08460dd25711afa67f7933a0b6fa655cbd2746662f06fb30",
+    "bin": [
+        "I2P.exe",
+        "I2Psvc.exe"
+    ],
+    "shortcuts": [
+        [
+            "I2P.exe",
+            "I2P\\Start I2P (no window)",
+            "",
+            "docs\\start.ico"
+        ],
+        [
+            "I2Psvc.exe",
+            "I2P\\Start I2P (restartable)",
+            "-c \"$dir\\wrapper.config\"",
+            "docs\\start.ico"
+        ]
+    ],
+    "persist": "i2p",
+    "installer": {
+        "script": [
+            "$temp = \"$env:TEMP\\I2P\"",
+            "New-Item $temp -ItemType 'Directory' -Force | Out-Null",
+            "Move-Item \"$dir\\install.jar\" \"$temp\\install.jar\" -Force",
+            "New-Item -Path $temp -Name 'install.defaults' -Value \"INSTALL_PATH=$($dir.toString().Replace('\\', '/'))\" -Force | Out-Null",
+            "& (scoop which java) -jar \"$temp\\install.jar\" -auto | Out-Null",
+            "Remove-Item $temp -Force -Recurse",
+            "$content = @(",
+            "    'wrapper.java.additional.3=-Di2p.dir.pid=./i2p'",
+            "    'wrapper.java.additional.4=-Di2p.dir.temp=./i2p'",
+            "    'wrapper.java.additional.5=-Di2p.dir.config=./i2p'",
+            "    'wrapper.logfile=./i2p/wrapper.log'",
+            "    'wrapper.java.pidfile=./i2p/routerjvm.pid'",
+            "    'wrapper.pidfile=./i2p/i2p.pid'",
+            ")",
+            "Add-Content \"$dir\\wrapper.config\" $content -Encoding UTF8"
+        ]
+    },
+    "checkver": {
+        "url": "https://launchpad.net/i2p/trunk",
+        "regex": "Latest version is ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://launchpad.net/i2p/trunk/$version/%2Bdownload/i2pinstall_$version_windows.exe#/dl.7z",
+        "hash": {
+            "url": "https://geti2p.net/download",
+            "regex": "(?sm)$basename.*?$sha256"
+        }
+    }
+}

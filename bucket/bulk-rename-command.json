@@ -1,0 +1,45 @@
+{
+    "version": "1.3.3.0",
+    "description": "File renaming software for Windows",
+    "homepage": "https://www.bulkrenameutility.co.uk",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.bulkrenameutility.co.uk/License.php"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "http://www.s3.tgrmn.com/bru/BRC_Unicode_64.zip",
+            "hash": "2e620a0fd6b27e974fe746d6372becf279bad2edf546fdd2ce4a5cf86ef0cdb6",
+            "bin": [
+                [
+                    "BRC64.exe",
+                    "brc"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "http://www.s3.tgrmn.com/bru/BRC_Unicode_32.zip",
+            "hash": "a344359f0354bb17be517c5b867933bbed70d2254353c668c6c2d14deeca0b75",
+            "bin": [
+                [
+                    "BRC32.exe",
+                    "brc"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://www.bulkrenameutility.co.uk/Download.php",
+        "regex": "(?s)>Bulk Rename Command<.*?version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://www.s3.tgrmn.com/bru/BRC_Unicode_64.zip"
+            },
+            "32bit": {
+                "url": "http://www.s3.tgrmn.com/bru/BRC_Unicode_32.zip"
+            }
+        }
+    }
+}

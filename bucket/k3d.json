@@ -1,0 +1,28 @@
+{
+    "version": "5.8.3",
+    "description": "Creates multi-node k3s cluster on a single machine using docker",
+    "homepage": "https://github.com/rancher/k3d",
+    "license": "MIT",
+    "suggest": {
+        "docker": [
+            "docker",
+            "versions/docker-nightly",
+            "docker-machine"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rancher/k3d/releases/download/v5.8.3/k3d-windows-amd64.exe#/k3d.exe",
+            "hash": "655d2aadcb1f0a0dd196c5cbc564687ba945a9547c8e82c9fc532051fb260e22"
+        }
+    },
+    "bin": "k3d.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rancher/k3d/releases/download/v$version/k3d-windows-amd64.exe#/k3d.exe"
+            }
+        }
+    }
+}

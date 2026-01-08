@@ -1,0 +1,31 @@
+{
+    "version": "4.39.0",
+    "description": "Selenium Manager is a command-line tool developed in Rust to allow cross platform execution.",
+    "homepage": "https://www.selenium.dev/documentation/selenium_manager/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/selenium-manager-3edce44/selenium-manager-windows.exe#/selenium-manager.exe",
+            "hash": "c65ab06d504e11fcf3a3cffcb6a5457334b45d1ec1ec6dab3f9026247ae1dfee"
+        }
+    },
+    "bin": "selenium-manager.exe",
+    "checkver": {
+        "script": [
+            "# This script was written based on the conversation here https://github.com/SeleniumHQ/selenium/issues/11694. Once binaries are released, we won't need this script.",
+            "$request = ((Invoke-WebRequest -Uri 'https://github.com/SeleniumHQ/selenium/').Content -split \"`n\" | Select-String 'selenium-([\\d.]+)')",
+            "$selenium_ver_string = $request.Matches[0].Value",
+            "$selenium_ver = $request.Matches.Groups[1].Value",
+            "$selenium_manager_ver_string = @((Invoke-WebRequest -Uri ('https://github.com/SeleniumHQ/selenium/raw/' + $selenium_ver_string + '/common/selenium_manager.bzl')).Content -split \"`n\" | Select-String 'selenium-manager-([a-z0-9]+)').Matches.Value[0]",
+            "Write-Output $selenium_ver $selenium_manager_ver_string"
+        ],
+        "regex": "(?<version>.+)\\s(?<managerversion>.+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/$matchManagerversion/selenium-manager-windows.exe#/selenium-manager.exe"
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "version": "0.6.13",
+    "description": "Simple http server",
+    "homepage": "https://github.com/TheWaWaR/simple-http-server",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/TheWaWaR/simple-http-server/releases/download/v0.6.13/x86_64-pc-windows-msvc-simple-http-server.exe#/simple-http-server.exe",
+            "hash": "6117d084bfbf20a2f35c25c7c89bd7c3c2e3e8f95a368ce2c3aff4a9443b4afd"
+        }
+    },
+    "bin": "simple-http-server.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/TheWaWaR/simple-http-server/releases/download/v$version/x86_64-pc-windows-msvc-simple-http-server.exe#/simple-http-server.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256",
+            "find": "\\\\([a-fA-F\\d]{64})"
+        }
+    }
+}

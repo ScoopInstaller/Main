@@ -1,0 +1,44 @@
+{
+    "version": "15.1.0",
+    "description": "Recursively searches directories for a regex pattern.",
+    "homepage": "https://github.com/BurntSushi/ripgrep",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-pc-windows-msvc.zip",
+            "hash": "124510b94b6baa3380d051fdf4650eaa80a302c876d611e9dba0b2e18d87493a",
+            "extract_dir": "ripgrep-15.1.0-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-i686-pc-windows-msvc.zip",
+            "hash": "725be85a1e8f92878a548f40ee4f6df64bc93b809586462b3c6d884e1de1e83a",
+            "extract_dir": "ripgrep-15.1.0-i686-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-pc-windows-msvc.zip",
+            "hash": "00d931fb5237c9696ca49308818edb76d8eb6fc132761cb2a1bd616b2df02f8e",
+            "extract_dir": "ripgrep-15.1.0-aarch64-pc-windows-msvc"
+        }
+    },
+    "bin": "rg.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/BurntSushi/ripgrep/releases/download/$version/ripgrep-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "ripgrep-$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://github.com/BurntSushi/ripgrep/releases/download/$version/ripgrep-$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "ripgrep-$version-i686-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://github.com/BurntSushi/ripgrep/releases/download/$version/ripgrep-$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "ripgrep-$version-aarch64-pc-windows-msvc"
+            }
+        }
+    }
+}

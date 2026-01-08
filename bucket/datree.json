@@ -1,0 +1,30 @@
+{
+    "version": "1.9.19",
+    "description": "Prevent Kubernetes misconfigurations from reaching production (again 😤 )! From code to cloud, Datree provides an E2E policy enforcement solution to run automatic checks for rule violations.",
+    "homepage": "https://www.datree.io/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/datreeio/datree/releases/download/1.9.19/datree-cli_1.9.19_windows_x86_64.zip",
+            "hash": "5c108942b18dc097e53173d289317eaf26c25fd683d054e2b34c54c5d5a738eb"
+        },
+        "32bit": {
+            "url": "https://github.com/datreeio/datree/releases/download/1.9.19/datree-cli_1.9.19_windows_386.zip",
+            "hash": "c9c63b79c5fb77cdef27199a448835e26b3345160c1e002b8af9dc560755b925"
+        }
+    },
+    "bin": "datree.exe",
+    "checkver": {
+        "github": "https://github.com/datreeio/datree"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/datreeio/datree/releases/download/$version/datree-cli_$version_windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/datreeio/datree/releases/download/$version/datree-cli_$version_windows_386.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "version": "3.14.3",
+    "description": "Software package for large-scale nonlinear optimization",
+    "homepage": "https://coin-or.github.io/Ipopt/",
+    "license": "EPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/coin-or/Ipopt/releases/download/releases%2F3.14.3/Ipopt-3.14.3-win64-msvs2019-md.zip",
+            "hash": "c5c080907a5344a8dcbf5966eaff4ebd79aff91bd9ac803f304aa969aa5007e4",
+            "extract_dir": "Ipopt-3.14.3-win64-msvs2019-md"
+        }
+    },
+    "bin": "bin\\ipopt.exe",
+    "env_set": {
+        "IPOPTWINDIR": "$dir"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/coin-or/Ipopt/releases/download/releases%2F$version/Ipopt-$version-win64-msvs2019-md.zip",
+                "extract_dir": "Ipopt-$version-win64-msvs2019-md"
+            }
+        }
+    }
+}

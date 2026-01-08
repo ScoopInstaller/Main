@@ -1,0 +1,34 @@
+{
+    "version": "1.4.6",
+    "description": "A console utility for computing and verifying hash sums of files.",
+    "homepage": "https://rhash.sourceforge.net/",
+    "license": "0BSD",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/rhash/rhash/1.4.6/rhash-1.4.6-win64.zip",
+            "hash": "sha1:b3f8ff5dc1426339b702affc2f5130e4d04beca5",
+            "extract_dir": "RHash-1.4.6-win64"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/rhash/rhash/1.4.6/rhash-1.4.6-win32.zip",
+            "hash": "sha1:8de4e5a77172764c2da930bf947dea8877bc2e38",
+            "extract_dir": "RHash-1.4.6-win32"
+        }
+    },
+    "bin": "rhash.exe",
+    "checkver": {
+        "sourceforge": "rhash/rhash"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/rhash/rhash/$version/rhash-$version-win64.zip",
+                "extract_dir": "RHash-$version-win64"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/rhash/rhash/$version/rhash-$version-win32.zip",
+                "extract_dir": "RHash-$version-win32"
+            }
+        }
+    }
+}

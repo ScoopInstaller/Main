@@ -1,0 +1,47 @@
+{
+    "version": "8.5.22",
+    "description": "Camunda workflow instance monitor/manager",
+    "homepage": "https://docs.camunda.io/docs/product-manuals/zeebe/zeebe-overview/",
+    "license": {
+        "identifier": "Zeebe Community License v1.0",
+        "url": "https://camunda.com/legal/terms/cloud-terms-and-conditions/zeebe-community-license-v1-0/"
+    },
+    "notes": [
+        "If you are upgrading from version 1.x, you can follow the instructions on this page to migrate the settings:",
+        "https://docs.camunda.io/docs/guides/update-guide/130-to-800/"
+    ],
+    "suggest": {
+        "JDK": "java/openjdk",
+        "Zeebe": "zeebe",
+        "ElasticSearch": "extras/elasticsearch"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/camunda/camunda-platform/releases/download/8.5%2Bgen29/camunda-operate-8.5.22.zip",
+            "hash": "sha1:81e189d49c79bcfb792d8430c160731db05a8f00"
+        }
+    },
+    "extract_dir": "camunda-operate-8.5.22",
+    "bin": [
+        [
+            "bin\\operate.bat",
+            "camunda-operate"
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "url": "https://api.github.com/repos/camunda/camunda-platform/releases",
+        "regex": "download/(?<genVer>[\\d.]+%2Bgen[\\d.]+)/camunda-operate-([\\d.]+).zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/camunda/camunda-platform/releases/download/$matchGenver/camunda-operate-$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha1sum"
+        },
+        "extract_dir": "camunda-operate-$version"
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "version": "1.0",
+    "description": "Universal package manager for Python, Node.js, Ruby and Emacs Lisp.",
+    "homepage": "https://github.com/replit/upm",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/replit/upm/releases/download/v1.0/upm_1.0_windows_amd64.tar.gz",
+            "hash": "9d590a7beb702d6d54678a3f1766e1d7cdc2b9faa577f507c26e76cd625a687d"
+        },
+        "32bit": {
+            "url": "https://github.com/replit/upm/releases/download/v1.0/upm_1.0_windows_386.tar.gz",
+            "hash": "1c83428af215109fc9af9e7e5ba61be75357ee8edf283d147f30622c917ddfb4"
+        }
+    },
+    "bin": "upm.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/replit/upm/releases/download/v$version/upm_$version_windows_amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/replit/upm/releases/download/v$version/upm_$version_windows_386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "version": "0.10.3",
+    "description": "fast, encrypted, and deduplicated backups powered by Rust",
+    "homepage": "https://rustic.cli.rs",
+    "license": "MIT|Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rustic-rs/rustic/releases/download/v0.10.3/rustic-v0.10.3-x86_64-pc-windows-msvc.tar.gz",
+            "hash": "0ec5e1b42486949b7847aab300cdd9296fd119fd924d67fb1a4dd31a1d8e24f2"
+        }
+    },
+    "env_set": {
+        "RUSTIC_HOME": "$dir"
+    },
+    "bin": "rustic.exe",
+    "persist": [
+        "config",
+        "logs"
+    ],
+    "checkver": {
+        "github": "https://github.com/rustic-rs/rustic"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rustic-rs/rustic/releases/download/v$version/rustic-v$version-x86_64-pc-windows-msvc.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

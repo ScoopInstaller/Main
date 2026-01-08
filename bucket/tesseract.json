@@ -1,0 +1,60 @@
+{
+    "version": "5.5.0.20241111",
+    "description": "Open Source OCR Engine",
+    "homepage": "https://tesseract-ocr.github.io",
+    "license": "Apache-2.0",
+    "notes": [
+        "Recognition data files can be installed via \"scoop install tesseract-languages\"",
+        "or downloaded manually from https://github.com/tesseract-ocr/tessdata_fast"
+    ],
+    "suggest": {
+        "tesseract-languages": "tesseract-languages"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe#/dl.7z",
+            "hash": "f3fc4236425b690c8be756f35793f77394ee004be0a6460a440c754d892f68bc"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "post_install": [
+        "$langdir = versiondir tesseract-languages current $global",
+        "if (Test-Path $langdir) {",
+        "   Set-EnvVar -Name TESSDATA_PREFIX -Value $langdir -Global:$global",
+        "}"
+    ],
+    "env_set": {
+        "SCROLLVIEW_PATH": "$persist_dir\\tessdata",
+        "TESSDATA_PREFIX": "$persist_dir\\tessdata"
+    },
+    "bin": [
+        "ambiguous_words.exe",
+        "classifier_tester.exe",
+        "cntraining.exe",
+        "combine_lang_model.exe",
+        "combine_tessdata.exe",
+        "dawg2wordlist.exe",
+        "lstmeval.exe",
+        "lstmtraining.exe",
+        "merge_unicharsets.exe",
+        "mftraining.exe",
+        "set_unicharset_properties.exe",
+        "shapeclustering.exe",
+        "tesseract.exe",
+        "text2image.exe",
+        "unicharset_extractor.exe",
+        "wordlist2dawg.exe"
+    ],
+    "persist": "tessdata",
+    "checkver": {
+        "github": "https://github.com/tesseract-ocr/tesseract",
+        "regex": "tesseract-ocr-w64-setup-([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tesseract-ocr/tesseract/releases/download/$matchHead/tesseract-ocr-w64-setup-$version.exe#/dl.7z"
+            }
+        }
+    }
+}

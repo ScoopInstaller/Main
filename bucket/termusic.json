@@ -1,0 +1,26 @@
+{
+    "version": "0.12.1",
+    "description": "Music Player TUI written in Rust",
+    "homepage": "https://github.com/tramhao/termusic",
+    "license": "GPL-3.0-or-later,MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tramhao/termusic/releases/download/v0.12.1/termusic-v0.12.1-x86_64-windows.zip",
+            "hash": "00ed14a05e0e9b913de5d25f890f452978d0e110b906bec829983bc165773267",
+            "extract_dir": "termusic-v0.12.1-x86_64-windows"
+        }
+    },
+    "bin": [
+        "termusic.exe",
+        "termusic-server.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tramhao/termusic/releases/download/v$version/termusic-v$version-x86_64-windows.zip",
+                "extract_dir": "termusic-v$version-x86_64-windows"
+            }
+        }
+    }
+}

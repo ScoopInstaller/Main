@@ -1,0 +1,39 @@
+{
+    "version": "25.12.0-0",
+    "description": "PDF rendering library",
+    "homepage": "https://github.com/oschwartz10612/poppler-windows",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/v25.12.0-0/Release-25.12.0-0.zip",
+            "hash": "9499c7474e4deb41c80ef5ea4a18cc1f3843695fbfa3c247db5c46c6eab2e26f"
+        }
+    },
+    "extract_dir": "poppler-25.12.0\\Library",
+    "bin": [
+        "bin\\pdfattach.exe",
+        "bin\\pdfdetach.exe",
+        "bin\\pdffonts.exe",
+        "bin\\pdfimages.exe",
+        "bin\\pdfinfo.exe",
+        "bin\\pdfseparate.exe",
+        "bin\\pdftocairo.exe",
+        "bin\\pdftohtml.exe",
+        "bin\\pdftoppm.exe",
+        "bin\\pdftops.exe",
+        "bin\\pdftotext.exe",
+        "bin\\pdfunite.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/oschwartz10612/poppler-windows",
+        "regex": "tag/v([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/oschwartz10612/poppler-windows/releases/download/v$version/Release-$version.zip"
+            }
+        },
+        "extract_dir": "poppler-$matchHead\\Library"
+    }
+}

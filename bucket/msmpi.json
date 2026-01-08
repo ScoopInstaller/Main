@@ -1,0 +1,38 @@
+{
+    "version": "10.1.1",
+    "description": "Microsoft implementation of the Message Passing Interface standard for developing and running parallel applications on the Windows platform.",
+    "homepage": "https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi",
+    "license": "MIT",
+    "url": "https://github.com/Microsoft/Microsoft-MPI/releases/download/v10.1.1/msmpisetup.exe",
+    "hash": "7308fd15e437d6829fd9c6ec5d801380faa3bff6e66e1dee3e8e005106fb6a68",
+    "pre_install": "Invoke-ExternalCommand -Path \"$(Get-HelperPath -Helper 7zip)\" -ArgumentList @('x', '-t#', \"$dir\\msmpisetup.exe\", \"-o$dir\\tmp\") | Out-Null",
+    "architecture": {
+        "64bit": {
+            "installer": {
+                "script": [
+                    "Expand-7zipArchive \"$dir\\tmp\\4.msi\" \"$dir\"",
+                    "Remove-Item \"$dir\\msmpires.dll\"",
+                    "Remove-Item \"$dir\\msmpi.dll\"",
+                    "Rename-Item \"$dir\\msmpires64.dll\" \"$dir\\msmpires.dll\"",
+                    "Rename-Item \"$dir\\msmpi64.dll\" \"$dir\\msmpi.dll\""
+                ]
+            }
+        },
+        "32bit": {
+            "installer": {
+                "script": "Expand-7zipArchive \"$dir\\tmp\\2.msi\" \"$dir\""
+            }
+        }
+    },
+    "post_install": [
+        "Remove-Item -Recurse \"$dir\\tmp\"",
+        "Remove-Item \"$dir\\msmpisetup.exe\""
+    ],
+    "env_add_path": ".",
+    "checkver": {
+        "github": "https://github.com/Microsoft/Microsoft-MPI"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Microsoft/Microsoft-MPI/releases/download/v$version/msmpisetup.exe"
+    }
+}

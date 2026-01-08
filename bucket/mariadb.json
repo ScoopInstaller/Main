@@ -1,0 +1,72 @@
+{
+    "version": "12.1.2",
+    "description": "Community developed fork of MySQL server.",
+    "homepage": "https://mariadb.org",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "Run 'mysqld --standalone' or 'mysqld --console' to start the Database,",
+        "or run following command as administrator to register MariaDB as a service. See: https://mariadb.com/kb/en/library/mysql_install_dbexe/",
+        "",
+        "mysql_install_db --service=MariaDB --password=NewRootPassword",
+        "",
+        "To stop and/or delete the Service run 'sc stop MariaDB' and 'sc delete MariaDB'."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://archive.mariadb.org/mariadb-12.1.2/winx64-packages/mariadb-12.1.2-winx64.zip",
+            "hash": "b3d11ae1edf0d00abeefb811f663df5a036ee237fc2df399f822a9b1f65537d8",
+            "extract_dir": "mariadb-12.1.2-winx64"
+        }
+    },
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\my.ini\") -and !(Test-Path \"$dir\\data\\my.cnf\") -and !(Test-Path \"$dir\\data\\mysql\")) {",
+        "    warn 'Initializing data directory ...'",
+        "    Invoke-ExternalCommand \"$dir\\bin\\mysql_install_db.exe\" -ArgumentList \"--datadir=$dir\\data\" | Out-Null",
+        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "}"
+    ],
+    "bin": [
+        "bin\\aria_chk.exe",
+        "bin\\aria_dump_log.exe",
+        "bin\\aria_ftdump.exe",
+        "bin\\aria_pack.exe",
+        "bin\\aria_read_log.exe",
+        "bin\\innochecksum.exe",
+        "bin\\myisamchk.exe",
+        "bin\\myisamlog.exe",
+        "bin\\myisampack.exe",
+        "bin\\myisam_ftdump.exe",
+        "bin\\mysql.exe",
+        "bin\\mysqladmin.exe",
+        "bin\\mysqlbinlog.exe",
+        "bin\\mysqlcheck.exe",
+        "bin\\mysqld.exe",
+        "bin\\mysqldump.exe",
+        "bin\\mysqlimport.exe",
+        "bin\\mysqlshow.exe",
+        "bin\\mysqlslap.exe",
+        "bin\\mysql_install_db.exe",
+        "bin\\mysql_plugin.exe",
+        "bin\\mysql_tzinfo_to_sql.exe",
+        "bin\\mysql_upgrade.exe",
+        "bin\\mysql_upgrade_service.exe",
+        "bin\\my_print_defaults.exe"
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "https://downloads.mariadb.org/rest-api/mariadb/all-releases/",
+        "jsonpath": "$.releases[?(@.status=='stable')].release_number",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mariadb.org/mariadb-$version/winx64-packages/mariadb-$version-winx64.zip",
+                "extract_dir": "mariadb-$version-winx64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums.txt"
+        }
+    }
+}

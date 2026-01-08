@@ -1,0 +1,28 @@
+{
+    "version": "3.5.0",
+    "description": "Movie Thumbnailer - save thumbnails (screenshots) of movie or video files to image files.",
+    "homepage": "https://gitlab.com/movie_thumbnailer/mtn/wikis/home",
+    "license": "GPL-2.0-or-later",
+    "suggest": {
+        "ffmpeg": "ffmpeg"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://bitbucket.org/wahibre/mtn/downloads/mtn-3.5.0-win64.zip",
+            "hash": "bbae09904f9e682885fa51cfaa3929112cd74505db910af68031b3086d9a1ce3",
+            "extract_dir": "mtn-win64"
+        }
+    },
+    "bin": "mtn.exe",
+    "checkver": {
+        "url": "https://bitbucket.org/wahibre/mtn/downloads/?tab=downloads",
+        "regex": "(?<filename>mtn-(?<version>(?:\\d+\\.)+\\d+)-win64\\.zip)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://bitbucket.org/wahibre/mtn/downloads/$matchFilename"
+            }
+        }
+    }
+}

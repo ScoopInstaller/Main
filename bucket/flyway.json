@@ -1,0 +1,31 @@
+{
+    "version": "11.20.0",
+    "description": "Database migration tool that favors simplicity and convention over configuration.",
+    "homepage": "https://github.com/flyway/flyway",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/flyway/flyway/releases/download/flyway-11.20.0/flyway-commandline-11.20.0-windows-x64.zip",
+            "hash": "a75e77463b83ec42da5737c4ec48a8c27f5ec54d7149fa2967c06cee8efcfd3b"
+        }
+    },
+    "extract_dir": "flyway-11.20.0",
+    "bin": "flyway.cmd",
+    "persist": [
+        "conf",
+        "sql",
+        "jars"
+    ],
+    "checkver": {
+        "url": "https://github.com/flyway/flyway/releases/latest",
+        "regex": "flyway-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/flyway/flyway/releases/download/flyway-$version/flyway-commandline-$version-windows-x64.zip"
+            }
+        },
+        "extract_dir": "flyway-$version"
+    }
+}

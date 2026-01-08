@@ -1,0 +1,38 @@
+{
+    "version": "16.1",
+    "description": "Convert HTML to PDF with CSS",
+    "homepage": "https://www.princexml.com",
+    "license": {
+        "identifier": "Non-commercial",
+        "url": "https://www.princexml.com/license/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.princexml.com/download/prince-16.1-win64.zip",
+            "hash": "8487d236e3b1f0343fae1dfe9cac86b519b92759bcd53301bad1e5b9a2348a76",
+            "extract_dir": "prince-16.1-win64"
+        },
+        "32bit": {
+            "url": "https://www.princexml.com/download/prince-16.1-win32.zip",
+            "hash": "7f225d466c354d04d0d3f2ec41014e7c6eae26d27f9b1517740c15168862b404",
+            "extract_dir": "prince-16.1-win32"
+        }
+    },
+    "bin": "bin\\prince.exe",
+    "checkver": {
+        "url": "https://www.princexml.com/download/",
+        "regex": ">Prince ([\\d.]+)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.princexml.com/download/prince-$version-win64.zip",
+                "extract_dir": "prince-$version-win64"
+            },
+            "32bit": {
+                "url": "https://www.princexml.com/download/prince-$version-win32.zip",
+                "extract_dir": "prince-$version-win32"
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "version": "4.0.6",
+    "description": "A fast, easy, and free BitTorrent client.",
+    "homepage": "https://transmissionbt.com/",
+    "license": "GPL-2.0-only|GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/transmission/transmission/releases/download/4.0.6/transmission-4.0.6-x64.msi",
+            "hash": "29417282f2a5405018a211aa94e60d324657cf347e7a496ca7a51798ede0f6c1"
+        },
+        "32bit": {
+            "url": "https://github.com/transmission/transmission/releases/download/4.0.6/transmission-4.0.6-x86.msi",
+            "hash": "b7bdac970c686cfcdc249dc96fabb83fe85057e7d53f4c9aa55dc71891ba8c26"
+        }
+    },
+    "extract_dir": "PFiles\\Transmission",
+    "bin": [
+        "transmission-create.exe",
+        "transmission-daemon.exe",
+        "transmission-edit.exe",
+        "transmission-remote.exe",
+        "transmission-show.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/transmission/transmission"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/transmission/transmission/releases/download/$version/transmission-$version-x64.msi"
+            },
+            "32bit": {
+                "url": "https://github.com/transmission/transmission/releases/download/$version/transmission-$version-x86.msi"
+            }
+        },
+        "hash": {
+            "url": "https://transmissionbt.com/download",
+            "regex": "$sha256</a>  $basename"
+        }
+    }
+}

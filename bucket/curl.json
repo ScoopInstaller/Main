@@ -1,0 +1,39 @@
+{
+    "version": "8.18.0_1",
+    "description": "Command line tool and library for transferring data with URLs",
+    "homepage": "https://curl.se/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://curl.se/windows/dl-8.18.0_1/curl-8.18.0_1-win64-mingw.tar.xz",
+            "hash": "bc7408c655ea2e731bd725e796b0075ae2a1f1725a4e9a9af7edaedf46632025",
+            "extract_dir": "curl-8.18.0_1-win64-mingw"
+        },
+        "arm64": {
+            "url": "https://curl.se/windows/dl-8.18.0_1/curl-8.18.0_1-win64a-mingw.tar.xz",
+            "hash": "ef7c102ced3cb432165ac371fc023d76f95fe538b13298cbeb87ecfd0dfae657",
+            "extract_dir": "curl-8.18.0_1-win64a-mingw"
+        }
+    },
+    "bin": "bin\\curl.exe",
+    "checkver": {
+        "url": "https://curl.se/windows/",
+        "regex": "Build<\\/b>:\\s+([\\d._]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://curl.se/windows/dl-$version/curl-$version-win64-mingw.tar.xz",
+                "extract_dir": "curl-$version-win64-mingw"
+            },
+            "arm64": {
+                "url": "https://curl.se/windows/dl-$version/curl-$version-win64a-mingw.tar.xz",
+                "extract_dir": "curl-$version-win64a-mingw"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/hashes.txt",
+            "regex": "SHA2-256\\($basename\\)=\\s+$sha256"
+        }
+    }
+}

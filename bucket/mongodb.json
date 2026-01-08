@@ -1,0 +1,66 @@
+{
+    "version": "8.2.3",
+    "description": "A document database with the scalability and flexibility.",
+    "homepage": "https://www.mongodb.org",
+    "license": {
+        "identifier": "SSPL-1.0",
+        "url": "https://www.mongodb.com/licensing/server-side-public-license"
+    },
+    "notes": [
+        "Windows server 2012/2008 and Windows 7/8/8.1 need KB2999226 to provide Universal C Runtime support for Windows.",
+        "For more infomations, please refer to:",
+        "https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows",
+        "",
+        "mongod shim use \"$dir\\bin\\mongod.cfg\" as the default config file.",
+        "To use a different config file, please run",
+        "\"$dir\\bin\\mongod.exe --config NEW_CONFIG_FILE\""
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2022",
+        "MongoDB Shell": "extras/mongosh"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-8.2.3-signed.msi",
+            "hash": "dbad91532fd5f5bb5b42818ce7a644dd603a388926303b306e23ef29a640e849",
+            "extract_dir": "MongoDB\\Server\\8.2"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\bin\\mongod.cfg\")) {",
+        "    $cfg = Get-Content \"$dir\\bin\\mongod.cfg\"",
+        "    $cfg = $cfg -replace '%MONGO_DATA_PATH%', \"$dir\\data\"",
+        "    $cfg = $cfg -replace '%MONGO_LOG_PATH%', \"$dir\\log\"",
+        "    Set-Content \"$dir\\bin\\mongod.cfg\" $cfg -Encoding Ascii -Force",
+        "}"
+    ],
+    "bin": [
+        [
+            "bin\\mongod.exe",
+            "mongod",
+            "--config \"$dir\\bin\\mongod.cfg\""
+        ],
+        "bin\\mongos.exe"
+    ],
+    "persist": [
+        "bin\\mongod.cfg",
+        "data",
+        "log"
+    ],
+    "checkver": {
+        "url": "http://downloads.mongodb.org/current.json",
+        "regex": "\"version\"\\:\\s+\"([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-$version-signed.msi",
+                "extract_dir": "MongoDB\\Server\\$majorVersion.$minorVersion"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256",
+            "regex": "$sha256"
+        }
+    }
+}

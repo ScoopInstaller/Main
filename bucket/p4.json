@@ -1,0 +1,31 @@
+{
+    "version": "2024.2-2697822",
+    "description": "Provides access to versioned files in Helix Core through a command-line interface.",
+    "homepage": "https://www.perforce.com/products/helix-core-apps/command-line-client",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.perforce.com/sites/default/files/pdfs/Helix_Core%20On%20Prem%20Software%20License%20Agmt%20ClickThru_FINAL%2006.28.2021.pdf"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://cdist2.perforce.com/perforce/r24.2/bin.ntx64/p4.exe",
+            "hash": "45c6d58899aad0d7ddaa96eff5cd07ef7d31afd0e788f3f1cd582a81d471ea62"
+        }
+    },
+    "bin": "p4.exe",
+    "checkver": {
+        "url": "https://www.perforce.com/support/software-release-index",
+        "regex": "Helix Command-line Client.*?20(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.\\d+)*\\/(?<build>\\d+)",
+        "replace": "20${major}.${minor}-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdist2.perforce.com/perforce/r$matchMajor.$matchMinor/bin.ntx64/p4.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}

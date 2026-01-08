@@ -1,0 +1,25 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Python\PythonCore]
+"DisplayName"="Official Python installed with Scoop"
+"SupportUrl"="https://www.python.org/"
+
+[HKEY_CURRENT_USER\Software\Python\PythonCore\$py_version]
+"DisplayName"="Python $py_version ($py_archLabel)"
+"SupportUrl"="https://www.python.org/"
+"Version"="$py_fullversion"
+"SysVersion"="$py_version"
+"SysArchitecture"="$py_archbit"
+
+[HKEY_CURRENT_USER\Software\Python\PythonCore\$py_version\Help\Main Python Documentation]
+@="$py_root\\Doc\\python$py_cleanVersion.chm"
+"DisplayName"="Python $py_fullversion Documentation"
+
+[HKEY_CURRENT_USER\Software\Python\PythonCore\$py_version\InstallPath]
+@="$py_root"
+"ExecutablePath"="$py_root\\python.exe"
+"WindowedExecutablePath"="$py_root\\pythonw.exe"
+
+[HKEY_CURRENT_USER\Software\Python\PythonCore\$py_version\PythonPath]
+@="$py_root\\Lib\\;$py_root\\DLLs\\"
+

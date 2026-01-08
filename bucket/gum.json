@@ -1,0 +1,31 @@
+{
+    "version": "0.13.0",
+    "description": "Gradle/Maven wrapper",
+    "homepage": "https://github.com/kordamp/gm",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kordamp/gm/releases/download/v0.13.0/gm_Windows_x86_64.zip",
+            "hash": "sha512:3b41a9547d07a0485f9b5b01e05e278fc75e6d440ff384484557bd5793e4541ce5935b8852807dfb93774899bd87f9d8cc776fd3754ec3eb1d0ff628c1d0f2e6"
+        },
+        "32bit": {
+            "url": "https://github.com/kordamp/gm/releases/download/v0.13.0/gm_Windows_i386.zip",
+            "hash": "sha512:76ba73fe90c34b06e8c94c0e095904371a44d9c2410b75345a8a69c837d42733b90f3879774ef0d99ddda67f9b12375bd4ebe2cb5df7aab0708225394b4530cb"
+        }
+    },
+    "bin": "gm.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kordamp/gm/releases/download/v$version/gm_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/kordamp/gm/releases/download/v$version/gm_Windows_i386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "version": "4.9",
+    "description": "sed (stream editor) is a non-interactive command-line text editor",
+    "homepage": "https://www.gnu.org/software/sed",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mbuilov/sed-windows/releases/download/sed-4.9-x64-fixed/sed-4.9-x64.exe#/sed.exe",
+            "hash": "38fbdb237afaf25fdaee462c6504d61ce7dd122db0206b353df1a29e5b0aa7c5"
+        },
+        "32bit": {
+            "url": "https://github.com/mbuilov/sed-windows/releases/download/sed-4.9-x64-fixed/sed-4.9-x86.exe#/sed.exe",
+            "hash": "7b31b07ebffa675f85b27908e9f3eb8ef57ec297c289942f6cd2a40eee8f88b3"
+        }
+    },
+    "bin": "sed.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/mbuilov/sed-windows/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "sed-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mbuilov/sed-windows/releases/download/sed-$version/sed-$version-x64.exe#/sed.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/mbuilov/sed-windows/releases/download/sed-$version/sed-$version-x86.exe#/sed.exe"
+            }
+        }
+    }
+}

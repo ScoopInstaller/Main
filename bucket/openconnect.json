@@ -1,0 +1,32 @@
+{
+    "version": "9.12",
+    "description": "Multi-protocol SSL VPN client",
+    "homepage": "https://www.infradead.org/openconnect/",
+    "license": "LGPL-2.1-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://gitlab.com/openconnect/openconnect/-/jobs/artifacts/v9.12/raw/openconnect-installer-MinGW64-GnuTLS.exe?job=MinGW64/GnuTLS#/dl.7z",
+            "hash": "bb7fe698c757e003af74dcfbf1ec30f64432fa4bb0e1a27e28b8a9e86f765f8e"
+        },
+        "32bit": {
+            "url": "https://gitlab.com/openconnect/openconnect/-/jobs/artifacts/v9.12/raw/openconnect-installer-MinGW32-GnuTLS.exe?job=MinGW32/GnuTLS#/dl.7z",
+            "hash": "92ee850e74bf20459df3f55cd9ecc9ca29031a015faf322f23a696b4c28808bd"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall OpenConnect.exe\" -Recurse",
+    "bin": "openconnect.exe",
+    "checkver": {
+        "url": "https://www.infradead.org/openconnect/download.html",
+        "regex": "OpenConnect v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gitlab.com/openconnect/openconnect/-/jobs/artifacts/v$version/raw/openconnect-installer-MinGW64-GnuTLS.exe?job=MinGW64/GnuTLS#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://gitlab.com/openconnect/openconnect/-/jobs/artifacts/v$version/raw/openconnect-installer-MinGW32-GnuTLS.exe?job=MinGW32/GnuTLS#/dl.7z"
+            }
+        }
+    }
+}

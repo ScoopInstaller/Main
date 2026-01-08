@@ -1,0 +1,27 @@
+{
+    "version": "1.51.1",
+    "description": "Lightweight, portable and dependable accounting tools",
+    "homepage": "https://hledger.org",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/simonmichael/hledger/releases/download/1.51.1/hledger-windows-x64.zip",
+            "hash": "8faec443faa955c8fd78a846b35803726c78b74e43122777fd960784fc980781"
+        }
+    },
+    "bin": [
+        "hledger.exe",
+        "hledger-web.exe",
+        "hledger-ui.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/simonmichael/hledger"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/simonmichael/hledger/releases/download/$version/hledger-windows-x64.zip"
+            }
+        }
+    }
+}

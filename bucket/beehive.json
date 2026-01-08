@@ -1,0 +1,31 @@
+{
+    "version": "0.4.0",
+    "description": "A flexible event/agent & automation system with lots of bees.",
+    "homepage": "https://github.com/muesli/beehive",
+    "license": "AGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/muesli/beehive/releases/download/v0.4.0/beehive_0.4.0_Windows_x86_64.tar.gz",
+            "hash": "4b3e45790a6aec2616053073036976d768c78bd2ecb65174391b4a2d9bb92a5f"
+        },
+        "32bit": {
+            "url": "https://github.com/muesli/beehive/releases/download/v0.4.0/beehive_0.4.0_Windows_i386.tar.gz",
+            "hash": "dac349724ec0883632c62d0c70df38b12a1de28c6aebbf4fc5d93b9e829de26a"
+        }
+    },
+    "bin": "beehive.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/muesli/beehive/releases/download/v$version/beehive_$version_Windows_x86_64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/muesli/beehive/releases/download/v$version/beehive_$version_Windows_i386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "version": "1.2.3",
+    "description": "Quick and easy CLI file transfer utility from any computer to another.",
+    "homepage": "https://github.com/SpatiumPortae/portal",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/SpatiumPortae/portal/releases/download/v1.2.3/portal_1.2.3_Windows_x86_64.zip",
+            "hash": "f775a4a9362da02d9ad19436deb18b01a371ad9ab5ba337c4815a2d00dcfef04"
+        },
+        "arm64": {
+            "url": "https://github.com/SpatiumPortae/portal/releases/download/v1.2.3/portal_1.2.3_Windows_arm64.zip",
+            "hash": "b504eb979099127b9ad5d8be2804b1bcae0d49fd49bbbedd6b96873b28ccf94f"
+        }
+    },
+    "bin": "portal.exe",
+    "checkver": {
+        "github": "https://github.com/SpatiumPortae/portal"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/SpatiumPortae/portal/releases/download/v$version/portal_$version_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/SpatiumPortae/portal/releases/download/v$version/portal_$version_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

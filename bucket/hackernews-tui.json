@@ -1,0 +1,24 @@
+{
+    "version": "0.13.5",
+    "description": "A Terminal UI to browse Hacker News",
+    "homepage": "https://github.com/aome510/hackernews-tui",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aome510/hackernews-tui/releases/download/v0.13.5/hackernews_tui-x86_64-pc-windows-msvc.zip",
+            "hash": "06374a8d7951c250a95fe35528c95fbb53003588a399b334261a2aeaa2707fac"
+        }
+    },
+    "bin": "hackernews_tui.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aome510/hackernews-tui/releases/download/v$version/hackernews_tui-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$baseurl/hackernews_tui-x86_64-pc-windows-msvc.sha256"
+                }
+            }
+        }
+    }
+}

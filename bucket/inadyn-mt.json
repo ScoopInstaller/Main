@@ -1,0 +1,42 @@
+{
+    "version": "02.28.10",
+    "description": "Dynamic DNS client",
+    "homepage": "https://sourceforge.net/projects/inadyn-mt/files/inadyn-mt/",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "To install and run as a service:",
+        "> cd \"$dir\\bin\\win32\"",
+        "> notepad inadyn-mt.conf",
+        "> sudo .\\inadyn-mt -i",
+        "> sudo .\\inadyn-mt -s",
+        "",
+        "For help, see $dir\\readme.html"
+    ],
+    "depends": "gsudo",
+    "url": "https://downloads.sourceforge.net/project/inadyn-mt/inadyn-mt/inadyn-mt.v.02.28.10/inadyn-mt.v.02.28.10.tar.gz",
+    "hash": "sha1:176d47ceb2ddf854c3401fd0ae858d38245810a1",
+    "extract_dir": "inadyn-mt.v.02.28.10",
+    "pre_install": [
+        "'inadyn-mt.conf', 'inadyn-mt.log', 'inadyn-mt.pid', 'inadyn_ip.cache', 'inadyn_time.cache' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\bin\\win32\\$_\") -and !(Test-Path \"$dir\\bin\\win32\\$_\")) {",
+        "        New-Item \"$dir\\bin\\win32\\$_\" | Out-Null",
+        "    }",
+        "}"
+    ],
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand \"$dir\\bin\\win32\\inadyn-mt.exe\" -ArgumentList '-x' -RunAs"
+    },
+    "bin": "bin\\win32\\inadyn-mt.exe",
+    "persist": [
+        "bin\\win32\\inadyn-mt.conf",
+        "bin\\win32\\inadyn-mt.log",
+        "bin\\win32\\inadyn-mt.pid",
+        "bin\\win32\\inadyn_ip.cache",
+        "bin\\win32\\inadyn_time.cache"
+    ],
+    "checkver": "title=\"/inadyn-mt/inadyn-mt\\.v\\.([\\d.]+)",
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/inadyn-mt/inadyn-mt/inadyn-mt.v.$version/inadyn-mt.v.$version.tar.gz",
+        "extract_dir": "inadyn-mt.v.$version"
+    }
+}

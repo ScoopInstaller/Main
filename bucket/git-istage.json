@@ -1,0 +1,33 @@
+{
+    "version": "0.3.152",
+    "description": "A better git add -p",
+    "homepage": "https://github.com/terrajobst/git-istage",
+    "license": "MIT",
+    "depends": "dotnet-sdk",
+    "url": "https://www.nuget.org/api/v2/package/git-istage/0.3.152",
+    "hash": "b2b9c6fa86bc97defe1b45034314e3af73725473086729234da92789ed34df7a",
+    "installer": {
+        "script": [
+            "Move-Item \"$dir\\$version\" \"$dir\\git-istage.$version.nupkg\"",
+            "$nugetConfig = \"<?xml version=`\"1.0`\" encoding=`\"utf-8`\"?><configuration><packageSources><clear /><add key=`\"Local`\" value=`\"$dir`\" /></packageSources></configuration>\"",
+            "$nugetConfigFile = \"$dir\\nuget.config\"",
+            "$nugetConfig | Out-File -Encoding UTF8 \"$nugetConfigFile\"",
+            "dotnet tool install git-istage --tool-path \"$dir\" --configfile \"$nugetConfigFile\"",
+            "$runCommand = \"if ( `$env:DOTNET_ROOT -eq `$null) { `$env:DOTNET_ROOT=Split-Path -Parent (Get-Command dotnet).Path } & `\"$dir\\git-istage.exe`\" `$args\"",
+            "$runCommand | Out-File -Encoding UTF8 \"$dir\\run.ps1\""
+        ]
+    },
+    "bin": [
+        [
+            "run.ps1",
+            "git-istage"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.nuget.org/v3-flatcontainer/git-istage/index.json",
+        "jsonpath": "$.versions[-1:]"
+    },
+    "autoupdate": {
+        "url": "https://www.nuget.org/api/v2/package/git-istage/$version"
+    }
+}

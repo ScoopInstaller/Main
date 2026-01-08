@@ -1,0 +1,95 @@
+{
+    "version": "3.3.16.1",
+    "description": "Scripting language designed for automating the Windows GUI and general scripting",
+    "homepage": "https://www.autoitscript.com/site/autoit/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.autoitscript.com/autoit3/docs/license.htm"
+    },
+    "suggest": {
+        "vcredist": [
+            "extras/vcredist2005",
+            "extras/vcredist2008",
+            "extras/vcredist2022"
+        ],
+        "AutoIt Script Editor": "extras/autoit-script-editor"
+    },
+    "url": "https://www.autoitscript.com/files/autoit3/autoit-v3.zip",
+    "hash": "ceb666a993a9f62621c3a0d4ee602774b2e7f543de1f08ec0380632ee3f89beb",
+    "extract_dir": "install",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "AutoIt3_x64.exe",
+                    "AutoIt"
+                ],
+                [
+                    "Aut2Exe\\Aut2exe_x64.exe",
+                    "Aut2exe"
+                ],
+                "Au3Check.exe"
+            ],
+            "shortcuts": [
+                [
+                    "AutoIt3_x64.exe",
+                    "AutoIt"
+                ],
+                [
+                    "Au3Info_x64.exe",
+                    "AutoIt Window Info Tool"
+                ],
+                [
+                    "Aut2Exe\\Aut2exe_x64.exe",
+                    "AutoIt Script Compiler"
+                ],
+                [
+                    "SciTe\\SciTE.exe",
+                    "AutoIt Script Editor"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": [
+                [
+                    "AutoIt3.exe",
+                    "AutoIt"
+                ],
+                "Aut2Exe\\Aut2exe.exe",
+                "Au3Check.exe"
+            ],
+            "shortcuts": [
+                [
+                    "AutoIt3.exe",
+                    "AutoIt"
+                ],
+                [
+                    "Au3Info.exe",
+                    "AutoIt Window Info Tool"
+                ],
+                [
+                    "Aut2Exe\\Aut2exe.exe",
+                    "AutoIt Script Compiler"
+                ],
+                [
+                    "SciTe\\SciTE.exe",
+                    "AutoIt Script Editor"
+                ]
+            ]
+        }
+    },
+    "post_install": [
+        "$editor = versiondir 'autoit-script-editor' 'current'",
+        "if (Test-Path $editor) {",
+        "   Remove-Item \"$dir\\SciTe\" -Recurse -Force",
+        "   New-Item -Path \"$dir\\SciTE\" -Value \"$editor\" -ItemType Junction | Out-Null",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://www.autoitscript.com/site/autoit/downloads/",
+        "regex": "<td>v([\\d.]+)</td>"
+    },
+    "autoupdate": {
+        "url": "https://www.autoitscript.com/files/autoit3/autoit-v3.zip"
+    }
+}

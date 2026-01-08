@@ -1,0 +1,32 @@
+{
+    "version": "2.7.2",
+    "description": "A tool to interact with the Privilege and Identification Card (PIV) application on a YubiKey.",
+    "homepage": "https://developers.yubico.com/yubico-piv-tool/",
+    "license": "BSD-2-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.7.2-win64.msi",
+            "hash": "a363b6fb17c46e1fd5e0b856540229cad5684a3ebb1cd4bb2bf04ca952520b6c"
+        },
+        "32bit": {
+            "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-2.7.2-win32.msi",
+            "hash": "3859818976ce60445cc04e74de58f1eab592fbe2384756a34fadfa0e8db62b7c"
+        }
+    },
+    "extract_dir": "PFiles\\Yubico\\Yubico PIV Tool",
+    "bin": "bin\\yubico-piv-tool.exe",
+    "checkver": {
+        "url": "https://developers.yubico.com/yubico-piv-tool/Releases/",
+        "regex": "yubico-piv-tool-([\\d.]+)-win64\\.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-$version-win64.msi"
+            },
+            "32bit": {
+                "url": "https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-$version-win32.msi"
+            }
+        }
+    }
+}

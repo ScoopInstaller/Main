@@ -1,0 +1,31 @@
+{
+    "version": "1.10.3",
+    "description": "A diff tool for YAML files, and sometimes JSON.",
+    "homepage": "https://github.com/homeport/dyff",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/homeport/dyff/releases/download/v1.10.3/dyff_1.10.3_windows_amd64.tar.gz",
+            "hash": "4966a18c6440ffca96b77855086fb3c20281aaf465b707d2833eeabba9b2cbd3"
+        },
+        "arm64": {
+            "url": "https://github.com/homeport/dyff/releases/download/v1.10.3/dyff_1.10.3_windows_arm64.tar.gz",
+            "hash": "8a60f0c7029c78799942c1b32a7bd139ed27f1ec42001056073ffbd623464eb2"
+        }
+    },
+    "bin": "dyff.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/homeport/dyff/releases/download/v$version/dyff_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/homeport/dyff/releases/download/v$version/dyff_$version_windows_arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

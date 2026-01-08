@@ -1,0 +1,36 @@
+{
+    "version": "2.112.0",
+    "description": "D is a general-purpose programming language with static typing, systems-level access, and C-like syntax",
+    "homepage": "https://dlang.org/",
+    "license": "BSL-1.0",
+    "url": "http://downloads.dlang.org/releases/2.x/2.112.0/dmd.2.112.0.windows.7z",
+    "hash": "5e07add3600ee03a71e4c47fbeb5d3dddff0c7dd80f5f37c1c8ef263c5031b43",
+    "extract_dir": "dmd2",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                "windows\\bin\\ddemangle.exe",
+                "windows\\bin64\\dmd.exe",
+                "windows\\bin64\\dub.exe",
+                "windows\\bin\\dustmite.exe",
+                "windows\\bin\\rdmd.exe"
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "windows\\bin\\ddemangle.exe",
+                "windows\\bin\\dmd.exe",
+                "windows\\bin\\dub.exe",
+                "windows\\bin\\dustmite.exe",
+                "windows\\bin\\rdmd.exe"
+            ]
+        }
+    },
+    "checkver": {
+        "url": "http://downloads.dlang.org/releases/LATEST",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "http://downloads.dlang.org/releases/$majorVersion.x/$version/dmd.$version.windows.7z"
+    }
+}

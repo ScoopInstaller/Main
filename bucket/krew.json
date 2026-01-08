@@ -1,0 +1,40 @@
+{
+    "version": "0.4.5",
+    "description": "Krew is the package manager for kubectl plugins.",
+    "homepage": "https://krew.sigs.k8s.io/",
+    "license": "Apache-2.0",
+    "notes": [
+        "This application creates symlinks during installation of plugins.",
+        "You can install 'gsudo' to run it as administrator, or enable 'Developer Mode' in Windows 10 Settings to bypass the elevation requirement."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kubernetes-sigs/krew/releases/download/v0.4.5/krew.exe",
+            "hash": "dbcf078bff6fa55b8a279384770b7a0d9f3d739a4c3a683ea74571f635db2571"
+        }
+    },
+    "installer": {
+        "script": [
+            "[Environment]::SetEnvironmentVariable('KREW_ROOT', \"$persist_dir\\.krew\", 'Process')",
+            "Start-Process \"$dir\\krew.exe\" -Args 'install krew' -Wait -WindowStyle Hidden"
+        ]
+    },
+    "env_add_path": ".krew\\bin",
+    "env_set": {
+        "KREW_ROOT": "$dir\\.krew"
+    },
+    "persist": ".krew",
+    "checkver": {
+        "github": "https://github.com/kubernetes-sigs/krew"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kubernetes-sigs/krew/releases/download/v$version/krew.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

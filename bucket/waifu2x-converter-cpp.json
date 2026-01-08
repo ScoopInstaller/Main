@@ -1,0 +1,26 @@
+{
+    "version": "5.3.4",
+    "description": "Reimplementation of waifu2x in C++ using OpenCL and OpenCV.",
+    "homepage": "https://github.com/DeadSix27/waifu2x-converter-cpp",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/DeadSix27/waifu2x-converter-cpp/releases/download/v5.3.4/waifu2x-converter-cpp-win64_v534.zip",
+            "hash": "3CBE2BC406F0251E624D61634AA5D306FB1E073D06675904665F5BC1AC74C8E8",
+            "extract_dir": "waifu2x-converter-cpp-win64_v534"
+        }
+    },
+    "bin": [
+        "waifu2x-converter-cpp.exe",
+        "w2xcr.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/DeadSix27/waifu2x-converter-cpp/releases/download/v$version/waifu2x-converter-cpp-win64_v$cleanVersion.zip",
+                "extract_dir": "waifu2x-converter-cpp-win64_v$cleanVersion"
+            }
+        }
+    }
+}

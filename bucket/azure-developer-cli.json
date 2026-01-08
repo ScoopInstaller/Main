@@ -1,0 +1,48 @@
+{
+    "version": "1.22.5",
+    "description": "A developer CLI that provides commands for working with Azure resources that map to key workflow stages: code, build, deploy, monitor, repeat.",
+    "homepage": "https://aka.ms/azd",
+    "license": "MIT",
+    "notes": [
+        "1. Shell completion requires additional setup, see: https://github.com/Azure/azure-dev",
+        "2. Telemetry is enabled by default, it can be disabled by setting env variable \"AZURE_DEV_COLLECT_TELEMETRY\" to \"no\""
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.22.5/azd-windows-amd64.zip",
+            "hash": "bba46afac0a8b0c06c0c1ea5556512f4ca0ee08ba9c7b464d43847840fd6206e"
+        },
+        "arm64": {
+            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.22.5/azd-windows-arm64-alpha.zip",
+            "hash": "8bcfb8ef29138dc60b6853a9864d50ba0fd76c0825cae21e66ae46f45131d485"
+        }
+    },
+    "pre_install": "Get-Item \"$dir\\azd-*.exe\" | Rename-Item -NewName \"azd.exe\"",
+    "bin": "azd.exe",
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        [System.IO.Path]::Combine($env:USERPROFILE,'.azd')",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if ([System.IO.Directory]::Exists($_)) {",
+        "            $null = [System.IO.Directory]::Delete($_,$true)",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/Azure/azure-dev",
+        "regex": "azure-dev-cli_([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-arm64-alpha.zip"
+            }
+        }
+    }
+}

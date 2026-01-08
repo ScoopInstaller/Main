@@ -1,0 +1,30 @@
+{
+    "version": "1.13.0",
+    "description": "A command line tool to switch between different versions of terraform",
+    "homepage": "https://tfswitch.warrensbox.com",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/warrensbox/terraform-switcher/releases/download/v1.13.0/terraform-switcher_v1.13.0_windows_386.zip",
+            "hash": "87eab8ecb1c709a9ce0a17915e02432bcd6ba3b8c7b70bb043604fe961d2f3aa"
+        },
+        "64bit": {
+            "url": "https://github.com/warrensbox/terraform-switcher/releases/download/v1.13.0/terraform-switcher_v1.13.0_windows_amd64.zip",
+            "hash": "80a65f414d259e22bba14b2830793c7722a48d96582fe5a438ed9c48101a6d3a"
+        }
+    },
+    "bin": "tfswitch.exe",
+    "checkver": {
+        "github": "https://github.com/warrensbox/terraform-switcher"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/warrensbox/terraform-switcher/releases/download/v$version/terraform-switcher_v$version_windows_386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/warrensbox/terraform-switcher/releases/download/v$version/terraform-switcher_v$version_windows_amd64.zip"
+            }
+        }
+    }
+}
