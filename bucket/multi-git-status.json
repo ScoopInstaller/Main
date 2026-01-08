@@ -1,0 +1,19 @@
+{
+    "version": "2.3",
+    "description": "Show uncommitted, untracked and unpushed changes for multiple Git repos.",
+    "homepage": "https://github.com/fboender/multi-git-status",
+    "license": "MIT",
+    "notes": "Recommend adding bash.exe from the manifest main/git to the top of the system environment's PATH.",
+    "url": "https://github.com/fboender/multi-git-status/archive/refs/tags/2.3.zip",
+    "hash": "B62B9DAC64002E767C6229F0C6F7A51231DBE4475DC765AB3D1E5073D87588D3",
+    "extract_dir": "multi-git-status-2.3",
+    "pre_install": [
+        "New-Item -Path \"$dir\\mgitstatus.cmd\" -ItemType File -Force",
+        "Add-Content -Path \"$dir\\mgitstatus.cmd\" -Value \"bash $env:SCOOP\\apps\\multi-git-status\\current\\mgitstatus %*\""
+    ],
+    "bin": "mgitstatus.cmd",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/fboender/multi-git-status/archive/refs/tags/$version.zip"
+    }
+}
