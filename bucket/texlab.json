@@ -4,9 +4,17 @@
     "homepage": "https://texlab.netlify.com",
     "license": "GPL-3.0-only",
     "architecture": {
+        "32bit": {
+            "url": "https://github.com/latex-lsp/texlab/releases/download/v5.25.1/texlab-i686-windows.zip",
+            "hash": "a27984b45ebe7a09471e3b47770bdb7ad86303e5758e0d4fee3058df4fc6397a"
+        },
         "64bit": {
             "url": "https://github.com/latex-lsp/texlab/releases/download/v5.25.1/texlab-x86_64-windows.zip",
             "hash": "aa5fc1fe6004c17cd83086a57a8c8f28bb3f360914872711bfbb83490dc3c19e"
+        },
+        "arm64": {
+            "url": "https://github.com/latex-lsp/texlab/releases/download/v5.25.1/texlab-aarch64-windows.zip",
+            "hash": "04ef3ec3a86dc1dfa9d3beb90bcea5e6e3736cda8428cd6c6469b89f1e786973"
         }
     },
     "bin": "texlab.exe",
@@ -15,8 +23,14 @@
     },
     "autoupdate": {
         "architecture": {
+            "32bit": {
+                "url": "https://github.com/latex-lsp/texlab/releases/download/v$version/texlab-i686-windows.zip"
+            },
             "64bit": {
                 "url": "https://github.com/latex-lsp/texlab/releases/download/v$version/texlab-x86_64-windows.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/latex-lsp/texlab/releases/download/v$version/texlab-aarch64-windows.zip"
             }
         }
     }
