@@ -1,23 +1,27 @@
 {
-    "version": "1.34.1+k0s.1",
+    "version": "1.34.3+k0s.0",
     "description": "Zero Friction Kubernetes distribution",
     "homepage": "https://github.com/k0sproject/k0s",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/k0sproject/k0s/releases/download/v1.34.1+k0s.1/k0s-v1.34.1+k0s.1-amd64.exe#/k0s.exe",
-            "hash": "4eae8b578fb2de671ad021492748aa75c22a111dd57c6eb72ecfbee583d1797d"
+            "url": "https://github.com/k0sproject/k0s/releases/download/v1.34.3+k0s.0/k0s-v1.34.3+k0s.0-amd64.exe#/k0s.exe",
+            "hash": "00a0c7ba651e069e8716d40d4057bf74937720a43cbaeb3314e718470a0a153b"
         }
     },
     "bin": "k0s.exe",
     "checkver": {
-        "url": "https://github.com/k0sproject/k0s/releases",
-        "regex": "v([\\d.]+\\+k0s[\\d.]+)"
+        "github": "https://github.com/k0sproject/k0s",
+        "regex": "v(\\d+\\.\\d+\\.\\d+\\+k0s\\.\\d+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/k0sproject/k0s/releases/download/v$version/k0s-v$version-amd64.exe#/k0s.exe"
+                "url": "https://github.com/k0sproject/k0s/releases/download/v$version/k0s-v$version-amd64.exe#/k0s.exe",
+                "hash": {
+                    "url": "$baseurl/sha256sums.txt",
+                    "regex": "$sha256\\s\\*k0s-v$version-amd64.exe"
+                }
             }
         }
     }

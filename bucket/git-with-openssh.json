@@ -1,14 +1,20 @@
 {
     "version": "2.52.0",
-    "description": "Distributed version control system",
+    "description": "A free and open source distributed version control system.",
     "homepage": "https://gitforwindows.org",
-    "license": "GPL-2.0-only",
+    "license": {
+        "identifier": "GPL-2.0-only",
+        "url": "https://github.com/git-for-windows/git/blob/HEAD/COPYING"
+    },
     "notes": [
-        "Set Git Credential Manager Core by running: \"git config --global credential.helper manager\"",
+        "To register file associations, please execute the following command:",
+        "reg import \"$dir\\install-associations.reg\"",
         "",
-        "To add context menu entries, run '$dir\\install-context.reg'",
+        "To register the context menu entry, please execute the following command:",
+        "reg import \"$dir\\install-context.reg\"",
         "",
-        "To create file-associations for .git* and .sh files, run '$dir\\install-file-associations.reg'"
+        "To set Git Credential Manager Core for portable Git, please execute the following command:",
+        "git config --global credential.helper manager"
     ],
     "architecture": {
         "64bit": {
@@ -21,71 +27,79 @@
         }
     },
     "post_install": [
-        "'install-context', 'uninstall-context', 'install-file-associations', 'uninstall-file-associations' | ForEach-Object {",
-        "    $reg_file_in  = \"$bucketsdir\\main\\scripts\\git\\$_.reg\"",
-        "    $reg_file_out = \"$dir\\$_.reg\"",
-        "    $git_root     = \"$dir\".Replace('\\', '\\\\')",
-        "    if (Test-Path $reg_file_in) {",
-        "        $content = Get-Content $reg_file_in",
-        "        $content = $content.Replace('$git_root', $git_root)",
-        "        if ($global) {",
-        "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
-        "        }",
-        "        Set-Content -Path $reg_file_out -Value $content -Encoding Ascii",
-        "    }",
+        "$git_path = $dir -replace '\\\\', '\\\\'",
+        "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\git\" -Filter '*.reg' -File | ForEach-Object {",
+        "    $content = Get-Content -Path $_.FullName -Encoding utf8",
+        "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE' }",
+        "    $content -replace '{{git_dir}}', $git_path | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
         "}"
     ],
+    "env_add_path": "cmd",
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
+    },
     "bin": [
-        "cmd\\git.exe",
-        "cmd\\gitk.exe",
-        "cmd\\git-gui.exe",
+        "bin\\sh.exe",
         "git-bash.exe",
         "usr\\bin\\gpg.exe",
+        "usr\\bin\\gpg-agent.exe",
         "usr\\bin\\gpgconf.exe",
-        "usr\\bin\\ssh.exe",
+        "usr\\bin\\gpg-connect-agent.exe",
+        "usr\\bin\\pinentry.exe",
         "usr\\bin\\scp.exe",
         "usr\\bin\\sftp.exe",
+        "usr\\bin\\ssh.exe",
         "usr\\bin\\ssh-add.exe",
         "usr\\bin\\ssh-agent.exe",
         [
-            "bin/sh.exe",
+            "bin\\sh.exe",
             "ssh-copy-id",
             "ssh-copy-id"
         ],
         "usr\\bin\\ssh-keygen.exe",
         "usr\\bin\\ssh-keyscan.exe",
-        "usr\\bin\\tig.exe"
+        "usr\\bin\\ssh-pageant.exe"
     ],
     "shortcuts": [
         [
             "git-bash.exe",
-            "Git Bash",
+            "Git\\Git Bash",
+            "--cd-to-home"
+        ],
+        [
+            "git-cmd.exe",
+            "Git\\Git CMD",
             "--cd-to-home"
         ],
         [
             "cmd\\git-gui.exe",
-            "Git GUI"
+            "Git\\Git GUI"
         ]
     ],
-    "env_set": {
-        "GIT_INSTALL_ROOT": "$dir"
+    "uninstaller": {
+        "script": [
+            "if ($cmd -eq 'uninstall') {",
+            "    reg import \"$dir\\uninstall-context.reg\" *> $null",
+            "    reg import \"$dir\\uninstall-associations.reg\" *> $null",
+            "}"
+        ]
     },
     "checkver": {
-        "url": "https://api.github.com/repos/git-for-windows/git/releases/latest",
-        "jsonpath": "$..browser_download_url",
-        "regex": "download/v(?<tag>[\\d.]+windows\\.\\d)/PortableGit-([\\d.]+)-64"
+        "url": "https://api.github.com/repositories/23216272/releases/latest",
+        "jsonpath": "$.assets[?(@.name =~ /Portable/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>v?[\\d.]+windows[\\d.]+)/PortableGit-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$matchTag/PortableGit-$version-64-bit.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/PortableGit-$version-64-bit.7z.exe#/dl.7z"
             },
             "arm64": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$matchTag/PortableGit-$version-arm64.7z.exe#/dl.7z"
+                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/PortableGit-$version-arm64.7z.exe#/dl.7z"
             }
         },
         "hash": {
-            "url": "https://github.com/git-for-windows/git/releases/tag/v$matchTag",
+            "url": "https://github.com/git-for-windows/git/releases/tag/$matchTag",
             "regex": "(?s)$basename.*?$sha256"
         }
     }
