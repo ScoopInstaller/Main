@@ -17,9 +17,7 @@
             "hash": "cceb88655824577ff8b956fb0752f5de0d2f07e9a12bba55255227bd89fe5e1f"
         }
     },
-    "pre_install": [
-        "Get-Item \"$dir\\Slik-Subversion-*.msi\" | Expand-MsiArchive -Destination \"$dir\" -ExtractDir 'PFiles' -Removal | Out-Null"
-    ],
+    "pre_install": "Get-Item \"$dir\\Slik-Subversion-*.msi\" | Expand-MsiArchive -Destination \"$dir\" -ExtractDir 'PFiles' -Removal | Out-Null",
     "bin": [
         "bin\\svn.exe",
         "bin\\svnadmin.exe",
