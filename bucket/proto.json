@@ -1,0 +1,51 @@
+{
+    "version": "0.54.1",
+    "description": "Proto is a pluggable version manager, a unified toolchain.",
+    "homepage": "https://moonrepo.dev/proto",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/moonrepo/proto/releases/download/v0.54.1/proto_cli-x86_64-pc-windows-msvc.zip",
+            "hash": "77e5cf3b6ee89882d7f9b8004a664ece33ab36d0634ee285e4886f64d84e261c"
+        }
+    },
+    "pre_install": [
+        "$protoHome = if ($env:PROTO_HOME) { $env:PROTO_HOME } else { \"$HOME\\.proto\" }",
+        "if (!(Test-Path \"$protoHome\\bin\")) { New-Item -ItemType Directory -Force -Path \"$protoHome\\bin\" | Out-Null }"
+    ],
+    "installer": {
+        "script": [
+            "$protoHome = if ($env:PROTO_HOME) { $env:PROTO_HOME } else { \"$HOME\\.proto\" }",
+            "Move-Item \"$dir\\*.exe\" -Destination \"$protoHome\\bin\" -Force",
+            "& \"$protoHome\\bin\\proto.exe\" setup --yes --no-modify-profile 2>&1 | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$protoHome = if ($env:PROTO_HOME) { $env:PROTO_HOME } else { \"$HOME\\.proto\" }",
+            "",
+            "# Remove proto paths from PATH",
+            "$userPath = [Environment]::GetEnvironmentVariable('PATH', 'User')",
+            "$binDir = \"$protoHome\\bin\"",
+            "$shimsDir = \"$protoHome\\shims\"",
+            "$paths = $userPath -split ';' | Where-Object { $_ -and $_ -ne $binDir -and $_ -ne $shimsDir }",
+            "[Environment]::SetEnvironmentVariable('PATH', ($paths -join ';'), 'User')",
+            "",
+            "# Remove PROTO_HOME directory",
+            "if (Test-Path $protoHome) { Remove-Item -Path $protoHome -Recurse -Force }"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/moonrepo/proto"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/moonrepo/proto/releases/download/v$version/proto_cli-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
