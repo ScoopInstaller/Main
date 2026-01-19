@@ -8,8 +8,12 @@
     "hash": "0C9650028167162F458CADA8E6AA702A66A35F09B5F1ACB7E4D744F8C3D8500D",
     "bin": "eac3to.exe",
     "checkver": {
-        "url": "https://www.rationalqm.us/eac3to/?C=M;O=D",
-        "regex": "eac3to_([\\d.]+)\\.rar"
+        "script": [
+            "$url = 'https://www.rationalqm.us/eac3to/?C=M;O=D'",
+            "$ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'",
+            "$content = (Invoke-WebRequest -Uri $url -UserAgent $ua -UseBasicParsing).Content",
+            "if ($content -match 'eac3to_([\\d.]+)\\.rar') { return $matches[1] }"
+        ]
     },
     "autoupdate": {
         "url": "https://www.rationalqm.us/eac3to/eac3to_$version.rar"
