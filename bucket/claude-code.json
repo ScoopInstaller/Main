@@ -1,0 +1,38 @@
+{
+    "version": "2.1.0",
+    "description": "Agentic coding tool that lives in your terminal",
+    "homepage": "https://claude.com/product/claude-code",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.anthropic.com/legal/consumer-terms"
+    },
+    "notes": "If Git was not installed via Scoop, follow these steps: https://code.claude.com/docs/en/setup#windows-setup",
+    "suggest": {
+        "git": "main/git"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.0/win32-x64/claude.exe",
+            "hash": "80bc2ecf66b899b517dd5b84ac55d9244838320bbe65624d8931d98068955af1"
+        }
+    },
+    "env_set": {
+        "CLAUDE_CODE_GIT_BASH_PATH": "$env:GIT_INSTALL_ROOT\\bin\\bash.exe"
+    },
+    "bin": "claude.exe",
+    "checkver": {
+        "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/latest",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/win32-x64/claude.exe",
+                "hash": {
+                    "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/manifest.json",
+                    "jsonpath": "$.platforms.win32-x64.checksum"
+                }
+            }
+        }
+    }
+}
