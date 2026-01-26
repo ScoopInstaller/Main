@@ -1,0 +1,57 @@
+{
+    "version": "1.8.0",
+    "description": "Golang Version Manager",
+    "homepage": "https://github.com/voidint/g",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/voidint/g/releases/download/v1.8.0/g1.8.0.windows-amd64.zip",
+            "hash": "93ad318012c8dc601b93ad44ce82b10fbdb23e169d831bb041061c0f6783c7e9"
+        },
+        "32bit": {
+            "url": "https://github.com/voidint/g/releases/download/v1.8.0/g1.8.0.windows-386.zip",
+            "hash": "25624f1f22355d23b914a5bc387c58f744b5c66d183328b0e951bbec1ce72a57"
+        },
+        "arm64": {
+            "url": "https://github.com/voidint/g/releases/download/v1.8.0/g1.8.0.windows-arm64.zip",
+            "hash": "a0e6068142aee30812db109880ff310056fdc98461f49f1794b206cca06437f0"
+        },
+        "arm32": {
+            "url": "https://github.com/voidint/g/releases/download/v1.8.0/g1.8.0.windows-arm.zip",
+            "hash": "6f4f7bebc96d6e02074842ff2ff0cac08aeb5a9232e2f3bb9dccad833331c407"
+        }
+    },
+    "installer": {
+        "script": [
+            "[Environment]::SetEnvironmentVariable('GOROOT', \"$persist_dir\\.cargo\", 'Process')",
+            "info \"Adding '$envgoroot\\bin' to PATH...\"",
+            "Add-Path -Path \"$envgoroot\\bin\" -Global:$global"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$envgoroot = \"$env:USERPROFILE\\.g\\go\"",
+            "if ($env:GOROOT) { $envgoroot = $env:GOROOT }",
+            "info \"Removing '$envgoroot\\bin' from PATH...\"",
+            "Remove-Path -Path \"$envgoroot\\bin\" -Global:$global"
+        ]
+    },
+    "bin": "g.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/voidint/g/releases/download/v$version/g$version.windows-amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/voidint/g/releases/download/v$version/g$version.windows-386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/voidint/g/releases/download/v$version/g$version.windows-arm64.zip"
+            },
+            "arm32": {
+                "url": "https://github.com/voidint/g/releases/download/v$version/g$version.windows-arm.zip"
+            }
+        }
+    }
+}
