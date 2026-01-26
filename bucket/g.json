@@ -23,20 +23,22 @@
     },
     "installer": {
         "script": [
-            "[Environment]::SetEnvironmentVariable('GOROOT', \"$persist_dir\\.cargo\", 'Process')",
-            "info \"Adding '$envgoroot\\bin' to PATH...\"",
-            "Add-Path -Path \"$envgoroot\\bin\" -Global:$global"
+            "[Environment]::SetEnvironmentVariable('GOROOT', \"$env:USERPROFILE\\.g\\go\", 'Process')",
+            "info \"Adding '$env:GOROOT\\bin' to PATH...\"",
+            "Add-Path -Path \"$env:GOROOT\\bin\" -Global:$global"
         ]
     },
     "uninstaller": {
         "script": [
-            "$envgoroot = \"$env:USERPROFILE\\.g\\go\"",
-            "if ($env:GOROOT) { $envgoroot = $env:GOROOT }",
-            "info \"Removing '$envgoroot\\bin' from PATH...\"",
-            "Remove-Path -Path \"$envgoroot\\bin\" -Global:$global"
+            "[Environment]::SetEnvironmentVariable('GOROOT', \"$env:USERPROFILE\\.g\\go\", 'Process')",
+            "info \"Removing '$env:GOROOT\\bin' from PATH...\"",
+            "Remove-Path -Path \"$env:GOROOT\\bin\" -Global:$global"
         ]
     },
     "bin": "g.exe",
+    "env_set": {
+        "GOROOT": "$env:USERPROFILE\\.g\\go"
+    },
     "checkver": "github",
     "autoupdate": {
         "architecture": {
