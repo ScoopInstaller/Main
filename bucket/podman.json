@@ -9,7 +9,11 @@
             "hash": "2663b94183d36d21a3958e03580bc2dd174ffaa9ae6dc567d40429b7a5da17cc"
         }
     },
-    "bin": "podman.exe",
+    "bin": [
+        "gvproxy.exe",
+        "podman.exe",
+        "win-sshproxy.exe"
+    ],
     "pre_install": [
         "if (Get-Command -ErrorAction SilentlyContinue podman) {",
         "    if ((podman machine info --format '{{.Host.MachineState}}') -like '*ing') {",
