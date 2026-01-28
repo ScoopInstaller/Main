@@ -1,39 +1,40 @@
 {
     "version": "1.8",
-    "description": "Open/save as file dialog improvement: automatically opens path from any file manager. QuickSwitch automatically switches file dialog path for convenience and speed.",
+    "description": "Open/save as file dialog improvement: automatically opens path from any file manager. Save and open files with convenience and speed.",
     "homepage": "https://github.com/JoyHak/QuickSwitch",
-    "checkver": "github", 
-    "notes": "Launch QuickSwitch. Open any file dialog (e.g. open notepad.exe and press Ctrl+Shift+S). Press Ctrl+Q to open the Menu. In the Menu press S to open the settings.",
     "license": {
         "identifier": "GPL-3.0-only",
         "url": "https://github.com/JoyHak/QuickSwitch/blob/main/LICENSE"
     },
-    "license_url": "https://github.com/JoyHak/QuickSwitch/blob/main/LICENSE",
-    "bin": "QuickSwitch.exe",
+    "notes": "Launch QuickSwitch. Open any file dialog (e.g. open notepad.exe and press Ctrl+Shift+S). Press Ctrl+Q to open the Menu. In the Menu press S to open the settings.",
     "architecture": {
         "64bit": {
             "url": "https://github.com/JoyHak/QuickSwitch/releases/download/1.8/QuickSwitch-1.8-x64.zip",
-            "hash": "5CA14D7BEC9DAF8AA3A0C4C835970B0CAB5607CA16094311C2CB5E33D92A8341", 
+            "hash": "5CA14D7BEC9DAF8AA3A0C4C835970B0CAB5607CA16094311C2CB5E33D92A8341"
         },
         "32bit": {
             "url": "https://github.com/JoyHak/QuickSwitch/releases/download/1.8/QuickSwitch-1.8-x32.zip",
-            "hash": "3032808530936E48CD6D07C0998550C5C75BEAF9A854B47391500088AC1D6D9C", 
+            "hash": "3032808530936E48CD6D07C0998550C5C75BEAF9A854B47391500088AC1D6D9C"
         }
     },
+    "bin": "QuickSwitch.exe",
     "shortcuts": [
         [
             "QuickSwitch.exe",
-            "QuickSwitch", 
+            "QuickSwitch",
             "Icons\\QuickSwitch.ico"
         ]
     ],
+    "checkver": {
+        "github": "https://github.com/JoyHak/QuickSwitch"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/JoyHak/QuickSwitch/releases/download/$matchTag/QuickSwitch-$version-x64.zip"
+                "url": "https://github.com/JoyHak/QuickSwitch/releases/download/$matchTag/QuickSwitch-$matchTag-x64.zip"
             },
             "32bit": {
-                "url": "https://github.com/JoyHak/QuickSwitch/releases/download/$matchTag/QuickSwitch-$version-x32.zip"
+                "url": "https://github.com/JoyHak/QuickSwitch/releases/download/$matchTag/QuickSwitch-$matchTag-x32.zip"
             }
         },
         "hash": {
@@ -41,4 +42,3 @@
         }
     }
 }
-
