@@ -1,0 +1,31 @@
+{
+    "version": "20.1.1",
+    "description": "Collection of modular and reusable compiler and toolchain technologies (full build).",
+    "homepage": "https://www.llvm.org",
+    "license": "NCSA",
+    "notes": "Since upstream does not provide a pre-compiled binary of arm64 for every release, LLVM arm64 is a separate manifest: 'llvm-full-arm64'.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.1/clang+llvm-20.1.1-x86_64-pc-windows-msvc.tar.xz",
+            "hash": "f8114cb674317e8a303731b1f9d22bf37b8c571b64f600abe528e92275ed4ace",
+            "extract_dir": "clang+llvm-20.1.1-x86_64-pc-windows-msvc"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "LIBCLANG_PATH": "$dir\\bin",
+        "LLVM_LIB_DIR": "$dir\\lib"
+    },
+    "checkver": {
+        "github": "https://github.com/llvm/llvm-project",
+        "regex": "tag/llvmorg-([\\d._]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/clang+llvm-$version-x86_64-pc-windows-msvc.tar.xz",
+                "extract_dir": "clang+llvm-$version-x86_64-pc-windows-msvc"
+            }
+        }
+    }
+}
