@@ -9,30 +9,30 @@
     "notes": "ngrok v2 is no longer supported.",
     "architecture": {
         "64bit": {
-            "url": "https://bin.equinox.io/a/3rHQMTKnZ8w/ngrok-v3-3.36.0-windows-amd64.zip",
+            "url": "https://bin.ngrok.com/a/3rHQMTKnZ8w/ngrok-v3-3.36.0-windows-amd64.zip",
             "hash": "8115f9d1f6e17a2dd77937e7beacdc40154b12161f3a72c610bcf7f3a548d199"
         },
         "32bit": {
-            "url": "https://bin.equinox.io/a/9jFPr4TBJZF/ngrok-v3-3.36.0-windows-386.zip",
+            "url": "https://bin.ngrok.com/a/9jFPr4TBJZF/ngrok-v3-3.36.0-windows-386.zip",
             "hash": "bc5c1414f09df37a37a24fa230700c2487d7441cb0f685c9e6de9157007eead6"
         }
     },
     "bin": "ngrok.exe",
     "checkver": {
-        "url": "https://dl.equinox.io/ngrok/ngrok-v3/stable/archive",
+        "url": "https://ngrok.com/download/archive/ngrok/ngrok-v3/stable/ngrok_archive",
         "regex": "/a/(?<hash64bit>\\w+)/ngrok-v[\\d.]+-([\\d.]+)-windows-amd64.zip(?:.|\\n)+?/a/(?<hash32bit>\\w+)/ngrok-v[\\d.]+-([\\d.]+)-windows-386.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://bin.equinox.io/a/$matchHash64bit/ngrok-v$majorVersion-$version-windows-amd64.zip"
+                "url": "https://bin.ngrok.com/a/$matchHash64bit/ngrok-v$majorVersion-$version-windows-amd64.zip"
             },
             "32bit": {
-                "url": "https://bin.equinox.io/a/$matchHash32bit/ngrok-v$majorVersion-$version-windows-386.zip"
+                "url": "https://bin.ngrok.com/a/$matchHash32bit/ngrok-v$majorVersion-$version-windows-386.zip"
             }
         },
         "hash": {
-            "url": "https://dl.equinox.io/ngrok/ngrok-v3/stable/archive",
+            "url": "https://ngrok.com/download/archive/ngrok/ngrok-v3/stable/ngrok_archive",
             "regex": "$url(?:.|\\n)+?value=\"(\\w+)"
         }
     }
