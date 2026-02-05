@@ -17,7 +17,7 @@
     "checkver": {
         "url": "https://gitlab.com/api/v4/projects/movie_thumbnailer%2Fmtn/releases/permalink/latest",
         "jsonpath": "$.description",
-        "regex": "\\[Windows\\]\\((\\/uploads\\/(?<hash>[a-f0-9]{32})\\/mtn-(?<version>([\\d.]+))(?:-\\d+)?-win64\\.zip)\\).*?64bit"
+        "regex": "uploads/(?<hash>[a-f0-9]{32})/mtn-(?<version>[\\d.]+)-win64\\.zip"
     },
     "autoupdate": {
         "architecture": {
