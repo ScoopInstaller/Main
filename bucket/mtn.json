@@ -15,15 +15,15 @@
     "extract_dir": "mtn-win64",
     "bin": "mtn.exe",
     "checkver": {
-        "url": "https://gitlab.com/api/v4/projects/movie_thumbnailer%2Fmtn/releases/permalink/latest",
-        "jsonpath": "$.description",
-        "regex": "uploads/(?<hash>[a-f0-9]{32})/mtn-(?<version>[\\d.]+)-win64\\.zip"
+      "url": "https://gitlab.com/api/v4/projects/movie_thumbnailer%2Fmtn/releases/permalink/latest",
+      "jsonpath": "$.description",
+      "regex": "uploads/(?<hash>[a-f0-9]{32})/mtn-(?<version>[\\d.]+-\\d+)-win64\\.zip"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://gitlab.com/-/project/3655713/uploads/$matchHash/mtn-$matchVersion-1-win64.zip"
-            }
+      "architecture": {
+        "64bit": {
+          "url": "https://gitlab.com/-/project/3655713/uploads/$matchHash/mtn-$matchVersion-win64.zip"
         }
+      }
     }
 }
