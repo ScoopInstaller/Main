@@ -1,0 +1,31 @@
+{
+    "version": "0.21.3",
+    "description": "Terminal API client for HTTP/GraphQL/gRPC with support for SSH tunnels, WebSockets, SSE, workflows, profiling, OpenAPI and response diffs.",
+    "homepage": "https://github.com/unkn0wn-root/resterm",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/unkn0wn-root/resterm/releases/download/v0.21.3/resterm_Windows_x86_64.exe#/resterm.exe",
+            "hash": "7de6a36b8b1fc21956115b12226b84f6e12277d28c11c911515adab6eea2aed6"
+        },
+        "arm64": {
+            "url": "https://github.com/unkn0wn-root/resterm/releases/download/v0.21.3/resterm_Windows_arm64.exe#/resterm.exe",
+            "hash": "8c8a2a6066f26e35c4deaa083676e94a778dfcd1b91ec0d7785e9a2c8ff1c2ed"
+        }
+    },
+    "bin": "resterm.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/unkn0wn-root/resterm/releases/download/v$version/resterm_Windows_x86_64.exe#/resterm.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/unkn0wn-root/resterm/releases/download/v$version/resterm_Windows_arm64.exe#/resterm.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
