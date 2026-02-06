@@ -1,10 +1,13 @@
 {
-    "##": "This file is a template. Fill the blanks and add or remove fields as necessary.",
     "version": "1.5.233",
     "description": "Freescale/NXP I.MX Chip image deploy tools.",
     "homepage": "https://github.com/nxp-imx/mfgtools",
     "license": "BSD-3-Clause",
-    "notes": "Instead of `mfgtools`, nxp use `uuu` for new command line interface.",
+    "notes": [
+        "The official project name is 'mfgtools', but the command-line executable is named 'uuu' (Universal Update Utility).",
+        "Windows 7 Users: Please refer to https://github.com/nxp-imx/mfgtools/wiki/WIN7-User-Guide",
+        "Windows 10 Users: You may need to install the 'VS2017 Redistributable' package if the tool fails to run."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/nxp-imx/mfgtools/releases/download/uuu_1.5.233/uuu.exe",
@@ -12,7 +15,10 @@
         }
     },
     "bin": "uuu.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/nxp-imx/mfgtools",
+        "regex": "uuu_([\\d.]+)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
