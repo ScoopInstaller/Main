@@ -1,36 +1,50 @@
 {
     "version": "1.9.2",
-    "description": "7-Zip plugin for the leading-edge compression methods; zstd, Brotli, LZ4, LZ5, Lizard, and Fast LZMA2.",
+    "description": "A plugin for 7-Zip that provides support for leading-edge compression methods—including Zstandard, Brotli, LZ4, LZ5, Lizard, and Fast LZMA2—while enhancing compatibility with modern single-file compression formats.",
     "homepage": "https://www.tc4shell.com/en/7zip/modern7z/",
-    "license": "Unknown",
-    "depends": "7zip",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.tc4shell.com/en/termsofuse/"
+    },
     "url": "https://www.tc4shell.com/binary/Modern7z.zip",
     "hash": "3cd202da38024c85512822a42da2897095334bedd910f34c3339c54b7c88f5f0",
     "architecture": {
         "64bit": {
-            "extract_dir": "64"
+            "pre_install": [
+                "Copy-Item -Path \"$dir\\64\\*\" -Destination $dir -Force -Recurse",
+                "'32', '64' | ForEach-Object { Remove-Item -Path \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }"
+            ]
         },
         "32bit": {
-            "extract_dir": "32"
+            "pre_install": [
+                "Copy-Item -Path \"$dir\\32\\*\" -Destination $dir -Force -Recurse",
+                "'32', '64' | ForEach-Object { Remove-Item -Path \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }"
+            ]
         }
     },
     "installer": {
         "script": [
-            "$7zcodecs = \"$(persistdir '7zip' $global)\\Codecs\"",
-            "if (-not (Test-Path \"$7zcodecs\")) {",
-            "  New-Item -Path \"$7zcodecs\" -ItemType Directory | Out-Null",
-            "  New-Item -Path \"$(versiondir '7zip' 'current')\\Codecs\" -Value \"$7zcodecs\" -ItemType Junction | Out-Null",
+            "$7z_path = Get-CommandPath -Command '7z.exe'",
+            "if ($null -eq $7z_path) { abort \"`nCould not locate '7z.exe' in system PATH. Abort installation.\" }",
+            "$codecs_dir = Join-Path -Path $(Split-Path -Path $7z_path -Parent) -ChildPath 'Codecs'",
+            "if (-not (Test-Path -Path $codecs_dir -PathType Container)) {",
+            "    New-Item -Path $codecs_dir -ItemType Directory -Force | Out-Null",
             "}",
-            "Copy-Item -Path \"$dir\\*\" -Destination \"$7zcodecs\" -Recurse -Force -ErrorAction SilentlyContinue"
+            "Copy-Item -Path \"$dir\\*\" -Destination $codecs_dir -Exclude '*.json', 'ReadMe.txt' -Force -Recurse"
         ]
     },
     "uninstaller": {
         "script": [
-            "$7zcodecs = \"$(persistdir '7zip' $global)\\Codecs\"",
-            "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$7zcodecs\\$($_.Name)\" -Recurse -Force -ErrorAction SilentlyContinue }"
+            "$7z_path = Get-CommandPath -Command '7z.exe'",
+            "if ($null -ne $7z_path) {",
+            "    $codecs_dir = Join-Path -Path $(Split-Path -Path $7z_path -Parent) -ChildPath 'Codecs'",
+            "    Get-ChildItem -Path $dir -Exclude '*.json', 'ReadMe.txt' | ForEach-Object -Process {",
+            "        Remove-Item -Path \"$codecs_dir\\$($_.Name)\" -Recurse -Force -ErrorAction SilentlyContinue",
+            "    }",
+            "}"
         ]
     },
-    "checkver": "Plugin version: ([\\d.]+)",
+    "checkver": "Plugin version:\\s*([\\d.]+)",
     "autoupdate": {
         "url": "https://www.tc4shell.com/binary/Modern7z.zip"
     }
