@@ -1,0 +1,33 @@
+{
+    "version": "0.10.0",
+    "description": "Enrich SBOMs with data from third party services.",
+    "homepage": "https://github.com/snyk/parlay/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/snyk/parlay/releases/download/v0.10.0/parlay_Windows_x86_64.zip",
+            "hash": "975fe499d31caae9b5de3673d8a4e9183990a9235136ef39ffd165d1a42c43a1"
+        },
+        "arm64": {
+            "url": "https://github.com/snyk/parlay/releases/download/v0.10.0/parlay_Windows_arm64.zip",
+            "hash": "153145cb110a014b5c40c9d131ebab2692891586c53a6b98615f2d5c30697c80"
+        }
+    },
+    "bin": "parlay.exe",
+    "checkver": {
+        "github": "https://github.com/snyk/parlay"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/snyk/parlay/releases/download/v$version/parlay_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/snyk/parlay/releases/download/v$version/parlay_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
