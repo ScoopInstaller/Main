@@ -1,10 +1,13 @@
 {
     "version": "25.01",
-    "description": "A multi-format file archiver with high compression ratios",
-    "homepage": "https://www.7-zip.org/",
-    "license": "LGPL-2.1-or-later",
+    "description": "A multi-format file archiver with high compression ratios.",
+    "homepage": "https://www.7-zip.org",
+    "license": {
+        "identifier": "BSD-2-Clause, BSD-3-Clause, LGPL-2.1-or-later",
+        "url": "https://www.7-zip.org/license.txt"
+    },
     "notes": [
-        "Add 7-Zip as a context menu option by running:",
+        "To register the context menu entry, please execute the following command:",
         "reg import \"$dir\\install-context.reg\""
     ],
     "architecture": {
@@ -30,31 +33,39 @@
         }
     },
     "post_install": [
-        "$7zip_root = \"$dir\".Replace('\\', '\\\\')",
-        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    $content = Get-Content \"$bucketsdir\\main\\scripts\\7-zip\\$_\"",
-        "    $content = $content.Replace('$7zip_root', $7zip_root)",
-        "    if ($global) {",
-        "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
-        "    }",
-        "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
+        "$7zip_dir = $dir -replace '\\\\', '\\\\'",
+        "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\7-zip\" -Filter '*.reg' -File | ForEach-Object {",
+        "    $content = Get-Content -Path $_.FullName -Encoding utf8",
+        "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER(?=.+Classes)', 'HKEY_LOCAL_MACHINE' }",
+        "    $content -replace '{{7zip_dir}}', $7zip_dir | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
         "}"
     ],
     "bin": [
         "7z.exe",
-        "7zFM.exe",
-        "7zG.exe"
+        "7zG.exe",
+        "7zFM.exe"
     ],
     "shortcuts": [
         [
             "7zFM.exe",
-            "7-Zip"
+            "7-Zip\\7-Zip File Manager"
+        ],
+        [
+            "7-zip.chm",
+            "7-Zip\\7-Zip Help"
         ]
     ],
     "persist": [
         "Codecs",
         "Formats"
     ],
+    "uninstaller": {
+        "script": [
+            "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" *> $null }",
+            "Stop-Process -Name 'explorer' -Force -ErrorAction SilentlyContinue",
+            "Start-Sleep -Milliseconds 1500"
+        ]
+    },
     "checkver": {
         "url": "https://www.7-zip.org/download.html",
         "regex": "Download 7-Zip ([\\d.]+) \\(\\d{4}-\\d{2}-\\d{2}\\)"
