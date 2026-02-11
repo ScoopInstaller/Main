@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "description": "Multi-agent coding assistant CLI for software development",
+  "homepage": "https://github.com/firfircelik/platypus-cli",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://registry.npmjs.org/platypus-cli/-/platypus-cli-1.0.0.tgz",
+      "hash": "sha1-e99a9fa9063d124f11733f0271babf1fe53f86e6",
+      "extract_dir": "package"
+    }
+  },
+  "bin": "bin/platypus.js",
+  "checkver": {
+    "url": "https://registry.npmjs.org/platypus-cli/latest",
+    "jsonpath": "$.version"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://registry.npmjs.org/platypus-cli/-/platypus-cli-$version.tgz",
+        "hash": {
+          "mode": "json",
+          "url": "https://registry.npmjs.org/platypus-cli/$version",
+          "jsonpath": "$.dist.shasum"
+        }
+      }
+    }
+  }
+}
