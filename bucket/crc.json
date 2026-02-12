@@ -12,7 +12,10 @@
             "pre_install": [
                 "# The trailing backslash(\\) in $dir\\ is required by lessmsi.",
                 "Invoke-ExternalCommand lessmsi -ArgumentList @('x', \"$dir\\crc-windows-amd64.msi\", \"$dir\\\") | Out-Null",
-                "Copy-Item \"$dir\\SourceDir\\Red Hat OpenShift Local\\*\" \"$dir\" -Force -Recurse | Out-Null",
+                "# Find the app directory dynamically",
+                "$appDir = Get-ChildItem -Path \"$dir\" -Filter 'Red Hat OpenShift Local' -Recurse -Directory | Select-Object -ExpandProperty FullName -First 1",
+                "if (-not $appDir) { throw 'Expected directory not found in extracted MSI content.' }",
+                "Copy-Item \"$appDir\\*\" \"$dir\" -Force -Recurse | Out-Null",
                 "Remove-Item \"$dir\\SourceDir\" -Force -Recurse | Out-Null"
             ]
         }
