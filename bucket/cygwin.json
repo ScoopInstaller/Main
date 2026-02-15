@@ -6,7 +6,6 @@
         "identifier": "GPL-3.0-or-later,X11,Public Domain",
         "url": "https://cygwin.com/faq.html#faq.what.free"
     },
-    "notes": "To start a Cygwin shell, type \"cygwin\".",
     "architecture": {
         "64bit": {
             "url": "https://cygwin.com/setup/setup-2.936.x86_64.exe#/cygwin-setup.exe",
@@ -31,6 +30,11 @@
         ]
     },
     "bin": [
+        [
+            "cygwin-setup.exe",
+            "cygwin-setup",
+            "--no-admin --no-shortcuts --no-version-check --local-package-dir \"$persist_dir\\packages\" --root \"$persist_dir\\root\""
+        ],
         [
             "root\\bin\\bash.exe",
             "cygwin",
