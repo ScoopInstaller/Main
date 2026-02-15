@@ -1,0 +1,38 @@
+{
+    "version": "0.53.1",
+    "description": "STACKIT Command Line Interface (CLI) to manage STACKIT resources.",
+    "homepage": "https://github.com/stackitcloud/stackit-cli",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/stackitcloud/stackit-cli/releases/download/v0.53.1/stackit-cli_0.53.1_windows_amd64.zip",
+            "hash": "c08974e24ed853e05c1277246ca8242e6ab7b53acdfc2fe0fda085ebd39e3dd1"
+        },
+        "32bit": {
+            "url": "https://github.com/stackitcloud/stackit-cli/releases/download/v0.53.1/stackit-cli_0.53.1_windows_386.zip",
+            "hash": "b0bec4b30ca37c864968416a199b44739b8211f7ad4dc545fa7d060746d46925"
+        },
+        "arm64": {
+            "url": "https://github.com/stackitcloud/stackit-cli/releases/download/v0.53.1/stackit-cli_0.53.1_windows_arm64.zip",
+            "hash": "50fa820113810018e4a649064e7ac63f687ae2b4f7378638c85a7f39a5519ef2"
+        }
+    },
+    "bin": "stackit.exe",
+    "checkver": {
+        "url": "https://github.com/stackitcloud/stackit-cli/tags",
+        "regex": "/releases/tag/v?([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/stackitcloud/stackit-cli/releases/download/v$version/stackit-cli_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/stackitcloud/stackit-cli/releases/download/v$version/stackit-cli_$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/stackitcloud/stackit-cli/releases/download/v$version/stackit-cli_$version_windows_arm64.zip"
+            }
+        }
+    }
+}
