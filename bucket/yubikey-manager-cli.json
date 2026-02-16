@@ -1,0 +1,24 @@
+{
+    "version": "5.9.0",
+    "description": "Python library and command line tool for configuring any YubiKey over all USB interfaces.",
+    "homepage": "https://developers.yubico.com/yubikey-manager/",
+    "license": "BSD-2-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Yubico/yubikey-manager/releases/download/5.9.0/yubikey-manager-5.9.0-win64.msi",
+            "hash": "83ade485cb15c8f210c8fc1c382cfc0972069fd1e2c912aa17275484030b0b5b"
+        }
+    },
+    "extract_dir": "PFiles\\Yubico\\YubiKey Manager CLI",
+    "bin": "ykman.exe",
+    "checkver": {
+        "github": "https://github.com/Yubico/yubikey-manager"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Yubico/yubikey-manager/releases/download/$version/yubikey-manager-$version-win64.msi"
+            }
+        }
+    }
+}
