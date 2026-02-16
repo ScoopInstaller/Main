@@ -32,6 +32,11 @@
         "    $content = Get-Content -Path $_.FullName -Encoding utf8",
         "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE' }",
         "    $content -replace '{{git_dir}}', $git_path | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
+        "}",
+        "$gitconfig = \"$dir\\etc\\gitconfig\"",
+        "if (Test-Path \"$gitconfig\") {",
+        "    info 'Adjusting paths in gitconfig...'",
+        "    (Get-Content \"$gitconfig\") -replace '(?<=git/)[\\d.]+(?=/)', $version | Set-Content \"$gitconfig\"",
         "}"
     ],
     "env_add_path": "cmd",
