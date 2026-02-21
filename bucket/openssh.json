@@ -42,7 +42,7 @@
         }
     },
     "post_install": [
-        "$real = [IO.Directory]::ResolveLinkTarget($dir, $true).FullName; if (!$real) { $real = $dir }",
+        "$real = (Get-Item $dir -Force).Target; if (!$real) { $real = $dir }",
         "$q = [char]34",
         "Set-Content \"$dir\\fix.ps1\" @(\"sc.exe config sshd binPath= ${q}${real}\\sshd.exe${q}\", \"sc.exe config ssh-agent binPath= ${q}${real}\\ssh-agent.exe${q}\") -Encoding UTF8",
         "Set-Content \"$dir\\autostart-sshd.ps1\" @('Set-Service sshd -StartupType Automatic', 'Set-Service ssh-agent -StartupType Automatic') -Encoding UTF8"
