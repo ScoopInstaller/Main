@@ -23,6 +23,7 @@
         "}"
     ],
     "post_install": [
+        "# For the cheatsheets path to be set correctly, the configuration file should be initialized after the environment variables are set.",
         "$file = 'conf.yml'",
         "if ((Get-Item \"$dir\\$file\").Length -eq 0) {",
         "    $CONT = $(& \"$dir\\cheat\" --init) -replace 'editor: EDITOR_PATH', 'editor: notepad' -replace 'pager: PAGER_PATH', 'pager: more'",
