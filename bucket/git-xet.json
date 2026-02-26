@@ -20,9 +20,9 @@
     },
     "bin": "git-xet.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/huggingface/xet-core/releases?per_page=100",
-        "jsonpath": "$..tag_name",
-        "regex": "git-xet-v([\\d.]+)"
+        "url": "https://api.github.com/repos/huggingface/xet-core/releases?per_page=45",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /git-xet/i)].browser_download_url",
+        "regex": "(?i)download/git-xet-v([\\d.]+)/git-xet"
     },
     "autoupdate": {
         "architecture": {
