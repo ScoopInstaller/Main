@@ -20,8 +20,9 @@
     },
     "bin": "git-xet.exe",
     "checkver": {
-        "url": "https://github.com/huggingface/xet-core/raw/refs/heads/main/git_xet/windows_installer/Package.wxs",
-        "regex": "Version=\"([\\w.]+)\""
+        "url": "https://api.github.com/repos/huggingface/xet-core/releases?per_page=100",
+        "jsonpath": "$..tag_name",
+        "regex": "git-xet-v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
