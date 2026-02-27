@@ -1,0 +1,26 @@
+{
+    "version": "0.1.7",
+    "description": "Fast, small, and fully autonomous AI assistant infrastructure.",
+    "homepage": "https://zeroclawlabs.ai",
+    "license": "MIT|Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/zeroclaw-labs/zeroclaw/releases/download/v0.1.7/zeroclaw-x86_64-pc-windows-msvc.zip",
+            "hash": "74879cc238b7df58a0d1e74d7208462b00ff4ff10bd3f1083f5652e15f89338d"
+        }
+    },
+    "bin": "zeroclaw.exe",
+    "checkver": {
+        "github": "https://github.com/zeroclaw-labs/zeroclaw"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/zeroclaw-labs/zeroclaw/releases/download/v$version/zeroclaw-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
