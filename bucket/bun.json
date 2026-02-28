@@ -16,6 +16,10 @@
                 "7a77b3e245e2e26965c93089a4a1332e8a326d3364c89fae1d1fd99cdd3cd73d",
                 "715709c69b176e20994533d3292bd0b7c32de9c0c5575b916746ec6b2aa38346"
             ]
+        },
+        "arm64": {
+            "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.3.10/bun-windows-aarch64.zip",
+            "hash": "6822f3aa7bd2be40fb94c194a1185aae1c6fade54ca4fc2efdc722e37f3257d2"
         }
     },
     "pre_install": [
@@ -26,6 +30,9 @@
         "$target = 'bun-windows-x64'",
         "if (-not $avx2) {",
         "    $target += '-baseline'",
+        "}",
+        "if ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64') {",
+        "    $target = 'bun-windows-aarch64'",
         "}",
         "Move-Item \"$dir\\$target\\bun.exe\" \"$dir\\bun.exe\"",
         "Remove-Item \"$dir\\bun-windows-*\" -Recurse"
@@ -49,6 +56,9 @@
                     "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64.zip",
                     "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64-baseline.zip"
                 ]
+            },
+            "arm64": {
+                "url": "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-aarch64.zip"
             }
         },
         "hash": {
