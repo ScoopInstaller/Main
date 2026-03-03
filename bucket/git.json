@@ -26,24 +26,23 @@
             "hash": "dc59b7383104d57110e370638854cc1b1fd50de0fa6d293dc941f35094594298"
         }
     },
+    "pre_install" : [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing the existing config file.",
+        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\gitconfig'",
+        "$config_path_persisted = Join-Path -Path $persist_dir -ChildPath 'etc\\gitconfig'",
+        "if (Test-Path -LiteralPath $config_path_persisted -PathType Leaf) {",
+        "    info \"Restoring system-level config from $config_path_persisted...\"",
+        "    Copy-Item -Path $config_path_persisted -Destination $config_path -Force",
+        "    info \"Adjusting paths in $config_path...\"",
+        "    (Get-Content -Path $config_path) -replace '(?<=git/)[\\d.]+(?=/)', $version | Set-Content -Path $config_path -Encoding utf8",
+        "}"
+    ],
     "post_install": [
         "$git_path = $dir -replace '\\\\', '\\\\'",
         "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\$app\" -Filter '*.reg' -File | ForEach-Object {",
         "    $content = Get-Content -Path $_.FullName -Encoding utf8",
         "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE' }",
         "    $content -replace '{{git_dir}}', $git_path | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
-        "}",
-        "$gitconfig = \"$dir\\etc\\gitconfig\"",
-        "$persist_gitconfig = \"$persist_dir\\etc\\gitconfig\"",
-        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
-        "if (Test-Path \"$persist_gitconfig\") {",
-        "    info 'Restoring gitconfig from persistence...'",
-        "    Copy-Item \"$gitconfig\" \"$gitconfig.original\" -Force",
-        "    Copy-Item \"$persist_gitconfig\" \"$gitconfig\" -Force",
-        "}",
-        "if (Test-Path \"$gitconfig\") {",
-        "    info 'Adjusting paths in gitconfig...'",
-        "    (Get-Content \"$gitconfig\") -replace '(?<=git/)[\\d.]+(?=/)', $version | Set-Content \"$gitconfig\" -Encoding utf8",
         "}"
     ],
     "env_add_path": "cmd",
@@ -77,13 +76,13 @@
         ]
     ],
     "pre_uninstall": [
-        "$gitconfig = \"$dir\\etc\\gitconfig\"",
-        "$persist_gitconfig = \"$persist_dir\\etc\\gitconfig\"",
-        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
-        "if (Test-Path \"$gitconfig\") {",
-        "    info 'Saving gitconfig to persistence...'",
-        "    if (!(Test-Path \"$persist_dir\\etc\")) { New-Item \"$persist_dir\\etc\" -Type Directory -Force | Out-Null }",
-        "    Copy-Item \"$gitconfig\" \"$persist_gitconfig\" -Force",
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing the existing config file.",
+        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\gitconfig'",
+        "$config_path_persisted = Join-Path -Path $persist_dir -ChildPath 'etc\\gitconfig'",
+        "if (Test-Path -LiteralPath $config_path -PathType Leaf) {",
+        "    ensure (Split-Path -Path $config_path_persisted -Parent) | Out-Null",
+        "    info \"Saving system-level config to $config_path_persisted...\"",
+        "    Copy-Item -Path $config_path -Destination $config_path_persisted -Force",
         "}"
     ],
     "uninstaller": {
