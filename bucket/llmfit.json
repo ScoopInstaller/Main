@@ -1,0 +1,28 @@
+{
+    "version": "0.5.5",
+    "description": "Find what models run on your hardware",
+    "homepage": "https://github.com/AlexsJones/llmfit",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/AlexsJones/llmfit/releases/download/v0.5.5/llmfit-v0.5.5-x86_64-pc-windows-msvc.zip",
+            "hash": "4ffe2181eb0943efd44dda657a57a88bc552b3f2cbd8f5186428a8819160e508"
+        },
+        "arm64": {
+            "url": "https://github.com/AlexsJones/llmfit/releases/download/v0.5.5/llmfit-v0.5.5-aarch64-pc-windows-msvc.zip",
+            "hash": "c3182e0678de2d3254c339076225496b7de3983ff29343b0a81782f7aca8b537"
+        }
+    },
+    "bin": "llmfit.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/AlexsJones/llmfit/releases/download/v$version/llmfit-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/AlexsJones/llmfit/releases/download/v$version/llmfit-v$version-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
