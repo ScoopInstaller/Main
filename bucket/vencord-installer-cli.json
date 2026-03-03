@@ -1,8 +1,11 @@
 {
     "version": "1.4.0",
-    "description": "A cross platform cli app for installing Vencord",
+    "description": "A CLI tool for installing Vencord, a Discord client mod",
     "homepage": "https://github.com/Vencord/Installer",
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "discord": "extras/discord"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/Vencord/Installer/releases/download/v1.4.0/VencordInstallerCli.exe",
@@ -16,6 +19,9 @@
             "64bit": {
                 "url": "https://github.com/Vencord/Installer/releases/download/v$version/VencordInstallerCli.exe"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.sha256"
         }
     }
 }
