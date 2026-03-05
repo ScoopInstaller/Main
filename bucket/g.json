@@ -24,16 +24,16 @@
             "Add-Path -Path \"$env:GOROOT\\bin\" -Global:$global"
         ]
     },
+    "env_set": {
+        "GOROOT": "$env:USERPROFILE\\.g\\go"
+    },
+    "bin": "g.exe",
     "uninstaller": {
         "script": [
             "[Environment]::SetEnvironmentVariable('GOROOT', \"$env:USERPROFILE\\.g\\go\", 'Process')",
             "info \"Removing '$env:GOROOT\\bin' from PATH...\"",
             "Remove-Path -Path \"$env:GOROOT\\bin\" -Global:$global"
         ]
-    },
-    "bin": "g.exe",
-    "env_set": {
-        "GOROOT": "$env:USERPROFILE\\.g\\go"
     },
     "checkver": "github",
     "autoupdate": {
