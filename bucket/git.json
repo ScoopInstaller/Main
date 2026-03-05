@@ -14,7 +14,7 @@
         "reg import \"$dir\\install-context.reg\"",
         "",
         "To set Git Credential Manager Core for portable Git, please execute the following command:",
-        "git config --global credential.helper manager"
+        "git config --system credential.helper manager"
     ],
     "architecture": {
         "64bit": {
@@ -26,6 +26,17 @@
             "hash": "dc59b7383104d57110e370638854cc1b1fd50de0fa6d293dc941f35094594298"
         }
     },
+    "pre_install": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing the existing config file.",
+        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\gitconfig'",
+        "$config_path_persisted = Join-Path -Path $persist_dir -ChildPath 'etc\\gitconfig'",
+        "if (Test-Path -LiteralPath $config_path_persisted -PathType Leaf) {",
+        "    info \"Restoring system-level config from $config_path_persisted...\"",
+        "    Copy-Item -Path $config_path_persisted -Destination $config_path -Force",
+        "    info \"Adjusting paths in $config_path...\"",
+        "    (Get-Content -Path $config_path -Encoding UTF8) -replace '(?<=git/)[\\d.]+(?=/)', $version | Set-Content -Path $config_path -Encoding UTF8",
+        "}"
+    ],
     "post_install": [
         "$git_path = $dir -replace '\\\\', '\\\\'",
         "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\$app\" -Filter '*.reg' -File | ForEach-Object {",
@@ -63,6 +74,16 @@
             "cmd\\git-gui.exe",
             "Git\\Git GUI"
         ]
+    ],
+    "pre_uninstall": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing the existing config file.",
+        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\gitconfig'",
+        "$config_path_persisted = Join-Path -Path $persist_dir -ChildPath 'etc\\gitconfig'",
+        "if (Test-Path -LiteralPath $config_path -PathType Leaf) {",
+        "    ensure (Split-Path -Path $config_path_persisted -Parent) | Out-Null",
+        "    info \"Saving system-level config to $config_path_persisted...\"",
+        "    Copy-Item -Path $config_path -Destination $config_path_persisted -Force",
+        "}"
     ],
     "uninstaller": {
         "script": [
