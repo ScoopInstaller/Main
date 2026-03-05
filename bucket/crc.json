@@ -1,20 +1,16 @@
 {
-    "version": "2.57.0",
+    "version": "2.58.0",
     "description": "Manages a local OpenShift 4.x cluster optimized for testing and development purposes.",
-    "homepage": "https://code-ready.github.io/crc/",
+    "homepage": "https://crc.dev/blog/",
     "license": "Apache-2.0",
     "notes": "To acquire a pull secret, visit: https://cloud.redhat.com/openshift/install/crc/installer-provisioned",
-    "depends": "lessmsi",
     "architecture": {
         "64bit": {
-            "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/2.57.0/crc-windows-installer.zip",
-            "hash": "64e47235f02f416ced54e5f78c9bccd45ec3f920c214785f3a02be69154d6a72",
-            "pre_install": [
-                "# The trailing backslash(\\) in $dir\\ is required by lessmsi.",
-                "Invoke-ExternalCommand lessmsi -ArgumentList @('x', \"$dir\\crc-windows-amd64.msi\", \"$dir\\\") | Out-Null",
-                "Copy-Item \"$dir\\SourceDir\\Red Hat OpenShift Local\\*\" \"$dir\" -Force -Recurse | Out-Null",
-                "Remove-Item \"$dir\\SourceDir\" -Force -Recurse | Out-Null"
-            ]
+            "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/2.58.0/crc-windows-installer.zip",
+            "hash": "7281f8ef460f1fddc5bf897388a07cb5233ec11bbccf23658ccf1d3a6f8c03be",
+            "installer": {
+                "script": "Expand-MsiArchive -Path \"$dir\\crc-windows-amd64.msi\" -DestinationPath $dir -ExtractDir 'PFiles64\\Red Hat OpenShift Local' -Removal"
+            }
         }
     },
     "bin": "crc.exe",

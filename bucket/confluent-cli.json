@@ -1,18 +1,23 @@
 {
-    "version": "4.24.0",
+    "##": "Please keep the checkver field as is. The default GITHUB_TOKEN lacks the necessary permissions to access the latest release endpoint for confluentinc/cli.",
+    "version": "4.53.0",
     "description": "The Confluent command-line interface (CLI)",
-    "license": "https://github.com/confluentinc/cli/blob/main/LICENSE",
     "homepage": "https://docs.confluent.io/confluent-cli/current/overview.html",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://github.com/confluentinc/cli/blob/main/LICENSE"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/confluentinc/cli/releases/download/v4.24.0/confluent_4.24.0_windows_amd64.zip",
-            "hash": "8acc60fb64b509dd3120ff600bbdd3534a9614738efd1394e23f977a485fa2e2"
+            "url": "https://github.com/confluentinc/cli/releases/download/v4.53.0/confluent_4.53.0_windows_amd64.zip",
+            "hash": "6bf64d2dfdefeba95849841ca933ed32ef35e5c0ad8b3618be14041b290f9daf"
         }
     },
     "extract_dir": "confluent",
     "bin": "confluent.exe",
     "checkver": {
-        "github": "https://github.com/confluentinc/cli"
+        "url": "https://github.com/confluentinc/cli/releases/latest",
+        "regex": "(?i)tag/v([\\d.]+)(?=\")"
     },
     "autoupdate": {
         "architecture": {

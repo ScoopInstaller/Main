@@ -1,27 +1,28 @@
 {
-    "version": "3.5.0",
+    "version": "3.5.0-1",
     "description": "Movie Thumbnailer - save thumbnails (screenshots) of movie or video files to image files.",
-    "homepage": "https://gitlab.com/movie_thumbnailer/mtn/wikis/home",
+    "homepage": "https://gitlab.com/movie_thumbnailer/mtn/-/wikis/home",
     "license": "GPL-2.0-or-later",
     "suggest": {
         "ffmpeg": "ffmpeg"
     },
     "architecture": {
         "64bit": {
-            "url": "https://bitbucket.org/wahibre/mtn/downloads/mtn-3.5.0-win64.zip",
-            "hash": "bbae09904f9e682885fa51cfaa3929112cd74505db910af68031b3086d9a1ce3",
+            "url": "https://gitlab.com/-/project/3655713/uploads/5b7ca00b81629aacd8fcf8e99b859368/mtn-3.5.0-1-win64.zip",
+            "hash": "4e21b1bdf4fde6df5cbc31a11abe1be4a48131a307b7dfc822dfe7bb8e5703e9",
             "extract_dir": "mtn-win64"
         }
     },
     "bin": "mtn.exe",
     "checkver": {
-        "url": "https://bitbucket.org/wahibre/mtn/downloads/?tab=downloads",
-        "regex": "(?<filename>mtn-(?<version>(?:\\d+\\.)+\\d+)-win64\\.zip)"
+        "url": "https://gitlab.com/api/v4/projects/movie_thumbnailer%2Fmtn/releases/permalink/latest",
+        "jsonpath": "$.description",
+        "regex": "uploads/(?<hash>[a-f0-9]+)/mtn-(?<version>[\\d.]+(?:-\\d+)?)-win64\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://bitbucket.org/wahibre/mtn/downloads/$matchFilename"
+                "url": "https://gitlab.com/-/project/3655713/uploads/$matchHash/mtn-$version-win64.zip"
             }
         }
     }

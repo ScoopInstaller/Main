@@ -1,0 +1,32 @@
+{
+    "version": "1.10.2",
+    "description": "A CLI tool to generate waveform data and render waveform images from audio files.",
+    "homepage": "https://github.com/bbc/audiowaveform",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bbc/audiowaveform/releases/download/1.10.2/audiowaveform-1.10.2-win64.zip",
+            "hash": "17ab4657b9482ffa063d88d367598208060400af91c2c3e2b04723f98b418ad1"
+        },
+        "32bit": {
+            "url": "https://github.com/bbc/audiowaveform/releases/download/1.10.2/audiowaveform-1.10.2-win32.zip",
+            "hash": "df7504de59c7ebcede01b0477110849cf4277ffa16fc7adf89a4d0ba21090716"
+        }
+    },
+    "bin": "audiowaveform.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/bbc/audiowaveform/releases",
+        "jsonpath": "$..assets[?(@.browser_download_url =~ /audiowaveform-(?<version>[\\d.]+)-win64\\.zip/i)].browser_download_url",
+        "regex": "audiowaveform-(?<version>[\\d.]+)-win64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bbc/audiowaveform/releases/download/$version/audiowaveform-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/bbc/audiowaveform/releases/download/$version/audiowaveform-$version-win32.zip"
+            }
+        }
+    }
+}

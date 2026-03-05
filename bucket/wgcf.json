@@ -11,6 +11,10 @@
         "64bit": {
             "url": "https://github.com/ViRb3/wgcf/releases/download/v2.2.30/wgcf_2.2.30_windows_amd64.exe#/wgcf.exe",
             "hash": "a4439dc6cf18ce482ca0d6e264427d6d2ca17237666dcfd64e15fa48e1147de2"
+        },
+        "arm64": {
+            "url": "https://github.com/ViRb3/wgcf/releases/download/v2.2.30/wgcf_2.2.30_windows_arm64.exe#/wgcf.exe",
+            "hash": "fce97da7b45cb3c46b35f966c3fcfef01d21a274e0aa194b039d282854b4def5"
         }
     },
     "pre_install": "if (!(Test-Path \"$persist_dir\\wgcf-account.toml\")) { New-Item \"$dir\\wgcf-account.toml\" | Out-Null }",
@@ -31,6 +35,9 @@
             },
             "64bit": {
                 "url": "https://github.com/ViRb3/wgcf/releases/download/v$version/wgcf_$version_windows_amd64.exe#/wgcf.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/ViRb3/wgcf/releases/download/v$version/wgcf_$version_windows_arm64.exe#/wgcf.exe"
             }
         },
         "hash": {
