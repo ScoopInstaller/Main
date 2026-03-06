@@ -7,13 +7,9 @@
         "url": "https://www.anthropic.com/legal/consumer-terms"
     },
     "notes": [
-        "Claude Code requires git-bash (https://git-scm.com/downloads/win) to work.",
-        "If installed but not in PATH, set the `CLAUDE_CODE_GIT_BASH_PATH` environment variable pointing to your `bash.exe`.",
-        "For more information: https://code.claude.com/docs/en/setup#windows-setup",
-        "",
-        "`bash.exe` is included in PATH for Git installed via Scoop as of Jan 5, 2026. See:",
-        "https://github.com/ScoopInstaller/Main/pull/7459",
-        "If your Git was installed via Scoop, you might need to run `scoop update git -f` to pick up this change."
+        "Claude Code relies on Git (https://git-scm.com/downloads/win) to function correctly.",
+        "If Claude Code fails to detect Git Bash, manually specify the path using the `CLAUDE_CODE_GIT_BASH_PATH` environment variable.",
+        "For more information: https://code.claude.com/docs/en/setup#set-up-on-windows"
     ],
     "suggest": {
         "git": "main/git"
@@ -22,6 +18,10 @@
         "64bit": {
             "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.70/win32-x64/claude.exe",
             "hash": "ca5b3b16da96bec672f6d90d211945f4d2bb04609c35eba8f5de9c3e33d15bbe"
+        },
+        "arm64": {
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.70/win32-arm64/claude.exe",
+            "hash": "2436d88ec2b21289c0422d377e41eed920528d78af2b9cca983168fcdf1fee1b"
         }
     },
     "bin": "claude.exe",
@@ -36,6 +36,13 @@
                 "hash": {
                     "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/manifest.json",
                     "jsonpath": "$.platforms.win32-x64.checksum"
+                }
+            },
+            "arm64": {
+                "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/win32-arm64/claude.exe",
+                "hash": {
+                    "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/manifest.json",
+                    "jsonpath": "$.platforms.win32-arm64.checksum"
                 }
             }
         }
