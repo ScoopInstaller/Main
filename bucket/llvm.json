@@ -1,20 +1,20 @@
 {
-    "version": "21.1.8",
+    "version": "22.1.0",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org",
     "license": "NCSA",
     "notes": "Since upstream does NOT provide pre-compiled binary of arm64 for every release, LLVM arm64 is now a separate manifest: 'llvm-arm64'.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/LLVM-21.1.8-win64.exe#/dl.7z",
-            "hash": "7a5386c26497db1691f320121e5b113364dd0274b98e55f15f4dbc00c0450113"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.0/LLVM-22.1.0-win64.exe#/dl.7z",
+            "hash": "b31d5f54942e017cb878e594529723dd629cc7b54c9bf7a331e2dc01e8ea5e75"
         },
         "32bit": {
             "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/LLVM-21.1.8-win32.exe#/dl.7z",
             "hash": "0492c5c292e515ebbbc2533671e54c5895fe209e534812313f64257407233181"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse -ErrorAction Ignore",
     "env_add_path": "bin",
     "env_set": {
         "LIBCLANG_PATH": "$dir\\bin",
