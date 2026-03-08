@@ -15,25 +15,42 @@
             "hash": [
                 "7a77b3e245e2e26965c93089a4a1332e8a326d3364c89fae1d1fd99cdd3cd73d",
                 "715709c69b176e20994533d3292bd0b7c32de9c0c5575b916746ec6b2aa38346"
-            ],
-            "pre_install": [
-                "$avx2 = Start-Job -ScriptBlock {",
-                "    Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
-                "    return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
-                "} | Receive-Job -Wait -AutoRemoveJob",
-                "$target = 'bun-windows-x64'",
-                "if (-not $avx2) {",
-                "    $target += '-baseline'",
-                "}",
-                "Move-Item \"$dir\\$target\\bun.exe\" \"$dir\\bun.exe\"",
-                "Remove-Item \"$dir\\bun-windows-*\" -Recurse"
             ]
         },
         "arm64": {
             "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.3.10/bun-windows-aarch64.zip",
-            "hash": "6822f3aa7bd2be40fb94c194a1185aae1c6fade54ca4fc2efdc722e37f3257d2",
-            "extract_dir": "bun-windows-aarch64"
+            "hash": "6822f3aa7bd2be40fb94c194a1185aae1c6fade54ca4fc2efdc722e37f3257d2"
         }
+    },
+    "pre_install": [
+        "# Migrate legacy Bun data if it exists and the new persist directory doesn't exist",
+        "$legacy_bun = Join-Path -Path $env:USERPROFILE -ChildPath '.bun'",
+        "if ((Test-Path $legacy_bun) -and -not (Test-Path $persist_dir)) {",
+        "    Write-Host \"Migrating legacy Bun data from '$legacy_bun' to '$persist_dir'.\" -ForegroundColor Yellow",
+        "    Move-Item $legacy_bun $persist_dir -Force",
+        "} elseif ((Test-Path $legacy_bun) -and (Test-Path $persist_dir)) {",
+        "    Write-Host \"Found both '$legacy_bun' and '$persist_dir'. Skipping auto-migration; please migrate manually if needed.\" -ForegroundColor Yellow",
+        "}",
+        "",
+        "# Extract the appropriate binary based on architecture and CPU features",
+        "if ($architecture -eq 'arm64') {",
+        "    $target = 'bun-windows-aarch64'",
+        "} else {",
+        "    $avx2 = Start-Job -ScriptBlock {",
+        "        Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
+        "        return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
+        "    } | Receive-Job -Wait -AutoRemoveJob",
+        "    $target = 'bun-windows-x64'",
+        "    if (-not $avx2) {",
+        "        $target += '-baseline'",
+        "    }",
+        "}",
+        "Move-Item \"$dir\\$target\\bun.exe\" \"$dir\\bun.exe\"",
+        "Remove-Item \"$dir\\bun-windows-*\" -Recurse"
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "BUN_INSTALL": "$persist_dir"
     },
     "bin": [
         "bun.exe",
@@ -42,6 +59,10 @@
             "bunx",
             "x"
         ]
+    ],
+    "persist": [
+        "bin",
+        "install"
     ],
     "checkver": {
         "github": "https://github.com/oven-sh/bun",
