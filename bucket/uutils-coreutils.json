@@ -13,65 +13,34 @@
         "64bit": {
             "url": "https://github.com/uutils/coreutils/releases/download/0.7.0/coreutils-0.7.0-x86_64-pc-windows-msvc.zip",
             "hash": "df878e29fc738bc4273e85c9d2c35ab898e31568021e6baf1c330c7961943c8f",
-            "extract_dir": "coreutils-0.7.0-x86_64-pc-windows-msvc"
+            "pre_install": "Rename-Item \"$dir/coreutils-$version-x86_64-pc-windows-msvc\" bin"
         },
         "32bit": {
             "url": "https://github.com/uutils/coreutils/releases/download/0.7.0/coreutils-0.7.0-i686-pc-windows-msvc.zip",
             "hash": "1d0ace9ce2ff51e2bb611f543ec6a4c887fb35b167b725815edd0068711589f5",
-            "extract_dir": "coreutils-0.7.0-i686-pc-windows-msvc"
+            "pre_install": "Rename-Item \"$dir/coreutils-$version-i686-pc-windows-msvc\" bin"
         },
         "arm64": {
             "url": "https://github.com/uutils/coreutils/releases/download/0.7.0/coreutils-0.7.0-aarch64-pc-windows-msvc.zip",
             "hash": "372323492402f3249876599f1ff99aad9bd2aecaa217b1cb146608ef58d3ed4b",
-            "extract_dir": "coreutils-0.7.0-aarch64-pc-windows-msvc"
+            "pre_install": "Rename-Item \"$dir/coreutils-$version-aarch64-pc-windows-msvc\" bin"
         }
     },
-    "post_install": [
-        "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
-        "    FileName = \"$dir\\coreutils.exe\"; Arguments = '--list'",
-        "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-        "}",
-        "$process = [System.Diagnostics.Process]::Start($process_info)",
-        "$stdout_content = $process.StandardOutput.ReadToEnd()",
-        "$process.WaitForExit()",
-        "Write-Output \"`nCreating shim for 'coreutils'.\"",
-        "shim \"$dir\\coreutils.exe\" $global 'coreutils'",
-        "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
-        "    Write-Output \"Creating shim for '$($_.Trim())'.\"",
-        "    shim \"$dir\\coreutils.exe\" $global $_.Trim() $_.Trim()",
-        "}"
-    ],
-    "uninstaller": {
-        "script": [
-            "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
-            "    FileName = \"$dir\\coreutils.exe\"; Arguments = '--list'",
-            "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-            "}",
-            "$process = [System.Diagnostics.Process]::Start($process_info)",
-            "$stdout_content = $process.StandardOutput.ReadToEnd()",
-            "$process.WaitForExit()",
-            "rm_shim 'coreutils' $(shimdir $global) $app",
-            "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
-            "    rm_shim $_.Trim() $(shimdir $global) $app",
-            "}"
-        ]
-    },
+    "env_add_path": "bin",
+    "post_install": "Get-ChildItem \"$dir/bin\" -Exclude *.exe | Remove-Item -Recurse",
     "checkver": {
         "github": "https://github.com/uutils/coreutils"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-x86_64-pc-windows-msvc.zip",
-                "extract_dir": "coreutils-$version-x86_64-pc-windows-msvc"
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-x86_64-pc-windows-msvc.zip"
             },
             "32bit": {
-                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-i686-pc-windows-msvc.zip",
-                "extract_dir": "coreutils-$version-i686-pc-windows-msvc"
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-i686-pc-windows-msvc.zip"
             },
             "arm64": {
-                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-aarch64-pc-windows-msvc.zip",
-                "extract_dir": "coreutils-$version-aarch64-pc-windows-msvc"
+                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-aarch64-pc-windows-msvc.zip"
             }
         }
     }
