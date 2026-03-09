@@ -7,7 +7,7 @@
         "url": "https://github.com/uutils/coreutils/blob/HEAD/LICENSE"
     },
     "suggest": {
-        "Microsoft Visual C++ 2015-2022 Redistributable": "extras/vcredist2022"
+        "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
@@ -27,32 +27,15 @@
         }
     },
     "post_install": [
-        "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
-        "    FileName = \"$dir\\coreutils.exe\"; Arguments = '--list'",
-        "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-        "}",
-        "$process = [System.Diagnostics.Process]::Start($process_info)",
-        "$stdout_content = $process.StandardOutput.ReadToEnd()",
-        "$process.WaitForExit()",
-        "Write-Output \"`nCreating shim for 'coreutils'.\"",
-        "shim \"$dir\\coreutils.exe\" $global 'coreutils'",
-        "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
-        "    Write-Output \"Creating shim for '$($_.Trim())'.\"",
-        "    shim \"$dir\\coreutils.exe\" $global $_.Trim() $_.Trim()",
+        "Get-ChildItem -Path $dir -File -Filter '*.exe' | ForEach-Object {",
+        "    Write-Output \"Creating shim for '$($_.BaseName)'.\"",
+        "    shim $_.FullName $global $_.BaseName",
         "}"
     ],
     "uninstaller": {
         "script": [
-            "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
-            "    FileName = \"$dir\\coreutils.exe\"; Arguments = '--list'",
-            "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-            "}",
-            "$process = [System.Diagnostics.Process]::Start($process_info)",
-            "$stdout_content = $process.StandardOutput.ReadToEnd()",
-            "$process.WaitForExit()",
-            "rm_shim 'coreutils' $(shimdir $global) $app",
-            "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
-            "    rm_shim $_.Trim() $(shimdir $global) $app",
+            "Get-ChildItem -Path $dir -File -Filter '*.exe' | ForEach-Object {",
+            "    rm_shim $_.BaseName $(shimdir $global) $app",
             "}"
         ]
     },
