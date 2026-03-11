@@ -1,0 +1,38 @@
+{
+    "version": "0.3.0",
+    "description": "A terminal-based SSH manager.",
+    "homepage": "https://github.com/adembc/lazyssh",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Adembc/lazyssh/releases/download/v0.3.0/lazyssh_Windows_x86_64.zip",
+            "hash": "ca4353a910e453deb5de68c95d83aa8738ff0e52c4bff919f6d74dc27560a1df"
+        },
+        "32bit": {
+            "url": "https://github.com/Adembc/lazyssh/releases/download/v0.3.0/lazyssh_Windows_i386.zip",
+            "hash": "b4472cbe6c7f05bf4d1e18cb17a43fe7488571d6f460e2544ad7e5cf0130174c"
+        },
+        "arm64": {
+            "url": "https://github.com/Adembc/lazyssh/releases/download/v0.3.0/lazyssh_Windows_arm64.zip",
+            "hash": "dfba8c1b8b58cba68228511cec0419965689da48feb96f571351d83b696c86b3"
+        }
+    },
+    "bin": "lazyssh.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Adembc/lazyssh/releases/download/v$version/lazyssh_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Adembc/lazyssh/releases/download/v$version/lazyssh_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Adembc/lazyssh/releases/download/v$version/lazyssh_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
