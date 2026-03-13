@@ -1,0 +1,33 @@
+{
+    "version": "1.3.0",
+    "description": "A realtime distributed messaging platform",
+    "homepage": "https://nsq.io",
+    "license": "MIT license",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/nsqio/nsq/releases/download/v1.3.0/nsq-1.3.0.windows-amd64.go1.21.5.tar.gz",
+            "hash": "5c61e44bc0bb9b978e30fed1d5c739449c2a432dd749f2539836b7f2e15cc86b",
+            "extract_dir": "nsq-1.3.0.windows-amd64.go1.21.5"
+        }
+    },
+    "bin": [
+        "bin\\nsq_stat.exe",
+        "bin\\nsq_tail.exe",
+        "bin\\nsq_to_file.exe",
+        "bin\\nsq_to_http.exe",
+        "bin\\nsq_to_nsq.exe",
+        "bin\\nsqadmin.exe",
+        "bin\\nsqd.exe",
+        "bin\\nsqlookupd.exe",
+        "bin\\to_nsq.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/nsqio/nsq/"
+    },
+    "autoupdate": {
+        "url": "https://github.com/nsqio/nsq/releases/download/v$version/nsq-$version.windows-amd64.go1.21.5.tar.gz",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
