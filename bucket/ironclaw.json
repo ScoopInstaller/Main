@@ -1,0 +1,26 @@
+{
+    "version": "0.18.0",
+    "description": "IronClaw is OpenClaw inspired implementation in Rust focused on privacy and security.",
+    "homepage": "https://www.ironclaw.com",
+    "license": "MIT|Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/nearai/ironclaw/releases/download/v0.18.0/ironclaw-x86_64-pc-windows-msvc.tar.gz",
+            "hash": "9dfbebd51f5015c438bc60302f460162e1336914574986b197a555f447bb1810"
+        }
+    },
+    "bin": "ironclaw.exe",
+    "checkver": {
+        "github": "https://github.com/nearai/ironclaw"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nearai/ironclaw/releases/download/v$version/ironclaw-x86_64-pc-windows-msvc.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
