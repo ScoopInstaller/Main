@@ -1,10 +1,31 @@
 Windows Registry Editor Version 5.00
 
-[-HKEY_CURRENT_USER\Software\Classes\CLSID\{23170F69-40C1-278A-1000-000100020000}]
-[-HKEY_CURRENT_USER\Software\Classes\CLSID\{23170F69-40C1-278A-1000-000100020000}\InprocServer32]
+; Unregister all 7-Zip configuration settings and shell integration entries
+
+[-HKEY_CURRENT_USER\Software\7-Zip]
+
+
+; Unregister the 7-Zip context menu handler for all file types
+
 [-HKEY_CURRENT_USER\Software\Classes\*\shellex\ContextMenuHandlers\7-Zip]
+
+; Unregister the 7-Zip context menu handler for directories
+
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shellex\ContextMenuHandlers\7-Zip]
-[-HKEY_CURRENT_USER\Software\Classes\Folder\shellex\ContextMenuHandlers\7-Zip]
+
+; Unregister the 7-Zip drag-and-drop handler for directories
+
 [-HKEY_CURRENT_USER\Software\Classes\Directory\shellex\DragDropHandlers\7-Zip]
+
+; Unregister the 7-Zip drag-and-drop handler for drives
+
 [-HKEY_CURRENT_USER\Software\Classes\Drive\shellex\DragDropHandlers\7-Zip]
-[-HKEY_CURRENT_USER\SOFTWARE\7-Zip\Options]
+
+; Unregister the 7-Zip context menu handler for folder shell objects
+
+[-HKEY_CURRENT_USER\Software\Classes\Folder\shellex\ContextMenuHandlers\7-Zip]
+
+
+; Unregister the CLSID and the in-process COM server DLL for the 7-Zip shell extension
+
+[-HKEY_CURRENT_USER\Software\Classes\CLSID\{23170F69-40C1-278A-1000-000100020000}]
