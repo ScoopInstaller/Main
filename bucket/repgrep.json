@@ -1,0 +1,35 @@
+{
+    "version": "0.16.1",
+    "description": "An interactive replacer for ripgrep that makes it easy to find and replace across files on the command line.",
+    "homepage": "https://github.com/acheronfail/repgrep",
+    "license": "Apache-2.0|MIT|Unlicense",
+    "suggest": {
+        "ripgrep": "main/ripgrep"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/acheronfail/repgrep/releases/download/0.16.1/repgrep-0.16.1-x86_64-pc-windows-msvc.zip",
+            "hash": "67bdbe22a22da65fed6237c8fc0a29cd35183fea277a429aa82e1b2956d89eff",
+            "extract_dir": "repgrep-0.16.1-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://github.com/acheronfail/repgrep/releases/download/0.16.1/repgrep-0.16.1-i686-pc-windows-msvc.zip",
+            "hash": "15b5209714817c1d66cdc44973c21ee0fa4ff692fc90972b99154310e63eea60",
+            "extract_dir": "repgrep-0.16.1-i686-pc-windows-msvc"
+        }
+    },
+    "bin": "rgr.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/acheronfail/repgrep/releases/download/$version/repgrep-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "repgrep-$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://github.com/acheronfail/repgrep/releases/download/$version/repgrep-$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "repgrep-$version-i686-pc-windows-msvc"
+            }
+        }
+    }
+}
