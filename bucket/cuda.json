@@ -19,10 +19,14 @@
             "    Copy-Item \"$dir\\cuda_*\\*\\$name\" \"$dir\" -Recurse -Force",
             "    Copy-Item \"$dir\\lib*\\*\\$name\" \"$dir\" -Recurse -Force",
             "}",
+            "Copy-Item \"$dir\\visual_studio_integration\\CUDAVisualStudioIntegration\\extras\" \"$dir\" -Recurse -Force",
             "Get-ChildItem \"$dir\" -Exclude $names | Remove-Item -Recurse -Force"
         ]
     },
-    "env_add_path": "bin",
+    "env_add_path": [
+        "bin",
+        "bin\\x64"
+    ],
     "env_set": {
         "CUDA_PATH": "$dir"
     },
