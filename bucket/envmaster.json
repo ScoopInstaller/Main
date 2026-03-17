@@ -1,0 +1,26 @@
+{
+  "version": "1.2.0",
+  "description": "EnvMaster CLI",
+  "homepage": "https://github.com/Atlantis-Services/envmaster-cli",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Atlantis-Services/envmaster-cli/releases/download/v1.2.0/envmaster-windows-x64.exe",
+      "hash": "bcc451791ffaa5ef433f8aa4bb04d072995c21a82989136d5d8158aa4838254c"
+    }
+  },
+  "bin": [
+    ["envmaster-windows-x64.exe", "envmaster"]
+  ],
+  "checkver": {
+    "github": "Atlantis-Services/envmaster-cli",
+    "regex": "releases/tag/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Atlantis-Services/envmaster-cli/releases/download/v$version/envmaster-windows-x64.exe"
+      }
+    }
+  }
+}
