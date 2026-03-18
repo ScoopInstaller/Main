@@ -1,23 +1,24 @@
 {
-    "homepage": "https://wimlib.net/",
-    "description": "wimlib is an open source, cross-platform library for creating, extracting, and modifying Windows Imaging (WIM) archives.",
+    "homepage": "https://wimlib.net",
+    "description": "An open source, cross-platform library for creating, extracting, and modifying Windows Imaging (WIM) archives.",
     "license": "GPL-3.0-or-later",
-    "version": "1.14.4",
+    "version": "1.14.5",
     "architecture": {
         "64bit": {
-            "url": "https://wimlib.net/downloads/wimlib-1.14.4-windows-x86_64-bin.zip",
-            "hash": "6d99e242bfbc6d36fc987d433d63772180551b7f2d8de43e9561535a3e2c16d8"
+            "url": "https://wimlib.net/downloads/wimlib-1.14.5-windows-x86_64-bin.zip",
+            "hash": "2f446d6fa3866582175f1a22a7be198eeee0aec7aba5b4e04ad25c99eae2d265"
         },
         "32bit": {
-            "url": "https://wimlib.net/downloads/wimlib-1.14.4-windows-i686-bin.zip",
-            "hash": "9f2c938b5cc7770eb2fb9c8e769eae05506d4ccd4f82a4677371d8877d0f32b1"
+            "url": "https://wimlib.net/downloads/wimlib-1.14.5-windows-i686-bin.zip",
+            "hash": "3739eb2291b9a86d2fcc2914c4b2b53317c045de214782e46588ed8350371905"
+        },
+        "arm64": {
+            "url": "https://wimlib.net/downloads/wimlib-1.14.5-windows-aarch64-bin.zip",
+            "hash": "2c2e3e50cf21bfdd4ffd693b5052b231aa04a10c85f218ae61eb5a031dfcdd8f"
         }
     },
     "env_add_path": ".",
-    "checkver": {
-        "url": "https://wimlib.net/",
-        "regex": "Current release: wimlib-([\\d.]+)"
-    },
+    "checkver": "Current release: wimlib-([\\d.]+)",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -25,6 +26,9 @@
             },
             "32bit": {
                 "url": "https://wimlib.net/downloads/wimlib-$version-windows-i686-bin.zip"
+            },
+            "arm64": {
+                "url": "https://wimlib.net/downloads/wimlib-$version-windows-aarch64-bin.zip"
             }
         }
     }
