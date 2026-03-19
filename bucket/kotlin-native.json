@@ -10,19 +10,12 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/JetBrains/kotlin/releases/download/v2.3.20/kotlin-native-prebuilt-windows-x86_64-2.3.20.zip",
-            "hash": "174e4087563ea5aad33d57bfd2d28bbd04e242ad0c802c04ec39fe6b66380ce1"
+            "hash": "174e4087563ea5aad33d57bfd2d28bbd04e242ad0c802c04ec39fe6b66380ce1",
+            "extract_dir": "kotlin-native-prebuilt-windows-x86_64-2.3.20"
         }
     },
-    "pre_install": [
-        "# Manually extract because archive name and directory name sometimes does not match.",
-        "# e.g. archive is named 'kotlin-native-prebuilt-windows-x86_64-$version', but contains folder 'kotlin-native-prebuilt-windows-x86_64-$version'",
-        "$subdir = \"$dir\\kotlin-native-prebuilt-windows-x86_64-$version\"",
-        "Move-Item \"$subdir\\*\" \"$dir\\\"",
-        "Remove-Item $subdir -Force -Recurse"
-    ],
     "bin": [
         "bin\\cinterop.bat",
-        "bin\\jsinterop.bat",
         "bin\\klib.bat",
         "bin\\konanc.bat",
         "bin\\generate-platform.bat",
@@ -37,7 +30,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/JetBrains/kotlin/releases/download/v$matchHead/kotlin-native-prebuilt-windows-x86_64-$version.zip"
+                "url": "https://github.com/JetBrains/kotlin/releases/download/v$matchHead/kotlin-native-prebuilt-windows-x86_64-$version.zip",
+                "extract_dir": "kotlin-native-prebuilt-windows-x86_64-$version"
             }
         },
         "hash": {
