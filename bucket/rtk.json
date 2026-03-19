@@ -1,0 +1,26 @@
+{
+    "version": "0.30.1",
+    "description": "CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies.",
+    "homepage": "https://github.com/rtk-ai/rtk",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rtk-ai/rtk/releases/download/v0.30.1/rtk-x86_64-pc-windows-msvc.zip",
+            "hash": "e59bb703864a7b9a9dd0a068c655b1cfda780dac58814eb3d74243c659e8d44c"
+        }
+    },
+    "bin": "rtk.exe",
+    "checkver": {
+        "github": "https://github.com/rtk-ai/rtk"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rtk-ai/rtk/releases/download/v$version/rtk-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
