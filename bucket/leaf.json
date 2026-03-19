@@ -3,6 +3,14 @@
     "description": "A versatile and efficient proxy framework.",
     "homepage": "https://github.com/eycorsican/leaf",
     "license": "Apache-2.0",
+    "suggest": {
+        "wintun-dll": "wintun-dll"
+    },
+    "notes": [
+        "Leaf needs wintun.dll to enable TUN inbound.",
+        "You can install it first by running \"scoop install wintun-dll\",",
+        "then reinstall leaf by running \"scoop uninstall leaf && scoop install leaf\"."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/eycorsican/leaf/releases/download/v0.14.2/leaf-x86_64-pc-windows-gnu.zip",
@@ -14,6 +22,22 @@
                 ]
             ]
         }
+    },
+    "installer": {
+        "script": [
+            "$getWintun = \"$(appdir wintun-dll)\\current\\wintun.dll\"",
+            "if (Test-Path $getWintun) {",
+				"Copy-Item -Path $getWintun -Destination $dir -Force",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$delWintun = \"$dir\\wintun.dll\"",
+            "if (Test-Path $delWintun) {",
+				"Remove-Item -Path $delWintun -Force",
+            "}"
+        ]
     },
     "checkver": "github",
     "autoupdate": {
