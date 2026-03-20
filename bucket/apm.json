@@ -1,0 +1,27 @@
+{
+    "version": "0.8.2",
+    "description": "The package manager for AI-Native Development.",
+    "homepage": "https://microsoft.github.io/apm/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/microsoft/apm/releases/download/v0.8.2/apm-windows-x86_64.zip",
+            "hash": "d236c05f114a4fe682d284a7f3974d354faedc3cfc01821f8dfe5c2324fff7d3",
+            "extract_dir": "apm-windows-x86_64"
+        }
+    },
+    "bin": "apm.exe",
+    "checkver": {
+        "github": "https://github.com/microsoft/apm"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/apm/releases/download/v$version/apm-windows-x86_64.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        }
+    }
+}
