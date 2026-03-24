@@ -1,0 +1,24 @@
+{
+    "version": "0.5.11",
+    "description": "Get up and running with large language models, with AMD ROCm support.",
+    "homepage": "https://ollama.com/",
+    "license": "MIT",
+    "notes": "To use ROCm, ensure you have compatible AMD drivers installed.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ollama/ollama/releases/download/v0.5.11/ollama-windows-amd64.zip",
+            "hash": "9c9ec2cd7d6a5068222634354c6020c088f117387d7b001d67417e36603a11e1"
+        }
+    },
+    "bin": "ollama.exe",
+    "checkver": {
+        "github": "https://github.com/ollama/ollama"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ollama/ollama/releases/download/v$version/ollama-windows-amd64.zip"
+            }
+        }
+    }
+}
