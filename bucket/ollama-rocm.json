@@ -1,21 +1,23 @@
 {
     "version": "0.18.2",
-    "description": "Ollama with ROCm support (AMD GPUs).",
-    "homepage": "https://ollama.com",
+    "description": "Get up and running with large language models, locally (AMD ROCm version).",
+    "homepage": "https://ollama.com/",
     "license": "MIT",
-    "url": "https://github.com/ollama/ollama/releases/download/v0.18.2/OllamaSetup.exe",
-    "hash": "3ee478c6ea6c8b3059f2cd2e2093c04a55a36ce4b54228e53276772a54e63510",
-    "installer": {
-        "args": [
-            "/DIR=$dir",
-            "/SILENT"
-        ]
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ollama/ollama/releases/download/v0.18.2/ollama-windows-amd64.zip",
+            "hash": "7752b897afbe1852d6eb210e1c69263cfeefd39f8595f7489c0e2ceefecab919"
+        }
     },
     "bin": "ollama.exe",
     "checkver": {
-        "github": "ollama/ollama"
+        "github": "https://github.com/ollama/ollama"
     },
     "autoupdate": {
-        "url": "https://github.com/ollama/ollama/releases/download/v$version/OllamaSetup.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ollama/ollama/releases/download/v$version/ollama-windows-amd64.zip"
+            }
+        }
     }
 }
