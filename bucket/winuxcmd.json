@@ -1,0 +1,66 @@
+{
+    "version": "0.7.2",
+    "description": "Native Windows Linux-style commands with cross-shell pipeline support",
+    "homepage": "https://github.com/caomengxuan666/WinuxCmd",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/caomengxuan666/WinuxCmd/releases/download/v0.7.2/WinuxCmd-0.7.2-win-x64.zip",
+            "hash": "sha256:3ec29d09a1edd330c30f30adddced47927ae026cb74a235c2b55096bd40b447a",
+            "extract_dir": "WinuxCmd-0.7.2-win-x64"
+        },
+        "arm64": {
+            "url": "https://github.com/caomengxuan666/WinuxCmd/releases/download/v0.7.2/WinuxCmd-0.7.2-win-arm64.zip",
+            "hash": "sha256:c30a17738489ffbde6e6386a61c2cccae1c04200998f559db37037c102526894",
+            "extract_dir": "WinuxCmd-0.7.2-win-x64"
+        }
+    },
+    "bin": [
+        [
+            "winuxcmd.exe",
+            "winuxcmd"
+        ]
+    ],
+    "post_install": [
+        "Write-Host 'Creating WinuxCmd command links...' -ForegroundColor Cyan",
+        "Push-Location $dir; & .\\create_links.ps1 -Force | Select-Object -First 10; Pop-Location",
+        "Write-Host '... and more (137 commands total)' -ForegroundColor Gray",
+        "Write-Host 'WinuxCmd commands are now available!' -ForegroundColor Green",
+        "",
+        "Write-Host 'Activation Options:' -ForegroundColor Yellow",
+        "Write-Host '  1. Direct use (after shell restart):' -ForegroundColor White",
+        "Write-Host '     ls -la        grep pattern     cat file.txt' -ForegroundColor Gray",
+        "Write-Host ''",
+        "Write-Host '  2. Session activation (recommended):' -ForegroundColor White",
+        "Write-Host '     winux activate    - Activates in current session' -ForegroundColor Gray",
+        "Write-Host '     winux deactivate  - Deactivates and restores aliases' -ForegroundColor Gray",
+        "Write-Host ''",
+        "Write-Host '  3. Check status:' -ForegroundColor White",
+        "Write-Host '     winux status      - Shows activation status' -ForegroundColor Gray",
+        "Write-Host '     winux list        - Lists all 137 commands' -ForegroundColor Gray",
+        "",
+        "Write-Host 'Note: winux activate safely manages PowerShell alias conflicts' -ForegroundColor Cyan"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/caomengxuan666/WinuxCmd/releases/download/v$version/WinuxCmd-$version-win-x64.zip",
+                "extract_dir": "WinuxCmd-$version-win-x64"
+            },
+            "arm64": {
+                "url": "https://github.com/caomengxuan666/WinuxCmd/releases/download/v$version/WinuxCmd-$version-win-arm64.zip",
+                "extract_dir": "WinuxCmd-$version-win-x64"
+            }
+        }
+    },
+    "notes": [
+        "WinuxCmd provides Linux-style commands for Windows.",
+        "137 GNU commands automatically created as hardlinks.",
+        "winux activate safely removes conflicting PowerShell aliases",
+        "winux deactivate restores original aliases automatically",
+        "winux status shows current activation state",
+        "winux list shows all available commands",
+        "Works from any installation location (Scoop, manual, etc.)"
+    ]
+}
