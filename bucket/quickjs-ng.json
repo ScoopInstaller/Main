@@ -1,0 +1,49 @@
+{
+    "version": "0.13.0",
+    "description": "QuickJS-ng: A mighty, embeddable JavaScript engine (Next Generation fork).",
+    "homepage": "https://github.com/quickjs-ng/quickjs",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/quickjs-ng/quickjs/releases/download/v0.13.0/qjs-windows-x86_64.exe#/qjs.exe",
+                "https://github.com/quickjs-ng/quickjs/releases/download/v0.13.0/qjsc-windows-x86_64.exe#/qjsc.exe"
+            ],
+            "hash": [
+                "77DB9DA40D15A1BF50BA7AA3E08882CA22C3FE418C089BED849E23E4B18896B4",
+                "FD550E8B0F56976B323BA887843C33D980A1AEF76C24AECA5C5A710D44505616"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://github.com/quickjs-ng/quickjs/releases/download/v0.13.0/qjs-windows-x86.exe#/qjs.exe",
+                "https://github.com/quickjs-ng/quickjs/releases/download/v0.13.0/qjsc-windows-x86.exe#/qjsc.exe"
+            ],
+            "hash": [
+                "23F3AFA45D00A2C5E2B257516C6FB08C63B54243271150FF0007399BD6F4CC63",
+                "7AF971E7D65CBD326BE64F0F978493CF9DAA264C1C180D3FDDD03872F735F642"
+            ]
+        }
+    },
+    "bin": [
+        "qjs.exe",
+        "qjsc.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/quickjs-ng/quickjs/releases/download/v$version/qjs-windows-x86_64.exe#/qjs.exe",
+                    "https://github.com/quickjs-ng/quickjs/releases/download/v$version/qjsc-windows-x86_64.exe#/qjsc.exe"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "https://github.com/quickjs-ng/quickjs/releases/download/v$version/qjs-windows-x86.exe#/qjs.exe",
+                    "https://github.com/quickjs-ng/quickjs/releases/download/v$version/qjsc-windows-x86.exe#/qjsc.exe"
+                ]
+            }
+        }
+    }
+}
