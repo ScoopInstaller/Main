@@ -35,8 +35,13 @@
     "post_install": [
         "if (!(Test-Path \"$dir\\data\\auto.cnf\")) {",
         "    warn 'Initializing data directory ...'",
-        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysqld.exe\" -ArgumentList '--initialize-insecure' | Out-Null",
-        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "    warn 'Initialization may fail if vcredist2022 is missing.'",
+        "    $succ = Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysqld.exe\" -ArgumentList '--initialize-insecure'",
+        "    if ($succ) {",
+        "        warn 'Database has been initialized (username: root, password: <blank>)'",
+        "    } else {",
+        "        error 'Failed to initialize database.'",
+        "    }",
         "}"
     ],
     "bin": [
