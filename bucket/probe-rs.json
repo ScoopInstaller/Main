@@ -1,0 +1,42 @@
+{
+    "version": "0.31.0",
+    "description": "A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host.",
+    "homepage": "https://probe.rs",
+    "license": "Apache-2.0|MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/probe-rs/probe-rs/releases/download/v0.31.0/probe-rs-tools-x86_64-pc-windows-msvc.zip",
+                "https://github.com/probe-rs/probe-rs/releases/download/v0.31.0/rtthost-x86_64-pc-windows-msvc.zip",
+                "https://github.com/probe-rs/probe-rs/releases/download/v0.31.0/target-gen-x86_64-pc-windows-msvc.zip"
+            ],
+            "hash": [
+                "d148ced8d2bd0d18267aaeeb35738a3265c2a4132c4991e4bfaa18a1beb3051d",
+                "862b14f990476b4bc41498640c91f4265a28ef5b29130729f30ff9b116b90385",
+                "a1d40b30a121e6af9f09c86c3a87dbb8f98e1cf1c07f5fcdee3d0fdbe4864c23"
+            ]
+        }
+    },
+    "bin": [
+        "probe-rs.exe",
+        "rtthost.exe",
+        "target-gen.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/probe-rs/probe-rs"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/probe-rs/probe-rs/releases/download/v$version/probe-rs-tools-x86_64-pc-windows-msvc.zip",
+                    "https://github.com/probe-rs/probe-rs/releases/download/v$version/rtthost-x86_64-pc-windows-msvc.zip",
+                    "https://github.com/probe-rs/probe-rs/releases/download/v$version/target-gen-x86_64-pc-windows-msvc.zip"
+                ]
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
