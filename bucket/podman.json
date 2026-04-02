@@ -5,8 +5,12 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/containers/podman/releases/download/v5.8.1/podman-5.8.1-setup.exe",
+            "url": "https://github.com/containers/podman/releases/download/v5.8.1/podman-installer-windows-amd64.exe#/podman-5.8.1-setup.exe",
             "hash": "7b66b6caa88d070f5454d6effa7bbc7387b964f6d0d97df320f04ccca205ffe1"
+        },
+        "arm64": {
+            "url": "https://github.com/containers/podman/releases/download/v5.8.1/podman-installer-windows-arm64.exe#/podman-5.8.1-setup.exe",
+            "hash": "c8bb636ed7f180b700ad127aaec4a045c2e4dc6a8402e3275081b055d09dde9d"
         }
     },
     "bin": "podman.exe",
@@ -76,11 +80,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/containers/podman/releases/download/v$version/podman-$version-setup.exe",
-                "hash": {
-                    "url": "$baseurl/shasums"
-                }
+                "url": "https://github.com/containers/podman/releases/download/v$version/podman-installer-windows-amd64.exe#/podman-$version-setup.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/containers/podman/releases/download/v$version/podman-installer-windows-arm64.exe#/podman-$version-setup.exe"
             }
+        },
+        "hash": {
+            "url": "$baseurl/shasums"
         }
     }
 }
