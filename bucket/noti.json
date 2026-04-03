@@ -3,11 +3,6 @@
     "description": "Monitor a process and trigger a notification.",
     "homepage": "https://codeberg.org/roble/noti",
     "license": "MIT",
-    "checkver": {
-        "url": "https://codeberg.org/api/v1/repos/roble/noti/releases/latest",
-        "jsonpath": "$.tag_name",
-        "regex": "([\\d.]+)"
-    },
     "architecture": {
         "64bit": {
             "url": "https://codeberg.org/roble/noti/releases/download/3.8.0/noti3.8.0.windows-amd64.tar.gz",
@@ -15,6 +10,11 @@
         }
     },
     "bin": "noti.exe",
+    "checkver": {
+        "url": "https://codeberg.org/api/v1/repos/roble/noti/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "([\\d.]+)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
