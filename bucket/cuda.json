@@ -6,6 +6,10 @@
         "identifier": "Freeware",
         "url": "https://docs.nvidia.com/cuda/eula/index.html"
     },
+    "notes": [
+        "To enable CUDA support in CMake for MSVC, specify the CUDA toolkit directory using the generator toolset flag:",
+        "-DCMAKE_GENERATOR_TOOLSET=\"cuda=$dir\""
+    ],
     "architecture": {
         "64bit": {
             "url": "http://developer.download.nvidia.com/compute/cuda/13.2.0/local_installers/cuda_13.2.0_windows.exe#/dl.7z",
@@ -23,6 +27,7 @@
             "    Copy-Item \"$dir\\cuda_*\\*\\$name\" \"$dir\" -Recurse -Force",
             "    Copy-Item \"$dir\\lib*\\*\\$name\" \"$dir\" -Recurse -Force",
             "}",
+            "Copy-Item \"$dir\\visual_studio_integration\\CUDAVisualStudioIntegration\\extras\" \"$dir\" -Recurse -Force",
             "Get-ChildItem \"$dir\" -Exclude $names | Remove-Item -Recurse -Force"
         ]
     },
