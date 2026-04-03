@@ -48,9 +48,13 @@
         "Move-Item \"$dir\\$target\\bun.exe\" \"$dir\\bun.exe\"",
         "Remove-Item \"$dir\\bun-windows-*\" -Recurse"
     ],
-    "env_add_path": "bin",
+    "installer": {
+        "script": "Add-Path -Path \"$persist_dir\\bin\" -Global:$global -Force"
+    },
     "env_set": {
-        "BUN_INSTALL": "$persist_dir"
+        "BUN_INSTALL": "$persist_dir",
+        "BUN_INSTALL_BIN": "$persist_dir\\bin",
+        "BUN_INSTALL_GLOBAL_DIR": "$persist_dir\\install\\global"
     },
     "bin": [
         "bun.exe",
@@ -64,6 +68,9 @@
         "bin",
         "install"
     ],
+    "uninstaller": {
+        "script": "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global"
+    },
     "checkver": {
         "github": "https://github.com/oven-sh/bun",
         "re": "bun-v([\\d.]+)"
