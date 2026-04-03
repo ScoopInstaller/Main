@@ -1,5 +1,5 @@
 {
-    "version": "9.5.0",
+    "version": "9.6.0",
     "description": "The world's most popular open-source database",
     "homepage": "https://dev.mysql.com/downloads/mysql/#info-tab",
     "license": "GPL-2.0-only",
@@ -17,9 +17,9 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dev.mysql.com/get/Downloads/MySQL-9.5/mysql-9.5.0-winx64.msi",
-            "hash": "md5:f9553edf2ea16f1e1fa08c78b80f3cdf",
-            "extract_dir": "PFiles64\\MySQL\\MySQL Server 9.5"
+            "url": "https://dev.mysql.com/get/Downloads/MySQL-9.6/mysql-9.6.0-winx64.msi",
+            "hash": "md5:958d5341704e70a78de25a1fda9809da",
+            "extract_dir": "PFiles64\\MySQL\\MySQL Server 9.6"
         }
     },
     "pre_install": [
@@ -35,8 +35,13 @@
     "post_install": [
         "if (!(Test-Path \"$dir\\data\\auto.cnf\")) {",
         "    warn 'Initializing data directory ...'",
-        "    Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysqld.exe\" -ArgumentList '--initialize-insecure' | Out-Null",
-        "    warn 'Database has been initialized (username: root, password: <blank>)'",
+        "    warn 'Initialization may fail if vcredist2022 is missing.'",
+        "    $succ = Invoke-ExternalCommand -FilePath \"$dir\\bin\\mysqld.exe\" -ArgumentList '--initialize-insecure'",
+        "    if ($succ) {",
+        "        warn 'Database has been initialized (username: root, password: <blank>)'",
+        "    } else {",
+        "        error 'Failed to initialize database.'",
+        "    }",
         "}"
     ],
     "bin": [

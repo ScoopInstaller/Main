@@ -1,13 +1,31 @@
 {
-    "version": "7.2.0",
-    "description": "A vault for securely storing and accessing AWS credentials in development environments",
-    "homepage": "https://github.com/99designs/aws-vault",
+    "version": "7.9.13",
+    "description": "Securely store and access AWS credentials in development environments (Maintained fork)",
+    "homepage": "https://github.com/ByteNess/aws-vault",
     "license": "MIT",
-    "url": "https://github.com/99designs/aws-vault/releases/download/v7.2.0/aws-vault-windows-386.exe#/aws-vault.exe",
-    "hash": "fef9f2db83bb0aba867036f6ad7f95075f3d9887ca8a141cdfec74d85f01e594",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ByteNess/aws-vault/releases/download/v7.9.13/aws-vault-windows-amd64.exe#/aws-vault.exe",
+            "hash": "0f688618e881c82f1e32f1f4c6f19deb838e12ee27dec54387794e8ac90fb447"
+        },
+        "arm64": {
+            "url": "https://github.com/ByteNess/aws-vault/releases/download/v7.9.13/aws-vault-windows-arm64.exe#/aws-vault.exe",
+            "hash": "a39c6fd587f98667b71e3c204ad514c38d76c8b187d22063cff7058ddc2d0afb"
+        }
+    },
     "bin": "aws-vault.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/99designs/aws-vault/releases/download/v$version/aws-vault-windows-386.exe#/aws-vault.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ByteNess/aws-vault/releases/download/v$version/aws-vault-windows-amd64.exe#/aws-vault.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/ByteNess/aws-vault/releases/download/v$version/aws-vault-windows-arm64.exe#/aws-vault.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/aws-vault_sha256_checksums.txt"
+        }
     }
 }

@@ -1,12 +1,16 @@
 {
-    "version": "5.7.0",
+    "version": "5.8.1",
     "description": "A tool for managing OCI containers and pods.",
     "homepage": "https://podman.io/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/containers/podman/releases/download/v5.7.0/podman-5.7.0-setup.exe",
-            "hash": "551a4401c95bfae855b95f7f63921ee663aa68743200212650f6b4ef3610536b"
+            "url": "https://github.com/containers/podman/releases/download/v5.8.1/podman-installer-windows-amd64.exe",
+            "hash": "7b66b6caa88d070f5454d6effa7bbc7387b964f6d0d97df320f04ccca205ffe1"
+        },
+        "arm64": {
+            "url": "https://github.com/containers/podman/releases/download/v5.8.1/podman-installer-windows-arm64.exe",
+            "hash": "c8bb636ed7f180b700ad127aaec4a045c2e4dc6a8402e3275081b055d09dde9d"
         }
     },
     "bin": "podman.exe",
@@ -29,7 +33,7 @@
     ],
     "installer": {
         "script": [
-            "Expand-DarkArchive \"$dir\\podman-$version-setup.exe\" \"$dir\\_tmp\" -Removal",
+            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\" -Removal",
             "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles64\\RedHat\\Podman'"
         ]
     },
@@ -76,11 +80,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/containers/podman/releases/download/v$version/podman-$version-setup.exe",
-                "hash": {
-                    "url": "$baseurl/shasums"
-                }
+                "url": "https://github.com/containers/podman/releases/download/v$version/podman-installer-windows-amd64.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/containers/podman/releases/download/v$version/podman-installer-windows-arm64.exe"
             }
+        },
+        "hash": {
+            "url": "$baseurl/shasums"
         }
     }
 }

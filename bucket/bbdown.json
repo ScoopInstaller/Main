@@ -1,9 +1,15 @@
 {
     "version": "1.6.3",
-    "description": "一款命令行式哔哩哔哩下载器. Bilibili Downloader.",
+    "description": "A CLI-based Bilibili downloader.",
     "homepage": "https://github.com/nilaoda/BBDown",
     "license": "MIT",
-    "depends": "ffmpeg",
+    "suggest": {
+        "FFmpeg": [
+            "main/ffmpeg",
+            "main/ffmpeg-essentials",
+            "main/ffmpeg-shared"
+        ]
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/nilaoda/BBDown/releases/download/1.6.3/BBDown_1.6.3_20240814_win-x64.zip",
@@ -15,14 +21,20 @@
         }
     },
     "pre_install": [
-        "'BBDown.data' | ForEach-Object {",
+        "@('BBDown.archives', 'BBDown.config', 'BBDown.data', 'BBDownApp.data', 'BBDownTV.data') | ForEach-Object {",
         "    if (!(Test-Path -Path \"$persist_dir\\$_\")) {",
-        "        New-Item -Type File \"$dir\\$_\" | Out-Null",
+        "        New-Item -Path \"$dir\\$_\" -ItemType File -Force | Out-Null",
         "    }",
         "}"
     ],
     "bin": "BBDown.exe",
-    "persist": "BBDown.data",
+    "persist": [
+        "BBDown.archives",
+        "BBDown.config",
+        "BBDown.data",
+        "BBDownApp.data",
+        "BBDownTV.data"
+    ],
     "checkver": {
         "url": "https://api.github.com/repositories/282637924/releases",
         "jsonpath": "$[0].assets",

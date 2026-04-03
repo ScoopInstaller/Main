@@ -1,0 +1,29 @@
+{
+    "version": "0.34.3",
+    "description": "A CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. (aka Rust Token Killer)",
+    "homepage": "https://www.rtk-ai.app",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rtk-ai/rtk/releases/download/v0.34.3/rtk-x86_64-pc-windows-msvc.zip",
+            "hash": "27fc7be1f90af050bc533dd77ff53bfe39a972206621ff217d27bcd671a6aac6"
+        }
+    },
+    "bin": "rtk.exe",
+    "checkver": {
+        "github": "https://github.com/rtk-ai/rtk"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rtk-ai/rtk/releases/download/v$version/rtk-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

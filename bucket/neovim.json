@@ -1,5 +1,5 @@
 {
-    "version": "0.11.5",
+    "version": "0.12.0",
     "description": "Vim-fork focused on extensibility and usability",
     "homepage": "https://neovim.io/",
     "license": {
@@ -11,17 +11,20 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-win64.zip",
-            "hash": "718e731326e7759cf17bbbb33f38975707a2ac85642614686b818ef5fde38f48",
+            "url": "https://github.com/neovim/neovim/releases/download/v0.12.0/nvim-win64.zip",
+            "hash": "7e6d4ac6b22a46e89b0da3ac560635ee39c00081f14093a8851154fb260b7428",
             "extract_dir": "nvim-win64"
         },
         "arm64": {
-            "url": "https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-win-arm64.zip",
-            "hash": "3446d204a97ec83eb4af0fe530a09c6d6b7392c0f0c36706e2c7dac6e1feb0ff",
+            "url": "https://github.com/neovim/neovim/releases/download/v0.12.0/nvim-win-arm64.zip",
+            "hash": "37e4f5df3a4d24e7e42b1b893115fc736e47192aeb62175995aaa54745542159",
             "extract_dir": "nvim-win-arm64"
         }
     },
-    "bin": "bin\\nvim.exe",
+    "bin": [
+        "bin\\nvim.exe",
+        "bin\\xxd.exe"
+    ],
     "checkver": {
         "url": "https://api.github.com/repositories/16408992/releases/latest",
         "jsonpath": "$.body",
