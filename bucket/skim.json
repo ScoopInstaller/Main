@@ -1,0 +1,24 @@
+{
+    "version": "4.4.0",
+    "description": "Fuzzy Finder in rust!",
+    "homepage": "https://github.com/skim-rs/skim",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/skim-rs/skim/releases/download/v4.4.0/skim-x86_64-pc-windows-msvc.zip",
+            "hash": "1fa84d0bef8970d066515f52a4e5ab38de53c94e5ceeae415315aae2aa92b93a"
+        }
+    },
+    "bin": "sk.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/skim-rs/skim/releases/download/v$version/skim-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
