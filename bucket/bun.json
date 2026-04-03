@@ -49,9 +49,7 @@
         "Remove-Item \"$dir\\bun-windows-*\" -Recurse"
     ],
     "installer": {
-        "script": [
-            "Add-Path -Path \"$persist_dir\\bin\" -Global:$global -Force"
-        ]
+        "script": "Add-Path -Path \"$persist_dir\\bin\" -Global:$global -Force"
     },
     "env_set": {
         "BUN_INSTALL": "$persist_dir",
@@ -71,9 +69,7 @@
         "install"
     ],
     "uninstaller": {
-        "script": [
-            "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global"
-        ]
+        "script": "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global"
     },
     "checkver": {
         "github": "https://github.com/oven-sh/bun",
