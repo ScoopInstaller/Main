@@ -1,0 +1,38 @@
+{
+    "version": "0.7.7",
+    "description": "Blazing fast TUI download manager built in Go for power users",
+    "homepage": "https://github.com/surge-downloader/Surge",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/surge-downloader/Surge/releases/download/v0.7.7/Surge_0.7.7_windows_amd64.zip",
+            "hash": "b3bca8ddc1c6267387b343b974f09a7e3581063cdd97786d89dbb4bc2060bc8a"
+        },
+        "32bit": {
+            "url": "https://github.com/surge-downloader/Surge/releases/download/v0.7.7/Surge_0.7.7_windows_386.zip",
+            "hash": "1464f0ef351fb0837272928f98ea7b2e4bc8d30fc5e4a3ae38abe3e0b6177ae4"
+        },
+        "arm64": {
+            "url": "https://github.com/surge-downloader/Surge/releases/download/v0.7.7/Surge_0.7.7_windows_arm64.zip",
+            "hash": "593409d4603f3e61c70d151202d2cf32c8ba13b8ea082f094f4e8475c86119dc"
+        }
+    },
+    "bin": "surge.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/surge-downloader/Surge/releases/download/v$version/Surge_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/surge-downloader/Surge/releases/download/v$version/Surge_$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/surge-downloader/Surge/releases/download/v$version/Surge_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/Surge_$version_checksums.txt"
+        }
+    }
+}

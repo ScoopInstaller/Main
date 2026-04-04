@@ -1,0 +1,51 @@
+{
+    "version": "0.22.1",
+    "description": "A collection of language tools and a Language Server Protocol (LSP) implementation for Postgres.",
+    "homepage": "https://pg-language-server.com/latest/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/supabase-community/postgres-language-server/releases/download/0.22.1/postgres-language-server_x86_64-pc-windows-msvc.exe#/postgres-language-server.exe",
+                "https://github.com/supabase-community/postgres-language-server/releases/download/0.22.1/postgrestools_x86_64-pc-windows-msvc.exe#/postgrestools.exe"
+            ],
+            "hash": [
+                "c41bbd20cceed754fd5fb09772cd95eb78e1cb415b36b2d20487b159c55c33cd",
+                "688ffc75a76b516047b1a2b6c385d921aeb73f07c1e6443621ee64eb14478314"
+            ]
+        },
+        "arm64": {
+            "url": [
+                "https://github.com/supabase-community/postgres-language-server/releases/download/0.22.1/postgres-language-server_aarch64-pc-windows-msvc.exe#/postgres-language-server.exe",
+                "https://github.com/supabase-community/postgres-language-server/releases/download/0.22.1/postgrestools_aarch64-pc-windows-msvc.exe#/postgrestools.exe"
+            ],
+            "hash": [
+                "89937eced8be05916e1d14e7268c1c9d32a049857c672387a6b24699bf93de75",
+                "57b0805e144af6d773fb6957fd8ef0b09ce4da89600967760438538c85c60029"
+            ]
+        }
+    },
+    "bin": [
+        "postgres-language-server.exe",
+        "postgrestools.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/supabase-community/postgres-language-server"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/supabase-community/postgres-language-server/releases/download/$version/postgres-language-server_x86_64-pc-windows-msvc.exe#/postgres-language-server.exe",
+                    "https://github.com/supabase-community/postgres-language-server/releases/download/$version/postgrestools_x86_64-pc-windows-msvc.exe#/postgrestools.exe"
+                ]
+            },
+            "arm64": {
+                "url": [
+                    "https://github.com/supabase-community/postgres-language-server/releases/download/$version/postgres-language-server_aarch64-pc-windows-msvc.exe#/postgres-language-server.exe",
+                    "https://github.com/supabase-community/postgres-language-server/releases/download/$version/postgrestools_aarch64-pc-windows-msvc.exe#/postgrestools.exe"
+                ]
+            }
+        }
+    }
+}

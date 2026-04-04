@@ -1,0 +1,26 @@
+{
+    "version": "2.4.0",
+    "description": "An open-source framework that makes UI and end-to-end testing for Android, iOS, and web apps simple and fast.",
+    "homepage": "https://maestro.dev",
+    "license": "Apache-2.0",
+    "suggest": {
+        "Java": "java/openjdk"
+    },
+    "url": "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.4.0/maestro.zip",
+    "hash": "aea22ce67ab6718997ec990c58652ede0c2be8f10ac4799039ca3dce3390d634",
+    "extract_dir": "maestro",
+    "env_set": {
+        "MAESTRO_HOME": "$dir"
+    },
+    "bin": "bin\\maestro.bat",
+    "checkver": {
+        "github": "https://github.com/mobile-dev-inc/Maestro",
+        "regex": "cli-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/mobile-dev-inc/Maestro/releases/download/cli-$version/maestro.zip",
+        "hash": {
+            "url": "$baseurl/checksums_sha256.txt"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "version": "0.9.14",
+    "description": "Feature-Rich TOML Toolkit.",
+    "homepage": "https://tombi-toml.github.io/tombi/",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tombi-toml/tombi/releases/download/v0.9.14/tombi-cli-0.9.14-x86_64-pc-windows-msvc.zip",
+            "hash": "449c28b597c902862d799ad99d67d9de05eb2bb142e6f81e29c25ab95567c3a3"
+        },
+        "arm64": {
+            "url": "https://github.com/tombi-toml/tombi/releases/download/v0.9.14/tombi-cli-0.9.14-aarch64-pc-windows-msvc.zip",
+            "hash": "70202f4fcdfa081ad928052757cd16bae99b445fd775eaac6b1d0ef8a7265775"
+        }
+    },
+    "bin": "tombi.exe",
+    "checkver": {
+        "github": "https://github.com/tombi-toml/tombi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tombi-toml/tombi/releases/download/v$version/tombi-cli-$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/tombi-toml/tombi/releases/download/v$version/tombi-cli-$version-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
