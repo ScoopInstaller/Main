@@ -9,17 +9,17 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://www.7-zip.org/a/7z2600-x64.msi",
+            "url": "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-x64.msi",
             "hash": "c388d0444871ca11b21237001af158cfddad7e137851795e5b65cee69b518495",
             "extract_dir": "Files\\7-Zip"
         },
         "32bit": {
-            "url": "https://www.7-zip.org/a/7z2600.msi",
+            "url": "https://github.com/ip7z/7zip/releases/download/26.00/7z2600.msi",
             "hash": "53b4f99a2471678020a326fd1d5c888616f5d6c84b00d5db7da30357755c74c3",
             "extract_dir": "Files\\7-Zip"
         },
         "arm64": {
-            "url": "https://www.7-zip.org/a/7z2600-arm64.exe",
+            "url": "https://github.com/ip7z/7zip/releases/download/26.00/7z2600-arm64.exe",
             "hash": "92fac666911336f3bbf3d99fdc48ec36fe20ac7a4200556936e61a8076ae6493",
             "pre_install": [
                 "$7zr = Join-Path $env:TMP '7zr.exe'",
@@ -56,19 +56,18 @@
         "Formats"
     ],
     "checkver": {
-        "url": "https://www.7-zip.org/download.html",
-        "regex": "Download 7-Zip ([\\d.]+) \\(\\d{4}-\\d{2}-\\d{2}\\)"
+        "github": "https://github.com/ip7z/7zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.7-zip.org/a/7z$cleanVersion-x64.msi"
+                "url": "https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion-x64.msi"
             },
             "32bit": {
-                "url": "https://www.7-zip.org/a/7z$cleanVersion.msi"
+                "url": "https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion.msi"
             },
             "arm64": {
-                "url": "https://www.7-zip.org/a/7z$cleanVersion-arm64.exe"
+                "url": "https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion-arm64.exe"
             }
         }
     }

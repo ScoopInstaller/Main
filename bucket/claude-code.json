@@ -1,5 +1,5 @@
 {
-    "version": "2.1.50",
+    "version": "2.1.92",
     "description": "An agentic coding tool built by Anthropic that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows.",
     "homepage": "https://claude.com/product/claude-code",
     "license": {
@@ -7,21 +7,21 @@
         "url": "https://www.anthropic.com/legal/consumer-terms"
     },
     "notes": [
-        "Claude Code requires git-bash (https://git-scm.com/downloads/win) to work.",
-        "If installed but not in PATH, set the `CLAUDE_CODE_GIT_BASH_PATH` environment variable pointing to your `bash.exe`.",
-        "For more information: https://code.claude.com/docs/en/setup#windows-setup",
-        "",
-        "`bash.exe` is included in PATH for Git installed via Scoop as of Jan 5, 2026. See:",
-        "https://github.com/ScoopInstaller/Main/pull/7459",
-        "If your Git was installed via Scoop, you might need to run `scoop update git -f` to pick up this change."
+        "Claude Code relies on Git (https://git-scm.com/downloads/win) to function correctly.",
+        "If Claude Code fails to detect Git Bash, manually specify the path using the `CLAUDE_CODE_GIT_BASH_PATH` environment variable.",
+        "For more information: https://code.claude.com/docs/en/setup#set-up-on-windows"
     ],
     "suggest": {
         "git": "main/git"
     },
     "architecture": {
         "64bit": {
-            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.50/win32-x64/claude.exe",
-            "hash": "d42d0254c652b7cd6031635ed56d9cba87df205e159051af28e75f9e20ff389a"
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.92/win32-x64/claude.exe",
+            "hash": "ebd9007c464d912593418f133a61d9f24866428530a81e88e910a24823066415"
+        },
+        "arm64": {
+            "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.92/win32-arm64/claude.exe",
+            "hash": "c258bce79aefac609f909e5abde92d1653bcef47d3577656d299d1d56f1604bb"
         }
     },
     "bin": "claude.exe",
@@ -36,6 +36,13 @@
                 "hash": {
                     "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/manifest.json",
                     "jsonpath": "$.platforms.win32-x64.checksum"
+                }
+            },
+            "arm64": {
+                "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/win32-arm64/claude.exe",
+                "hash": {
+                    "url": "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/$version/manifest.json",
+                    "jsonpath": "$.platforms.win32-arm64.checksum"
                 }
             }
         }

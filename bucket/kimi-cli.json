@@ -1,14 +1,19 @@
 {
-    "version": "1.12.0",
+    "version": "1.30.0",
     "description": "Kimi CLI is your next CLI agent.",
     "homepage": "https://github.com/MoonshotAI/kimi-cli/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/MoonshotAI/kimi-cli/releases/download/1.12.0/kimi-1.12.0-x86_64-pc-windows-msvc.zip",
-            "hash": "0299945e73f52f4b9eed16911af6bd16fac8438ffe3006722f9384edb9c02194"
+            "url": "https://github.com/MoonshotAI/kimi-cli/releases/download/1.30.0/kimi-1.30.0-x86_64-pc-windows-msvc-onedir.zip",
+            "hash": "5f717cdda6b93ba2a5c39245da69b46f58d23d072804fced71a3bae4cc96ea38"
+        },
+        "arm64": {
+            "url": "https://github.com/MoonshotAI/kimi-cli/releases/download/1.30.0/kimi-1.30.0-aarch64-pc-windows-msvc-onedir.zip",
+            "hash": "bf7b87b32f2482561c3ed5c665e1792c40a792605d25c96fcfa204a8a5797003"
         }
     },
+    "extract_dir": "kimi",
     "bin": "kimi.exe",
     "checkver": {
         "github": "https://github.com/MoonshotAI/kimi-cli"
@@ -16,7 +21,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/MoonshotAI/kimi-cli/releases/download/$version/kimi-$version-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/MoonshotAI/kimi-cli/releases/download/$version/kimi-$version-x86_64-pc-windows-msvc-onedir.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/MoonshotAI/kimi-cli/releases/download/$version/kimi-$version-aarch64-pc-windows-msvc-onedir.zip"
             }
         },
         "hash": {
