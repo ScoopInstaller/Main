@@ -6,8 +6,8 @@
     "notes": "InfluxDB v2 has been moved to 'Versions' bucket, use 'scoop install versions/influxdb2' to install it.",
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/influxdb/releases/influxdb3-core-3.7.0-windows_amd64.zip",
-            "hash": "7782fafaa6da7de7b40c35117a3706eea5c40f107dc89e936cb90a1217887144"
+            "url": "https://dl.influxdata.com/influxdb/releases/influxdb3-core-3.9.0-windows_amd64.zip",
+            "hash": "c107c208e3ab87e1117ba4497e65fd6c4842a19e43c648b09cee14ec3f35ea7f"
         }
     },
     "bin": "influxdb3.exe",
@@ -18,11 +18,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/influxdb/releases/influxdb3-core-3.7.0-windows_amd64.zip",
+                "url": "https://dl.influxdata.com/influxdb/releases/influxdb3-core-$version-windows_amd64.zip",
                 "hash": {
                     "url": "$url.sha256"
                 }
             }
-        }
+        },
+        "bin": "influxdb$majorVersion.exe"
     }
 }
