@@ -1,5 +1,5 @@
 {
-    "version": "8.5.0",
+    "version": "8.9.0",
     "description": "Distributed Workflow Engine for Microservices Orchestration",
     "homepage": "https://camunda.com/products/cloud/workflow-engine/",
     "license": {
@@ -15,11 +15,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/camunda/camunda-platform/releases/download/8.5.0/camunda-zeebe-8.5.0.zip",
-            "hash": "sha1:fc8b457126ba5c8e1bfa076b58990c1c3a3accf4"
+            "url": "https://github.com/camunda/camunda/releases/download/8.9.0/camunda-zeebe-8.9.0.zip",
+            "hash": "063809bbfcb5aefbce053a1fcc9a38ba54841addac108bb98eac79017d58586c"
         }
     },
-    "extract_dir": "camunda-zeebe-8.5.0",
+    "extract_dir": "camunda-zeebe-8.9.0",
     "bin": [
         [
             "bin\\broker.bat",
@@ -28,20 +28,16 @@
         [
             "bin\\gateway.bat",
             "zeebe-gateway"
-        ],
-        "bin\\zbctl.exe"
+        ]
     ],
     "checkver": {
-        "github": "https://github.com/camunda/camunda-platform"
+        "github": "https://github.com/camunda/camunda"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/camunda/camunda-platform/releases/download/$version/camunda-zeebe-$version.zip"
+                "url": "https://github.com/camunda/camunda/releases/download/$version/camunda-zeebe-$version.zip"
             }
-        },
-        "hash": {
-            "url": "$url.sha1sum"
         },
         "extract_dir": "camunda-zeebe-$version"
     }

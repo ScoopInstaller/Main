@@ -1,36 +1,27 @@
 {
-    "version": "8.0",
+    "version": "8.1",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
     "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-8.0-full_build-shared.7z",
-            "hash": "3413a6326c7aff1660af6e3ef2fadd6e5fed29ea267ccf67698bc5c055c0a0c3",
-            "extract_dir": "ffmpeg-8.0-full_build-shared"
+            "url": "https://github.com/GyanD/codexffmpeg/releases/download/8.1/ffmpeg-8.1-full_build-shared.7z",
+            "hash": "e57f02cea8b22b7ff81fb0b2ec9f6d7edb6144e84e3c0026cea0fe6dfb28e03d",
+            "extract_dir": "ffmpeg-8.1-full_build-shared"
         }
     },
-    "post_install": [
-        "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
-        "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\" -ErrorAction SilentlyContinue"
-    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "FFMPEG_DIR": "$dir"
+    },
     "persist": "fonts",
-    "bin": [
-        "bin\\ffmpeg.exe",
-        "bin\\ffplay.exe",
-        "bin\\ffprobe.exe"
-    ],
     "checkver": {
-        "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full-shared.7z.ver",
-        "regex": "([\\d.]+)"
+        "github": "https://github.com/GyanD/codexffmpeg"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-full_build-shared.7z",
-                "hash": {
-                    "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-full_build-shared.7z.sha256"
-                },
+                "url": "https://github.com/GyanD/codexffmpeg/releases/download/$version/ffmpeg-$version-full_build-shared.7z",
                 "extract_dir": "ffmpeg-$version-full_build-shared"
             }
         }

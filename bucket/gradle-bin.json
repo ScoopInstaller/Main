@@ -1,14 +1,14 @@
 {
-    "version": "9.2.0",
+    "version": "9.4.1",
     "description": "An open-source build automation tool focused on flexibility and performance. (Binaries only without documentation)",
     "homepage": "https://gradle.org",
     "license": "Apache-2.0",
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://services.gradle.org/distributions/gradle-9.2.0-bin.zip",
-    "hash": "df67a32e86e3276d011735facb1535f64d0d88df84fa87521e90becc2d735444",
-    "extract_dir": "gradle-9.2.0",
+    "url": "https://services.gradle.org/distributions/gradle-9.4.1-bin.zip",
+    "hash": "2ab2958f2a1e51120c326cad6f385153bb11ee93b3c216c5fccebfdfbb7ec6cb",
+    "extract_dir": "gradle-9.4.1",
     "post_install": [
         "$current_env = Get-EnvVar -Name GRADLE_USER_HOME -Global:$global",
         "If ($null -eq $current_env) {",
@@ -21,8 +21,8 @@
     "persist": ".gradle",
     "bin": "bin\\gradle.bat",
     "checkver": {
-        "url": "https://gradle.org/install/",
-        "regex": "The current Gradle release is version ([\\d.]+)"
+        "url": "https://gradle.org/releases/",
+        "regex": ">([\\d.]+)</a"
     },
     "autoupdate": {
         "url": "https://services.gradle.org/distributions/gradle-$version-bin.zip",

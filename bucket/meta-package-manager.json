@@ -1,12 +1,16 @@
 {
-    "version": "5.21.0",
+    "version": "6.2.1",
     "description": "Wraps all package managers with a unifying CLI",
     "homepage": "https://kdeldycke.github.io/meta-package-manager/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kdeldycke/meta-package-manager/releases/download/v5.21.0/mpm-windows-x64.exe#/mpm.exe",
-            "hash": "30f6700dca6d2d7e1101dabf65051b6b3c58df6c127e05d6bab6a79a363b09cc"
+            "url": "https://github.com/kdeldycke/meta-package-manager/releases/download/v6.2.1/mpm-6.2.1-windows-x64.exe#/mpm.exe",
+            "hash": "3edbaf472a6a154db6c2f9f33f935737eeead50a8a7159612ebe0ba930d3a47f"
+        },
+        "arm64": {
+            "url": "https://github.com/kdeldycke/meta-package-manager/releases/download/v6.2.1/mpm-6.2.1-windows-arm64.exe#/mpm.exe",
+            "hash": "136d9410d3887b1023e30f9e31f6e3d054d117ebd08cf50d7d8f83f87a3c6b39"
         }
     },
     "bin": "mpm.exe",
@@ -16,7 +20,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/kdeldycke/meta-package-manager/releases/download/v$version/mpm-windows-x64.exe#/mpm.exe"
+                "url": "https://github.com/kdeldycke/meta-package-manager/releases/download/v$version/mpm-$version-windows-x64.exe#/mpm.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/kdeldycke/meta-package-manager/releases/download/v$version/mpm-$version-windows-arm64.exe#/mpm.exe"
             }
         }
     }

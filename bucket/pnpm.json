@@ -1,16 +1,16 @@
 {
-    "version": "10.20.0",
+    "version": "10.33.0",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.20.0/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "f0dbd1634d1252d6225978935ec86716dee3f07440f0273c7582c6bc9f54756d"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v10.33.0/pnpm-win-x64.exe#/pnpm.exe",
+            "hash": "afc96009dc39fe23a835d65192049e6a995f342496b175585dc2beda7d42d33f"
         },
         "arm64": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.20.0/pnpm-win-arm64.exe#/pnpm.exe",
-            "hash": "43a4096b6cd47b4fe0adeedadb7303aff7e20edb10f42afd78ded0b04f1edca3"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v10.33.0/pnpm-win-arm64.exe#/pnpm.exe",
+            "hash": "bb2e5c8a0a0246916aa954a39ccf254d804ee9b92635cda3ecdb26436d54b33c"
         }
     },
     "bin": [
@@ -27,7 +27,7 @@
             "$auth = Get-GitHubToken",
             "$head = @{}",
             "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repositories/50565430/releases'",
+            "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
             "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",

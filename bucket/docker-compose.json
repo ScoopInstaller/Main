@@ -1,12 +1,16 @@
 {
-    "version": "2.40.3",
+    "version": "5.1.1",
     "description": "Define and run multi-container applications with Docker",
     "homepage": "https://docs.docker.com/compose/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/docker/compose/releases/download/v2.40.3/docker-compose-windows-x86_64.exe#/docker-compose.exe",
-            "hash": "4c864dd7f879dd40366e087e68a8a02cbcf018be0128867b13369898e67e1532"
+            "url": "https://github.com/docker/compose/releases/download/v5.1.1/docker-compose-windows-x86_64.exe#/docker-compose.exe",
+            "hash": "f7ad2f6965c88153e4902019ec86e95414f0025cba0b6440f328f935a1f8b12b"
+        },
+        "arm64": {
+            "url": "https://github.com/docker/compose/releases/download/v5.1.1/docker-compose-windows-aarch64.exe#/docker-compose.exe",
+            "hash": "2c42d7600886bb56d9bb009f348b4f7f8c603c954c7b07be3d53b3218877ce4a"
         }
     },
     "bin": "docker-compose.exe",
@@ -21,6 +25,9 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/docker/compose/releases/download/v$version/docker-compose-windows-x86_64.exe#/docker-compose.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/docker/compose/releases/download/v$version/docker-compose-windows-aarch64.exe#/docker-compose.exe"
             }
         },
         "hash": {
