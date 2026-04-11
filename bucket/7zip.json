@@ -8,7 +8,10 @@
     },
     "notes": [
         "To register the context menu entry, please execute the following command:",
-        "reg import \"$dir\\install-context.reg\""
+        "reg import \"$dir\\install-context.reg\"",
+        "",
+        "If an error occurs while attempting to delete files during uninstallation, run the following command and then retry:",
+        "Stop-Process -Name 'explorer'"
     ],
     "architecture": {
         "64bit": {
@@ -26,7 +29,7 @@
             "hash": "92fac666911336f3bbf3d99fdc48ec36fe20ac7a4200556936e61a8076ae6493",
             "pre_install": [
                 "$7zr = Join-Path $env:TMP '7zr.exe'",
-                "Invoke-WebRequest https://www.7-zip.org/a/7zr.exe -OutFile $7zr",
+                "Invoke-WebRequest -Uri \"https://github.com/ip7z/7zip/releases/download/$version/7zr.exe\" -OutFile $7zr",
                 "Invoke-ExternalCommand $7zr @('x', \"$dir\\$fname\", \"-o$dir\", '-y') | Out-Null",
                 "Remove-Item \"$dir\\Uninstall.exe\", \"$dir\\*-arm64.exe\", $7zr"
             ]
@@ -60,11 +63,7 @@
         "Formats"
     ],
     "uninstaller": {
-        "script": [
-            "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" *> $null }",
-            "Stop-Process -Name 'explorer' -Force -ErrorAction SilentlyContinue",
-            "Start-Sleep -Milliseconds 1500"
-        ]
+        "script": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" *> $null }"
     },
     "checkver": {
         "github": "https://github.com/ip7z/7zip"
