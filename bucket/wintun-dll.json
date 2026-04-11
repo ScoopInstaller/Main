@@ -1,0 +1,34 @@
+{
+    "version": "0.14.1",
+    "description": "A very simple and minimal TUN driver for the Windows kernel, which provides userspace programs with a simple network adapter for reading and writing packets.",
+    "homepage": "https://www.wintun.net/",
+    "license": {
+        "identifier": "GPL-2.0-only",
+        "url": "https://git.zx2c4.com/wintun/about/COPYING"
+    },
+    "url": "https://www.wintun.net/builds/wintun-0.14.1.zip",
+    "hash": "07c256185d6ee3652e09fa55c0b673e2624b565e02c4b9091c79ca7d2f24ef51",
+    "architecture": {
+        "64bit": {
+            "extract_dir": "wintun\\bin\\amd64"
+        },
+        "32bit": {
+            "extract_dir": "wintun\\bin\\x86"
+        },
+        "arm64": {
+            "extract_dir": "wintun\\bin\\arm64"
+        }
+    },
+    "post_install": "Remove-Item -Recurse -Force $dir\\wintun",
+    "env_add_path": ".",
+    "checkver": {
+        "regex": "wintun-([\\d.]+).zip"
+    },
+    "autoupdate": {
+        "url": "https://www.wintun.net/builds/wintun-$version.zip",
+        "hash": {
+            "url": "https://www.wintun.net",
+            "regex": "$sha256"
+        }
+    }
+}

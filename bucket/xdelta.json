@@ -6,13 +6,64 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/jmacd/xdelta-gpl/releases/download/v3.1.0/xdelta3-3.1.0-x86_64.exe.zip",
-            "hash": "b10e0d1df3e212e5a2d37d5c088d2f72ecec760bc3c26caeca51499c3118b93a"
+            "hash": "b10e0d1df3e212e5a2d37d5c088d2f72ecec760bc3c26caeca51499c3118b93a",
+            "bin": [
+                [
+                    "xdelta3-3.1.0-x86_64.exe",
+                    "xdelta3"
+                ],
+                [
+                    "xdelta3-3.1.0-x86_64.exe",
+                    "xdelta"
+                ]
+            ]
         },
         "32bit": {
             "url": "https://github.com/jmacd/xdelta-gpl/releases/download/v3.1.0/xdelta3-3.1.0-i686.exe.zip",
-            "hash": "1e72f920dbae1b4edc7be0feba841d78fb06ad38b67630e99d5ff655d8c5d62f"
+            "hash": "1e72f920dbae1b4edc7be0feba841d78fb06ad38b67630e99d5ff655d8c5d62f",
+            "bin": [
+                [
+                    "xdelta3-3.1.0-i686.exe",
+                    "xdelta3"
+                ],
+                [
+                    "xdelta3-3.1.0-i686.exe",
+                    "xdelta"
+                ]
+            ]
         }
     },
-    "pre_install": "Get-ChildItem \"$dir\\xdelta3-*.exe\" | Rename-Item -NewName 'xdelta.exe'",
-    "bin": "xdelta.exe"
+    "checkver": {
+        "github": "https://github.com/jmacd/xdelta-gpl"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jmacd/xdelta-gpl/releases/download/v$version/xdelta3-$version-x86_64.exe.zip",
+                "bin": [
+                    [
+                        "xdelta3-$version-x86_64.exe",
+                        "xdelta3"
+                    ],
+                    [
+                        "xdelta3-$version-x86_64.exe",
+                        "xdelta"
+                    ]
+                ]
+            },
+            "32bit": {
+                "url": "https://github.com/jmacd/xdelta-gpl/releases/download/v$version/xdelta3-$version-i686.exe.zip",
+                "bin": [
+                    [
+                        "xdelta3-$version-i686.exe",
+                        "xdelta3"
+                    ],
+                    [
+                        "xdelta3-$version-i686.exe",
+                        "xdelta"
+                    ]
+                ]
+            }
+        }
+    }
 }

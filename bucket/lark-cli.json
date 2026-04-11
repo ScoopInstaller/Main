@@ -1,0 +1,36 @@
+{
+    "version": "1.0.9",
+    "description": "Official Lark/Feishu CLI tool, built for humans and AI Agents.",
+    "homepage": "https://www.larksuite.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/larksuite/cli/releases/download/v1.0.9/lark-cli-1.0.9-windows-amd64.zip",
+            "hash": "58b49e1a3f8e3e91c7b31672bc234ffcbfa3efcf03d7ec57c0e86c4cfed3c63e"
+        },
+        "arm64": {
+            "url": "https://github.com/larksuite/cli/releases/download/v1.0.9/lark-cli-1.0.9-windows-arm64.zip",
+            "hash": "7be84c6df2a31831e0ca64b63f8ba8d0f16d6a523eee5ac54bd043fb79c18730"
+        }
+    },
+    "env_set": {
+        "LARKSUITE_CLI_CONFIG_DIR": "$persist_dir"
+    },
+    "bin": "lark-cli.exe",
+    "checkver": {
+        "github": "https://github.com/larksuite/cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/larksuite/cli/releases/download/v$version/lark-cli-$version-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/larksuite/cli/releases/download/v$version/lark-cli-$version-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

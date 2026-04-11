@@ -1,5 +1,5 @@
 {
-    "version": "9.2.0",
+    "version": "9.2.0323",
     "description": "A highly configurable text editor",
     "homepage": "https://www.vim.org",
     "license": "Vim",
@@ -9,16 +9,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0/gvim_9.2.0_x64_signed.zip",
-            "hash": "99918334e14c01e861bda950a92a91d0c86c7d7296ef25d6af2034f0d47e817c"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0323/gvim_9.2.0323_x64_signed.zip",
+            "hash": "34e3a80a30dc11b87fa2984ac368b33aaa60761082c0a3c1a1b2b45a170f1d7a"
         },
         "32bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0/gvim_9.2.0_x86_signed.zip",
-            "hash": "493250952a2b549987a7d23534a8e76b30113f597299be458043fc48c887333a"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0323/gvim_9.2.0323_x86_signed.zip",
+            "hash": "43dfab9a3e9469d75acd2bcb403a4be4d29373f8ff0b119fd010b4ce1249066a"
         },
         "arm64": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0/gvim_9.2.0_arm64_signed.zip",
-            "hash": "3f5108c0ed7f0bf2fd6a6fb4c45955803dc0c7f35d3c9a656df7a85bca1b441d"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0323/gvim_9.2.0323_arm64_signed.zip",
+            "hash": "713bc477317804a90b81c78f36dba8f31f382681f6d3e53478a950b5cf4facdb"
         }
     },
     "extract_dir": "vim/vim92",
@@ -101,7 +101,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/50428480/releases?per_page=45",
+        "url": "https://api.github.com/repos/vim/vim-win32-installer/releases?per_page=45",
         "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /signed\\.zip/i)].browser_download_url",
         "regex": "(?i)download/(?<tag>[^/]+)/gvim_([\\d.]+)_(?:x|arm)"
     },

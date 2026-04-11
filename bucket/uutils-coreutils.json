@@ -1,5 +1,5 @@
 {
-    "version": "0.6.0",
+    "version": "0.8.0",
     "description": "A cross-platform Rust reimplementation of GNU coreutils (binaries compiled with MSVC), with some options or behaviors potentially differing from GNU coreutils.",
     "homepage": "https://uutils.github.io/coreutils/",
     "license": {
@@ -7,52 +7,35 @@
         "url": "https://github.com/uutils/coreutils/blob/HEAD/LICENSE"
     },
     "suggest": {
-        "Microsoft Visual C++ 2015-2022 Redistributable": "extras/vcredist2022"
+        "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.6.0/coreutils-0.6.0-x86_64-pc-windows-msvc.zip",
-            "hash": "f223058a51e8a2a4b92d9f1a1b2954f7a02b6d0f42e4a7e0413fcdb93be2e287",
-            "extract_dir": "coreutils-x86_64-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.8.0/coreutils-0.8.0-x86_64-pc-windows-msvc.zip",
+            "hash": "db464cf2a6ecbfd42c85f46ed2d749be574df4df47feca1f08988fd760f324f3",
+            "extract_dir": "coreutils-0.8.0-x86_64-pc-windows-msvc"
         },
         "32bit": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.6.0/coreutils-0.6.0-i686-pc-windows-msvc.zip",
-            "hash": "4b95738775de79250af2ce4f1ca2ed88a31b37910b87b2b6f9f317755c9c1240",
-            "extract_dir": "coreutils-i686-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.8.0/coreutils-0.8.0-i686-pc-windows-msvc.zip",
+            "hash": "2ffe88b9d81fab6a1625a5f02737c8ab164741447403b92cb84377ac37e1bb39",
+            "extract_dir": "coreutils-0.8.0-i686-pc-windows-msvc"
         },
         "arm64": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.6.0/coreutils-0.6.0-aarch64-pc-windows-msvc.zip",
-            "hash": "7183bd5aff648b76517182e50d94819efdaede637650f5b9ad9117c171c4eebf",
-            "extract_dir": "coreutils-aarch64-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.8.0/coreutils-0.8.0-aarch64-pc-windows-msvc.zip",
+            "hash": "1dfa62f18b64c70b664936b06fb1be20f0f6afa9ff041dd95dda629e987435a9",
+            "extract_dir": "coreutils-0.8.0-aarch64-pc-windows-msvc"
         }
     },
     "post_install": [
-        "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
-        "    FileName = \"$dir\\coreutils.exe\"; Arguments = '--list'",
-        "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-        "}",
-        "$process = [System.Diagnostics.Process]::Start($process_info)",
-        "$stdout_content = $process.StandardOutput.ReadToEnd()",
-        "$process.WaitForExit()",
-        "Write-Output \"`nCreating shim for 'coreutils'.\"",
-        "shim \"$dir\\coreutils.exe\" $global 'coreutils'",
-        "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
-        "    Write-Output \"Creating shim for '$($_.Trim())'.\"",
-        "    shim \"$dir\\coreutils.exe\" $global $_.Trim() $_.Trim()",
+        "Get-ChildItem -Path $dir -File -Filter '*.exe' | ForEach-Object {",
+        "    Write-Output \"Creating shim for '$($_.BaseName)'.\"",
+        "    shim $_.FullName $global $_.BaseName",
         "}"
     ],
     "uninstaller": {
         "script": [
-            "$process_info = [System.Diagnostics.ProcessStartInfo]@{",
-            "    FileName = \"$dir\\coreutils.exe\"; Arguments = '--list'",
-            "    CreateNoWindow = $true; UseShellExecute = $false; RedirectStandardOutput = $true",
-            "}",
-            "$process = [System.Diagnostics.Process]::Start($process_info)",
-            "$stdout_content = $process.StandardOutput.ReadToEnd()",
-            "$process.WaitForExit()",
-            "rm_shim 'coreutils' $(shimdir $global) $app",
-            "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
-            "    rm_shim $_.Trim() $(shimdir $global) $app",
+            "Get-ChildItem -Path $dir -File -Filter '*.exe' | ForEach-Object {",
+            "    rm_shim $_.BaseName $(shimdir $global) $app",
             "}"
         ]
     },

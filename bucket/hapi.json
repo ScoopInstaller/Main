@@ -1,0 +1,29 @@
+{
+    "version": "0.16.6",
+    "description": "Run official ClaudeCode/Codex/Gemini/OpenCode sessions locally and control them remotely through a Web/PWA/Telegram Mini App.",
+    "homepage": "https://hapi.run",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tiann/hapi/releases/download/v0.16.6/hapi-win32-x64.zip",
+            "hash": "d59d876beed86eec647459f88151ef5ac198374ed9ec94d5fc8fbbebb87536b4"
+        }
+    },
+    "env_set": {
+        "HAPI_HOME": "$persist_dir"
+    },
+    "bin": "hapi.exe",
+    "checkver": {
+        "github": "https://github.com/tiann/hapi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tiann/hapi/releases/download/v$version/hapi-win32-x64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

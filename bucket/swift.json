@@ -1,5 +1,5 @@
 {
-    "version": "6.2.4",
+    "version": "6.3",
     "description": "A general-purpose programming language built using a modern approach to safety, performance, and software design patterns.",
     "homepage": "https://www.swift.org/",
     "license": "Apache-2.0",
@@ -16,12 +16,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.swift.org/swift-6.2.4-release/windows10/swift-6.2.4-RELEASE/swift-6.2.4-RELEASE-windows10.exe",
-            "hash": "222501d4a0ef6ec3b2f08b3e0055140bb3a5136527542239bb925f979689f4ad"
+            "url": "https://download.swift.org/swift-6.3-release/windows10/swift-6.3-RELEASE/swift-6.3-RELEASE-windows10.exe",
+            "hash": "a1370df009de920070aef0c87d4ff80279515870ddbe6e8f035b2a5707444f13"
         },
         "arm64": {
-            "url": "https://download.swift.org/swift-6.2.4-release/windows10-arm64/swift-6.2.4-RELEASE/swift-6.2.4-RELEASE-windows10-arm64.exe",
-            "hash": "2eb55ce031c0b169f11025dea92d4930fca688114f799df17ba097de937c7cd5"
+            "url": "https://download.swift.org/swift-6.3-release/windows10-arm64/swift-6.3-RELEASE/swift-6.3-RELEASE-windows10-arm64.exe",
+            "hash": "eca190022838d48984d04f8fdedef613e6252f694df2079e7eb6c4137b8bbdac"
         }
     },
     "pre_install": [
@@ -39,9 +39,9 @@
         "Move-Item -Path \"$dir\\Swift\\Platforms\\$ver\\Windows.platform\" -Destination \"$dir\\Swift\\Platforms\"",
         "Move-Item -Path \"$dir\\Swift\\Toolchains\\$($ver)+Asserts\\usr\" -Destination \"$dir\\Swift\\Toolchains\"",
         "# Move-Item -Path \"$dir\\Swift\\Tools\\$ver\\*\" -Destination \"$dir\\Swift\\Tools\"",
-        "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" | Out-Null",
-        "Remove-Item \"$dir\\Swift\\Toolchains\\$ver+Asserts\" | Out-Null",
-        "# Remove-Item \"$dir\\Swift\\Tools\\$ver\" | Out-Null",
+        "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" -Recurse | Out-Null",
+        "Remove-Item \"$dir\\Swift\\Toolchains\\$ver+Asserts\" -Recurse | Out-Null",
+        "# Remove-Item \"$dir\\Swift\\Tools\\$ver\" -Recurse | Out-Null",
         "Move-Item -Path \"$dir\\Swift\\*\" -Destination \"$dir\"",
         "Remove-Item \"$dir\\Swift\", \"$dir\\extract_folder\" -Recurse | Out-Null"
     ],
