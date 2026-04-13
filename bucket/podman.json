@@ -5,15 +5,16 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/containers/podman/releases/download/v5.8.2/podman-installer-windows-amd64.exe",
-            "hash": "a836d0ee038db37fe6686a1d8b894bffb3b8288b857d3248b2f91597567611ad"
+            "url": "https://github.com/containers/podman/releases/download/v5.8.2/podman-installer-windows-amd64.msi",
+            "hash": "eda54f26f9695d198d9a679fa45ae24ba35b78444f432b5fe0c122c5a3624c57"
         },
         "arm64": {
-            "url": "https://github.com/containers/podman/releases/download/v5.8.2/podman-installer-windows-arm64.exe",
-            "hash": "f04a2c6c57d8d138ad5ffdc321df3caa48497d62c155bdfcb535c42a39ba8298"
+            "url": "https://github.com/containers/podman/releases/download/v5.8.2/podman-installer-windows-arm64.msi",
+            "hash": "77e9810e7598ef588b1fe7a850bf6baf572b30545dde82879a31638708c97bcd"
         }
     },
     "bin": "podman.exe",
+    "extract_dir": "PFiles64\\Podman",
     "pre_install": [
         "if (Get-Command -ErrorAction SilentlyContinue podman) {",
         "    if ((podman machine info --format '{{.Host.MachineState}}') -like '*ing') {",
@@ -31,12 +32,6 @@
         "    }",
         "}"
     ],
-    "installer": {
-        "script": [
-            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\_tmp\" -Removal",
-            "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles64\\RedHat\\Podman'"
-        ]
-    },
     "post_install": [
         "if ((Test-Path \"$Env:AppData\\containers\\podman-connections*\") -and !(Test-Path \"$dir\\connections\\podman-connections*\")) {",
         "    # [Persist Data]: Moving connections from default data directory to scoop persist directory ...",
@@ -80,10 +75,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/containers/podman/releases/download/v$version/podman-installer-windows-amd64.exe"
+                "url": "https://github.com/containers/podman/releases/download/v$version/podman-installer-windows-amd64.msi"
             },
             "arm64": {
-                "url": "https://github.com/containers/podman/releases/download/v$version/podman-installer-windows-arm64.exe"
+                "url": "https://github.com/containers/podman/releases/download/v$version/podman-installer-windows-arm64.msi"
             }
         },
         "hash": {
