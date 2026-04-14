@@ -8,43 +8,41 @@
     },
     "url": "https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.14.0/sleuthkit-4.14.0-win32.zip",
     "hash": "76a803a0dbbe203cf19c79e583413a2aa470aaf1f6349488f35d3ef7cb779a2a",
-    "pre_install": [
-        "Move-Item -Path \"$dir\\sleuthkit-$version-win32\\*\" -Destination \"$dir\\\" -Force",
-        "Remove-Item -Recurse -Force \"$dir\\sleuthkit-$version-win32\""
-    ],
+    "extract_dir": "sleuthkit-4.14.0-win32",
     "bin": [
-        "bin/blkcalc.exe",
-        "bin/blkcat.exe",
-        "bin/blkls.exe",
-        "bin/blkstat.exe",
-        "bin/fcat.exe",
-        "bin/ffind.exe",
-        "bin/fls.exe",
-        "bin/fsstat.exe",
-        "bin/hfind.exe",
-        "bin/icat.exe",
-        "bin/ifind.exe",
-        "bin/ils.exe",
-        "bin/img_cat.exe",
-        "bin/img_stat.exe",
-        "bin/istat.exe",
-        "bin/jcat.exe",
-        "bin/jls.exe",
-        "bin/mmcat.exe",
-        "bin/mmls.exe",
-        "bin/mmstat.exe",
-        "bin/pstat.exe",
-        "bin/tsk_comparedir.exe",
-        "bin/tsk_gettimes.exe",
-        "bin/tsk_imageinfo.exe",
-        "bin/tsk_loaddb.exe",
-        "bin/tsk_recover.exe"
+        "bin\\blkcalc.exe",
+        "bin\\blkcat.exe",
+        "bin\\blkls.exe",
+        "bin\\blkstat.exe",
+        "bin\\fcat.exe",
+        "bin\\ffind.exe",
+        "bin\\fls.exe",
+        "bin\\fsstat.exe",
+        "bin\\hfind.exe",
+        "bin\\icat.exe",
+        "bin\\ifind.exe",
+        "bin\\ils.exe",
+        "bin\\img_cat.exe",
+        "bin\\img_stat.exe",
+        "bin\\istat.exe",
+        "bin\\jcat.exe",
+        "bin\\jls.exe",
+        "bin\\mmcat.exe",
+        "bin\\mmls.exe",
+        "bin\\mmstat.exe",
+        "bin\\pstat.exe",
+        "bin\\tsk_comparedir.exe",
+        "bin\\tsk_gettimes.exe",
+        "bin\\tsk_imageinfo.exe",
+        "bin\\tsk_loaddb.exe",
+        "bin\\tsk_recover.exe"
     ],
     "checkver": {
         "github": "https://github.com/sleuthkit/sleuthkit",
-        "regex": "Sleuth Kit ([\\d.]+)"
+        "regex": "releases/tag/sleuthkit-([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-$version/sleuthkit-$version-win32.zip"
+        "url": "https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-$version/sleuthkit-$version-win32.zip",
+        "extract_dir": "sleuthkit-$version-win32"
     }
 }
