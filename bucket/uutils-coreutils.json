@@ -32,13 +32,11 @@
         "    shim $_.FullName $global $_.BaseName",
         "}"
     ],
-    "uninstaller": {
-        "script": [
-            "Get-ChildItem -Path $dir -File -Filter '*.exe' | ForEach-Object {",
-            "    rm_shim $_.BaseName $(shimdir $global) $app",
-            "}"
-        ]
-    },
+    "pre_uninstall": [
+        "Get-ChildItem -Path $dir -File -Filter '*.exe' | ForEach-Object {",
+        "    rm_shim $_.BaseName $(shimdir $global) $app",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/uutils/coreutils"
     },
