@@ -1,0 +1,30 @@
+{
+    "version": "0.10.0",
+    "description": "High-performance, lossless, asymmetric compression library optimized for write-once-read-many scenarios.",
+    "homepage": "https://github.com/hellobertrand/zxc",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/hellobertrand/zxc/releases/download/v0.10.0/zxc-windows-x64.zip",
+            "hash": "c0092acbf1874cb64935f5b576fb2b07068b0e0156e6d5f274b1ebff4f8a4731"
+        },
+        "arm64": {
+            "url": "https://github.com/hellobertrand/zxc/releases/download/v0.10.0/zxc-windows-arm64.zip",
+            "hash": "23464478422fd7f742e0fb23b62737340ffde6a32a7533867894c09ee0356ffb"
+        }
+    },
+    "bin": "bin\\zxc.exe",
+    "checkver": {
+        "github": "https://github.com/hellobertrand/zxc"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/hellobertrand/zxc/releases/download/v$version/zxc-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/hellobertrand/zxc/releases/download/v$version/zxc-windows-arm64.zip"
+            }
+        }
+    }
+}
