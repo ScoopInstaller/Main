@@ -1,21 +1,24 @@
 {
-    "version": "3.13.7",
+    "version": "3.14.4",
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
     "license": "Python-2.0",
-    "notes": "Allow applications and third-party installers to find python by running: \"$dir\\install-pep-514.reg\"",
+    "notes": [
+        "Allow applications and third-party installers to find python by running:",
+        "reg import \"$dir\\install-pep-514.reg\""
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://www.python.org/ftp/python/3.13.7/python-3.13.7-amd64.exe#/setup.exe",
-            "hash": "md5:1da92e43c79f3d1539dd23a3c14bf3f0"
+            "url": "https://www.python.org/ftp/python/3.14.4/python-3.14.4-amd64.exe#/setup.exe",
+            "hash": "b571567bd11ea98fd7a2cf85791d2c8557a63b1e04e9d1dae665a275cac87f1b"
         },
         "32bit": {
-            "url": "https://www.python.org/ftp/python/3.13.7/python-3.13.7.exe#/setup.exe",
-            "hash": "md5:f501c1b321c82412ed330ec5604cac39"
+            "url": "https://www.python.org/ftp/python/3.14.4/python-3.14.4.exe#/setup.exe",
+            "hash": "67bef323d951363d06aa73cbbb8a372303c96912b512778ce48fbf9a521cbbfe"
         },
         "arm64": {
-            "url": "https://www.python.org/ftp/python/3.13.7/python-3.13.7-arm64.exe#/setup.exe",
-            "hash": "md5:66c0ba98b20b7d4ea0904223d484d369"
+            "url": "https://www.python.org/ftp/python/3.14.4/python-3.14.4-arm64.exe#/setup.exe",
+            "hash": "c1aee4dfe56ef32a0c5ebf58f6fb1c97dcf037683d659ee16ee5b8641204766a"
         }
     },
     "pre_install": [
@@ -106,10 +109,6 @@
             "arm64": {
                 "url": "https://www.python.org/ftp/python/$version/python-$version-arm64.exe#/setup.exe"
             }
-        },
-        "hash": {
-            "url": "https://www.python.org/downloads/release/python-$cleanVersion/",
-            "regex": "(?sm)$basename.*?$md5"
         }
     }
 }

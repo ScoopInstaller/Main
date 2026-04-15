@@ -1,0 +1,50 @@
+{
+    "version": "0.11.1",
+    "description": "A themeable LS_COLORS generator with a rich filetype database.",
+    "homepage": "https://github.com/sharkdp/vivid",
+    "license": "Apache-2.0|MIT",
+    "notes": [
+        "vivid generates LS_COLORS for colorizing file listings in terminals.",
+        "Tools that use LS_COLORS on Windows include ls (GNU coreutils), eza and lsd:",
+        "  scoop install main/coreutils",
+        "  scoop install main/eza",
+        "  scoop install main/lsd",
+        "",
+        "POSIX shells:   export LS_COLORS=\"$(vivid generate molokai)\"",
+        "PowerShell:     $env:LS_COLORS = (vivid.exe generate molokai)",
+        "View available themes: vivid themes"
+    ],
+    "suggest": {
+        "GNU coreutils": "coreutils",
+        "Modern ls alternatives": [
+            "eza",
+            "lsd"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sharkdp/vivid/releases/download/v0.11.1/vivid-v0.11.1-x86_64-pc-windows-msvc.zip",
+            "hash": "2bc2700c9cae57c43c6abbb1063e755977972b81e8eb34f266750aabd02a9cf1",
+            "extract_dir": "vivid-v0.11.1-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://github.com/sharkdp/vivid/releases/download/v0.11.1/vivid-v0.11.1-i686-pc-windows-msvc.zip",
+            "hash": "0ad28a3305d604f706f68e95f1e2345bf2e4e135008d26dc3aafa99035c97102",
+            "extract_dir": "vivid-v0.11.1-i686-pc-windows-msvc"
+        }
+    },
+    "bin": "vivid.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sharkdp/vivid/releases/download/v$version/vivid-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "vivid-v$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://github.com/sharkdp/vivid/releases/download/v$version/vivid-v$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "vivid-v$version-i686-pc-windows-msvc"
+            }
+        }
+    }
+}

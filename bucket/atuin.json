@@ -1,0 +1,26 @@
+{
+    "version": "18.14.1",
+    "description": "Shell history tool featuring advanced context-aware search, along with secure sync and backup.",
+    "homepage": "https://atuin.sh",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/atuinsh/atuin/releases/download/v18.14.1/atuin-x86_64-pc-windows-msvc.zip",
+            "hash": "5b7e3630cafad6e8a9846246a192955f8988a4879c88ad167cdb7d7e6bdb0915"
+        }
+    },
+    "bin": "atuin.exe",
+    "checkver": {
+        "github": "https://github.com/atuinsh/atuin"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/atuinsh/atuin/releases/download/v$version/atuin-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

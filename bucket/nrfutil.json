@@ -1,0 +1,50 @@
+{
+    "version": "8.1.1",
+    "description": "A unified command line utility for Nordic products.",
+    "homepage": "https://www.nordicsemi.com/Products/Development-tools/nRF-Util",
+    "license": {
+        "identifier": "LicenseRef-Nordic-1-Clause",
+        "url": "https://docs.nordicsemi.com/bundle/nrfutil/page/README.html#licenses"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://files.nordicsemi.com/artifactory/swtools/external/nrfutil/packages/nrfutil/nrfutil-x86_64-pc-windows-msvc-8.1.1.tar.gz",
+            "hash": "ffd81ea57a85880842d1987ace803d02c54086c48e2ca6c67eb7e21d755c1d12",
+            "extract_dir": "nrfutil-x86_64-pc-windows-msvc-8.1.1\\data"
+        }
+    },
+    "post_install": [
+        "'bin', 'share' | ForEach-Object {",
+        "    if (Test-Path \"$dir\\$_.original\") {",
+        "        Copy-Item -Path \"$dir\\$_.original\\*\" -Destination \"$dir\\$_\" -Force -Recurse",
+        "        Remove-Item \"$dir\\$_.original\" -Force -Recurse | Out-Null",
+        "    }",
+        "}"
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "NRFUTIL_HOME": "$dir"
+    },
+    "bin": "bin\\nrfutil.exe",
+    "persist": [
+        "bin",
+        "installed",
+        "logs",
+        "lib",
+        "registry",
+        "share"
+    ],
+    "checkver": {
+        "url": "https://files.nordicsemi.com/artifactory/swtools/external/nrfutil/index/bootstrap.json",
+        "jsonpath": "$.nrfutil_core_tarball_urls.x86_64-pc-windows-msvc",
+        "regex": "windows-msvc-([\\d.]+)\\.tar\\.gz"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://files.nordicsemi.com/artifactory/swtools/external/nrfutil/packages/nrfutil/nrfutil-x86_64-pc-windows-msvc-$version.tar.gz",
+                "extract_dir": "nrfutil-x86_64-pc-windows-msvc-$version\\data"
+            }
+        }
+    }
+}

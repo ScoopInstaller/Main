@@ -1,0 +1,44 @@
+{
+    "version": "1.0.92.0",
+    "description": "Application runtime environment customization utility",
+    "homepage": "https://m2team.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/M2Team/NanaRun/releases/download/1.0.92.0/NanaRun_1.0_Preview3_1.0.92.0.zip",
+            "hash": "e46de8521ffb015d67a3b9570f458d5d9f9ecb8dd83911cd75c9a3c70e91a622",
+            "extract_dir": "x64"
+        },
+        "32bit": {
+            "url": "https://github.com/M2Team/NanaRun/releases/download/1.0.92.0/NanaRun_1.0_Preview3_1.0.92.0.zip",
+            "hash": "e46de8521ffb015d67a3b9570f458d5d9f9ecb8dd83911cd75c9a3c70e91a622",
+            "extract_dir": "x32"
+        },
+        "arm64": {
+            "url": "https://github.com/M2Team/NanaRun/releases/download/1.0.92.0/NanaRun_1.0_Preview3_1.0.92.0.zip",
+            "hash": "e46de8521ffb015d67a3b9570f458d5d9f9ecb8dd83911cd75c9a3c70e91a622",
+            "extract_dir": "ARM64"
+        }
+    },
+    "bin": [
+        "MinSudo.exe",
+        "SynthRdp.exe"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/M2Team/NanaRun/releases",
+        "jsonpath": "$.[0].tag_name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/M2Team/NanaRun/releases/download/$version/NanaRun_1.0_Preview3_$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/M2Team/NanaRun/releases/download/$version/NanaRun_1.0_Preview3_$version.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/M2Team/NanaRun/releases/download/$version/NanaRun_1.0_Preview3_$version.zip"
+            }
+        }
+    }
+}

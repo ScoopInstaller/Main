@@ -1,5 +1,5 @@
 {
-    "version": "2.8.11",
+    "version": "2.9.7",
     "description": "Dependency Manager for PHP",
     "homepage": "https://getcomposer.org/",
     "license": "MIT",
@@ -10,8 +10,8 @@
             "php-nts"
         ]
     },
-    "url": "https://getcomposer.org/download/2.8.11/composer.phar",
-    "hash": "257a969e9a9d27e0e45cfe954835c17a76033ba84a388e0f472db83eded65a8b",
+    "url": "https://getcomposer.org/download/2.9.7/composer.phar",
+    "hash": "d3c6801ea6e5dd291d0f149295a4d0f1539a74d5231958fe8fdaa889a497e6cf",
     "pre_install": [
         "@(",
         "    'if ($args.length -eq 1 -and ($args -eq \"selfupdate\" -or $args -eq \"self-update\")) { & scoop update composer }'",
@@ -25,9 +25,13 @@
     "bin": "composer.ps1",
     "env_add_path": "home\\vendor\\bin",
     "env_set": {
-        "COMPOSER_HOME": "$persist_dir\\home"
+        "COMPOSER_HOME": "$persist_dir\\home",
+        "COMPOSER_CACHE_DIR": "$persist_dir\\cache"
     },
-    "persist": "home",
+    "persist": [
+        "home",
+        "cache"
+    ],
     "checkver": "Latest: <strong>\\s*([\\d.]+)\\s*</strong>",
     "autoupdate": {
         "url": "https://getcomposer.org/download/$version/composer.phar",

@@ -1,0 +1,40 @@
+{
+    "version": "3.53.0",
+    "description": "Precompiled DLLs for SQLite, a small, fast, self-contained, high-reliability and full-featured SQL database engine",
+    "homepage": "https://www.sqlite.org/",
+    "license": {
+        "identifier": "Public Domain",
+        "url": "https://www.sqlite.org/src/file?name=LICENSE.md"
+    },
+    "architecture": {
+        "arm64": {
+            "url": "https://www.sqlite.org/2026/sqlite-dll-win-arm64-3530000.zip",
+            "hash": "ff5c03e3f12601eed38f5294b2a916ea86b366bc34fd0070b3e4ab39f804b3fc"
+        },
+        "32bit": {
+            "url": "https://www.sqlite.org/2026/sqlite-dll-win-x86-3530000.zip",
+            "hash": "35e9480735437677c70130cf0285d18bce11e12f202770e5fd3ad9078b160113"
+        },
+        "64bit": {
+            "url": "https://www.sqlite.org/2026/sqlite-dll-win-x64-3530000.zip",
+            "hash": "e2a923409653646d596024f5b64586533e555fe70fc11df012891ca5fb92e6a2"
+        }
+    },
+    "checkver": {
+        "url": "https://www.sqlite.org/download.html",
+        "regex": "PRODUCT,([\\d.]+),(?<year>\\d+)/sqlite-dll-win-x64-(?<clean>\\d+)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "arm64": {
+                "url": "https://www.sqlite.org/$matchYear/sqlite-dll-win-arm64-$matchClean.zip"
+            },
+            "64bit": {
+                "url": "https://www.sqlite.org/$matchYear/sqlite-dll-win-x64-$matchClean.zip"
+            },
+            "32bit": {
+                "url": "https://www.sqlite.org/$matchYear/sqlite-dll-win-x86-$matchClean.zip"
+            }
+        }
+    }
+}

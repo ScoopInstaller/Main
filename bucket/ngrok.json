@@ -1,5 +1,5 @@
 {
-    "version": "3.29.0",
+    "version": "3.37.6",
     "description": "ngrok is your app's front door. ngrok is a globally distributed reverse proxy that secures, protects and accelerates your applications and network services, no matter where you run them. ngrok supports delivering HTTP, TLS or TCP-based applications.",
     "homepage": "https://ngrok.com/",
     "license": {
@@ -9,30 +9,30 @@
     "notes": "ngrok v2 is no longer supported.",
     "architecture": {
         "64bit": {
-            "url": "https://bin.equinox.io/a/bgYGY4zpmkR/ngrok-v3-3.29.0-windows-amd64.zip",
-            "hash": "e4b6f7f74cfd20fbea4b8f266904ce488cc068e434be73b627e944af98eae8e9"
+            "url": "https://bin.ngrok.com/a/7CSBSEZTqUr/ngrok-v3-3.37.6-windows-amd64.zip",
+            "hash": "add0599359f6f5f80d2053f3c2d9edb52baf8a1cb50724a70dddceee10838069"
         },
         "32bit": {
-            "url": "https://bin.equinox.io/a/4beZgyTMPgh/ngrok-v3-3.29.0-windows-386.zip",
-            "hash": "4e1f0e3b01a9f22f2dead2ba6078fd77158830df62fa2b5c41465b8d9bb8bfbe"
+            "url": "https://bin.ngrok.com/a/dgSSnm3X1Go/ngrok-v3-3.37.6-windows-386.zip",
+            "hash": "9e3e3e4df259ed462f4e4a14cd72f5faec843ff7c074e6c8e5fb610d707bcc58"
         }
     },
     "bin": "ngrok.exe",
     "checkver": {
-        "url": "https://dl.equinox.io/ngrok/ngrok-v3/stable/archive",
+        "url": "https://ngrok.com/download/archive/ngrok/ngrok-v3/stable/ngrok_archive",
         "regex": "/a/(?<hash64bit>\\w+)/ngrok-v[\\d.]+-([\\d.]+)-windows-amd64.zip(?:.|\\n)+?/a/(?<hash32bit>\\w+)/ngrok-v[\\d.]+-([\\d.]+)-windows-386.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://bin.equinox.io/a/$matchHash64bit/ngrok-v$majorVersion-$version-windows-amd64.zip"
+                "url": "https://bin.ngrok.com/a/$matchHash64bit/ngrok-v$majorVersion-$version-windows-amd64.zip"
             },
             "32bit": {
-                "url": "https://bin.equinox.io/a/$matchHash32bit/ngrok-v$majorVersion-$version-windows-386.zip"
+                "url": "https://bin.ngrok.com/a/$matchHash32bit/ngrok-v$majorVersion-$version-windows-386.zip"
             }
         },
         "hash": {
-            "url": "https://dl.equinox.io/ngrok/ngrok-v3/stable/archive",
+            "url": "https://ngrok.com/download/archive/ngrok/ngrok-v3/stable/ngrok_archive",
             "regex": "$url(?:.|\\n)+?value=\"(\\w+)"
         }
     }

@@ -1,5 +1,5 @@
 {
-    "version": "4.0.1",
+    "version": "4.1.1",
     "description": "A unified analytics engine for large-scale data processing.",
     "homepage": "https://spark.apache.org/",
     "license": "Apache-2.0",
@@ -7,20 +7,20 @@
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://dlcdn.apache.org/spark/spark-4.0.1/spark-4.0.1-bin-hadoop3.tgz",
-    "hash": "sha512:9198602c6b931b46686f32a25793b3bb58b522cd98a5b6a94d2484bae32e3e7b520d60f4bffe72ba29ff5c9ecd862443841ee47dde0f2f9e1bf52539f7baef41",
-    "extract_dir": "spark-4.0.1-bin-hadoop3",
+    "url": "https://archive.apache.org/dist/spark/spark-4.1.1/spark-4.1.1-bin-hadoop3.tgz",
+    "hash": "sha512:9f39e588e7d4c70ec0126109679f386eb9bfa26979dc42669fe4f3e3446a082dca8ffbf5e8dbe8ad411cf2ce5bf803ce670341620bf52d968067acf86626106e",
+    "extract_dir": "spark-4.1.1-bin-hadoop3",
     "env_add_path": "bin",
     "env_set": {
         "SPARK_HOME": "$dir"
     },
     "persist": "conf",
     "checkver": {
-        "url": "https://spark.apache.org/downloads.html",
-        "regex": "version: ([\\d.]+)"
+        "url": "https://spark.apache.org/js/downloads.js",
+        "regex": "addRelease\\(\"([\\d.]+)\","
     },
     "autoupdate": {
-        "url": "https://dlcdn.apache.org/spark/spark-$version/spark-$version-bin-hadoop3.tgz",
+        "url": "https://archive.apache.org/dist/spark/spark-$version/spark-$version-bin-hadoop3.tgz",
         "hash": {
             "url": "$url.sha512",
             "regex": "$basename: ([A-F0-9\\s]+)$"

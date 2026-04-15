@@ -1,15 +1,30 @@
 {
-    "version": "1.30.7",
+    "version": "1.31.10",
     "description": "Command-line program to download image-galleries and -collections from several image hosting sites.",
     "homepage": "https://github.com/mikf/gallery-dl",
     "license": "GPL-2.0-only",
-    "url": "https://github.com/mikf/gallery-dl/releases/download/v1.30.7/gallery-dl.exe",
-    "hash": "b12f38f7f62b6dbcb7ca6b8f5b4049fdd73910ef59e9651f3d5fa0fe85344b7b",
-    "bin": "gallery-dl.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mikf/gallery-dl/releases/download/v1.31.10/gallery-dl.exe",
+            "hash": "aaeae0e65f056efe3ff8a6ea8ffe4d39ccfef712f14ac7ab8bbf04a61ed50202"
+        },
+        "32bit": {
+            "url": "https://github.com/mikf/gallery-dl/releases/download/v1.31.10/gallery-dl_x86.exe#/gallery-dl.exe",
+            "hash": "9282020d9942d434bfc4d4da17bdf37336bb4e52414743f683c53b7de1ab66db"
+        }
+    },
     "pre_install": "if (-not (Test-Path \"$persist_dir\\gallery-dl.conf\")) { Set-Content \"$dir\\gallery-dl.conf\" '{}' -Encoding Ascii | Out-Null }",
+    "bin": "gallery-dl.exe",
     "persist": "gallery-dl.conf",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/mikf/gallery-dl/releases/download/v$version/gallery-dl.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mikf/gallery-dl/releases/download/v$version/gallery-dl.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/mikf/gallery-dl/releases/download/v$version/gallery-dl_x86.exe#/gallery-dl.exe"
+            }
+        }
     }
 }

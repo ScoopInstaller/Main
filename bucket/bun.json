@@ -1,5 +1,5 @@
 {
-    "version": "1.2.22",
+    "version": "1.3.12",
     "description": "Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.",
     "homepage": "https://bun.sh/",
     "license": "MIT",
@@ -9,27 +9,53 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/oven-sh/bun/releases/download/bun-v1.2.22/bun-windows-x64.zip",
-                "https://github.com/oven-sh/bun/releases/download/bun-v1.2.22/bun-windows-x64-baseline.zip"
+                "https://github.com/oven-sh/bun/releases/download/bun-v1.3.12/bun-windows-x64.zip",
+                "https://github.com/oven-sh/bun/releases/download/bun-v1.3.12/bun-windows-x64-baseline.zip"
             ],
             "hash": [
-                "3a28c685b47a159c5707d150accb5b4903c30f1e7b4dd01bb311d4112bdeb452",
-                "c44de73dc21c7140a8e15883c28abed60612196faaec9a60c275534280a49f59"
+                "841ff9c5dffcaa3a2620d1e3f87ee500f32a4ca830b001cade7a3479609d4a89",
+                "2d3d5f88a95943563f56f3643c8f4e2422261018f6d915329bb2fb33f7256ba2"
             ]
+        },
+        "arm64": {
+            "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.3.12/bun-windows-aarch64.zip",
+            "hash": "6cac24eab41e8d7e6b39b4dd3b4bca5ea0d11a1f43f94126bdff6e849f9f7f51"
         }
     },
     "pre_install": [
-        "$avx2 = Start-Job -ScriptBlock {",
-        "    Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
-        "    return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
-        "} | Receive-Job -Wait -AutoRemoveJob",
-        "$target = 'bun-windows-x64'",
-        "if (-not $avx2) {",
-        "    $target += '-baseline'",
+        "# Migrate legacy Bun data if it exists and the new persist directory doesn't exist",
+        "$legacy_bun = Join-Path -Path $env:USERPROFILE -ChildPath '.bun'",
+        "if ((Test-Path $legacy_bun) -and -not (Test-Path $persist_dir)) {",
+        "    Write-Host \"Migrating legacy Bun data from '$legacy_bun' to '$persist_dir'.\" -ForegroundColor Yellow",
+        "    Move-Item $legacy_bun $persist_dir -Force",
+        "} elseif ((Test-Path $legacy_bun) -and (Test-Path $persist_dir)) {",
+        "    Write-Host \"Found both '$legacy_bun' and '$persist_dir'. Skipping auto-migration; please migrate manually if needed.\" -ForegroundColor Yellow",
+        "}",
+        "",
+        "# Extract the appropriate binary based on architecture and CPU features",
+        "if ($architecture -eq 'arm64') {",
+        "    $target = 'bun-windows-aarch64'",
+        "} else {",
+        "    $avx2 = Start-Job -ScriptBlock {",
+        "        Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
+        "        return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
+        "    } | Receive-Job -Wait -AutoRemoveJob",
+        "    $target = 'bun-windows-x64'",
+        "    if (-not $avx2) {",
+        "        $target += '-baseline'",
+        "    }",
         "}",
         "Move-Item \"$dir\\$target\\bun.exe\" \"$dir\\bun.exe\"",
         "Remove-Item \"$dir\\bun-windows-*\" -Recurse"
     ],
+    "installer": {
+        "script": "Add-Path -Path \"$persist_dir\\bin\" -Global:$global -Force"
+    },
+    "env_set": {
+        "BUN_INSTALL": "$persist_dir",
+        "BUN_INSTALL_BIN": "$persist_dir\\bin",
+        "BUN_INSTALL_GLOBAL_DIR": "$persist_dir\\install\\global"
+    },
     "bin": [
         "bun.exe",
         [
@@ -38,6 +64,13 @@
             "x"
         ]
     ],
+    "persist": [
+        "bin",
+        "install"
+    ],
+    "uninstaller": {
+        "script": "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global"
+    },
     "checkver": {
         "github": "https://github.com/oven-sh/bun",
         "re": "bun-v([\\d.]+)"
@@ -49,6 +82,9 @@
                     "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64.zip",
                     "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64-baseline.zip"
                 ]
+            },
+            "arm64": {
+                "url": "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-aarch64.zip"
             }
         },
         "hash": {
