@@ -1,0 +1,30 @@
+{
+    "version": "4.4.3",
+    "description": "Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found).",
+    "homepage": "https://spotdl.readthedocs.io/en/latest/",
+    "license": "MIT",
+    "suggest": {
+        "FFmpeg": [
+            "main/ffmpeg",
+            "main/ffmpeg-essentials",
+            "main/ffmpeg-shared"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/spotDL/spotify-downloader/releases/download/v4.4.3/spotdl-4.4.3-win32.exe#/spotdl.exe",
+            "hash": "8d833f87d41b5f0ac8f0d341db01f02267fa34ffa469bca5e2824b71f48f4881"
+        }
+    },
+    "bin": "spotdl.exe",
+    "checkver": {
+        "github": "https://github.com/spotDL/spotify-downloader"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/spotDL/spotify-downloader/releases/download/v$version/spotdl-$version-win32.exe#/spotdl.exe"
+            }
+        }
+    }
+}
