@@ -41,9 +41,16 @@
             }
         }
     },
+    "post_install": [
+        "$real = (Get-Item $dir -Force).Target; if (!$real) { $real = $dir }",
+        "Set-Content \"$dir\\fix.ps1\" @(\"sc.exe config sshd binPath= ('`\"${real}\\sshd.exe`\"')\", \"sc.exe config ssh-agent binPath= ('`\"${real}\\ssh-agent.exe`\"')\") -Encoding UTF8",
+        "Set-Content \"$dir\\autostart-sshd.ps1\" @('Set-Service sshd -StartupType Automatic', 'Set-Service ssh-agent -StartupType Automatic') -Encoding UTF8"
+    ],
     "notes": [
         "Windows 10 or higher includes this build of OpenSSH in the system itself, hence it is recommended to use the system OpenSSH there.",
         "Run 'sudo $dir\\install-sshd.ps1' to install sshd and ssh-agent as a service.",
-        "Run 'sudo $dir\\uninstall-sshd.ps1' to uninstall the services."
+        "Run 'sudo $dir\\uninstall-sshd.ps1' to uninstall the services.",
+        "Run 'sudo $dir\\fix.ps1' to fix service binPath to absolute path.",
+        "Run 'sudo $dir\\autostart-sshd.ps1' to set sshd and ssh-agent to start automatically."
     ]
 }
