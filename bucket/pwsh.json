@@ -7,8 +7,14 @@
         "Since Scoop uses pwsh.exe internally, to update PowerShell Core itself,",
         "run `scoop update pwsh` from Windows PowerShell, i.e. powershell.exe.",
         "",
-        "Add PowerShell Core as a explorer context menu by running: '$dir\\install-explorer-context.reg'",
-        "For file context menu, run '$dir\\install-file-context.reg'"
+        "Add PowerShell Core as a explorer context menu by running:",
+        "$dir\\install-explorer-context.reg",
+        "",
+        "For file context menu, run:",
+        "$dir\\install-file-context.reg",
+        "",
+        "Add Windows Terminal PowerShell Profile by running:",
+        "powershell -ExecutionPolicy Bypass -File $dir\\install-profile.ps1"
     ],
     "architecture": {
         "64bit": {
@@ -39,6 +45,9 @@
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",
+        "}",
+        "if (Test-Path \"$bucketsdir\\main\\scripts\\pwsh\\install-profile.ps1\") {",
+        "    Copy-Item \"$bucketsdir\\main\\scripts\\pwsh\\install-profile.ps1\" \"$dir\\install-profile.ps1\" -Force",
         "}"
     ],
     "bin": "pwsh.exe",
