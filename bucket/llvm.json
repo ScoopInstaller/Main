@@ -1,17 +1,13 @@
 {
-    "version": "22.1.1",
+    "version": "22.1.4",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org",
     "license": "NCSA",
     "notes": "Since upstream does NOT provide pre-compiled binary of arm64 for every release, LLVM arm64 is now a separate manifest: 'llvm-arm64'.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.1/LLVM-22.1.1-win64.exe#/dl.7z",
-            "hash": "e7fec06b4696be82bf8d4b846ebf6b810ed6f27d9eefdce46baf5330ea6e9ed4"
-        },
-        "32bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/LLVM-21.1.8-win32.exe#/dl.7z",
-            "hash": "0492c5c292e515ebbbc2533671e54c5895fe209e534812313f64257407233181"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.4/LLVM-22.1.4-win64.exe#/dl.7z",
+            "hash": "21b70c77e26e69cc14aa6e1023568868476748586bf14a978915ed6b3cf76ea1"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse -ErrorAction Ignore",
@@ -28,9 +24,6 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
             }
         }
     }

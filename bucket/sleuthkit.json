@@ -1,0 +1,48 @@
+{
+    "version": "4.15.0",
+    "description": "A collection of command line digital forensics tools that allow you to investigate volume and file system data.",
+    "homepage": "https://www.sleuthkit.org/sleuthkit/",
+    "license": {
+        "identifier": "CPL-1.0,IPL-1.0,Apache-2.0,BSD-3-Clause,MIT,GPL-2.0-only,GPL-3.0-or-later,ISC",
+        "url": "https://raw.githubusercontent.com/sleuthkit/sleuthkit/refs/heads/develop/licenses/README.md"
+    },
+    "url": "https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.15.0/sleuthkit-4.15.0-win32.zip",
+    "hash": "c2ebab8105b893d97bd8ce35b88e01985e2a106efc97f03adf95840a631b20ce",
+    "extract_dir": "sleuthkit-4.15.0-win32",
+    "bin": [
+        "bin\\blkcalc.exe",
+        "bin\\blkcat.exe",
+        "bin\\blkls.exe",
+        "bin\\blkstat.exe",
+        "bin\\fcat.exe",
+        "bin\\ffind.exe",
+        "bin\\fls.exe",
+        "bin\\fsstat.exe",
+        "bin\\hfind.exe",
+        "bin\\icat.exe",
+        "bin\\ifind.exe",
+        "bin\\ils.exe",
+        "bin\\img_cat.exe",
+        "bin\\img_stat.exe",
+        "bin\\istat.exe",
+        "bin\\jcat.exe",
+        "bin\\jls.exe",
+        "bin\\mmcat.exe",
+        "bin\\mmls.exe",
+        "bin\\mmstat.exe",
+        "bin\\pstat.exe",
+        "bin\\tsk_comparedir.exe",
+        "bin\\tsk_gettimes.exe",
+        "bin\\tsk_imageinfo.exe",
+        "bin\\tsk_loaddb.exe",
+        "bin\\tsk_recover.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/sleuthkit/sleuthkit",
+        "regex": "releases/tag/sleuthkit-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-$version/sleuthkit-$version-win32.zip",
+        "extract_dir": "sleuthkit-$version-win32"
+    }
+}

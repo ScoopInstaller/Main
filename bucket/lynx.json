@@ -10,15 +10,29 @@
         "vcredist": "extras/vcredist2022"
     },
     "innosetup": true,
-    "url": [
-        "https://invisible-island.net/archives/lynx/current/lynx-newssl2.9.2-setup.exe",
-        "https://slproweb.com/download/Win32OpenSSL_Light-3_0_18.exe"
+    "url": "https://invisible-island.net/archives/lynx/current/lynx-newssl2.9.2-setup.exe",
+    "hash": "12165dfb4e0608a7cd25a088e439a64b6573fff07c32757e989211a04d3b20d7",
+    "pre_install": [
+        "if (-not (installed cacert)) { throw 'cacert is required but not installed. Please install cacert first.' }",
+        "if (-not (Test-Path \"$persist_dir\\lynx.cfg\")) {",
+        "    $global_cacert = installed cacert $true",
+        "    Add-Content \"$dir\\lynx.cfg\" -Value @(\"SSL_CERT_FILE:`\"$(appdir cacert $global_cacert)\\current\\cacert.pem`\"\", \"FORCE_SSL_PROMPT:PROMPT\") -Encoding Ascii",
+        "}",
+        "",
+        "# Get the latest OpenSSL 3.0.x for Win32/32bit from slproweb/opensslhashes",
+        "$result = Invoke-RestMethod -Uri 'https://raw.githubusercontent.com/slproweb/opensslhashes/refs/heads/master/win32_openssl_hashes.json'",
+        "$openssl_info = $result.files.PSObject.Properties | Where-Object {",
+        "    $_.Value.light -eq $true -and",
+        "    $_.Value.installer -eq 'exe' -and",
+        "    $_.Value.bits -eq '32' -and",
+        "    $_.Value.arch -eq 'INTEL' -and",
+        "    $_.Value.basever -like '3.0.*'",
+        "} | Sort-Object -Property basever -Descending | Select-Object -First 1 -ExpandProperty Value",
+        "info \"Downloading OpenSSL v$($openssl_info.basever) ...\"",
+        "Invoke-WebRequest -Uri $openssl_info.url -OutFile \"$dir\\openssl.exe\"",
+        "if (-not (Test-Path \"$dir\\openssl.exe\")) { throw 'Failed to download OpenSSL.' }",
+        "Expand-InnoArchive -Path \"$dir\\openssl.exe\" -DestinationPath $dir -Removal"
     ],
-    "hash": [
-        "12165dfb4e0608a7cd25a088e439a64b6573fff07c32757e989211a04d3b20d7",
-        "00ee55813dd867ef1e6d2289e15134f4918029047e055612b88e489af20d986f"
-    ],
-    "pre_install": "if (!(Test-Path \"$persist_dir\\lynx.cfg\")) { Add-Content \"$dir\\lynx.cfg\" -Value @(\"SSL_CERT_FILE:`\"$(appdir cacert $global)\\current\\cacert.pem`\"\", \"FORCE_SSL_PROMPT:PROMPT\") -Encoding Ascii }",
     "bin": [
         [
             "lynx.exe",

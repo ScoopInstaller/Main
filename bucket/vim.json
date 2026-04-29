@@ -1,5 +1,5 @@
 {
-    "version": "9.2.0125",
+    "version": "9.2.0390",
     "description": "A highly configurable text editor",
     "homepage": "https://www.vim.org",
     "license": "Vim",
@@ -9,16 +9,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0125/gvim_9.2.0125_x64_signed.zip",
-            "hash": "442fd57021c2b1c63560a501d3f49cbba3dfc8f48733b63ca66f5af92b74ab96"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0390/gvim_9.2.0390_x64_signed.zip",
+            "hash": "68902a93581cd6eab905bf42174a3dc884e0d456672dc51bf1621b94e1153ce1"
         },
         "32bit": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0125/gvim_9.2.0125_x86_signed.zip",
-            "hash": "af570ec6506e217ec4ec0ae0d4cf42c8e6486e7d67557e8453170930f1cdd88f"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0390/gvim_9.2.0390_x86_signed.zip",
+            "hash": "30f67bdb29d5348d8755e6714d5d2736368f7763f8108fadd741c9b2ab58f946"
         },
         "arm64": {
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0125/gvim_9.2.0125_arm64_signed.zip",
-            "hash": "45424e01a092a49ad9db39d30f47057223c4af747c2c0eb5d42a29628985d24b"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.2.0390/gvim_9.2.0390_arm64_signed.zip",
+            "hash": "fe9a14810357dcdf0e0bb4c6f1e5a8cc15689f23b835cc57b9ca437b99c8fd91"
         }
     },
     "extract_dir": "vim/vim92",
@@ -101,7 +101,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/50428480/releases?per_page=45",
+        "url": "https://api.github.com/repos/vim/vim-win32-installer/releases?per_page=45",
         "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /signed\\.zip/i)].browser_download_url",
         "regex": "(?i)download/(?<tag>[^/]+)/gvim_([\\d.]+)_(?:x|arm)"
     },

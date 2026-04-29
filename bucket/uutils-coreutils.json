@@ -1,5 +1,5 @@
 {
-    "version": "0.7.0",
+    "version": "0.8.0",
     "description": "A cross-platform Rust reimplementation of GNU coreutils (binaries compiled with MSVC), with some options or behaviors potentially differing from GNU coreutils.",
     "homepage": "https://uutils.github.io/coreutils/",
     "license": {
@@ -11,19 +11,19 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.7.0/coreutils-0.7.0-x86_64-pc-windows-msvc.zip",
-            "hash": "df878e29fc738bc4273e85c9d2c35ab898e31568021e6baf1c330c7961943c8f",
-            "extract_dir": "coreutils-0.7.0-x86_64-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.8.0/coreutils-0.8.0-x86_64-pc-windows-msvc.zip",
+            "hash": "db464cf2a6ecbfd42c85f46ed2d749be574df4df47feca1f08988fd760f324f3",
+            "extract_dir": "coreutils-0.8.0-x86_64-pc-windows-msvc"
         },
         "32bit": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.7.0/coreutils-0.7.0-i686-pc-windows-msvc.zip",
-            "hash": "1d0ace9ce2ff51e2bb611f543ec6a4c887fb35b167b725815edd0068711589f5",
-            "extract_dir": "coreutils-0.7.0-i686-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.8.0/coreutils-0.8.0-i686-pc-windows-msvc.zip",
+            "hash": "2ffe88b9d81fab6a1625a5f02737c8ab164741447403b92cb84377ac37e1bb39",
+            "extract_dir": "coreutils-0.8.0-i686-pc-windows-msvc"
         },
         "arm64": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.7.0/coreutils-0.7.0-aarch64-pc-windows-msvc.zip",
-            "hash": "372323492402f3249876599f1ff99aad9bd2aecaa217b1cb146608ef58d3ed4b",
-            "extract_dir": "coreutils-0.7.0-aarch64-pc-windows-msvc"
+            "url": "https://github.com/uutils/coreutils/releases/download/0.8.0/coreutils-0.8.0-aarch64-pc-windows-msvc.zip",
+            "hash": "1dfa62f18b64c70b664936b06fb1be20f0f6afa9ff041dd95dda629e987435a9",
+            "extract_dir": "coreutils-0.8.0-aarch64-pc-windows-msvc"
         }
     },
     "post_install": [
@@ -32,13 +32,11 @@
         "    shim $_.FullName $global $_.BaseName",
         "}"
     ],
-    "uninstaller": {
-        "script": [
-            "Get-ChildItem -Path $dir -File -Filter '*.exe' | ForEach-Object {",
-            "    rm_shim $_.BaseName $(shimdir $global) $app",
-            "}"
-        ]
-    },
+    "pre_uninstall": [
+        "Get-ChildItem -Path $dir -File -Filter '*.exe' | ForEach-Object {",
+        "    rm_shim $_.BaseName $(shimdir $global) $app",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/uutils/coreutils"
     },
