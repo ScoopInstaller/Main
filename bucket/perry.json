@@ -1,0 +1,36 @@
+{
+    "version": "0.5.386",
+    "description": "Native TypeScript compiler — compiles .ts directly to native executables via LLVM.",
+    "homepage": "https://www.perryts.com",
+    "license": "MIT",
+    "notes": [
+        "Perry shells out to clang for the IR -> object step. The 'main/llvm'",
+        "dependency installs the official MSVC-default LLVM, which Perry needs",
+        "for Windows-native object emission. If you have multiple clangs on PATH,",
+        "set PERRY_LLVM_CLANG to the full path of an MSVC-default clang.exe.",
+        "",
+        "Verify with: perry doctor",
+        "First compile: perry compile hello.ts -o hello.exe"
+    ],
+    "depends": "main/llvm",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PerryTS/perry/releases/download/v0.5.386/perry-windows-x86_64.zip",
+            "hash": "8c833333ac5ee4279087b6fda1e1b3b01386da0cfe7d61467d3cb27147d284f4"
+        }
+    },
+    "bin": "perry.exe",
+    "checkver": {
+        "github": "https://github.com/PerryTS/perry"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PerryTS/perry/releases/download/v$version/perry-windows-x86_64.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        }
+    }
+}
