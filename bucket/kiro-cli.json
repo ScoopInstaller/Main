@@ -1,5 +1,4 @@
 {
-    "##": "Original source script provided by Amazon => https://cli.kiro.dev/install.ps1",
     "version": "2.2.0",
     "description": "A CLI utility developed by Amazon that allows you to interact with Kiro's AI agents directly from your terminal.",
     "homepage": "https://kiro.dev/cli/",
@@ -13,6 +12,7 @@
             "hash": "bd95c91d9e8b4bf7b796142b0edb517169ebcc18b1f578b056736660e09bea3d"
         }
     },
+    "extract_dir": "LocalApp\\Kiro-Cli",
     "bin": "kiro-cli.exe",
     "checkver": {
         "url": "https://prod.download.cli.kiro.dev/stable/latest/manifest.json",
@@ -21,9 +21,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://prod.download.cli.kiro.dev/stable/$version/kiro-cli-x86_64-pc-windows-msvc.msi"
+                "url": "https://prod.download.cli.kiro.dev/stable/$version/kiro-cli-x86_64-pc-windows-msvc.msi",
+                "hash": {
+                    "url": "https://prod.download.cli.kiro.dev/stable/latest/manifest.json",
+                    "jsonpath": "$.packages[?(@.targetTriple == 'x86_64-pc-windows-msvc')].sha256"
+                }
             }
         }
-    },
-    "extract_dir": "LocalApp/Kiro-Cli"
+    }
 }
