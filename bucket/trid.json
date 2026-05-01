@@ -15,11 +15,13 @@
             ]
         }
     },
-    "pre_install": "Expand-InnoArchive -Path \"$dir\\TrID_setup.exe\" -DestinationPath $dir -Removal",
+    "installer": {
+        "script": "Expand-InnoArchive -Path \"$dir\\TrID_setup.exe\" -Removal"
+    },
     "bin": "trid.exe",
     "checkver": {
-        "regex": "(?smi)Win32.*?TrID v([\\d\\.]*).*?(\\d{2})\\/(\\d{2})\\/(\\d{2})",
-        "replace": "${1}-${4}.${3}.${2}"
+        "regex": "(?si)Win/x86-64.+?TrID v?([\\d.]+).+?(?<day>\\d{2})/(?<month>\\d{2})/(?<year>\\d+)",
+        "replace": "${1}-${year}.${month}.${day}"
     },
     "autoupdate": {
         "architecture": {
