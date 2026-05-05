@@ -1,14 +1,29 @@
 {
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "App for using new feature control APIs available in Windows 10 version 2004 or newer.",
     "homepage": "https://github.com/thebookisclosed/ViVe",
     "license": "GPL-3.0-only",
-    "url": "https://github.com/thebookisclosed/ViVe/releases/download/v0.3.3/ViveTool-v0.3.3.zip",
-    "hash": "59d1e792edcc001a319c16435a03d203975bf50eb38bd55ca34370900606f9f0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/thebookisclosed/ViVe/releases/download/v0.3.4/ViVeTool-v0.3.4-IntelAmd.zip",
+            "hash": "cc27f073f3fe5dd2c3d947faf558fd4b2f8e34454f812689b0d65ee8a52e4147"
+        },
+        "arm64": {
+            "url": "https://github.com/thebookisclosed/ViVe/releases/download/v0.3.4/ViVeTool-v0.3.4-SnapdragonArm64.zip",
+            "hash": "30ad9a4912686355bfce60e1d7bef608735475b7e2160d67418eed8f5e3ba8c7"
+        }
+    },
     "pre_install": "if ([Environment]::OSVersion.Version.Build -lt 18963) { error 'Windows build 18963 or newer is required.'; break }",
     "bin": "ViVeTool.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/thebookisclosed/ViVe/releases/download/v$version/ViveTool-v$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/thebookisclosed/ViVe/releases/download/v$version/ViVeTool-v$version-IntelAmd.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/thebookisclosed/ViVe/releases/download/v$version/ViVeTool-v$version-SnapdragonArm64.zip"
+            }
+        }
     }
 }

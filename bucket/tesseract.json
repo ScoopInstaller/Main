@@ -1,7 +1,7 @@
 {
-    "version": "5.3.3.20231005",
+    "version": "5.5.0.20241111",
     "description": "Open Source OCR Engine",
-    "homepage": "https://github.com/UB-Mannheim/tesseract/wiki",
+    "homepage": "https://tesseract-ocr.github.io",
     "license": "Apache-2.0",
     "notes": [
         "Recognition data files can be installed via \"scoop install tesseract-languages\"",
@@ -12,15 +12,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-5.3.3.20231005.exe#/dl.7z_",
-            "hash": "79af1f9153b8ff988baffaa164fc70799950078f887e2c93dc3fa7efed674b21"
+            "url": "https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe#/dl.7z",
+            "hash": "f3fc4236425b690c8be756f35793f77394ee004be0a6460a440c754d892f68bc"
         }
     },
-    "pre_install": "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Removal -Switches '-x!*.exe.nsis -x!$PLUGINSDIR'",
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
     "post_install": [
         "$langdir = versiondir tesseract-languages current $global",
         "if (Test-Path $langdir) {",
-        "   env \"TESSDATA_PREFIX\" $global $langdir",
+        "   Set-EnvVar -Name TESSDATA_PREFIX -Value $langdir -Global:$global",
         "}"
     ],
     "env_set": {
@@ -47,13 +47,13 @@
     ],
     "persist": "tessdata",
     "checkver": {
-        "url": "https://digi.bib.uni-mannheim.de/tesseract/?C=M;O=D",
-        "regex": "tesseract-ocr-w64-setup-([\\d.]+)\\.exe"
+        "github": "https://github.com/tesseract-ocr/tesseract",
+        "regex": "tesseract-ocr-w64-setup-([\\d.]+).exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-$version.exe#/dl.7z_"
+                "url": "https://github.com/tesseract-ocr/tesseract/releases/download/$matchHead/tesseract-ocr-w64-setup-$version.exe#/dl.7z"
             }
         }
     }

@@ -1,0 +1,34 @@
+{
+    "version": "1.5.0",
+    "description": "Pretty fancy and modern terminal file manager",
+    "homepage": "https://superfile.netlify.app/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/yorukot/superfile/releases/download/v1.5.0/superfile-windows-v1.5.0-amd64.zip",
+            "hash": "f5204a25922a4a003681958c1e0f92983f0be82ddc5522422be19de2944daddd",
+            "extract_dir": "dist/superfile-windows-v1.5.0-amd64"
+        },
+        "arm64": {
+            "url": "https://github.com/yorukot/superfile/releases/download/v1.5.0/superfile-windows-v1.5.0-arm64.zip",
+            "hash": "77a602096659f575e3e1da5e860dee5a2f8c05955808f8ecdfba40ecaca9d876",
+            "extract_dir": "dist/superfile-windows-v1.5.0-arm64"
+        }
+    },
+    "bin": "spf.exe",
+    "checkver": {
+        "github": "https://github.com/yorukot/superfile"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/yorukot/superfile/releases/download/v$version/superfile-windows-v$version-amd64.zip",
+                "extract_dir": "dist/superfile-windows-v$version-amd64"
+            },
+            "arm64": {
+                "url": "https://github.com/yorukot/superfile/releases/download/v$version/superfile-windows-v$version-arm64.zip",
+                "extract_dir": "dist/superfile-windows-v$version-arm64"
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "version": "0.7.7",
+    "description": "A fullstack app framework for web, desktop, mobile, and more.",
+    "homepage": "https://dioxuslabs.com",
+    "license": "Apache-2.0|MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/DioxusLabs/dioxus/releases/download/v0.7.7/dx-x86_64-pc-windows-msvc.zip",
+            "hash": "bd0b184690641afab376f3ed79fcd2d7b0ed1954d13c8509b7b900022a6392fa"
+        },
+        "arm64": {
+            "url": "https://github.com/DioxusLabs/dioxus/releases/download/v0.7.7/dx-aarch64-pc-windows-msvc.zip",
+            "hash": "da0c3e253bb6c0bee1b649edc4c80e9d2da6555f031467d2755a2ffa6bcf8ea6"
+        }
+    },
+    "bin": "dx.exe",
+    "checkver": {
+        "github": "https://github.com/DioxusLabs/dioxus"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/DioxusLabs/dioxus/releases/download/v$version/dx-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$baseurl/dx-x86_64-pc-windows-msvc.sha256"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/DioxusLabs/dioxus/releases/download/v$version/dx-aarch64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$baseurl/dx-aarch64-pc-windows-msvc.sha256"
+                }
+            }
+        }
+    }
+}

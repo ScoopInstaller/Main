@@ -1,0 +1,60 @@
+{
+    "version": "0.128.0",
+    "description": "OpenAI's Codex AI coding assistant",
+    "homepage": "https://github.com/openai/codex",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/openai/codex/releases/download/rust-v0.128.0/codex-x86_64-pc-windows-msvc.exe#/codex.exe",
+                "https://github.com/openai/codex/releases/download/rust-v0.128.0/codex-command-runner-x86_64-pc-windows-msvc.exe#/codex-command-runner.exe",
+                "https://github.com/openai/codex/releases/download/rust-v0.128.0/codex-windows-sandbox-setup-x86_64-pc-windows-msvc.exe#/codex-windows-sandbox-setup.exe"
+            ],
+            "hash": [
+                "85a75faf207720a9a3032f6fa77664b537e67884eb6a7e0c954d22e7f864a5ae",
+                "6935c0f69cc6338795ec742402fd1c60ac6b8c5c366336757ff9127338f5eb1a",
+                "3ca16baea105a34691f3b77fb6e2e1dec21fd56e2c929d9e4487fc1484400a22"
+            ]
+        },
+        "arm64": {
+            "url": [
+                "https://github.com/openai/codex/releases/download/rust-v0.128.0/codex-aarch64-pc-windows-msvc.exe#/codex.exe",
+                "https://github.com/openai/codex/releases/download/rust-v0.128.0/codex-command-runner-aarch64-pc-windows-msvc.exe#/codex-command-runner.exe",
+                "https://github.com/openai/codex/releases/download/rust-v0.128.0/codex-windows-sandbox-setup-aarch64-pc-windows-msvc.exe#/codex-windows-sandbox-setup.exe"
+            ],
+            "hash": [
+                "4acf84401bf6b3f53980303826f8231af7e45ad88ce1d65adbcdb893a0cc1db6",
+                "13cd8caa103559449c9b4bb7b5e57211f6c100fe87e2a285b3a11e2f2b91a65d",
+                "1277441d91bebe53bc11866c8a89eb2badf8d7ed819053a47396a2b9c45ff865"
+            ]
+        }
+    },
+    "bin": [
+        [
+            "codex.exe",
+            "codex"
+        ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/openai/codex/releases",
+        "regex": "rust-v(\\d+\\.\\d+\\.\\d+)(?![^\\d]*alpha|[^\\d]*beta|[^\\d]*rc|[^\\d]*preview)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/openai/codex/releases/download/rust-v$version/codex-x86_64-pc-windows-msvc.exe#/codex.exe",
+                    "https://github.com/openai/codex/releases/download/rust-v$version/codex-command-runner-x86_64-pc-windows-msvc.exe#/codex-command-runner.exe",
+                    "https://github.com/openai/codex/releases/download/rust-v$version/codex-windows-sandbox-setup-x86_64-pc-windows-msvc.exe#/codex-windows-sandbox-setup.exe"
+                ]
+            },
+            "arm64": {
+                "url": [
+                    "https://github.com/openai/codex/releases/download/rust-v$version/codex-aarch64-pc-windows-msvc.exe#/codex.exe",
+                    "https://github.com/openai/codex/releases/download/rust-v$version/codex-command-runner-aarch64-pc-windows-msvc.exe#/codex-command-runner.exe",
+                    "https://github.com/openai/codex/releases/download/rust-v$version/codex-windows-sandbox-setup-aarch64-pc-windows-msvc.exe#/codex-windows-sandbox-setup.exe"
+                ]
+            }
+        }
+    }
+}

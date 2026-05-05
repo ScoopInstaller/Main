@@ -1,66 +1,53 @@
 {
-    "version": "3.11.8.0",
+    "version": "3.13.12.0",
     "description": "Free, open-source and portable Python distribution for Windows",
     "homepage": "https://winpython.github.io",
     "license": "MIT",
     "notes": "For 32bit, please install 'versions/winpython3741'",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.11/3.11.8.0/Winpython64-3.11.8.0.exe#/dl.7z",
-            "hash": "0fa1bad92e7287632ce6c32c263c694b109b714b5d12e56063b2cd4281a71f7c",
-            "extract_dir": "WPy64-31180"
+            "url": "https://sourceforge.net/projects/winpython/WinPython_3.13/3.13.12.0/WinPython64-3.13.12.0slim.7z",
+            "hash": "00c5f73ec434bbc7c3450fc18cfd55fba050407153ee43637ac7a00f253b99d2",
+            "extract_dir": "WPy64-3.13.12.0"
         }
     },
     "bin": [
-        "scripts\\idle.bat",
-        "scripts\\idlex.bat",
-        "scripts\\qtconsole.bat",
-        "scripts\\winjupyter_lab.bat",
-        [
-            "scripts\\winjupyter_lab.bat",
-            "jupyter_lab"
-        ],
-        "scripts\\ipython_notebook.bat",
-        "scripts\\winpyzo.bat",
-        [
-            "scripts\\winpyzo.bat",
-            "pyzo"
-        ],
-        "scripts\\qtdesigner.bat",
-        "scripts\\qtlinguist.bat",
-        "scripts\\spyder.bat",
-        "scripts\\spyder_reset.bat",
-        "scripts\\winvscode.bat",
-        [
-            "scripts\\winvscode.bat",
-            "vscode"
-        ],
         "scripts\\python.bat",
         [
             "scripts\\python.bat",
             "python3"
         ],
-        "scripts\\wpcp.bat",
+        "Spyder.exe",
+        "scripts\\spyder_reset.bat",
+        "scripts\\upgrade_pip.bat",
         "scripts\\winidle.bat",
-        "scripts\\winidlex.bat",
-        "scripts\\winpython.bat",
         [
-            "scripts\\WinPython_PS_Prompt.ps1",
-            "winpython_prompt"
-        ]
+            "scripts\\winidle.bat",
+            "idle"
+        ],
+        "scripts\\winipython_notebook.bat",
+        [
+            "scripts\\winipython_notebook.bat",
+            "ipython_notebook"
+        ],
+        "scripts\\winjupyter_lab.bat",
+        [
+            "scripts\\winjupyter_lab.bat",
+            "jupyter_lab"
+        ],
+        "scripts\\winpython.bat",
+        "scripts\\winspyder.bat",
+        "scripts\\winvscode.bat",
+        [
+            "scripts\\winvscode.bat",
+            "vscode"
+        ],
+        "scripts\\wpcp.bat"
     ],
     "shortcuts": [
         [
             "IDLE (Python GUI).exe",
             "WinPython\\IDLE (Python GUI)"
-        ],
-        [
-            "IDLEX.exe",
-            "WinPython\\IDLEX"
-        ],
-        [
-            "IPython Qt Console.exe",
-            "WinPython\\IPython Qt Console"
         ],
         [
             "Jupyter Lab.exe",
@@ -71,24 +58,12 @@
             "WinPython\\Jupyter Notebook"
         ],
         [
-            "Pyzo.exe",
-            "WinPython\\Pyzo"
-        ],
-        [
-            "Qt Designer.exe",
-            "WinPython\\Qt Designer"
-        ],
-        [
-            "Qt Linguist.exe",
-            "WinPython\\Qt Linguist"
-        ],
-        [
             "Spyder.exe",
             "WinPython\\Spyder"
         ],
         [
             "Spyder reset.exe",
-            "WinPython\\Spyder reset"
+            "WinPython\\Reset Spyder Settings"
         ],
         [
             "VS Code.exe",
@@ -114,13 +89,13 @@
     "persist": "settings",
     "checkver": {
         "url": "https://winpython.github.io/md5_sha1.txt",
-        "regex": "Winpython64-([\\d.]+)\\.exe"
+        "regex": "WinPython64-([\\d.]+)slim\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/winpython/WinPython_$majorVersion.$minorVersion/$version/Winpython64-$version.exe#/dl.7z",
-                "extract_dir": "WPy64-$cleanVersion"
+                "url": "https://sourceforge.net/projects/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython64-$versionslim.7z",
+                "extract_dir": "WPy64-$version"
             }
         },
         "hash": {

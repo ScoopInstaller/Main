@@ -1,22 +1,33 @@
 {
-    "version": "8.15.7",
+    "version": "11.0.5",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v8.15.7/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "ace7fdad686a8839c6a175854900cf361a3726e672920258d555fcf382920ffe"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v11.0.5/pnpm-win32-x64.zip",
+            "hash": "c79329a48a5e67bbbf73578fe0ddd5ff1fef05ed8c9ce43cfdc675d4d173fa3a"
+        },
+        "arm64": {
+            "url": "https://github.com/pnpm/pnpm/releases/download/v11.0.5/pnpm-win32-arm64.zip",
+            "hash": "cfd2b1e75c16a9464e497f713232e0f4b624c6a54ab3fe06ab9ea8fb7e3c3278"
         }
     },
-    "bin": "pnpm.exe",
+    "bin": [
+        "pnpm.exe",
+        [
+            "pnpm.exe",
+            "pnpx",
+            "dlx"
+        ]
+    ],
     "checkver": {
         "script": [
             "# Using checkver script to check through all release tags",
             "$auth = Get-GitHubToken",
             "$head = @{}",
             "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repositories/50565430/releases'",
+            "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
             "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
@@ -31,6 +42,13 @@
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-arm64.zip"
+            }
+        }
     }
 }

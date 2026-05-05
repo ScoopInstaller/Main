@@ -1,31 +1,23 @@
 {
-    "version": "1.7.0",
+    "version": "1.8.0",
     "description": "Open source STM32 MCU programming toolset",
     "homepage": "https://github.com/stlink-org/stlink",
     "license": "BSD-3-Clause",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/stlink-org/stlink/releases/download/v1.7.0/stlink-1.7.0-x86_64-w64-mingw32.zip",
-            "hash": "54c24aa76d2fa6c53bc08f960b63a56feedcb634b85fd2596c67ecbb377ac2c4",
-            "extract_dir": "stlink-1.7.0-x86_64-w64-mingw32"
-        },
-        "32bit": {
-            "url": "https://github.com/stlink-org/stlink/releases/download/v1.7.0/stlink-1.7.0-i686-w64-mingw32.zip",
-            "hash": "321ab09abdc13826e215976953b1f280b9d327fa4130e1ec6a258ee393e97fab",
-            "extract_dir": "stlink-1.7.0-i686-w64-mingw32"
-        }
-    },
-    "env_add_path": "bin",
+    "url": "https://github.com/stlink-org/stlink/releases/download/v1.8.0/stlink-1.8.0-win32.zip",
+    "hash": "134e479b4039d52376378f2eb5b97e6028ab5b36b178ea32e49f75693e51aae3",
+    "extract_dir": "stlink-1.8.0-win32",
+    "bin": [
+        "bin/st-flash.exe",
+        "bin/st-info.exe",
+        "bin/st-trace.exe",
+        "bin/st-util.exe"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
-            "64bit": {
-                "url": "https://github.com/stlink-org/stlink/releases/download/v$version/stlink-$version-x86_64-w64-mingw32.zip",
-                "extract_dir": "stlink-$version-x86_64-w64-mingw32"
-            },
             "32bit": {
-                "url": "https://github.com/stlink-org/stlink/releases/download/v$version/stlink-$version-i686-w64-mingw32.zip",
-                "extract_dir": "stlink-$version-i686-w64-mingw32"
+                "url": "https://github.com/stlink-org/stlink/releases/download/v$version/stlink-$version-win32.zip",
+                "extract_dir": "stlink-$version-win32.zip"
             }
         }
     }

@@ -1,47 +1,32 @@
 {
-    "version": "2024.1.7",
+    "version": "2026.8",
     "description": "A new language and compiler for shader development.",
     "homepage": "https://shader-slang.com/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/shader-slang/slang/releases/download/v2024.1.7/slang-2024.1.7-win64.zip",
-            "hash": "d11126ac799d8d6d0256488d0aeb477ff541bbd8f808934168415c263dec5163",
-            "bin": [
-                "bin/windows-x64/release/slangc.exe",
-                "bin/windows-x64/release/slangd.exe"
-            ]
-        },
-        "32bit": {
-            "url": "https://github.com/shader-slang/slang/releases/download/v2024.1.7/slang-2024.1.7-win32.zip",
-            "hash": "6ac0d2cf02d0de00e039e0e74ceaaca7a99b1428cc77aa380df3c35acf0b3312",
-            "bin": [
-                "bin/windows-x86/release/slangc.exe",
-                "bin/windows-x86/release/slangd.exe"
-            ]
+            "url": "https://github.com/shader-slang/slang/releases/download/v2026.8/slang-2026.8-windows-x86_64.zip",
+            "hash": "7a3ffcbd267dbddb4818f68ade13da37e2d394dd305c7276fef964933388f184"
         },
         "arm64": {
-            "url": "https://github.com/shader-slang/slang/releases/download/v2024.1.7/slang-2024.1.7-win-arm64.zip",
-            "hash": "c1e1d1dddd4fd0d1bef44dae9ff193a615bde11e0cb9cfc02a1fae0d84128ffe",
-            "bin": [
-                "bin/windows-aarch64/release/slangc.exe",
-                "bin/windows-aarch64/release/slangd.exe"
-            ]
+            "url": "https://github.com/shader-slang/slang/releases/download/v2026.8/slang-2026.8-windows-aarch64.zip",
+            "hash": "ea843617c822031796899aa921be9b631f53234e2a8aad6f564cc8d4d89535b5"
         }
     },
+    "bin": [
+        "bin/slangc.exe",
+        "bin/slangd.exe"
+    ],
     "checkver": {
         "github": "https://github.com/shader-slang/slang"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win32.zip"
+                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-windows-x86_64.zip"
             },
             "arm64": {
-                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-win-arm64.zip"
+                "url": "https://github.com/shader-slang/slang/releases/download/v$version/slang-$version-windows-aarch64.zip"
             }
         }
     }

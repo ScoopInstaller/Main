@@ -1,25 +1,35 @@
 {
-    "version": "8.2.0",
+    "version": "11.0.0",
     "description": "A generic and open source machine emulator and virtualizer.",
     "homepage": "https://qemu.weilnetz.de/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://qemu.weilnetz.de/w64/2023/qemu-w64-setup-20231224.exe#/dl.7z_",
-            "hash": "sha512:a54fe995a712f47f1ffeacb2be302d61684633958a8ccc1dc686773ff910658ad7e52d15d6122ac6b7887ef42b1b63697719082d2f37204bf0965fb7f67820fd"
+            "url": "https://qemu.weilnetz.de/w64/2026/qemu-w64-setup-20260422.exe#/dl.7z",
+            "hash": "sha512:64a43c0d39acddc9d30d290935a312a2b5c4fa62cffe6c27090f2a45ca6c8de0f0e8673e1e5117fb116a8742f86df92163531afc23f34758aadfc6d82c1f41a5"
+        },
+        "arm64": {
+            "url": "https://qemu.weilnetz.de/aarch64/2026/qemu-arm-setup-20260422.exe#/dl.7z",
+            "hash": "sha512:67ca24c6b07ecb74848f5c1078db7dc71e4e3ffe1669ef713c34184d322fb6bfbf72f1c9ca028a42212af9b157e46ef806f2e43083b2a9e51a351bd961885288"
         }
     },
-    "pre_install": "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Removal -Switches '-xr!*.exe.nsis -x!$PLUGINSDIR -x!qemu-uninstall.exe'",
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
     "env_add_path": ".",
     "checkver": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installer \\(([\\d.]+)\\)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z_"
+                "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/qemu-w64-setup-$matchYear$matchMonth$matchDay.sha512"
+                }
+            },
+            "arm64": {
+                "url": "https://qemu.weilnetz.de/aarch64/$matchYear/qemu-arm-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/qemu-arm-setup-$matchYear$matchMonth$matchDay.sha512"
+                }
             }
-        },
-        "hash": {
-            "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.sha512"
         }
     }
 }

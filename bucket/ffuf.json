@@ -1,0 +1,38 @@
+{
+    "version": "2.1.0",
+    "description": "Fast web fuzzer written in Go",
+    "homepage": "https://github.com/ffuf/ffuf",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ffuf/ffuf/releases/download/v2.1.0/ffuf_2.1.0_windows_amd64.zip",
+            "hash": "c0aec0289f1963cfc38a204f9ebe97712441c670fa7d7aad145cf87b15f038d4"
+        },
+        "32bit": {
+            "url": "https://github.com/ffuf/ffuf/releases/download/v2.1.0/ffuf_2.1.0_windows_386.zip",
+            "hash": "2a32d60f3bd7092d1d551671152083cbb67b90fa4e5accb6e9fe3f04508e516b"
+        },
+        "arm64": {
+            "url": "https://github.com/ffuf/ffuf/releases/download/v2.1.0/ffuf_2.1.0_windows_arm64.zip",
+            "hash": "b2038093c9cf888ceb7a8733650ae2441b1374ca750504b9b4e6c36372b947db"
+        }
+    },
+    "bin": "ffuf.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ffuf/ffuf/releases/download/v$version/ffuf_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/ffuf/ffuf/releases/download/v$version/ffuf_$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/ffuf/ffuf/releases/download/v$version/ffuf_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/ffuf_$version_checksums.txt"
+        }
+    }
+}

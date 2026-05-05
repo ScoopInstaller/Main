@@ -1,5 +1,5 @@
 {
-    "version": "2.2.1-rev0",
+    "version": "26.02-rev0",
     "description": "Multimedia framework developed for research and academic purposes",
     "homepage": "https://gpac.wp.imt.fr/",
     "license": "LGPL-2.1-or-later",
@@ -8,12 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.tsi.telecom-paristech.fr/gpac/release/2.2.1/gpac-2.2.1-rev0-gb34e3851-release-2.2-x64.exe#/dl.7z",
-            "hash": "e50149fd8903999491d833a474b2cc656d9022be2effa6797029969368fbafe5"
+            "url": "https://download.tsi.telecom-paristech.fr/gpac/release/26.02/gpac-26.02-rev0-g118e60a9-master-x64.exe#/dl.7z",
+            "hash": "6a68c2e3099cc9ae51cc512865b46ac911f00e2fcea1c0e0acda16e3e8d670a9"
         },
         "32bit": {
-            "url": "https://download.tsi.telecom-paristech.fr/gpac/release/2.2.1/gpac-2.2.1-rev0-gb34e3851-release-2.2-win32.exe#/dl.7z",
-            "hash": "f8166be45b93113f94814c3747eef900be7c216087fb56e1234f101dd1e784d7"
+            "url": "https://download.tsi.telecom-paristech.fr/gpac/release/26.02/gpac-26.02-rev0-g118e60a9-master-win32.exe#/dl.7z",
+            "hash": "393ff8f8863a037976de82aff9ed65368f2960f70e13c92d497053cf93af7764"
         }
     },
     "pre_install": [
@@ -30,15 +30,15 @@
     ],
     "checkver": {
         "url": "https://gpac.wp.imt.fr/downloads/",
-        "regex": "gpac-([\\w.-]+)-(?<commit>\\w+)-release-([\\w.-]+)-x64\\.exe"
+        "regex": "gpac-([\\w.-]+)-(?<commit>\\w+)-master-x64\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchCommit-release-$majorVersion.$minorVersion-x64.exe#/dl.7z"
+                "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchCommit-master-x64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchCommit-release-$majorVersion.$minorVersion-win32.exe#/dl.7z"
+                "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchCommit-master-win32.exe#/dl.7z"
             }
         }
     }

@@ -1,26 +1,43 @@
 {
-    "version": "2024.04.09",
+    "version": "2026.03.17",
     "description": "A youtube-dl fork with additional features and fixes.",
     "homepage": "https://github.com/yt-dlp/yt-dlp",
+    "notes": [
+        "Requires a JavaScript runtime for full functionality (e.g., deno, node, bun).",
+        "By default yt-dlp prefers 'deno' — use `--js-runtimes <runtime>` as an argument, or edit `yt-dlp.conf` to override."
+    ],
     "license": "Unlicense",
     "suggest": {
+        "js-runtime": [
+            "deno",
+            "nodejs",
+            "nodejs-lts",
+            "versions/nodejs22",
+            "bun",
+            "quickjs"
+        ],
         "ffmpeg": "ffmpeg"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2024.04.09/yt-dlp.exe",
-            "hash": "sha512:f1a6f2cbb4da864feff6c2dc5de2e9c8c59efa20e091b4d6557eaccc06b2b32f71b1bfcd51eb86de563fed62ff466b6c8bf699f880fd19980da2c18c1ed92a10"
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.03.17/yt-dlp.exe",
+            "hash": "3db811b366b2da47337d2fcfdfe5bbd9a258dad3f350c54974f005df115a1545"
         },
         "32bit": {
-            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2024.04.09/yt-dlp_x86.exe#/yt-dlp.exe",
-            "hash": "sha512:205b40554b2b5cdcb2ab360f36d9a28f1adb230ef1dfd3e1fb2e7c1f3e40aedceca4d3d2fc84445952b9012b11a041f068b04a231b6270144d93d3eb1af0223f"
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.03.17/yt-dlp_x86.exe#/yt-dlp.exe",
+            "hash": "d53f4b98a928da2d01fb598baa02b161bc387084c1fb4ed20971b567071a20a7"
+        },
+        "arm64": {
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.03.17/yt-dlp_arm64.exe#/yt-dlp.exe",
+            "hash": "6cfba1af5147da0196d8c015961b1422bdd47fc2f9bb6df8cb4d1dc029939c51"
         }
     },
     "bin": "yt-dlp.exe",
     "pre_install": "if (-not (Test-Path \"$persist_dir\\yt-dlp.conf\")) { New-Item \"$dir\\yt-dlp.conf\" -ItemType file | Out-Null }",
     "persist": [
         "yt-dlp.conf",
-        "ytdlp_plugins"
+        "ytdlp_plugins",
+        "yt-dlp-plugins"
     ],
     "checkver": "github",
     "autoupdate": {
@@ -30,10 +47,13 @@
             },
             "32bit": {
                 "url": "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp_x86.exe#/yt-dlp.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp_arm64.exe#/yt-dlp.exe"
             }
         },
         "hash": {
-            "url": "$baseurl/SHA2-512SUMS"
+            "url": "$baseurl/SHA2-256SUMS"
         }
     }
 }

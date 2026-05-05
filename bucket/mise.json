@@ -1,0 +1,42 @@
+{
+    "version": "2026.5.0",
+    "description": "Polyglot tool version manager and task runner",
+    "homepage": "https://mise.jdx.dev/",
+    "license": "MIT",
+    "notes": [
+        "Persistence and environment variables settings of the manifest have been revoked, you can find persisted data at '$persist_dir', if you have installed the manifest before.",
+        "",
+        "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html"
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jdx/mise/releases/download/v2026.5.0/mise-v2026.5.0-windows-x64.zip",
+            "hash": "053de50b0ee574a40ebcca667c17e27b06423bfed3779c623970e0e36e1d6405"
+        },
+        "arm64": {
+            "url": "https://github.com/jdx/mise/releases/download/v2026.5.0/mise-v2026.5.0-windows-arm64.zip",
+            "hash": "43bfe834b2c420b467114cea698f08b8aee26b6be748ec046e8a06915d5003ac"
+        }
+    },
+    "extract_dir": "mise",
+    "bin": "bin/mise.exe",
+    "checkver": {
+        "github": "https://github.com/jdx/mise"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jdx/mise/releases/download/v$version/mise-v$version-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt"
+        }
+    }
+}

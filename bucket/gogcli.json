@@ -1,0 +1,33 @@
+{
+    "version": "0.14.0",
+    "description": "Fast, script-friendly CLI for Gmail, Drive, Calendar, and other Google Workspace apps.",
+    "homepage": "https://gogcli.sh",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/steipete/gogcli/releases/download/v0.14.0/gogcli_0.14.0_windows_amd64.zip",
+            "hash": "26480989d069b43c587e46e950a7365a26b308abbad53a089719dcf10c1b1536"
+        },
+        "arm64": {
+            "url": "https://github.com/steipete/gogcli/releases/download/v0.14.0/gogcli_0.14.0_windows_arm64.zip",
+            "hash": "7484654b2e31934a7a3c4e71eb06a47f616bd6abe6dee104b7860901043eae36"
+        }
+    },
+    "bin": "gog.exe",
+    "checkver": {
+        "github": "https://github.com/steipete/gogcli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/steipete/gogcli/releases/download/v$version/gogcli_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/steipete/gogcli/releases/download/v$version/gogcli_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "version": "1.1.6",
+    "description": "A high-performance cache-store from Microsoft Research.",
+    "homepage": "https://microsoft.github.io/garnet",
+    "license": "MIT",
+    "notes": [
+        "Garnet requires .NET 9 SDK.",
+        "Existing Redis clients are compatible with Garnet.",
+        "config directory is created for storing persist files conveniently.",
+        "To run Garnet with configuration file, For garnet.conf file format:",
+        "GarnetServer.exe --config-import-path garnet.conf",
+        "For redis.conf with this command:",
+        "GarnetServer.exe --config-import-path redis.conf --config-import-format RedisConf"
+    ],
+    "suggest": {
+        "dotnet-sdk": "main/dotnet-sdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/microsoft/garnet/releases/download/v1.1.6/win-x64-based-readytorun.zip",
+            "hash": "ea0b8a9cd7534c9bd4170a7fc523060a6eaad22f5789f7d568b82f31e8d989aa"
+        },
+        "arm64": {
+            "url": "https://github.com/microsoft/garnet/releases/download/v1.1.6/win-arm64-based-readytorun.zip",
+            "hash": "6bb77f163fab586f359524a35a4a2bc3ff3fded966b2cdb8bf47e6c44603542d"
+        }
+    },
+    "extract_dir": "net10.0",
+    "post_install": "Remove-Item -Path \"$dir\\Service\" -Recurse -Force -ErrorAction SilentlyContinue",
+    "bin": "GarnetServer.exe",
+    "persist": [
+        "garnet.conf",
+        "config"
+    ],
+    "checkver": {
+        "github": "https://github.com/microsoft/garnet"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/garnet/releases/download/v$version/win-x64-based-readytorun.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/microsoft/garnet/releases/download/v$version/win-arm64-based-readytorun.zip"
+            }
+        }
+    }
+}

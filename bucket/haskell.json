@@ -1,5 +1,5 @@
 {
-    "version": "9.4.1",
+    "version": "9.12.1",
     "description": "An advanced, purely functional programming language.",
     "homepage": "https://www.haskell.org",
     "license": "BSD-3-Clause",
@@ -12,9 +12,9 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/commercialhaskell/ghc/releases/download/ghc-9.4.1-release/ghc-9.4.1-x86_64-unknown-mingw32.tar.xz",
-            "hash": "fdc2d78b8a978e712a4edcc1628e36a36be736d8202107d2d61999ac7a9dc5d0",
-            "extract_dir": "ghc-9.4.1-x86_64-unknown-mingw32"
+            "url": "https://downloads.haskell.org/~ghc/9.12.1/ghc-9.12.1-x86_64-unknown-mingw32.tar.xz",
+            "hash": "22dc942be1b968d5e28e75c06aba52829d0c52d9234bc9941df9ab2a0e2a610d",
+            "extract_dir": "ghc-9.12.1-x86_64-unknown-mingw32"
         }
     },
     "bin": [
@@ -29,14 +29,16 @@
     ],
     "env_add_path": "lib\\bin",
     "checkver": {
-        "url": "https://api.github.com/repositories/46509594/tags",
-        "jsonpath": "$..name",
-        "regex": "ghc-([\\d\\.]+)-release"
+        "url": "https://www.haskell.org/ghc/download.html",
+        "regex": "(?s)Current Stable Releases.*?>([\\d.]+)<"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/commercialhaskell/ghc/releases/download/ghc-$version-release/ghc-$version-x86_64-unknown-mingw32.tar.xz",
+                "url": "https://downloads.haskell.org/~ghc/$version/ghc-$version-x86_64-unknown-mingw32.tar.xz",
+                "hash": {
+                    "url": "$baseurl/SHA256SUMS"
+                },
                 "extract_dir": "ghc-$version-x86_64-unknown-mingw32"
             }
         }

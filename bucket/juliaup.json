@@ -1,0 +1,33 @@
+{
+    "version": "1.20.1",
+    "description": "Julia installer and version multiplexer",
+    "homepage": "https://github.com/JuliaLang/juliaup",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v1.20.1-x64.msi",
+            "hash": "2bb0bd468dd61f9a6f4659bc68f52271a7523ce594148a0a08e74da5b0c4c095",
+            "extract_dir": "PFiles64\\Julia"
+        },
+        "32bit": {
+            "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v1.20.1-x86.msi",
+            "hash": "6bd448b01f92d63eedf9b05fde6f4728d4a264fa1138976e760f4999c9a1ae62",
+            "extract_dir": "PFiles\\Julia"
+        }
+    },
+    "bin": [
+        "juliaup.exe",
+        "julia.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v$version-x64.msi"
+            },
+            "32bit": {
+                "url": "https://julialang-s3.julialang.org/juliaup/winmsi/Julia-v$version-x86.msi"
+            }
+        }
+    }
+}

@@ -1,28 +1,49 @@
 {
-    "version": "2.59.0",
+    "version": "2.85.0",
     "description": "A cross-platform command-line tool to connect to Azure and execute administrative commands on Azure resources",
     "homepage": "https://aka.ms/cli",
     "license": "MIT",
-    "notes": [
-        "* Known issue:",
-        "  - Cannot be extracted due to long path: https://github.com/ScoopInstaller/Main/issues/5300"
-    ],
+    "notes": "Extraction can fail due to long paths: https://github.com/ScoopInstaller/Main/issues/5300",
     "architecture": {
         "64bit": {
-            "url": "https://azcliprod.blob.core.windows.net/msi/azure-cli-2.59.0-x64.msi",
-            "hash": "06cf8f541793557fa5993342481af4fb4a4ef5fa588b4d428b530b4ba550be7b"
-        },
-        "32bit": {
-            "url": "https://azcliprod.blob.core.windows.net/msi/azure-cli-2.59.0.msi",
-            "hash": "796d412d1f0796c31baaa8f79fc7000ac73b7ddb048937e2cea065fe3d1b37cd"
+            "url": "https://github.com/Azure/azure-cli/releases/download/azure-cli-2.85.0/azure-cli-2.85.0-x64.zip",
+            "hash": "95ff992b7b4503b391671d231e42f35c109ba56e6db5cf5fcfb2eab27b687fec"
         }
     },
-    "extract_dir": "Microsoft SDKs\\Azure\\CLI2",
     "env_set": {
-        "AZURE_CLI_PATH": "$dir\\wbin",
-        "AzureCLIPath": "$dir\\wbin"
+        "AZURE_CLI_PATH": "$dir\\bin",
+        "AzureCLIPath": "$dir\\bin"
     },
-    "bin": "wbin\\az.cmd",
+    "bin": "bin\\az.cmd",
+    "pre_uninstall": [
+        "if ($purge -and [bool]$(Try{$null = Get-Command -Name 'az' 2>$null; $?}Catch{$false})) {",
+        "    Start-Process -FilePath 'az' -ArgumentList 'account', 'clear' -NoNewWindow -Wait",
+        "}"
+    ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    $Directories = [string[]](",
+        "        ('{0}\\.azure\\cliextensions' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\commands' -f $env:USERPROFILE)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if ([System.IO.Directory]::Exists($_)) {",
+        "            $null = [System.IO.Directory]::Delete($_,$true)",
+        "        }",
+        "    }",
+        "    $Files = [string[]](",
+        "        ('{0}\\.azure\\commandIndex.json' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\config' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\extensionCommandTree.json' -f $env:USERPROFILE),",
+        "        ('{0}\\.azure\\versionCheck.json' -f $env:USERPROFILE)",
+        "    )",
+        "    $Files.ForEach{",
+        "       if ([System.IO.File]::Exists($_)) {",
+        "           $null = [System.IO.File]::Delete($_)",
+        "       }",
+        "    }",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/Azure/azure-cli",
         "regex": "/releases/tag/azure-cli-([\\d.]+)"
@@ -30,11 +51,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://azcliprod.blob.core.windows.net/msi/azure-cli-$version-x64.msi"
-            },
-            "32bit": {
-                "url": "https://azcliprod.blob.core.windows.net/msi/azure-cli-$version.msi"
+                "url": "https://github.com/Azure/azure-cli/releases/download/azure-cli-$version/azure-cli-$version-x64.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/Azure/azure-cli/releases/tag/azure-cli-$version",
+            "regex": "$sha256.*?$basename"
         }
     }
 }

@@ -1,0 +1,31 @@
+{
+    "version": "0.3.1",
+    "description": "witr ('Why Is This Running') is a tool that explains the causal chain behind running processes with additional insights.",
+    "homepage": "https://github.com/pranshuparmar/witr",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/pranshuparmar/witr/releases/download/v0.3.1/witr-windows-amd64.zip",
+            "hash": "c64a3c6496fe7eb2376e4e8632dc686171c0eeed575aaab7d2f8435d65426f67"
+        },
+        "arm64": {
+            "url": "https://github.com/pranshuparmar/witr/releases/download/v0.3.1/witr-windows-arm64.zip",
+            "hash": "53ba33bac48b6a36f4e4687496a35f330c8a36cff00cccee43a4d6a79a2cf1a4"
+        }
+    },
+    "bin": "witr.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pranshuparmar/witr/releases/download/v$version/witr-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/pranshuparmar/witr/releases/download/v$version/witr-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}

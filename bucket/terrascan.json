@@ -1,0 +1,33 @@
+{
+    "version": "1.19.9",
+    "description": "A static code analyzer for Infrastructure as Code.",
+    "homepage": "https://runterrascan.io/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tenable/terrascan/releases/download/v1.19.9/terrascan_1.19.9_Windows_x86_64.zip",
+            "hash": "2585e0ae7121bfa28a471175ec3cabe810680fcbeb064eefab93a8c6c475b094"
+        },
+        "32bit": {
+            "url": "https://github.com/tenable/terrascan/releases/download/v1.19.9/terrascan_1.19.9_Windows_i386.zip",
+            "hash": "aa546c8b45c9154a7ff1b000d5164558a1bbf77cff00ae4f2eb8991c4c04cad2"
+        }
+    },
+    "bin": "terrascan.exe",
+    "checkver": {
+        "github": "https://github.com/tenable/terrascan"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tenable/terrascan/releases/download/v$version/terrascan_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/tenable/terrascan/releases/download/v$version/terrascan_$version_Windows_i386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

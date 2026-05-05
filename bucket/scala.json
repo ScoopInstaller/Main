@@ -1,5 +1,5 @@
 {
-    "version": "3.4.1",
+    "version": "3.8.3",
     "description": "A modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way.",
     "homepage": "https://www.scala-lang.org/",
     "license": "BSD-3-Clause",
@@ -10,9 +10,9 @@
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://github.com/lampepfl/dotty/releases/download/3.4.1/scala3-3.4.1.zip",
-    "hash": "afb29e282ba57d4c28abdfcf7d4f2d54d1d981738485ac426471ccdc99a532ea",
-    "extract_dir": "scala3-3.4.1",
+    "url": "https://github.com/scala/scala3/releases/download/3.8.3/scala3-3.8.3.msi",
+    "hash": "837e252df39148d1590813b94045549e9a80cd1e4e0ee793fc78dfdbee5f7e66",
+    "extract_dir": "PFiles\\Scala",
     "bin": [
         "bin\\scala.bat",
         "bin\\scalac.bat",
@@ -22,13 +22,12 @@
         "SCALA_HOME": "$dir"
     },
     "checkver": {
-        "github": "https://github.com/lampepfl/dotty/"
+        "github": "https://github.com/scala/scala3/"
     },
     "autoupdate": {
-        "url": "https://github.com/lampepfl/dotty/releases/download/$version/scala3-$version.zip",
+        "url": "https://github.com/scala/scala3/releases/download/$version/scala3-$version.msi",
         "hash": {
-            "url": "$baseurl/sha256sum.txt"
-        },
-        "extract_dir": "scala3-$version"
+            "url": "$url.sha256"
+        }
     }
 }

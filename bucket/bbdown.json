@@ -1,30 +1,42 @@
 {
-    "version": "1.6.1",
-    "description": "一款命令行式哔哩哔哩下载器. Bilibili Downloader.",
+    "version": "1.6.3",
+    "description": "A CLI-based Bilibili downloader.",
     "homepage": "https://github.com/nilaoda/BBDown",
     "license": "MIT",
-    "depends": "ffmpeg",
+    "suggest": {
+        "FFmpeg": [
+            "main/ffmpeg",
+            "main/ffmpeg-essentials",
+            "main/ffmpeg-shared"
+        ]
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/nilaoda/BBDown/releases/download/1.6.1/BBDown_1.6.1_20230818_win-x64.zip",
-            "hash": "bc3af8f677c8775b8d8e37ae1b35783d820a94c41d2a89bb330a946ca3e1fcaf"
+            "url": "https://github.com/nilaoda/BBDown/releases/download/1.6.3/BBDown_1.6.3_20240814_win-x64.zip",
+            "hash": "40f1e2af0d4e74df765c6f93d2e931f9bea201d5168d0bc62dc35a54b7e0ec02"
         },
         "arm64": {
-            "url": "https://github.com/nilaoda/BBDown/releases/download/1.6.1/BBDown_1.6.1_20230818_win-arm64.zip",
-            "hash": "a86dfe76d9c8a526c39a518f6958da2036dbc5644330afbf75d7fa10bccabc57"
+            "url": "https://github.com/nilaoda/BBDown/releases/download/1.6.3/BBDown_1.6.3_20240814_win-arm64.zip",
+            "hash": "da8fc9cbf1031f4c4ca97af82d98bbfd1bbc55bd8ea49602da8d3d1613c190ff"
         }
     },
     "pre_install": [
-        "'BBDown.data' | ForEach-Object {",
+        "@('BBDown.archives', 'BBDown.config', 'BBDown.data', 'BBDownApp.data', 'BBDownTV.data') | ForEach-Object {",
         "    if (!(Test-Path -Path \"$persist_dir\\$_\")) {",
-        "        New-Item -Type File \"$dir\\$_\" | Out-Null",
+        "        New-Item -Path \"$dir\\$_\" -ItemType File -Force | Out-Null",
         "    }",
         "}"
     ],
     "bin": "BBDown.exe",
-    "persist": "BBDown.data",
+    "persist": [
+        "BBDown.archives",
+        "BBDown.config",
+        "BBDown.data",
+        "BBDownApp.data",
+        "BBDownTV.data"
+    ],
     "checkver": {
-        "url": "https://api.github.com/repositories/282637924/releases",
+        "github": "https://api.github.com/repos/nilaoda/BBDown/releases",
         "jsonpath": "$[0].assets",
         "regex": "BBDown_(?<version>[\\d.]+)_(?<date>[\\d]+)_win-x64.zip"
     },

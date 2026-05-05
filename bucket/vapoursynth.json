@@ -1,31 +1,21 @@
 {
-    "version": "65",
+    "version": "73",
     "description": "A video processing framework with simplicity in mind",
-    "homepage": "https://www.vapoursynth.com",
+    "homepage": "https://www.vapoursynth.com/",
+    "license": "LGPL-2.1-or-later",
+    "notes": [
+        "As of version 74, VapourSynth no longer provides precompiled executables and must be installed via pip.",
+        "To install it via pip, run: pip install vapoursynth",
+        "For more details, see: https://github.com/vapoursynth/vapoursynth/issues/1177"
+    ],
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
-    "license": "LGPL-2.1-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R65/VapourSynth64-Portable-R65.7z",
-            "hash": "e3fca973dc56283289a2f4f73fe0a6908ff270b9c46b65af3f8674be867ca303"
-        },
-        "32bit": {
-            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R65/VapourSynth64-Portable-R65.7z",
-            "hash": "e3fca973dc56283289a2f4f73fe0a6908ff270b9c46b65af3f8674be867ca303"
+            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R73/VapourSynth64-Portable-R73.zip",
+            "hash": "3326f10d0fdcdec45649a474cbc9810795ab3da422634d0f134bca6089afbb91"
         }
-    },
-    "pre_install": [
-        "$arch = $architecture.SubString(0,2)",
-        "if(Test-Path \"$persist_dir\\vapoursynth$arch\") {Copy-Item \"$persist_dir\\*\" \"$dir\\\" -Force -Recurse}"
-    ],
-    "uninstaller": {
-        "script": [
-            "$arch = $architecture.SubString(0,2)",
-            "ensure \"$persist_dir\" | Out-Null",
-            "Copy-Item \"$dir\\vapoursynth$arch\" \"$persist_dir\\\" -Force -Recurse"
-        ]
     },
     "bin": [
         "AVFS.exe",
@@ -33,17 +23,10 @@
         "pfm-192-vapoursynth-win.exe",
         "vsrepo.py"
     ],
-    "checkver": {
-        "github": "https://github.com/vapoursynth/vapoursynth",
-        "regex": "tag/R(\\d+)"
-    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R$version/VapourSynth64-Portable-R$version.7z"
-            },
-            "32bit": {
-                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R$version/VapourSynth64-Portable-R$version.7z"
+                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R$version/VapourSynth64-Portable-R$version.zip"
             }
         }
     }

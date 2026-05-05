@@ -1,16 +1,53 @@
 {
-    "version": "1.35.1",
+    "version": "1.39.0",
     "description": "Cross-platform Node.js version switcher",
     "homepage": "https://github.com/Schniz/fnm",
     "license": "GPL-3.0-only",
-    "notes": "Don't forget to add \"fnm env --use-on-cd | Out-String | Invoke-Expression\" to your powershell profile.",
+    "notes": [
+        "Don't forget to add \"fnm env --use-on-cd | Out-String | Invoke-Expression\" to your powershell profile.",
+        "The FNM_DIR environment variable has been set and the data persisted by Scoop since v1.38.1.",
+        "* Before: $env:APPDATA\\fnm",
+        "* After: $persist_dir\\fnm"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Schniz/fnm/releases/download/v1.35.1/fnm-windows.zip",
-            "hash": "f083e7256c24f359d2101934426c87e3066831a40303ebe6e538cea917a0f184"
+            "url": "https://github.com/Schniz/fnm/releases/download/v1.39.0/fnm-windows.zip",
+            "hash": "8183bed4348cb78fdfd8abb3d1247fbeab7b2082f941363929c61e747c001e10"
         }
     },
+    "env_set": {
+        "FNM_DIR": "$dir"
+    },
     "bin": "fnm.exe",
+    "persist": [
+        "aliases",
+        "node-versions"
+    ],
+    "post_uninstall": [
+        "if ($purge) {",
+        "    # Directories",
+        "    $Directories = [string[]](",
+        "        ('{0}\\fnm_multishells' -f $env:LOCALAPPDATA),",
+        "        ('{0}\\fnm' -f $env:APPDATA)",
+        "    )",
+        "    $Directories.ForEach{",
+        "        if (Test-Path -Path $_ -PathType 'Container') {",
+        "            $null = Remove-Item -Path $_ -Recurse -Force",
+        "        }",
+        "    }",
+        "    # Environment variables",
+        "    $EnvScope = [string]$(if($global){'Machine'}else{'User'})",
+        "    [System.Environment]::GetEnvironmentVariables($EnvScope).GetEnumerator().Where{",
+        "        $_.'Name' -like 'FNM_*'",
+        "    }.ForEach{",
+        "        [System.Environment]::SetEnvironmentVariable(",
+        "            $_.'Name',",
+        "            $null,",
+        "            $EnvScope",
+        "        )",
+        "    }",
+        "}"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {

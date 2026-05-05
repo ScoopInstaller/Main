@@ -1,0 +1,36 @@
+{
+    "version": "0.8.11",
+    "description": "Coding agent for DeepSeek models that runs in your terminal.",
+    "homepage": "https://github.com/Hmbown/DeepSeek-TUI",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/Hmbown/DeepSeek-TUI/releases/download/v0.8.11/deepseek-tui-windows-x64.exe#/deepseek-tui.exe",
+                "https://github.com/Hmbown/DeepSeek-TUI/releases/download/v0.8.11/deepseek-windows-x64.exe#/deepseek.exe"
+            ],
+            "hash": [
+                "837ff5940a0999b1d4390112d21690dc91fef852a4b32cb5d007784203e3b4f4",
+                "6e40e41e0fce79e39bbea8274e283ecbc77627cf950ec4b80d2e06b47e9dfc26"
+            ]
+        }
+    },
+    "bin": "deepseek.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/Hmbown/DeepSeek-TUI/releases/download/v$version/deepseek-tui-windows-x64.exe#/deepseek-tui.exe",
+                    "https://github.com/Hmbown/DeepSeek-TUI/releases/download/v$version/deepseek-windows-x64.exe#/deepseek.exe"
+                ]
+            }
+        },
+        "hash": {
+            "url": "$baseurl/deepseek-artifacts-sha256.txt"
+        }
+    }
+}

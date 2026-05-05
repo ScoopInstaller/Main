@@ -1,0 +1,24 @@
+{
+    "version": "2.14.0.0",
+    "description": "The official language server for Haskell.",
+    "homepage": "https://github.com/haskell/haskell-language-server",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/haskell/haskell-language-server/releases/download/2.14.0.0/haskell-language-server-2.14.0.0-x86_64-mingw64.zip",
+            "hash": "b928e205dfd09d2b75986f19bc37700dcd74037bf695c5663a7454d84e3409e7"
+        }
+    },
+    "env_add_path": ".",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/haskell/haskell-language-server/releases/download/$version/haskell-language-server-$version-x86_64-mingw64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
