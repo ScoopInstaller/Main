@@ -1,0 +1,31 @@
+{
+    "version": "2025-09-13",
+    "description": "A small and embeddable Javascript engine with ES2023 support.",
+    "homepage": "https://bellard.org/quickjs/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://bellard.org/quickjs/binary_releases/quickjs-win-x86_64-2025-09-13.zip",
+            "hash": "3b787e2532d7fb446d80fce55e7156ef282a8368941949911cf19508b284f340"
+        },
+        "32bit": {
+            "url": "https://bellard.org/quickjs/binary_releases/quickjs-win-i686-2025-09-13.zip",
+            "hash": "bd8eef43a11cce89b811875c2c8634656993640c8ead25fc0a01929764998f4f"
+        }
+    },
+    "bin": "qjs.exe",
+    "checkver": {
+        "url": "https://bellard.org/quickjs/binary_releases/LATEST.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://bellard.org/quickjs/binary_releases/quickjs-win-x86_64-$version.zip"
+            },
+            "32bit": {
+                "url": "https://bellard.org/quickjs/binary_releases/quickjs-win-i686-$version.zip"
+            }
+        }
+    }
+}

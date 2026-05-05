@@ -1,15 +1,25 @@
 {
-    "version": "1.7.1",
+    "version": "1.11.1",
     "description": "Install and run Python applications in isolated environments",
     "homepage": "https://pipx.pypa.io/",
     "license": "MIT",
     "suggest": {
         "Python": "python"
     },
-    "url": "https://github.com/pypa/pipx/releases/download/1.7.1/pipx.pyz",
-    "hash": "1d4f46f86830640f1d7c4e29b280a7a42265d6e8af2c063f40baed4513f03ae8",
+    "url": "https://github.com/pypa/pipx/releases/download/1.11.1/pipx.pyz",
+    "hash": "60c947d2449af642c17079a2119ef87e426ad83967b8bb223bb27c802fc29ccd",
+    "pre_install": [
+        "$cmd = $null",
+        "foreach ($candidate in @('python', 'py')) {",
+        "    if (Get-Command $candidate -ErrorAction SilentlyContinue) {",
+        "        $cmd = $candidate",
+        "        break",
+        "    }",
+        "}",
+        "if (-not $cmd) { throw 'Python not found. Install Python or add it to PATH.' }",
+        "Set-Content -Value \"@$cmd `\"%~dp0pipx.pyz`\" %*\" -Path \"$dir\\pipx.bat\""
+    ],
     "bin": "pipx.bat",
-    "pre_install": "Set-Content -Value '@python \"%~dp0pipx.pyz\" %*' -Path \"$dir\\pipx.bat\"",
     "checkver": {
         "github": "https://github.com/pypa/pipx"
     },

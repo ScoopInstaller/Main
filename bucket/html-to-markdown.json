@@ -1,0 +1,40 @@
+{
+    "version": "2.5.0",
+    "description": "A robust html-to-markdown converter that transforms HTML (even entire websites) into clean, readable Markdown.",
+    "homepage": "https://html-to-markdown.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.5.0/html-to-markdown_Windows_x86_64.zip",
+            "hash": "6f8e28c288afd776ce3d2bd07639d8ff5f6a9b541c1de30b371be455cc7c6049"
+        },
+        "32bit": {
+            "url": "https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.5.0/html-to-markdown_Windows_i386.zip",
+            "hash": "863f444d4209c202323c46e6a64ee5ec6785c6fc738fa90104874c4350eb5f63"
+        },
+        "arm64": {
+            "url": "https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.5.0/html-to-markdown_Windows_arm64.zip",
+            "hash": "91bcdfa08df7257a8c4d05d8da2865f3a92f01b4d00cb5c0aded0902cc8ca8db"
+        }
+    },
+    "bin": "html2markdown.exe",
+    "checkver": {
+        "github": "https://github.com/JohannesKaufmann/html-to-markdown"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v$version/html-to-markdown_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v$version/html-to-markdown_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v$version/html-to-markdown_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/html-to-markdown_$version_checksums.txt"
+        }
+    }
+}

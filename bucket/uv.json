@@ -1,21 +1,26 @@
 {
-    "version": "0.7.8",
+    "version": "0.11.8",
     "description": "An extremely fast Python package installer and resolver, written in Rust.",
     "homepage": "https://docs.astral.sh/uv/",
     "license": "Apache-2.0|MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-x86_64-pc-windows-msvc.zip",
-            "hash": "355736ddf9a01ab9da918b35470027c12128d7ed1d7f54f54771507d79529679"
+            "url": "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-x86_64-pc-windows-msvc.zip",
+            "hash": "c84629a56e0706b69a47ea35862208af827cb6fbfa1d0ca763c52c67594637e8"
         },
         "32bit": {
-            "url": "https://github.com/astral-sh/uv/releases/download/0.7.8/uv-i686-pc-windows-msvc.zip",
-            "hash": "0d4b01372ca972543cd40366bb5480bb457e79dcf45b5f662721d709d6932dbd"
+            "url": "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-i686-pc-windows-msvc.zip",
+            "hash": "59520c34c3c29a901bb490d4bec55a8e1d46c75d2fbad238871e18de733b4201"
+        },
+        "arm64": {
+            "url": "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-aarch64-pc-windows-msvc.zip",
+            "hash": "bb48716e74e4998993f15bc57a55e4d0d73ccbd27a66d7cbed37605f7c67d747"
         }
     },
     "bin": [
         "uv.exe",
-        "uvx.exe"
+        "uvx.exe",
+        "uvw.exe"
     ],
     "checkver": {
         "github": "https://github.com/astral-sh/uv"
@@ -27,6 +32,9 @@
             },
             "32bit": {
                 "url": "https://github.com/astral-sh/uv/releases/download/$version/uv-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/astral-sh/uv/releases/download/$version/uv-aarch64-pc-windows-msvc.zip"
             }
         },
         "hash": {

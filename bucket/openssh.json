@@ -1,17 +1,17 @@
 {
-    "version": "9.8.3.0p2",
+    "version": "10.0.0.0p2",
     "description": "The premier connectivity tool for remote login with the SSH protocol. (Microsoft build)",
     "homepage": "https://www.openssh.com",
     "license": "SSH-OpenSSH",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v9.8.3.0p2-Preview/OpenSSH-Win64.zip",
-            "hash": "0ca131f3a78f404dc819a6336606caec0db1663a692ccc3af1e90232706ada54",
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/10.0.0.0p2-Preview/OpenSSH-Win64.zip",
+            "hash": "23f50f3458c4c5d0b12217c6a5ddfde0137210a30fa870e98b29827f7b43aba5",
             "extract_dir": "OpenSSH-Win64"
         },
         "32bit": {
-            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v9.8.3.0p2-Preview/OpenSSH-Win32.zip",
-            "hash": "de65a5cc1c43192bbc7e5fc527ba435c9d1668713f062eaf1298932e28995085",
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/10.0.0.0p2-Preview/OpenSSH-Win32.zip",
+            "hash": "c61d7fea20ddfe0fc50eb56210a66464557721120f7794ff9cc883b5ba526abd",
             "extract_dir": "OpenSSH-Win32"
         }
     },
@@ -29,15 +29,15 @@
     ],
     "checkver": {
         "github": "https://github.com/PowerShell/Win32-OpenSSH",
-        "regex": "tag/v([\\d.]+p\\d)-Preview"
+        "regex": "tag/(?:v)?([\\d.]+p\\d)-Preview"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v$version-Preview/OpenSSH-Win64.zip"
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/$version-Preview/OpenSSH-Win64.zip"
             },
             "32bit": {
-                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v$version-Preview/OpenSSH-Win32.zip"
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/$version-Preview/OpenSSH-Win32.zip"
             }
         }
     },

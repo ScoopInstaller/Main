@@ -1,23 +1,36 @@
 {
-    "##": "Autoupdate only updates TrID Definitions. If the main program updates, please change hashes manually",
-    "version": "2.24-25.05.25",
+    "version": "2.48-26.04.30",
     "description": "A utility designed to identify file types from their binary signatures.",
     "homepage": "https://www.mark0.net/soft-trid-e.html",
     "license": "Shareware",
-    "url": [
-        "https://mark0.net/download/triddefs.zip",
-        "https://mark0.net/download/trid_w32.zip"
-    ],
-    "hash": [
-        "6ad75762c2e90c7b022d3022d1d5eb6b8ac27708a0c46608bf7bddb6e93264f3",
-        "ea7f82363912f5b3c79217ba8716425ec3f2514887f788dcd5a2821d0b1fc83f"
-    ],
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://www.mark0.net/download/triddefs.zip",
+                "https://www.mark0.net/download/trid_win64.zip"
+            ],
+            "hash": [
+                "bd38d1f77c8fe416f8addd5e2359c70247f2fa45c6178160e80fd5d772a98d73",
+                "65d339cc3f758a9d78e41f2c418955dfcd8c4a5152682e8cc9af0f551d169a4b"
+            ]
+        }
+    },
+    "installer": {
+        "script": "Expand-InnoArchive -Path \"$dir\\TrID_setup.exe\" -Removal"
+    },
     "bin": "trid.exe",
     "checkver": {
-        "regex": "(?smi)Win32.*?TrID v([\\d\\.]*).*?(\\d{2})\\/(\\d{2})\\/(\\d{2})",
-        "replace": "${1}-${4}.${3}.${2}"
+        "regex": "(?si)Win/x86-64.+?TrID v?([\\d.]+).+?(?<day>\\d{2})/(?<month>\\d{2})/(?<year>\\d+)",
+        "replace": "${1}-${year}.${month}.${day}"
     },
     "autoupdate": {
-        "url": "https://mark0.net/download/triddefs.zip"
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://www.mark0.net/download/triddefs.zip",
+                    "https://www.mark0.net/download/trid_win64.zip"
+                ]
+            }
+        }
     }
 }

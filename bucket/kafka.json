@@ -1,52 +1,39 @@
 {
-    "version": "3.8.0",
+    "version": "4.2.0",
     "description": "Apache Kafka. A distributed streaming platform.",
     "homepage": "https://kafka.apache.org/",
     "license": "Apache-2.0",
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://downloads.apache.org/kafka/3.8.0/kafka_2.12-3.8.0.tgz",
-    "hash": "sha1:8dc3f9b70ecddeeca0d72965ec6c7bafe7e60c71",
-    "extract_dir": "kafka_2.12-3.8.0",
-    "bin": [
-        "bin\\windows\\connect-distributed.bat",
-        "bin\\windows\\connect-standalone.bat",
-        "bin\\windows\\kafka-acls.bat",
-        "bin\\windows\\kafka-broker-api-versions.bat",
-        "bin\\windows\\kafka-configs.bat",
-        "bin\\windows\\kafka-console-consumer.bat",
-        "bin\\windows\\kafka-console-producer.bat",
-        "bin\\windows\\kafka-consumer-groups.bat",
-        "bin\\windows\\kafka-consumer-perf-test.bat",
-        "bin\\windows\\kafka-delegation-tokens.bat",
-        "bin\\windows\\kafka-dump-log.bat",
-        "bin\\windows\\kafka-mirror-maker.bat",
-        "bin\\windows\\kafka-producer-perf-test.bat",
-        "bin\\windows\\kafka-reassign-partitions.bat",
-        "bin\\windows\\kafka-replica-verification.bat",
-        "bin\\windows\\kafka-run-class.bat",
-        "bin\\windows\\kafka-server-start.bat",
-        "bin\\windows\\kafka-server-stop.bat",
-        "bin\\windows\\kafka-topics.bat",
-        "bin\\windows\\zookeeper-server-start.bat",
-        "bin\\windows\\zookeeper-server-stop.bat",
-        "bin\\windows\\zookeeper-shell.bat"
+    "url": "https://downloads.apache.org/kafka/4.2.0/kafka_2.13-4.2.0.tgz",
+    "hash": "sha512:16ce46e590ba915f01b720ea514445e49c88bf129cf4ceab88878b122d54ef24f0dedb88d0eb178957f58057a6c6a9adbea8b8059307585daea13129b85ba1d8",
+    "extract_dir": "kafka_2.13-4.2.0",
+    "post_install": [
+        "Get-ChildItem -Path \"$dir\\bin\\windows\" -File -Filter '*.bat' | ForEach-Object {",
+        "    Write-Output \"Creating shim for '$($_.BaseName)'.\"",
+        "    shim $_.FullName $global $_.BaseName",
+        "}"
     ],
     "persist": [
         "config",
         "logs"
     ],
+    "pre_uninstall": [
+        "Get-ChildItem -Path \"$dir\\bin\\windows\" -File -Filter '*.bat' | ForEach-Object {",
+        "    rm_shim $_.BaseName $(shimdir $global) $app",
+        "}"
+    ],
     "checkver": {
-        "url": "https://kafka.apache.org/downloads",
-        "regex": "current stable version is ([\\d.]+)"
+        "url": "https://kafka.apache.org/community/downloads/",
+        "regex": "kafka_(?<scala>[\\d.]+)-(?<version>[\\d.]+)\\.tgz"
     },
     "autoupdate": {
-        "url": "https://downloads.apache.org/kafka/$version/kafka_2.12-$version.tgz",
+        "url": "https://downloads.apache.org/kafka/$version/kafka_$matchScala-$version.tgz",
         "hash": {
-            "url": "$url.sha1",
+            "url": "$url.sha512",
             "regex": "$basename:[\\x20\\t]+([a-fA-F0-9\\s]+)\\n+"
         },
-        "extract_dir": "kafka_2.12-$version"
+        "extract_dir": "kafka_$matchScala-$version"
     }
 }

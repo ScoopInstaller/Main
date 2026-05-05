@@ -1,12 +1,16 @@
 {
-    "version": "10.11.0",
+    "version": "11.0.5",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.11.0/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "c9d5f9a23e0d0341b8c631c393216cbc304b93ea55e569b0ae246c6581b320c3"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v11.0.5/pnpm-win32-x64.zip",
+            "hash": "c79329a48a5e67bbbf73578fe0ddd5ff1fef05ed8c9ce43cfdc675d4d173fa3a"
+        },
+        "arm64": {
+            "url": "https://github.com/pnpm/pnpm/releases/download/v11.0.5/pnpm-win32-arm64.zip",
+            "hash": "cfd2b1e75c16a9464e497f713232e0f4b624c6a54ab3fe06ab9ea8fb7e3c3278"
         }
     },
     "bin": [
@@ -23,7 +27,7 @@
             "$auth = Get-GitHubToken",
             "$head = @{}",
             "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repositories/50565430/releases'",
+            "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
             "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
@@ -38,6 +42,13 @@
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-arm64.zip"
+            }
+        }
     }
 }
