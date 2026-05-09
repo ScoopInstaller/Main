@@ -31,9 +31,9 @@
         "COQBIN": "$dir\\bin"
     },
     "checkver": {
-        "github": "https://api.github.com/repos/rocq-prover/platform/releases/latest",
-        "regex": "Coq-Platform-release-([\\d.]+)-version.(?<coqver>[\\d.]+)-Windows-x86_64.exe",
-        "reverse": true
+        "github": "https://api.github.com/repos/rocq-prover/platform/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "Coq-Platform-release-([\\d.]+)-version.(?<coqver>[\\d.]+)-Windows-x86_64.exe"
     },
     "autoupdate": {
         "architecture": {

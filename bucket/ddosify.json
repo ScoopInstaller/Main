@@ -19,7 +19,9 @@
     },
     "bin": "ddosify.exe",
     "checkver": {
-        "github": "https://github.com/ddosify/ddosify"
+        "github": "https://api.github.com/repos/ddosify/ddosify/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "ddosify_([\\d.]+)_windows_amd64\\.zip"
     },
     "autoupdate": {
         "architecture": {

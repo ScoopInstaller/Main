@@ -12,7 +12,8 @@
     ],
     "checkver": {
         "github": "https://api.github.com/repos/capnproto/capnproto/tags",
-        "regex": "tags/v([\\d.]+)"
+        "jsonpath": "$..name",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://capnproto.org/capnproto-c++-win32-$version.zip",

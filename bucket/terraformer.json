@@ -10,7 +10,11 @@
         }
     },
     "bin": "terraformer.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/GoogleCloudPlatform/terraformer/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "download/([\\d.]+)/terraformer-all-windows-amd64"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
