@@ -1,0 +1,38 @@
+{
+    "version": "0.64.1",
+    "description": "A fast type checker and language server for Python.",
+    "homepage": "https://github.com/facebook/pyrefly",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/facebook/pyrefly/releases/download/0.64.1/pyrefly-windows-x86_64.zip",
+            "hash": "5c282e2b2ef9f41500c8cd7e93d5939d572502e45efe88b70a8f02d803047363"
+        },
+        "32bit": {
+            "url": "https://github.com/facebook/pyrefly/releases/download/0.64.1/pyrefly-windows-i686.zip",
+            "hash": "301102782dbb08e9c737993d313b30413051276782896370e5ef98c139f1b39a"
+        },
+        "arm64": {
+            "url": "https://github.com/facebook/pyrefly/releases/download/0.64.1/pyrefly-windows-arm64.zip",
+            "hash": "b9c1e2333b2c9ee06c2bdc378f9bf945369a346f1274c5d4e66d3970d6dd7752"
+        }
+    },
+    "bin": "pyrefly.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/facebook/pyrefly/releases/download/$version/pyrefly-windows-x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/facebook/pyrefly/releases/download/$version/pyrefly-windows-i686.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/facebook/pyrefly/releases/download/$version/pyrefly-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
