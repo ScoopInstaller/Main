@@ -1,0 +1,23 @@
+{
+    "version": "1.24.1",
+    "description": "A static analysis tool for GitHub Actions that finds common security issues such as template injection, credential leakage, excessive permissions, and impostor commits.",
+    "homepage": "https://docs.zizmor.sh/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/zizmorcore/zizmor/releases/download/v1.24.1/zizmor-x86_64-pc-windows-msvc.zip",
+            "hash": "b777ec2cb1098139ba74b32e30d11ed149c69ab692d23788c466d4a31704bd4b"
+        }
+    },
+    "bin": "zizmor.exe",
+    "checkver": {
+        "github": "https://github.com/zizmorcore/zizmor"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/zizmorcore/zizmor/releases/download/v$version/zizmor-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
