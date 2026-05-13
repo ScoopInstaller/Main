@@ -1,0 +1,39 @@
+{
+    "version": "0.7.1",
+    "description": "Local Area Network discovery tool with an interactive Terminal User Interface (TUI) written in Go.",
+    "homepage": "https://github.com/ramonvermeulen/whosthere",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ramonvermeulen/whosthere/releases/download/v0.7.1/whosthere_0.7.1_windows_amd64.tar.gz",
+            "hash": "772fae75d4e0af99507e97eb5951ab45c8b3c9d568734681db2660d4e46d0c32"
+        },
+        "32bit": {
+            "url": "https://github.com/ramonvermeulen/whosthere/releases/download/v0.7.1/whosthere_0.7.1_windows_386.tar.gz",
+            "hash": "b03c85f3cdee92cb4eb0cc9c4ff66ce9e689f2f639ae4009caeae0ca0db328a3"
+        },
+        "arm64": {
+            "url": "https://github.com/ramonvermeulen/whosthere/releases/download/v0.7.1/whosthere_0.7.1_windows_arm64.tar.gz",
+            "hash": "e17aeaca7ab16f76dcb26fa85526dff4490b57e500125545d9e8982d2ef37951"
+        }
+    },
+    "bin": "whosthere.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ramonvermeulen/whosthere/releases/download/v$version/whosthere_$version_windows_amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/ramonvermeulen/whosthere/releases/download/v$version/whosthere_$version_windows_386.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/ramonvermeulen/whosthere/releases/download/v$version/whosthere_$version_windows_arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/whosthere_$version_checksums.txt",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}
