@@ -1,5 +1,5 @@
 {
-    "version": "23.9.0.25.07",
+    "version": "23.26.1.0.0",
     "description": "Connect to a local or remote Oracle Database for development and production deployment.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
@@ -11,8 +11,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2390000/instantclient-basic-windows.x64-23.9.0.25.07.zip",
-            "hash": "8ff61b58e810c91b0c340559aabe8b057f0a308ad80c94aba57920ca4a6e1736",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2326100/instantclient-basic-windows.x64-23.26.1.0.0.zip",
+            "hash": "cccab26b4eb82aa3829038e26575aa22419573be92d9a422a9c793e61bb18e88",
             "env_set": {
                 "OCI_LIB64": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
@@ -24,13 +24,13 @@
     "persist": "network\\admin",
     "checkver": {
         "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
-        "regex": "Version ([\\d.]+)",
+        "regex": "instantclient/(?<url>[^/]+)/instantclient-basic-windows.x64-([\\d.]+)\\.zip",
         "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$majorVersion$minorVersion$patchVersion00/instantclient-basic-windows.x64-$version.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$matchUrl/instantclient-basic-windows.x64-$version.zip"
             }
         },
         "extract_dir": "instantclient_$majorVersion_$minorVersion"
