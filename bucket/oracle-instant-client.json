@@ -6,6 +6,7 @@
         "identifier": "Freeware",
         "url": "https://www.oracle.com/downloads/licenses/instant-client-lic.html"
     },
+    "notes": "For 32bit, use 'versions/oracle-instant-client21'.",
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
@@ -19,13 +20,19 @@
             }
         }
     },
-    "extract_dir": "instantclient_23_9",
+    "extract_to": "_EXTRACTED",
+    "pre_install": [
+        "# Use script (not 'extract_dir') for unpredictable subfolder names",
+        "$sub_folder = Get-ChildItem -Path \"$dir\\_EXTRACTED\\instantclient_*\" -Directory | Select-Object -First 1 -ExpandProperty Fullname",
+        "Move-Item -Path \"$sub_folder\\*\" -Destination $dir",
+        "Remove-Item \"$dir\\_EXTRACTED\" -Force -Recurse"
+    ],
     "env_add_path": ".",
     "persist": "network\\admin",
     "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
         "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
-        "regex": "instantclient/(?<url>[^/]+)/instantclient-basic-windows.x64-([\\d.]+)\\.zip",
-        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+        "regex": "instantclient/(?<url>[^/]+)/instantclient-basic-windows.x64-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
@@ -34,6 +41,5 @@
             }
         },
         "extract_dir": "instantclient_$majorVersion_$minorVersion"
-    },
-    "notes": "For 32bit, use 'versions/oracle-instant-client21'."
+    }
 }
