@@ -1,0 +1,30 @@
+{
+    "version": "2.1.1",
+    "description": "Linux virtual machines, with a focus on running containers.",
+    "homepage": "https://lima-vm.io/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Windows-AMD64.zip",
+            "hash": "8e85c9a06d224a27de06a151856b39d8983dd58bd05b6168ffe69bdc9b89b2b2"
+        },
+        "arm64": {
+            "url": "https://github.com/lima-vm/lima/releases/download/v2.1.1/lima-2.1.1-Windows-ARM64.zip",
+            "hash": "f67818878d2f4704f553bcad3c0b99fcec93f967a1a96dae436c42abe82fd9d8"
+        }
+    },
+    "env_add_path": "bin",
+    "checkver": {
+        "github": "https://github.com/lima-vm/lima"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/lima-vm/lima/releases/download/v$version/lima-$version-Windows-AMD64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/lima-vm/lima/releases/download/v$version/lima-$version-Windows-ARM64.zip"
+            }
+        }
+    }
+}
