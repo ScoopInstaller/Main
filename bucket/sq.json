@@ -1,0 +1,26 @@
+{
+    "version": "0.52.0",
+    "description": "A command line tool that provides jq-style access to structured data sources.",
+    "homepage": "https://sq.io",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/neilotoole/sq/releases/download/v0.52.0/sq-0.52.0-windows-amd64.zip",
+            "hash": "ac4d5651f2ac7e8ca9ab4569e6a5a9798592b8e9c34532562b498c70e16bc939"
+        }
+    },
+    "bin": "sq.exe",
+    "checkver": {
+        "github": "https://github.com/neilotoole/sq"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/neilotoole/sq/releases/download/v$version/sq-$version-windows-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
