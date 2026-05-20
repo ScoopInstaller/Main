@@ -17,9 +17,9 @@
     "checkver": {
         "script": [
             "$install_script = (Invoke-RestMethod 'https://antigravity.google/cli/install.ps1')",
-            "if($install_script -match '\\$DOWNLOAD_BASE_URL\\s*=\\s*\"(?<base>https://[^\"]+)\"') {",
+            "if($install_script -match '\\$DOWNLOAD_BASE_URL\\s*=\\s*\"https://(?<base>[^\"]+)\"') {",
             "    $base = $matches['base']",
-            "    $manifest = (Invoke-RestMethod \"$base/manifests/windows_amd64.json\")",
+            "    $manifest = (Invoke-RestMethod \"https://$base/manifests/windows_amd64.json\")",
             "    if($manifest.url -match '.*/antigravity-cli/(?<build>[^/]+)/') {",
             "        $v = $manifest.version",
             "        $b = $matches['build']",
@@ -34,14 +34,14 @@
             "64bit": {
                 "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/$matchBuild/windows-x64/cli_windows_x64.exe#/agy.exe",
                 "hash": {
-                    "url": "$matchBase/manifests/windows_amd64.json",
+                    "url": "https://$matchBase/manifests/windows_amd64.json#$baseurl",
                     "jsonpath": "$.sha512"
                 }
             },
             "arm64": {
                 "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/$matchBuild/windows-arm/cli_windows_arm64.exe#/agy.exe",
                 "hash": {
-                    "url": "$matchBase/manifests/windows_arm64.json",
+                    "url": "https://$matchBase/manifests/windows_arm64.json#$baseurl",
                     "jsonpath": "$.sha512"
                 }
             }
