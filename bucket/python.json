@@ -69,6 +69,7 @@
     ],
     "uninstaller": {
         "script": [
+            "$global = installed $app $true",
             "if ($global) {",
             "    $pathext = (Get-EnvVar -Name PATHEXT -Global) -replace ';.PYW?', ''",
             "    Set-EnvVar -Name PATHEXT -Value \"$pathext\" -Global",
