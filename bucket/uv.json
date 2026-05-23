@@ -3,6 +3,11 @@
     "description": "An extremely fast Python package installer and resolver, written in Rust.",
     "homepage": "https://docs.astral.sh/uv/",
     "license": "Apache-2.0|MIT",
+    "notes": [
+        "Scoop persists data since version 0.11.16. You may need to move data by yourself.",
+        "Before: '$env:APPDATA\\uv', '$env:LOCALAPPDATA\\uv'",
+        "After : '$persist_dir'"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/astral-sh/uv/releases/download/0.11.16/uv-x86_64-pc-windows-msvc.zip",
@@ -17,11 +22,31 @@
             "hash": "e4f8e70eb21f0f4efd2eeb159ab289f9a16057d59881a4475758be4ce39bc8c5"
         }
     },
+    "installer": {
+        "script": [
+            "Add-Path -Path \"$persist_dir\\python\\shims\" -Global:$global -Force",
+            "Add-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force"
+        ]
+    },
+    "env_set": {
+        "UV_CACHE_DIR": "$persist_dir\\cache",
+        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\shims",
+        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
+        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\shims",
+        "UV_TOOL_DIR": "$persist_dir\\tools\\versions"
+    },
     "bin": [
         "uv.exe",
         "uvx.exe",
         "uvw.exe"
     ],
+    "uninstaller": {
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force",
+            "Remove-Path -Path \"$persist_dir\\python\\shims\" -Global:$global -Force"
+        ]
+    },
     "checkver": {
         "github": "https://github.com/astral-sh/uv"
     },
