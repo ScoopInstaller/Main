@@ -14,7 +14,11 @@
         }
     },
     "bin": "upm.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/replit/upm/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "upm_([\\d.]+)_windows_amd64.tar.gz"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

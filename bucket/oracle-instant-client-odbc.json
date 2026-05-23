@@ -1,22 +1,31 @@
 {
-    "version": "23.9.0.25.07",
+    "version": "23.26.1.0.0",
     "description": "Additional libraries for enabling ODBC applications with Oracle Instant Client.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.oracle.com/downloads/licenses/instant-client-lic.html"
     },
+    "notes": [
+        "Note: The following steps requir Administrator privileges.",
+        "Use 'odbc_install.exe' in Oracle Instant Client's dir to install ODBC.",
+        "Use 'odbc_uninstall.exe' in above dir to uninstall it."
+    ],
     "depends": "oracle-instant-client",
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2390000/instantclient-odbc-windows.x64-23.9.0.25.07.zip",
-            "hash": "46da115c4c322c412ec4c9e684fa6cae09fc29b990dd83f9417e2b442a8ea0f4"
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2326100/instantclient-odbc-windows.x64-23.26.1.0.0.zip",
+            "hash": "2808a685b4008158cc3cd6f8984f7b60c4d494945700b296bd31d68cead1e7bb"
         }
     },
-    "extract_dir": "instantclient_23_9",
+    "extract_to": "_EXTRACTED",
     "pre_install": [
+        "# Use script (not 'extract_dir') for unpredictable subfolder names",
         "$instantclient = currentdir 'oracle-instant-client'",
-        "Copy-Item -Path \"$dir\\*\" -Destination \"$instantclient\" -Force -Recurse | Out-Null"
+        "$sub_folder = Get-ChildItem -Path \"$dir\\_EXTRACTED\\instantclient_*\" -Directory | Select-Object -First 1 -ExpandProperty Fullname",
+        "Copy-Item -Path \"$sub_folder\\*\" -Destination $dir -Force -Recurse",
+        "Move-Item -Path \"$sub_folder\\*\" -Destination $instantclient -Force",
+        "Remove-Item -Path \"$dir\\_EXTRACTED\" -Force -Recurse"
     ],
     "uninstaller": {
         "script": [
@@ -25,21 +34,15 @@
         ]
     },
     "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
         "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
-        "regex": "Version ([\\d.]+)",
-        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+        "regex": "instantclient/(?<url>[^/]+)/instantclient-odbc-windows\\.x64-(?<version>[\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$majorVersion$minorVersion$patchVersion000/instantclient-odbc-windows.x64-$version.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$matchUrl/instantclient-odbc-windows.x64-$version.zip"
             }
-        },
-        "extract_dir": "instantclient_$majorVersion_$minorVersion"
-    },
-    "notes": [
-        "Note: The following steps requir Administrator privileges.",
-        "Use 'odbc_install.exe' in Oracle Instant Client's dir to install ODBC.",
-        "Use 'odbc_uninstall.exe' in above dir to uninstall it."
-    ]
+        }
+    }
 }

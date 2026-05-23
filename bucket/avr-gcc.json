@@ -1,5 +1,5 @@
 {
-    "version": "15.2.0",
+    "version": "15.2.0-1",
     "description": "AVR toolchain for Windows by Zak Kemble",
     "homepage": "https://blog.zakkemble.net/avr-gcc-builds/",
     "license": "BSD-3-Clause",
@@ -16,6 +16,7 @@
         }
     },
     "bin": [
+        "bin\\avr-gcc-15.2.0.exe",
         "bin\\avr-addr2line.exe",
         "bin\\avr-ar.exe",
         "bin\\avr-as.exe",
@@ -48,29 +49,20 @@
         "bin\\avrdude.exe",
         "bin\\make.exe"
     ],
-    "post_install": [
-        "# manually shim bin\\avr-gcc-$version.exe",
-        "scoop shim add \"avr-gcc-$version\" \"$dir\\bin\\avr-gcc-$version.exe\""
-    ],
-    "uninstaller": {
-        "script": "scoop shim rm \"avr-gcc-$version\""
-    },
     "checkver": {
         "github": "https://github.com/ZakKemble/avr-gcc-build"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v$version-1/avr-gcc-$version-x64-windows.zip",
-                "extract_dir": "avr-gcc-$version-x64-windows"
+                "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v$version/avr-gcc-$matchHead-x64-windows.zip",
+                "extract_dir": "avr-gcc-$matchHead-x64-windows"
             },
             "32bit": {
-                "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v$version-1/avr-gcc-$version-x86-windows.zip",
-                "extract_dir": "avr-gcc-$version-x86-windows"
+                "url": "https://github.com/ZakKemble/avr-gcc-build/releases/download/v$version/avr-gcc-$matchHead-x86-windows.zip",
+                "extract_dir": "avr-gcc-$matchHead-x86-windows"
             }
         },
-        "hash": {
-            "url": "$baseurl/SHA256SUMS"
-        }
+        "bin": "bin\\avr-gcc-$matchHead.exe"
     }
 }

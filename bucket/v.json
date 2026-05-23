@@ -13,8 +13,9 @@
     "extract_dir": "v",
     "bin": "v.exe",
     "checkver": {
-        "url": "https://api.github.com/repositories/169677297/releases?per_page=100",
-        "regex": "releases/tag/([\\d.]+)"
+        "github": "https://api.github.com/repos/vlang/v/releases?per_page=100",
+        "jsonpath": "$..tag_name",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {

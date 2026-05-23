@@ -16,7 +16,11 @@
         }
     },
     "bin": "webhook.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/adnanh/webhook/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "download/([\\d.]+)/webhook-windows-amd64\\.tar\\.gz"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

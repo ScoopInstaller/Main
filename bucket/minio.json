@@ -14,8 +14,9 @@
     },
     "bin": "minio.exe",
     "checkver": {
-        "github": "https://github.com/minio/minio",
-        "regex": "releases/tag/RELEASE\\.([\\d-]+T[\\d-]+Z)"
+        "github": "https://api.github.com/repos/minio/minio/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "releases/download/RELEASE\\.([\\d-]+T[\\d-]+Z)"
     },
     "autoupdate": {
         "architecture": {

@@ -1,15 +1,21 @@
 {
-    "version": "2026.3.0",
+    "version": "2026.4.2",
     "description": "The powerful command-line tool (CLI) to write and execute scripts on your Bitwarden vault.",
     "homepage": "https://bitwarden.com/",
     "license": "GPL-3.0-only",
+    "notes": [
+        "Scoop persists data since version 2026.4.1. You may need to move data by yourself.",
+        "Before: '$env:APPDATA\\Bitwarden CLI'",
+        "After : '$persist_dir\\bw-data'"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/bitwarden/clients/releases/download/cli-v2026.3.0/bw-oss-windows-2026.3.0.zip",
-            "hash": "26962a14bc28edb08713b1e6c49f47348668ee488b1fd76e75ecfb6cf9b56664"
+            "url": "https://github.com/bitwarden/clients/releases/download/cli-v2026.4.2/bw-oss-windows-2026.4.2.zip",
+            "hash": "4b22807bf61ef537118c6a4558685fbd198bba7189baf1c4fe0dfab61b16bac7"
         }
     },
     "bin": "bw.exe",
+    "persist": "bw-data",
     "checkver": {
         "url": "https://github.com/bitwarden/clients/releases.atom",
         "regex": "\\/cli-v([\\d.]+)<\\/id>"
@@ -17,10 +23,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/bitwarden/clients/releases/download/cli-v$version/bw-oss-windows-$version.zip",
-                "hash": {
-                    "url": "$baseurl/bw-oss-windows-sha256-$version.txt"
-                }
+                "url": "https://github.com/bitwarden/clients/releases/download/cli-v$version/bw-oss-windows-$version.zip"
             }
         }
     }

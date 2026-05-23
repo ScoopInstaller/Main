@@ -1,12 +1,25 @@
 {
-    "version": "5.42.0.1",
+    "version": "5.42.2.1",
     "description": "A programming language suitable for writing simple scripts as well as complex applications.",
     "homepage": "https://strawberryperl.com",
     "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
+    "notes": [
+        "To avoid conflicts with other C/C++ compilers, '$dir\\c\\bin' will not be added to the PATH.",
+        "For more information, see: https://github.com/ScoopInstaller/Main/pull/2832",
+        "",
+        "This may cause some preinstalled Perl modules to fail.",
+        "If you encounter this issue, please run the following command to manually add it to the PATH:",
+        "",
+        "# To add to the user PATH, run PowerShell and execute:",
+        "[Environment]::SetEnvironmentVariable(\"Path\", $env:Path + \";$dir\\c\\bin\", 'User')",
+        "",
+        "# To add to the system PATH instead, run PowerShell as administrator and execute:",
+        "[Environment]::SetEnvironmentVariable(\"Path\", $env:Path + \";$dir\\c\\bin\", 'Machine')"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_54201_64bit/strawberry-perl-5.42.0.1-64bit-portable.zip",
-            "hash": "a1cde185656cf307b51670eed69f648b9eff15b5c518cb136e027c628e650b71"
+            "url": "https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_54221_64bit/strawberry-perl-5.42.2.1-64bit-portable.zip",
+            "hash": "32d83be90cf04b807cfb9477482bc36302cdee6f5b04cf57e81adecbd8f07898"
         }
     },
     "post_install": [
@@ -20,7 +33,8 @@
         "perl\\bin"
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/23202375/releases/latest",
+        "github": "https://api.github.com/repos/StrawberryPerl/Perl-Dist-Strawberry/releases/latest",
+        "jsonpath": "$..browser_download_url",
         "regex": "releases/download/(?<tag>\\w+)/strawberry-perl-([\\d.]+)-64bit-portable\\.zip\""
     },
     "autoupdate": {

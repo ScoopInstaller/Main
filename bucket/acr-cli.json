@@ -1,0 +1,39 @@
+{
+    "version": "0.19",
+    "description": "Command Line Tool for interacting with Azure Container Registry Images",
+    "homepage": "https://github.com/Azure/acr-cli",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/Azure/acr-cli/releases/download/v0.19/acr-cli_0.19_Windows_i386.zip",
+            "hash": "9030eedfe655d0a7c33a711702cb465fbc3e4e51c5896e0c9fb8521706d99100"
+        },
+        "64bit": {
+            "url": "https://github.com/Azure/acr-cli/releases/download/v0.19/acr-cli_0.19_Windows_x86_64.zip",
+            "hash": "2a65bf3ee256935b086828bc5a52337bf949a72a1f0e71cbf62be8dbdd7dc705"
+        },
+        "arm64": {
+            "url": "https://github.com/Azure/acr-cli/releases/download/v0.19/acr-cli_0.19_Windows_arm64.zip",
+            "hash": "220f020bcc39246a561b73e4e1f96b2d5b7043772974f4eb59e60eb602a362f5"
+        }
+    },
+    "pre_install": "Rename-Item -Path $dir\\acr-cli.exe -NewName acr.exe",
+    "bin": "acr.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/Azure/acr-cli/releases/download/v$version/acr-cli_$version_Windows_i386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/Azure/acr-cli/releases/download/v$version/acr-cli_$version_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Azure/acr-cli/releases/download/v$version/acr-cli_$version_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

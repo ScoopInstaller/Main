@@ -1,5 +1,5 @@
 {
-    "version": "3.14.3",
+    "version": "3.14.5",
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
     "license": "Python-2.0",
@@ -9,16 +9,16 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://www.python.org/ftp/python/3.14.3/python-3.14.3-amd64.exe#/setup.exe",
-            "hash": "b68ad91421afbbd1a628105199c8c5f6179b21ba799067a8d8c0bbac3b7defb0"
+            "url": "https://www.python.org/ftp/python/3.14.5/python-3.14.5-amd64.exe#/setup.exe",
+            "hash": "f9c09f5ed6f796fd1a8bc5ddfa41715a494b453c4781f0e35d5077cf9fa58f6d"
         },
         "32bit": {
-            "url": "https://www.python.org/ftp/python/3.14.3/python-3.14.3.exe#/setup.exe",
-            "hash": "f3a8e8499725bdba6ffac39bd822647febcf23740d430acdc948c4cbc58b1bfe"
+            "url": "https://www.python.org/ftp/python/3.14.5/python-3.14.5.exe#/setup.exe",
+            "hash": "a7c9f428d6e3fa20ab2efbecd2bd536670615e54fa585e8f13b57c5786afbb5a"
         },
         "arm64": {
-            "url": "https://www.python.org/ftp/python/3.14.3/python-3.14.3-arm64.exe#/setup.exe",
-            "hash": "f62a3d28d7070078b3078e2db5777823e1591c6c1a3e596708cebf74ea2b4de6"
+            "url": "https://www.python.org/ftp/python/3.14.5/python-3.14.5-arm64.exe#/setup.exe",
+            "hash": "f4a7df6ab4fa375cd7296127ff6b9a14fbd1313f51864ce020185deba10144fa"
         }
     },
     "pre_install": [
@@ -69,6 +69,7 @@
     ],
     "uninstaller": {
         "script": [
+            "$global = installed $app $true",
             "if ($global) {",
             "    $pathext = (Get-EnvVar -Name PATHEXT -Global) -replace ';.PYW?', ''",
             "    Set-EnvVar -Name PATHEXT -Value \"$pathext\" -Global",

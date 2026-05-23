@@ -11,8 +11,9 @@
         "capnproto-tools-win32-1.4.0/capnpc-capnp.exe"
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/9090933/tags",
-        "regex": "tags/v([\\d.]+)"
+        "github": "https://api.github.com/repos/capnproto/capnproto/tags",
+        "jsonpath": "$..name",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://capnproto.org/capnproto-c++-win32-$version.zip",

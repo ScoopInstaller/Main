@@ -1,39 +1,45 @@
 {
-    "version": "23.9.0.25.07",
+    "version": "23.26.1.0.0",
     "description": "Connect to a local or remote Oracle Database for development and production deployment.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.oracle.com/downloads/licenses/instant-client-lic.html"
     },
+    "notes": "For 32bit, use 'versions/oracle-instant-client21'.",
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2390000/instantclient-basic-windows.x64-23.9.0.25.07.zip",
-            "hash": "8ff61b58e810c91b0c340559aabe8b057f0a308ad80c94aba57920ca4a6e1736",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2326100/instantclient-basic-windows.x64-23.26.1.0.0.zip",
+            "hash": "cccab26b4eb82aa3829038e26575aa22419573be92d9a422a9c793e61bb18e88",
             "env_set": {
                 "OCI_LIB64": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
             }
         }
     },
-    "extract_dir": "instantclient_23_9",
+    "extract_to": "_EXTRACTED",
+    "pre_install": [
+        "# Use script (not 'extract_dir') for unpredictable subfolder names",
+        "$sub_folder = Get-ChildItem -Path \"$dir\\_EXTRACTED\\instantclient_*\" -Directory | Select-Object -First 1 -ExpandProperty Fullname",
+        "Move-Item -Path \"$sub_folder\\*\" -Destination $dir",
+        "Remove-Item \"$dir\\_EXTRACTED\" -Force -Recurse"
+    ],
     "env_add_path": ".",
     "persist": "network\\admin",
     "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
         "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
-        "regex": "Version ([\\d.]+)",
-        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+        "regex": "instantclient/(?<url>[^/]+)/instantclient-basic-windows.x64-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$majorVersion$minorVersion$patchVersion000/instantclient-basic-windows.x64-$version.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$matchUrl/instantclient-basic-windows.x64-$version.zip"
             }
         },
         "extract_dir": "instantclient_$majorVersion_$minorVersion"
-    },
-    "notes": "For 32bit, use 'versions/oracle-instant-client21'."
+    }
 }

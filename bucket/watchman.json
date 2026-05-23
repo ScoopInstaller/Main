@@ -18,7 +18,9 @@
         "watchman.exe"
     ],
     "checkver": {
-        "github": "https://github.com/facebook/watchman"
+        "github": "https://api.github.com/repos/facebook/watchman/releases?per_page=100",
+        "jsonpath": "$..browser_download_url",
+        "regex": "watchman-v([\\d.]+)-windows\\.zip"
     },
     "autoupdate": {
         "architecture": {

@@ -1,0 +1,31 @@
+{
+    "version": "4.2.1",
+    "description": "A CLI tool for managing your installations of the Lean theorem prover.",
+    "homepage": "https://github.com/leanprover/elan",
+    "license": "MIT|Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/leanprover/elan/releases/download/v4.2.1/elan-x86_64-pc-windows-msvc.zip",
+            "hash": "ad4befa57060933d65464bca4eca34c334f714000b5969c49309755682541dc1"
+        }
+    },
+    "installer": {
+        "script": [
+            "[Environment]::SetEnvironmentVariable('ELAN_HOME', \"$persist_dir\\.elan\", 'Process')",
+            "Invoke-ExternalCommand -Path \"$dir\\elan-init.exe\" -Args @('-y', '--no-modify-path') | Out-Null"
+        ]
+    },
+    "env_add_path": ".elan\\bin",
+    "env_set": {
+        "ELAN_HOME": "$persist_dir\\.elan"
+    },
+    "persist": ".elan",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/leanprover/elan/releases/download/v$version/elan-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

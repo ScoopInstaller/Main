@@ -17,7 +17,11 @@
         }
     },
     "bin": "cloak.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/evansmurithi/cloak/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "cloak-v([\\d.]+)-x86_64-pc-windows-msvc\\.zip"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
