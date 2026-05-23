@@ -22,29 +22,31 @@
             "hash": "e4f8e70eb21f0f4efd2eeb159ab289f9a16057d59881a4475758be4ce39bc8c5"
         }
     },
+    "installer": {
+        "script": [
+            "Add-Path -Path \"$persist_dir\\python\\shims\" -Global:$global -Force",
+            "Add-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force"
+        ]
+    },
+    "env_set": {
+        "UV_CACHE_DIR": "$persist_dir\\cache",
+        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\shims",
+        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
+        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\shims",
+        "UV_TOOL_DIR": "$persist_dir\\tools\\versions"
+    },
     "bin": [
         "uv.exe",
         "uvx.exe",
         "uvw.exe"
     ],
-    "env_add_path": [
-        "python\\shims",
-        "tools\\shims"
-    ],
-    "env_set": {
-        "UV_CACHE_DIR": "$dir\\cache",
-        "UV_PYTHON_BIN_DIR": "$dir\\python\\shims",
-        "UV_PYTHON_INSTALL_DIR": "$dir\\python\\versions",
-        "UV_TOOL_BIN_DIR": "$dir\\tools\\shims",
-        "UV_TOOL_DIR": "$dir\\tools\\versions"
+    "uninstaller": {
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force",
+            "Remove-Path -Path \"$persist_dir\\python\\shims\" -Global:$global -Force"
+        ]
     },
-    "persist": [
-        "cache",
-        "python\\versions",
-        "python\\shims",
-        "tools\\versions",
-        "tools\\shims"
-    ],
     "checkver": {
         "github": "https://github.com/astral-sh/uv"
     },
