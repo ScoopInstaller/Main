@@ -1,7 +1,9 @@
 {
+    "##": "Deprecate this manifest after 2026-09-01.",
     "version": "0.8.41",
-    "description": "Coding agent for DeepSeek models that runs in your terminal.",
-    "homepage": "https://github.com/Hmbown/DeepSeek-TUI",
+    "description": "Coding agent for DeepSeek models that runs in your terminal (Deprecated, please use `main/codewhale` instead).",
+    "homepage": "https://deepseek-tui.com/en",
+    "notes": "This manifest is deprecated and scheduled for removal on 2026-09-01. Please use `main/codewhale` instead.",
     "license": "MIT",
     "suggest": {
         "vcredist": "extras/vcredist2022"
@@ -9,28 +11,30 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/Hmbown/DeepSeek-TUI/releases/download/v0.8.41/deepseek-tui-windows-x64.exe#/deepseek-tui.exe",
-                "https://github.com/Hmbown/DeepSeek-TUI/releases/download/v0.8.41/deepseek-windows-x64.exe#/deepseek.exe"
+                "https://github.com/Hmbown/CodeWhale/releases/download/v0.8.41/codewhale-tui-windows-x64.exe#/codewhale-tui.exe",
+                "https://github.com/Hmbown/CodeWhale/releases/download/v0.8.41/codewhale-windows-x64.exe#/codewhale.exe"
             ],
             "hash": [
-                "6b0f2cf46ef7ffe173826bb0ac9c105ea2ed65849fc44e991cfae0bab979d057",
-                "05808f6e37ac23f34cb8921886e91d65bb104e56f4f6f8fbc340c6a8e58d72b7"
+                "fcbb29952fcc3cca130c43dd38df1c3ba31b85c99555ed88d1b5ea19dad38916",
+                "f0c727d1b73618854b9597c87f562dbe564914507b33b830a5360d8a7d741329"
             ]
         }
     },
-    "bin": "deepseek.exe",
-    "checkver": "github",
+    "bin": "codewhale.exe",
+    "checkver": {
+        "github": "https://github.com/Hmbown/CodeWhale"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": [
-                    "https://github.com/Hmbown/DeepSeek-TUI/releases/download/v$version/deepseek-tui-windows-x64.exe#/deepseek-tui.exe",
-                    "https://github.com/Hmbown/DeepSeek-TUI/releases/download/v$version/deepseek-windows-x64.exe#/deepseek.exe"
+                    "https://github.com/Hmbown/CodeWhale/releases/download/v$version/codewhale-tui-windows-x64.exe#/codewhale-tui.exe",
+                    "https://github.com/Hmbown/CodeWhale/releases/download/v$version/codewhale-windows-x64.exe#/codewhale.exe"
                 ]
             }
         },
         "hash": {
-            "url": "$baseurl/deepseek-artifacts-sha256.txt"
+            "url": "$baseurl/codewhale-artifacts-sha256.txt"
         }
     }
 }
