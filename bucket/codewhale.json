@@ -1,0 +1,38 @@
+{
+    "version": "0.8.41",
+    "description": "Coding agent for DeepSeek models that runs in your terminal.",
+    "homepage": "https://deepseek-tui.com/en",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/Hmbown/CodeWhale/releases/download/v0.8.41/codewhale-tui-windows-x64.exe#/codewhale-tui.exe",
+                "https://github.com/Hmbown/CodeWhale/releases/download/v0.8.41/codewhale-windows-x64.exe#/codewhale.exe"
+            ],
+            "hash": [
+                "fcbb29952fcc3cca130c43dd38df1c3ba31b85c99555ed88d1b5ea19dad38916",
+                "f0c727d1b73618854b9597c87f562dbe564914507b33b830a5360d8a7d741329"
+            ]
+        }
+    },
+    "bin": "codewhale.exe",
+    "checkver": {
+        "github": "https://github.com/Hmbown/CodeWhale"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/Hmbown/CodeWhale/releases/download/v$version/codewhale-tui-windows-x64.exe#/codewhale-tui.exe",
+                    "https://github.com/Hmbown/CodeWhale/releases/download/v$version/codewhale-windows-x64.exe#/codewhale.exe"
+                ]
+            }
+        },
+        "hash": {
+            "url": "$baseurl/codewhale-artifacts-sha256.txt"
+        }
+    }
+}
