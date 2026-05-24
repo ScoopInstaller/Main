@@ -1,0 +1,36 @@
+{
+    "version": "1.3.0",
+    "description": "Network monitoring terminal UI with per-process connection tracking and deep packet inspection",
+    "homepage": "https://github.com/domcyrus/rustnet",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/domcyrus/rustnet/releases/download/v1.3.0/rustnet-v1.3.0-x86_64-pc-windows-msvc.zip",
+            "hash": "47bd489ea39f0e1238e871b9d4190b7928f1566c34fd51cb91b64cf9d2b4a4f9",
+            "extract_dir": "rustnet-v1.3.0-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://github.com/domcyrus/rustnet/releases/download/v1.3.0/rustnet-v1.3.0-i686-pc-windows-msvc.zip",
+            "hash": "073202e818a7862afe51640adbd43758f1bf065a514a614e597c3735c5b46f83",
+            "extract_dir": "rustnet-v1.3.0-i686-pc-windows-msvc"
+        }
+    },
+    "bin": "rustnet.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/domcyrus/rustnet/releases/download/v$version/rustnet-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "rustnet-v$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://github.com/domcyrus/rustnet/releases/download/v$version/rustnet-v$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "rustnet-v$version-i686-pc-windows-msvc"
+            }
+        }
+    },
+    "notes": "rustnet requires Npcap to capture packets. Install it in \"WinPcap API-compatible Mode\" from https://npcap.com/#download"
+}
