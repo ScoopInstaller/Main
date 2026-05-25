@@ -17,9 +17,34 @@
         "pnpm.exe",
         [
             "pnpm.exe",
+            "pn"
+        ],
+        [
+            "pnpm.exe",
             "pnpx",
             "dlx"
+        ],
+        [
+            "pnpm.exe",
+            "pnx",
+            "dlx"
         ]
+    ],
+    "post_install": [
+        "pnpm config set storeDir \"$dir\\store\"",
+        "pnpm config set cacheDir \"$dir\\cache\"",
+        "pnpm config set stateDir \"$dir\\state\""
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "PNPM_HOME": "$dir"
+    },
+    "persist": [
+        "bin",
+        "global",
+        "store",
+        "cache",
+        "state"
     ],
     "checkver": {
         "script": [
