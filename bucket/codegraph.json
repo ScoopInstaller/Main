@@ -1,0 +1,40 @@
+{
+    "version": "0.9.4",
+    "description": "Semantic code intelligence for AI agents.",
+    "homepage": "https://github.com/colbymchenry/codegraph",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/colbymchenry/codegraph/releases/download/v0.9.4/codegraph-win32-x64.zip",
+            "hash": "101d1db048fadd836744984e4b955f2f13aa7cc6eca11975e839d1f65793b397",
+            "extract_dir": "codegraph-win32-x64"
+        },
+        "arm64": {
+            "url": "https://github.com/colbymchenry/codegraph/releases/download/v0.9.4/codegraph-win32-arm64.zip",
+            "hash": "a018859fe1480e8e0581711db784796a9c7e431ecad8a643055245af0aa77db1",
+            "extract_dir": "codegraph-win32-arm64"
+        }
+    },
+    "bin": "bin\\codegraph.cmd",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/colbymchenry/codegraph/releases/download/v$version/codegraph-win32-x64.zip",
+                "extract_dir": "codegraph-win32-x64",
+                "hash": {
+                    "url": "https://github.com/colbymchenry/codegraph/releases/download/v$version/SHA256SUMS",
+                    "regex": "(?m)^([A-Fa-f0-9]{64})\\s+codegraph-win32-x64\\.zip$"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/colbymchenry/codegraph/releases/download/v$version/codegraph-win32-arm64.zip",
+                "extract_dir": "codegraph-win32-arm64",
+                "hash": {
+                    "url": "https://github.com/colbymchenry/codegraph/releases/download/v$version/SHA256SUMS",
+                    "regex": "(?m)^([A-Fa-f0-9]{64})\\s+codegraph-win32-arm64\\.zip$"
+                }
+            }
+        }
+    }
+}
