@@ -1,0 +1,34 @@
+{
+    "version": "0.9.0",
+    "description": "A better whois and domain intelligence toolkit.",
+    "homepage": "https://benword.com/quien-a-better-whois-and-domain-intelligence-toolkit",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/retlehs/quien/releases/download/v0.9.0/quien_windows_amd64.zip",
+            "hash": "00826bbbb292c81936f1a5fcbc3014b8a390ce71d34dde0f4b1149ec1c281e78"
+        },
+        "arm64": {
+            "url": "https://github.com/retlehs/quien/releases/download/v0.9.0/quien_windows_arm64.zip",
+            "hash": "14e5e8b4ed21ff6914960a10f8c577cb190576669bf0b9b41938caf15a166d7c"
+        }
+    },
+    "bin": "quien.exe",
+    "checkver": {
+        "github": "https://github.com/retlehs/quien"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/retlehs/quien/releases/download/v$version/quien_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/retlehs/quien/releases/download/v$version/quien_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/quien_$version_checksums.txt",
+            "regex": "$sha256\\s+$baseename"
+        }
+    }
+}
