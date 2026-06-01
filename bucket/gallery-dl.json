@@ -1,5 +1,5 @@
 {
-    "version": "1.31.10",
+    "version": "1.32.1",
     "description": "Command-line program to download image-galleries and -collections from several image hosting sites.",
     "homepage": "https://codeberg.org/mikf/gallery-dl",
     "license": "GPL-2.0-only",
@@ -16,9 +16,10 @@
     "pre_install": "if (-not (Test-Path \"$persist_dir\\gallery-dl.conf\")) { Set-Content \"$dir\\gallery-dl.conf\" '{}' -Encoding Ascii | Out-Null }",
     "bin": "gallery-dl.exe",
     "persist": "gallery-dl.conf",
-     "checkver": {
-        "url": "https://codeberg.org/mikf/gallery-dl/releases.rss",
-        "regex": "<title>v([\\d.]+)</title>"
+    "checkver": {
+        "url": "https://codeberg.org/api/v1/repos/mikf/gallery-dl/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
