@@ -1,6 +1,6 @@
 {
     "version": "0.10.0",
-    "description": "Reference command-line client for cq, an open standard for shared agent learning that lets AI agents persist, share, and query collective knowledge so they stop rediscovering the same failures.",
+    "description": "An open standard for shared agent learning that lets AI agents persist, share, and query collective knowledge so they stop rediscovering the same failures.",
     "homepage": "https://github.com/mozilla-ai/cq",
     "license": "Apache-2.0",
     "architecture": {
@@ -15,8 +15,9 @@
     },
     "bin": "cq.exe",
     "checkver": {
-        "github": "https://github.com/mozilla-ai/cq",
-        "regex": "cli/v([\\d.]+)"
+        "github": "https://api.github.com/repos/mozilla-ai/cq/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"cli/v([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
