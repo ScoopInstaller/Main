@@ -1,0 +1,34 @@
+{
+    "version": "2026-06-01",
+    "description": "A large-scale build system from Meta, and the successor to Buck",
+    "homepage": "https://buck2.build/",
+    "license": "MIT|Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/facebook/buck2/releases/download/2026-06-01/buck2-x86_64-pc-windows-msvc.exe.zst#/buck2.exe.zst",
+            "hash": "b3229a6e5cce50f6561dc251bf7f20e902b20c983dcdc293adefd5bba437cae3"
+        },
+        "arm64": {
+            "url": "https://github.com/facebook/buck2/releases/download/2026-06-01/buck2-aarch64-pc-windows-msvc.exe.zst#/buck2.exe.zst",
+            "hash": "72af50ab3dedf015ad8add75a927b1104bc8d5269542528ec5a682e27839a626"
+        }
+    },
+    "bin": "buck2.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/facebook/buck2/releases",
+        "regex": "\"tag_name\":\\s*\"(\\d{4}-\\d{2}-\\d{2})\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/facebook/buck2/releases/download/$version/buck2-x86_64-pc-windows-msvc.exe.zst#/buck2.exe.zst"
+            },
+            "arm64": {
+                "url": "https://github.com/facebook/buck2/releases/download/$version/buck2-aarch64-pc-windows-msvc.exe.zst#/buck2.exe.zst"
+            }
+        }
+    }
+}
