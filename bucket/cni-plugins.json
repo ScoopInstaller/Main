@@ -1,7 +1,7 @@
 {
     "version": "1.9.1",
-    "description": "Reference CNI (Container Network Interface) network plugins, maintained by the containernetworking team",
-    "homepage": "https://github.com/containernetworking/plugins",
+    "description": "Reference CNI (Container Network Interface) network plugins, maintained by the containernetworking team.",
+    "homepage": "https://www.cni.dev/plugins/current/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
@@ -14,15 +14,17 @@
         "win-bridge.exe",
         "win-overlay.exe"
     ],
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/containernetworking/plugins"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/containernetworking/plugins/releases/download/v$version/cni-plugins-windows-amd64-v$version.tgz",
-                "hash": {
-                    "url": "$url.sha256"
-                }
+                "url": "https://github.com/containernetworking/plugins/releases/download/v$version/cni-plugins-windows-amd64-v$version.tgz"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
