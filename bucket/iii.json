@@ -1,0 +1,38 @@
+{
+    "version": "0.17.0",
+    "description": "Effortlessly compose, extend, and observe every service in real-time",
+    "homepage": "https://iii.dev",
+    "license": "Elastic-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.17.0/iii-x86_64-pc-windows-msvc.zip",
+            "hash": "2a8de789fab46b87654dea471ed5ebd191a4ac099cb98ac543500f886a5c1f84"
+        },
+        "32bit": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.17.0/iii-i686-pc-windows-msvc.zip",
+            "hash": "25e9d07bd99d7603d17a3436de007a6ca62fa7bea734bfe351ac148e2d192928"
+        },
+        "arm64": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.17.0/iii-aarch64-pc-windows-msvc.zip",
+            "hash": "0ef1938b9e6029e91200eba4b1bb645594d927f7ad5004e895666e6f82753c2d"
+        }
+    },
+    "bin": "iii.exe",
+    "checkver": {
+        "github": "https://github.com/iii-hq/iii",
+        "regex": "iii/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
