@@ -18,7 +18,21 @@
         }
     },
     "extract_dir": "AdGuardHome",
+    "pre_install": [
+        "# Manually copy the configuration file if it exists, otherwise create an empty one causing AdGuard Home to fail to start",
+        "if (Test-Path -LiteralPath \"$persist_dir\\AdGuardHome.yaml\" -PathType Leaf) {",
+        "    Copy-Item -LiteralPath \"$persist_dir\\AdGuardHome.yaml\" -Destination \"$dir\\AdGuardHome.yaml\" -Force",
+        "}"
+    ],
     "bin": "AdGuardHome.exe",
+    "persist": "data",
+    "pre_uninstall": [
+        "# Manually copy the configuration file if it exists, otherwise create an empty one causing AdGuard Home to fail to start",
+        "if (Test-Path -LiteralPath \"$dir\\AdGuardHome.yaml\" -PathType Leaf) {",
+        "    ensure \"$persist_dir\" | Out-Null",
+        "    Copy-Item -LiteralPath \"$dir\\AdGuardHome.yaml\" -Destination \"$persist_dir\\AdGuardHome.yaml\" -Force",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/AdguardTeam/AdGuardHome"
     },
