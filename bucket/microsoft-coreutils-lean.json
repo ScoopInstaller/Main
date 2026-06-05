@@ -1,0 +1,35 @@
+{
+    "version": "2026.5.29",
+    "description": "A Microsoft-maintained build of uutils/coreutils, uutils/findutils.",
+    "homepage": "https://github.com/microsoft/coreutils",
+    "license": "MIT",
+    "innosetup": true,
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/microsoft/coreutils/releases/download/v2026.5.29/coreutils-2026.5.29-x64.exe",
+            "hash": "23b019d0664f1f5aa2a0c503435f8b52d3c8eea2aec1c0609ce21fce18667281"
+        },
+        "arm64": {
+            "url": "https://github.com/microsoft/coreutils/releases/download/v2026.5.29/coreutils-2026.5.29-arm64.exe",
+            "hash": "9e789d8f6de41e3cf9d659c976232f6ca88f3008f25dd540f65dbebadae21fab"
+        }
+    },
+    "bin": [
+        "coreutils.exe",
+        [
+            "coreutils.exe",
+            "uutils"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/coreutils/releases/download/v$version/coreutils-$version-x64.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/microsoft/coreutils/releases/download/v$version/coreutils-$version-arm64.exe"
+            }
+        }
+    }
+}
