@@ -345,7 +345,7 @@
             "        New-Item -ItemType HardLink -Force -Target (Join-Path $dir 'coreutils.exe') -Path (Join-Path $cmdDir \"$name.cmd\") | Out-Null",
             "    }",
             "}",
-            "Remove-Item -Path $bindir\\_why_is_this_700MB_.txt -Force -ErrorAction Ignore",
+            "Remove-Item -Path $binDir\\_why_is_this_700MB_.txt -Force -ErrorAction Ignore",
             "$pwshInstall = Join-Path $dir 'pwsh-install.ps1'",
             "$pwshText = Get-Content -LiteralPath $pwshInstall -Raw",
             "$pwshText = $pwshText.Replace('HKLM:\\SOFTWARE\\Microsoft\\coreutils\\PowerShellProfiles', 'HKCU:\\SOFTWARE\\Microsoft\\coreutils\\PowerShellProfiles')",
