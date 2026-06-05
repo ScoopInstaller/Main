@@ -354,6 +354,7 @@
     },
     "uninstaller": {
         "script": [
+            "$pwshInstall = Join-Path $dir 'pwsh-install.ps1'",
             "if (Get-Command pwsh.exe -ErrorAction Ignore) {",
             "    & pwsh.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $pwshInstall -Action Uninstall",
             "}"
