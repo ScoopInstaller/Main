@@ -6,19 +6,20 @@
     "architecture": {
         "64bit": {
             "url": "https://gmic.eu/get_file.php?file=windows/gmic_3.7.6_cli_win64.zip",
-            "hash": "b35e2f8e02b6081faf4df8b481c432a7804ee78861efb4c3d2b949931afb62c3"
+            "hash": "b35e2f8e02b6081faf4df8b481c432a7804ee78861efb4c3d2b949931afb62c3",
+            "extract_dir": "gmic-3.7.6-cli-win64"
         }
     },
-    "extract_dir": "gmic-3.7.6-cli-win64",
     "bin": "gmic.exe",
     "checkver": {
-        "url": "https://gmic.eu",
-        "regex": "download.html\">(\\d+?\\.\\d+?\\.\\d+?)"
+        "url": "https://gmic.eu/download.html",
+        "regex": "file=windows/gmic_([\\d.]+)_cli_win64.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gmic.eu/get_file.php?file=windows/gmic_$version_cli_win64.zip"
+                "url": "https://gmic.eu/get_file.php?file=windows/gmic_$version_cli_win64.zip",
+                "extract_dir": "gmic-$version-cli-win64"
             }
         }
     }
