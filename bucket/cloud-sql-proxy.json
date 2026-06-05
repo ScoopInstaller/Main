@@ -1,22 +1,24 @@
 {
-    "version": "2.21.3",
+    "version": "2.22.0",
     "description": "Provides secure access to Cloud SQL Second Generation instances without having to add Authorized networks or configure SSL.",
     "homepage": "https://cloud.google.com/sql/docs/mysql/sql-proxy",
     "license": "Apache-2.0",
     "depends": "gcloud",
     "architecture": {
         "64bit": {
-            "url": "https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.21.3/cloud-sql-proxy.x64.exe#/cloud-sql-proxy.exe",
-            "hash": "d5ec67b74aa24e19baed36f3e2fc6203b9675be0ca1c7ece8068ad2d532186d7"
+            "url": "https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.22.0/cloud-sql-proxy.x64.exe#/cloud-sql-proxy.exe",
+            "hash": "55f5932bdd7e5e3beb0be3ec1f480ea78e3bc9b0595ebc3ee2c31fa379cace22"
         },
         "32bit": {
-            "url": "https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.21.3/cloud-sql-proxy.x86.exe#/cloud-sql-proxy.exe",
-            "hash": "3d954ceccc343577ddcb368df41bb5855773ab0bd9f070a75f00d76c3d199537"
+            "url": "https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.22.0/cloud-sql-proxy.x86.exe#/cloud-sql-proxy.exe",
+            "hash": "6d5c10fc1a014de1b63453d80f306312d8652d02c548448f2793bd9e803e64e7"
         }
     },
     "bin": "cloud-sql-proxy.exe",
     "checkver": {
-        "github": "https://github.com/GoogleCloudPlatform/cloud-sql-proxy"
+        "github": "https://api.github.com/repos/GoogleCloudPlatform/cloud-sql-proxy/releases",
+        "jsonpath": "$[*].body",
+        "regex": "cloud-sql-connectors/cloud-sql-proxy/v([\\d.]+)/"
     },
     "autoupdate": {
         "architecture": {

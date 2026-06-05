@@ -1,0 +1,33 @@
+{
+    "version": "1.46.0",
+    "description": "A git hook manager and project linting tool with an emphasis on performance.",
+    "homepage": "https://hk.jdx.dev",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jdx/hk/releases/download/v1.46.0/hk-x86_64-pc-windows-msvc.zip",
+            "hash": "5af7e769acb7f70d8630ed53ae1fb2cc4b205117f29df5d83619fa0ff72a3bf1"
+        },
+        "arm64": {
+            "url": "https://github.com/jdx/hk/releases/download/v1.46.0/hk-aarch64-pc-windows-msvc.zip",
+            "hash": "bb9a09da7f744b19752c6b19e2c80e1ca8932aa4ca973d721e706be0b1d6e339"
+        }
+    },
+    "bin": "hk.exe",
+    "checkver": {
+        "github": "https://github.com/jdx/hk"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jdx/hk/releases/download/v$version/hk-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jdx/hk/releases/download/v$version/hk-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

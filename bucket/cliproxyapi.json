@@ -1,0 +1,45 @@
+{
+    "version": "7.1.45",
+    "description": "Wrap Gemini CLI, Antigravity, ChatGPT Codex, Claude Code, Grok Build as an OpenAI/Gemini/Claude/Codex compatible API service.",
+    "homepage": "https://help.router-for.me",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/router-for-me/CLIProxyAPI/releases/download/v7.1.45/CLIProxyAPI_7.1.45_windows_amd64.zip",
+            "hash": "a83f0e545b2fe4ce15dd6b8e4f9c342845623e938c00e51433a87db597b9bffb"
+        },
+        "arm64": {
+            "url": "https://github.com/router-for-me/CLIProxyAPI/releases/download/v7.1.45/CLIProxyAPI_7.1.45_windows_aarch64.zip",
+            "hash": "1c7ca5d3e5ebcb01f20f1a3ee41002401431370780b70c6df4fb49cfa271c591"
+        }
+    },
+    "pre_install": [
+        "if (-not (Test-Path -Path \"$persist_dir\\config.yaml\")) {",
+        "    Copy-Item -Path \"$dir\\config.example.yaml\" -Destination \"$dir\\config.yaml\"",
+        "}"
+    ],
+    "bin": [
+        [
+            "cli-proxy-api.exe",
+            "cli-proxy-api",
+            "--config \"$persist_dir\\config.yaml\""
+        ]
+    ],
+    "persist": "config.yaml",
+    "checkver": {
+        "github": "https://github.com/router-for-me/CLIProxyAPI"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/router-for-me/CLIProxyAPI/releases/download/v$version/CLIProxyAPI_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/router-for-me/CLIProxyAPI/releases/download/v$version/CLIProxyAPI_$version_windows_aarch64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
