@@ -3,23 +3,39 @@
     "description": "Reliable model swapping for any local OpenAI/Anthropic compatible server - llama.cpp, vllm, etc.",
     "homepage": "https://github.com/mostlygeek/llama-swap",
     "license": "MIT",
+    "notes": [
+        "llama-swap shim use \"$persist_dir\\config.yaml\" as the default config file.",
+        "To use a different config file, please run:",
+        "\"$dir\\llama-swap.exe\" --config <NEW_CONFIG_FILE>"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/mostlygeek/llama-swap/releases/download/v223/llama-swap_223_windows_amd64.zip",
             "hash": "21a6b71f8c38c912fe32fc39c8025bc877690bce8e95b692621e2712085d2c59"
         }
     },
-    "bin": "llama-swap.exe",
+    "pre_install": [
+        "if (-not (Test-Path -Path \"$persist_dir\\config.yaml\")) {",
+        "    New-Item -ItemType File -Path \"$persist_dir\\config.yaml\" -Force | Out-Null",
+        "}"
+    ],
+    "bin": [
+        [
+            "llama-swap.exe",
+            "llama-swap",
+            "--config \"$persist_dir\\config.yaml\""
+        ]
+    ],
+    "persist": "config.yaml",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mostlygeek/llama-swap/releases/download/v$version/llama-swap_$version_windows_amd64.zip",
-                "hash": {
-                    "url": "$baseurl/llama-swap_$version_checksums.txt",
-                    "regex": "$sha256\\s+$basename"
-                }
+                "url": "https://github.com/mostlygeek/llama-swap/releases/download/v$version/llama-swap_$version_windows_amd64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/llama-swap_$version_checksums.txt"
         }
     }
 }
