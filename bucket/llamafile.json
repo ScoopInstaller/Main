@@ -1,0 +1,40 @@
+{
+    "version": "0.10.3",
+    "description": "Distribute and run LLMs with a single file.",
+    "homepage": "https://github.com/mozilla-ai/llamafile",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mozilla-ai/llamafile/releases/download/0.10.3/llamafile-0.10.3.zip",
+            "hash": "8ff91166a39bb9d387bf5f3115d02b4b2cbd93870f77eefd1d312e27dbf527f7",
+            "extract_dir": "home\\mala\\releases\\0.10.3\\llamafile-0.10.3"
+        }
+    },
+    "bin": [
+        [
+            "bin\\diffusionfile",
+            "diffusionfile.exe"
+        ],
+        [
+            "bin\\llamafile",
+            "llamafile"
+        ],
+        [
+            "bin\\whisperfile",
+            "whisperfile"
+        ],
+        [
+            "bin\\zipalign",
+            "zipalign"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mozilla-ai/llamafile/releases/download/$version/llamafile-$version.zip",
+                "extract_dir": "home\\mala\\releases\\$version\\llamafile-$version"
+            }
+        }
+    }
+}
