@@ -1,0 +1,30 @@
+{
+    "version": "0.20.0",
+    "description": "A portable DNS resolver in a single binary.",
+    "homepage": "https://numa.rs",
+    "license": "MIT",
+    "notes": "User data is stored in '$Env:PROGRAMDATA\\numa', and is not persisted by Scoop.",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/razvandimescu/numa/releases/download/v0.20.0/numa-windows-x86_64.zip",
+            "hash": "89d446ca9da886eab95aec90777530112916f5462ee6b0bf238af06fa8b47485"
+        }
+    },
+    "bin": "numa.exe",
+    "checkver": {
+        "github": "https://github.com/razvandimescu/numa"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/razvandimescu/numa/releases/download/v$version/numa-windows-x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
