@@ -3,14 +3,15 @@
     "description": "Simplify Clojure project automation and configuration.",
     "homepage": "https://leiningen.org/",
     "license": "EPL-1.0",
-    "url": "https://raw.githubusercontent.com/technomancy/leiningen/2.13.0/bin/lein.bat",
-    "hash": "bbcd29c9e43c9693fdb93993e0daba3d2c12b233dd7b46503684f23bd4f29c84",
+    "url": "https://codeberg.org/leiningen/leiningen/raw/tag/2.13.0/bin/lein.bat",
+    "hash": "3375c96dc2fb24c1ff0533e6949510cae02c169dabaf0d4b3b585363d22020fe",
     "bin": "lein.bat",
     "post_install": "lein self-install",
     "checkver": {
-        "github": "https://github.com/technomancy/leiningen"
+        "url": "https://codeberg.org/api/v1/repos/leiningen/leiningen/tags",
+        "jsonpath": "$[0].name"
     },
     "autoupdate": {
-        "url": "https://raw.githubusercontent.com/technomancy/leiningen/$version/bin/lein.bat"
+        "url": "https://codeberg.org/leiningen/leiningen/raw/tag/$version/bin/lein.bat"
     }
 }
