@@ -8,8 +8,8 @@
     "bin": "lein.bat",
     "post_install": "lein self-install",
     "checkver": {
-        "url": "https://codeberg.org/leiningen/leiningen/tags.rss",
-        "xpath": "(/rss/channel/item/title)[1]"
+        "url": "https://codeberg.org/api/v1/repos/leiningen/leiningen/tags",
+        "jsonpath": "$[0].name"
     },
     "autoupdate": {
         "url": "https://codeberg.org/leiningen/leiningen/raw/tag/$version/bin/lein.bat"
