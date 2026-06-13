@@ -1,0 +1,39 @@
+{
+    "version": "0.6.6",
+    "description": "A continuous benchmarking tool that tracks benchmark results over time and catches performance regressions in CI.",
+    "homepage": "https://bencher.dev",
+    "license": "Proprietary|Apache-2.0|MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bencherdev/bencher/releases/download/v0.6.6/bencher-v0.6.6-windows-x86-64.exe#/bencher.exe",
+            "hash": "c6fab0324bf00b300a4ed90e5cbf2be4e9642f05bc43608d3ebf6a6cec37f436"
+        },
+        "arm64": {
+            "url": "https://github.com/bencherdev/bencher/releases/download/v0.6.6/bencher-v0.6.6-windows-arm-64.exe#/bencher.exe",
+            "hash": "1548912edd515356a85c0b18fb149dee154c130f3a2ca783b39feb456d2a443d"
+        }
+    },
+    "bin": "bencher.exe",
+    "checkver": {
+        "github": "https://github.com/bencherdev/bencher"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bencherdev/bencher/releases/download/v$version/bencher-v$version-windows-x86-64.exe#/bencher.exe",
+                "hash": {
+                    "url": "https://github.com/bencherdev/bencher/releases/download/v$version/bencher-v$version-windows-x86-64.exe.sha256"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/bencherdev/bencher/releases/download/v$version/bencher-v$version-windows-arm-64.exe#/bencher.exe",
+                "hash": {
+                    "url": "https://github.com/bencherdev/bencher/releases/download/v$version/bencher-v$version-windows-arm-64.exe.sha256"
+                }
+            }
+        }
+    }
+}
