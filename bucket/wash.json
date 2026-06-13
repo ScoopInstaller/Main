@@ -1,0 +1,26 @@
+{
+    "version": "2.3.0",
+    "description": "A command-line tool for developing, building, and managing WebAssembly components.",
+    "homepage": "https://wasmcloud.com",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/wasmCloud/wasmCloud/releases/download/v2.3.0/wash-x86_64-pc-windows-msvc.zip",
+            "hash": "8cb9ac89ab971901a4a3c9feb50b876f4ed3e4246d1cd76c80e8908cb0fd311c"
+        }
+    },
+    "bin": "wash.exe",
+    "checkver": {
+        "github": "https://github.com/wasmCloud/wasmCloud"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/wasmCloud/wasmCloud/releases/download/v$version/wash-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
