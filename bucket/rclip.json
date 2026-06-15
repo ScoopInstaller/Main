@@ -5,17 +5,21 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/yurijmikhalevich/rclip/releases/download/v3.2.3/rclip-3.2.3.msi",
+            "url": "https://github.com/yurijmikhalevich/rclip/releases/download/v3.2.3/rclip-3.2.3.msi#/dl.msi_",
             "hash": "08026283ee0848b82ba6f8e828c4e7beedfb545f615001b1f7801fb626c64600"
         }
     },
-    "extract_dir": "APPDIR",
+    "pre_install": [
+        "# Lessmsi behaves differently from Msiexec in this case.",
+        "$ExtractDir = if (get_config USE_LESSMSI $false) { 'APPDIR' } else { '' }",
+        "Expand-MsiArchive -Path \"$dir\\$fname\" -DestinationPath $dir -ExtractDir $ExtractDir -Removal"
+    ],
     "bin": "rclip.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/yurijmikhalevich/rclip/releases/download/v$version/rclip-$version.msi"
+                "url": "https://github.com/yurijmikhalevich/rclip/releases/download/v$version/rclip-$version.msi#/dl.msi_"
             }
         }
     }
