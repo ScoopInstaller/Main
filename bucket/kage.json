@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "description": "Clones a website into a folder you can browse offline, with every script stripped out",
+    "homepage": "https://kage.tamnd.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tamnd/kage/releases/download/v0.2.0/kage_0.2.0_windows_amd64.zip",
+            "hash": "9e666e8ac91b50e5432407b1af632039a1ef68efde5130858b6564e29a5b0757"
+        },
+        "arm64": {
+            "url": "https://github.com/tamnd/kage/releases/download/v0.2.0/kage_0.2.0_windows_arm64.zip",
+            "hash": "0df458b6e95e7f4efdc6c01e6bd20301f633a9f21c9946410d0eb60b00e44711"
+        }
+    },
+    "bin": "kage.exe",
+    "checkver": {
+        "github": "https://github.com/tamnd/kage"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tamnd/kage/releases/download/v$version/kage_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/tamnd/kage/releases/download/v$version/kage_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/tamnd/kage/releases/download/v$version/checksums.txt"
+        }
+    }
+}
