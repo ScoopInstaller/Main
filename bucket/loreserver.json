@@ -1,0 +1,23 @@
+{
+    "version": "0.8.3",
+    "description": "The server for Lore, an open source version control system designed for unprecedented scalability of both data and teams; it provides the centralized service that hosts Lore repositories.",
+    "homepage": "https://lore.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/EpicGames/lore/releases/download/v0.8.3/loreserver-v0.8.3-x86_64-pc-windows-msvc.zip",
+            "hash": "9a21d37aa14f7213b110f062e190ecd1d3488b65c7912417b825d003b7037a79"
+        }
+    },
+    "bin": "loreserver.exe",
+    "checkver": {
+        "github": "https://github.com/EpicGames/lore"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/EpicGames/lore/releases/download/v$version/loreserver-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
