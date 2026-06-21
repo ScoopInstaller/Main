@@ -1,8 +1,11 @@
 {
     "version": "2026.6.3",
     "description": "A fast, keyboard-driven terminal UI for todo.txt.",
-    "homepage": "https://github.com/webstonehq/tuxedo/",
+    "homepage": "https://github.com/webstonehq/tuxedo",
     "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/webstonehq/tuxedo/releases/download/v2026.6.3/tuxedo-v2026.6.3-x86_64-pc-windows-msvc.zip",
@@ -16,6 +19,9 @@
             "64bit": {
                 "url": "https://github.com/webstonehq/tuxedo/releases/download/v$version/tuxedo-v$version-x86_64-pc-windows-msvc.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
