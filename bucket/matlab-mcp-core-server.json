@@ -1,31 +1,32 @@
 {
+    "##": "Deprecate this manifest after 2026-09-01.",
     "version": "0.10.1",
-    "description": "MATLAB MCP Core Server - Model Context Protocol server for MATLAB that enables AI-driven workflows",
-    "homepage": "https://www.mathworks.com/products/matlab-mcp-core-server.html",
+    "description": "MCP (Model Context Protocol) server for MATLAB that enables AI-driven workflows (Deprecated, please use `main/matlab-mcp-server` instead).",
+    "homepage": "https://www.mathworks.com/products/matlab-mcp-server.html",
     "license": {
         "identifier": "BSD-3-Clause",
-        "url": "https://github.com/matlab/matlab-mcp-core-server/raw/refs/heads/main/LICENSE.md"
+        "url": "https://github.com/matlab/matlab-mcp-server/raw/refs/heads/main/LICENSE.md"
     },
+    "notes": [
+        "This manifest is deprecated and scheduled for removal on 2026-09-01. Please use `main/matlab-mcp-server` instead.",
+        "",
+        "As of v0.11.0, MATLAB MCP Core Server has been renamed to MATLAB MCP Server.",
+        "To use the latest version of the server after this change, you must update your settings.",
+        "For more information, see: https://github.com/matlab/matlab-mcp-server/releases/tag/v0.11.0",
+        "",
+        "To opt out of data collection, set the argument \"--disable-telemetry\" to true."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/matlab/matlab-mcp-core-server/releases/download/v0.10.1/matlab-mcp-core-server-win64.exe#/matlab-mcp-core-server.exe",
+            "url": "https://github.com/matlab/matlab-mcp-server/releases/download/v0.10.1/matlab-mcp-core-server-win64.exe#/matlab-mcp-core-server.exe",
             "hash": "d4c101f594181a9fbda81c443973f0a6dc6b083efab54fc69a0847fead425518"
         }
     },
-    "bin": [
-        [
-            "matlab-mcp-core-server.exe",
-            "matlab-mcp-core-server",
-            "--disable-telemetry=true"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/matlab/matlab-mcp-core-server"
-    },
+    "bin": "matlab-mcp-core-server.exe",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/matlab/matlab-mcp-core-server/releases/download/v$version/matlab-mcp-core-server-win64.exe#/matlab-mcp-core-server.exe"
+                "url": "https://github.com/matlab/matlab-mcp-server/releases/download/v$version/matlab-mcp-core-server-win64.exe#/matlab-mcp-core-server.exe"
             }
         }
     }
