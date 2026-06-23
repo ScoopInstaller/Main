@@ -343,6 +343,7 @@
             "$cmdDir = Join-Path $dir 'cmd'",
             "New-Item -ItemType Directory -Force -Path $binDir, $cmdDir | Out-Null",
             "$output = & (Join-Path $dir 'coreutils.exe') --list",
+            "if ($LASTEXITCODE -ne 0) { throw \"coreutils.exe --list failed with exit code $LASTEXITCODE\" }",
             "$output | ForEach-Object {",
             "    $name = $_.Trim()",
             "    if ($name -ne '[') {",
@@ -355,8 +356,13 @@
             "$pwshText = Get-Content -LiteralPath $pwshInstall -Raw",
             "$pwshText = $pwshText.Replace('HKLM:\\SOFTWARE\\Microsoft\\coreutils\\PowerShellProfiles', 'HKCU:\\SOFTWARE\\Microsoft\\coreutils\\PowerShellProfiles')",
             "[System.IO.File]::WriteAllText($pwshInstall, $pwshText, [System.Text.UTF8Encoding]::new($false))",
-            "if (Get-Command pwsh.exe -ErrorAction Ignore) {",
-            "    & pwsh.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $pwshInstall -Action Install -Scope CurrentUser -CmdDir $cmdDir",
+            "$pwsh = Get-Command pwsh.exe -ErrorAction Ignore",
+            "if ($pwsh) {",
+            "    $pwshVersion = & $pwsh.Source -NoProfile -NonInteractive -Command '$PSVersionTable.PSVersion.ToString()'",
+            "    if ([version]$pwshVersion -ge [version]'7.4.0') {",
+            "        & $pwsh.Source -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $pwshInstall -Action Install -Scope CurrentUser -CmdDir $cmdDir",
+            "        if ($LASTEXITCODE -ne 0) { throw \"pwsh-install.ps1 install failed with exit code $LASTEXITCODE\" }",
+            "    }",
             "}"
         ]
     },
@@ -365,6 +371,7 @@
             "$pwshInstall = Join-Path $dir 'pwsh-install.ps1'",
             "if (Get-Command pwsh.exe -ErrorAction Ignore) {",
             "    & pwsh.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $pwshInstall -Action Uninstall",
+            "    if ($LASTEXITCODE -ne 0) { throw \"pwsh-install.ps1 uninstall failed with exit code $LASTEXITCODE\" }",
             "}"
         ]
     },
