@@ -1,0 +1,34 @@
+{
+    "version": "1.12.0",
+    "description": "DeepSeek-native AI coding agent for your terminal",
+    "homepage": "https://reasonix.io/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/esengine/DeepSeek-Reasonix/releases/download/v1.12.0/reasonix-windows-amd64.zip",
+            "hash": "17a8db78f381965b04ecc6d60f8cc3c6f1e0a85c89a37b3971731cefd9352008"
+        },
+        "arm64": {
+            "url": "https://github.com/esengine/DeepSeek-Reasonix/releases/download/v1.12.0/reasonix-windows-arm64.zip",
+            "hash": "6fa2dc0f185930cf1d84ac5457171dcc22141c2642e3d5e097574c4cb6c006b6"
+        }
+    },
+    "bin": "reasonix.exe",
+    "checkver": {
+        "url": "https://github.com/esengine/DeepSeek-Reasonix/releases",
+        "regex": "/esengine/DeepSeek-Reasonix/releases/tag/v([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/esengine/DeepSeek-Reasonix/releases/download/v$version/reasonix-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/esengine/DeepSeek-Reasonix/releases/download/v$version/reasonix-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
