@@ -1,0 +1,25 @@
+{
+  "version": "0.1.33",
+  "description": "Stockfish analysis, local AI commentary, 26K games & 5K puzzles — free desktop chess app.",
+  "homepage": "https://github.com/sazardev/chess-journal",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/sazardev/chess-journal/releases/download/v0.1.33/Chess.Journal_0.1.33_x64-setup.exe#/dl.7z",
+      "hash": "416e12000859c214ca5580ae456edaf0192047994baa5c384042fddc3513f76b"
+    }
+  },
+  "pre_install": [
+    "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse -Force"
+  ],
+  "shortcuts": [
+    [
+      "Chess Journal.exe",
+      "Chess Journal"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://github.com/sazardev/chess-journal/releases/download/v$version/Chess.Journal_$version_x64-setup.exe#/dl.7z"
+  }
+}
