@@ -1,0 +1,28 @@
+{
+    "version": "1.4.6",
+    "description": "The official command-line interface for Xata, an open source Postgres platform.",
+    "homepage": "https://xata.io/docs/cli",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://xata-cli-versions.s3.amazonaws.com/versions/1.4.6-latest/xata-windows-x64.exe#/xata.exe",
+            "hash": "e74ff00da5780f8c2897d12f0f98c910a860ae421af201cab5161825df47d92b"
+        }
+    },
+    "bin": "xata.exe",
+    "checkver": {
+        "url": "https://xata-cli-versions.s3.amazonaws.com/channels/latest/manifest.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://xata-cli-versions.s3.amazonaws.com/versions/$version-latest/xata-windows-x64.exe#/xata.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/manifest.json",
+            "jsonpath": "$..[?(@.url == '$url')].sha256sum"
+        }
+    }
+}
