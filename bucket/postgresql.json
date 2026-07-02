@@ -1,5 +1,5 @@
 {
-    "version": "18.4",
+    "version": "18.4-2",
     "description": "Object-relational database management system based on POSTGRES.",
     "homepage": "https://www.postgresql.org",
     "license": "PostgreSQL",
@@ -34,13 +34,19 @@
     },
     "persist": "data",
     "checkver": {
-        "url": "https://www.enterprisedb.com/download-postgresql-binaries",
-        "regex": ">(?<version>\\d+\\.[\\d.]+)<"
+        "url": "https://www.enterprisedb.com/downloads/postgres-postgresql-downloads",
+        "script": [
+            "$url = ([xml]$page).SelectSingleNode('//table/tbody/tr[1]/td[5]/a').href",
+            "$request = [System.Net.HttpWebRequest]::Create($url)",
+            "$response = $request.GetResponse()",
+            "Write-Output $response.ResponseUri.AbsoluteUri"
+        ],
+        "regex": "postgresql-(?<version>\\d+\\.\\d+-\\d+)-windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-2-windows-x64-binaries.zip"
+                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-windows-x64-binaries.zip"
             }
         }
     }
