@@ -1,8 +1,11 @@
 {
     "version": "1.1.0",
-    "description": "Fast and accurate AI powered file content types detection",
+    "description": "An AI-powered file type detection tool.",
     "homepage": "https://securityresearch.google/magika/",
     "license": "apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/google/magika/releases/download/cli/v1.1.0/magika-cli-x86_64-pc-windows-msvc.zip",
@@ -11,8 +14,9 @@
     },
     "bin": "magika.exe",
     "checkver": {
-        "url": "https://github.com/google/magika/releases/latest",
-        "regex": "/releases/tag/cli/(?:v|V)?([\\d.-]+)"
+        "github": "https://api.github.com/repos/google/magika/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"cli/(?:v|V)?([\\d.-]+)\""
     },
     "autoupdate": {
         "architecture": {
