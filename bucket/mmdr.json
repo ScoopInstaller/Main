@@ -1,0 +1,31 @@
+{
+    "version": "0.3.0",
+    "description": "A fast native Rust Mermaid diagram renderer that requires no browser.",
+    "homepage": "https://github.com/1jehuang/mermaid-rs-renderer",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/1jehuang/mermaid-rs-renderer/releases/download/v0.3.0/mmdr-x86_64-pc-windows-msvc.zip",
+            "hash": "2464e83c3795014fb0fbdf4ffd63575fa0c14cf2c585abb056ad51afd5ccdf04"
+        },
+        "arm64": {
+            "url": "https://github.com/1jehuang/mermaid-rs-renderer/releases/download/v0.3.0/mmdr-aarch64-pc-windows-msvc.zip",
+            "hash": "a1355cd6e79c25c21155cc317489d223a483486dab97f523c77ac01cb680a0fe"
+        }
+    },
+    "bin": "mmdr.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/1jehuang/mermaid-rs-renderer/releases/download/v$version/mmdr-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/1jehuang/mermaid-rs-renderer/releases/download/v$version/mmdr-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
