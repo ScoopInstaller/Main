@@ -1,0 +1,24 @@
+{
+    "version": "0.3.1",
+    "description": "Global DNS propagation checker TUI — watch a DNS record propagate across 34 public resolvers worldwide, on a world map in terminal.",
+    "homepage": "https://github.com/514-labs/dnsglobe",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/514-labs/dnsglobe/releases/download/v0.3.1/dnsglobe-x86_64-pc-windows-msvc.zip",
+            "hash": "7da93af2c60174dcf8ca67a914c6003376cd26f463dde2b147c521cbd06adf97"
+        }
+    },
+    "bin": "dnsglobe.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/514-labs/dnsglobe/releases/download/v$version/dnsglobe-x86_64-pc-windows-msvc.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        }
+    }
+}
