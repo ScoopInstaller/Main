@@ -1,16 +1,16 @@
 {
-    "version": "1.0.129",
+    "version": "1.0.132",
     "description": "Read, edit, and automate Office documents (.docx, .xlsx, .pptx)",
     "homepage": "https://officecli.ai",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v1.0.129/officecli-win-x64.exe#/officecli.exe",
-            "hash": "e4c84a4a32f4d22f3880575d16b1499856d1c48e86d293274919906f95d81057"
+            "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v1.0.132/officecli-win-x64.exe#/officecli.exe",
+            "hash": "303ff8bfbf05f5535ed423b59d8d664bb4c95c1e646a0cce2a619996fbe0f6de"
         },
         "arm64": {
-            "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v1.0.129/officecli-win-arm64.exe#/officecli.exe",
-            "hash": "77fb8f7802593d40d751e59281ca7a454d6f339061c0b4bc97dc0bb37c12a798"
+            "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v1.0.132/officecli-win-arm64.exe#/officecli.exe",
+            "hash": "f5cd21e28158c88175d1cc5dccd863e1a8d618625c4223f658c3f9ea5987092e"
         }
     },
     "bin": "officecli.exe",
@@ -20,19 +20,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v$version/officecli-win-x64.exe#/officecli.exe",
-                "hash": {
-                    "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v$version/SHA256SUMS",
-                    "regex": "([a-fA-F\\d]{64})\\s+officecli-win-x64\\.exe"
-                }
+                "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v$version/officecli-win-x64.exe#/officecli.exe"
             },
             "arm64": {
-                "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v$version/officecli-win-arm64.exe#/officecli.exe",
-                "hash": {
-                    "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v$version/SHA256SUMS",
-                    "regex": "([a-fA-F\\d]{64})\\s+officecli-win-arm64\\.exe"
-                }
+                "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v$version/officecli-win-arm64.exe#/officecli.exe"
             }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }
