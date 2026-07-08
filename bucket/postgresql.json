@@ -1,5 +1,5 @@
 {
-    "version": "18.4",
+    "version": "18.4-2",
     "description": "Object-relational database management system based on POSTGRES.",
     "homepage": "https://www.postgresql.org",
     "license": "PostgreSQL",
@@ -10,8 +10,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-18.4-1-windows-x64-binaries.zip",
-            "hash": "7effe34c0bf89027b3f171447d351cbc460f4566c8d0f643daec67f140787858"
+            "url": "https://get.enterprisedb.com/postgresql/postgresql-18.4-2-windows-x64-binaries.zip",
+            "hash": "02e239529ed7833d169f98d915d3feffe0813264b08b3ae353e78e8b9c97e1a6"
         }
     },
     "extract_dir": "pgsql",
@@ -35,12 +35,18 @@
     "persist": "data",
     "checkver": {
         "url": "https://www.enterprisedb.com/downloads/postgres-postgresql-downloads",
-        "regex": ">(?<version>\\d+\\.[\\d.]+)<"
+        "script": [
+            "$url = ([xml]$page).SelectSingleNode('//table/tbody/tr[1]/td[5]/a').href",
+            "$request = [System.Net.HttpWebRequest]::Create($url)",
+            "$response = $request.GetResponse()",
+            "Write-Output $response.ResponseUri.AbsoluteUri"
+        ],
+        "regex": "postgresql-(?<version>\\d+\\.\\d+-\\d+)-windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
+                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-windows-x64-binaries.zip"
             }
         }
     }

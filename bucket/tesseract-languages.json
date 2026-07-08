@@ -12,22 +12,22 @@
     ],
     "depends": "tesseract",
     "url": [
-        "https://github.com/tesseract-ocr/tessdata_fast/archive/4.1.0.zip",
-        "https://raw.githubusercontent.com/tesseract-ocr/tessdata/d87b3cbc75555bd3282e0cadab5e159e2d468396/equ.traineddata",
+        "https://github.com/tesseract-ocr/tessdata_fast/archive/4.1.0.zip#/dl.7z_",
         "https://raw.githubusercontent.com/USCDataScience/counterfeit-electronics-tesseract/319a6eeacff181dad5c02f3e7a3aff804eaadeca/Training%20Tesseract/snum.traineddata"
     ],
     "hash": [
         "46ae18d17bd9583392ae7c047b751846233d4e030264a551e71ff4f25e035548",
-        "8f660323d8a7b7a0e8d2fae1a3439e6e470222bfbb990b2ab7fe9e1fb4791c0b",
         "36f772980ff17c66a767f584a0d80bf2302a1afa585c01a226c1863afcea1392"
     ],
-    "extract_dir": "tessdata_fast-4.1.0",
+    "pre_install": [
+        "# Use the -snl- switch to ignore symbolic link errors during decompression.",
+        "Expand-7zipArchive -Path \"$dir\\dl.7z_\" -ExtractDir \"tessdata_fast-$version\" -Switches '-snl-' -Removal"
+    ],
     "env_set": {
         "TESSDATA_PREFIX": "$dir"
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/tesseract-ocr/tessdata_fast/archive/$version.zip",
-        "extract_dir": "tessdata_fast-$version"
+        "url": "https://github.com/tesseract-ocr/tessdata_fast/archive/$version.zip#/dl.7z_"
     }
 }

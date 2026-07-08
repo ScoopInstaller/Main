@@ -1,0 +1,24 @@
+{
+    "version": "0.83.0",
+    "description": "Compiler CLI for TypeSpec, a language for defining cloud service APIs and shapes.",
+    "homepage": "https://typespec.io",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://typespec.blob.core.windows.net/dist/0.83.0/tsp-windows-x64.zip",
+            "hash": "483947eb3a093479fb5ec6f2ca62a0a5e30057f6efc7d0b77410d633647fbc27"
+        }
+    },
+    "bin": "tsp.exe",
+    "checkver": {
+        "url": "https://typespec.blob.core.windows.net/dist/latest.txt",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://typespec.blob.core.windows.net/dist/$version/tsp-windows-x64.zip"
+            }
+        }
+    }
+}

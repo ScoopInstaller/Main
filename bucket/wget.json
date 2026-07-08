@@ -12,6 +12,10 @@
         "32bit": {
             "url": "https://eternallybored.org/misc/wget/releases/wget-1.21.4-win32.zip",
             "hash": "0b43382593eb164e78dc68234ffb2e6048df91a548d5c8e9e61c78a0de13407f"
+        },
+        "arm64": {
+            "url": "https://eternallybored.org/misc/wget/releases/wget-1.21.4-winarm64.zip",
+            "hash": "351139852fd719ba1d660c67e82442c4344a53ab210a629c6d6b1fba9446b1c5"
         }
     },
     "post_install": "\"ca_certificate=$(appdir cacert $global)\\current\\cacert.pem\" | out-file \"$dir\\wget.ini\" -encoding default",
@@ -27,6 +31,9 @@
             },
             "32bit": {
                 "url": "https://eternallybored.org/misc/wget/releases/wget-$version-win32.zip"
+            },
+            "arm64": {
+                "url": "https://eternallybored.org/misc/wget/releases/wget-$version-winarm64.zip"
             }
         }
     }

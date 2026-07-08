@@ -1,0 +1,33 @@
+{
+    "version": "1.32.0",
+    "description": "Build, manage and test your Auth0 integrations from the command-line.",
+    "homepage": "https://auth0.github.io/auth0-cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/auth0/auth0-cli/releases/download/v1.32.0/auth0-cli_1.32.0_Windows_x86_64.zip",
+            "hash": "375750cae75aa7ce0039733779b4f9cd15aa5c9b8894c2d599c81016dd7ec1b5"
+        },
+        "arm64": {
+            "url": "https://github.com/auth0/auth0-cli/releases/download/v1.32.0/auth0-cli_1.32.0_Windows_arm64.zip",
+            "hash": "09cae2649437626e1b515d91954ed134edb13da16f882958d7945a6edef2be52"
+        }
+    },
+    "bin": "auth0.exe",
+    "checkver": {
+        "github": "https://github.com/auth0/auth0-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/auth0/auth0-cli/releases/download/v$version/auth0-cli_$version_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/auth0/auth0-cli/releases/download/v$version/auth0-cli_$version_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

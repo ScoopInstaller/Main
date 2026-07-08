@@ -1,0 +1,26 @@
+{
+    "version": "4.0.2",
+    "description": "A full-featured open-source framework for digital image processing.",
+    "homepage": "https://gmic.eu",
+    "license": "CECILL-2.1",
+    "architecture": {
+        "64bit": {
+            "url": "https://gmic.eu/get_file.php?file=windows/gmic_4.0.2_cli_win64.zip",
+            "hash": "6d0f553c383a93ced4b006b067a49277f45ad69a030287adda7abd4d4de15163",
+            "extract_dir": "gmic-4.0.2-cli-win64"
+        }
+    },
+    "bin": "gmic.exe",
+    "checkver": {
+        "url": "https://gmic.eu/download.html",
+        "regex": "file=windows/gmic_([\\d.]+)_cli_win64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gmic.eu/get_file.php?file=windows/gmic_$version_cli_win64.zip",
+                "extract_dir": "gmic-$version-cli-win64"
+            }
+        }
+    }
+}
