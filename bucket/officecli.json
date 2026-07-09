@@ -1,0 +1,30 @@
+{
+    "version": "1.0.133",
+    "description": "The world's first and the best Office suite designed for AI agents",
+    "homepage": "https://officecli.ai",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v1.0.133/officecli-win-x64.exe#/officecli.exe",
+            "hash": "899bfe2989f51b0322c8d47b302dc2cd0d64c751c16411792f4bf00a8300d1f8"
+        },
+        "arm64": {
+            "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v1.0.133/officecli-win-arm64.exe#/officecli.exe",
+            "hash": "a8eb62283c8fd987a8ba29da479c255585c81e2c62dd9edf0bee20c2ad244ae2"
+        }
+    },
+    "bin": "officecli.exe",
+    "checkver": {
+        "github": "https://github.com/iOfficeAI/OfficeCLI"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v$version/officecli-win-x64.exe#/officecli.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/iOfficeAI/OfficeCLI/releases/download/v$version/officecli-win-arm64.exe#/officecli.exe"
+            }
+        }
+    }
+}
