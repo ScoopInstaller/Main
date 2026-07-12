@@ -5,7 +5,8 @@
     "license": "PostgreSQL",
     "notes": [
         "Run 'pg_ctl start' to start the database and 'pg_ctl stop' to stop it.",
-        "Register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
+        "Register it as a service by running 'pg_ctl register -N PostgreSQL -D \"$persist_dir\\data\"' from an elevated shell.",
+        "Add service description by running 'sc.exe description PostgreSQL \"PostgreSQL Database Server\"' from an elevated shell.",
         "Default superuser login: postgres, password: <blank>"
     ],
     "architecture": {
