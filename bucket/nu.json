@@ -3,6 +3,11 @@
     "description": "A modern shell written in Rust",
     "homepage": "https://www.nushell.sh",
     "license": "MIT",
+    "notes": [
+        "Nushell's core plugins ship next to nu.exe but aren't registered, so 'plugin list' is empty by default.",
+        "To register them, run the bundled helper in Nushell after installing or updating, then restart your shell:",
+        "  nu ($nu.current-exe | path dirname | path join 'register-core-plugins.nu')"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/nushell/nushell/releases/download/0.114.1/nu-0.114.1-x86_64-pc-windows-msvc.zip",
@@ -13,6 +18,23 @@
             "hash": "3d56258d67d8ea92d9016016bdcc9a067d0e1b018424ddb9eb01f3c41c61d50a"
         }
     },
+    "post_install": [
+        "$core = 'polars', 'formats', 'gstat', 'query', 'inc'",
+        "$found = @(Get-ChildItem -LiteralPath $dir -Filter 'nu_plugin_*.exe').Count",
+        "$present = @($core | Where-Object { Test-Path -LiteralPath \"$dir\\nu_plugin_$_.exe\" })",
+        "$missing = @($core | Where-Object { $_ -notin $present })",
+        "if (($found -ne 8) -or $missing) {",
+        "    $detail = if ($missing) { \"; missing core: $($missing -join ', ')\" } else { '' }",
+        "    Write-Host \"nu: bundled plugin set changed - found $found nu_plugin_*.exe, expected 8$detail. The manifest's core-plugin allowlist may need updating.\" -ForegroundColor Yellow",
+        "}",
+        "$helper = @(",
+        "    '# Register Nushell core plugins, then restart your shell.'",
+        "    \"for p in [$($present -join ' ')] {\"",
+        "    '    plugin add ($nu.current-exe | path dirname | path join (''nu_plugin_'' + $p + ''.exe''))'",
+        "    '}'",
+        ")",
+        "Set-Content -LiteralPath \"$dir\\register-core-plugins.nu\" -Value $helper -Encoding ascii"
+    ],
     "bin": "nu.exe",
     "shortcuts": [
         [
