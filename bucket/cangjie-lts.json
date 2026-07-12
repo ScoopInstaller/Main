@@ -14,7 +14,10 @@
         "script": "Add-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
     },
     "uninstaller": {
-        "script": "Remove-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
+        ]
     },
     "env_add_path": [
         "tools\\lib",
