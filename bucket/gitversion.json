@@ -1,21 +1,28 @@
 {
-    "version": "6.8.1",
+    "version": "6.8.2",
     "description": "Easy Semantic Versioning for projects using Git.",
     "homepage": "https://github.com/GitTools/GitVersion",
     "license": "MIT",
-    "url": "https://packages.chocolatey.org/GitVersion.Portable.6.8.1.nupkg",
-    "hash": "9b781d6607ac588251b65caee528dab2d24c156de5bbbdd95b98f29036d5b806",
-    "extract_dir": "tools",
-    "bin": "GitVersion.exe",
-    "checkver": {
-        "url": "https://chocolatey.org/packages/GitVersion.Portable",
-        "regex": "Latest Version[\\S\\s]+?/([\\d.]+)"
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/GitTools/GitVersion/releases/download/6.8.2/gitversion-win-x64-6.8.2.zip",
+            "hash": "73219908a616847bd4049680dff389fc3623d4fbe8585e92198a5572da63f796"
+        },
+        "arm64": {
+            "url": "https://github.com/GitTools/GitVersion/releases/download/6.8.2/gitversion-win-arm64-6.8.2.zip",
+            "hash": "13d95502e3888055df077ed4383ed2e010ec659a3a0f0b3db726e9d7a8fa6724"
+        }
     },
+    "bin": "gitversion.exe",
+    "checkver": "github",
     "autoupdate": {
-        "url": "https://packages.chocolatey.org/GitVersion.Portable.$version.nupkg",
-        "hash": {
-            "url": "https://chocolatey.org/packages/GitVersion.Portable/$version",
-            "regex": "$sha256/analysis/\">$basename"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/GitTools/GitVersion/releases/download/$version/gitversion-win-x64-$version.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/GitTools/GitVersion/releases/download/$version/gitversion-win-arm64-$version.zip"
+            }
         }
     }
 }
