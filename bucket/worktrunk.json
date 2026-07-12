@@ -1,15 +1,23 @@
 {
-    "version": "0.58.0",
+    "version": "0.67.0",
     "description": "A CLI for Git worktree management, designed for parallel AI agent workflows.",
     "homepage": "https://worktrunk.dev",
     "license": "MIT|Apache-2.0",
+    "notes": [
+        "On Windows, \"wt\" defaults to Windows Terminal's command.",
+        "To use \"wt\" directly, you may need to disable Windows Terminal's alias (Settings -> Apps -> Advanced app settings -> App execution aliases -> \"Terminal\"/\"Terminal Preview\").",
+        "For more information, see: https://github.com/max-sixty/worktrunk/blob/main/README.md#install"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/max-sixty/worktrunk/releases/download/v0.58.0/worktrunk-x86_64-pc-windows-msvc.zip",
-            "hash": "6ffb85a51c43e6fd6fd5b687d7e02caab85e1d2b716bea8b068a845a14dbcbe1"
+            "url": "https://github.com/max-sixty/worktrunk/releases/download/v0.67.0/worktrunk-x86_64-pc-windows-msvc.zip",
+            "hash": "4a3af596f0c2c6c7e3142efd979ed7921441f163ae17c2f8f41e0d96051652f4"
         }
     },
-    "bin": "git-wt.exe",
+    "bin": [
+        "git-wt.exe",
+        "wt.exe"
+    ],
     "checkver": {
         "github": "https://github.com/max-sixty/worktrunk"
     },
