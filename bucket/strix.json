@@ -1,0 +1,24 @@
+{
+    "version": "1.0.4",
+    "description": "Open-source AI penetration testing tool to find and fix your app's vulnerabilities.",
+    "homepage": "https://www.strix.ai",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/usestrix/strix/releases/download/v1.0.4/strix-1.0.4-windows-x86_64.zip",
+            "hash": "cf8bcbdab7a99a117e836cedef17c5323f9b5352dbf16cdd5ac6bf39c3ded5db"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\\strix*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'strix.exe'",
+    "bin": "strix.exe",
+    "checkver": {
+        "github": "https://github.com/usestrix/strix"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/usestrix/strix/releases/download/v$version/strix-$version-windows-x86_64.zip"
+            }
+        }
+    }
+}

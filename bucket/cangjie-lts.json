@@ -1,0 +1,66 @@
+{
+    "version": "1.0.5",
+    "description": "A general-purpose programming language designed for all-scenario application development. (Long Term Support)",
+    "homepage": "https://cangjie-lang.cn/en",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-windows-x64-1.0.5.zip&objectKey=698acebfbd66ae22b62330af#/cangjie-sdk-windows-x64-1.0.5.zip",
+            "hash": "08c6c1dd0de73396f63ac85085d635e79ce84fef98d330cb00869b4fc8f1cb2e"
+        }
+    },
+    "extract_dir": "cangjie",
+    "installer": {
+        "script": "Add-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
+    },
+    "uninstaller": {
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
+        ]
+    },
+    "env_add_path": [
+        "tools\\lib",
+        "tools\\bin",
+        "bin",
+        "lib\\windows_x86_64_cjnative",
+        "runtime\\lib\\windows_x86_64_cjnative"
+    ],
+    "env_set": {
+        "CANGJIE_HOME": "$dir"
+    },
+    "checkver": {
+        "script": [
+            "$baseUrl = 'https://cangjie-lang.cn'",
+            "$channel = 'LTS'",
+            "$index = (Invoke-WebRequest -Uri \"$baseUrl/en/download\" -UseBasicParsing).Content",
+            "$cardPattern = '(?s)<div class=\"download-version-item-n\">' + $channel + ' Version</div>.*?<a href=\"(?<path>/en/download/(?<version>[^\"]+))\"'",
+            "if ($index -notmatch $cardPattern) { error \"Could not find the Cangjie $channel release\"; continue }",
+            "$releasePath = $matches['path']",
+            "$version = $matches['version']",
+            "$releasePage = (Invoke-WebRequest -Uri ($baseUrl + $releasePath) -UseBasicParsing).Content",
+            "$bundlePattern = '<script[^>]+src=\"(?<bundle>https://[^\"]+/organization/download/version\\.[^\"]+\\.js)\"'",
+            "if ($releasePage -notmatch $bundlePattern) { error \"Could not find the Cangjie download bundle for $version\"; continue }",
+            "$bundleUrl = $matches['bundle']",
+            "$bundle = (Invoke-WebRequest -Uri $bundleUrl -UseBasicParsing).Content",
+            "$artifactPattern = 'name:\"cangjie-sdk-windows-x64-' + [regex]::Escape($version) + '\\.zip\",url:\"(?<download>[^\"]+)\"[^}]*?sha:\"[a-fA-F0-9]{64}\"'",
+            "if ($bundle -notmatch $artifactPattern) { error \"Could not find the Cangjie Windows x64 ZIP for $version\"; continue }",
+            "$download = $matches['download'] -replace '^/', ''",
+            "$bundlePath = $bundleUrl -replace '^https://csdnimg.cn/', ''",
+            "if ($bundlePath -eq $bundleUrl) { error \"Unsupported Cangjie download bundle host: $bundleUrl\"; continue }",
+            "Write-Output \"$version $download $bundlePath\""
+        ],
+        "regex": "(?<version>\\S+)\\s+(?<download>\\S+)\\s+(?<bundle>\\S+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cangjie-lang.cn/$matchDownload#/cangjie-sdk-windows-x64-$version.zip"
+            }
+        },
+        "hash": {
+            "url": "https://csdnimg.cn/$matchBundle",
+            "regex": "(?s)name:\"$basename\".*?sha:\"$sha256\""
+        }
+    }
+}
