@@ -5,8 +5,24 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.6/mimocode-windows-x64.zip",
-            "hash": "1a2ef4bc07229b269f94197dcb7006c6f826086ac7b304762c24a1f041e5e214"
+            "url": [
+                "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.6/mimocode-windows-x64.zip",
+                "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.6/mimocode-windows-x64-baseline.zip#/baseline.zip_"
+            ],
+            "hash": [
+                "1a2ef4bc07229b269f94197dcb7006c6f826086ac7b304762c24a1f041e5e214",
+                "724b62c2e070d139ec7a4f6156f09d7391c7d11ea8ea3ab1264538812fc77f87"
+            ],
+            "pre_install": [
+                "$avx2 = Start-Job -ScriptBlock {",
+                "    Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
+                "    return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
+                "} | Receive-Job -Wait -AutoRemoveJob",
+                "if (-not $avx2) {",
+                "    Expand-7ZipArchive -Path \"$dir\\baseline.zip_\" -DestinationPath \"$dir\" -Overwrite All",
+                "}",
+                "Remove-Item -LiteralPath \"$dir\\baseline.zip_\" -Recurse -Force"
+            ]
         },
         "arm64": {
             "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.6/mimocode-windows-arm64.zip",
@@ -20,7 +36,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v$version/mimocode-windows-x64.zip"
+                "url": [
+                    "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v$version/mimocode-windows-x64.zip",
+                    "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v$version/mimocode-windows-x64-baseline.zip#/baseline.zip_"
+                ]
             },
             "arm64": {
                 "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v$version/mimocode-windows-arm64.zip"
