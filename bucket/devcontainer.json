@@ -1,0 +1,27 @@
+{
+    "version": "0.87.0",
+    "description": "A reference implementation for the development container specification",
+    "homepage": "https://github.com/devcontainers/cli",
+    "license": "MIT",
+    "depends": "nodejs",
+    "url": "https://registry.npmjs.org/@devcontainers/cli/-/cli-0.87.0.tgz",
+    "hash": "73f5ee2f149bed32f4f69914d439e85c47ea6de2733e6637dc136d964f249c57",
+    "extract_dir": "package",
+    "bin": [
+        [
+            "node.exe",
+            "devcontainer",
+            "$dir\\devcontainer.js"
+        ]
+    ],
+    "checkver": {
+        "url": "https://registry.npmjs.org/@devcontainers/cli/latest",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "url": "https://registry.npmjs.org/@devcontainers/cli/-/cli-$version.tgz",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
