@@ -4,9 +4,10 @@
     "homepage": "https://docs.astral.sh/uv/",
     "license": "Apache-2.0|MIT",
     "notes": [
-        "Scoop persists data since version 0.11.16. You may need to move data by yourself.",
-        "Before: '$env:APPDATA\\uv', '$env:LOCALAPPDATA\\uv'",
-        "After : '$persist_dir'"
+        "This manifest no longer forces UV_* environment variables on install/update (see #8116).",
+        "Set UV_CACHE_DIR / UV_PYTHON_* / UV_TOOL_* yourself if you want non-default locations.",
+        "Optional Scoop-managed paths under $persist_dir: cache, python, tools (persist keeps them across updates).",
+        "Installer still adds $persist_dir\\python\\shims and $persist_dir\\tools\\shims to PATH when present."
     ],
     "architecture": {
         "64bit": {
@@ -28,13 +29,11 @@
             "Add-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force"
         ]
     },
-    "env_set": {
-        "UV_CACHE_DIR": "$persist_dir\\cache",
-        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\shims",
-        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
-        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\shims",
-        "UV_TOOL_DIR": "$persist_dir\\tools\\versions"
-    },
+    "persist": [
+        "cache",
+        "python",
+        "tools"
+    ],
     "bin": [
         "uv.exe",
         "uvx.exe",
