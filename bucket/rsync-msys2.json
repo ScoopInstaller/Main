@@ -1,0 +1,59 @@
+{
+  "version": "3.4.1-1",
+  "description": "Rsync (MSYS2 build, Windows) with all required runtime DLLs (standalone, portable).\nSee https://mirror.msys2.org/msys/x86_64",
+  "homepage": "https://rsync.samba.org/",
+  "license": "GPL-3.0-or-later",
+  "url": [
+    "https://mirror.msys2.org/msys/x86_64/rsync-3.4.1-1-x86_64.pkg.tar.zst",
+    "https://mirror.msys2.org/msys/x86_64/libxxhash-0.8.2-1-x86_64.pkg.tar.zst"
+  ],
+  "hash": [
+    "ced7a6d0cd397b13f1a24e73928674d6f973ee50a7467526047b1f4721b81683",
+    "eab25c81694da8efae1579bfcdb49f31fcdf4a1b8c0f5496c1cb23ea9064aee6"
+  ],
+  "extract_dir": "usr/bin",
+  "bin": "rsync.exe",
+  "post_install": [
+    "$dll = Get-ChildItem \"$dir\\..\" -Recurse -Filter msys-xxhash-0.dll | Select-Object -First 1",
+    "if ($dll) {",
+    "  Write-Host \"Copying $($dll.FullName) to $dir\\msys-xxhash-0.dll\"",
+    "  Copy-Item $dll.FullName \"$dir\\msys-xxhash-0.dll\" -Force",
+    "} else {",
+    "  Write-Host \"msys-xxhash-0.dll not found in any subfolder of $dir\\..\"",
+    "  Get-ChildItem -Path \"$dir\\..\" -Recurse | Write-Host",
+    "}",
+    "Remove-Item \"$dir\\usr\", \"$dir\\rsync-ssl\" -Recurse -Force -ErrorAction SilentlyContinue",
+    "Get-ChildItem -Path $dir -Filter '.*' | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue",
+    "$gitssh = \"$(appdir git)\\current\\usr\\bin\\ssh.exe\"",
+    "$shimdir = \"$scoopdir\\shims\"",
+    "$symlink = \"$shimdir\\sshgit.exe\"",
+    "Write-Host \"Creating symlink in shims: $symlink -> $gitssh (for rsync -e)\"",
+    "if (!(Test-Path $symlink)) {",
+    "  cmd /c mklink $symlink $gitssh",
+    "} else {",
+    "  Write-Host \"Symlink already exists: $symlink\"",
+    "}"
+  ],
+  "pre_uninstall": [
+    "$symlink = \"$scoopdir\\shims\\sshgit.exe\"",
+    "if (Test-Path $symlink) {",
+    "  Write-Host \"Removing symlink: $symlink\"",
+    "  Remove-Item $symlink -Force",
+    "} else {",
+    "  Write-Host \"Symlink not found: $symlink\"",
+    "}"
+  ],
+  "checkver": {
+    "url": "https://packages.msys2.org/api/search?query=rsync&qtype=binpkg",
+    "jsonpath": "$.results.exact.version"
+  },
+  "autoupdate": {
+    "url": [
+      "https://mirror.msys2.org/msys/x86_64/rsync-$version-x86_64.pkg.tar.zst",
+      "https://mirror.msys2.org/msys/x86_64/libxxhash-0.8.2-1-x86_64.pkg.tar.zst"
+    ]
+  },
+  "notes": [
+    "This is a portable MSYS2-based rsync for Windows.\nIf rsync needs the use of ssh you can use sshgit that was installed as a symlink to git ssh (windows might overwrite path and collude that).\nExample: rsync -avz -e sshgit"
+  ]
+}
