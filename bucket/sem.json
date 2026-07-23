@@ -1,0 +1,29 @@
+{
+    "version": "0.21.0",
+    "description": "A semantic version control tool that works on top of Git, using tree-sitter to diff code at the entity level (functions, classes, and methods) instead of by lines.",
+    "homepage": "https://ataraxy-labs.github.io/sem/",
+    "license": "MIT|Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Ataraxy-Labs/sem/releases/download/v0.21.0/sem-windows-x86_64.zip",
+            "hash": "8ead28b095b829dba340e77d8d184394918223bd62a3fcd7cd634df50246fc9b"
+        }
+    },
+    "bin": "sem.exe",
+    "checkver": {
+        "github": "https://github.com/Ataraxy-Labs/sem"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Ataraxy-Labs/sem/releases/download/v$version/sem-windows-x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
