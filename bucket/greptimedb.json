@@ -1,0 +1,25 @@
+{
+    "version": "0.17.1",
+    "description": "Open-source, cloud-native, unified observability database for metrics, logs and traces, supporting SQL/PromQL/Streaming. Available on GreptimeCloud.",
+    "homepage": "https://greptime.com/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/GreptimeTeam/greptimedb/releases/download/v0.17.1/greptime-windows-amd64-v0.17.1.tar.gz",
+            "hash": "148299e077edca9f812bb16e0b456f86be6f7338fddbf811c08c3f2d681ace1d",
+            "extract_dir": "greptime-windows-amd64-v0.17.1"
+        }
+    },
+    "bin": "greptime.exe",
+    "checkver": {
+        "github": "https://github.com/GreptimeTeam/greptimedb"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/GreptimeTeam/greptimedb/releases/download/v$version/greptime-windows-amd64-v$version.tar.gz",
+                "extract_dir": "greptime-windows-amd64-v$version"
+            }
+        }
+    }
+}
