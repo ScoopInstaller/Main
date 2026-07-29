@@ -1,0 +1,33 @@
+{
+    "version": "0.5.1",
+    "description": "A language server for just.",
+    "homepage": "https://terror.github.io/just-lsp/",
+    "license": "CC0-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/terror/just-lsp/releases/download/0.5.1/just-lsp-0.5.1-x86_64-pc-windows-msvc.zip",
+            "hash": "5deb5eca4049e1cea72866d93078fdbe1fe4a1ffd71e44d4bc63467a0069e4ed"
+        },
+        "arm64": {
+            "url": "https://github.com/terror/just-lsp/releases/download/0.5.1/just-lsp-0.5.1-aarch64-pc-windows-msvc.zip",
+            "hash": "b5b9f5f799ad7c14d9fc8d55fe9e2fed6ad2652129480a512ff828aa74f3149f"
+        }
+    },
+    "bin": "just-lsp.exe",
+    "checkver": {
+        "github": "https://github.com/terror/just-lsp"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/terror/just-lsp/releases/download/$version/just-lsp-$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/terror/just-lsp/releases/download/$version/just-lsp-$version-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
