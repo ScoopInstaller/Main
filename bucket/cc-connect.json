@@ -13,16 +13,8 @@
             "hash": "746f3d0474e97e3b71279f800429b6b6758adf093fb73ab4a0f2ba2d15b1a998"
         }
     },
-    "bin": "cc-connect.cmd",
-    "pre_install": [
-        "$wrapper = @'",
-        "@echo off",
-        "setlocal",
-        "for %%f in (\"%~dp0cc-connect-*.exe\") do \"%%f\" %*",
-        "exit /b %ERRORLEVEL%",
-        "'@",
-        "Set-Content -Path \"$dir\\cc-connect.cmd\" -Value $wrapper -Encoding ASCII"
-    ],
+    "pre_install": "Get-ChildItem \"$dir\\cc-connect*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'cc-connect.exe'",
+    "bin": "cc-connect.exe",
     "checkver": {
         "github": "https://github.com/chenhg5/cc-connect"
     },
