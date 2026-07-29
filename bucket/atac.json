@@ -3,7 +3,12 @@
     "description": "Arguably a Terminal API Client based on well-known clients such as Postman, Insomnia, or even Bruno.",
     "homepage": "https://atac.julien-cpsn.com/",
     "license": "MIT",
-    "notes": "Collections and config live under the Scoop persist folder via ATAC_MAIN_DIR ($persist_dir).",
+    "notes": [
+        "Scoop persists config data via env variable `ATAC_MAIN_DIR` since version 0.23.0.",
+        "You may need to move data by yourself.",
+        "Before: '$env:APPDATA\\Julien-cpsn\\ATAC\\config'",
+        "After : '$persist_dir\\config'"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v0.23.0/atac-v0.23.0-x86_64-pc-windows-msvc.zip",
@@ -15,10 +20,10 @@
         }
     },
     "env_set": {
-        "ATAC_MAIN_DIR": "$persist_dir"
+        "ATAC_MAIN_DIR": "$persist_dir\\config"
     },
-    "pre_install": "if (!(Test-Path $persist_dir)) { New-Item -ItemType Directory -Path $persist_dir | Out-Null }",
     "bin": "atac.exe",
+    "persist": "config",
     "checkver": {
         "github": "https://github.com/Julien-cpsn/ATAC"
     },
