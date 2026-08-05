@@ -5,23 +5,23 @@
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "http://bleyer.org/icarus/iverilog-v14-20260804-x64_setup.exe",
+            "url": "http://bleyer.org/icarus/iverilog-v14-20260804-x64_setup.exe#/dl.7z",
             "hash": "5d65c90c269af75c12ba6e9af6ceb0d64511ea8913d0b2a28eb82e697521cf17"
         }
     },
-    "innosetup": true,
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstal*\" -Recurse -ErrorAction Ignore",
     "bin": [
         "bin\\iverilog.exe",
         "bin\\iverilog-vpi.exe",
         "bin\\vvp.exe",
-        "gtkwave\\bin\\gtkwave.exe"
+        "bin\\gtkwave.exe"
     ],
     "env_add_path": "bin",
     "checkver": "iverilog-v([\\d.-]+)-x64_setup\\.exe",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://bleyer.org/icarus/iverilog-v$version-x64_setup.exe"
+                "url": "http://bleyer.org/icarus/iverilog-v$version-x64_setup.exe#/dl.7z"
             }
         }
     }
