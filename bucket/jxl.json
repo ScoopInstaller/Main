@@ -1,0 +1,54 @@
+{
+    "version": "0.12.0",
+    "description": "JPEG XL image format (.jxl) encode/decode tools",
+    "homepage": "https://jpeg.org/jpegxl",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/libjxl/libjxl/releases/download/v0.12.0/jxl-x64-windows-static.7z",
+            "hash": "ff147dc7ac4ce55392974ccc70f2a8a8ec0eff3ae28529b072258b66c8f01ab2",
+            "extract_dir": "x64-windows-static/bin"
+        },
+        "32bit": {
+            "url": "https://github.com/libjxl/libjxl/releases/download/v0.12.0/jxl-x86-windows-static.7z",
+            "hash": "c6f419659910a68782810a400aadaf5c1bfcbc67ea324223af09d7a7477c16cc",
+            "extract_dir": "x86-windows-static/bin"
+        }
+    },
+    "bin": [
+        "benchmark_xl.exe",
+        "butteraugli_main.exe",
+        "cjxl.exe",
+        "decode_and_encode.exe",
+        "display_to_hlg.exe",
+        "djxl_fuzzer_corpus.exe",
+        "djxl.exe",
+        "exr_to_pq.exe",
+        "generate_lut_template.exe",
+        "icc_simplify.exe",
+        "jxl_from_tree.exe",
+        "jxlinfo.exe",
+        "jxltran.exe",
+        "local_tone_map.exe",
+        "pq_to_hlg.exe",
+        "render_hlg.exe",
+        "ssimulacra_main.exe",
+        "ssimulacra2.exe",
+        "texture_to_cube.exe",
+        "tone_map.exe",
+        "xyb_range.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/libjxl/libjxl"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x64-windows-static.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x86-windows-static.7z"
+            }
+        }
+    }
+}
