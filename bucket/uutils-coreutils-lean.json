@@ -26,13 +26,7 @@
             "extract_dir": "coreutils-0.10.0-aarch64-pc-windows-msvc"
         }
     },
-    "installer": {
-        "script": [
-            "$ErrorActionPreference = 'Stop'",
-            "trap { throw $_ }",
-            "(Get-ChildItem -PSPath $dir -af).Where{ $_.Extension -eq '.exe' -and $_.Name -ne 'coreutils.exe' }.ForEach('Delete')"
-        ]
-    },
+    "pre_install": "Get-ChildItem \"$dir\\*\" -Include *.exe | Where-Object Name -ne 'coreutils.exe' | Remove-Item",
     "bin": [
         "coreutils.exe",
         [
