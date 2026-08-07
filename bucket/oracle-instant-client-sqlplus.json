@@ -1,5 +1,5 @@
 {
-    "version": "23.8.0.25.04",
+    "version": "23.26.3.0.0",
     "description": "The SQL*Plus command line tool for SQL and PL/SQL queries with Oracle Instant Client.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
@@ -9,14 +9,18 @@
     "depends": "oracle-instant-client",
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2380000/instantclient-sqlplus-windows.x64-23.8.0.25.04.zip",
-            "hash": "a7422b0e894f6e878f3ada24fda78b94b69a12dc7c9b7fc8d687908a2f72dda5"
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2326300/instantclient-sqlplus-windows.x64-23.26.3.0.0.zip",
+            "hash": "ffddd599b4374a26cd0e0418aa5a75844d822af5f84f63ac1e7f799694ff87c1"
         }
     },
-    "extract_dir": "instantclient_23_8",
+    "extract_to": "_EXTRACTED",
     "pre_install": [
+        "# Use script (not 'extract_dir') for unpredictable subfolder names",
         "$instantclient = currentdir 'oracle-instant-client'",
-        "Copy-Item -Path \"$dir\\*\" -Destination \"$instantclient\" -Force -Recurse | Out-Null"
+        "$sub_folder = Get-ChildItem -Path \"$dir\\_EXTRACTED\\instantclient_*\" -Directory | Select-Object -First 1 -ExpandProperty Fullname",
+        "Copy-Item -Path \"$sub_folder\\*\" -Destination $dir -Force -Recurse",
+        "Move-Item -Path \"$sub_folder\\*\" -Destination $instantclient -Force",
+        "Remove-Item -Path \"$dir\\_EXTRACTED\" -Force -Recurse"
     ],
     "uninstaller": {
         "script": [
@@ -25,16 +29,15 @@
         ]
     },
     "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
         "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
-        "regex": "Version ([\\d.]+)",
-        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+        "regex": "instantclient/(?<url>[^/]+)/instantclient-sqlplus-windows\\.x64-(?<version>[\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.oracle.com/otn_software/nt/instantclient/$majorVersion$minorVersion$patchVersion000/instantclient-sqlplus-windows.x64-$version.zip"
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$matchUrl/instantclient-sqlplus-windows.x64-$version.zip"
             }
-        },
-        "extract_dir": "instantclient_$majorVersion_$minorVersion"
+        }
     }
 }

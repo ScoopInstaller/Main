@@ -1,23 +1,52 @@
 {
-    "version": "0.7.15",
+    "version": "0.12.2",
     "description": "An extremely fast Python package installer and resolver, written in Rust.",
     "homepage": "https://docs.astral.sh/uv/",
     "license": "Apache-2.0|MIT",
+    "notes": [
+        "Scoop persists data since version 0.11.16. You may need to move data by yourself.",
+        "Before: '$env:APPDATA\\uv', '$env:LOCALAPPDATA\\uv'",
+        "After : '$persist_dir'"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/astral-sh/uv/releases/download/0.7.15/uv-x86_64-pc-windows-msvc.zip",
-            "hash": "b78c2d265e74b21b1c04b5b4ffd61c5c7b8110f9188e24949ee9f6fd5fbaf0a8"
+            "url": "https://github.com/astral-sh/uv/releases/download/0.12.2/uv-x86_64-pc-windows-msvc.zip",
+            "hash": "01442d8ce5c7124151a73e697c836d252c6da853c18c73206d3cc4c2378a91d2"
         },
         "32bit": {
-            "url": "https://github.com/astral-sh/uv/releases/download/0.7.15/uv-i686-pc-windows-msvc.zip",
-            "hash": "831ac11382c9ae014f6f5d27506c8977bfba5aa6b104e278d3a87ff4d1e311d3"
+            "url": "https://github.com/astral-sh/uv/releases/download/0.12.2/uv-i686-pc-windows-msvc.zip",
+            "hash": "e2037092f25370ecbd8827b1d91650a9fbf002548ae647aea39073c6bbe45384"
+        },
+        "arm64": {
+            "url": "https://github.com/astral-sh/uv/releases/download/0.12.2/uv-aarch64-pc-windows-msvc.zip",
+            "hash": "dccc2bb7724c015f2a82467dee5bf4b2353a3fcdbfdfb30e0f93cdf5db2dd1df"
         }
+    },
+    "installer": {
+        "script": [
+            "Add-Path -Path \"$persist_dir\\python\\shims\" -Global:$global -Force",
+            "Add-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force"
+        ]
+    },
+    "env_set": {
+        "UV_CACHE_DIR": "$persist_dir\\cache",
+        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\shims",
+        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
+        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\shims",
+        "UV_TOOL_DIR": "$persist_dir\\tools\\versions"
     },
     "bin": [
         "uv.exe",
         "uvx.exe",
         "uvw.exe"
     ],
+    "uninstaller": {
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force",
+            "Remove-Path -Path \"$persist_dir\\python\\shims\" -Global:$global -Force"
+        ]
+    },
     "checkver": {
         "github": "https://github.com/astral-sh/uv"
     },
@@ -28,6 +57,9 @@
             },
             "32bit": {
                 "url": "https://github.com/astral-sh/uv/releases/download/$version/uv-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/astral-sh/uv/releases/download/$version/uv-aarch64-pc-windows-msvc.zip"
             }
         },
         "hash": {

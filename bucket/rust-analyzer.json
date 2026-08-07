@@ -1,23 +1,36 @@
 {
-    "version": "2025-06-23",
+    "version": "2026-08-03",
     "description": "A Rust compiler front-end for IDEs",
     "homepage": "https://rust-analyzer.github.io/",
     "license": "Apache-2.0|MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2025-06-23/rust-analyzer-x86_64-pc-windows-msvc.zip",
-            "hash": "7aba4abc67741492fe4dbd59f45f72415949bffb33d1c24bc2072984075ab130"
+            "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-x86_64-pc-windows-msvc.zip",
+            "hash": "a446ba5482b2a43d4010180031d2033b6761dd295117f3d0277af5777c4d8ee5"
+        },
+        "32bit": {
+            "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-i686-pc-windows-msvc.zip",
+            "hash": "0eb7e57baac739d61908c8885acdf00b2d5a2c7f861287923f587b2521f944b2"
+        },
+        "arm64": {
+            "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-03/rust-analyzer-aarch64-pc-windows-msvc.zip",
+            "hash": "c10cde297644fd79ef1c288d96059bb01e345970dd89ac9d673a4e58512330e9"
         }
     },
     "bin": "rust-analyzer.exe",
     "checkver": {
-        "github": "https://github.com/rust-lang/rust-analyzer",
-        "regex": "releases/tag/([\\d-]+)"
+        "github": "https://github.com/rust-lang/rust-analyzer"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-aarch64-pc-windows-msvc.zip"
             }
         }
     }

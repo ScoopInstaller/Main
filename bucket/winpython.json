@@ -1,16 +1,24 @@
 {
-    "version": "3.12.10.0",
+    "version": "3.14.5.0",
     "description": "Free, open-source and portable Python distribution for Windows",
     "homepage": "https://winpython.github.io",
     "license": "MIT",
     "notes": "For 32bit, please install 'versions/winpython3741'",
     "architecture": {
         "64bit": {
-            "url": "https://sourceforge.net/projects/winpython/WinPython_3.12/3.12.10.0/Winpython64-3.12.10.0slim.7z",
-            "hash": "294c287c4a9918c730d26188e2dc34e97a92431c83515165f04c2ea8d33f0c1d",
-            "extract_dir": "WPy64-312100"
+            "url": "https://sourceforge.net/projects/winpython/WinPython_3.14/3.14.5.0/WinPython64-3.14.5.0slim.7z",
+            "hash": "e54363cf3a0679bd75d4e345753304cac8f0be63d22b2bdfbcb238570b5786de"
         }
     },
+    "pre_install": [
+        "# Use a script to extract files since the extract_dir changes frequently.",
+        "$items = @(Get-ChildItem -Path $dir | Select-Object -First 2)",
+        "if ($items.Count -eq 1 -and $items[0].PSIsContainer) {",
+        "    $inner_dir = $items | ForEach-Object -MemberName FullName",
+        "    Move-Item -Path \"$inner_dir\\*\" -Destination $dir -Force",
+        "    Remove-Item -Path $inner_dir -Recurse -Force -ErrorAction Ignore",
+        "}"
+    ],
     "bin": [
         "scripts\\python.bat",
         [
@@ -36,11 +44,7 @@
             "jupyter_lab"
         ],
         "scripts\\winpython.bat",
-        "scripts\\winqtconsole.bat",
-        [
-            "scripts\\winqtconsole.bat",
-            "qtconsole"
-        ],
+        "scripts\\winspyder.bat",
         "scripts\\winvscode.bat",
         [
             "scripts\\winvscode.bat",
@@ -86,20 +90,20 @@
             "WinPython\\WinPython Interpreter"
         ],
         [
-            "WinPython Terminal.exe",
-            "WinPython\\WinPython Terminal"
+            "WinPython Powershell Prompt.exe",
+            "WinPython\\WinPython Powershell Prompt"
         ]
     ],
     "persist": "settings",
     "checkver": {
         "url": "https://winpython.github.io/md5_sha1.txt",
-        "regex": "Winpython64-([\\d.]+)slim\\.exe"
+        "regex": "WinPython64-([\\d.]+)slim\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://sourceforge.net/projects/winpython/WinPython_$majorVersion.$minorVersion/$version/Winpython64-$versionslim.7z",
-                "extract_dir": "WPy64-$cleanVersion"
+                "url": "https://sourceforge.net/projects/winpython/WinPython_$majorVersion.$minorVersion/$version/WinPython64-$versionslim.7z",
+                "extract_dir": "WPy64-$version"
             }
         },
         "hash": {

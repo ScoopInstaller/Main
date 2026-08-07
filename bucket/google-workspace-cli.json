@@ -1,0 +1,29 @@
+{
+    "version": "0.22.5",
+    "description": "Official command-line tool for Gooogle Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more.",
+    "homepage": "https://developers.google.com/workspace/cli",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/googleworkspace/cli/releases/download/v0.22.5/google-workspace-cli-x86_64-pc-windows-msvc.zip",
+            "hash": "407705d695dc83d48b1c5f50d71b5aa64095bf6f17d5b439b2e9a373bbe67ec2"
+        }
+    },
+    "env_set": {
+        "GOOGLE_WORKSPACE_CLI_CONFIG_DIR": "$persist_dir"
+    },
+    "bin": "gws.exe",
+    "checkver": {
+        "github": "https://github.com/googleworkspace/cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/googleworkspace/cli/releases/download/v$version/google-workspace-cli-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

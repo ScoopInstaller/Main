@@ -1,21 +1,50 @@
 {
-    "version": "10.12.4",
+    "version": "11.20.0",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.12.4/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "f49633db2d78cf904f92d41500e35d81506338415b9802ce3942f6a2ead0333c"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v11.20.0/pnpm-win32-x64.zip",
+            "hash": "ea2528bdc3d96a1ff3c35587dc48ca692b39d77f08f26df4adeaaa9eb427024e"
+        },
+        "arm64": {
+            "url": "https://github.com/pnpm/pnpm/releases/download/v11.20.0/pnpm-win32-arm64.zip",
+            "hash": "5b39112b344ac95cc44531464ae9c19520ed062f3956a528f7ca19baf2802af6"
         }
     },
     "bin": [
         "pnpm.exe",
         [
             "pnpm.exe",
+            "pn"
+        ],
+        [
+            "pnpm.exe",
             "pnpx",
             "dlx"
+        ],
+        [
+            "pnpm.exe",
+            "pnx",
+            "dlx"
         ]
+    ],
+    "post_install": [
+        "pnpm config set storeDir \"$dir\\store\"",
+        "pnpm config set cacheDir \"$dir\\cache\"",
+        "pnpm config set stateDir \"$dir\\state\""
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "PNPM_HOME": "$dir"
+    },
+    "persist": [
+        "bin",
+        "global",
+        "store",
+        "cache",
+        "state"
     ],
     "checkver": {
         "script": [
@@ -23,7 +52,7 @@
             "$auth = Get-GitHubToken",
             "$head = @{}",
             "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repositories/50565430/releases'",
+            "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
             "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
@@ -38,6 +67,13 @@
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-arm64.zip"
+            }
+        }
     }
 }

@@ -1,0 +1,35 @@
+{
+    "version": "0.14.0",
+    "description": "A log file viewer for the terminal.",
+    "homepage": "https://lnav.org",
+    "license": {
+        "identifier": "BSD-2-Clause",
+        "url": "https://github.com/tstack/lnav/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-windows-x86_64.zip",
+            "hash": "62e35078b0ba6ff94cb38a3e31df0197b372a96e3e516a0bfc740061729be023"
+        },
+        "arm64": {
+            "url": "https://github.com/tstack/lnav/releases/download/v0.14.0/lnav-0.14.0-windows-arm64.zip",
+            "hash": "3c6a27057fc08263ae9435a34c6c787fc9b476a2f682f4a03ec2873a8c4addec"
+        }
+    },
+    "extract_dir": "lnav-0.14.0",
+    "bin": "bin\\lnav.exe",
+    "checkver": {
+        "github": "https://github.com/tstack/lnav"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tstack/lnav/releases/download/v$version/lnav-$version-windows-x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/tstack/lnav/releases/download/v$version/lnav-$version-windows-arm64.zip"
+            }
+        },
+        "extract_dir": "lnav-$version"
+    }
+}

@@ -1,5 +1,5 @@
 {
-    "version": "8.2.1",
+    "version": "8.5.1",
     "description": "Developer tools for working with Google's bazel buildtool.",
     "homepage": "https://github.com/bazelbuild/buildtools",
     "license": "Apache-2.0",
@@ -9,21 +9,33 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/bazelbuild/buildtools/releases/download/v8.2.1/buildifier-windows-amd64.exe#/buildifier.exe",
-                "https://github.com/bazelbuild/buildtools/releases/download/v8.2.1/buildozer-windows-amd64.exe#/buildozer.exe",
-                "https://github.com/bazelbuild/buildtools/releases/download/v8.2.1/unused_deps-windows-amd64.exe#/unused_deps.exe"
+                "https://github.com/bazelbuild/buildtools/releases/download/v8.5.1/buildifier-windows-amd64.exe#/buildifier.exe",
+                "https://github.com/bazelbuild/buildtools/releases/download/v8.5.1/buildozer-windows-amd64.exe#/buildozer.exe",
+                "https://github.com/bazelbuild/buildtools/releases/download/v8.5.1/unused-deps-windows-amd64.exe#/unused-deps.exe"
             ],
             "hash": [
-                "802104da0bcda0424a397ac5be0004c372665a70289a6d5146e652ee497c0dc6",
-                "6e3b8520904394adc31a610544fc2f86609c0433e39ae3a5b5f992e20dabb0d3",
-                "fa4cc9e4eff47b165513681dbd763afd444071add1c79c046128ef5cd497c15e"
+                "f4ecb9c73de2bc38b845d4ee27668f6248c4813a6647db4b4931a7556052e4e1",
+                "e177155c2c8ef41569791de34f13077cefe3e5623f9f02e099347232bc028901",
+                "4fcf034d416cf98c3d09fd325209f716fc393db963851742afd1a6d8d204f3bf"
+            ]
+        },
+        "arm64": {
+            "url": [
+                "https://github.com/bazelbuild/buildtools/releases/download/v8.5.1/buildifier-windows-arm64.exe#/buildifier.exe",
+                "https://github.com/bazelbuild/buildtools/releases/download/v8.5.1/buildozer-windows-arm64.exe#/buildozer.exe",
+                "https://github.com/bazelbuild/buildtools/releases/download/v8.5.1/unused-deps-windows-arm64.exe#/unused-deps.exe"
+            ],
+            "hash": [
+                "55a276ad8b1ff46be48bf64e432264034ea69a45aa3914e89c1d1936f5c2d85c",
+                "f6528a676f4bc22a1f92358d3150d9d1ab4fcb19054f55b7e04775d8cdc3e94b",
+                "9f8a2fa7c6dffba33e73dfec4ae5c0b8b5da5cff0b38a4b5ae9547a6a8d621c5"
             ]
         }
     },
     "bin": [
         "buildifier.exe",
         "buildozer.exe",
-        "unused_deps.exe"
+        "unused-deps.exe"
     ],
     "checkver": "github",
     "autoupdate": {
@@ -32,7 +44,14 @@
                 "url": [
                     "https://github.com/bazelbuild/buildtools/releases/download/v$version/buildifier-windows-amd64.exe#/buildifier.exe",
                     "https://github.com/bazelbuild/buildtools/releases/download/v$version/buildozer-windows-amd64.exe#/buildozer.exe",
-                    "https://github.com/bazelbuild/buildtools/releases/download/v$version/unused_deps-windows-amd64.exe#/unused_deps.exe"
+                    "https://github.com/bazelbuild/buildtools/releases/download/v$version/unused-deps-windows-amd64.exe#/unused-deps.exe"
+                ]
+            },
+            "arm64": {
+                "url": [
+                    "https://github.com/bazelbuild/buildtools/releases/download/v$version/buildifier-windows-arm64.exe#/buildifier.exe",
+                    "https://github.com/bazelbuild/buildtools/releases/download/v$version/buildozer-windows-arm64.exe#/buildozer.exe",
+                    "https://github.com/bazelbuild/buildtools/releases/download/v$version/unused-deps-windows-arm64.exe#/unused-deps.exe"
                 ]
             }
         }

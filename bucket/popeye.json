@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/derailed/popeye/releases/download/v0.22.1/popeye_windows_amd64.tar.gz",
             "hash": "fa5c155d65313e93985bdb7ed1a79fb0e310b7868848dfaf381ea081f349dacc"
+        },
+        "arm64": {
+            "url": "https://github.com/derailed/popeye/releases/download/v0.22.1/popeye_windows_arm64.tar.gz",
+            "hash": "91aee5c13655f6fa509e79a87963ec0a81dd23486bb54a4845b3d0db33dabfb0"
         }
     },
     "bin": "popeye.exe",
@@ -14,7 +18,14 @@
         "github": "https://github.com/derailed/popeye"
     },
     "autoupdate": {
-        "url": "https://github.com/derailed/popeye/releases/download/v$version/popeye_windows_amd64.tar.gz",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/derailed/popeye/releases/download/v$version/popeye_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/derailed/popeye/releases/download/v$version/popeye_windows_arm64.tar.gz"
+            }
+        },
         "hash": {
             "url": "$baseurl/checksums.sha256"
         }

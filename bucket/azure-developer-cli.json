@@ -1,7 +1,6 @@
 {
-    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
-    "version": "1.17.2",
-    "description": "A developer CLI that reduces the time it takes to get started on Azure",
+    "version": "1.30.0",
+    "description": "A developer CLI that provides commands for working with Azure resources that map to key workflow stages: code, build, deploy, monitor, repeat.",
     "homepage": "https://aka.ms/azd",
     "license": "MIT",
     "notes": [
@@ -9,16 +8,16 @@
         "2. Telemetry is enabled by default, it can be disabled by setting env variable \"AZURE_DEV_COLLECT_TELEMETRY\" to \"no\""
     ],
     "architecture": {
-        "arm64": {
-            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.17.2/azd-windows-arm64-alpha.zip",
-            "hash": "3769c310f40d1209abc23dc1abc9814a51ce36144d43707af8d57f98e28151a3"
-        },
         "64bit": {
-            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.17.2/azd-windows-amd64.zip",
-            "hash": "e2ccee624eea3a7eeea3163c60acd7fa897eaa0b2a5f4fa53f1dcbe0d799fffe"
+            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.30.0/azd-windows-amd64.zip",
+            "hash": "38b19f0853acb3f4923fa56a22a9c1b0618ce524297d989e8dbf362d36d33640"
+        },
+        "arm64": {
+            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.30.0/azd-windows-arm64-alpha.zip",
+            "hash": "b98d61016e7e1b56836c50b0b5db8df7ce013150a676ca1e0f4896cdb63e2083"
         }
     },
-    "pre_install": "Rename-Item -Path \"$dir\\azd-*.exe\" -NewName \"azd.exe\"",
+    "pre_install": "Get-Item \"$dir\\azd-*.exe\" | Rename-Item -NewName \"azd.exe\"",
     "bin": "azd.exe",
     "post_uninstall": [
         "if ($purge) {",
@@ -38,11 +37,11 @@
     },
     "autoupdate": {
         "architecture": {
-            "arm64": {
-                "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-arm64-alpha.zip"
-            },
             "64bit": {
                 "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-arm64-alpha.zip"
             }
         }
     }

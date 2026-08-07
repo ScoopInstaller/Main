@@ -1,0 +1,42 @@
+{
+    "version": "0.4.12",
+    "description": "prek is a reimagined version of pre-commit, built in Rust. It is designed to be a faster, dependency-free and drop-in alternative for it, while also providing some additional long-requested features.",
+    "homepage": "https://github.com/j178/prek",
+    "license": "MIT",
+    "notes": [
+        "Some subcommands and languages in pre-commit are not implemented in prek yet.",
+        "See the current gaps for drop-in parity: https://prek.j178.dev/todo/"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/j178/prek/releases/download/v0.4.12/prek-x86_64-pc-windows-msvc.zip",
+            "hash": "1ea049702009636296ca845e91b336aeb203d47df8ce500eb388672c8199d57b"
+        },
+        "32bit": {
+            "url": "https://github.com/j178/prek/releases/download/v0.4.12/prek-i686-pc-windows-msvc.zip",
+            "hash": "1a593e921805be6c88842c1a0ea40699429b179601f363345309b3fbd0a85194"
+        },
+        "arm64": {
+            "url": "https://github.com/j178/prek/releases/download/v0.4.12/prek-aarch64-pc-windows-msvc.zip",
+            "hash": "af21577bd67467e623b38eb0614b61e0e00d979062394f68f442f089d3a225ce"
+        }
+    },
+    "bin": "prek.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/j178/prek/releases/download/v$version/prek-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/j178/prek/releases/download/v$version/prek-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/j178/prek/releases/download/v$version/prek-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

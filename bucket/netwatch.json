@@ -1,0 +1,29 @@
+{
+    "version": "0.28.1",
+    "description": "Real-time network diagnostics TUI — like htop for your network. Built with Rust + ratatui.",
+    "homepage": "https://github.com/matthart1983/netwatch",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/matthart1983/netwatch/releases/download/v0.28.1/netwatch-windows-x86_64.exe.zip",
+            "hash": "54e2d7d3af0c2727deca3c11d339abff0ac5cd1b9796a007a602405098932b18",
+            "bin": [
+                [
+                    "netwatch-windows-x86_64.exe",
+                    "netwatch"
+                ]
+            ]
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/matthart1983/netwatch/releases/download/v$version/netwatch-windows-x86_64.exe.zip"
+            }
+        }
+    }
+}

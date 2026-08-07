@@ -1,0 +1,37 @@
+{
+    "version": "2026.5.1",
+    "description": "Official command line package manager for MathWorks products.",
+    "homepage": "https://www.mathworks.com/products/mpm.html",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.mathworks.com/store/terms"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ssd.mathworks.com/supportfiles/downloads/mpm/2026.5.1/win64/mpm.exe",
+            "hash": "e7e3dbdd126cc2b945aacf1d0e0447e7a00f752dae450d46025f2212c7632ee9"
+        }
+    },
+    "bin": [
+        [
+            "mpm.exe",
+            "matlab-package-manager"
+        ]
+    ],
+    "checkver": {
+        "script": [
+            "$url = 'https://www.mathworks.com/mpm/win64/mpm'",
+            "$request = [System.Net.HttpWebRequest]::Create($url)",
+            "$response = $request.GetResponse()",
+            "Write-Output $response.ResponseUri.AbsoluteUri"
+        ],
+        "regex": "downloads/mpm/([\\d.]+)/win64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ssd.mathworks.com/supportfiles/downloads/mpm/$version/win64/mpm.exe"
+            }
+        }
+    }
+}

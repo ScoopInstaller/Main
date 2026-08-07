@@ -1,25 +1,35 @@
 {
-    "version": "10.0.0",
+    "version": "11.0.0",
     "description": "A generic and open source machine emulator and virtualizer.",
     "homepage": "https://qemu.weilnetz.de/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://qemu.weilnetz.de/w64/2025/qemu-w64-setup-20250422.exe#/dl.7z",
-            "hash": "sha512:1db9a723e241547a0c63fddbc52dca2d39c3c7d4e0c205019c931d33e2f9e8cc476522b4d3303e8586e67c58ae757a594911cf511aa21bacea7d4f2e56f99e77"
+            "url": "https://qemu.weilnetz.de/w64/2026/qemu-w64-setup-20260422.exe#/dl.7z",
+            "hash": "sha512:64a43c0d39acddc9d30d290935a312a2b5c4fa62cffe6c27090f2a45ca6c8de0f0e8673e1e5117fb116a8742f86df92163531afc23f34758aadfc6d82c1f41a5"
+        },
+        "arm64": {
+            "url": "https://qemu.weilnetz.de/aarch64/2026/qemu-arm-setup-20260422.exe#/dl.7z",
+            "hash": "sha512:67ca24c6b07ecb74848f5c1078db7dc71e4e3ffe1669ef713c34184d322fb6bfbf72f1c9ca028a42212af9b157e46ef806f2e43083b2a9e51a351bd961885288"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\qemu-uninstall.exe\" -Force -Recurse",
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
     "env_add_path": ".",
     "checkver": "<strong>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})</strong>: New QEMU installer \\(([\\d.]+)\\)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z"
+                "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/qemu-w64-setup-$matchYear$matchMonth$matchDay.sha512"
+                }
+            },
+            "arm64": {
+                "url": "https://qemu.weilnetz.de/aarch64/$matchYear/qemu-arm-setup-$matchYear$matchMonth$matchDay.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/qemu-arm-setup-$matchYear$matchMonth$matchDay.sha512"
+                }
             }
-        },
-        "hash": {
-            "url": "https://qemu.weilnetz.de/w64/$matchYear/qemu-w64-setup-$matchYear$matchMonth$matchDay.sha512"
         }
     }
 }
