@@ -1,0 +1,69 @@
+{
+    "architecture": {
+        "64bit": {
+            "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+            "url": "https://github.com/teradata-labs/loom/releases/download/v1.4.0/looms-windows-amd64.exe.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/teradata-labs/loom/releases/download/v$version/looms-windows-amd64.exe.zip"
+            }
+        }
+    },
+    "bin": "looms-windows-amd64.exe",
+    "checkver": "github",
+    "description": "Loom agent server with multi-agent orchestration and gRPC/HTTP APIs",
+    "homepage": "https://github.com/teradata-labs/loom",
+    "license": "Apache-2.0",
+    "notes": [
+        "Loom server (looms) installed successfully!",
+        "",
+        "Patterns installed to: $env:LOOM_DATA_DIR\\patterns (default: $env:USERPROFILE\\.loom\\patterns)",
+        "",
+        "Next steps:",
+        "  1. Configure an LLM provider:",
+        "     looms-windows-amd64 config set llm.provider anthropic",
+        "     looms-windows-amd64 config set-key anthropic_api_key",
+        "",
+        "  2. Start the server:",
+        "     looms-windows-amd64 serve",
+        "",
+        "  3. Connect with the TUI client:",
+        "     scoop install loom",
+        "     loom-windows-amd64 --thread weaver",
+        "",
+        "Documentation: https://github.com/teradata-labs/loom#readme"
+    ],
+    "post_install": [
+        "Write-Host 'Creating Loom data directory...' -ForegroundColor Green",
+        "$loomDir = if ($env:LOOM_DATA_DIR) { $env:LOOM_DATA_DIR } else { \"$env:USERPROFILE\\.loom\" }",
+        "New-Item -ItemType Directory -Force -Path \"$loomDir\" | Out-Null",
+        "New-Item -ItemType Directory -Force -Path \"$loomDir\\patterns\" | Out-Null",
+        "",
+        "Write-Host 'Downloading patterns...' -ForegroundColor Green",
+        "$patternsUrl = 'https://github.com/teradata-labs/loom/archive/refs/heads/main.zip'",
+        "$tempZip = \"$env:TEMP\\loom-patterns.zip\"",
+        "$tempExtract = \"$env:TEMP\\loom-temp\"",
+        "try {",
+        "    Invoke-WebRequest -Uri $patternsUrl -OutFile $tempZip -ErrorAction Stop",
+        "    Expand-Archive -Path $tempZip -DestinationPath $tempExtract -Force",
+        "    Copy-Item -Path \"$tempExtract\\loom-main\\patterns\\*\" -Destination \"$loomDir\\patterns\\\" -Recurse -Force",
+        "    Write-Host 'Patterns installed successfully' -ForegroundColor Green",
+        "} catch {",
+        "    Write-Warning \"Failed to download patterns: $_\"",
+        "    Write-Host 'You can manually download patterns from: https://github.com/teradata-labs/loom/tree/main/patterns' -ForegroundColor Yellow",
+        "} finally {",
+        "    if (Test-Path $tempZip) { Remove-Item -Path $tempZip -Force }",
+        "    if (Test-Path $tempExtract) { Remove-Item -Path $tempExtract -Recurse -Force }",
+        "}",
+        "",
+        "Write-Host 'Setting environment variable...' -ForegroundColor Green",
+        "if (-not $env:LOOM_DATA_DIR) {",
+        "    [Environment]::SetEnvironmentVariable('LOOM_DATA_DIR', \"$env:USERPROFILE\\.loom\", 'User')",
+        "    Write-Host 'LOOM_DATA_DIR set to default: $env:USERPROFILE\\.loom' -ForegroundColor Green",
+        "}"
+    ],
+    "version": "1.4.0"
+}
