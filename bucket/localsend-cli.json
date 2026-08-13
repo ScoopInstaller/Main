@@ -18,7 +18,9 @@
     },
     "bin": "localsend-cli.exe",
     "checkver": {
-        "github": "https://github.com/localsend/localsend"
+        "github": "https://api.github.com/repos/localsend/localsend/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /LocalSend-CLI/i)].browser_download_url",
+        "regex": "download/v([\\d.]+)/LocalSend-CLI"
     },
     "autoupdate": {
         "architecture": {
