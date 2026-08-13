@@ -1,25 +1,27 @@
 {
-    "version": "4.46.0",
+    "version": "4.47.0",
     "description": "Selenium Manager is a command-line tool developed in Rust to allow cross platform execution.",
     "homepage": "https://www.selenium.dev/documentation/selenium_manager/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/selenium-manager-e396475/selenium-manager-windows.exe#/selenium-manager.exe",
-            "hash": "c8ed9ebfa23faf029fd5060a121b99a09e98a29a83212d8d0d644e62e07a47d0"
+            "url": "https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/selenium-manager-bb9e376/selenium-manager-windows.exe#/selenium-manager.exe",
+            "hash": "96c69f2db247b7d1a8dd05abf6b0dfe05b8769b6410002eb685ae2dd531314cb"
         }
     },
     "bin": "selenium-manager.exe",
     "checkver": {
+        "github": "https://api.github.com/repos/SeleniumHQ/selenium/releases/latest",
         "script": [
             "# This script was written based on the conversation here https://github.com/SeleniumHQ/selenium/issues/11694. Once binaries are released, we won't need this script.",
-            "$request = ((Invoke-WebRequest -Uri 'https://github.com/SeleniumHQ/selenium/').Content -split \"`n\" | Select-String 'selenium-([\\d.]+)')",
-            "$selenium_ver_string = $request.Matches[0].Value",
-            "$selenium_ver = $request.Matches.Groups[1].Value",
-            "$selenium_manager_ver_string = @((Invoke-WebRequest -Uri ('https://github.com/SeleniumHQ/selenium/raw/' + $selenium_ver_string + '/common/selenium_manager.bzl')).Content -split \"`n\" | Select-String 'selenium-manager-([a-z0-9]+)').Matches.Value[0]",
-            "Write-Output $selenium_ver $selenium_manager_ver_string"
+            "$selenium_release = $page | ConvertFrom-Json",
+            "$selenium_ver_string = $selenium_release.tag_name",
+            "$selenium_manager_ver_string = @((Invoke-WebRequest -Uri ('https://github.com/SeleniumHQ/selenium/raw/' + $selenium_ver_string + '/common/selenium_manager.bzl') -UseBasicParsing).Content -split \"`n\" | Select-String 'selenium-manager-([a-z0-9]+)').Matches.Value[0]",
+            "$output = @{ result = \"$selenium_ver_string $selenium_manager_ver_string\" } | ConvertTo-Json -Compress",
+            "Write-Output $output"
         ],
-        "regex": "(?<version>.+)\\s(?<managerversion>.+)"
+        "jsonpath": "$.result",
+        "regex": "selenium-(?<version>.+)\\s(?<managerversion>.+)"
     },
     "autoupdate": {
         "architecture": {
