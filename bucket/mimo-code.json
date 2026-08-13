@@ -1,16 +1,32 @@
 {
-    "version": "0.1.1",
+    "version": "0.1.12",
     "description": "A terminal-native AI coding assistant built by Xiaomi MiMo.",
     "homepage": "https://mimo.xiaomi.com/mimocode",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.1/mimocode-windows-x64.zip",
-            "hash": "4ec1ab7f5fbd4ccaf401c524c8786312a5166f1481af82629e00c80d04c0054b"
+            "url": [
+                "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.12/mimocode-windows-x64.zip",
+                "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.12/mimocode-windows-x64-baseline.zip#/baseline.zip_"
+            ],
+            "hash": [
+                "8f4e53f889d62f2144b7af28d0374a17ec4d3c67e9ca05ff1d2978f2a807660b",
+                "bf147c761dc6a200b863d67954769ffee79885dabcc9f41a7f9e57c99cbc4343"
+            ],
+            "pre_install": [
+                "$avx2 = Start-Job -ScriptBlock {",
+                "    Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
+                "    return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
+                "} | Receive-Job -Wait -AutoRemoveJob",
+                "if (-not $avx2) {",
+                "    Expand-7ZipArchive -Path \"$dir\\baseline.zip_\" -DestinationPath \"$dir\" -Overwrite All",
+                "}",
+                "Remove-Item -LiteralPath \"$dir\\baseline.zip_\" -Recurse -Force"
+            ]
         },
         "arm64": {
-            "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.1/mimocode-windows-arm64.zip",
-            "hash": "49d0993e1f005ca364b60bb31401743bf6d379fda9be7839db7938d1ce6cd8aa"
+            "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.12/mimocode-windows-arm64.zip",
+            "hash": "79ee5729af839f88eee51b7efaa659781ea69016f9d2fc07f00e1315bf4a8440"
         }
     },
     "bin": "mimo.exe",
@@ -20,7 +36,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v$version/mimocode-windows-x64.zip"
+                "url": [
+                    "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v$version/mimocode-windows-x64.zip",
+                    "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v$version/mimocode-windows-x64-baseline.zip#/baseline.zip_"
+                ]
             },
             "arm64": {
                 "url": "https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v$version/mimocode-windows-arm64.zip"

@@ -1,17 +1,18 @@
 {
-    "version": "18.4",
+    "version": "18.6-1",
     "description": "Object-relational database management system based on POSTGRES.",
     "homepage": "https://www.postgresql.org",
     "license": "PostgreSQL",
     "notes": [
         "Run 'pg_ctl start' to start the database and 'pg_ctl stop' to stop it.",
-        "Register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
+        "Register it as a service by running 'pg_ctl register -N PostgreSQL -D \"$persist_dir\\data\"' from an elevated shell.",
+        "Add service description by running 'sc.exe description PostgreSQL \"PostgreSQL Database Server\"' from an elevated shell.",
         "Default superuser login: postgres, password: <blank>"
     ],
     "architecture": {
         "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-18.4-1-windows-x64-binaries.zip",
-            "hash": "7effe34c0bf89027b3f171447d351cbc460f4566c8d0f643daec67f140787858"
+            "url": "https://get.enterprisedb.com/postgresql/postgresql-18.6-1-windows-x64-binaries.zip",
+            "hash": "fbe23da234ee31547bf8a36d29dfd81e82b849df2d2b78d2eecb43d360252f8c"
         }
     },
     "extract_dir": "pgsql",
@@ -35,12 +36,18 @@
     "persist": "data",
     "checkver": {
         "url": "https://www.enterprisedb.com/downloads/postgres-postgresql-downloads",
-        "regex": ">(?<version>\\d+\\.[\\d.]+)<"
+        "script": [
+            "$url = ([xml]$page).SelectSingleNode('//table/tbody/tr[1]/td[5]/a').href",
+            "$request = [System.Net.HttpWebRequest]::Create($url)",
+            "$response = $request.GetResponse()",
+            "Write-Output $response.ResponseUri.AbsoluteUri"
+        ],
+        "regex": "postgresql-(?<version>\\d+\\.\\d+-\\d+)-windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
+                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-windows-x64-binaries.zip"
             }
         }
     }

@@ -1,16 +1,16 @@
 {
-    "version": "2.1.0",
+    "version": "2.3.0",
     "description": "A tool to validate the syntax of configuration files",
     "homepage": "https://boeing.github.io/config-file-validator/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Boeing/config-file-validator/releases/download/v2.1.0/validator-v2.1.0-windows-amd64.zip",
-            "hash": "108018b7cc376fe1cbffb0a46df9dd182fd2f03c3fa4d8b415fcd9143b38da73"
+            "url": "https://github.com/Boeing/config-file-validator/releases/download/v2.3.0/validator-v2.3-windows-amd64.zip",
+            "hash": "69e5dde23c034bdc5a938a133bcb8baae5652bbeb88f6d52c2aa7ca0738638ec"
         },
         "32bit": {
-            "url": "https://github.com/Boeing/config-file-validator/releases/download/v2.1.0/validator-v2.1.0-windows-386.zip",
-            "hash": "1315971e8ba3f471f6fee2e2e4f419baf5231fbfd61f126dc43720a13c6cf457"
+            "url": "https://github.com/Boeing/config-file-validator/releases/download/v2.3.0/validator-v2.3-windows-386.zip",
+            "hash": "cc737794f4fa5f93843ef8b9d925c2f1b2f2088c0a97ca811b2c0bff2459525e"
         }
     },
     "bin": "validator.exe",
@@ -22,11 +22,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$version-windows-amd64.zip"
+                "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$majorVersion.$minorVersion-windows-amd64.zip"
             },
             "32bit": {
-                "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$version-windows-386.zip"
+                "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$majorVersion.$minorVersion-windows-386.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }

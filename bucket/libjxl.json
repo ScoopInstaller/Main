@@ -1,36 +1,34 @@
 {
-    "version": "0.11.2",
+    "version": "0.12.0",
     "description": "JPEG XL image format (.jxl) encode/decode tools",
     "homepage": "https://jpeg.org/jpegxl",
     "license": "BSD-3-Clause",
-    "notes": "If the shim for brotli.exe was overwritten by this app's version and you'd like to point it back to brotli's version, run `scoop reset brotli`.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/libjxl/libjxl/releases/download/v0.11.2/jxl-x64-windows-static.zip",
-            "hash": "97dc815bdd99ba243d8502050357342cf649251a5df069f8c3daee6828cbe0ce"
+            "url": "https://github.com/libjxl/libjxl/releases/download/v0.12.0/jxl-x64-windows-static.7z",
+            "hash": "ff147dc7ac4ce55392974ccc70f2a8a8ec0eff3ae28529b072258b66c8f01ab2",
+            "extract_dir": "x64-windows-static"
         },
         "32bit": {
-            "url": "https://github.com/libjxl/libjxl/releases/download/v0.11.2/jxl-x86-windows-static.zip",
-            "hash": "39f53943143468bb27f653dcfa7f6d2cf71a8b9fa14269de21d475a821002957"
+            "url": "https://github.com/libjxl/libjxl/releases/download/v0.12.0/jxl-x86-windows-static.7z",
+            "hash": "c6f419659910a68782810a400aadaf5c1bfcbc67ea324223af09d7a7477c16cc",
+            "extract_dir": "x86-windows-static"
         }
     },
     "bin": [
         "bin\\benchmark_xl.exe",
-        "bin\\brotli.exe",
         "bin\\butteraugli_main.exe",
-        "bin\\cjpegli.exe",
         "bin\\cjxl.exe",
         "bin\\decode_and_encode.exe",
         "bin\\display_to_hlg.exe",
-        "bin\\djpegli.exe",
         "bin\\djxl_fuzzer_corpus.exe",
         "bin\\djxl.exe",
         "bin\\exr_to_pq.exe",
         "bin\\generate_lut_template.exe",
         "bin\\icc_simplify.exe",
-        "bin\\jpegli_dec_fuzzer_corpus.exe",
         "bin\\jxl_from_tree.exe",
         "bin\\jxlinfo.exe",
+        "bin\\jxltran.exe",
         "bin\\local_tone_map.exe",
         "bin\\pq_to_hlg.exe",
         "bin\\render_hlg.exe",
@@ -46,10 +44,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x64-windows-static.zip"
+                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x64-windows-static.7z"
             },
             "32bit": {
-                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x86-windows-static.zip"
+                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x86-windows-static.7z"
             }
         }
     }

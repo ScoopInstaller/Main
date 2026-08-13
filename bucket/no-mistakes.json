@@ -1,0 +1,37 @@
+{
+    "version": "1.48.0",
+    "description": "A local Git proxy that AI-validates your code before push, forwarding only clean commits upstream.",
+    "homepage": "https://kunchenguid.github.io/no-mistakes",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kunchenguid/no-mistakes/releases/download/v1.48.0/no-mistakes-v1.48.0-windows-amd64.zip",
+            "hash": "65e2a7f20546ebae0954a8f0f36825f763592de1b063ef2e567613b6fd133b04"
+        },
+        "arm64": {
+            "url": "https://github.com/kunchenguid/no-mistakes/releases/download/v1.48.0/no-mistakes-v1.48.0-windows-arm64.zip",
+            "hash": "8c5a078c0793ed0e997b3d998ee6eca21253f5a114cf7775a8e34d13b71292cd"
+        }
+    },
+    "env_set": {
+        "NO_MISTAKES_NO_UPDATE_CHECK": "1"
+    },
+    "bin": "no-mistakes.exe",
+    "checkver": {
+        "github": "https://github.com/kunchenguid/no-mistakes"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kunchenguid/no-mistakes/releases/download/v$version/no-mistakes-v$version-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/kunchenguid/no-mistakes/releases/download/v$version/no-mistakes-v$version-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}

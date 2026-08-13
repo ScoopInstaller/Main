@@ -1,0 +1,35 @@
+{
+    "version": "1.18.0",
+    "description": "Share files to nearby devices. An open source cross-platform alternative to AirDrop. (CLI)",
+    "homepage": "https://localsend.org/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/localsend/localsend/releases/download/v1.18.0/LocalSend-CLI-1.18.0-windows-x86-64.exe#/localsend-cli.exe",
+            "hash": "c27709b206f8ed8c62bf18f4fb00f7644f18f220b978ac0755853e356fae8cca"
+        },
+        "arm64": {
+            "url": "https://github.com/localsend/localsend/releases/download/v1.18.0/LocalSend-CLI-1.18.0-windows-arm-64.exe#/localsend-cli.exe",
+            "hash": "3043a31c688407e56013ad02dc2a9fe019c76c7cb78a96bbed1b13c0930e8aa3"
+        }
+    },
+    "bin": "localsend-cli.exe",
+    "checkver": {
+        "github": "https://api.github.com/repos/localsend/localsend/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /LocalSend-CLI/i)].browser_download_url",
+        "regex": "download/v([\\d.]+)/LocalSend-CLI"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/localsend/localsend/releases/download/v$version/LocalSend-CLI-$version-windows-x86-64.exe#/localsend-cli.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/localsend/localsend/releases/download/v$version/LocalSend-CLI-$version-windows-arm-64.exe#/localsend-cli.exe"
+            }
+        }
+    }
+}

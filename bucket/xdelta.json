@@ -1,68 +1,32 @@
 {
-    "version": "3.1.0",
-    "description": "Open-source binary diff, delta/differential compression tools, VCDIFF/RFC 3284 delta compression.",
-    "homepage": "http://xdelta.org/",
-    "license": "GPL-2.0-only",
+    "version": "3.2.0",
+    "description": "Xdelta version 3 is a C library and command-line tool for delta compression using VCDIFF/RFC 3284 streams.",
+    "homepage": "https://github.com/jmacd/xdelta",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jmacd/xdelta-gpl/releases/download/v3.1.0/xdelta3-3.1.0-x86_64.exe.zip",
-            "hash": "b10e0d1df3e212e5a2d37d5c088d2f72ecec760bc3c26caeca51499c3118b93a",
-            "bin": [
-                [
-                    "xdelta3-3.1.0-x86_64.exe",
-                    "xdelta3"
-                ],
-                [
-                    "xdelta3-3.1.0-x86_64.exe",
-                    "xdelta"
-                ]
-            ]
-        },
-        "32bit": {
-            "url": "https://github.com/jmacd/xdelta-gpl/releases/download/v3.1.0/xdelta3-3.1.0-i686.exe.zip",
-            "hash": "1e72f920dbae1b4edc7be0feba841d78fb06ad38b67630e99d5ff655d8c5d62f",
-            "bin": [
-                [
-                    "xdelta3-3.1.0-i686.exe",
-                    "xdelta3"
-                ],
-                [
-                    "xdelta3-3.1.0-i686.exe",
-                    "xdelta"
-                ]
-            ]
+            "url": "https://github.com/jmacd/xdelta/releases/download/v3.2.0/xdelta3-3.2.0-windows-x86_64.zip",
+            "hash": "af8ef036cb077a48df080c9a8ac1be4a6e7511c32d11f8bec89b6803a9e52576",
+            "extract_dir": "xdelta3-3.2.0-windows-x86_64"
         }
     },
-    "checkver": {
-        "github": "https://github.com/jmacd/xdelta-gpl"
-    },
+    "bin": [
+        "xdelta3.exe",
+        [
+            "xdelta3.exe",
+            "xdelta"
+        ],
+        "xdelta3decode.exe"
+    ],
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/jmacd/xdelta-gpl/releases/download/v$version/xdelta3-$version-x86_64.exe.zip",
-                "bin": [
-                    [
-                        "xdelta3-$version-x86_64.exe",
-                        "xdelta3"
-                    ],
-                    [
-                        "xdelta3-$version-x86_64.exe",
-                        "xdelta"
-                    ]
-                ]
-            },
-            "32bit": {
-                "url": "https://github.com/jmacd/xdelta-gpl/releases/download/v$version/xdelta3-$version-i686.exe.zip",
-                "bin": [
-                    [
-                        "xdelta3-$version-i686.exe",
-                        "xdelta3"
-                    ],
-                    [
-                        "xdelta3-$version-i686.exe",
-                        "xdelta"
-                    ]
-                ]
+                "url": "https://github.com/jmacd/xdelta/releases/download/v$version/xdelta3-$version-windows-x86_64.zip",
+                "extract_dir": "xdelta3-$version-windows-x86_64"
             }
         }
     }

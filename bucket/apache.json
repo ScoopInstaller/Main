@@ -1,12 +1,12 @@
 {
-    "version": "2.4.66",
+    "version": "2.4.68",
     "description": "The Apache HTTP Server ('httpd')",
     "homepage": "https://www.apachelounge.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://fossies.org/windows/www/httpd-2.4.66-251206-Win64-VS17.zip",
-            "hash": "7c78cda3aed9a6b5af7af640b6b961ae0566ab933bbbca3d39ef5dd3912386f3"
+            "url": "https://fossies.org/windows/www/httpd-2.4.68-260610-Win64-VS18.zip",
+            "hash": "383a9c68407cb0b8e5fd8725c6f37493483ef94848642bea09bd1eed76044ae3"
         }
     },
     "extract_dir": "Apache24",
@@ -35,12 +35,12 @@
     ],
     "checkver": {
         "url": "https://fossies.org/windows/www/",
-        "regex": "httpd-([\\d.]+)-(?<date>[\\d]+)-(?<arch>(w|W)in64)-VS17\\.zip"
+        "regex": "httpd-([\\d.]+)-(?<date>[\\d]+)-(?<arch>(w|W)in64)-(?<vs>VS\\d+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://fossies.org/windows/www/httpd-$version-$matchDate-$matchArch-VS17.zip"
+                "url": "https://fossies.org/windows/www/httpd-$version-$matchDate-$matchArch-$matchVs.zip"
             }
         },
         "hash": {
