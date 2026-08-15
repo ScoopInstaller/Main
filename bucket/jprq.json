@@ -15,7 +15,9 @@
     },
     "bin": "jprq.exe",
     "checkver": {
-        "github": "https://github.com/azimjohn/jprq"
+        "github": "https://api.github.com/repos/azimjohn/jprq/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /jprq-windows/i)].browser_download_url",
+        "regex": "download/([\\d.]+)/jprq-windows"
     },
     "autoupdate": {
         "architecture": {
