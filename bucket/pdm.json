@@ -1,0 +1,38 @@
+{
+    "version": "2.17.1",
+    "description": "PDM, as described, is a modern Python package and dependency manager supporting the latest PEP standards.",
+    "homepage": "http://pdm.fming.dev",
+    "license": "MIT",
+    "depends": "python",
+    "notes": [
+        "Activate powershell completions by running:",
+        "Add-Content -Path $Profile -Value \"`n. `\"`$(scoop prefix pdm)\\pdm_completion.ps1`\"\""
+    ],
+    "url": "https://files.pythonhosted.org/packages/py3/p/pdm/pdm-2.17.1-py3-none-any.whl",
+    "hash": "2ef7bb1424217f267b81e40f9c5326af27a519e9535e3272aa3b454ad5ab096c",
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "python -m venv venv",
+            "& \"venv\\Scripts\\python.exe\" -m pip install \"$fname\"",
+            "& \"venv\\Scripts\\pdm.exe\" completion powershell | Out-File -Encoding utf8 pdm_completion.ps1",
+            "Pop-Location"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$oldPath = [Environment]::GetEnvironmentVariable(\"PYTHONPATH\", [System.EnvironmentVariableTarget]::User)",
+            "If (-not [string]::IsNullOrWhiteSpace($oldPath)) {",
+            "    $newPath = ($oldPath.Split(';') | Where { $_ -notlike \"$dir\\venv\\*\" }) -join ';'",
+            "    [Environment]::SetEnvironmentVariable(\"PYTHONPATH\", $newPath, [System.EnvironmentVariableTarget]::User)",
+            "}"
+        ]
+    },
+    "bin": "venv\\Scripts\\pdm.exe",
+    "checkver": {
+        "github": "https://github.com/pdm-project/pdm"
+    },
+    "autoupdate": {
+        "url": "https://files.pythonhosted.org/packages/py3/p/pdm/pdm-$version-py3-none-any.whl"
+    }
+}
