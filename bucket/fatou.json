@@ -1,0 +1,37 @@
+{
+    "version": "0.15.0",
+    "description": "Language server, formatter, and linter for Julia.",
+    "homepage": "https://fatou.dev",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jolars/fatou/releases/download/v0.15.0/fatou-x86_64-pc-windows-msvc.zip",
+            "hash": "0bed973425b51cdaa190d3fee0c3dd6134b2770b5c0b77dd1edbd2eec2cab957"
+        },
+        "arm64": {
+            "url": "https://github.com/jolars/fatou/releases/download/v0.15.0/fatou-aarch64-pc-windows-msvc.zip",
+            "hash": "bb2e52d137079515fb2e3026bc2fc29953278b710475c99acae1a3654b0303b0"
+        }
+    },
+    "bin": "fatou.exe",
+    "checkver": {
+        "github": "https://github.com/jolars/fatou"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jolars/fatou/releases/download/v$version/fatou-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jolars/fatou/releases/download/v$version/fatou-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}
