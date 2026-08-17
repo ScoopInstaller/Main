@@ -1,0 +1,42 @@
+{
+    "version": "0.19.0",
+    "description": "Language server, formatter, and linter for R.",
+    "homepage": "https://arity.cc",
+    "license": "MIT",
+    "notes": [
+        "To use arity tab-completions, add following code to your PowerShell PROFILE:",
+        "",
+        "(& arity completions powershell) | Out-String | Invoke-Expression"
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jolars/arity/releases/download/v0.19.0/arity-x86_64-pc-windows-msvc.zip",
+            "hash": "3c05be0788fceefd3ab95ee6e7c0111e8ca76e01047af60d0bdd1ab1fce59639"
+        },
+        "arm64": {
+            "url": "https://github.com/jolars/arity/releases/download/v0.19.0/arity-aarch64-pc-windows-msvc.zip",
+            "hash": "efcb7fdfacf47f4773807ebe889a3e135218f0a0eb39c3f8b5cde4f31f30cdb0"
+        }
+    },
+    "bin": "arity.exe",
+    "checkver": {
+        "github": "https://github.com/jolars/arity"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jolars/arity/releases/download/v$version/arity-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jolars/arity/releases/download/v$version/arity-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}
