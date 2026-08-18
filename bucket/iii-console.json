@@ -1,0 +1,47 @@
+{
+    "version": "0.22.1",
+    "description": "Effortlessly compose, extend, and observe every service in real-time. (Console)",
+    "homepage": "https://iii.dev",
+    "license": {
+        "identifier": "Apache-2.0|Elastic-2.0",
+        "url": "https://github.com/iii-hq/iii/blob/main/LICENSE.spdx"
+    },
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.22.1/iii-console-x86_64-pc-windows-msvc.zip",
+            "hash": "42fadde821a4298443699a92faf520a5497d4c18c27f5eacf800bc230f5aef8f"
+        },
+        "32bit": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.22.1/iii-console-i686-pc-windows-msvc.zip",
+            "hash": "9321165ee318d31ac2c3a027f5bf0b469af2af2b72123b2c50c43553da61010a"
+        },
+        "arm64": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.22.1/iii-console-aarch64-pc-windows-msvc.zip",
+            "hash": "cc764f21219d9103bf5e9ef1fb3599266af4ed783b609915d1a0c43bf11631f6"
+        }
+    },
+    "bin": "iii-console.exe",
+    "checkver": {
+        "github": "https://github.com/iii-hq/iii",
+        "regex": "iii/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-console-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-console-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-console-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$urlNoExt.sha256"
+        }
+    }
+}
