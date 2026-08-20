@@ -16,7 +16,7 @@
     "extract_dir": "btop4win",
     "pre_install": [
         "Get-ChildItem \"$dir\\btop4win.exe\" | Rename-Item -NewName { $_.name -Replace '4win', '' }",
-        "if (!(Test-Path \"$persist_dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
+        "if (!(Test-Path \"$persist_dir\\btop.conf\") -and !(Test-Path \"$dir\\btop.conf\")) { New-Item \"$dir\\btop.conf\" | Out-Null }"
     ],
     "pre_uninstall": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
