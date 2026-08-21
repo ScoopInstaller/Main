@@ -1,0 +1,31 @@
+{
+    "version": "7.0.2",
+    "description": "A language for application scale JavaScript development",
+    "homepage": "https://www.typescriptlang.org/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/microsoft/TypeScript/releases/download/v7.0.2/typescript-win32-x64.tgz",
+            "hash": "61fc4e141d2bc687db580e71bbfa63b9c209f0310645d82ca1b457eb3a24fd19"
+        },
+        "arm64": {
+            "url": "https://github.com/microsoft/TypeScript/releases/download/v7.0.2/typescript-win32-arm64.tgz",
+            "hash": "0a73534e6ee50cdbb2a29ac48657ca0ad13cf0f424cf63808e4df7baeb87b8be"
+        }
+    },
+    "extract_dir": "package\\lib",
+    "bin": "tsc.exe",
+    "checkver": {
+        "github": "https://github.com/microsoft/TypeScript"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/TypeScript/releases/download/v$version/typescript-win32-x64.tgz"
+            },
+            "arm64": {
+                "url": "https://github.com/microsoft/TypeScript/releases/download/v$version/typescript-win32-arm64.tgz"
+            }
+        }
+    }
+}
