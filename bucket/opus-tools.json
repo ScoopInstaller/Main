@@ -1,16 +1,16 @@
 {
-    "version": "0.2-opus-1.3",
+    "version": "0.2-52-g5f894e9",
     "description": "Command-line utilities to encode, inspect, and decode .opus files.",
     "homepage": "https://www.opus-codec.org/",
     "license": "BSD-2-Clause|GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://archive.mozilla.org/pub/opus/win64/opus-tools-0.2-opus-1.3-win64.zip",
-            "hash": "a892bd29358e142fa756da6bfcaea2faadc0f82ee1947d9eb2cecd208f1b873f"
+            "url": "https://www.rarewares.org/files/opus/opus-tools-0.2-52-g5f894e9(using%20libopus%201.6.1-11-g788cc89)-x64.zip",
+            "hash": "e6ed867d539f609da32f4780af70fffe2ed75a2a7a9751d42537341ca7995a09"
         },
         "32bit": {
-            "url": "https://archive.mozilla.org/pub/opus/win32/opus-tools-0.2-opus-1.3.zip",
-            "hash": "a1ae3c806adee9b008348166251f938dd7774ba6987d392187202b11d1152e90"
+            "url": "https://www.rarewares.org/files/opus/opus-tools-0.2-52-g5f894e9(using%20libopus%201.6.1-11-g788cc89)-win32.zip",
+            "hash": "1a52b364e76047f4a623336a44e5a1650f5f84526b1b4b478b8c7ddb25c8053b"
         }
     },
     "bin": [
@@ -19,16 +19,17 @@
         "opusinfo.exe"
     ],
     "checkver": {
-        "url": "https://www.opus-codec.org/downloads/",
-        "regex": "opus-tools-([\\w-.]+)\\.zip"
+        "url": "https://www.rarewares.org/opus.php",
+        "regex": "opus-tools-(?<ver>[\\d.]+-\\d+-g[0-9a-f]+)\\(using libopus (?<libopus>[\\w.-]+)\\)-x64\\.zip",
+        "replace": "${ver}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://archive.mozilla.org/pub/opus/win64/opus-tools-$version-win64.zip"
+                "url": "https://www.rarewares.org/files/opus/opus-tools-$version(using%20libopus%20$matchLibopus)-x64.zip"
             },
             "32bit": {
-                "url": "https://archive.mozilla.org/pub/opus/win32/opus-tools-$version.zip"
+                "url": "https://www.rarewares.org/files/opus/opus-tools-$version(using%20libopus%20$matchLibopus)-win32.zip"
             }
         }
     }
