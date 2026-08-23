@@ -1,0 +1,39 @@
+{
+  "version": "0.0.18",
+  "description": "Convert files to token-efficient Markdown for LLM prompts",
+  "homepage": "https://github.com/intelligent-username/tokens.md",
+  "license": "AGPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/intelligent-username/tokens.md/releases/download/v0.0.18/tmd-windows-x64.exe",
+      "hash": "e611517b030eb0e2a3d03e802d818f53643e4569683f0a39900e2c8efbdbea36",
+      "bin": [
+        [
+          "tmd-windows-x64.exe",
+          "tmd"
+        ]
+      ]
+    },
+    "arm64": {
+      "url": "https://github.com/intelligent-username/tokens.md/releases/download/v0.0.18/tmd-windows-arm64.exe",
+      "hash": "2ab0b3fe449378943cff9562a1df3ee559a998da61b662597582d4f033dce9a4",
+      "bin": [
+        [
+          "tmd-windows-arm64.exe",
+          "tmd"
+        ]
+      ]
+    }
+  },
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/intelligent-username/tokens.md/releases/download/v$version/tmd-windows-x64.exe"
+      },
+      "arm64": {
+        "url": "https://github.com/intelligent-username/tokens.md/releases/download/v$version/tmd-windows-arm64.exe"
+      }
+    }
+  }
+}
