@@ -1,0 +1,29 @@
+{
+    "version": "0.27.15",
+    "description": "Official tool for displaying and creating C2PA manifests and media assets.",
+    "homepage": "https://contentauthenticity.org",
+    "license": "MIT|Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/contentauth/c2pa-rs/releases/download/c2patool-v0.27.15/c2patool-v0.27.15-x86_64-pc-windows-msvc.zip",
+            "hash": "7e931f3d7dce7ffed47e33e46a01b1d7e453059b639f676bf7efb44805610d0a"
+        }
+    },
+    "extract_dir": "c2patool",
+    "bin": "c2patool.exe",
+    "checkver": {
+        "github": "https://api.github.com/repos/contentauth/c2pa-rs/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"c2patool-v([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/contentauth/c2pa-rs/releases/download/c2patool-v$version/c2patool-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
