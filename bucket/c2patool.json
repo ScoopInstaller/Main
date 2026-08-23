@@ -12,8 +12,9 @@
     "extract_dir": "c2patool",
     "bin": "c2patool.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/contentauth/c2pa-rs/releases",
-        "regex": "c2patool-v([\\d.]+)-x86_64-pc-windows-msvc\\.zip"
+        "github": "https://api.github.com/repos/contentauth/c2pa-rs/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"c2patool-v([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
