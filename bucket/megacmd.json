@@ -20,6 +20,7 @@
     ],
     "uninstaller": {
         "script": [
+            "$global = installed $app $true",
             "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
             "if ((Get-Item \"$datapath\\MEGAcmd\" -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
             "    & \"$env:COMSPEC\" /c \"rmdir `\"$datapath\\MEGAcmd`\"\"",

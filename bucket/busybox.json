@@ -48,6 +48,7 @@
             "$process = [System.Diagnostics.Process]::Start($process_info)",
             "$stdout_content = $process.StandardOutput.ReadToEnd()",
             "$process.WaitForExit()",
+            "$global = installed $app $true",
             "rm_shim 'busybox' $(shimdir $global) $app",
             "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
             "    rm_shim $_.Trim() $(shimdir $global) $app",
