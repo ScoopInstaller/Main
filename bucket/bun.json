@@ -69,7 +69,10 @@
         "install"
     ],
     "uninstaller": {
-        "script": "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global"
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global"
+        ]
     },
     "checkver": {
         "github": "https://github.com/oven-sh/bun",

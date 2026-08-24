@@ -22,7 +22,6 @@
         "script": [
             "$envgopath = \"$env:USERPROFILE\\go\"",
             "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
-            "info \"Adding '$envgopath\\bin' to PATH...\"",
             "Add-Path -Path \"$envgopath\\bin\" -Global:$global -Force"
         ]
     },
@@ -30,7 +29,7 @@
         "script": [
             "$envgopath = \"$env:USERPROFILE\\go\"",
             "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
-            "info \"Removing '$envgopath\\bin' from PATH...\"",
+            "$global = installed $app $true",
             "Remove-Path -Path \"$envgopath\\bin\" -Global:$global"
         ]
     },

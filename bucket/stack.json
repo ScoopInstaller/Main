@@ -14,7 +14,10 @@
         "script": "Add-Path -Path \"$env:APPDATA\\local\\bin\" -Global:$global"
     },
     "uninstaller": {
-        "script": "Remove-Path -Path \"$env:APPDATA\\local\\bin\" -Global:$global"
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$env:APPDATA\\local\\bin\" -Global:$global"
+        ]
     },
     "checkver": {
         "github": "https://github.com/commercialhaskell/stack"
