@@ -28,10 +28,12 @@
     },
     "uninstaller": {
         "script": [
-            "$envgopath = ($env:GOPATH -split ';' -ne '')[0]",
-            "if (!$envgopath) { $envgopath = \"$env:USERPROFILE\\go\" }",
-            "Write-Host",
-            "Remove-Path -Path \"$envgopath\\bin\" -Global:$global"
+            "if ($cmd -eq 'uninstall') {",
+            "    $envgopath = ($env:GOPATH -split ';' -ne '')[0]",
+            "    if (!$envgopath) { $envgopath = \"$env:USERPROFILE\\go\" }",
+            "    Write-Host",
+            "    Remove-Path -Path \"$envgopath\\bin\" -Global:$global",
+            "}"
         ]
     },
     "bin": [
