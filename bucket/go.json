@@ -20,14 +20,16 @@
     "extract_dir": "go",
     "installer": {
         "script": [
-            "$envgopath = if ($env:GOPATH) { $env:GOPATH } else { \"$env:USERPROFILE\\go\" }",
+            "$envgopath = ($env:GOPATH -split ';' -ne '')[0]",
+            "if (!$envgopath) { $envgopath = \"$env:USERPROFILE\\go\" }",
             "Write-Host",
             "Add-Path -Path \"$envgopath\\bin\" -Global:$global -Force"
         ]
     },
     "uninstaller": {
         "script": [
-            "$envgopath = if ($env:GOPATH) { $env:GOPATH } else { \"$env:USERPROFILE\\go\" }",
+            "$envgopath = ($env:GOPATH -split ';' -ne '')[0]",
+            "if (!$envgopath) { $envgopath = \"$env:USERPROFILE\\go\" }",
             "Write-Host",
             "Remove-Path -Path \"$envgopath\\bin\" -Global:$global"
         ]
