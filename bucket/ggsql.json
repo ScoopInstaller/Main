@@ -1,0 +1,30 @@
+{
+    "version": "0.4.1",
+    "description": "A SQL extension for declarative data visualization based on the Grammar of Graphics.",
+    "homepage": "https://ggsql.org",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/posit-dev/ggsql/releases/download/v0.4.1/ggsql_0.4.1_x64_en-US.msi",
+            "hash": "445260fdb558dda310c77853c1daafd90542ea96689b7e49135f8752fbd692d3"
+        }
+    },
+    "extract_dir": "PFiles\\ggsql",
+    "bin": [
+        "ggsql.exe",
+        "ggsql-jupyter.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/posit-dev/ggsql"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/posit-dev/ggsql/releases/download/v$version/ggsql_$version_x64_en-US.msi"
+            }
+        }
+    }
+}
