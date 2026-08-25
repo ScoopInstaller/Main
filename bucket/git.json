@@ -34,7 +34,8 @@
         "    info \"Restoring system-level config from $config_path_persisted...\"",
         "    Copy-Item -Path $config_path_persisted -Destination $config_path -Force",
         "    info \"Adjusting paths in $config_path...\"",
-        "    (Get-Content -Path $config_path -Encoding UTF8) -replace '(?<=git/)[\\d.]+(?=/)', $version | Set-Content -Path $config_path -Encoding UTF8",
+        "    $content = [System.IO.File]::ReadAllText($config_path) -replace '(?<=git/)[\\d.]+(?=/)', $version",
+        "    [System.IO.File]::WriteAllText($config_path, $content, [System.Text.UTF8Encoding]::new($false))",
         "}"
     ],
     "post_install": [
