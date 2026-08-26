@@ -1,16 +1,26 @@
 {
-    "version": "22.1.8",
+    "version": "23.1.0",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org",
     "license": "NCSA",
     "notes": "Since upstream does NOT provide pre-compiled binary of arm64 for every release, LLVM arm64 is now a separate manifest: 'llvm-arm64'.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/LLVM-22.1.8-win64.exe#/dl.7z",
-            "hash": "16e5709785fef73c854646241c4a92c5cd574318d1b33c63330dd7721903e55c"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.0/LLVM-23.1.0-win64.msi#/dl.msi_",
+            "hash": "95602d03944a7db534899adc5203988b63921ad0db71fe15748a3fe3d340416f"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse -ErrorAction Ignore",
+    "installer": {
+        "script": [
+            "Expand-MsiArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\"",
+            "Remove-Item \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue",
+            "if (Test-Path \"$dir\\LLVM\") {",
+            "    Move-Item -Path \"$dir\\LLVM\\*\" -Destination \"$dir\" -Force -ErrorAction SilentlyContinue",
+            "    Remove-Item -Path \"$dir\\LLVM\" -Recurse -Force",
+            "}"
+        ]
+    },
     "env_add_path": "bin",
     "env_set": {
         "LIBCLANG_PATH": "$dir\\bin",
@@ -23,7 +33,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.exe#/dl.7z"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.msi#/dl.msi_"
             }
         }
     }
