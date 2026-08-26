@@ -6,21 +6,11 @@
     "notes": "Since upstream does NOT provide pre-compiled binary of arm64 for every release, LLVM arm64 is now a separate manifest: 'llvm-arm64'.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.0/LLVM-23.1.0-win64.msi#/dl.msi_",
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.0/LLVM-23.1.0-win64.msi",
             "hash": "95602d03944a7db534899adc5203988b63921ad0db71fe15748a3fe3d340416f"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse -ErrorAction Ignore",
-    "installer": {
-        "script": [
-            "Expand-MsiArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\"",
-            "Remove-Item \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue",
-            "if (Test-Path \"$dir\\LLVM\") {",
-            "    Move-Item -Path \"$dir\\LLVM\\*\" -Destination \"$dir\" -Force -ErrorAction Stop",
-            "    Remove-Item -Path \"$dir\\LLVM\" -Recurse -Force",
-            "}"
-        ]
-    },
+    "extract_dir": "LLVM",
     "env_add_path": "bin",
     "env_set": {
         "LIBCLANG_PATH": "$dir\\bin",
@@ -33,7 +23,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.msi#/dl.msi_"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.msi"
             }
         }
     }
