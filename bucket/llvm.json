@@ -16,7 +16,7 @@
             "Expand-MsiArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\"",
             "Remove-Item \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue",
             "if (Test-Path \"$dir\\LLVM\") {",
-            "    Move-Item -Path \"$dir\\LLVM\\*\" -Destination \"$dir\" -Force -ErrorAction SilentlyContinue",
+            "    Move-Item -Path \"$dir\\LLVM\\*\" -Destination \"$dir\" -Force -ErrorAction Stop",
             "    Remove-Item -Path \"$dir\\LLVM\" -Recurse -Force",
             "}"
         ]
