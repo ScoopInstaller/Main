@@ -1,0 +1,34 @@
+{
+    "##": "Hashes come from the release's published checksums.txt; autoupdate extracts the matching entry for each architecture.",
+    "version": "0.8.1",
+    "description": "Hybrid post-quantum file encryption (X-Wing: X25519 + ML-KEM-768) with key rotation built in",
+    "homepage": "https://github.com/ruddro-roy/sindook",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ruddro-roy/sindook/releases/download/v0.8.1/sindook_0.8.1_windows_amd64.zip",
+            "hash": "sha256:77aaf9d016f2db5f96a16434d7af79e1df396920ec3e5be736aa84ecb4b16895"
+        },
+        "arm64": {
+            "url": "https://github.com/ruddro-roy/sindook/releases/download/v0.8.1/sindook_0.8.1_windows_arm64.zip",
+            "hash": "sha256:f056771e6e80ca572cf2536d9f791389e23ecbb5aba3e2a8e919b8f9e8dc90df"
+        }
+    },
+    "bin": "sindook.exe",
+    "checkver": {
+        "github": "https://github.com/ruddro-roy/sindook"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ruddro-roy/sindook/releases/download/v$version/sindook_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/ruddro-roy/sindook/releases/download/v$version/sindook_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
