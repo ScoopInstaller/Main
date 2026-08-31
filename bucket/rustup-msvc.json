@@ -1,5 +1,5 @@
 {
-    "version": "1.27.1",
+    "version": "1.29.0",
     "description": "Manage multiple rust installations with ease",
     "homepage": "https://rustup.rs",
     "license": "MIT|Apache-2.0",
@@ -14,12 +14,16 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://static.rust-lang.org/rustup/archive/1.27.1/x86_64-pc-windows-msvc/rustup-init.exe",
-            "hash": "193d6c727e18734edbf7303180657e96e9d5a08432002b4e6c5bbe77c60cb3e8"
+            "url": "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe",
+            "hash": "86478e53f769379d7f0ebfa7c9aa97cb76ca92233f79aa2cc0dbee2efaac73c7"
         },
         "32bit": {
-            "url": "https://static.rust-lang.org/rustup/archive/1.27.1/i686-pc-windows-msvc/rustup-init.exe",
-            "hash": "011185bd2bfce79f5389c19247b6e45242d17c697fe135ec6cdd23948445803a"
+            "url": "https://static.rust-lang.org/rustup/dist/i686-pc-windows-msvc/rustup-init.exe",
+            "hash": "f574ea2bd6d798b6072b3a45e3053f3cabcc2cb48d6b4bd59b661b41d675b31a"
+        },
+        "arm64": {
+            "url": "https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe",
+            "hash": "3af309e6c3062aa11df0e932954f69d13b734d8a431e593812f3ecd9ff9e6ef6"
         }
     },
     "installer": {
@@ -39,16 +43,19 @@
         ".rustup"
     ],
     "checkver": {
-        "url": "https://raw.githubusercontent.com/rust-lang-nursery/rustup.rs/master/Cargo.toml",
-        "regex": "version = \"([\\d.]+)\""
+        "url": "https://sh.rustup.rs",
+        "regex": "rustup-init ([\\d.]+) \\("
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://static.rust-lang.org/rustup/archive/$version/x86_64-pc-windows-msvc/rustup-init.exe"
+                "url": "https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe"
             },
             "32bit": {
-                "url": "https://static.rust-lang.org/rustup/archive/$version/i686-pc-windows-msvc/rustup-init.exe"
+                "url": "https://static.rust-lang.org/rustup/dist/i686-pc-windows-msvc/rustup-init.exe"
+            },
+            "arm64": {
+                "url": "https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe"
             }
         },
         "hash": {

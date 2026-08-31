@@ -1,35 +1,29 @@
 {
-    "version": "3.4.0",
+    "version": "4.0.2",
     "description": "TLS/SSL toolkit",
     "homepage": "https://slproweb.com/products/Win32OpenSSL.html",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://slproweb.com/download/Win64OpenSSL-3_4_0.exe",
-            "hash": "b3af43944990839cce20aba19d1ff20185030838832f2c7265cf2a1d41fb9cd1"
+            "url": "https://slproweb.com/download/Win64OpenSSL-4_0_2.exe",
+            "hash": "39e840f7b94e2bf63e8edf4c57b383a8d11b883227d610a426b1a40626c8d9fc"
         },
         "32bit": {
-            "url": "https://slproweb.com/download/Win32OpenSSL-3_4_0.exe",
-            "hash": "b0db8699651e1e29a596b6aed9bd34217de355c26f9cddda28d8f01d53d92a33"
+            "url": "https://slproweb.com/download/Win32OpenSSL-4_0_2.exe",
+            "hash": "2ceded3b30e8b7eccd47b660cf01889aa7d62f1f2c4f18ef40f01bb453a3ef8b"
         },
         "arm64": {
-            "url": "https://slproweb.com/download/Win64ARMOpenSSL-3_4_0.exe",
-            "hash": "5ebf060fc29df776e638a3a404dabcaa8fb0d1a6fd9cee291ece49ef51c64ccc"
+            "url": "https://slproweb.com/download/Win64ARMOpenSSL-4_0_2.exe",
+            "hash": "5d2653ef3045a4090d448b5b9d4b85ca5277cc2d410aade9523e9bc0275b7e51"
         }
     },
     "pre_install": [
         "$arch = switch ($architecture) {",
         "    '64bit' { 'x64'; break }",
-        "    '32bit' { 'x32'; break }",
+        "    '32bit' { 'x86'; break }",
         "    'arm64' { $architecture; break }",
         "}",
-        "if ([System.Environment]::OSVersion.Version -lt [Version]10.0.14972.0) {",
-        "    return $null = Get-ChildItem \"$dir/lib/VC/$arch/MT\" | ForEach-Object { Copy-Item $_.FullName \"$dir/lib/$($_.Name)\" }",
-        "}",
-        "Receive-Job -Wait (Start-Job {",
-        "    $kernel32 = Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool CreateSymbolicLink(string lpSymlinkFileName, string lpTargetFileName, byte dwFlags);' -Name '_' -PassThru",
-        "    $null = Get-ChildItem \"$Using:dir/lib/VC/$Using:arch/MT\" | ForEach-Object { $kernel32::CreateSymbolicLink(\"$Using:dir/lib/$($_.Name)\", $_.FullName, 2) }",
-        "})"
+        "$null = Get-ChildItem \"$dir/lib/VC/$arch/MT\" | ForEach-Object { New-Item -ItemType HardLink -Target $_.FullName -Path \"$dir/lib/$($_.Name)\" }"
     ],
     "innosetup": true,
     "env_add_path": "bin",

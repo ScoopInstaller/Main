@@ -1,8 +1,11 @@
 {
-    "version": "2.47.1",
-    "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.",
-    "homepage": "https://git-for-windows.github.io/",
-    "license": "GPL-2.0-only",
+    "version": "2.55.0.5",
+    "description": "Minimal Git for Windows (MinGit) is a lightweight distribution intended primarily for application-integration scenarios (such as integrated development environments and graphical visualization tools) where full interactive console capabilities, including colorization and pagination, are not required.",
+    "homepage": "https://gitforwindows.org",
+    "license": {
+        "identifier": "GPL-2.0-only",
+        "url": "https://github.com/git-for-windows/git/blob/HEAD/COPYING"
+    },
     "notes": [
         "To get Git to recognise OpenSSH, you will need to run",
         "",
@@ -13,34 +16,41 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.1/MinGit-2.47.1-64-bit.zip",
-            "hash": "50b04b55425b5c465d076cdb184f63a0cd0f86f6ec8bb4d5860114a713d2c29a"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-64-bit.zip",
+            "hash": "56d7b226b7693196cfc71fef26568f536c4a021ab6c37ff2db4287bed908e96e"
         },
         "32bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.1/MinGit-2.47.1-32-bit.zip",
-            "hash": "3c0fa6e3096c2304f8c6af9cb6bb35623b2e615771cf7be45f9632af83bd9864"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-32-bit.zip",
+            "hash": "2c5c030d18fc6a6437c6d3f85895302e67995507db740afb415648306c6b450d"
+        },
+        "arm64": {
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-arm64.zip",
+            "hash": "05843f9d6e60306c3ab886799e2c67200caab921571f10512df3493049179ddb"
         }
     },
-    "bin": "cmd\\git.exe",
+    "env_add_path": "cmd",
     "env_set": {
         "GIT_INSTALL_ROOT": "$dir"
     },
     "checkver": {
-        "url": "https://api.github.com/repositories/23216272/releases/latest",
-        "jsonpath": "$..browser_download_url",
-        "regex": "download/v(?<tag>[\\d.]+windows\\.\\d)/MinGit-([\\d.]+)-64"
+        "github": "https://api.github.com/repos/git-for-windows/git/releases/latest",
+        "jsonpath": "$.assets[?(@.name =~ /MinGit/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>v?[\\d.]+windows[\\d.]+)/MinGit-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$matchTag/MinGit-$version-64-bit.zip"
+                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/MinGit-$version-64-bit.zip"
             },
             "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$matchTag/MinGit-$version-32-bit.zip"
+                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/MinGit-$version-32-bit.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/git-for-windows/git/releases/download/$matchTag/MinGit-$version-arm64.zip"
             }
         },
         "hash": {
-            "url": "https://github.com/git-for-windows/git/releases/tag/v$matchTag",
+            "url": "https://github.com/git-for-windows/git/releases/tag/$matchTag",
             "regex": "(?s)$basename.*?$sha256"
         }
     }

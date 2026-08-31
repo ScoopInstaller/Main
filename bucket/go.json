@@ -1,37 +1,36 @@
 {
-    "version": "1.23.4",
+    "version": "1.27.0",
     "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
-    "homepage": "https://golang.org",
+    "homepage": "https://go.dev",
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://dl.google.com/go/go1.23.4.windows-amd64.zip",
-            "hash": "16c59ac9196b63afb872ce9b47f945b9821a3e1542ec125f16f6085a1c0f3c39"
+            "url": "https://dl.google.com/go/go1.27.0.windows-amd64.zip",
+            "hash": "f0c0a0d33ba94f4d2c5dbc887334ce678b21813504ddb3aafcb06e60a5a667c4"
         },
         "32bit": {
-            "url": "https://dl.google.com/go/go1.23.4.windows-386.zip",
-            "hash": "e544e0e356147ba998e267002bd0f2c4bf3370d495467a55baf2c63595a2026d"
+            "url": "https://dl.google.com/go/go1.27.0.windows-386.zip",
+            "hash": "009b767e3619b0e9b41eb66d1f1402c6db3e752bf0be1b3eaf200bb5b888efaa"
         },
         "arm64": {
-            "url": "https://dl.google.com/go/go1.23.4.windows-arm64.zip",
-            "hash": "db69cae5006753c785345c3215ad941f8b6224e2f81fec471c42d6857bee0e6f"
+            "url": "https://dl.google.com/go/go1.27.0.windows-arm64.zip",
+            "hash": "6e0156b9788209931dd340fadc04171ce15063c17b51c92e7b86b51109626e90"
         }
     },
     "extract_dir": "go",
     "installer": {
         "script": [
-            "$envgopath = \"$env:USERPROFILE\\go\"",
-            "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
-            "info \"Adding '$envgopath\\bin' to PATH...\"",
-            "Add-Path -Path \"$envgopath\\bin\" -Global:$global -Force"
+            "$first_entry = ((\"$env:GOPATH\" -split ';').Trim() -ne '')[0]",
+            "$bin_path = if ($first_entry) { Join-Path $first_entry 'bin' } else { \"$env:USERPROFILE\\go\\bin\" }",
+            "Add-Path -Path $bin_path -Global:$global -Force"
         ]
     },
     "uninstaller": {
         "script": [
-            "$envgopath = \"$env:USERPROFILE\\go\"",
-            "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
-            "info \"Removing '$envgopath\\bin' from PATH...\"",
-            "Remove-Path -Path \"$envgopath\\bin\" -Global:$global"
+            "$first_entry = ((\"$env:GOPATH\" -split ';').Trim() -ne '')[0]",
+            "$bin_path = if ($first_entry) { Join-Path $first_entry 'bin' } else { \"$env:USERPROFILE\\go\\bin\" }",
+            "$global = installed $app $true",
+            "Remove-Path -Path $bin_path -Global:$global"
         ]
     },
     "bin": [
@@ -39,7 +38,7 @@
         "bin\\gofmt.exe"
     ],
     "checkver": {
-        "url": "https://golang.org/dl/",
+        "url": "https://go.dev/dl/",
         "regex": "go([\\d.]+)\\.windows-"
     },
     "autoupdate": {

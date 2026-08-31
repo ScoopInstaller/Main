@@ -17,7 +17,11 @@
     "pre_install": "if (!(Test-Path \"$persist_dir\\tokei.toml\")) { New-Item \"$dir\\tokei.toml\" | Out-Null }",
     "bin": "tokei.exe",
     "persist": "tokei.toml",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/XAMPPRocky/tokei/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "download/v([\\d.]+)/tokei-x86_64-pc-windows-msvc\\.exe"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

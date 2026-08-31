@@ -1,27 +1,36 @@
 {
-    "version": "3.47.2",
+    "version": "3.53.4",
     "description": "A small, fast, self-contained, high-reliability and full-featured SQL database engine",
     "homepage": "https://www.sqlite.org/",
     "license": {
+        "identifier": "Public Domain",
         "url": "https://www.sqlite.org/src/file?name=LICENSE.md"
     },
     "architecture": {
+        "arm64": {
+            "url": "https://www.sqlite.org/2026/sqlite-tools-win-arm64-3530400.zip",
+            "hash": "8a7c30165f6e9b054fbbe5ba6048acf23c967fd76955f7a5d66dc519542d3393"
+        },
         "64bit": {
-            "url": "https://www.sqlite.org/2024/sqlite-tools-win-x64-3470200.zip",
-            "hash": "8c7fffbf4eec1f43e63153cca6deb018e4360d4d6b0d99bbdd2a541c53b7fa1c"
+            "url": "https://www.sqlite.org/2026/sqlite-tools-win-x64-3530400.zip",
+            "hash": "f46ee2475de4cbe287e6e5f7d43c838796b14e7379cd216bdbb28d391429f9fc"
         }
     },
     "bin": [
         "sqlite3.exe",
         "sqldiff.exe",
-        "sqlite3_analyzer.exe"
+        "sqlite3_analyzer.exe",
+        "sqlite3_rsync.exe"
     ],
     "checkver": {
         "url": "https://www.sqlite.org/download.html",
-        "regex": "(?sm)\\d+-bit DLL \\(x\\d+\\) for SQLite version ([\\d.]+)\\..*?(?<year>\\d+)/sqlite-tools-win-x64-(?<clean>\\d+)"
+        "regex": "PRODUCT,([\\d.]+),(?<year>\\d+)/sqlite-tools-win-x64-(?<clean>\\d+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
+            "arm64": {
+                "url": "https://www.sqlite.org/$matchYear/sqlite-tools-win-arm64-$matchClean.zip"
+            },
             "64bit": {
                 "url": "https://www.sqlite.org/$matchYear/sqlite-tools-win-x64-$matchClean.zip"
             }

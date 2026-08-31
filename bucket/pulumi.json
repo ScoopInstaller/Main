@@ -1,16 +1,32 @@
 {
-    "version": "3.144.1",
+    "version": "3.260.0",
     "description": "Create, deploy, and manage infrastructure on any cloud using any language.",
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.144.1-windows-x64.zip",
-            "hash": "85d02087c06b4c8b84e7414c3828d6313a9ea27eb20149afeb271e8ea51329d5"
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.260.0-windows-x64.zip",
+            "hash": "sha512:36dff1f16207e21e9f3d485f6d6319c09bd2e5343240d12a34427d85131e8a34973cfaf5dd61af8a3589269d13d011c7beb09fc5eb9169eb9310175b582ebdda"
+        },
+        "arm64": {
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.260.0-windows-x64.zip",
+            "hash": "sha512:36dff1f16207e21e9f3d485f6d6319c09bd2e5343240d12a34427d85131e8a34973cfaf5dd61af8a3589269d13d011c7beb09fc5eb9169eb9310175b582ebdda"
         }
     },
     "extract_dir": "Pulumi\\bin",
-    "bin": "pulumi.exe",
+    "bin": [
+        "pulumi.exe",
+        "pulumi-language-dotnet.exe",
+        "pulumi-language-go.exe",
+        "pulumi-language-java.exe",
+        "pulumi-language-nodejs.exe",
+        "pulumi-language-python-exec",
+        "pulumi-language-python.exe",
+        "pulumi-language-yaml.exe",
+        "pulumi-resource-pulumi-nodejs.cmd",
+        "pulumi-resource-pulumi-python.cmd",
+        "pulumi-watch.exe"
+    ],
     "checkver": {
         "url": "https://www.pulumi.com/docs/get-started/install/versions",
         "regex": "<strong>([\\d.]+)"
@@ -19,7 +35,13 @@
         "architecture": {
             "64bit": {
                 "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/pulumi/pulumi/releases/download/v$version/SHA512SUMS"
         }
     }
 }

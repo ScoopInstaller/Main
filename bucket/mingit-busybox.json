@@ -1,5 +1,5 @@
 {
-    "version": "2.47.1",
+    "version": "2.55.0.5",
     "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.(BusyBox-backed MinGit, experimental, smaller version of MinGit)",
     "homepage": "https://git-for-windows.github.io/",
     "license": "GPL-2.0-only",
@@ -13,12 +13,12 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.1/MinGit-2.47.1-busybox-64-bit.zip",
-            "hash": "7b26cc61866c5c0ec050797f57837bf064eacd3aaa87ae316e96c6936235cf29"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-busybox-64-bit.zip",
+            "hash": "a0287b54d3ead0c5abd0d15094f5b4c909867aae6bf8b9f2aee7109d24fa0081"
         },
         "32bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.1/MinGit-2.47.1-busybox-32-bit.zip",
-            "hash": "c5ee149a781c4672537926f967614e9e33233b8fd08811ce967b5f535ce77620"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-busybox-32-bit.zip",
+            "hash": "da123203a73a05038790645a436d078f69c5670e7e2104335df267006d203439"
         }
     },
     "bin": [
@@ -29,7 +29,7 @@
         "GIT_INSTALL_ROOT": "$dir"
     },
     "checkver": {
-        "url": "https://api.github.com/repositories/23216272/releases/latest",
+        "github": "https://api.github.com/repos/git-for-windows/git/releases/latest",
         "jsonpath": "$..browser_download_url",
         "regex": "download/v(?<tag>[\\d.]+windows\\.\\d)/MinGit-([\\d.]+)-busybox-64"
     },

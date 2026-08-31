@@ -1,31 +1,26 @@
 {
-    "version": "3.4.16",
+    "version": "5.0.0",
     "description": "Open Source Computer Vision Library",
     "homepage": "https://opencv.org/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/opencv/opencv/releases/download/3.4.16/opencv-3.4.16-vc14_vc15.exe#/dl.7z",
-            "hash": "ea807fda2ee6ddd5be432d1bbe9ca7817d181f87de14c13e981ad22e20e64748"
+            "url": "https://github.com/opencv/opencv/releases/download/5.0.0/opencv-5.0.0-windows.exe#/dl.7z",
+            "hash": "9c6c1fcea58acdf06edba13148b2246e00c2658143fa51e61ecd370db8c39f63",
+            "env_add_path": "x64\\vc16\\bin",
+            "env_set": {
+                "OPENCV_DIR": "$dir\\x64\\vc16"
+            }
         }
     },
     "extract_dir": "opencv\\build",
-    "env_set": {
-        "OPENCV_DIR": "$dir\\x64\\vc14"
-    },
-    "env_add_path": "x64\\vc14\\bin",
     "checkver": {
-        "url": "https://opencv.org/releases/",
-        "regex": "\\*\\s</span>OpenCV &#8211; ([\\d.]+)"
+        "github": "https://github.com/opencv/opencv"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/opencv/opencv/releases/download/$version/opencv-$version-vc14_vc15.exe#/dl.7z",
-                "hash": {
-                    "url": "https://github.com/opencv/opencv/releases",
-                    "regex": "$sha256\\sopencv-$version-vc14_vc15.exe"
-                }
+                "url": "https://github.com/opencv/opencv/releases/download/$version/opencv-$version-windows.exe#/dl.7z"
             }
         }
     }

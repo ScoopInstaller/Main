@@ -1,0 +1,54 @@
+{
+    "version": "0.58.0",
+    "description": "An idiomatic, lean, fast & safe pure Rust implementation of Git",
+    "homepage": "https://github.com/GitoxideLabs/gitoxide",
+    "license": "Apache-2.0|MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/GitoxideLabs/gitoxide/releases/download/v0.58.0/gitoxide-max-v0.58.0-i686-pc-windows-msvc.zip",
+            "hash": "b076dd5bf461b25daeacd6d044e5344de09c6b0982ac5b46a5c5695e9771d0e6",
+            "extract_dir": "gitoxide-max-v0.58.0-i686-pc-windows-msvc"
+        },
+        "64bit": {
+            "url": "https://github.com/GitoxideLabs/gitoxide/releases/download/v0.58.0/gitoxide-max-v0.58.0-x86_64-pc-windows-msvc.zip",
+            "hash": "c818ebb14f6412ddbbba65ff0aded786c493863dfe3b590149f0ead66b2fc7b1",
+            "extract_dir": "gitoxide-max-v0.58.0-x86_64-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/GitoxideLabs/gitoxide/releases/download/v0.58.0/gitoxide-max-v0.58.0-aarch64-pc-windows-msvc.zip",
+            "hash": "427d1fda20513ee37a97612f2c622a9e6ae2a9dab7bf618f464366ca118c7d19",
+            "extract_dir": "gitoxide-max-v0.58.0-aarch64-pc-windows-msvc"
+        }
+    },
+    "bin": [
+        "gix.exe",
+        "ein.exe"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/GitoxideLabs/gitoxide/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "gitoxide-max-v([\\d.]+)-x86_64-pc-windows-msvc\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/GitoxideLabs/gitoxide/releases/download/v$version/gitoxide-max-v$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "gitoxide-max-v$version-i686-pc-windows-msvc"
+            },
+            "64bit": {
+                "url": "https://github.com/GitoxideLabs/gitoxide/releases/download/v$version/gitoxide-max-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "gitoxide-max-v$version-x86_64-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://github.com/GitoxideLabs/gitoxide/releases/download/v$version/gitoxide-max-v$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "gitoxide-max-v$version-aarch64-pc-windows-msvc"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/hashes.sha256"
+        }
+    }
+}

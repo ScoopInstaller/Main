@@ -1,0 +1,38 @@
+{
+    "version": "1.16.1",
+    "description": "A super-fast TypeScript / JavaScript compiler written in Rust",
+    "homepage": "https://swc.rs",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/swc-project/swc/releases/download/v1.16.1/swc-win32-x64-msvc.exe#/swc.exe",
+            "hash": "7ec97ad005424ce64f3b32210c3bb0f5f2c639cc80f01d586944c80b1d37aa7a"
+        },
+        "32bit": {
+            "url": "https://github.com/swc-project/swc/releases/download/v1.16.1/swc-win32-ia32-msvc.exe#/swc.exe",
+            "hash": "c0b1b94739ddc8e370a9634603c0ff7094282a2276f5d7ada160b3ba9d87a309"
+        },
+        "arm64": {
+            "url": "https://github.com/swc-project/swc/releases/download/v1.16.1/swc-win32-arm64-msvc.exe#/swc.exe",
+            "hash": "85138cbcb6b36249d1dfa2147658d6e5ed46811ec0326cec82ca3ad69ec1b869"
+        }
+    },
+    "bin": "swc.exe",
+    "checkver": {
+        "github": "https://github.com/swc-project/swc",
+        "regex": "v?(?![^\"]*-nightly-)([\\d\\.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-x64-msvc.exe#/swc.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-ia32-msvc.exe#/swc.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/swc-project/swc/releases/download/v$version/swc-win32-arm64-msvc.exe#/swc.exe"
+            }
+        }
+    }
+}

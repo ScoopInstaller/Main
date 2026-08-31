@@ -1,0 +1,26 @@
+{
+    "version": "0.12.0",
+    "description": "Pomsky is a new, portable, regular expression language",
+    "homepage": "https://pomsky-lang.org",
+    "license": "MIT|Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/pomsky-lang/pomsky/releases/download/v0.12.0/pomsky-bin-x86_64-pc-windows-msvc.zip",
+            "hash": "1598165f442febeccb7e38777219060ff2664c69320d673e50ca7b0416f7e563"
+        }
+    },
+    "bin": "pomsky.exe",
+    "checkver": {
+        "github": "https://github.com/pomsky-lang/pomsky"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pomsky-lang/pomsky/releases/download/v$version/pomsky-bin-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

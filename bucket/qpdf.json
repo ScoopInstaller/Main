@@ -1,18 +1,18 @@
 {
-    "version": "11.9.1",
+    "version": "12.4.1",
     "description": "A command-line program that does structural, content-preserving transformations on PDF files.",
-    "homepage": "https://qpdf.sourceforge.net/",
+    "homepage": "https://qpdf.sourceforge.io",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/11.9.1/qpdf-11.9.1-mingw64.zip",
-            "hash": "sha1:568f76295408b6772bb16f18129342348e708f86",
-            "extract_dir": "qpdf-11.9.1-mingw64"
+            "url": "https://github.com/qpdf/qpdf/releases/download/v12.4.1/qpdf-12.4.1-msvc64.zip",
+            "hash": "3cd016cd433ef7232e42f4c13348a49cc14907a3c7278ef4f99120593126f7a6",
+            "extract_dir": "qpdf-12.4.1-msvc64"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/11.9.1/qpdf-11.9.1-mingw32.zip",
-            "hash": "sha1:eab59e265d35f0278120c92cc45d9ef1bcbb024a",
-            "extract_dir": "qpdf-11.9.1-mingw32"
+            "url": "https://github.com/qpdf/qpdf/releases/download/v12.4.1/qpdf-12.4.1-msvc32.zip",
+            "hash": "2ad9e4faca7c4917d1adf51c4c8712ce5bfb39356ce1b3e4aca1a3b1c22136c2",
+            "extract_dir": "qpdf-12.4.1-msvc32"
         }
     },
     "bin": [
@@ -20,19 +20,21 @@
         "bin\\fix-qdf.exe"
     ],
     "checkver": {
-        "github": "https://github.com/qpdf/qpdf",
-        "regex": "qpdf-([\\d.]+)-"
+        "github": "https://github.com/qpdf/qpdf"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/$version/qpdf-$version-mingw64.zip",
-                "extract_dir": "qpdf-$version-mingw64"
+                "url": "https://github.com/qpdf/qpdf/releases/download/v$version/qpdf-$version-msvc64.zip",
+                "extract_dir": "qpdf-$version-msvc64"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/qpdf/qpdf/$version/qpdf-$version-mingw32.zip",
-                "extract_dir": "qpdf-$version-mingw32"
+                "url": "https://github.com/qpdf/qpdf/releases/download/v$version/qpdf-$version-msvc32.zip",
+                "extract_dir": "qpdf-$version-msvc32"
             }
+        },
+        "hash": {
+            "url": "$baseurl/qpdf-$version.sha256"
         }
     }
 }

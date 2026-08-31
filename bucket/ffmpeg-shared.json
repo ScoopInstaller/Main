@@ -1,36 +1,27 @@
 {
-    "version": "7.1",
+    "version": "9.0.1",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
     "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-7.1-full_build-shared.7z",
-            "hash": "01915dfe8591248be20d3d83453c91c1f71cfd10c07460e6fa2d2e667f513606",
-            "extract_dir": "ffmpeg-7.1-full_build-shared"
+            "url": "https://github.com/GyanD/codexffmpeg/releases/download/9.0.1/ffmpeg-9.0.1-full_build-shared.7z",
+            "hash": "cb4d5e8db6a3353bffdb2100d3eb4b76733457fa443215e236f57c99f9ffdca4",
+            "extract_dir": "ffmpeg-9.0.1-full_build-shared"
         }
     },
-    "post_install": [
-        "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
-        "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\" -ErrorAction SilentlyContinue"
-    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "FFMPEG_DIR": "$dir"
+    },
     "persist": "fonts",
-    "bin": [
-        "bin\\ffmpeg.exe",
-        "bin\\ffplay.exe",
-        "bin\\ffprobe.exe"
-    ],
     "checkver": {
-        "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full-shared.7z.ver",
-        "regex": "([\\d.]+)"
+        "github": "https://github.com/GyanD/codexffmpeg"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-full_build-shared.7z",
-                "hash": {
-                    "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-full_build-shared.7z.sha256"
-                },
+                "url": "https://github.com/GyanD/codexffmpeg/releases/download/$version/ffmpeg-$version-full_build-shared.7z",
                 "extract_dir": "ffmpeg-$version-full_build-shared"
             }
         }

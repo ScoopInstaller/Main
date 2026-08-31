@@ -1,19 +1,23 @@
 {
-    "version": "8.16.0",
+    "version": "8.18.6",
     "description": "A demand-driven, horizontally threaded image processing library",
     "homepage": "https://www.libvips.org/",
     "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "hash": "810a5303c9a34b499241f8a1bd784e3a604d9bdbea168f36a0f70566142dc55e",
-            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.16.0/vips-dev-w64-all-8.16.0.zip"
+            "hash": "e36b34f9c955e66fa47ec7c02b756026fad5560c5db6ff7884123be04792f89c",
+            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.18.6/vips-dev-x64-all-8.18.6.zip"
         },
         "32bit": {
-            "hash": "9e446d6754c13f9d1e8f7c9dc4784f5193c53ff0126d8ae4be6098bbbade8440",
-            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.16.0/vips-dev-w32-all-8.16.0.zip"
+            "hash": "8335e90da4b993fb1d506184870fa02082befeed4419d7c63b2cf90ec47604a9",
+            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.18.6/vips-dev-x86-all-8.18.6.zip"
+        },
+        "arm64": {
+            "hash": "1248317fc7e4933191b308846186342a5fdccdba757dc4c8c00eb25fdea43ea1",
+            "url": "https://github.com/libvips/build-win64-mxe/releases/download/v8.18.6/vips-dev-arm64-all-8.18.6.zip"
         }
     },
-    "extract_dir": "vips-dev-8.16",
+    "extract_dir": "vips-dev-8.18",
     "env_add_path": "bin",
     "checkver": {
         "github": "https://github.com/libvips/build-win64-mxe"
@@ -21,10 +25,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/libvips/build-win64-mxe/releases/download/v$version/vips-dev-w64-all-$version.zip"
+                "url": "https://github.com/libvips/build-win64-mxe/releases/download/v$version/vips-dev-x64-all-$version.zip"
             },
             "32bit": {
-                "url": "https://github.com/libvips/build-win64-mxe/releases/download/v$version/vips-dev-w32-all-$version.zip"
+                "url": "https://github.com/libvips/build-win64-mxe/releases/download/v$version/vips-dev-x86-all-$version.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/libvips/build-win64-mxe/releases/download/v$version/vips-dev-arm64-all-$version.zip"
             }
         },
         "extract_dir": "vips-dev-$majorVersion.$minorVersion"

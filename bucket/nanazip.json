@@ -1,16 +1,16 @@
 {
-    "version": "3.1.1080.0",
+    "version": "6.5.1800.0",
     "description": "The 7-Zip derivative intended for the modern Windows experience",
     "homepage": "https://github.com/M2Team/NanaZip",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/M2Team/NanaZip/releases/download/3.1.1080.0/NanaZip_3.1.1080.0.msixbundle#/dl.7z",
-            "hash": "4722d3f786c19801f0c71ac34bc94fb1a9515ce484c9a7d76121e84e6bb969d2"
+            "url": "https://github.com/M2Team/NanaZip/releases/download/6.5.1800.0/NanaZip_6.5.1800.0.msixbundle#/dl.7z",
+            "hash": "0c2648eb0f52a52697fd9c3efa8fd292226c76817e0ce7f87444b91ed9593012"
         },
         "arm64": {
-            "url": "https://github.com/M2Team/NanaZip/releases/download/3.1.1080.0/NanaZip_3.1.1080.0.msixbundle#/dl.7z",
-            "hash": "4722d3f786c19801f0c71ac34bc94fb1a9515ce484c9a7d76121e84e6bb969d2"
+            "url": "https://github.com/M2Team/NanaZip/releases/download/6.5.1800.0/NanaZip_6.5.1800.0.msixbundle#/dl.7z",
+            "hash": "0c2648eb0f52a52697fd9c3efa8fd292226c76817e0ce7f87444b91ed9593012"
         }
     },
     "pre_install": [
@@ -19,23 +19,23 @@
     ],
     "bin": [
         [
-            "NanaZip.Console.exe",
+            "NanaZip.Universal.Console.exe",
             "7z"
         ],
         [
-            "NanaZip.Windows.exe",
+            "NanaZip.Universal.Windows.exe",
             "7zG"
         ]
     ],
     "shortcuts": [
         [
-            "NanaZip.Modern.exe",
+            "NanaZip.Modern.FileManager.exe",
             "NanaZip"
         ]
     ],
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/M2Team/NanaZip/releases/download/$version/NanaZip_3.1.1080.0.msixbundle#/dl.7z",
+        "url": "https://github.com/M2Team/NanaZip/releases/download/$version/NanaZip_$version.msixbundle#/dl.7z",
         "hash": {
             "url": "https://github.com/M2Team/NanaZip/releases/tag/$version",
             "regex": "(?s)$basename.*?$sha256"

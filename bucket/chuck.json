@@ -1,20 +1,28 @@
 {
-    "version": "1.4.2.0",
+    "version": "1.5.5.8",
     "description": "Strongly-timed, Concurrent, and On-the-fly Music Programming Language.",
     "homepage": "https://chuck.stanford.edu",
     "license": "GPL-2.0-only",
-    "url": "https://chuck.stanford.edu/release/files/exe/chuck-1.4.2.0.msi",
-    "hash": "b23ee4317e2577a90b13bd52db03b0a08e1bf2af9d849b61a9badde4df4edad5",
+    "architecture": {
+        "64bit": {
+            "url": "https://chuck.stanford.edu/release/files/exe/chuck-1.5.5.8.msi",
+            "hash": "2cf3112493ac002f39455778ee9c6838c77abbf59515502303dc482ec9a00d82"
+        }
+    },
     "extract_dir": "PFiles\\ChucK",
     "bin": [
-        "bin\\chuck.exe",
+        "chuck.exe",
         "miniAudicle.exe"
     ],
     "checkver": {
-        "url": "http://chuck.stanford.edu/release/VERSIONS",
-        "regex": "^([\\d.]+)"
+        "url": "https://chuck.stanford.edu/release/VERSIONS",
+        "regex": "ChucK\\s*([\\d.]+)"
     },
     "autoupdate": {
-        "url": "http://chuck.stanford.edu/release/files/exe/chuck-$version.msi"
+        "architecture": {
+            "64bit": {
+                "url": "https://chuck.stanford.edu/release/files/exe/chuck-$version.msi"
+            }
+        }
     }
 }

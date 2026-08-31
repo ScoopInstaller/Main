@@ -1,0 +1,27 @@
+{
+    "version": "0.3.2",
+    "description": "Performs static and dynamic analysis on ELF binaries, including string inspection, examination of linked libraries, and hexdumps, all within a terminal user interface.",
+    "homepage": "https://binsider.dev/",
+    "license": "Apache-2.0|MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/orhun/binsider/releases/download/v0.3.2/binsider--x86_64-pc-windows-msvc.zip",
+            "hash": "acb806543b1a1c0b09a4da782f6ba8c8042591f694b2124cf602424720c33392"
+        }
+    },
+    "extract_dir": "binsider-",
+    "bin": "binsider.exe",
+    "checkver": {
+        "github": "https://github.com/orhun/binsider"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/orhun/binsider/releases/download/v$version/binsider--x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

@@ -1,18 +1,23 @@
 {
-    "version": "3.5.10",
+    "version": "3.13.3",
     "description": "Algol 68 compiler-interpreter",
-    "homepage": "https://jmvdveer.home.xs4all.nl/en.algol-68-genie.html",
+    "homepage": "https://algol68genie.nl/en/algol-68-genie/",
     "license": "GPL-3.0-only",
-    "url": "https://jmvdveer.home.xs4all.nl/algol68g-3.5.10.win32.zip",
-    "hash": "ee98cf5042aa0dfab7f8f98bb77d469bec96b67ba09ca9ce3b78e1e8da222c75",
-    "extract_dir": "algol68g-3.5.10",
-    "bin": "bin/a68g.exe",
-    "checkver": {
-        "url": "https://jmvdveer.home.xs4all.nl/en.download.algol-68-genie-current.html",
-        "regex": "algol68g-([\\d.]+).win32.zip"
+    "architecture": {
+        "64bit": {
+            "url": "https://algol68genie.nl/algol68g-3.13.3.win64.zip",
+            "hash": "6b7a3306c18ea451da5590d751301990c60ea2efaf7b550137880942d3b3009e"
+        }
     },
+    "extract_dir": "algol68g-3.13.3",
+    "bin": "bin/a68g.exe",
+    "checkver": "algol68g-([\\d.]+)\\.win64\\.zip",
     "autoupdate": {
-        "url": "https://jmvdveer.home.xs4all.nl/algol68g-$version.win32.zip",
+        "architecture": {
+            "64bit": {
+                "url": "https://algol68genie.nl/algol68g-$version.win64.zip"
+            }
+        },
         "extract_dir": "algol68g-$version"
     }
 }

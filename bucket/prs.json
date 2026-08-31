@@ -18,7 +18,11 @@
         }
     },
     "bin": "prs.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/timvisee/prs/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /windows/i)].browser_download_url",
+        "regex": "download/v?([\\d.]+)/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

@@ -1,21 +1,24 @@
 {
-    "version": "3.13.1",
+    "version": "3.14.7",
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
     "license": "Python-2.0",
-    "notes": "Allow applications and third-party installers to find python by running: \"$dir\\install-pep-514.reg\"",
+    "notes": [
+        "Allow applications and third-party installers to find python by running:",
+        "reg import \"$dir\\install-pep-514.reg\""
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://www.python.org/ftp/python/3.13.1/python-3.13.1-amd64.exe#/setup.exe",
-            "hash": "md5:90176c0cfa29327ab08c6083dcdcc210"
+            "url": "https://www.python.org/ftp/python/3.14.7/python-3.14.7-amd64.exe#/setup.exe",
+            "hash": "9d9eb2709ef81bf5cd30db3c2096bdbc4ea10087c22e62f27d356b36f6ae9649"
         },
         "32bit": {
-            "url": "https://www.python.org/ftp/python/3.13.1/python-3.13.1.exe#/setup.exe",
-            "hash": "md5:12455257e0eaf8c7a3b0af6522647638"
+            "url": "https://www.python.org/ftp/python/3.14.7/python-3.14.7.exe#/setup.exe",
+            "hash": "097fc03d4ac2de66ee1d73a0c5d2d323b5c0f14923f7207686ce93149a80f0a6"
         },
         "arm64": {
-            "url": "https://www.python.org/ftp/python/3.13.1/python-3.13.1-arm64.exe#/setup.exe",
-            "hash": "md5:f35c98b7b0924865021e89160f208cdb"
+            "url": "https://www.python.org/ftp/python/3.14.7/python-3.14.7-arm64.exe#/setup.exe",
+            "hash": "9a3fe120cc81bc2cb099550f794d8356811f96a86c7f438519243c3485db928d"
         }
     },
     "pre_install": [
@@ -66,6 +69,7 @@
     ],
     "uninstaller": {
         "script": [
+            "$global = installed $app $true",
             "if ($global) {",
             "    $pathext = (Get-EnvVar -Name PATHEXT -Global) -replace ';.PYW?', ''",
             "    Set-EnvVar -Name PATHEXT -Value \"$pathext\" -Global",
@@ -106,10 +110,6 @@
             "arm64": {
                 "url": "https://www.python.org/ftp/python/$version/python-$version-arm64.exe#/setup.exe"
             }
-        },
-        "hash": {
-            "url": "https://www.python.org/downloads/release/python-$cleanVersion/",
-            "regex": "(?sm)$basename.*?$md5"
         }
     }
 }
