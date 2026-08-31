@@ -1,0 +1,24 @@
+{
+    "version": "0.9.1",
+    "description": "An interactive TUI tool for finding and replacing text.",
+    "homepage": "https://github.com/thomasschafer/scooter",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/thomasschafer/scooter/releases/download/v0.9.1/scooter-v0.9.1-x86_64-pc-windows-msvc.zip",
+            "hash": "ed999c327c51507711fd62b8da58849e9854e379494b0b307299c4f00deccb93"
+        }
+    },
+    "bin": "scooter.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/thomasschafer/scooter/releases/download/v$version/scooter-v$version-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

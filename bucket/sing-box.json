@@ -1,42 +1,60 @@
 {
-    "version": "1.11.5",
+    "version": "1.13.21",
     "description": "The universal proxy platform.",
     "homepage": "https://sing-box.sagernet.org/",
     "license": "GPL-3.0-or-later",
+    "notes": [
+        "If you want to use TUN mode, please run sing-box with administrator privileges.",
+        "Your configuration and cache files are persisted in '$persist_dir'.",
+        "You can run with a directory of configs using: 'sing-box run -C $persist_dir\\config.d'"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.5/sing-box-1.11.5-windows-amd64.zip",
-            "hash": "435fa731518b3f770f3be968bfc6106b5ffa669ecf0269b3ef081b8fadfa1681",
-            "extract_dir": "sing-box-1.11.5-windows-amd64"
+            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.13.21/sing-box-1.13.21-windows-amd64.zip",
+            "hash": "a03291793d3a3c6e266447a58140657ac099ff278abf3b8ff678932356a62ced",
+            "extract_dir": "sing-box-1.13.21-windows-amd64"
         },
         "32bit": {
-            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.5/sing-box-1.11.5-windows-386.zip",
-            "hash": "06857b125a52f63f01d6605114dd145a446edc9db24087b167a94390ef81502d",
-            "extract_dir": "sing-box-1.11.5-windows-386"
+            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.13.21/sing-box-1.13.21-windows-386.zip",
+            "hash": "e931f8b678deb7c46f51cba029191681a79427070e6bb79529463b439606d321",
+            "extract_dir": "sing-box-1.13.21-windows-386"
         },
         "arm64": {
-            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.5/sing-box-1.11.5-windows-arm64.zip",
-            "hash": "b9efd9c3c2413b1b4b4ec62df4385d92578f26cde7ba5e823b9cc5c286c6c475",
-            "extract_dir": "sing-box-1.11.5-windows-arm64"
+            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.13.21/sing-box-1.13.21-windows-arm64.zip",
+            "hash": "ef752d9bffd6d590dd6886b28819a7ae4efee70b8188f9198757d91570efd554",
+            "extract_dir": "sing-box-1.13.21-windows-arm64"
         }
     },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) { New-Item -Path \"$persist_dir\" -ItemType Directory | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\config.json\")) {",
+        "   $utf8NoBom = New-Object System.Text.UTF8Encoding($false)",
+        "   [System.IO.File]::WriteAllText(\"$persist_dir\\config.json\", \"{}`n\", $utf8NoBom)",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\cache.db\")) { New-Item -Path \"$persist_dir\\cache.db\" -ItemType File | Out-Null }"
+    ],
     "bin": "sing-box.exe",
+    "persist": [
+        "config",
+        "config.d",
+        "config.json",
+        "cache.db"
+    ],
     "checkver": {
-        "github": "https://github.com/SagerNet/sing-box/",
-        "regex": "(?<tag>v([\\d.]+))"
+        "github": "https://github.com/SagerNet/sing-box/"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/SagerNet/sing-box/releases/download/$matchTag/sing-box-$version-windows-amd64.zip",
+                "url": "https://github.com/SagerNet/sing-box/releases/download/v$version/sing-box-$version-windows-amd64.zip",
                 "extract_dir": "sing-box-$version-windows-amd64"
             },
             "32bit": {
-                "url": "https://github.com/SagerNet/sing-box/releases/download/$matchTag/sing-box-$version-windows-386.zip",
+                "url": "https://github.com/SagerNet/sing-box/releases/download/v$version/sing-box-$version-windows-386.zip",
                 "extract_dir": "sing-box-$version-windows-386"
             },
             "arm64": {
-                "url": "https://github.com/SagerNet/sing-box/releases/download/$matchTag/sing-box-$version-windows-arm64.zip",
+                "url": "https://github.com/SagerNet/sing-box/releases/download/v$version/sing-box-$version-windows-arm64.zip",
                 "extract_dir": "sing-box-$version-windows-arm64"
             }
         }

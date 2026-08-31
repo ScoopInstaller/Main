@@ -1,42 +1,24 @@
 {
-    "version": "2024.3.6",
+    "version": "2025.1.5",
     "description": "JetBrains dotCover Command Line Tools that enable analysing code coverage outside of Visual Studio.",
     "homepage": "https://www.jetbrains.com/dotcover/download/#section=commandline",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.jetbrains.com/legal/docs/toolbox/user"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://download.jetbrains.com/resharper/dotUltimate.2024.3.6/JetBrains.dotCover.CommandLineTools.windows-x64.2024.3.6.zip",
-            "hash": "0e4a0d5a25c9734510d8217b9ca5b416819d0218b9192aaf60ed0b0f511b04c9"
-        },
-        "32bit": {
-            "url": "https://download.jetbrains.com/resharper/dotUltimate.2024.3.6/JetBrains.dotCover.CommandLineTools.windows-x86.2024.3.6.zip",
-            "hash": "6497a2c5e847258799369b4fcef5529e4f094d0f1b1f419fcd5eb155921fd86e"
-        },
-        "arm64": {
-            "url": "https://download.jetbrains.com/resharper/dotUltimate.2024.3.6/JetBrains.dotCover.CommandLineTools.windows-arm64.2024.3.6.zip",
-            "hash": "1fe149ce57cc77c9c30edc7400c92279fedf5bbc649ea817bc54b7b7171819d1"
-        }
-    },
+    "notes": [
+        "Starting from version 2025.2, the standalone dotcover.exe runner is no longer provided.",
+        "The dotCover command-line runner can now only be executed as a .NET global or local tool (requires .NET 6 or later).",
+        "For more details, please see: https://www.jetbrains.com/help/dotcover/Whats_New.html#dotcover-2025-2.",
+        "",
+        "To install version 2025.2 and later, please refer to:",
+        "https://www.jetbrains.com/help/dotcover/Installation_Guide.html"
+    ],
+    "url": "https://download-cdn.jetbrains.com/resharper/dotUltimate.2025.1.5/JetBrains.dotCover.CommandLineTools.2025.1.5.tar.gz",
+    "hash": "af87631715d3605a2c4f64ab27628254d2b8b56ba24317e68451e4f9f57bde32",
     "bin": "dotCover.exe",
-    "checkver": {
-        "url": "https://data.services.jetbrains.com/products/releases?code=DCCLT&latest=true&platform=zip&type=release",
-        "jsonpath": "$..version"
-    },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download.jetbrains.com/resharper/dotUltimate.$version/JetBrains.dotCover.CommandLineTools.windows-x64.$version.zip"
-            },
-            "32bit": {
-                "url": "https://download.jetbrains.com/resharper/dotUltimate.$version/JetBrains.dotCover.CommandLineTools.windows-x86.$version.zip"
-            },
-            "arm64": {
-                "url": "https://download.jetbrains.com/resharper/dotUltimate.$version/JetBrains.dotCover.CommandLineTools.windows-arm64.$version.zip"
-            }
-        },
+        "url": "https://download-cdn.jetbrains.com/resharper/dotUltimate.$version/JetBrains.dotCover.CommandLineTools.$version.tar.gz",
         "hash": {
             "url": "$url.sha256"
         }

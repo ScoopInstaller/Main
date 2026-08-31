@@ -1,0 +1,33 @@
+{
+    "version": "0.10.45",
+    "description": "A tool that allows you to clone/mirror repositories from one host to another.",
+    "homepage": "https://gickup.dev",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cooperspencer/gickup/releases/download/v0.10.45/gickup_0.10.45_windows_amd64.zip",
+            "hash": "1f6bda4b893f05e2368ca83a02b82ddbafccc6a8406bd6236f480b7deb040546"
+        },
+        "arm64": {
+            "url": "https://github.com/cooperspencer/gickup/releases/download/v0.10.45/gickup_0.10.45_windows_arm64.zip",
+            "hash": "0efffb975f691c33fef075801c3b3d9688a90de40c1cbe23ee19207239c31bfa"
+        }
+    },
+    "bin": "gickup.exe",
+    "checkver": {
+        "github": "https://github.com/cooperspencer/gickup"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cooperspencer/gickup/releases/download/v$version/gickup_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/cooperspencer/gickup/releases/download/v$version/gickup_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/gickup_$version_checksums.txt"
+        }
+    }
+}

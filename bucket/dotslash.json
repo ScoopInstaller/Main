@@ -1,0 +1,33 @@
+{
+    "version": "0.5.9",
+    "description": "A command-line tool that lets you represent a set of platform-specific, heavyweight executables with an equivalent small, easy-to-read text file.",
+    "homepage": "https://dotslash-cli.com",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/facebook/dotslash/releases/download/v0.5.9/dotslash-windows.v0.5.9.tar.gz",
+            "hash": "c925840a9bf9105a187cd120278cb023c51dac0cecb3234855152422751b7b41"
+        },
+        "arm64": {
+            "url": "https://github.com/facebook/dotslash/releases/download/v0.5.9/dotslash-windows-arm64.v0.5.9.tar.gz",
+            "hash": "43d49d3472808738993ccf95a36dda8cc2869996d9a397bb02bde1e39b16146b"
+        }
+    },
+    "bin": "dotslash.exe",
+    "checkver": {
+        "github": "https://github.com/facebook/dotslash"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/facebook/dotslash/releases/download/v$version/dotslash-windows.v$version.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/facebook/dotslash/releases/download/v$version/dotslash-windows-arm64.v$version.tar.gz"
+            }
+        }
+    }
+}

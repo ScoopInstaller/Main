@@ -1,0 +1,33 @@
+{
+    "version": "1.50.6",
+    "description": "Officially command-line tool for Stripe.",
+    "homepage": "https://stripe.com/docs/stripe-cli",
+    "license": "Apache-2.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.50.6/stripe_1.50.6_windows_i386.zip",
+            "hash": "ad6f3d2edefb538eff47dcf43acf0de204fe41b66f78cf3692f11415e651228f"
+        },
+        "64bit": {
+            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.50.6/stripe_1.50.6_windows_x86_64.zip",
+            "hash": "5510bcef202bc1c5c76208a8d948a2af27ed693a1a96915aeff2a47b2ea11e45"
+        }
+    },
+    "bin": "stripe.exe",
+    "checkver": {
+        "github": "https://github.com/stripe/stripe-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/stripe/stripe-cli/releases/download/v$version/stripe_$version_windows_i386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/stripe/stripe-cli/releases/download/v$version/stripe_$version_windows_x86_64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/stripe-windows-checksums.txt"
+        }
+    }
+}

@@ -1,24 +1,36 @@
 {
-    "version": "2024-10-28",
+    "version": "2026-08-24",
     "description": "A Rust compiler front-end for IDEs",
     "homepage": "https://rust-analyzer.github.io/",
     "license": "Apache-2.0|MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2024-10-28/rust-analyzer-x86_64-pc-windows-msvc.gz",
-            "hash": "6049d31b34f9c27f96b67bf25edbcd9ad68a85c498ab724ddc0583b30507865e"
+            "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-x86_64-pc-windows-msvc.zip",
+            "hash": "f6d80045e6f475606f62d294fa3b618304fd24d2ff86160495440f23d5f7fcdb"
+        },
+        "32bit": {
+            "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-i686-pc-windows-msvc.zip",
+            "hash": "11fe43fd284d906902d7a58eb54beb25be7bbba5109dd17d56d4122ef45b7a14"
+        },
+        "arm64": {
+            "url": "https://github.com/rust-lang/rust-analyzer/releases/download/2026-08-24/rust-analyzer-aarch64-pc-windows-msvc.zip",
+            "hash": "8685e2b4df4ad9ac6fe6b08be7600383496199cd29d413ca47ad67c658e3a510"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\$($fname -replace '\\.gz$')\" 'rust-analyzer.exe'",
     "bin": "rust-analyzer.exe",
     "checkver": {
-        "github": "https://github.com/rust-lang/rust-analyzer",
-        "regex": "releases/tag/([\\d-]+)"
+        "github": "https://github.com/rust-lang/rust-analyzer"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-x86_64-pc-windows-msvc.gz"
+                "url": "https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-aarch64-pc-windows-msvc.zip"
             }
         }
     }

@@ -1,27 +1,31 @@
 {
-    "version": "7.5.0",
+    "version": "7.6.5",
     "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data.",
     "homepage": "https://github.com/PowerShell/PowerShell",
     "license": "MIT",
     "notes": [
         "Since Scoop uses pwsh.exe internally, to update PowerShell Core itself,",
         "run `scoop update pwsh` from Windows PowerShell, i.e. powershell.exe.",
+        "Or run the following command from any other shell prompt (e.g., CMD or WSL):",
+        "powershell.exe -Command \"scoop update pwsh\"",
         "",
-        "Add PowerShell Core as a explorer context menu by running: '$dir\\install-explorer-context.reg'",
-        "For file context menu, run '$dir\\install-file-context.reg'"
+        "For explorer context menu, run:",
+        "reg import \"$dir\\install-explorer-context.reg\"",
+        "For file context menu, run:",
+        "reg import \"$dir\\install-file-context.reg\""
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.5.0/PowerShell-7.5.0-win-x64.zip",
-            "hash": "c270f392d63d4297d78730fbffc0fefa2aa7fb39c80307c3105d22cd7fc9040e"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.5/PowerShell-7.6.5-win-x64.zip",
+            "hash": "32eb8f6cdce08f86e987d625a2733e54ac3e289ae7e1621b14c0b5bcec2434ea"
         },
         "32bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.5.0/PowerShell-7.5.0-win-x86.zip",
-            "hash": "c8cca1d070788da89b10796c4cc4352c945e56c3f9e21ecd4ae4a972c865859e"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.5/PowerShell-7.6.5-win-x86.zip",
+            "hash": "6444ecb222a6b51c8d10ffe9bda99b83eaeefe90160de90deea6b638914c4a25"
         },
         "arm64": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.5.0/PowerShell-7.5.0-win-arm64.zip",
-            "hash": "5cf346f196a7ba862772f7fe0bf5dc98a08632baae74c36dca26de386203a142"
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.5/PowerShell-7.6.5-win-arm64.zip",
+            "hash": "20514a755d16428dc4355c85e0883c859531e71cc3e122670aa1fccdbf96ba7e"
         }
     },
     "pre_install": [
@@ -54,6 +58,14 @@
         "Microsoft.PowerShell_profile.ps1",
         "profile.ps1"
     ],
+    "uninstaller": {
+        "script": [
+            "if ($cmd -eq 'uninstall') {",
+            "    reg import \"$dir\\uninstall-explorer-context.reg\" *> $null",
+            "    reg import \"$dir\\uninstall-file-context.reg\" *> $null",
+            "}"
+        ]
+    },
     "checkver": "github",
     "autoupdate": {
         "architecture": {

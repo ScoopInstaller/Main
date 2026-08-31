@@ -1,0 +1,42 @@
+{
+    "version": "10.4.1",
+    "description": "A programming language and an implementation of that language, with supporting tools and documentation.",
+    "homepage": "https://cisco.github.io/ChezScheme/",
+    "license": "Apache-2.0",
+    "url": "https://github.com/cisco/ChezScheme/releases/download/v10.4.1/ChezScheme10.4.1.exe",
+    "hash": "81c869b0f6a88dfeb37cc3c55198f816b7d08e5740900fef5e985f089476081d",
+    "architecture": {
+        "64bit": {
+            "installer": {
+                "script": [
+                    "Expand-DarkArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\\extracted\" -Removal",
+                    "Expand-MsiArchive -Path \"$dir\\extracted\\AttachedContainer\\ChezScheme64.msi\" -DestinationPath $dir -ExtractDir \"Chez Scheme $version\"",
+                    "Remove-Item -Path \"$dir\\extracted\" -Recurse -Force"
+                ]
+            },
+            "bin": [
+                "bin\\a6nt\\scheme.exe",
+                "bin\\a6nt\\petite.exe"
+            ]
+        },
+        "32bit": {
+            "installer": {
+                "script": [
+                    "Expand-DarkArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\\extracted\" -Removal",
+                    "Expand-MsiArchive -Path \"$dir\\extracted\\AttachedContainer\\ChezScheme32.msi\" -DestinationPath $dir -ExtractDir \"Chez Scheme $version\"",
+                    "Remove-Item -Path \"$dir\\extracted\" -Recurse -Force"
+                ]
+            },
+            "bin": [
+                "bin\\i3nt\\scheme.exe",
+                "bin\\i3nt\\petite.exe"
+            ]
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/cisco/ChezScheme"
+    },
+    "autoupdate": {
+        "url": "https://github.com/cisco/ChezScheme/releases/download/v$version/ChezScheme$version.exe"
+    }
+}

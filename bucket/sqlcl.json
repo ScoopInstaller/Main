@@ -1,5 +1,5 @@
 {
-    "version": "24.4.3.070.2106",
+    "version": "26.2.1.222.1617",
     "description": "Oracle SQL Developer Command Line (SQLcl)",
     "homepage": "https://www.oracle.com/database/sqldeveloper/technologies/sqlcl",
     "license": {
@@ -9,15 +9,16 @@
     "suggest": {
         "JRE": "java/oraclejdk"
     },
-    "url": "https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-latest.zip",
-    "hash": "efff09f97636524fc25168a6ad37fcfe29236504f6fb8fe335d86cf0ad6c5a32",
+    "url": "https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-26.2.1.222.1617.zip",
+    "hash": "ff810954993927836b3049eb7c6404d3da72eb539b2a3f725504f72973672fa3",
     "extract_dir": "sqlcl",
     "bin": "bin\\sql.exe",
     "checkver": {
-        "url": "https://formulae.brew.sh/cask/sqlcl",
-        "regex": ">([\\d.]+)</a>"
+        "url": "https://www.oracle.com/database/sqldeveloper/technologies/sqlcl/download/",
+        "regex": "sqlcl-([\\d.]+)\\.zip",
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     },
     "autoupdate": {
-        "url": "https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-latest.zip"
+        "url": "https://download.oracle.com/otn_software/java/sqldeveloper/sqlcl-$version.zip"
     }
 }

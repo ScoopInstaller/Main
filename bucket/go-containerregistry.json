@@ -1,23 +1,31 @@
 {
-    "version": "0.20.3",
+    "version": "0.22.0",
     "description": "CLIs for working with container registries",
     "homepage": "https://github.com/google/go-containerregistry",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/google/go-containerregistry/releases/download/v0.20.3/go-containerregistry_Windows_x86_64.tar.gz",
-            "hash": "939c63961fc2e9d7f0cc2b6a1af9d17a5b2f6a37ffb63d961b47f786aadb732b"
+            "url": "https://github.com/google/go-containerregistry/releases/download/v0.22.0/go-containerregistry_Windows_x86_64.tar.gz",
+            "hash": "2d4ce27bde9bd3b511bd7c0b5a4c9654dbadf43ee1da9eac083e6f1511282b32"
+        },
+        "arm64": {
+            "url": "https://github.com/google/go-containerregistry/releases/download/v0.22.0/go-containerregistry_Windows_arm64.tar.gz",
+            "hash": "072f9d6b1d539a09ab18dd8fa72b72000d85bb6599c9d0f51a8f408938c75c03"
         }
     },
     "bin": [
         "crane.exe",
-        "gcrane.exe"
+        "gcrane.exe",
+        "krane.exe"
     ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/google/go-containerregistry/releases/download/v$version/go-containerregistry_Windows_x86_64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/google/go-containerregistry/releases/download/v$version/go-containerregistry_Windows_arm64.tar.gz"
             }
         },
         "hash": {

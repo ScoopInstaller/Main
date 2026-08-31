@@ -1,19 +1,35 @@
 {
-    "version": "2025.02.19",
+    "version": "2026.08.19",
     "description": "A youtube-dl fork with additional features and fixes.",
     "homepage": "https://github.com/yt-dlp/yt-dlp",
+    "notes": [
+        "Requires a JavaScript runtime for full functionality (e.g., deno, node, bun).",
+        "By default yt-dlp prefers 'deno' — use `--js-runtimes <runtime>` as an argument, or edit `yt-dlp.conf` to override."
+    ],
     "license": "Unlicense",
     "suggest": {
+        "js-runtime": [
+            "deno",
+            "nodejs",
+            "nodejs-lts",
+            "versions/nodejs22",
+            "bun",
+            "quickjs"
+        ],
         "ffmpeg": "ffmpeg"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2025.02.19/yt-dlp.exe",
-            "hash": "sha512:77e497d07c9eebe1ddb0728d324a3536e63f4d1b558f3ff57decab928f60780a7fd8f3cbab9b6da2cb5387f27f7e62bbb47e75941a5b7fe1af2ec0f0a1bd4fdb"
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.08.19/yt-dlp.exe",
+            "hash": "66674953fe251b89f4d08c5f0e35e0728679bd67ab3d7d05c0562af101dd3e7a"
         },
         "32bit": {
-            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2025.02.19/yt-dlp_x86.exe#/yt-dlp.exe",
-            "hash": "sha512:0baefcbb0603837e7d7240afb5686cc34e22619c8a2a9c0e05391b17fd9544534d5040c6414ea4ec810f7fd42f2abbb8bdf8effcfe0780be8078239a161fc795"
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.08.19/yt-dlp_x86.exe#/yt-dlp.exe",
+            "hash": "a8f91bd41452506bc81ebd2f369b186fea0ee7075413ba00cef9fd346a0a5d0c"
+        },
+        "arm64": {
+            "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2026.08.19/yt-dlp_arm64.exe#/yt-dlp.exe",
+            "hash": "05b438997bafc3affdfda9d041353c9d73e04dc842207254b655b0887c4445b0"
         }
     },
     "bin": "yt-dlp.exe",
@@ -31,10 +47,13 @@
             },
             "32bit": {
                 "url": "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp_x86.exe#/yt-dlp.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/yt-dlp/yt-dlp/releases/download/$version/yt-dlp_arm64.exe#/yt-dlp.exe"
             }
         },
         "hash": {
-            "url": "$baseurl/SHA2-512SUMS"
+            "url": "$baseurl/SHA2-256SUMS"
         }
     }
 }

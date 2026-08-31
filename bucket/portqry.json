@@ -1,0 +1,19 @@
+{
+    "version": "2.0",
+    "description": "A command-line utility that you can use to help troubleshoot TCP/IP connectivity issues.",
+    "homepage": "https://www.microsoft.com/en-us/download/details.aspx?id=17148",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright"
+    },
+    "url": "https://download.microsoft.com/download/0/d/9/0d9d81cf-4ef2-4aa5-8cea-95a935ee09c9/PortQryV2.exe#/dl.7z",
+    "hash": "6471c5190a99e3d1f337fcfef1fc410e8d487b66e093f924700e186cbd398dc0",
+    "pre_install": "Get-ChildItem -Path \"$dir\\PORTQR*.EXE\" | Select-Object -First 1 -ExpandProperty FullName | Expand-7zipArchive -DestinationPath $dir -Removal",
+    "bin": "PortQry.exe",
+    "checkver": {
+        "regex": "\"url\":\"https://download\\.microsoft\\.com/download/(?<url>[^\"]+)\".*?\"version\":\"(?<version>[\\d.]+)\""
+    },
+    "autoupdate": {
+        "url": "https://download.microsoft.com/download/$matchUrl#/dl.7z"
+    }
+}

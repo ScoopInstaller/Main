@@ -1,0 +1,27 @@
+{
+    "version": "2.3.1",
+    "description": "An extremely fast directory and filename linter.",
+    "homepage": "https://ls-lint.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/loeffel-io/ls-lint/releases/download/v2.3.1/ls-lint-windows-amd64.exe#/ls-lint.exe",
+            "hash": "94e5cfb9468e597cb513fb7a8bf26499c9315ebd505d960c74e2d4849167bd31"
+        }
+    },
+    "bin": "ls-lint.exe",
+    "checkver": {
+        "github": "https://github.com/loeffel-io/ls-lint"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/loeffel-io/ls-lint/releases/download/v$version/ls-lint-windows-amd64.exe#/ls-lint.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "($sha256).*?$basename"
+        }
+    }
+}

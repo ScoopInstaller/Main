@@ -1,33 +1,35 @@
 {
-    "version": "1.8.0",
+    "version": "2.3.0",
     "description": "A tool to validate the syntax of configuration files",
     "homepage": "https://boeing.github.io/config-file-validator/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Boeing/config-file-validator/releases/download/v1.8.0/validator-v1.8.0-windows-amd64.zip",
-            "hash": "md5:ae2a072bd2d2bb35f55afcd2132d9129"
+            "url": "https://github.com/Boeing/config-file-validator/releases/download/v2.3.0/validator-v2.3-windows-amd64.zip",
+            "hash": "69e5dde23c034bdc5a938a133bcb8baae5652bbeb88f6d52c2aa7ca0738638ec"
         },
         "32bit": {
-            "url": "https://github.com/Boeing/config-file-validator/releases/download/v1.8.0/validator-v1.8.0-windows-386.zip",
-            "hash": "md5:4308ef82d00fa0586f8429f561c297f9"
+            "url": "https://github.com/Boeing/config-file-validator/releases/download/v2.3.0/validator-v2.3-windows-386.zip",
+            "hash": "cc737794f4fa5f93843ef8b9d925c2f1b2f2088c0a97ca811b2c0bff2459525e"
         }
     },
     "bin": "validator.exe",
     "checkver": {
-        "github": "https://github.com/Boeing/config-file-validator"
+        "github": "https://api.github.com/repos/Boeing/config-file-validator/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "(?:v|V)?([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$version-windows-amd64.zip"
+                "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$majorVersion.$minorVersion-windows-amd64.zip"
             },
             "32bit": {
-                "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$version-windows-386.zip"
+                "url": "https://github.com/Boeing/config-file-validator/releases/download/v$version/validator-v$majorVersion.$minorVersion-windows-386.zip"
             }
         },
         "hash": {
-            "url": "$url.md5"
+            "url": "$baseurl/SHA256SUMS"
         }
     }
 }

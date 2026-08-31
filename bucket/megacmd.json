@@ -1,5 +1,5 @@
 {
-    "version": "2.0.0",
+    "version": "2.6.0",
     "description": "Manage MEGA.nz account and files from command line.",
     "homepage": "https://mega.nz/cmd",
     "license": {
@@ -7,7 +7,7 @@
         "url": "https://github.com/meganz/MEGAcmd/blob/master/LICENSE"
     },
     "url": "https://mega.nz/MEGAcmdSetup.exe#/dl.7z",
-    "hash": "61e49edce275ddf4c014391dd26acb530edcfd5a9a67b53c80f6ceed256d9ece",
+    "hash": "bb72894270224cd3c6f654a2f939d83c2cd4a43da6abea84ce1e92521166f78b",
     "post_install": [
         "Remove-Item \"$dir\\`$*\", \"$dir\\unins*\" -Recurse",
         "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
@@ -20,6 +20,7 @@
     ],
     "uninstaller": {
         "script": [
+            "$global = installed $app $true",
             "$datapath = if ($global) { $env:APPDATA } else { $env:LOCALAPPDATA }",
             "if ((Get-Item \"$datapath\\MEGAcmd\" -ErrorAction SilentlyContinue).Attributes -band [IO.FileAttributes]::ReparsePoint) {",
             "    & \"$env:COMSPEC\" /c \"rmdir `\"$datapath\\MEGAcmd`\"\"",
@@ -82,6 +83,7 @@
         "mega-mv.bat",
         "mega-passwd.bat",
         "mega-preview.bat",
+        "mega-proxy.bat",
         "mega-put.bat",
         "mega-pwd.bat",
         "mega-quit.bat",

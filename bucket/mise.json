@@ -1,35 +1,28 @@
 {
-    "version": "2025.3.2",
+    "version": "2026.8.15",
     "description": "Polyglot tool version manager and task runner",
     "homepage": "https://mise.jdx.dev/",
     "license": "MIT",
+    "notes": [
+        "Persistence and environment variables settings of the manifest have been revoked, you can find persisted data at '$persist_dir', if you have installed the manifest before.",
+        "",
+        "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html"
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jdx/mise/releases/download/v2025.3.2/mise-v2025.3.2-windows-x64.zip",
-            "hash": "80142adf57af00087518d6e1a4410c1d0bea4898764378c906b9f282fed556ea"
+            "url": "https://github.com/jdx/mise/releases/download/v2026.8.15/mise-v2026.8.15-windows-x64.zip",
+            "hash": "773ffca0a540ae254140993e2ee47af8a9bca2fa362c73321284639c693cfdde"
         },
         "arm64": {
-            "url": "https://github.com/jdx/mise/releases/download/v2025.3.2/mise-v2025.3.2-windows-arm64.zip",
-            "hash": "bbd9480dac26e635210325667e0ae49db457c1e859c8f901be881d39fc38d6aa"
+            "url": "https://github.com/jdx/mise/releases/download/v2026.8.15/mise-v2026.8.15-windows-arm64.zip",
+            "hash": "3e79d30693413782f66c305446d12ce679a0ff741822700f99435934a607dae6"
         }
     },
     "extract_dir": "mise",
     "bin": "bin/mise.exe",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config.toml\") -and !(Test-Path \"$dir\\config.toml\")) {",
-        "    New-Item -Path \"$dir\\config.toml\" -ItemType File -ea 0 | Out-Null",
-        "}"
-    ],
-    "env_set": {
-        "MISE_DATA_DIR": "$dir\\mise",
-        "MISE_GLOBAL_CONFIG_FILE": "$dir\\config.toml"
-    },
-    "env_add_path": "mise\\shims",
-    "persist": [
-        "mise",
-        "config.toml"
-    ],
-    "notes": "See documentation for notes on configuring your shell: https://mise.jdx.dev/installing-mise.html",
     "checkver": {
         "github": "https://github.com/jdx/mise"
     },

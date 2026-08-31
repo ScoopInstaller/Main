@@ -1,19 +1,19 @@
 {
-    "version": "8.4.5",
+    "version": "8.5.9",
     "description": "A popular general-purpose scripting language that is especially suited to web development. (thread safe)",
-    "homepage": "https://windows.php.net/",
+    "homepage": "https://www.php.net/",
     "license": "PHP-3.01",
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://windows.php.net/downloads/releases/php-8.4.5-Win32-vs17-x64.zip",
-            "hash": "e7d71476a4e785c83a235d4ae9deda3b809386735a44d897fb8bbef4fde3f5e4"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.5.9-Win32-vs17-x64.zip",
+            "hash": "6a8af9f5d2a35b81cd9f1db04bd4037c3609828db62f81589e29e13faffd45f9"
         },
         "32bit": {
-            "url": "https://windows.php.net/downloads/releases/php-8.4.5-Win32-vs17-x86.zip",
-            "hash": "7a87be6fb829728ab33848d391411d931f0366f470033509dbe4f681cf1fe97b"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.5.9-Win32-vs17-x86.zip",
+            "hash": "a87b6475fbbdd6c12c74cfb3c8095032f324d6813604cbbbb236cac3f5bc4171"
         }
     },
     "pre_install": [
@@ -42,20 +42,21 @@
         ]
     ],
     "checkver": {
-        "url": "https://windows.php.net/download/",
-        "regex": "<h3 id=\"php-[\\d.]+\".*?>.*?\\(([\\d.]+)\\)</h3>"
+        "url": "https://www.php.net/releases/branches.php",
+        "jsonpath": "$[0].latest"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs17-x64.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-vs17-x64.zip"
             },
             "32bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs17-x86.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-vs17-x86.zip"
             }
         },
         "hash": {
-            "url": "$baseurl/sha256sum.txt"
+            "url": "https://www.php.net/backend/win-releases.json",
+            "jsonpath": "$..[?(@.path == '$basename')].sha256"
         }
     }
 }

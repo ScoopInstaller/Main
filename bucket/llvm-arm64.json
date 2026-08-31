@@ -1,15 +1,15 @@
 {
-    "version": "20.1.0",
+    "version": "23.1.0",
     "description": "Collection of modular and reusable compiler and toolchain technologies. (arm64/aarch64 only)",
     "homepage": "https://www.llvm.org",
     "license": "NCSA",
     "architecture": {
         "arm64": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.0/LLVM-20.1.0-woa64.exe#/dl.7z",
-            "hash": "f72856191694c3e77509c2bc7c0b91c385c5a37010eddbc2b8daacf07f659d79"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.0/LLVM-23.1.0-woa64.msi",
+            "hash": "6485e32819681cb4f5300ab8fdf8b185b7075af4a9fe2a49813556f1c5ccadff"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
+    "extract_dir": "LLVM",
     "env_add_path": "bin",
     "env_set": {
         "LIBCLANG_PATH": "$dir\\bin",
@@ -17,12 +17,12 @@
     },
     "checkver": {
         "github": "https://github.com/llvm/llvm-project",
-        "regex": "tag/llvmorg-([\\d._]+)"
+        "regex": "llvmorg-([\\d._]+)"
     },
     "autoupdate": {
         "architecture": {
             "arm64": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-woa64.exe#/dl.7z"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-woa64.msi"
             }
         }
     }

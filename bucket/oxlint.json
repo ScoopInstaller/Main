@@ -1,31 +1,38 @@
 {
-    "version": "0.15.15",
+    "version": "1.80.0",
     "description": "A collection of JavaScript tools written in Rust.",
     "homepage": "https://github.com/oxc-project/oxc",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v0.15.15/oxlint-win32-x64.zip",
-            "hash": "7b535072b4219f75f671e18d84c4c936ccb06c7d6181d62a0ce6b227915616de"
+            "url": "https://github.com/oxc-project/oxc/releases/download/apps_v1.80.0/oxlint-x86_64-pc-windows-msvc.zip",
+            "hash": "549ed5ab9f1d457033e48d860608d97783a44b8a7d8a2908f759f13f17ed921a"
+        },
+        "32bit": {
+            "url": "https://github.com/oxc-project/oxc/releases/download/apps_v1.80.0/oxlint-i686-pc-windows-msvc.zip",
+            "hash": "b5e5ca7c4ebee333417d7f31c42a07a508ace2bc19c2efe76eaca7919302adc1"
         },
         "arm64": {
-            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v0.15.15/oxlint-win32-arm64.zip",
-            "hash": "88ce9a6a4a07bb1b7f2b61592b12b5f5f055df6af5c050784a872e7cd7f2a7f9"
+            "url": "https://github.com/oxc-project/oxc/releases/download/apps_v1.80.0/oxlint-aarch64-pc-windows-msvc.zip",
+            "hash": "065fa182658e2b8d5324c73d312764dfeb6eeb6ae09a1e7d3fdc701b7d6c5999"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\oxlint-*.exe\" \"$dir\\oxlint.exe\"",
+    "pre_install": "Get-Item \"$dir\\oxlint-*.exe\" | Rename-Item -NewName \"$dir\\oxlint.exe\"",
     "bin": "oxlint.exe",
     "checkver": {
-        "url": "https://api.github.com/repositories/599431918/releases",
-        "regex": "tag/oxlint_v([\\d.]+)"
+        "github": "https://github.com/oxc-project/oxc",
+        "regex": "apps_v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-win32-x64.zip"
+                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxlint-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxlint-i686-pc-windows-msvc.zip"
             },
             "arm64": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-win32-arm64.zip"
+                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxlint-aarch64-pc-windows-msvc.zip"
             }
         }
     }

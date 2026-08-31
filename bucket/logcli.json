@@ -1,0 +1,31 @@
+{
+    "version": "3.7.7",
+    "description": "Command-line tool for querying and exploring logs in Grafana Loki.",
+    "homepage": "https://grafana.com/docs/loki/latest/query/logcli/",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/grafana/loki/releases/download/v3.7.7/logcli-windows-amd64.exe.zip",
+            "hash": "236af32fb11b44de134da09af928f8494f0dc1cc56091ff2df399e212bda7d47"
+        }
+    },
+    "bin": [
+        [
+            "logcli-windows-amd64.exe",
+            "logcli"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/grafana/loki"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/grafana/loki/releases/download/v$version/logcli-windows-amd64.exe.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/grafana/loki/releases/download/v$version/SHA256SUMS"
+        }
+    }
+}

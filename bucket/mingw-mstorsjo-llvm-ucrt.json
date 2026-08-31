@@ -1,29 +1,30 @@
 {
-    "version": "20.1.0-20250305",
+    "version": "23.1.0-20260826",
     "description": "LLVM toolchain based on mingw-w64. (UCRT, mstorsjo build)",
     "homepage": "https://github.com/mstorsjo/llvm-mingw/",
     "license": "GPL-3.0-or-later,ZPL-2.1,Apache-2.0 WITH LLVM-exception,ISC",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20250305/llvm-mingw-20250305-ucrt-x86_64.zip",
-            "hash": "d955112db27ebbefec0b1fc77d4fcfe7b51ed767912e74e4e00b4a63e9d3ac97",
-            "extract_dir": "llvm-mingw-20250305-ucrt-x86_64"
+            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20260826/llvm-mingw-20260826-ucrt-x86_64.zip",
+            "hash": "ae601f4e0f72bbdf441ad2df8bb16f037e2e9251559ea6b37b4057aef39c06c3",
+            "extract_dir": "llvm-mingw-20260826-ucrt-x86_64"
         },
         "32bit": {
-            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20250305/llvm-mingw-20250305-ucrt-i686.zip",
-            "hash": "8b4ba9d592f68dc1ebe89c4c9caec57ef98f7f418f7264c6272cf2fd404c6618",
-            "extract_dir": "llvm-mingw-20250305-ucrt-i686"
+            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20260826/llvm-mingw-20260826-ucrt-i686.zip",
+            "hash": "6102bfc7337ae5e31f9c37e1e11f7a48603b3849ce81c7b67a57ec6b836f181e",
+            "extract_dir": "llvm-mingw-20260826-ucrt-i686"
         },
         "arm64": {
-            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20250305/llvm-mingw-20250305-ucrt-aarch64.zip",
-            "hash": "3866457304a5f8ebf7c31e63d6dc1c05cc5bc33e4ab2e4cc8572c25c68c4e210",
-            "extract_dir": "llvm-mingw-20250305-ucrt-aarch64"
+            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20260826/llvm-mingw-20260826-ucrt-aarch64.zip",
+            "hash": "dbce5a314c44cf44d02ab0d0e6bce948955b46429274df25544f9cfea4986f7b",
+            "extract_dir": "llvm-mingw-20260826-ucrt-aarch64"
         }
     },
     "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
     "env_add_path": "bin",
     "checkver": {
-        "github": "https://github.com/mstorsjo/llvm-mingw/",
+        "github": "https://github.com/mstorsjo/llvm-mingw",
+        "jsonpath": "$..name",
         "regex": "llvm-mingw\\s+(?<time>\\d+)\\swith\\s+LLVM\\s+(?<llvm>[\\d.]+)",
         "replace": "${llvm}-${time}"
     },

@@ -1,12 +1,20 @@
 {
-    "version": "1.7.2",
+    "version": "1.8.2",
     "description": "The power of curl, the ease of use of httpie",
-    "homepage": "https://curlie.io",
+    "homepage": "https://rs.github.io/curlie",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/rs/curlie/releases/download/v1.7.2/curlie_1.7.2_windows_amd64.tar.gz",
-            "hash": "bbcfc4b9e1c2107090a1fe2c1a537027e424ea388e508cfd5a9e2e766821ccdc"
+            "url": "https://github.com/rs/curlie/releases/download/v1.8.2/curlie_1.8.2_windows_amd64.zip",
+            "hash": "c9c722de200518bdde66ac1211fc10633fc21448dea90cb1f16e4f485a47fb56"
+        },
+        "32bit": {
+            "url": "https://github.com/rs/curlie/releases/download/v1.8.2/curlie_1.8.2_windows_386.zip",
+            "hash": "9c4a3bd291c465929c30e5551ffd99a353975791f62a1bfb25abd098df5037bf"
+        },
+        "arm64": {
+            "url": "https://github.com/rs/curlie/releases/download/v1.8.2/curlie_1.8.2_windows_arm64.zip",
+            "hash": "c55c62eb274d7db9b0fa8fb13738c2d96d9e213ea144233dda98bd8af9dc4216"
         }
     },
     "bin": "curlie.exe",
@@ -16,7 +24,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/rs/curlie/releases/download/v$version/curlie_$version_windows_amd64.tar.gz"
+                "url": "https://github.com/rs/curlie/releases/download/v$version/curlie_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/rs/curlie/releases/download/v$version/curlie_$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/rs/curlie/releases/download/v$version/curlie_$version_windows_arm64.zip"
             }
         },
         "hash": {

@@ -1,0 +1,29 @@
+{
+    "version": "1.3.0",
+    "description": "A language-agnostic tool for managing and migrating database schemas using modern DevOps principles (Community Edition).",
+    "homepage": "https://atlasgo.io/community-edition",
+    "license": {
+        "identifier": "Apache-2.0",
+        "url": "https://github.com/ariga/atlas/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://release.ariga.io/atlas/atlas-community-windows-amd64-v1.3.0.exe#/atlas.exe",
+            "hash": "3e2e040fc1d9998d1b0a070c0482ff1745444b8e88f34e5f6945535d901a72c5"
+        }
+    },
+    "bin": "atlas.exe",
+    "checkver": {
+        "github": "https://github.com/ariga/atlas"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://release.ariga.io/atlas/atlas-community-windows-amd64-v$version.exe#/atlas.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
