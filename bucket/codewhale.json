@@ -1,34 +1,37 @@
 {
     "version": "0.9.11",
-    "description": "Coding agent for DeepSeek models that runs in your terminal.",
-    "homepage": "https://deepseek-tui.com/en",
+    "description": "Open-source coding agent for your terminal (Formerly known as DeepSeek-TUI).",
+    "homepage": "https://codewhale.net/en",
     "license": "MIT",
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": [
-                "https://github.com/Hmbown/CodeWhale/releases/download/v0.9.11/codewhale-tui-windows-x64.exe#/codewhale-tui.exe",
-                "https://github.com/Hmbown/CodeWhale/releases/download/v0.9.11/codewhale-windows-x64.exe#/codewhale.exe"
-            ],
-            "hash": [
-                "400f6146e3211af31e8e7bb9919bead73a0f354dfb57de7ab30c66097beb0a69",
-                "400f6146e3211af31e8e7bb9919bead73a0f354dfb57de7ab30c66097beb0a69"
-            ]
+            "url": "https://github.com/Hmbown/CodeWhale/releases/download/v0.9.11/codewhale-windows-x64-portable.zip",
+            "hash": "b0f6c0863e3b35902d3efd5bccc79214d3ce06f4d3dc2a5e05301d74be6bec72",
+            "extract_dir": "codewhale-windows-x64-portable"
+        },
+        "arm64": {
+            "url": "https://github.com/Hmbown/CodeWhale/releases/download/v0.9.11/codewhale-windows-arm64-portable.zip",
+            "hash": "5bccabac05cca20ccfb9d2b3b9b9f80766365dc363626920900ba687c6f2d188",
+            "extract_dir": "codewhale-windows-arm64-portable"
         }
     },
-    "bin": "codewhale.exe",
+    "bin": [
+        "codew.exe",
+        "codewhale.exe"
+    ],
     "checkver": {
         "github": "https://github.com/Hmbown/CodeWhale"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": [
-                    "https://github.com/Hmbown/CodeWhale/releases/download/v$version/codewhale-tui-windows-x64.exe#/codewhale-tui.exe",
-                    "https://github.com/Hmbown/CodeWhale/releases/download/v$version/codewhale-windows-x64.exe#/codewhale.exe"
-                ]
+                "url": "https://github.com/Hmbown/CodeWhale/releases/download/v$version/codewhale-windows-x64-portable.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Hmbown/CodeWhale/releases/download/v$version/codewhale-windows-arm64-portable.zip"
             }
         },
         "hash": {
