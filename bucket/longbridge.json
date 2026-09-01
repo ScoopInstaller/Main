@@ -1,0 +1,29 @@
+{
+    "version": "0.28.4",
+    "description": "An AI-native command-line tool with 130+ commands covering every Longbridge OpenAPI endpoint, including real-time market data, fundamentals, account management, and trading.",
+    "homepage": "https://open.longbridge.com/docs/cli",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/longbridge/longbridge-terminal/releases/download/v0.28.4/longbridge-terminal-windows-amd64.zip",
+            "hash": "4b56971452a399e74cbc4e36e079e9e854b1046884e57cf4e9e7ffc6726195b4"
+        }
+    },
+    "bin": "longbridge.exe",
+    "checkver": {
+        "github": "https://github.com/longbridge/longbridge-terminal"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/longbridge/longbridge-terminal/releases/download/v$version/longbridge-terminal-windows-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
