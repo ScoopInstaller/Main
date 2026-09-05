@@ -20,14 +20,14 @@
     "extract_dir": "go",
     "installer": {
         "script": [
-            "$first_entry = ((\"$env:GOPATH\" -split ';').Trim() -ne '')[0]",
+            "$first_entry = $env:GOPATH -split ';' | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -First 1",
             "$bin_path = if ($first_entry) { Join-Path $first_entry 'bin' } else { \"$env:USERPROFILE\\go\\bin\" }",
             "Add-Path -Path $bin_path -Global:$global -Force"
         ]
     },
     "uninstaller": {
         "script": [
-            "$first_entry = ((\"$env:GOPATH\" -split ';').Trim() -ne '')[0]",
+            "$first_entry = $env:GOPATH -split ';' | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -First 1",
             "$bin_path = if ($first_entry) { Join-Path $first_entry 'bin' } else { \"$env:USERPROFILE\\go\\bin\" }",
             "$global = installed $app $true",
             "Remove-Path -Path $bin_path -Global:$global"
