@@ -6,21 +6,28 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/containers/podman-tui/releases/download/v2.0.0/podman-tui-release-windows_amd64.zip",
-            "hash": "5ff23f19ea6acefdd5873282389fc02618acd6c28c527bf41d49b495a0dfb59d",
-            "extract_dir": "podman-tui-v2.0.0"
+            "hash": "5ff23f19ea6acefdd5873282389fc02618acd6c28c527bf41d49b495a0dfb59d"
+        },
+        "arm64": {
+            "url": "https://github.com/containers/podman-tui/releases/download/v2.0.0/podman-tui-release-windows_arm64.zip",
+            "hash": "794166e1cbf1d52e88299149be94f4f2eed7fc52ce306942931f90179866da14"
         }
     },
+    "extract_dir": "podman-tui-v2.0.0",
     "bin": "podman-tui.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/containers/podman-tui/releases/download/v$version/podman-tui-release-windows_amd64.zip",
-                "hash": {
-                    "url": "$baseurl/sha256sum"
-                },
-                "extract_dir": "podman-tui-v$version"
+                "url": "https://github.com/containers/podman-tui/releases/download/v$version/podman-tui-release-windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/containers/podman-tui/releases/download/v$version/podman-tui-release-windows_arm64.zip"
             }
-        }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sum"
+        },
+        "extract_dir": "podman-tui-v$version"
     }
 }
