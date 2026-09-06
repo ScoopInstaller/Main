@@ -5,9 +5,12 @@
     "license": "LGPL-v3",
     "notes": [
         "For `ghc`, use `ghcup install ghc`.",
-        "For `cabal`, use `ghcup install cabal latest && ghcup set cabal`.",
-        "* Use `cabal user-config update --augment \"installdir: <<BIN_PATH>>\"` to reset `cabal` binary destination path.",
-        "For `stack`, use `ghcup install stack latest && ghcup set stack`.",
+        "For `cabal`, use `ghcup install cabal latest && ghcup set cabal latest`.",
+        "* Run the following commands to update cabal config:",
+        "cabal user-config update --augment \"extra-include-dirs: `\"$env:GHCUP_MSYS2\\mingw64\\include`\"\"",
+        "cabal user-config update --augment \"extra-lib-dirs: `\"$env:GHCUP_MSYS2\\mingw64\\lib`\"\"",
+        "cabal user-config update --augment \"extra-prog-path: `\"$env:GHCUP_INSTALL_BASE_PREFIX\\ghcup\\bin`\", `\"$env:CABAL_DIR\\bin`\", `\"$env:GHCUP_MSYS2\\mingw64\\bin`\", `\"$env:GHCUP_MSYS2\\usr\\bin`\"\"",
+        "For `stack`, use `ghcup install stack latest && ghcup set stack latest`.",
         "* Add \"local-bin-path: <<BIN_PATH>>\" to \"$(stack path --stack-root)\"to reset `stack` binary destination path.",
         "For `hls`, use `ghcup install hls latest`."
     ],
@@ -19,17 +22,16 @@
         }
     },
     "env_set": {
+        "CABAL_DIR": "$dir\\cabal",
         "GHCUP_INSTALL_BASE_PREFIX": "$dir",
         "GHCUP_MSYS2": "$scoopdir\\apps\\msys2\\current"
     },
     "env_add_path": "ghcup\\bin",
-    "bin": [
-        [
-            "ghcup.exe",
-            "ghcup"
-        ]
+    "bin": "ghcup.exe",
+    "persist": [
+        "cabal",
+        "ghcup"
     ],
-    "persist": "ghcup",
     "checkver": {
         "github": "https://github.com/haskell/ghcup-hs"
     },
