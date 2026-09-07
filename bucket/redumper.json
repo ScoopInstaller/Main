@@ -1,0 +1,44 @@
+{
+    "version": "b747",
+    "description": "Command-line tool for creating accurate optical disc dumps.",
+    "homepage": "https://github.com/superg/redumper",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/superg/redumper/releases/download/b747/redumper-b747-windows-x64.zip",
+            "hash": "777138dac79f629ce8c4854a286cf061d084b2f95c9606b8d86b9d6677388527",
+            "extract_dir": "redumper-b747-windows-x64\\bin"
+        },
+        "32bit": {
+            "url": "https://github.com/superg/redumper/releases/download/b747/redumper-b747-windows-x86.zip",
+            "hash": "ed04b634b2078bb86dc3141d73485b01b1a675155f521063e3fc9ca74121cd9a",
+            "extract_dir": "redumper-b747-windows-x86\\bin"
+        },
+        "arm64": {
+            "url": "https://github.com/superg/redumper/releases/download/b747/redumper-b747-windows-arm64.zip",
+            "hash": "8b6347e8af087cde396b9a49b49c9a95c3f1abfa5ff099ee7bdc3b93ff43beee",
+            "extract_dir": "redumper-b747-windows-arm64\\bin"
+        }
+    },
+    "bin": "redumper.exe",
+    "checkver": {
+        "github": "https://github.com/superg/redumper",
+        "regex": "/releases/tag/(b[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/superg/redumper/releases/download/$version/redumper-$version-windows-x64.zip",
+                "extract_dir": "redumper-$version-windows-x64\\bin"
+            },
+            "32bit": {
+                "url": "https://github.com/superg/redumper/releases/download/$version/redumper-$version-windows-x86.zip",
+                "extract_dir": "redumper-$version-windows-x86\\bin"
+            },
+            "arm64": {
+                "url": "https://github.com/superg/redumper/releases/download/$version/redumper-$version-windows-arm64.zip",
+                "extract_dir": "redumper-$version-windows-arm64\\bin"
+            }
+        }
+    }
+}
