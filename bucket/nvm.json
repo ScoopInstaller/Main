@@ -21,10 +21,9 @@
             "hash": "62868ba9d1fd0e9b60ad7f69d05e8e85b49b5700ec29cf6e9adb9a5c83aebdb7"
         }
     },
-    "env_add_path": [
-        ".",
-        ".nodejs"
-    ],
+    "env_add_path": ".",
+    "post_install": "Add-Path \"$env:LOCALAPPDATA\\Author Software\\nvm\\.nodejs\" $global",
+    "pre_uninstall": "Remove-Path \"$env:LOCALAPPDATA\\Author Software\\nvm\\.nodejs\" $global",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
