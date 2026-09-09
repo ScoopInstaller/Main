@@ -1,53 +1,39 @@
 {
-    "version": "1.2.2",
-    "description": "A node.js version management utility for Windows.",
-    "homepage": "https://github.com/coreybutler/nvm-windows",
+    "version": "2.0.0",
+    "description": "NVM for Windows has been fully rewritten for modern workflows.",
+    "homepage": "https://github.com/nvm-windows/nvm",
     "license": "MIT",
-    "notes": "You'll need to restart powershell/cmd to have it reload Environment Variables so nvm will work correctly",
-    "url": "https://github.com/coreybutler/nvm-windows/releases/download/1.2.2/nvm-noinstall.zip",
-    "hash": "md5:d654c26a04e35a318d5939f8ceb09934",
+    "notes": [
+        "The 'nvm config' command now works by Windows registries,",
+        "and no environmental variables are available so far.",
+        "You may be interested in changing 'local_dir', 'node_mirror','npm_mirror','proxy', and 'root'",
+        "do check https://docs.nvm-windows.com/cfg/registry/ for more details.",
+        "For now the NodeJS installation folder cannot be used as a scoop persist dir."
+    ],
+    "innosetup": true,
     "architecture": {
         "64bit": {
-            "pre_install": [
-                "if(!(test-path \"$dir\\settings.txt\")) {",
-                "    write-output \"root: $persist_dir\\nodejs`r`narch: 64`r`nproxy: none\" | Out-File -encoding \"ASCII\" \"$dir\\settings.txt\"",
-                "}"
-            ]
+            "url": "https://github.com/nvm-windows/nvm/releases/download/v2.0.0/nvm-2.0.0-amd64-setup.exe",
+            "hash": "afaee67d3d7bc8ccad0b1b06f63b0f2d6b008bc7e55d5205043f095b4906ac11"
         },
-        "32bit": {
-            "pre_install": [
-                "if(!(test-path \"$dir\\settings.txt\")) {",
-                "    write-output \"root: $persist_dir\\nodejs`r`narch: 32`r`nproxy: none\" | Out-File -encoding \"ASCII\" \"$dir\\settings.txt\"",
-                "}"
-            ]
+        "arm64": {
+            "url": "https://github.com/nvm-windows/nvm/releases/download/v2.0.0/nvm-2.0.0-arm64-setup.exe",
+            "hash": "62868ba9d1fd0e9b60ad7f69d05e8e85b49b5700ec29cf6e9adb9a5c83aebdb7"
         }
     },
     "env_add_path": [
         ".",
-        "nodejs\\nodejs"
-    ],
-    "env_set": {
-        "NVM_HOME": "$dir",
-        "NVM_SYMLINK": "$persist_dir\\nodejs\\nodejs"
-    },
-    "persist": [
-        "nodejs",
-        [
-            "elevate.cmd",
-            "nodejs\\elevate.cmd"
-        ],
-        [
-            "elevate.vbs",
-            "nodejs\\elevate.vbs"
-        ],
-        "settings.txt"
+        ".nodejs"
     ],
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/coreybutler/nvm-windows/releases/download/$version/nvm-noinstall.zip",
-        "hash": {
-            "url": "$url.checksum.txt",
-            "regex": "$md5"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nvm-windows/nvm/releases/download/v$version/nvm-$version-amd64-setup.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/nvm-windows/nvm/releases/download/v$version/nvm-$version-arm64-setup.exe"
+            }
         }
     }
 }
