@@ -1,0 +1,37 @@
+{
+    "version": "1.2.7",
+    "description": "A command line interface to the Atlassian Teamwork Graph and Cloud services.",
+    "homepage": "https://developer.atlassian.com/platform/teamwork-graph/twg-cli/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.atlassian.com/legal/atlassian-customer-agreement"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://teamwork-graph.atlassian.com/cli/twg-windows-x64-v1.2.7.exe#/twg.exe",
+            "hash": "0999502f0ec85485f1c7b87ee464ba167c9af8dd0f36ee76fa92b781a9a0715d"
+        },
+        "arm64": {
+            "url": "https://teamwork-graph.atlassian.com/cli/twg-windows-arm64-v1.2.7.exe#/twg.exe",
+            "hash": "b93be614676bcf8321904a500db60b077bb820a18fa25eda2fa1249bddb088af"
+        }
+    },
+    "bin": "twg.exe",
+    "checkver": {
+        "url": "https://teamwork-graph.atlassian.com/cli/manifest.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://teamwork-graph.atlassian.com/cli/twg-windows-x64-v$version.exe#/twg.exe"
+            },
+            "arm64": {
+                "url": "https://teamwork-graph.atlassian.com/cli/twg-windows-arm64-v$version.exe#/twg.exe"
+            }
+        },
+        "hash": {
+            "url": "https://teamwork-graph.atlassian.com/cli/SHA256SUMS-v$version"
+        }
+    }
+}
