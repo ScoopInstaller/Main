@@ -1,36 +1,26 @@
 {
-    "version": "8.0.47",
+    "version": "26.7.0",
     "description": "Integrated tools environment for database design, modeling, development, administration, and migration.",
     "homepage": "https://dev.mysql.com/downloads/workbench/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-8.0.47-winx64.msi",
-            "extract_dir": "PFiles64\\MySQL\\MySQL Workbench 8.0 CE",
-            "hash": "md5:1078f06dcac442fbef82bc5dbd6c2046"
+            "url": "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-26.7.0-winx64.zip",
+            "hash": "a2abe0925d0cc0d31d9818e60342902d699cd965ba2b55515607bccb67787684"
         }
     },
-    "bin": [
-        "MySQLWorkbench.exe",
-        "mysql.exe",
-        "mysqldump.exe"
-    ],
     "shortcuts": [
         [
-            "MySQLWorkbench.exe",
-            "MySQLWorkbench"
+            "MySQL Workbench.exe",
+            "MySQL Workbench"
         ]
     ],
     "checkver": "MySQL Workbench ([\\d.]+)",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.mysql.com/Downloads/MySQLGUITools/mysql-workbench-community-$version-winx64.msi",
-                "extract_dir": "PFiles64\\MySQL\\MySQL Workbench $majorVersion.$minorVersion CE"
+                "url": "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-$version-winx64.zip"
             }
-        },
-        "hash": {
-            "url": "$url.md5"
         }
     }
 }
