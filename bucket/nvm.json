@@ -22,8 +22,8 @@
         }
     },
     "env_add_path": ".",
-    "post_install": "Add-Path -Path \"$env:LOCALAPPDATA\\Author Software\\nvm\\.nodejs\"",
-    "pre_uninstall": "Remove-Path -Path \"$env:LOCALAPPDATA\\Author Software\\nvm\\.nodejs\"",
+    "post_install": "Add-Path -Path \"$env:LOCALAPPDATA\\Author Software\\nvm\\.nodejs\" -Global:$global",
+    "pre_uninstall": "Remove-Path -Path \"$env:LOCALAPPDATA\\Author Software\\nvm\\.nodejs\" -Global:$global",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
