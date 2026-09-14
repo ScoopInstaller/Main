@@ -1,0 +1,30 @@
+{
+    "version": "6",
+    "description": "A drop-in replacement for CUDA on non-NVIDIA GPUs.",
+    "homepage": "https://vosen.github.io/ZLUDA/",
+    "license": "Apache-2.0|MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vosen/ZLUDA/releases/download/v6/zluda-windows-3fe1206.zip",
+            "hash": "fda8891c6fdfaba438f2eb0f9d749ffa2c1fddbdf225be2301f0d7a25e37208a"
+        }
+    },
+    "extract_dir": "zluda",
+    "bin": [
+        "zluda.exe",
+        "zluda_precompile.exe",
+        "ptxas.exe"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/vosen/ZLUDA/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /windows/i)].browser_download_url",
+        "regex": "download/v(\\d+(?:\\.\\d+)*)/zluda-windows-(?<sha>[a-f0-9]+)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vosen/ZLUDA/releases/download/v$version/zluda-windows-$matchSha.zip"
+            }
+        }
+    }
+}
