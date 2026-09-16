@@ -24,7 +24,7 @@
     "innosetup": true,
     "post_install": [
         "Add-Path -Path \"$persist_dir\\.nodejs\" -Global:$global",
-        "nvm config set root=\"$persist_dir\\nodejs\" *> $null"
+        "nvm config set root=\"$persist_dir\\nodejs\""
     ],
     "env_add_path": ".",
     "pre_uninstall": [
@@ -32,7 +32,7 @@
         "    # Warn about required admin privileges during purge without aborting uninstallation.",
         "    warn 'Purge may require administrative privileges.'",
         "}",
-        "Remove-Path -Path \"$persist_dir\\nodejs\" -Global:$global"
+        "Remove-Path -Path \"$persist_dir\\.nodejs\" -Global:$global"
     ],
     "persist": "nodejs",
     "checkver": "github",
