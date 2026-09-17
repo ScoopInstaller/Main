@@ -1,7 +1,7 @@
 {
     "version": "1.83.0",
-    "description": "A collection of JavaScript tools written in Rust.",
-    "homepage": "https://github.com/oxc-project/oxc",
+    "description": "A high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack.",
+    "homepage": "https://oxc.rs/docs/guide/usage/linter",
     "license": "MIT",
     "architecture": {
         "64bit": {
@@ -17,7 +17,7 @@
             "hash": "627dcb57b930a47f404023429f0028933a027a29d7911836e9cf44a4dcff50f3"
         }
     },
-    "pre_install": "Get-Item \"$dir\\oxlint-*.exe\" | Rename-Item -NewName \"$dir\\oxlint.exe\"",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'oxlint-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'oxlint.exe'",
     "bin": "oxlint.exe",
     "checkver": {
         "github": "https://github.com/oxc-project/oxc",
