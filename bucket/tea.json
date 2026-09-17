@@ -13,7 +13,7 @@
             "hash": "61b22607c6c03649abfddad7b0ba65b370b9f6c5480f2ba0c5cfbaa5ed213a95"
         }
     },
-    "pre_install": "Get-Item \"$dir\\tea-*.exe\" | Rename-Item  -NewName \"$dir\\tea.exe\"",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'tea-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'tea.exe'",
     "bin": "tea.exe",
     "checkver": {
         "url": "https://gitea.com/gitea/tea/releases/latest",
