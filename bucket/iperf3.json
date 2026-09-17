@@ -6,27 +6,19 @@
     "notes": "The last 32bit version was 3.5 which is available in the Versions bucket",
     "architecture": {
         "64bit": {
-            "url": "https://files.budman.pw/iperf3.21_64.zip",
-            "hash": "df7698cc228cda1a0b89023eb2854ef16e9cb877daf06550fe36031fdb9c354a",
-            "extract_dir": "iperf3.21"
+            "url": "https://github.com/ar51an/iperf3-win-builds/releases/download/3.21/iperf-3.21-win64.zip",
+            "hash": "9b73b7e0e0326347b5f4ac4f6a1fc34fe60a5966e5fd172c7bfcd0e1cc93e709"
         }
     },
     "bin": "iperf3.exe",
     "checkver": {
-        "url": "https://files.budman.pw/",
-        "regex": "iperf([\\d.]+)",
-        "reverse": true
+        "github": "https://github.com/ar51an/iperf3-win-builds"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://files.budman.pw/iperf$version_64.zip",
-                "extract_dir": "iperf$version"
+                "url": "https://github.com/ar51an/iperf3-win-builds/releases/download/$version/iperf-$version-win64.zip"
             }
-        },
-        "hash": {
-            "url": "https://files.budman.pw/?info=$basename",
-            "regex": "sha256\":\"$sha256"
         }
     }
 }
