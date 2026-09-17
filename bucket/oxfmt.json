@@ -1,7 +1,7 @@
 {
-    "version": "1.83.0",
+    "version": "0.68.0",
     "description": "A high-performance formatter for the JavaScript ecosystem.",
-    "homepage": "https://github.com/oxc-project/oxc",
+    "homepage": "https://oxc.rs/docs/guide/usage/formatter",
     "license": "MIT",
     "architecture": {
         "64bit": {
@@ -17,22 +17,23 @@
             "hash": "18990b52b7ffd13b6a4db1b336216656a183eee81d49d68af9af1224ea0e066f"
         }
     },
-    "pre_install": "Get-Item \"$dir\\oxfmt-*.exe\" | Rename-Item -NewName \"$dir\\oxfmt.exe\"",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'oxfmt-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'oxfmt.exe'",
     "bin": "oxfmt.exe",
     "checkver": {
-        "github": "https://github.com/oxc-project/oxc",
-        "regex": "apps_v([\\d.]+)"
+        "github": "https://api.github.com/repos/oxc-project/oxc/releases",
+        "jsonpath": "$[?(@.prerelease == false)].name",
+        "regex": "\"oxlint v(?<oxlint>[\\d.]+) & oxfmt v(?<version>[\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxfmt-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$matchOxlint/oxfmt-x86_64-pc-windows-msvc.zip"
             },
             "32bit": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxfmt-i686-pc-windows-msvc.zip"
+                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$matchOxlint/oxfmt-i686-pc-windows-msvc.zip"
             },
             "arm64": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxfmt-aarch64-pc-windows-msvc.zip"
+                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$matchOxlint/oxfmt-aarch64-pc-windows-msvc.zip"
             }
         }
     }
