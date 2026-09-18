@@ -1,0 +1,36 @@
+{
+    "version": "1.0.16261425",
+    "description": "Command-line interface for efficient Android development, providing access to official tools, skills, and knowledge for agent-first workflows and automation.",
+    "homepage": "https://developer.android.com/tools/agents/android-cli",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://developer.android.com/studio/terms"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.google.com/android/cli/1.0.16261425/windows_x86_64/android-cli.exe",
+            "hash": "203f647c50a3dfed38ccc8337610fc08618161471c9472a16de0abfa8248565e"
+        }
+    },
+    "bin": [
+        "android-cli.exe",
+        [
+            "android-cli.exe",
+            "android"
+        ]
+    ],
+    "checkver": {
+        "url": "https://dl.google.com/android/cli/latest/windows_x86_64/METADATA",
+        "regex": "version=(\\d+(?:\\.\\d+)+)\\s"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.google.com/android/cli/$version/windows_x86_64/android-cli.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
