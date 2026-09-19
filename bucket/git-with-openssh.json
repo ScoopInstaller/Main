@@ -34,13 +34,15 @@
         "    $content -replace '{{git_dir}}', $git_path | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
         "}"
     ],
-    "env_add_path": "cmd",
     "env_set": {
         "GIT_INSTALL_ROOT": "$dir"
     },
     "bin": [
         "bin\\sh.exe",
-        "bin\\git.exe",
+        "cmd\\git.exe",
+        "cmd\\gitk.exe",
+        "cmd\\git-gui.exe",
+        "cmd\\scalar.exe",
         "git-bash.exe",
         "usr\\bin\\gpg.exe",
         "usr\\bin\\gpg-agent.exe",
