@@ -12,7 +12,9 @@
     "bin": "bin\\vector.exe",
     "persist": "config",
     "checkver": {
-        "github": "https://github.com/timberio/vector"
+        "github": "https://api.github.com/repos/timberio/vector/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"v([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
