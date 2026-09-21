@@ -1,38 +1,39 @@
 {
-    "version": "1.83.0",
+    "version": "1.85.0",
     "description": "A high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack.",
     "homepage": "https://oxc.rs/docs/guide/usage/linter",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/oxc-project/oxc/releases/download/apps_v1.83.0/oxlint-x86_64-pc-windows-msvc.zip",
-            "hash": "42deff7e157277f812365886eba1a7f37e19998341f7713de9a0451e9534e5f5"
+            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.85.0/oxlint-x86_64-pc-windows-msvc.zip",
+            "hash": "63a8f000847c687e974c750e4b12a49623e2b0827d6132088461238b826e83c5"
         },
         "32bit": {
-            "url": "https://github.com/oxc-project/oxc/releases/download/apps_v1.83.0/oxlint-i686-pc-windows-msvc.zip",
-            "hash": "18af2e40211b5142829ee1c3d607648f6dd23d0e0fdcd59a8ee55896e260edc3"
+            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.85.0/oxlint-i686-pc-windows-msvc.zip",
+            "hash": "8678b4e7ed3192be30619513038d9420c40bc7cb0fdb2410972194323e6a0616"
         },
         "arm64": {
-            "url": "https://github.com/oxc-project/oxc/releases/download/apps_v1.83.0/oxlint-aarch64-pc-windows-msvc.zip",
-            "hash": "627dcb57b930a47f404023429f0028933a027a29d7911836e9cf44a4dcff50f3"
+            "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v1.85.0/oxlint-aarch64-pc-windows-msvc.zip",
+            "hash": "6e7338840d73d0f8fe1ab73e8d68b5ef73f3259863ac1666eec2e9f321dc3efd"
         }
     },
     "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'oxlint-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'oxlint.exe'",
     "bin": "oxlint.exe",
     "checkver": {
-        "github": "https://github.com/oxc-project/oxc",
-        "regex": "apps_v([\\d.]+)"
+        "github": "https://api.github.com/repos/oxc-project/oxc/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"oxlint_v(\\d+(?:\\.\\d+)+)\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxlint-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-x86_64-pc-windows-msvc.zip"
             },
             "32bit": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxlint-i686-pc-windows-msvc.zip"
+                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-i686-pc-windows-msvc.zip"
             },
             "arm64": {
-                "url": "https://github.com/oxc-project/oxc/releases/download/apps_v$version/oxlint-aarch64-pc-windows-msvc.zip"
+                "url": "https://github.com/oxc-project/oxc/releases/download/oxlint_v$version/oxlint-aarch64-pc-windows-msvc.zip"
             }
         }
     }
