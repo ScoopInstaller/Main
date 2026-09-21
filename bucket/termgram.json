@@ -1,0 +1,28 @@
+{
+    "version": "0.1.20",
+    "description": "A lightweight, keyboard-first Telegram client for the terminal",
+    "homepage": "https://github.com/iebb/termgram",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/iebb/termgram/releases/download/v0.1.20/termgram-0.1.20-windows.zip",
+            "hash": "7951980922ac401d517e943966c7db234330ba3208d7124fb70b8d6e38656224"
+        },
+        "arm64": {
+            "url": "https://github.com/iebb/termgram/releases/download/v0.1.20/termgram-0.1.20-windows-aarch64.zip",
+            "hash": "f81f52bc0c443263bdb51fa886b0b5bce09f5da6d9ba088b41d155f2f8b251bb"
+        }
+    },
+    "bin": "tg.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/iebb/termgram/releases/download/v$version/termgram-$version-windows.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/iebb/termgram/releases/download/v$version/termgram-$version-windows-aarch64.zip"
+            }
+        }
+    }
+}
