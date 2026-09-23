@@ -1,13 +1,13 @@
 {
-    "version": "5.8.3",
+    "version": "5.8.4",
     "description": "XZ Utils is free general-purpose data compression software with a high compression ratio.",
     "homepage": "https://tukaani.org/xz/",
     "license": {
         "identifier": "LGPL-2.1-or-later,GPL-2.0-or-later,GPL-3.0-or-later,Public Domain",
         "url": "https://git.tukaani.org/?p=xz.git;a=blob;f=COPYING"
     },
-    "url": "https://tukaani.org/xz/xz-5.8.3-windows.zip",
-    "hash": "8d0048ee51177b11ef1613959c2a268c951f4e7f6fb3706e681e00e34bb6d5e3",
+    "url": "https://github.com/tukaani-project/xz/releases/download/v5.8.4/xz-5.8.4-windows.7z",
+    "hash": "e52e4ba41ff0bc7459a52bbaa303cf6feb9429599189437cec677d9e7cacaf7b",
     "architecture": {
         "64bit": {
             "bin": [
@@ -19,10 +19,10 @@
         },
         "32bit": {
             "bin": [
-                "bin_i686\\lzmadec.exe",
-                "bin_i686\\lzmainfo.exe",
-                "bin_i686\\xz.exe",
-                "bin_i686\\xzdec.exe"
+                "bin_i686-sse2\\lzmadec.exe",
+                "bin_i686-sse2\\lzmainfo.exe",
+                "bin_i686-sse2\\xz.exe",
+                "bin_i686-sse2\\xzdec.exe"
             ]
         }
     },
@@ -31,6 +31,6 @@
         "regex": "\\n([\\d.]+) \\("
     },
     "autoupdate": {
-        "url": "https://tukaani.org/xz/xz-$version-windows.zip"
+        "url": "https://github.com/tukaani-project/xz/releases/download/v$version/xz-$version-windows.7z"
     }
 }
