@@ -19,8 +19,9 @@
     },
     "bin": "swc.exe",
     "checkver": {
-        "github": "https://github.com/swc-project/swc",
-        "regex": "v?(?![^\"]*-nightly-)([\\d\\.]+)"
+        "github": "https://api.github.com/repos/swc-project/swc/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"v?(\\d+(?:\\.\\d+)+)\""
     },
     "autoupdate": {
         "architecture": {
