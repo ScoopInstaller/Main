@@ -34,7 +34,7 @@
         "$process.WaitForExit()",
         "Write-Output \"`nCreating shim for 'busybox'.\"",
         "shim \"$dir\\busybox.exe\" $global 'busybox'",
-        "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
+        "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^(?!.*\\[)\\S' } | ForEach-Object {",
         "    Write-Output \"Creating shim for '$($_.Trim())'.\"",
         "    shim \"$dir\\busybox.exe\" $global $_.Trim() $_.Trim()",
         "}"
@@ -50,7 +50,7 @@
             "$process.WaitForExit()",
             "$global = installed $app $true",
             "rm_shim 'busybox' $(shimdir $global) $app",
-            "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^\\S' } | ForEach-Object {",
+            "$stdout_content -split \"`r?`n\" | Where-Object { $_ -match '^(?!.*\\[)\\S' } | ForEach-Object {",
             "    rm_shim $_.Trim() $(shimdir $global) $app",
             "}"
         ]
