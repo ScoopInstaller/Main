@@ -19,6 +19,18 @@
             "android"
         ]
     ],
+    "env_add_path": [
+        "Sdk\\cmdline-tools\\latest\\bin",
+        "Sdk\\platform-tools"
+    ],
+    "env_set": {
+        "ANDROID_HOME": "$dir\\Sdk",
+        "ANDROID_USER_HOME": "$dir\\userhome"
+    },
+    "persist": [
+        "userhome",
+        "Sdk"
+    ],
     "checkver": {
         "url": "https://dl.google.com/android/cli/latest/windows_x86_64/METADATA",
         "regex": "version=(\\d+(?:\\.\\d+)+)\\s"
