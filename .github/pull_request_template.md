@@ -6,6 +6,10 @@
   It is also mandatory to open a relevant issue (either Package Request or Bug Report) for
   discussion with the maintainers, before creating any new PR.
   Read the contributing guide first to save both your and our time.
+
+  Automatic code review is supported but disabled by default in this repository.
+  You may trigger AI code review by requesting `Copilot` from the Reviewers menu,
+  or by commenting `@coderabbitai review`.
 -->
 
 <!--

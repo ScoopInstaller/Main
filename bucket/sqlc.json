@@ -1,0 +1,30 @@
+{
+    "version": "1.31.1",
+    "description": "A CLI tool to generate type-safe code from SQL.",
+    "homepage": "https://sqlc.dev",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_windows_amd64.tar.gz",
+            "hash": "40d138ec18b1cc80d2be7305917fd4deceda4e0c32d78ba5d8faa4bfa3bc0fc0"
+        },
+        "arm64": {
+            "url": "https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_windows_arm64.tar.gz",
+            "hash": "aa9b926313f922a2c7c668076dd5a2754724d61f528c1d5ef033bed11b27eccd"
+        }
+    },
+    "bin": "sqlc.exe",
+    "checkver": {
+        "github": "https://github.com/sqlc-dev/sqlc"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sqlc-dev/sqlc/releases/download/v$version/sqlc_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/sqlc-dev/sqlc/releases/download/v$version/sqlc_$version_windows_arm64.tar.gz"
+            }
+        }
+    }
+}

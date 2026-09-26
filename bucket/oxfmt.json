@@ -1,0 +1,40 @@
+{
+    "version": "0.70.0",
+    "description": "A high-performance formatter for the JavaScript ecosystem.",
+    "homepage": "https://oxc.rs/docs/guide/usage/formatter",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/oxc-project/oxc/releases/download/oxfmt_v0.70.0/oxfmt-x86_64-pc-windows-msvc.zip",
+            "hash": "f347c3c4f43ae54dda6ef8d383168430a574d85a355da7b3b06312bda3b11b37"
+        },
+        "32bit": {
+            "url": "https://github.com/oxc-project/oxc/releases/download/oxfmt_v0.70.0/oxfmt-i686-pc-windows-msvc.zip",
+            "hash": "99db9b789917dca76af69d9b3c087bc54fca8100726f8392391fce2b3f059bfe"
+        },
+        "arm64": {
+            "url": "https://github.com/oxc-project/oxc/releases/download/oxfmt_v0.70.0/oxfmt-aarch64-pc-windows-msvc.zip",
+            "hash": "b37fc6b1f42715b0cf6a176d2fdf6bbcb7c42976c8316dd0ddb9dd025413af1e"
+        }
+    },
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'oxfmt-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'oxfmt.exe'",
+    "bin": "oxfmt.exe",
+    "checkver": {
+        "github": "https://api.github.com/repos/oxc-project/oxc/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"oxfmt_v(\\d+(?:\\.\\d+)+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/oxc-project/oxc/releases/download/oxfmt_v$version/oxfmt-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/oxc-project/oxc/releases/download/oxfmt_v$version/oxfmt-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/oxc-project/oxc/releases/download/oxfmt_v$version/oxfmt-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

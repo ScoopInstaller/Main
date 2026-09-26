@@ -1,35 +1,62 @@
 {
-    "version": "1.2.9",
+    "version": "1.4.2",
     "description": "Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.",
     "homepage": "https://bun.sh/",
     "license": "MIT",
+    "notes": "For the last release built on the original Zig codebase, use `versions/bun1.3`.",
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/oven-sh/bun/releases/download/bun-v1.2.9/bun-windows-x64.zip",
-                "https://github.com/oven-sh/bun/releases/download/bun-v1.2.9/bun-windows-x64-baseline.zip"
+                "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-windows-x64.zip",
+                "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-windows-x64-baseline.zip"
             ],
             "hash": [
-                "b1a1934df4d4c4a92f43e112d0ee35691c620f6562d1010fa92616080ec6ff01",
-                "dcf5ffda62080b79ecfc8c640e5567dc6d00e0120dfc2746ae9de78a99dc367b"
+                "ce4c17497b2f29712a99d3d53f028de28cd42e3bacb8589599e7f000e49b6405",
+                "78c221c2376f79731ccf4e4af0b3bb46d81fefa3296c5abee09ad8a1b21e68c6"
             ]
+        },
+        "arm64": {
+            "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-windows-aarch64.zip",
+            "hash": "a7a16b876a305fd1029c66dbd27007b4f6112ae896532f675878731a21e50cfd"
         }
     },
     "pre_install": [
-        "$avx2 = Start-Job -ScriptBlock {",
-        "    Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
-        "    return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
-        "} | Receive-Job -Wait -AutoRemoveJob",
-        "$target = 'bun-windows-x64'",
-        "if (-not $avx2) {",
-        "    $target += '-baseline'",
+        "# Migrate legacy Bun data if it exists and the new persist directory doesn't exist",
+        "$legacy_bun = Join-Path -Path $env:USERPROFILE -ChildPath '.bun'",
+        "if ((Test-Path $legacy_bun) -and -not (Test-Path $persist_dir)) {",
+        "    Write-Host \"Migrating legacy Bun data from '$legacy_bun' to '$persist_dir'.\" -ForegroundColor Yellow",
+        "    Move-Item $legacy_bun $persist_dir -Force",
+        "} elseif ((Test-Path $legacy_bun) -and (Test-Path $persist_dir)) {",
+        "    Write-Host \"Found both '$legacy_bun' and '$persist_dir'. Skipping auto-migration; please migrate manually if needed.\" -ForegroundColor Yellow",
+        "}",
+        "",
+        "# Extract the appropriate binary based on architecture and CPU features",
+        "if ($architecture -eq 'arm64') {",
+        "    $target = 'bun-windows-aarch64'",
+        "} else {",
+        "    $avx2 = Start-Job -ScriptBlock {",
+        "        Add-Type -MemberDefinition '[DllImport(\"kernel32.dll\")] public static extern bool IsProcessorFeaturePresent(int ProcessorFeature);' -Name Kernel32 -Namespace Win32",
+        "        return [Win32.Kernel32]::IsProcessorFeaturePresent(40)",
+        "    } | Receive-Job -Wait -AutoRemoveJob",
+        "    $target = 'bun-windows-x64'",
+        "    if (-not $avx2) {",
+        "        $target += '-baseline'",
+        "    }",
         "}",
         "Move-Item \"$dir\\$target\\bun.exe\" \"$dir\\bun.exe\"",
         "Remove-Item \"$dir\\bun-windows-*\" -Recurse"
     ],
+    "installer": {
+        "script": "Add-Path -Path \"$persist_dir\\bin\" -Global:$global -Force"
+    },
+    "env_set": {
+        "BUN_INSTALL": "$persist_dir",
+        "BUN_INSTALL_BIN": "$persist_dir\\bin",
+        "BUN_INSTALL_GLOBAL_DIR": "$persist_dir\\install\\global"
+    },
     "bin": [
         "bun.exe",
         [
@@ -38,6 +65,16 @@
             "x"
         ]
     ],
+    "persist": [
+        "bin",
+        "install"
+    ],
+    "uninstaller": {
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global"
+        ]
+    },
     "checkver": {
         "github": "https://github.com/oven-sh/bun",
         "re": "bun-v([\\d.]+)"
@@ -49,6 +86,9 @@
                     "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64.zip",
                     "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-x64-baseline.zip"
                 ]
+            },
+            "arm64": {
+                "url": "https://github.com/oven-sh/bun/releases/download/bun-v$version/bun-windows-aarch64.zip"
             }
         },
         "hash": {

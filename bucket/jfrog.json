@@ -1,15 +1,25 @@
 {
-    "version": "2.74.1",
+    "version": "2.124.0",
     "description": "Command line interface for Artifactory and Bintray",
     "homepage": "https://jfrog.com/getcli/",
     "license": "Apache-2.0",
+    "notes": [
+        "JFrog recently renamed the JFrog CLI executable from `jfrog` to `jf`.",
+        "See: https://jfrog.com/getcli/"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://releases.jfrog.io/artifactory/jfrog-cli/v2/2.74.1/jfrog-cli-windows-amd64/jfrog.exe",
-            "hash": "ff45d805adb547c2a985f3e4f349e4d89bf7fe5d03f8aa9f0ff75f7e7121ca3c"
+            "url": "https://releases.jfrog.io/artifactory/jfrog-cli/v2/2.124.0/jfrog-cli-windows-amd64/jfrog.exe",
+            "hash": "42d4147979ee061003e987a92ce70743f92a33c03b72b33928fb04f8156f0980"
         }
     },
-    "bin": "jfrog.exe",
+    "bin": [
+        "jfrog.exe",
+        [
+            "jfrog.exe",
+            "jf"
+        ]
+    ],
     "checkver": {
         "url": "https://github.com/jfrog/jfrog-cli/releases",
         "regex": "tag/v(2\\.[\\d.]+)"

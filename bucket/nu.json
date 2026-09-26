@@ -1,18 +1,40 @@
 {
-    "version": "0.103.0",
+    "version": "0.115.1",
     "description": "A modern shell written in Rust",
     "homepage": "https://www.nushell.sh",
     "license": "MIT",
+    "notes": [
+        "Nushell's core plugins ship next to nu.exe but aren't registered, so 'plugin list' is empty by default.",
+        "To register them, run the bundled helper in Nushell after installing or updating, then restart your shell:",
+        "  nu ($nu.current-exe | path dirname | path join 'register-core-plugins.nu')"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/nushell/nushell/releases/download/0.103.0/nu-0.103.0-x86_64-pc-windows-msvc.zip",
-            "hash": "6036d0279566b7160ddbfca1ca013d080399858d91cbc505fe88651c669f2eea"
+            "url": "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-x86_64-pc-windows-msvc.zip",
+            "hash": "b83009cbc88021f4dc293c49320118886b78363f9a4bb14933d33c8803241f46"
         },
         "arm64": {
-            "url": "https://github.com/nushell/nushell/releases/download/0.103.0/nu-0.103.0-aarch64-pc-windows-msvc.zip",
-            "hash": "79ee46ad702e4f422b180d9930f9dbda506d285ad673104445c80c68a6705cd4"
+            "url": "https://github.com/nushell/nushell/releases/download/0.115.1/nu-0.115.1-aarch64-pc-windows-msvc.zip",
+            "hash": "8f185bc965828208fc9824de32a2e65aa39fa59ebf0a3927dbd0bad1daeb24a1"
         }
     },
+    "post_install": [
+        "$core = 'polars', 'formats', 'gstat', 'query', 'inc'",
+        "$found = @(Get-ChildItem -LiteralPath $dir -Filter 'nu_plugin_*.exe').Count",
+        "$present = @($core | Where-Object { Test-Path -LiteralPath \"$dir\\nu_plugin_$_.exe\" })",
+        "$missing = @($core | Where-Object { $_ -notin $present })",
+        "if (($found -ne 8) -or $missing) {",
+        "    $detail = if ($missing) { \"; missing core: $($missing -join ', ')\" } else { '' }",
+        "    Write-Host \"nu: bundled plugin set changed - found $found nu_plugin_*.exe, expected 8$detail. The manifest's core-plugin allowlist may need updating.\" -ForegroundColor Yellow",
+        "}",
+        "$helper = @(",
+        "    '# Register Nushell core plugins, then restart your shell.'",
+        "    \"for p in [$($present -join ' ')] {\"",
+        "    '    plugin add ($nu.current-exe | path dirname | path join (''nu_plugin_'' + $p + ''.exe''))'",
+        "    '}'",
+        ")",
+        "Set-Content -LiteralPath \"$dir\\register-core-plugins.nu\" -Value $helper -Encoding ascii"
+    ],
     "bin": "nu.exe",
     "shortcuts": [
         [

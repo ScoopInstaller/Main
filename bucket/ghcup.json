@@ -1,35 +1,37 @@
 {
-    "version": "0.1.50.1",
+    "version": "0.2.6.2",
     "description": "GHCup is the main installer for the general purpose language Haskell",
     "homepage": "https://www.haskell.org/ghcup",
     "license": "LGPL-v3",
     "notes": [
         "For `ghc`, use `ghcup install ghc`.",
-        "For `cabal`, use `ghcup install cabal latest && ghcup set cabal`.",
-        "* Use `cabal user-config update --augment \"installdir: <<BIN_PATH>>\"` to reset `cabal` binary destination path.",
-        "For `stack`, use `ghcup install stack latest && ghcup set stack`.",
+        "For `cabal`, use `ghcup install cabal latest && ghcup set cabal latest`.",
+        "* Run the following commands to update cabal config:",
+        "cabal user-config update --augment \"extra-include-dirs: `\"$env:GHCUP_MSYS2\\mingw64\\include`\"\"",
+        "cabal user-config update --augment \"extra-lib-dirs: `\"$env:GHCUP_MSYS2\\mingw64\\lib`\"\"",
+        "cabal user-config update --augment \"extra-prog-path: `\"$env:GHCUP_INSTALL_BASE_PREFIX\\ghcup\\bin`\", `\"$env:CABAL_DIR\\bin`\", `\"$env:GHCUP_MSYS2\\mingw64\\bin`\", `\"$env:GHCUP_MSYS2\\usr\\bin`\"\"",
+        "For `stack`, use `ghcup install stack latest && ghcup set stack latest`.",
         "* Add \"local-bin-path: <<BIN_PATH>>\" to \"$(stack path --stack-root)\"to reset `stack` binary destination path.",
         "For `hls`, use `ghcup install hls latest`."
     ],
     "depends": "msys2",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/haskell/ghcup-hs/releases/download/v0.1.50.1/x86_64-mingw64-ghcup-0.1.50.1.exe#/ghcup.exe",
-            "hash": "6945ecd1740903269392969894d64dcccc1586d3d883cfed6ec2a586c016877f"
+            "url": "https://github.com/haskell/ghcup-hs/releases/download/v0.2.6.2/x86_64-mingw64-ghcup-0.2.6.2.exe#/ghcup.exe",
+            "hash": "94da902a2853b1de1df509d04da900a05258480759efdb4f654e66956b6f30db"
         }
     },
     "env_set": {
+        "CABAL_DIR": "$dir\\cabal",
         "GHCUP_INSTALL_BASE_PREFIX": "$dir",
         "GHCUP_MSYS2": "$scoopdir\\apps\\msys2\\current"
     },
     "env_add_path": "ghcup\\bin",
-    "bin": [
-        [
-            "ghcup.exe",
-            "ghcup"
-        ]
+    "bin": "ghcup.exe",
+    "persist": [
+        "cabal",
+        "ghcup"
     ],
-    "persist": "ghcup",
     "checkver": {
         "github": "https://github.com/haskell/ghcup-hs"
     },
@@ -40,7 +42,8 @@
             }
         },
         "hash": {
-            "url": "$baseurl/SHA256SUMS"
+            "url": "$baseurl/SHA256SUMS",
+            "regex": "$sha256\\s*(\\./)?$basename"
         }
     }
 }

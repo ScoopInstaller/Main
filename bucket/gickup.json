@@ -1,0 +1,40 @@
+{
+    "version": "0.10.47",
+    "description": "A tool that allows you to clone/mirror repositories from one host to another.",
+    "homepage": "https://gickup.dev",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cooperspencer/gickup/releases/download/v0.10.47/gickup_0.10.47_windows_amd64.zip",
+            "hash": "976162526f98cb7d3a1674f3e151df9aae15dcf6ec3f7eee5b2ddd1e03ab98c0"
+        },
+        "32bit": {
+            "url": "https://github.com/cooperspencer/gickup/releases/download/v0.10.47/gickup_0.10.47_windows_386.zip",
+            "hash": "1867b3d69c05708a4bc67c67fc27f6acb536ac55d61cef08adcad57dc99d62fd"
+        },
+        "arm64": {
+            "url": "https://github.com/cooperspencer/gickup/releases/download/v0.10.47/gickup_0.10.47_windows_arm64.zip",
+            "hash": "c3f9280e4a340567a56d592f00532a9914c92882d67236e35658a8352635d93d"
+        }
+    },
+    "bin": "gickup.exe",
+    "checkver": {
+        "github": "https://github.com/cooperspencer/gickup"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cooperspencer/gickup/releases/download/v$version/gickup_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/cooperspencer/gickup/releases/download/v$version/gickup_$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/cooperspencer/gickup/releases/download/v$version/gickup_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/gickup_$version_checksums.txt"
+        }
+    }
+}

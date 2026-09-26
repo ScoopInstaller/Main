@@ -1,0 +1,28 @@
+{
+    "version": "4.13.0",
+    "description": "Command-line interface for Cedar, a language for writing and enforcing fine-grained authorization policies in your applications.",
+    "homepage": "https://cedarpolicy.com",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cedar-policy/cedar/releases/download/cedar-policy-cli-v4.13.0/cedar-policy-cli-x86_64-pc-windows-msvc.zip",
+            "hash": "93eb36eff9469f09a25293ec07349a7554187b61353bd05c193c59e99572a138"
+        }
+    },
+    "bin": "cedar.exe",
+    "checkver": {
+        "github": "https://api.github.com/repos/cedar-policy/cedar/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "cedar-policy-cli-v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cedar-policy/cedar/releases/download/cedar-policy-cli-v$version/cedar-policy-cli-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "version": "1.4.0",
+    "description": "A high-performance HTTP benchmarking tool that includes a real-time web UI and terminal display.",
+    "homepage": "https://deepwiki.com/six-ddc/plow",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/six-ddc/plow/releases/download/v1.4.0/plow_1.4.0_windows_amd64.tar.gz",
+            "hash": "b617dc04c8aef6039fa249119c668a207145a8350b99b45a6257c7769ce19967"
+        },
+        "arm64": {
+            "url": "https://github.com/six-ddc/plow/releases/download/v1.4.0/plow_1.4.0_windows_arm64.tar.gz",
+            "hash": "09e58db86079f7cc9c94d2f9077c161421cd80ff1241bf01fd95f6edae0f5293"
+        }
+    },
+    "bin": "plow.exe",
+    "checkver": {
+        "github": "https://github.com/six-ddc/plow"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/six-ddc/plow/releases/download/v$version/plow_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/six-ddc/plow/releases/download/v$version/plow_$version_windows_arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/plow_$version_checksums.txt"
+        }
+    }
+}

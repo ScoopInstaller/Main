@@ -1,0 +1,24 @@
+{
+    "version": "0.1.22",
+    "description": "An LSP implementation for Starlark, the configuration language used by Bazel and Buck2.",
+    "homepage": "https://github.com/withered-magic/starpls",
+    "license": "Apache-2.0|MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/withered-magic/starpls/releases/download/v0.1.22/starpls-windows-amd64.exe#/starpls.exe",
+            "hash": "87626a4226ed2f3f0f9e573501731bbe225a53cf009df845ec547ee984a1857e"
+        }
+    },
+    "bin": "starpls.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/withered-magic/starpls/releases/download/v$version/starpls-windows-amd64.exe#/starpls.exe"
+            }
+        }
+    }
+}

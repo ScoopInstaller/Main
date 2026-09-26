@@ -1,0 +1,32 @@
+{
+    "version": "1.11.0",
+    "description": "A CLI tool to generate waveform data and render waveform images from audio files.",
+    "homepage": "https://codeberg.org/chrisn/audiowaveform",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://codeberg.org/chrisn/audiowaveform/releases/download/1.11.0/audiowaveform-1.11.0-win64.zip",
+            "hash": "4a86e8eecc33ad6a2a2fc06c7ae42e6e57b7bc41e747f039ef595c6f50484c4b"
+        },
+        "32bit": {
+            "url": "https://codeberg.org/chrisn/audiowaveform/releases/download/1.11.0/audiowaveform-1.11.0-win32.zip",
+            "hash": "697d0b51366cfbdc9e25acf1fc0309e4b15e5f259d60beed1b4fd182c484aeb5"
+        }
+    },
+    "bin": "audiowaveform.exe",
+    "checkver": {
+        "url": "https://codeberg.org/api/v1/repos/chrisn/audiowaveform/releases",
+        "jsonpath": "$..assets[?(@.browser_download_url =~ /audiowaveform-(?<version>[\\d.]+)-win64\\.zip/i)].browser_download_url",
+        "regex": "audiowaveform-(?<version>[\\d.]+)-win64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://codeberg.org/chrisn/audiowaveform/releases/download/$version/audiowaveform-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://codeberg.org/chrisn/audiowaveform/releases/download/$version/audiowaveform-$version-win32.zip"
+            }
+        }
+    }
+}

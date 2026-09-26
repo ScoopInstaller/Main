@@ -1,15 +1,23 @@
+name: Issues
+
 on:
   issues:
-    types: [ opened, labeled ]
-name: Issues
+    types: [opened, labeled]
+
+permissions:
+  # Auto hash fixing commits
+  contents: write
+  issues: write
+
 jobs:
   issueHandler:
-    name: IssueHandler
+    name: Issue Handler
+    if: github.event.action == 'opened' || (github.event.action == 'labeled' && contains(github.event.issue.labels.*.name, 'verify'))
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@main
-    - name: IssueHandler
-      uses: ScoopInstaller/GithubActions@main
-      if: github.event.action == 'opened' || (github.event.action == 'labeled' && contains(github.event.issue.labels.*.name, 'verify'))
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Run Issue Handler
+        uses: ScoopInstaller/GithubActions@5bceeda181721d9d10a18fdcc3ddca6f33467ae6 # v3.0.0
+        env:
+          SCOOP_BRANCH: develop

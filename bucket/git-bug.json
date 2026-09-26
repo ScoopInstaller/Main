@@ -1,16 +1,18 @@
 {
-    "version": "0.8.0",
+    "version": "0.11.0",
     "description": "Distributed, offline-first bug tracker embedded in git, with bridges",
     "homepage": "https://github.com/git-bug/git-bug",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-bug/git-bug/releases/download/v0.8.0/git-bug_windows_amd64.exe#/git-bug.exe",
-            "hash": "a6ab463c9cae012b819a1d50b2ba4dd14c6f4e6a917a3d7515a187c90d8f4207"
+            "url": "https://github.com/git-bug/git-bug/releases/download/v0.11.0/git-bug_0.11.0_windows_amd64.zip",
+            "hash": "6160ac777134d579ad5f8097dc3e4e70f1aab02fd8f4cb3b21bdf90c7e52843a",
+            "extract_dir": "git-bug_0.11.0_windows_amd64"
         },
-        "32bit": {
-            "url": "https://github.com/git-bug/git-bug/releases/download/v0.8.0/git-bug_windows_386.exe#/git-bug.exe",
-            "hash": "7ba12dbbfd915f71f8384715a53e70652e1e89d8c705fa472cc26ff02fd01b63"
+        "arm64": {
+            "url": "https://github.com/git-bug/git-bug/releases/download/v0.11.0/git-bug_0.11.0_windows_arm64.zip",
+            "hash": "bb481aa8a0d07ef79be62b5eaf9e8eec219d25856f383148e43f7aeac6b187bb",
+            "extract_dir": "git-bug_0.11.0_windows_arm64"
         }
     },
     "bin": "git-bug.exe",
@@ -18,10 +20,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/git-bug/git-bug/releases/download/v$version/git-bug_windows_amd64.exe#/git-bug.exe"
+                "url": "https://github.com/git-bug/git-bug/releases/download/v$version/git-bug_$version_windows_amd64.zip",
+                "extract_dir": "git-bug_$version_windows_amd64"
             },
-            "32bit": {
-                "url": "https://github.com/git-bug/git-bug/releases/download/v$version/git-bug_windows_386.exe#/git-bug.exe"
+            "arm64": {
+                "url": "https://github.com/git-bug/git-bug/releases/download/v$version/git-bug_$version_windows_arm64.zip",
+                "extract_dir": "git-bug_$version_windows_arm64"
             }
         }
     }

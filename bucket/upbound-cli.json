@@ -1,27 +1,39 @@
 {
-    "version": "0.34.2",
+    "version": "0.54.0",
     "description": "Official CLI for interacting with Upbound Cloud, Upbound Enterprise, and Universal Crossplane (UXP).",
-    "homepage": "https://cloud.upbound.io/docs/cli",
+    "homepage": "https://docs.upbound.io/manuals/cli/overview/",
     "license": "Apache-2.0",
     "architecture": {
+        "arm64": {
+            "url": "https://cli.upbound.io/stable/v0.54.0/bin/windows_arm64/up.exe",
+            "hash": "6694d98640854de8b9b4ec4fac9e772eb3c062d7b170af5574d60de6935d425f"
+        },
         "64bit": {
-            "url": "https://cli.upbound.io/stable/v0.34.2/bin/windows_amd64/up.exe",
-            "hash": "7ab04909444baf95049420fd3684637c5d4903d457fcbc196737faf2e520c5ef"
+            "url": "https://cli.upbound.io/stable/v0.54.0/bin/windows_amd64/up.exe",
+            "hash": "61b0d7740d60e4eafe563629f04731b189bb0edcb14ea949601d07dba6bc1369"
         }
     },
     "bin": "up.exe",
     "checkver": {
-        "url": "https://api.github.com/repositories/345125931/tags",
-        "regex": "tags/v([\\d.]+)\""
+        "url": "https://cli.upbound.io/stable/current/version",
+        "regex": "\\Av([\\d.]+)\\Z"
     },
     "autoupdate": {
         "architecture": {
+            "arm64": {
+                "url": "https://cli.upbound.io/stable/v$version/bin/windows_arm64/up.exe",
+                "hash": {
+                    "url": "https://cli.upbound.io/stable/v$version/checksums.txt",
+                    "regex": "$sha256  bin/windows_arm64/up.exe"
+                }
+            },
             "64bit": {
-                "url": "https://cli.upbound.io/stable/v$version/bin/windows_amd64/up.exe"
+                "url": "https://cli.upbound.io/stable/v$version/bin/windows_amd64/up.exe",
+                "hash": {
+                    "url": "https://cli.upbound.io/stable/v$version/checksums.txt",
+                    "regex": "$sha256  bin/windows_amd64/up.exe"
+                }
             }
-        },
-        "hash": {
-            "url": "$baseurl/up.sha256"
         }
     }
 }

@@ -1,22 +1,58 @@
 {
-    "version": "10.8.0",
+    "version": "12.7.0",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.8.0/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "d0d10d19ece1accd08d6213354e66a8d65127851f1e13499ae89d28a260f6dbc"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v12.7.0/pnpm-win32-x64.zip",
+            "hash": "40b9a24d55c7e839aa5fc8e814e995a1eb1778fc65f2f19cfa1c6f573a926944"
+        },
+        "arm64": {
+            "url": "https://github.com/pnpm/pnpm/releases/download/v12.7.0/pnpm-win32-arm64.zip",
+            "hash": "bc455aab0a915fe35c7ba43411047a0daf3a810c5ed6ab1865da63929f171e55"
         }
     },
-    "bin": "pnpm.exe",
+    "bin": [
+        "pnpm.exe",
+        [
+            "pnpm.exe",
+            "pn"
+        ],
+        [
+            "pnpm.exe",
+            "pnpx",
+            "dlx"
+        ],
+        [
+            "pnpm.exe",
+            "pnx",
+            "dlx"
+        ]
+    ],
+    "post_install": [
+        "pnpm config set storeDir \"$dir\\store\"",
+        "pnpm config set cacheDir \"$dir\\cache\"",
+        "pnpm config set stateDir \"$dir\\state\""
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "PNPM_HOME": "$dir"
+    },
+    "persist": [
+        "bin",
+        "global",
+        "store",
+        "cache",
+        "state"
+    ],
     "checkver": {
         "script": [
             "# Using checkver script to check through all release tags",
             "$auth = Get-GitHubToken",
             "$head = @{}",
             "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repositories/50565430/releases'",
+            "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
             "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
@@ -31,6 +67,13 @@
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-arm64.zip"
+            }
+        }
     }
 }

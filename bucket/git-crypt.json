@@ -10,7 +10,11 @@
         }
     },
     "bin": "git-crypt.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/AGWA/git-crypt/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /\\.exe/i)].browser_download_url",
+        "regex": "download/([\\d.]+)/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

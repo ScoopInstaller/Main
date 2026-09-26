@@ -1,0 +1,30 @@
+{
+    "version": "2.1.0",
+    "description": "A simple, pretty terminal tool that lets you browse and download files from GitHub, GitLab, Codeberg, Gitea, and Forgejo without leaving your CLI.",
+    "homepage": "https://ghgrab.readthedocs.io",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/abhixdd/ghgrab/releases/download/v2.1.0/ghgrab-win32.exe#/ghgrab.exe",
+            "hash": "6d88d6ab5c86895561d4c68526bf1261c63637bac915952c524bf4305a20da47"
+        }
+    },
+    "bin": "ghgrab.exe",
+    "checkver": {
+        "github": "https://github.com/abhixdd/ghgrab"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/abhixdd/ghgrab/releases/download/v$version/ghgrab-win32.exe#/ghgrab.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.json",
+            "jsonpath": "$.['$basename']"
+        }
+    }
+}

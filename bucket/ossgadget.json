@@ -1,39 +1,30 @@
 {
-    "version": "0.1.422",
+    "version": "0.2.20",
     "description": "Collection of tools for analyzing open source packages.",
     "homepage": "https://github.com/microsoft/OSSGadget",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/microsoft/OSSGadget/releases/download/v0.1.422/OSSGadget_win_0.1.422.zip",
-            "hash": "7e2bbddbe60a4aff5b9f6ea918c0160c237763d48c1773459bec203a7643adf8",
-            "extract_dir": "OSSGadget_win_0.1.422"
+            "url": "https://github.com/microsoft/OSSGadget/releases/download/v0.2.20/oss-gadget-cli_win_0.2.20.zip",
+            "hash": "5a68df92098f8a334a5bfe34f6fd00c550f9f1eea984ecd41bd99677d9ca44a5",
+            "extract_dir": "oss-gadget-cli_win_0.2.20"
         }
     },
-    "bin": [
-        "oss-characteristic.exe",
-        "oss-defog.exe",
-        "oss-detect-backdoor.exe",
-        "oss-detect-cryptography.exe",
-        "oss-diff.exe",
-        "oss-download.exe",
-        "oss-find-domain-squats.exe",
-        "oss-find-source.exe",
-        "oss-find-squats.exe",
-        "oss-health.exe",
-        "oss-metadata.exe",
-        "oss-risk-calculator.exe"
-    ],
-    "checkver": "github",
+    "bin": "ossgadget.exe",
+    "checkver": {
+        "github": "https://api.github.com/repos/microsoft/OSSGadget/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /win/i)].browser_download_url",
+        "regex": "oss-gadget-cli_win_([\\d.]+)\\.zip"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/microsoft/OSSGadget/releases/download/v$version/OSSGadget_win_$version.zip",
-                "hash": {
-                    "url": "https://github.com/microsoft/OSSGadget/releases/download/v$version/HASHES.txt"
-                },
-                "extract_dir": "OSSGadget_win_$version"
+                "url": "https://github.com/microsoft/OSSGadget/releases/download/v$version/oss-gadget-cli_win_$version.zip",
+                "extract_dir": "oss-gadget-cli_win_$version"
             }
+        },
+        "hash": {
+            "url": "$baseurl/HASHES.txt"
         }
     }
 }

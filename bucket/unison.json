@@ -1,17 +1,19 @@
 {
-    "version": "2.53.7",
+    "version": "2.54.0",
     "description": "A file-synchronization tool.",
     "homepage": "https://www.cis.upenn.edu/~bcpierce/unison",
     "license": "GPL-3.0-only",
     "notes": "Compiled with same OCaml compiler version 4.12.1",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/bcpierce00/unison/releases/download/v2.53.7/unison-2.53.7-windows-x86_64.zip",
-            "hash": "518de8a8bf8a529a5617a345d47bf2fdea7f6283088a31cff719e296b91f6396"
+            "url": "https://github.com/bcpierce00/unison/releases/download/v2.54.0/unison-2.54.0-windows-x86_64.zip",
+            "hash": "8e0c9070824dc7e3f207d54c8afdec1af55ac26af2740d0d5d7b6e00c44d5fab",
+            "extract_dir": "unison-2.54.0-windows-x86_64"
         },
         "32bit": {
-            "url": "https://github.com/bcpierce00/unison/releases/download/v2.53.7/unison-2.53.7-windows-i386.zip",
-            "hash": "a487abc59edcc3f784097dfeef1d0fe1e9b011a190c5bf458b6c3f87ce984f07"
+            "url": "https://github.com/bcpierce00/unison/releases/download/v2.54.0/unison-2.54.0-windows-i386.zip",
+            "hash": "7802767b95d27d04c780a428087f479e2260707c8571183b899a06817181f68f",
+            "extract_dir": "unison-2.54.0-windows-i386"
         }
     },
     "bin": [
@@ -30,10 +32,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-$version-windows-x86_64.zip"
+                "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-$version-windows-x86_64.zip",
+                "extract_dir": "unison-$version-windows-x86_64"
             },
             "32bit": {
-                "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-$version-windows-i386.zip"
+                "url": "https://github.com/bcpierce00/unison/releases/download/v$version/unison-$version-windows-i386.zip",
+                "extract_dir": "unison-$version-windows-i386"
             }
         }
     }

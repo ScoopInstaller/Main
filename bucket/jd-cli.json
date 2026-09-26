@@ -7,8 +7,9 @@
     "hash": "sha1:afa94906a3696955d9319e8c3f51c96d322aa7e2",
     "bin": "jd-cli.jar",
     "checkver": {
-        "github": "https://github.com/intoolswetrust/jd-cli",
-        "regex": "tag/jd-cli-([\\d.]+)"
+        "github": "https://api.github.com/repos/intoolswetrust/jd-cli/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "\"jd-cli-([\\d.]+)\""
     },
     "autoupdate": {
         "url": "https://repo1.maven.org/maven2/com/github/kwart/jd/jd-cli/$version/jd-cli-$version.jar#/jd-cli.jar",

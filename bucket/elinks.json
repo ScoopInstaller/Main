@@ -1,0 +1,29 @@
+{
+    "version": "0.20.0",
+    "description": "Fork of elinks. ELinks is an advanced and well-established feature-rich text mode web (HTTP/FTP/..) browser.",
+    "homepage": "https://github.com/rkd77/elinks",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rkd77/elinks/releases/download/v0.20.0/elinks-0.20.0-win64.zip",
+            "hash": "f23e00d252e51ff1e40306b725ab466734b543c614747568d8109e0e20ab7307"
+        },
+        "32bit": {
+            "url": "https://github.com/rkd77/elinks/releases/download/v0.20.0/elinks-0.20.0-win32.zip",
+            "hash": "ac316848b45a4dbf11c8e32007071faae5d1689f302ee9c9fa7f43295e22e941"
+        }
+    },
+    "extract_dir": "opt\\elinks",
+    "env_add_path": "bin",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rkd77/elinks/releases/download/v$version/elinks-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/rkd77/elinks/releases/download/v$version/elinks-$version-win32.zip"
+            }
+        }
+    }
+}

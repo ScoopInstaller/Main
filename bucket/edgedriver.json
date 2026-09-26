@@ -1,41 +1,41 @@
 {
-    "version": "135.0.3179.73",
+    "version": "154.0.4258.37",
     "description": "Close the loop on your developer cycle by automating testing of your website in Microsoft Edge (Chromium).",
     "homepage": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver",
     "license": {
         "identifier": "Freeware",
-        "url": "https://msedgedriver.azureedge.net/EULA"
+        "url": "https://msedgedriver.microsoft.com/EULA"
     },
     "notes": "For legacy (EdgeHTML) version, see 'versions/edgedriver-legacy'.",
     "architecture": {
         "64bit": {
-            "url": "https://msedgedriver.azureedge.net/135.0.3179.73/edgedriver_win64.zip",
-            "hash": "633af56cd0e27cf95511750830e0d02cc4d234f9741347e086b940b189370389"
+            "url": "https://msedgedriver.microsoft.com/154.0.4258.37/edgedriver_win64.zip",
+            "hash": "878e283d30af52fa9500b824ee0e088122bd61759324cd09733bd3731e4ae39b"
         },
         "32bit": {
-            "url": "https://msedgedriver.azureedge.net/135.0.3179.73/edgedriver_win32.zip",
-            "hash": "42beb090a59ea601a80b33a5f2153f06837e10083684826a0ad37dca1a31f307"
+            "url": "https://msedgedriver.microsoft.com/154.0.4258.37/edgedriver_win32.zip",
+            "hash": "fda8e640483151653b99bb2a13fdf3de077c94b45121089a9b0258abbb46b974"
         },
         "arm64": {
-            "url": "https://msedgedriver.azureedge.net/135.0.3179.73/edgedriver_arm64.zip",
-            "hash": "7bbccd0c1404040976cb94c922739216315d29d40ecc2ab44e52da8d35b1ed76"
+            "url": "https://msedgedriver.microsoft.com/154.0.4258.37/edgedriver_arm64.zip",
+            "hash": "410ca7adad0f5390d8df248569ddf56257d332a6a9ad39dbe500ecd96b8385e7"
         }
     },
     "bin": "msedgedriver.exe",
     "checkver": {
-        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_STABLE).Content))",
+        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.microsoft.com/LATEST_STABLE).Content))",
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win64.zip"
+                "url": "https://msedgedriver.microsoft.com/$version/edgedriver_win64.zip"
             },
             "32bit": {
-                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win32.zip"
+                "url": "https://msedgedriver.microsoft.com/$version/edgedriver_win32.zip"
             },
             "arm64": {
-                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_arm64.zip"
+                "url": "https://msedgedriver.microsoft.com/$version/edgedriver_arm64.zip"
             }
         }
     }

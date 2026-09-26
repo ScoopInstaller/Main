@@ -1,15 +1,34 @@
 {
-    "version": "1.29.4",
+    "version": "1.32.13",
     "description": "Command-line program to download image-galleries and -collections from several image hosting sites.",
-    "homepage": "https://github.com/mikf/gallery-dl",
-    "license": "GPL-2.0-or-later",
-    "url": "https://github.com/mikf/gallery-dl/releases/download/v1.29.4/gallery-dl.exe",
-    "hash": "05b566b8c01884af99e101cab254e59c7dad9f5ef62107dff976d8d1d9fe775a",
-    "bin": "gallery-dl.exe",
+    "homepage": "https://codeberg.org/mikf/gallery-dl",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://codeberg.org/mikf/gallery-dl/releases/download/v1.32.13/gallery-dl.exe",
+            "hash": "f9a810132003701af4115a0ee07e84c3f9dd3e59d91bd4a82949f32e6c4318e7"
+        },
+        "32bit": {
+            "url": "https://codeberg.org/mikf/gallery-dl/releases/download/v1.32.13/gallery-dl_x86.exe",
+            "hash": "11880377d8a0a44339f2a5a4604161db63c550ccf1a1214e977fd71ab6582620"
+        }
+    },
     "pre_install": "if (-not (Test-Path \"$persist_dir\\gallery-dl.conf\")) { Set-Content \"$dir\\gallery-dl.conf\" '{}' -Encoding Ascii | Out-Null }",
+    "bin": "gallery-dl.exe",
     "persist": "gallery-dl.conf",
-    "checkver": "github",
+    "checkver": {
+        "url": "https://codeberg.org/api/v1/repos/mikf/gallery-dl/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([\\d.]+)"
+    },
     "autoupdate": {
-        "url": "https://github.com/mikf/gallery-dl/releases/download/v$version/gallery-dl.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://codeberg.org/mikf/gallery-dl/releases/download/v$version/gallery-dl.exe"
+            },
+            "32bit": {
+                "url": "https://codeberg.org/mikf/gallery-dl/releases/download/v$version/gallery-dl_x86.exe"
+            }
+        }
     }
 }

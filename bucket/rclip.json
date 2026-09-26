@@ -1,0 +1,26 @@
+{
+    "version": "4.0.1",
+    "description": "AI-Powered Semantic Photo Search for the Command Line.",
+    "homepage": "https://github.com/yurijmikhalevich/rclip",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/yurijmikhalevich/rclip/releases/download/v4.0.1/rclip-4.0.1.msi#/dl.msi_",
+            "hash": "69518bd7d41e986a66f4d08ec29fe187f20c816dd761a9b516f708a842669c55"
+        }
+    },
+    "pre_install": [
+        "# Lessmsi behaves differently from Msiexec in this case.",
+        "$ExtractDir = if (get_config USE_LESSMSI $false) { 'APPDIR' } else { '' }",
+        "Expand-MsiArchive -Path \"$dir\\$fname\" -DestinationPath $dir -ExtractDir $ExtractDir -Removal"
+    ],
+    "bin": "rclip.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/yurijmikhalevich/rclip/releases/download/v$version/rclip-$version.msi#/dl.msi_"
+            }
+        }
+    }
+}

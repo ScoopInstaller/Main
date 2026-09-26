@@ -1,0 +1,31 @@
+{
+    "version": "0.3.0",
+    "description": "Interactive grep (for streaming).",
+    "homepage": "https://github.com/ynqa/sig",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ynqa/sig/releases/download/v0.3.0/sigrs-x86_64-pc-windows-msvc.zip",
+            "hash": "7c9d78723cdb2013b7cf6a7a578e7ca1cf613ff852a6a7473dd32337209cd1f3"
+        },
+        "arm64": {
+            "url": "https://github.com/ynqa/sig/releases/download/v0.3.0/sigrs-aarch64-pc-windows-msvc.zip",
+            "hash": "2c85da9b229d24cb351f6e4c9c8e30bf96a321df0a8451fcb001c1e8ea3e79cb"
+        }
+    },
+    "bin": "sig.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ynqa/sig/releases/download/v$version/sigrs-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/ynqa/sig/releases/download/v$version/sigrs-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/$basename.sha256"
+        }
+    }
+}

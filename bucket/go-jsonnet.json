@@ -1,23 +1,39 @@
 {
-    "version": "0.20.0",
+    "version": "0.22.0",
     "description": "A data templating language for app and tool developers",
-    "homepage": "https://github.com/google/go-jsonnet",
+    "homepage": "https://jsonnet.org/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/google/go-jsonnet/releases/download/v0.20.0/go-jsonnet_0.20.0_Windows_x86_64.tar.gz",
-            "hash": "82440a646a8d29487a243afc880db245f612a205d3eccbb900bc76d7a4049ad1"
+            "url": "https://github.com/google/go-jsonnet/releases/download/v0.22.0/go-jsonnet_0.22.0_windows_amd64.tar.gz",
+            "hash": "277b83ddbe836a627dcde0655720aa42b02277fdf3a9cdaebeef2a53e98599b1"
+        },
+        "arm64": {
+            "url": "https://github.com/google/go-jsonnet/releases/download/v0.22.0/go-jsonnet_0.22.0_windows_arm64.tar.gz",
+            "hash": "663d4b9258e201ce9471a02e329167027e68bf4063192a937d83d8b6bac8b044"
+        },
+        "32bit": {
+            "url": "https://github.com/google/go-jsonnet/releases/download/v0.22.0/go-jsonnet_0.22.0_windows_386.tar.gz",
+            "hash": "a94fcbe373a2a50323e872297c9d492e5d216ec527c6a83a303a7a2796aaa181"
         }
     },
     "bin": [
         "jsonnet.exe",
         "jsonnetfmt.exe"
     ],
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/google/go-jsonnet"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/google/go-jsonnet/releases/download/v$version/go-jsonnet_$version_Windows_x86_64.tar.gz"
+                "url": "https://github.com/google/go-jsonnet/releases/download/v$version/go-jsonnet_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/google/go-jsonnet/releases/download/v$version/go-jsonnet_$version_windows_arm64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/google/go-jsonnet/releases/download/v$version/go-jsonnet_$version_windows_386.tar.gz"
             }
         },
         "hash": {

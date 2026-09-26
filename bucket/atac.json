@@ -1,19 +1,29 @@
 {
-    "version": "0.19.0",
+    "version": "0.23.1",
     "description": "Arguably a Terminal API Client based on well-known clients such as Postman, Insomnia, or even Bruno.",
     "homepage": "https://atac.julien-cpsn.com/",
     "license": "MIT",
+    "notes": [
+        "Scoop persists config data via env variable `ATAC_MAIN_DIR` since version 0.23.0.",
+        "You may need to move data by yourself.",
+        "Before: '$env:APPDATA\\Julien-cpsn\\ATAC\\config'",
+        "After : '$persist_dir\\config'"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v0.19.0/atac-v0.19.0-x86_64-pc-windows-msvc.zip",
-            "hash": "ff55943202321c45c434d52159a308e3ed2178e1b88e17e975deb698d1e5c221"
+            "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v0.23.1/atac-v0.23.1-x86_64-pc-windows-msvc.zip",
+            "hash": "812e604bd0bc6c56412aac715a80095d7d46c5e5830a8df2766b31f6c414a434"
         },
         "arm64": {
-            "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v0.19.0/atac-v0.19.0-aarch64-pc-windows-msvc.zip",
-            "hash": "e1d0d345afcf422408ef2826e976212d639a465ec17413c677b573c6f81d4fce"
+            "url": "https://github.com/Julien-cpsn/ATAC/releases/download/v0.23.1/atac-v0.23.1-aarch64-pc-windows-msvc.zip",
+            "hash": "fde7df3809523e148b9ad074376dde010a0c75ce76656ba8213b470af8a05bde"
         }
     },
+    "env_set": {
+        "ATAC_MAIN_DIR": "$persist_dir\\config"
+    },
     "bin": "atac.exe",
+    "persist": "config",
     "checkver": {
         "github": "https://github.com/Julien-cpsn/ATAC"
     },

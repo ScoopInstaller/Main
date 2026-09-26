@@ -1,0 +1,31 @@
+{
+    "version": "1.11.0",
+    "description": "SSHM is a beautiful command-line tool that transforms how you manage and connect to your SSH hosts.",
+    "homepage": "https://github.com/Gu1llaum-3/sshm",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Gu1llaum-3/sshm/releases/download/v1.11.0/sshm_Windows_x86_64.zip",
+            "hash": "d069a8c9b3a4ddae996f51acb933a9515164b27a0609b8386256796671daa4b2"
+        },
+        "32bit": {
+            "url": "https://github.com/Gu1llaum-3/sshm/releases/download/v1.11.0/sshm_Windows_i386.zip",
+            "hash": "e04172209cd582774f75e0f0a0b0db59d2f24b8daaf65b27a69511c14d341e9e"
+        }
+    },
+    "bin": "sshm.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Gu1llaum-3/sshm/releases/download/v$version/sshm_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Gu1llaum-3/sshm/releases/download/v$version/sshm_Windows_i386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

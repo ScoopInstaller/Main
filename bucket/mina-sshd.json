@@ -1,0 +1,30 @@
+{
+    "version": "2.19.0",
+    "description": "A 100% pure java library to support the SSH protocols on both the client and server side.",
+    "homepage": "https://mina.apache.org/sshd-project/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "java/openjdk"
+    },
+    "url": "https://dlcdn.apache.org/mina/sshd/2.19.0/apache-sshd-2.19.0.tar.gz",
+    "hash": "sha512:0fb80d91364b6b1074a464b1cca7697c735c8e069ddbb28b3b3eadc047bb099d47db620389e3e5c087e9e037a1c5f3d8f04493ac88bd95c9728ca04b7035085d",
+    "extract_dir": "apache-sshd-2.19.0",
+    "bin": [
+        "bin\\scp.bat",
+        "bin\\sftp.bat",
+        "bin\\ssh-keyscan.bat",
+        "bin\\ssh.bat",
+        "bin\\sshd.bat"
+    ],
+    "checkver": {
+        "url": "https://mina.apache.org/sshd-project/downloads.html",
+        "regex": "Latest SSHD Release: (\\d+(?:\\.\\d+)+)"
+    },
+    "autoupdate": {
+        "url": "https://dlcdn.apache.org/mina/sshd/$version/apache-sshd-$version.tar.gz",
+        "hash": {
+            "url": "$url.sha512"
+        },
+        "extract_dir": "apache-sshd-$version"
+    }
+}

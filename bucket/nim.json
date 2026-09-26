@@ -1,5 +1,5 @@
 {
-    "version": "2.2.2",
+    "version": "2.2.12",
     "description": "A statically typed compiled systems programming language, which combines successful concepts from mature languages like Python, Ada and Modula.",
     "homepage": "https://nim-lang.org/",
     "license": "MIT",
@@ -8,20 +8,21 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://nim-lang.org/download/nim-2.2.2_x64.zip",
-            "hash": "8359f3cafe874f235f8875ff12f842ece57b139bb8b6971a48f1344b08702901"
+            "url": "https://nim-lang.org/download/nim-2.2.12_x64.zip",
+            "hash": "dafe9c81f8118fac2e07ee24f3649448a590d8b0f3b55d1a97c66f99035cc8e6"
         },
         "32bit": {
-            "url": "https://nim-lang.org/download/nim-2.2.2_x32.zip",
-            "hash": "4c8abf041b09d55b76678100451f3a4abb71ba387e916863931fed6ba1254041"
+            "url": "https://nim-lang.org/download/nim-2.2.12_x32.zip",
+            "hash": "4f82883c541e67dc2380f23dd302ab999ba8ffdf961efd80541850db8bc998cb"
         }
     },
-    "extract_dir": "nim-2.2.2",
+    "extract_dir": "nim-2.2.12",
     "post_install": [
         "# Copy Nimble package",
         "Copy-Item -Recurse \"$dir\\dist\\nimble\\src\\nimblepkg\" \"$dir\\bin\""
     ],
     "bin": [
+        "bin\\atlas.exe",
         "bin\\nim.exe",
         "bin\\nimble.exe",
         "bin\\nimgrab.exe",
@@ -54,6 +55,9 @@
         "script": "Add-Path -Path \"$env:USERPROFILE\\.nimble\\bin\" -Global:$global"
     },
     "uninstaller": {
-        "script": "Remove-Path -Path \"$env:USERPROFILE\\.nimble\\bin\" -Global:$global"
+        "script": [
+            "$global = installed $app $true",
+            "Remove-Path -Path \"$env:USERPROFILE\\.nimble\\bin\" -Global:$global"
+        ]
     }
 }

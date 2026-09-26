@@ -1,0 +1,44 @@
+{
+    "version": "0.24.3",
+    "description": "Effortlessly compose, extend, and observe every service in real-time.",
+    "homepage": "https://iii.dev",
+    "license": {
+        "identifier": "Apache-2.0|Elastic-2.0",
+        "url": "https://github.com/iii-hq/iii/blob/main/LICENSE.spdx"
+    },
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.24.3/iii-x86_64-pc-windows-msvc.zip",
+            "hash": "b71c7c4d9fd89b523a4482c99b349b123527c85d2af5a289b306f350cf1e86d7"
+        },
+        "32bit": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.24.3/iii-i686-pc-windows-msvc.zip",
+            "hash": "66ebed0dc60fe363529b532c02468f3f3e3ea72e37364eaa4bbffb89d942dece"
+        },
+        "arm64": {
+            "url": "https://github.com/iii-hq/iii/releases/download/iii/v0.24.3/iii-aarch64-pc-windows-msvc.zip",
+            "hash": "f6afbf75bdfe2fd37ff274cc619817964fe56be7b62461dc120e8fbeb9890290"
+        }
+    },
+    "bin": "iii.exe",
+    "checkver": {
+        "github": "https://github.com/iii-hq/iii",
+        "regex": "iii/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/iii-hq/iii/releases/download/iii/v$version/iii-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

@@ -1,40 +1,46 @@
 {
-    "version": "1.6.0",
+    "version": "1.9.4",
     "description": "High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model",
-    "homepage": "https://github.com/ggerganov/whisper.cpp",
+    "homepage": "https://github.com/ggml-org/whisper.cpp",
     "license": "MIT",
     "notes": [
         "Whisper Model files are not included. You can download them here:",
         "https://huggingface.co/ggerganov/whisper.cpp/tree/main"
     ],
     "bin": [
-        "bench.exe",
-        [
-            "main.exe",
-            "whisper"
-        ],
-        "quantize.exe"
+        "whisper-bench.exe",
+        "whisper-cli.exe",
+        "whisper-command.exe",
+        "whisper-lsp.exe",
+        "whisper-quantize.exe",
+        "whisper-server.exe",
+        "whisper-stream.exe",
+        "whisper-talk-llama.exe",
+        "whisper-vad-speech-segments.exe"
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/ggerganov/whisper.cpp/releases/download/v1.6.0/whisper-bin-x64.zip",
-            "hash": "0f60fc3318772f4d678e0eb022b08e143d7e8f43c647c0acff5c68bb126b1b02"
+            "url": "https://github.com/ggml-org/whisper.cpp/releases/download/b5130/whisper-bin-x64.zip",
+            "hash": "f9ec6c52a2e949b62ab51fa21d0d497958f9e41c3010c157c4e42932d5316f3c"
         },
         "32bit": {
-            "url": "https://github.com/ggerganov/whisper.cpp/releases/download/v1.6.0/whisper-bin-Win32.zip",
-            "hash": "949b034c1944f8b9e96104f667dc8abd940e415ca264c8bfb2bf7d400f082b4e"
+            "url": "https://github.com/ggml-org/whisper.cpp/releases/download/b5130/whisper-bin-Win32.zip",
+            "hash": "7c0b2c10a0c30acddcf77c3d72f31a02c3a09a11a2b1e13d6693d3d0f1f7d169"
         }
     },
+    "extract_dir": "Release",
     "checkver": {
-        "github": "https://github.com/ggerganov/whisper.cpp"
+        "github": "https://api.github.com/repos/ggml-org/whisper.cpp/releases/latest",
+        "jsonpath": "$..['tag_name', 'body']",
+        "regex": "\"v?(?<version>\\d+(?:\\.\\d+)+)\".*?\\(https://github\\.com/ggml-org/whisper\\.cpp/releases/tag/(?<build>b\\d+)\\)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/ggerganov/whisper.cpp/releases/download/v$version/whisper-bin-x64.zip"
+                "url": "https://github.com/ggml-org/whisper.cpp/releases/download/$matchBuild/whisper-bin-x64.zip"
             },
             "32bit": {
-                "url": "https://github.com/ggerganov/whisper.cpp/releases/download/v$version/whisper-bin-Win32.zip"
+                "url": "https://github.com/ggml-org/whisper.cpp/releases/download/$matchBuild/whisper-bin-Win32.zip"
             }
         }
     }
