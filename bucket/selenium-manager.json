@@ -17,10 +17,8 @@
             "$selenium_release = $page | ConvertFrom-Json",
             "$selenium_ver_string = $selenium_release.tag_name",
             "$selenium_manager_ver_string = @((Invoke-WebRequest -Uri ('https://github.com/SeleniumHQ/selenium/raw/' + $selenium_ver_string + '/common/selenium_manager.bzl') -UseBasicParsing).Content -split \"`n\" | Select-String 'selenium-manager-([a-z0-9]+)').Matches.Value[0]",
-            "$output = @{ result = \"$selenium_ver_string $selenium_manager_ver_string\" } | ConvertTo-Json -Compress",
-            "Write-Output $output"
+            "Write-Output \"$selenium_ver_string $selenium_manager_ver_string\""
         ],
-        "jsonpath": "$.result",
         "regex": "selenium-(?<version>.+)\\s(?<managerversion>.+)"
     },
     "autoupdate": {
