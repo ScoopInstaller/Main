@@ -3,8 +3,6 @@
     "description": "WebDriver for the Firefox web browser.",
     "homepage": "https://github.com/mozilla/geckodriver",
     "license": "MPL-2.0",
-    "bin": "geckodriver.exe",
-    "checkver": "github",
     "architecture": {
         "64bit": {
             "url": "https://github.com/mozilla/geckodriver/releases/download/v0.37.1/geckodriver-v0.37.1-win64.zip",
@@ -13,8 +11,14 @@
         "32bit": {
             "url": "https://github.com/mozilla/geckodriver/releases/download/v0.37.1/geckodriver-v0.37.1-win32.zip",
             "hash": "7b4bfd914e24a843db2dc38ba515086d28828601aaf443e9d2664918e343fb99"
+        },
+        "arm64": {
+            "url": "https://github.com/mozilla/geckodriver/releases/download/v0.37.1/geckodriver-v0.37.1-win-aarch64.zip",
+            "hash": "30889cca635b794b327a59664ac9657bc338e62e1c66d01e40a8c422ff524057"
         }
     },
+    "bin": "geckodriver.exe",
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -22,6 +26,9 @@
             },
             "32bit": {
                 "url": "https://github.com/mozilla/geckodriver/releases/download/v$version/geckodriver-v$version-win32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/mozilla/geckodriver/releases/download/v$version/geckodriver-v$version-win-aarch64.zip"
             }
         }
     }

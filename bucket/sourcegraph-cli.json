@@ -7,15 +7,25 @@
         "64bit": {
             "url": "https://github.com/sourcegraph/src-cli/releases/download/8.0.0/src-cli_8.0.0_windows_amd64.tar.gz",
             "hash": "7b73556dbf10fd0022718b4962913854c4e256bd629052d63d262c694f809c79"
+        },
+        "arm64": {
+            "url": "https://github.com/sourcegraph/src-cli/releases/download/8.0.0/src-cli_8.0.0_windows_arm64.tar.gz",
+            "hash": "9cc3ae0bc08eee0c5c84fc4b25bf573c70470887e137daff611ff7dfa2393d34"
         }
     },
     "bin": "src.exe",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/sourcegraph/src-cli/releases/download/$version/src-cli_$version_windows_amd64.tar.gz",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sourcegraph/src-cli/releases/download/$version/src-cli_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/sourcegraph/src-cli/releases/download/$version/src-cli_$version_windows_arm64.tar.gz"
+            }
+        },
         "hash": {
-            "url": "https://github.com/sourcegraph/src-cli/releases/download/$version/src-cli_$version_checksums.txt",
-            "regex": "^(\\w+)\\s+src-cli_$version_windows_amd64\\.tar\\.gz$"
+            "url": "$baseurl/src-cli_$version_checksums.txt"
         }
     }
 }

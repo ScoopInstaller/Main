@@ -7,25 +7,47 @@
         "Whisper Model files are not included. You can download them here:",
         "https://huggingface.co/ggerganov/whisper.cpp/tree/main"
     ],
-    "bin": [
-        "whisper-bench.exe",
-        "whisper-cli.exe",
-        "whisper-command.exe",
-        "whisper-lsp.exe",
-        "whisper-quantize.exe",
-        "whisper-server.exe",
-        "whisper-stream.exe",
-        "whisper-talk-llama.exe",
-        "whisper-vad-speech-segments.exe"
-    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/ggml-org/whisper.cpp/releases/download/b5130/whisper-bin-x64.zip",
-            "hash": "f9ec6c52a2e949b62ab51fa21d0d497958f9e41c3010c157c4e42932d5316f3c"
+            "hash": "f9ec6c52a2e949b62ab51fa21d0d497958f9e41c3010c157c4e42932d5316f3c",
+            "bin": [
+                "whisper-bench.exe",
+                "whisper-cli.exe",
+                "whisper-command.exe",
+                "whisper-lsp.exe",
+                "whisper-quantize.exe",
+                "whisper-server.exe",
+                "whisper-stream.exe",
+                "whisper-talk-llama.exe",
+                "whisper-vad-speech-segments.exe"
+            ]
         },
         "32bit": {
             "url": "https://github.com/ggml-org/whisper.cpp/releases/download/b5130/whisper-bin-Win32.zip",
-            "hash": "7c0b2c10a0c30acddcf77c3d72f31a02c3a09a11a2b1e13d6693d3d0f1f7d169"
+            "hash": "7c0b2c10a0c30acddcf77c3d72f31a02c3a09a11a2b1e13d6693d3d0f1f7d169",
+            "bin": [
+                "whisper-bench.exe",
+                "whisper-cli.exe",
+                "whisper-command.exe",
+                "whisper-lsp.exe",
+                "whisper-quantize.exe",
+                "whisper-server.exe",
+                "whisper-stream.exe",
+                "whisper-talk-llama.exe",
+                "whisper-vad-speech-segments.exe"
+            ]
+        },
+        "arm64": {
+            "url": "https://github.com/ggml-org/whisper.cpp/releases/download/b5130/whisper-bin-win-cpu-arm64.zip",
+            "hash": "799543b926ab5b6c2d60cab269a2092e0ae8d27820e9e15429e59de3699546fc",
+            "bin": [
+                "whisper-bench.exe",
+                "whisper-cli.exe",
+                "whisper-quantize.exe",
+                "whisper-server.exe",
+                "whisper-vad-speech-segments.exe"
+            ]
         }
     },
     "extract_dir": "Release",
@@ -41,6 +63,9 @@
             },
             "32bit": {
                 "url": "https://github.com/ggml-org/whisper.cpp/releases/download/$matchBuild/whisper-bin-Win32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/ggml-org/whisper.cpp/releases/download/$matchBuild/whisper-bin-win-cpu-arm64.zip"
             }
         }
     }
