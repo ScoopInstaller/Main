@@ -6,15 +6,23 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/Azure/kubelogin/releases/download/v0.2.20/kubelogin-win-amd64.zip",
-            "hash": "e26d5ce8a48e9b6ac53fd93cf45a1eec050f859ccca3654beb4887decd8dee33"
+            "hash": "e26d5ce8a48e9b6ac53fd93cf45a1eec050f859ccca3654beb4887decd8dee33",
+            "bin": "bin\\windows_amd64\\kubelogin.exe"
+        },
+        "arm64": {
+            "url": "https://github.com/Azure/kubelogin/releases/download/v0.2.20/kubelogin-win-arm64.zip",
+            "hash": "8155504e917636635d431f553cbb108bd3d7399e1ad255eacf0f4590ce222201",
+            "bin": "bin\\windows_arm64\\kubelogin.exe"
         }
     },
-    "bin": "bin\\windows_amd64\\kubelogin.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/Azure/kubelogin/releases/download/v$version/kubelogin-win-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Azure/kubelogin/releases/download/v$version/kubelogin-win-arm64.zip"
             }
         },
         "hash": {

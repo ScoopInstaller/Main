@@ -14,17 +14,29 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-busybox-64-bit.zip",
-            "hash": "a0287b54d3ead0c5abd0d15094f5b4c909867aae6bf8b9f2aee7109d24fa0081"
+            "hash": "a0287b54d3ead0c5abd0d15094f5b4c909867aae6bf8b9f2aee7109d24fa0081",
+            "bin": [
+                "cmd\\git.exe",
+                "mingw64\\bin\\busybox.exe"
+            ]
         },
         "32bit": {
             "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-busybox-32-bit.zip",
-            "hash": "da123203a73a05038790645a436d078f69c5670e7e2104335df267006d203439"
+            "hash": "da123203a73a05038790645a436d078f69c5670e7e2104335df267006d203439",
+            "bin": [
+                "cmd\\git.exe",
+                "mingw32\\bin\\busybox.exe"
+            ]
+        },
+        "arm64": {
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.55.0.windows.5/MinGit-2.55.0.5-busybox-arm64.zip",
+            "hash": "5adf5203ba3b4706c21687ea1bcd871c727917d913773a41b0af69b86c997d6f",
+            "bin": [
+                "cmd\\git.exe",
+                "clangarm64\\bin\\busybox.exe"
+            ]
         }
     },
-    "bin": [
-        "cmd\\git.exe",
-        "mingw64\\bin\\busybox.exe"
-    ],
     "env_set": {
         "GIT_INSTALL_ROOT": "$dir"
     },
@@ -40,6 +52,9 @@
             },
             "32bit": {
                 "url": "https://github.com/git-for-windows/git/releases/download/v$matchTag/MinGit-$version-busybox-32-bit.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/git-for-windows/git/releases/download/v$matchTag/MinGit-$version-busybox-arm64.zip"
             }
         },
         "hash": {

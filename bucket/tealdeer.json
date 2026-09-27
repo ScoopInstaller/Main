@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.0/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
             "hash": "23fb76fb683d76dd413cb470b1a3c32157e585edec7d740e73da1aa9c6406dfe"
+        },
+        "arm64": {
+            "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.0/tealdeer-windows-aarch64-msvc.exe#/tldr.exe",
+            "hash": "8df2ce54a89be40f5d6636cd1d984423353c035bf335739026ead56b2153e3dd"
         }
     },
     "pre_install": [
@@ -36,11 +40,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v$version/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
-                "hash": {
-                    "url": "$url.sha256"
-                }
+                "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v$version/tealdeer-windows-x86_64-msvc.exe#/tldr.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v$version/tealdeer-windows-aarch64-msvc.exe#/tldr.exe"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }

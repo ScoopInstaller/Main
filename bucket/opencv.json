@@ -7,13 +7,21 @@
         "64bit": {
             "url": "https://github.com/opencv/opencv/releases/download/5.0.0/opencv-5.0.0-windows.exe#/dl.7z",
             "hash": "9c6c1fcea58acdf06edba13148b2246e00c2658143fa51e61ecd370db8c39f63",
+            "extract_dir": "opencv\\build",
             "env_add_path": "x64\\vc16\\bin",
             "env_set": {
                 "OPENCV_DIR": "$dir\\x64\\vc16"
             }
+        },
+        "arm64": {
+            "url": "https://github.com/opencv/opencv/releases/download/5.0.0/opencv-5.0.0-windows-arm64.exe#/dl.7z",
+            "hash": "087bd5cc1f2d6d44f71ec941babbc49e0426fb81c4ecd59ab7721890c852b8a6",
+            "env_add_path": "ARM64\\vc17\\bin",
+            "env_set": {
+                "OPENCV_DIR": "$dir\\ARM64\\vc17"
+            }
         }
     },
-    "extract_dir": "opencv\\build",
     "checkver": {
         "github": "https://github.com/opencv/opencv"
     },
@@ -21,6 +29,9 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/opencv/opencv/releases/download/$version/opencv-$version-windows.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/opencv/opencv/releases/download/$version/opencv-$version-windows-arm64.exe#/dl.7z"
             }
         }
     }

@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/egoist/dum/releases/download/v0.1.20/dum-x86_64-pc-windows-msvc.zip",
             "hash": "3759d385ca4559ac62f63542aa6955a16c9fd9b8978e7854925a7bea5d5bf32c"
+        },
+        "arm64": {
+            "url": "https://github.com/egoist/dum/releases/download/v0.1.20/dum-aarch64-pc-windows-msvc.zip",
+            "hash": "93b1405add5dc86e861f4d76fc202ffd8d13a9ca911caf9bed1e2e96ff7bb87d"
         }
     },
     "bin": "dum.exe",
@@ -14,11 +18,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/egoist/dum/releases/download/v$version/dum-x86_64-pc-windows-msvc.zip",
-                "hash": {
-                    "url": "$baseurl/dum-x86_64-pc-windows-msvc-sha256sum.txt"
-                }
+                "url": "https://github.com/egoist/dum/releases/download/v$version/dum-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/egoist/dum/releases/download/v$version/dum-aarch64-pc-windows-msvc.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/$basenameNoExt-sha256sum.txt"
         }
     }
 }

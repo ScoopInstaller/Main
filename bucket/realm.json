@@ -7,18 +7,23 @@
         "64bit": {
             "url": "https://github.com/zhboner/realm/releases/download/v2.9.6/realm-x86_64-pc-windows-msvc.tar.gz",
             "hash": "7d06f4d4c3baaa0d7b84d1b5b345e96c41d4e150eab330bbb806aaaf027a9190"
+        },
+        "arm64": {
+            "url": "https://github.com/zhboner/realm/releases/download/v2.9.6/realm-aarch64-pc-windows-msvc.tar.gz",
+            "hash": "13c135c9ad64b2b0300e6cd6820d31ff2be319f1b7df47f0618b6ef7651dd345"
         }
     },
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'realm*' -File | Select-Object -First 1 | Rename-Item -NewName 'realm.exe'",
     "bin": "realm.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/zhboner/realm/releases/download/v$version/realm-x86_64-pc-windows-msvc.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/zhboner/realm/releases/download/v$version/realm-aarch64-pc-windows-msvc.tar.gz"
             }
-        },
-        "hash": {
-            "url": "https://github.com/zhboner/realm/releases/download/v$version/realm-x86_64-pc-windows-msvc.sha256"
         }
     }
 }

@@ -11,6 +11,10 @@
         "32bit": {
             "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.40.1_windows_i386.zip",
             "hash": "6b192a1b0c058b7da6581d444130d3cd588ff53ae1a7079b706df797be93e1c4"
+        },
+        "arm64": {
+            "url": "https://dl.influxdata.com/telegraf/releases/telegraf-1.40.1_windows_arm64.zip",
+            "hash": "5a27cfdcb42388bed362eddbb69147d5ff59754781fb422c5b681dca2e0e7df6"
         }
     },
     "extract_dir": "telegraf-1.40.1",
@@ -29,11 +33,14 @@
             },
             "32bit": {
                 "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://dl.influxdata.com/telegraf/releases/telegraf-$version_windows_arm64.zip"
             }
         },
         "hash": {
             "url": "https://github.com/influxdata/telegraf/releases/tag/v$version",
-            "regex": "(?s)$basename</.*?<code>$sha256</"
+            "regex": "(?s)$basename</.*?<\\w+>$sha256</"
         },
         "extract_dir": "telegraf-$version"
     }

@@ -8,6 +8,10 @@
         "64bit": {
             "url": "https://github.com/dathere/qsv/releases/download/23.0.1/qsv-23.0.1-x86_64-pc-windows-msvc.zip",
             "hash": "b6340aa9c651c231498c607b161ffcc29286b6ad9128601eb48817559fa43de1"
+        },
+        "arm64": {
+            "url": "https://github.com/dathere/qsv/releases/download/23.0.1/qsv-23.0.1-aarch64-pc-windows-msvc.zip",
+            "hash": "a8fb5b9d3e8366be6bb118b7504b451f14067153aaafa17950bbdfb650781176"
         }
     },
     "pre_install": "Get-ChildItem -Path \"$dir\" -Exclude README,qsv.exe | Remove-Item -Force",
@@ -19,6 +23,9 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/dathere/qsv/releases/download/$version/qsv-$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/dathere/qsv/releases/download/$version/qsv-$version-aarch64-pc-windows-msvc.zip"
             }
         }
     }

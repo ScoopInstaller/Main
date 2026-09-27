@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://github.com/WebAssembly/binaryen/releases/download/version_133/binaryen-version_133-x86_64-windows.tar.gz",
             "hash": "17a2cbeac6b5693c5fbafab3838d3c65fd9c1eb38b05f5baec6c657e8c84995b"
+        },
+        "arm64": {
+            "url": "https://github.com/WebAssembly/binaryen/releases/download/version_133/binaryen-version_133-arm64-windows.tar.gz",
+            "hash": "492a8e1847a0be1554bb9a7f384227981d60bc013aedc02d8ba1372c3943178c"
         }
     },
     "extract_dir": "binaryen-version_133",
@@ -30,11 +34,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz",
-                "hash": {
-                    "url": "$url.sha256"
-                }
+                "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-arm64-windows.tar.gz"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         },
         "extract_dir": "binaryen-version_$version"
     }

@@ -5,11 +5,16 @@
     "license": "Apache-2.0,GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/osquery/osquery/releases/download/5.23.1/osquery-5.23.1.msi",
-            "hash": "bb3adc9f32f257147855404d24bceebcd8baf6e65f4d4ca43e186f4a85fa6ed3"
+            "url": "https://github.com/osquery/osquery/releases/download/5.23.1/osquery-5.23.1.windows_x86_64.zip",
+            "hash": "7bd411050ef6b5aae1b23956aec0dc5ce6e800c5656f0cd463ac70a6e1bdf30b",
+            "extract_dir": "osquery-5.23.1.windows_x86_64\\Program Files\\osquery"
+        },
+        "arm64": {
+            "url": "https://github.com/osquery/osquery/releases/download/5.23.1/osquery-5.23.1.windows_arm64.zip",
+            "hash": "0913d05cc3fc92dd9253c945caacde10a776408f267cc1cc853a05de24dba900",
+            "extract_dir": "osquery-5.23.1.windows_arm64\\Program Files\\osquery"
         }
     },
-    "extract_dir": "osquery",
     "bin": [
         "osqueryi.exe",
         "osqueryd\\osqueryd.exe"
@@ -20,7 +25,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/osquery/osquery/releases/download/$version/osquery-$version.msi"
+                "url": "https://github.com/osquery/osquery/releases/download/$version/osquery-$version.windows_x86_64.zip",
+                "extract_dir": "osquery-$version.windows_x86_64\\Program Files\\osquery"
+            },
+            "arm64": {
+                "url": "https://github.com/osquery/osquery/releases/download/$version/osquery-$version.windows_arm64.zip",
+                "extract_dir": "osquery-$version.windows_arm64\\Program Files\\osquery"
             }
         }
     },

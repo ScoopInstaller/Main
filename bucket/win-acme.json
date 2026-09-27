@@ -11,6 +11,10 @@
         "32bit": {
             "url": "https://github.com/win-acme/win-acme/releases/download/v2.2.9.1701/win-acme.v2.2.9.1701.x86.trimmed.zip",
             "hash": "7a6f03640531006574dafc03aea7f40d4a244a63c7c638ccd5482029cfadf5d6"
+        },
+        "arm64": {
+            "url": "https://github.com/win-acme/win-acme/releases/download/v2.2.9.1701/win-acme.v2.2.9.1701.arm64.trimmed.zip",
+            "hash": "5bc56f244ce0b92497e181f7e822c1e86e583d63b603400f2f77aa1586b0fdff"
         }
     },
     "pre_install": "if (!(Test-Path \"$persist_dir\\settings.json\")) { Copy-Item \"$dir\\settings_default.json\" \"$dir\\settings.json\" }",
@@ -24,6 +28,9 @@
             },
             "32bit": {
                 "url": "https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$matchBuild.x86.trimmed.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$matchBuild.arm64.trimmed.zip"
             }
         }
     }
