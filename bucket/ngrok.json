@@ -15,12 +15,16 @@
         "32bit": {
             "url": "https://bin.ngrok.com/a/6CjNuUeQ5Ti/ngrok-v3-3.39.11-windows-386.zip",
             "hash": "2635ab8521cbd3ab4b99ce5da6c26e4c51a30d704fad53fbd4b01cdf29d94f81"
+        },
+        "arm64": {
+            "url": "https://bin.ngrok.com/a/4uyc5zNuNLF/ngrok-v3-3.39.11-windows-arm64.zip",
+            "hash": "493b7ea95a04e92488e9316f4728790bdeda8e00a3c2c688f8ac78a307627718"
         }
     },
     "bin": "ngrok.exe",
     "checkver": {
         "url": "https://ngrok.com/download/archive/ngrok/ngrok-v3/stable/ngrok_archive",
-        "regex": "/a/(?<hash64bit>\\w+)/ngrok-v[\\d.]+-([\\d.]+)-windows-amd64.zip(?:.|\\n)+?/a/(?<hash32bit>\\w+)/ngrok-v[\\d.]+-([\\d.]+)-windows-386.zip"
+        "regex": "/a/(?<hash64bit>\\w+)/ngrok-v[\\d.]+-([\\d.]+)-windows-amd64.zip(?:.|\\n)+?/a/(?<hashArm64>\\w+)/ngrok-v[\\d.]+-[\\d.]+-windows-arm64.zip(?:.|\\n)+?/a/(?<hash32bit>\\w+)/ngrok-v[\\d.]+-[\\d.]+-windows-386.zip"
     },
     "autoupdate": {
         "architecture": {
@@ -29,6 +33,9 @@
             },
             "32bit": {
                 "url": "https://bin.ngrok.com/a/$matchHash32bit/ngrok-v$majorVersion-$version-windows-386.zip"
+            },
+            "arm64": {
+                "url": "https://bin.ngrok.com/a/$matchHasharm64/ngrok-v$majorVersion-$version-windows-arm64.zip"
             }
         },
         "hash": {
