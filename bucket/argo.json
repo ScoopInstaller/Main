@@ -9,7 +9,7 @@
             "hash": "b8fda6ddb9754a81a87404e0a880eb5acbc15142f0838818ac1a8001bb13f7f4"
         }
     },
-    "pre_install": "Rename-Item $dir\\argo-windows-amd64.exe $dir\\argo.exe",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'argo-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'argo.exe'",
     "bin": "argo.exe",
     "checkver": "github",
     "autoupdate": {
@@ -17,9 +17,6 @@
             "64bit": {
                 "url": "https://github.com/argoproj/argo-workflows/releases/download/v$version/argo-windows-amd64.exe.gz"
             }
-        },
-        "hash": {
-            "url": "$url.sha256"
         }
     }
 }

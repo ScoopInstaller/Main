@@ -9,7 +9,7 @@
             "hash": "7eaefaac68253b0ec8e0ad1f1c0f2d0755423d4e99e52497428b52f80df28eb7"
         }
     },
-    "pre_install": "Rename-Item  \"$dir\\lemminx-win32.exe\" \"$dir\\lemminx.exe\"",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'lemminx-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'lemminx.exe'",
     "bin": "lemminx.exe",
     "checkver": {
         "github": "https://github.com/redhat-developer/vscode-xml"

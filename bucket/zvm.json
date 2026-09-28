@@ -30,7 +30,7 @@
     "post_install": [
         "if (Test-Path ~\\.zvm) {",
         "   if ($null -eq (Get-Item ~\\.zvm).LinkType) {",
-        "       Rename-Item -Path ~\\.zvm -NewName ~\\.zvm.old -Force",
+        "       Rename-Item -Path ~\\.zvm -NewName .zvm.old -Force",
         "   } else {",
         "       Remove-Item -Path ~\\.zvm -Force",
         "   }",

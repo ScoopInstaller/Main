@@ -10,7 +10,7 @@
         }
     },
     "pre_install": [
-        "Rename-Item \"$dir\\cheat-windows-amd64.exe\" 'cheat.exe'",
+        "Get-ChildItem -LiteralPath $dir -Filter 'cheat-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'cheat.exe'",
         "$file = 'conf.yml'",
         "if (!(Test-Path \"$persist_dir\\$file\")) {",
         "   Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
