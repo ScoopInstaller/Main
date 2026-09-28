@@ -18,12 +18,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/okd-project/okd/releases/download/$version/openshift-client-windows-$version.zip",
-                "hash": {
-                    "url": "https://github.com/okd-project/okd/releases/download/$version/sha256sum.txt",
-                    "regex": "([a-fA-F0-9]{64})\\s+\\./openshift-client-windows-$version.zip"
-                }
+                "url": "https://github.com/okd-project/okd/releases/download/$version/openshift-client-windows-$version.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sum.txt",
+            "regex": "([a-fA-F0-9]{64})\\s+\\./$basename"
         }
     }
 }
