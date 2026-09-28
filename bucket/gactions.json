@@ -6,16 +6,12 @@
     "architecture": {
         "64bit": {
             "url": "https://registry.npmjs.org/@assistant/gactions/-/gactions-3.2.1.tgz",
-            "hash": "sha1:148aedd6d3992a16605a6de3c831b1ae704a509a",
-            "extract_dir": "package\\bin"
+            "hash": "sha1:148aedd6d3992a16605a6de3c831b1ae704a509a"
         }
     },
-    "bin": [
-        [
-            "gactions-win32-x64.exe",
-            "gactions"
-        ]
-    ],
+    "extract_dir": "package\\bin",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'gactions-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'gactions.exe'",
+    "bin": "gactions.exe",
     "checkver": {
         "url": "https://registry.npmjs.org/@assistant/gactions/latest",
         "jsonpath": "$.version"
@@ -25,7 +21,6 @@
             "64bit": {
                 "url": "https://registry.npmjs.org/@assistant/gactions/-/gactions-$version.tgz",
                 "hash": {
-                    "mode": "json",
                     "url": "https://registry.npmjs.org/@assistant/gactions/$version",
                     "jsonpath": "$.dist.shasum"
                 }

@@ -6,7 +6,14 @@
     "architecture": {
         "64bit": {
             "url": "https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-windows-x64-1.0.5.zip&objectKey=698acebfbd66ae22b62330af#/cangjie-sdk-windows-x64-1.0.5.zip",
-            "hash": "08c6c1dd0de73396f63ac85085d635e79ce84fef98d330cb00869b4fc8f1cb2e"
+            "hash": "08c6c1dd0de73396f63ac85085d635e79ce84fef98d330cb00869b4fc8f1cb2e",
+            "env_add_path": [
+                "tools\\lib",
+                "tools\\bin",
+                "bin",
+                "lib\\windows_x86_64_cjnative",
+                "runtime\\lib\\windows_x86_64_cjnative"
+            ]
         }
     },
     "extract_dir": "cangjie",
@@ -19,13 +26,6 @@
             "Remove-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
         ]
     },
-    "env_add_path": [
-        "tools\\lib",
-        "tools\\bin",
-        "bin",
-        "lib\\windows_x86_64_cjnative",
-        "runtime\\lib\\windows_x86_64_cjnative"
-    ],
     "env_set": {
         "CANGJIE_HOME": "$dir"
     },
