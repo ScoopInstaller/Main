@@ -55,9 +55,6 @@
         "script": "Add-Path -Path \"$env:USERPROFILE\\.nimble\\bin\" -Global:$global"
     },
     "uninstaller": {
-        "script": [
-            "$global = installed $app $true",
-            "Remove-Path -Path \"$env:USERPROFILE\\.nimble\\bin\" -Global:$global"
-        ]
+        "script": "Remove-Path -Path \"$env:USERPROFILE\\.nimble\\bin\" -Global:$global"
     }
 }

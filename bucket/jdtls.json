@@ -13,10 +13,7 @@
         "script": "shim (Get-Command 'python.exe').Source $global jdtls \"$dir\\bin\\jdtls\""
     },
     "uninstaller": {
-        "script": [
-            "$global = installed $app $true",
-            "rm_shim jdtls (shimdir $global) jdtls"
-        ]
+        "script": "rm_shim jdtls (shimdir $global) jdtls"
     },
     "checkver": {
         "url": "https://download.eclipse.org/jdtls/snapshots/latest.txt",
