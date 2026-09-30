@@ -21,10 +21,7 @@
         "script": "Add-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
     },
     "uninstaller": {
-        "script": [
-            "$global = installed $app $true",
-            "Remove-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
-        ]
+        "script": "Remove-Path -Path \"$env:USERPROFILE\\.cjpm\\bin\" -Global:$global"
     },
     "env_set": {
         "CANGJIE_HOME": "$dir"
