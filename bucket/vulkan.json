@@ -29,7 +29,7 @@
         "Get-ChildItem -Path $UninstallRegistryPath -Recurse | ForEach-Object {",
         "   $key = $_.Name",
         "   Get-ItemProperty -Path $_.PSPath | ForEach-Object {",
-        "      if ($_.PSObject.Properties[\"DisplayName\"].Value.Contains(\"Vulkan SDK\")) {",
+        "      if ($_.DisplayName -like \"*Vulkan SDK*\") {",
         "         $keys += $key",
         "      }",
         "   }",
