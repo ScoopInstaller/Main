@@ -22,10 +22,10 @@
     "architecture": {
         "64bit": {
             "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-9.0.2-signed.msi",
-            "hash": "4b13e5e9de98e9ccf6e5589031e6ff969ef9193916d55b6b4b89edf60511f189",
-            "extract_dir": "MongoDB\\Server\\9.0"
+            "hash": "4b13e5e9de98e9ccf6e5589031e6ff969ef9193916d55b6b4b89edf60511f189"
         }
     },
+    "extract_dir": "MongoDB\\Server\\9.0",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\bin\\mongod.cfg\")) {",
         "    $cfg = Get-Content \"$dir\\bin\\mongod.cfg\"",
@@ -54,10 +54,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-$version-signed.msi",
-                "extract_dir": "MongoDB\\Server\\$majorVersion.$minorVersion"
+                "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-$version-signed.msi"
             }
         },
+        "extract_dir": "MongoDB\\Server\\$majorVersion.$minorVersion",
         "hash": {
             "url": "$url.sha256",
             "regex": "$sha256"
