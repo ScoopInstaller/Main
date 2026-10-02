@@ -1,0 +1,32 @@
+{
+    "version": "2.4.2",
+    "description": "Command-line interface for Proton Pass.",
+    "homepage": "https://protonpass.github.io/pass-cli/",
+    "license": "GPL-3.0-or-later",
+    "notes": "Update with 'scoop update proton-pass-cli', not 'pass-cli update'.",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://proton.me/download/pass-cli/2.4.2/pass-cli-windows-x86_64.zip",
+            "hash": "245b1956f2af4537681346afb7ab775b614d0d2174ecb2b61d89ac6b902fdfb5"
+        }
+    },
+    "bin": "pass-cli.exe",
+    "checkver": {
+        "url": "https://proton.me/download/pass-cli/versions.json",
+        "jsonpath": "$.passCliVersions.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://proton.me/download/pass-cli/$version/pass-cli-windows-x86_64.zip",
+                "hash": {
+                    "url": "https://proton.me/download/pass-cli/versions.json",
+                    "jsonpath": "$.passCliVersions.urls.windows.x86_64.hash"
+                }
+            }
+        }
+    }
+}
