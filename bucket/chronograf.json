@@ -6,10 +6,10 @@
     "architecture": {
         "64bit": {
             "url": "https://dl.influxdata.com/chronograf/releases/chronograf-1.11.5_windows_amd64.zip",
-            "hash": "df5a9ed6d07886b288313798e9e2e874a29e77742a532459806ade61cc1683d7",
-            "extract_dir": "chronograf-1.11.5-1"
+            "hash": "18c3978439327f7c5e287a3254f48d7a4c918d60eca42479eb5206239c584633"
         }
     },
+    "extract_dir": "chronograf-1.11.5-1",
     "bin": [
         "chronoctl.exe",
         "chronograf.exe"
@@ -21,13 +21,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/chronograf/releases/chronograf-$version_windows_amd64.zip",
-                "hash": {
-                    "url": "https://portal.influxdata.com/downloads/",
-                    "regex": "$sha256.*\\s.*$basename"
-                },
-                "extract_dir": "chronograf-$version-1"
+                "url": "https://dl.influxdata.com/chronograf/releases/chronograf-$version_windows_amd64.zip"
             }
-        }
+        },
+        "hash": {
+            "url": "https://portal.influxdata.com/downloads/",
+            "regex": "\"sha256\"\\s*:\\s*\"$sha256\"[^}]*$basename"
+        },
+        "extract_dir": "chronograf-$version-1"
     }
 }
