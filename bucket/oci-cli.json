@@ -10,7 +10,11 @@
         }
     },
     "bin": "oci.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/oracle/oci-cli/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /^oci-cli-[\\d.]+-Windows-Server-Installer\\.msi$/)].browser_download_url",
+        "regex": "download/v([\\d.]+)/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
