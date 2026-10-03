@@ -10,7 +10,11 @@
         }
     },
     "bin": "wget2.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/rockdaboot/wget2/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name == 'wget2.exe')].browser_download_url",
+        "regex": "download/v([\\d.]+)/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
