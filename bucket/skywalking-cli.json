@@ -4,7 +4,7 @@
     "homepage": "https://skywalking.apache.org/",
     "license": "Apache-2.0",
     "url": "https://downloads.apache.org/skywalking/cli/0.14.0/skywalking-cli-0.14.0-bin.tgz",
-    "hash": "e68ab94c1b7518e3417df7056b795e899b793ba930c4fca684e362aff569ade4",
+    "hash": "sha512:0065849e8d88934a9f00301f07cf336dc73aa69c6733c8c26845f76827403cc702c44cc7629e41c7b79c94e51cdee3497224be8e96f848e3ba4d666ffb8e39f2",
     "extract_dir": "skywalking-cli-0.14.0-bin",
     "bin": "bin\\swctl.exe",
     "pre_install": [
@@ -14,8 +14,8 @@
         "Get-ChildItem -Path \"$dir\" \"._*\" -Recurse | Remove-Item"
     ],
     "checkver": {
-        "url": "https://downloads.apache.org/skywalking/cli/",
-        "regex": "(?sm)<a\\s+href\\=\\\"(?:[\\d.]+)\\/\\\">\\s*([\\d.]+)\\/?<\\/a>"
+        "url": "https://skywalking.apache.org/downloads",
+        "regex": "cli/(\\d+(?:\\.\\d+)+)/skywalking-cli"
     },
     "autoupdate": {
         "url": "https://downloads.apache.org/skywalking/cli/$version/skywalking-cli-$version-bin.tgz",
