@@ -18,6 +18,9 @@
         }
     },
     "bin": "air.exe",
+    "pre_install": [
+        "Invoke-ExternalCommand tar -ArgumentList @('-xzf', \"$dir\\$fname\", '-C', \"$dir\") | Out-Null"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
