@@ -1,5 +1,5 @@
 {
-    "version": "26.2.3",
+    "version": "26.2.7",
     "description": "The SQL database for global cloud services",
     "homepage": "https://www.cockroachlabs.com/",
     "license": {
@@ -8,15 +8,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://binaries.cockroachdb.com/cockroach-v26.2.3.windows-6.2-amd64.zip",
-            "hash": "8bba5155fc4dbdccae87e02c7e5d9f0108fe762c8f238807f8e87940d6c78bbb",
-            "extract_dir": "cockroach-v26.2.3.windows-6.2-amd64"
+            "url": "https://binaries.cockroachdb.com/cockroach-v26.2.7.windows-6.2-amd64.zip",
+            "hash": "b6a0b253b1f7853d6786b1423b507c56878a11411afeebb0c5c5ed2a36098aef",
+            "extract_dir": "cockroach-v26.2.7.windows-6.2-amd64"
         }
     },
     "bin": "cockroach.exe",
     "checkver": {
-        "url": "https://www.cockroachlabs.com/docs/stable/install-cockroachdb.html",
-        "regex": "\"version-name\">v([\\d.]+)<"
+        "url": "https://github.com/cockroachdb/cockroach/tags",
+        "regex": "releases/tag/v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -24,6 +24,9 @@
                 "url": "https://binaries.cockroachdb.com/cockroach-v$version.windows-6.2-amd64.zip",
                 "extract_dir": "cockroach-v$version.windows-6.2-amd64"
             }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
         }
     }
 }
