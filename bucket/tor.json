@@ -42,7 +42,7 @@
     ],
     "checkver": {
         "url": "https://download.torproject.org/tor/",
-        "regex": "(?<browser>\\d+(?:\\.\\d+)+)[\\s\\u200F]*\\(tor\\s*(?<tor>\\d+(?:\\.\\d+)+)\\)",
+        "regex": "tor-(?<tor>[\\d.]+)\\.tar\\.gz[\\s\\S]*?torbrowser/(?<browser>[\\d.]+)/tor-expert-bundle-windows-x86_64",
         "replace": "${tor}-${browser}"
     },
     "autoupdate": {
