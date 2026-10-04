@@ -19,8 +19,9 @@
     "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
     "bin": "nunit3-console.exe",
     "checkver": {
-        "url": "https://github.com/nunit/nunit-console/releases",
-        "regex": "releases/tag/(3\\.\\d+\\.\\d+)"
+        "github": "https://api.github.com/repos/nunit/nunit-console/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"(?:v|V)?([\\d.]+)\""
     },
     "autoupdate": {
         "url": "https://github.com/nunit/nunit-console/releases/download/$version/nunit-console-runner.$version.nupkg"
