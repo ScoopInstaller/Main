@@ -6,7 +6,7 @@
     "notes": "To acquire a pull secret, visit: https://cloud.redhat.com/openshift/install/crc/installer-provisioned",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/2.64.0/crc-windows-installer.zip",
+            "url": "https://developers.redhat.com/content-gateway/file/pub/cgw/crc/2.64.0/crc-windows-installer.zip",
             "hash": "2f3ffed8e72a9b8b8363d664eed54db6bee3154a24dd28ca4802ff1a34c2ec01",
             "installer": {
                 "script": "Expand-MsiArchive -Path \"$dir\\crc-windows-amd64.msi\" -DestinationPath $dir -ExtractDir 'PFiles64\\Red Hat OpenShift Local' -Removal"
@@ -15,13 +15,13 @@
     },
     "bin": "crc.exe",
     "checkver": {
-        "url": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/release-info.json",
+        "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/cgw/crc/latest/release-info.json",
         "jsonpath": "$.version.crcVersion"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.openshift.com/pub/openshift-v4/clients/crc/$version/crc-windows-installer.zip"
+                "url": "https://developers.redhat.com/content-gateway/file/pub/cgw/crc/$version/crc-windows-installer.zip"
             }
         },
         "hash": {
