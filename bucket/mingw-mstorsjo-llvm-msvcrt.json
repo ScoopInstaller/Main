@@ -18,8 +18,7 @@
     "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
     "env_add_path": "bin",
     "checkver": {
-        "github": "https://github.com/mstorsjo/llvm-mingw",
-        "jsonpath": "$..name",
+        "url": "https://github.com/mstorsjo/llvm-mingw/releases",
         "regex": "llvm-mingw\\s+(?<time>\\d+)\\swith\\s+LLVM\\s+(?<llvm>[\\d.]+)",
         "replace": "${llvm}-${time}"
     },
