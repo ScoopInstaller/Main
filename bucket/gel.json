@@ -1,14 +1,9 @@
 {
-    "##": "Deprecate this manifest after 2027-01-01.",
     "version": "7.10.2+e00c46c",
-    "description": "A graph-relational database (Deprecated, please use `main/gel` and `main/gel-arm64` instead).",
+    "description": "A graph-relational database (Formerly known as EdgeDB).",
     "homepage": "https://www.geldata.com",
     "license": "Apache-2.0|MIT",
-    "notes": [
-        "EdgeDB has rebranded as Gel. For more information, see:",
-        "https://www.geldata.com/blog/edgedb-is-now-gel-and-postgres-is-the-future",
-        "This manifest is deprecated and scheduled for removal on January 1, 2027. Please use `main/gel` and `main/gel-arm64` instead."
-    ],
+    "notes": "For arm64 architecture, please use `main/gel-arm64`.",
     "architecture": {
         "64bit": {
             "url": "https://packages.geldata.com/archive/x86_64-pc-windows-msvc/gel-cli-7.10.2+e00c46c.exe.zst",
@@ -16,13 +11,7 @@
         }
     },
     "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'gel-cli*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'gel.exe'",
-    "bin": [
-        "gel.exe",
-        [
-            "gel.exe",
-            "edgedb"
-        ]
-    ],
+    "bin": "gel.exe",
     "checkver": {
         "script": [
             "$url = 'https://packages.geldata.com/dist/x86_64-pc-windows-msvc/gel-cli.exe'",
