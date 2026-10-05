@@ -64,6 +64,8 @@
         ]
     },
     "post_install": [
+        "# pip moves the whole Scripts dir when upgrading itself if every file in it is pip's own, which breaks the persist junction",
+        "New-Item \"$persist_dir\\Scripts\\.keep\" -ItemType File -Force | Out-Null",
         "python -E -s -m ensurepip -U --default-pip | Out-Null",
         "Write-Output \"$([char]0x1b)[0m\" # Reset ansi to prevent color leak from installer"
     ],
