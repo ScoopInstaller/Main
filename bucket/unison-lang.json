@@ -1,0 +1,30 @@
+{
+    "version": "1.5.0",
+    "description": "Next-generation statically-typed functional programming language",
+    "homepage": "https://www.unison-lang.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/unisonweb/unison/releases/download/release/1.5.0/ucm-windows-x64.zip",
+            "hash": "d2d8378e4258fa176ba2671bc8e70e34af04c94fc202ecb4fa6a9265e16191af"
+        }
+    },
+    "bin": [
+        "ucm.cmd",
+        [
+            "ucm.cmd",
+            "unison-lang"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/unisonweb/unison",
+        "regex": "releases/tag/release/(?<version>[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/unisonweb/unison/releases/download/release/$version/ucm-windows-x64.zip"
+            }
+        }
+    }
+}
