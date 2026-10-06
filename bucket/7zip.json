@@ -31,7 +31,9 @@
                 "$7zr = Join-Path $env:TMP '7zr.exe'",
                 "Invoke-WebRequest -Uri \"https://github.com/ip7z/7zip/releases/download/$version/7zr.exe\" -OutFile $7zr",
                 "Invoke-ExternalCommand $7zr @('x', \"$dir\\$fname\", \"-o$dir\", '-y') | Out-Null",
-                "Remove-Item \"$dir\\Uninstall.exe\", \"$dir\\*-arm64.exe\", $7zr"
+                "Remove-Item \"$dir\\Uninstall.exe\", \"$dir\\*-arm64.exe\"",
+                "Start-Sleep -Milliseconds 500",
+                "Remove-Item $7zr -ErrorAction SilentlyContinue"
             ]
         }
     },
