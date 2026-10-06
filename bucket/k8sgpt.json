@@ -1,0 +1,28 @@
+{
+    "version": "0.4.39",
+    "description": "AI-powered scanner and analyzer for diagnosing Kubernetes cluster anomalies.",
+    "homepage": "https://k8sgpt.ai",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.39/k8sgpt_Windows_x86_64.zip",
+            "hash": "36fa4c4fea30452d62ae606b045f04314c0cc28acc2830d351b85af0d70bf02b"
+        },
+        "arm64": {
+            "url": "https://github.com/k8sgpt-ai/k8sgpt/releases/download/v0.4.39/k8sgpt_Windows_arm64.zip",
+            "hash": "7ec0909b089e98fd6e5f3f3e72a0521a706aa3e1e565783ba98d9cf7f4d40265"
+        }
+    },
+    "bin": "k8sgpt.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/k8sgpt-ai/k8sgpt/releases/download/v$version/k8sgpt_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/k8sgpt-ai/k8sgpt/releases/download/v$version/k8sgpt_Windows_arm64.zip"
+            }
+        }
+    }
+}
