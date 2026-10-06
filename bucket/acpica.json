@@ -1,0 +1,24 @@
+{
+    "version": "20260408",
+    "description": "OS-independent implementation of the ACPI specification and ASL compiler",
+    "homepage": "https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/overview.html",
+    "license": "BSD-3-Clause",
+    "url": "https://downloadmirror.intel.com/917620/iasl-win-20260408.zip",
+    "hash": "121f5e4f30b1df63d09052294e4a605d4dee2dfb9599fa24af4ac6015df02b70",
+    "bin": [
+        "acpibin.exe",
+        "acpidump.exe",
+        "acpiexec.exe",
+        "acpihelp.exe",
+        "acpisrc.exe",
+        "acpixtract.exe",
+        "iasl.exe"
+    ],
+    "checkver": {
+        "url": "https://www.intel.com/content/www/us/en/download/774881/acpi-component-architecture-downloads-windows-binary-tools.html",
+        "regex": "https://downloadmirror\\.intel\\.com/(?<matchId>\\d+)/iasl-win-(?<version>\\d+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://downloadmirror.intel.com/$matchMatchid/iasl-win-$version.zip"
+    }
+}
