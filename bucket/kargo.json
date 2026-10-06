@@ -1,0 +1,26 @@
+{
+    "version": "1.12.1",
+    "description": "Multi-stage delivery pipeline and GitOps promotion engine for Kubernetes.",
+    "homepage": "https://kargo.akuity.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/akuity/kargo/releases/download/v1.12.1/kargo-windows-amd64.exe",
+            "hash": "a7f39211866551247a42ad197e0e7273912f96db6f5ef99d4a3907864dbb6f1e"
+        }
+    },
+    "bin": [
+        [
+            "kargo-windows-amd64.exe",
+            "kargo"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/akuity/kargo/releases/download/v$version/kargo-windows-amd64.exe"
+            }
+        }
+    }
+}
