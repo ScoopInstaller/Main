@@ -26,7 +26,11 @@
         }
     },
     "bin": "nixpacks.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/railwayapp/nixpacks/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /^nixpacks-v[\\d.]+-x86_64-pc-windows-msvc\\.zip$/)].browser_download_url",
+        "regex": "download/v([\\d.]+)/"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
