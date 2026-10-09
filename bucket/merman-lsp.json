@@ -1,0 +1,28 @@
+{
+    "version": "0.8.0",
+    "description": "Local Mermaid language intelligence for .mmd, .mermaid, Markdown, and MDX documents.",
+    "homepage": "https://github.com/Latias94/merman",
+    "license": "MIT|Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Latias94/merman/releases/download/v0.8.0/merman-lsp-x86_64-pc-windows-msvc.zip",
+            "hash": "b53d986ec1c75a719464d835aba8efe63b1a03dbe221050c66f77555cf51012e"
+        }
+    },
+    "bin": "merman-lsp.exe",
+    "checkver": {
+        "github": "https://api.github.com/repos/Latias94/merman/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"v?(\\d+(?:\\.\\d+)+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Latias94/merman/releases/download/v$version/merman-lsp-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
