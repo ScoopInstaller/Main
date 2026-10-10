@@ -1,0 +1,84 @@
+{
+    "version": "10.0.28000.2705",
+    "description": "Tools for building projects targeting the Windows SDK",
+    "homepage": "https://www.nuget.org/packages/Microsoft.Windows.SDK.BuildTools",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://aka.ms/WinSDKLicenseURL"
+    },
+    "url": "https://api.nuget.org/v3-flatcontainer/microsoft.windows.sdk.buildtools/10.0.28000.2705/microsoft.windows.sdk.buildtools.10.0.28000.2705.nupkg",
+    "hash": "8bfdfb6ca2633f531cf80b5fa22512ba61a394d7988f0970db83baadc67929ed",
+    "architecture": {
+        "64bit": {
+            "extract_dir": "bin\\10.0.28000.0\\x64"
+        },
+        "32bit": {
+            "extract_dir": "bin\\10.0.28000.0\\x86",
+            "bin": [
+                "ComparePackage.exe",
+                "DeployUtil.exe",
+                "makeappx.exe",
+                "makecat.exe",
+                "MakeCert.exe",
+                "makepri.exe",
+                "mc.exe",
+                "mdmerge.exe",
+                "midl.exe",
+                "midlc.exe",
+                "midlrt.exe",
+                "mt.exe",
+                "PackageEditor.exe",
+                "rc.exe",
+                "signtool.exe",
+                "tracewpp.exe",
+                "uuidgen.exe",
+                "WinAppDeployCmd.exe",
+                "winmdidl.exe"
+            ]
+        },
+        "arm64": {
+            "extract_dir": "bin\\10.0.28000.0\\arm64"
+        }
+    },
+    "bin": [
+        "ComparePackage.exe",
+        "DeployUtil.exe",
+        "makeappx.exe",
+        "makecat.exe",
+        "MakeCert.exe",
+        "makepri.exe",
+        "mc.exe",
+        "mdmerge.exe",
+        "midl.exe",
+        "midlc.exe",
+        "midlrt.exe",
+        "mt.exe",
+        "PackageEditor.exe",
+        "rc.exe",
+        "signtool.exe",
+        "tracewpp.exe",
+        "uuidgen.exe",
+        "veiid.exe",
+        "WinAppDeployCmd.exe",
+        "winmdidl.exe"
+    ],
+    "checkver": {
+        "url": "https://api.nuget.org/v3-flatcontainer/microsoft.windows.sdk.buildtools/index.json",
+        "regex": "\"([\\d.]+)\"",
+        "reverse": true
+    },
+    "autoupdate": {
+        "url": "https://api.nuget.org/v3-flatcontainer/microsoft.windows.sdk.buildtools/$version/microsoft.windows.sdk.buildtools.$version.nupkg",
+        "architecture": {
+            "64bit": {
+                "extract_dir": "bin\\$majorVersion.$minorVersion.$patchVersion.0\\x64"
+            },
+            "32bit": {
+                "extract_dir": "bin\\$majorVersion.$minorVersion.$patchVersion.0\\x86"
+            },
+            "arm64": {
+                "extract_dir": "bin\\$majorVersion.$minorVersion.$patchVersion.0\\arm64"
+            }
+        }
+    }
+}
