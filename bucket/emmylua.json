@@ -1,0 +1,43 @@
+{
+    "version": "0.25.1",
+    "description": "Language Server Protocol implementation and analyzer for Lua",
+    "homepage": "https://github.com/EmmyLuaLs/emmylua-analyzer-rust",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-win32-x64.zip",
+            "hash": "82efa133287f67be09e1a624d8efecd8063832ec2b9bf9279c37afc5f42118bd"
+        },
+        "32bit": {
+            "url": "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-win32-ia32.zip",
+            "hash": "cbe4693e66447be56b4a8fd5450afc5be23e980deff3985668210a2e88541de4"
+        },
+        "arm64": {
+            "url": "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/0.25.1/emmylua_ls-win32-arm64.zip",
+            "hash": "f6f335f01fccca6f000a6240fb78c6fbab069230b1bb4347361ef3f64550390a"
+        }
+    },
+    "bin": [
+        "emmylua_ls.exe",
+        [
+            "emmylua_ls.exe",
+            "emmylua"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/EmmyLuaLs/emmylua-analyzer-rust"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/$version/emmylua_ls-win32-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/$version/emmylua_ls-win32-ia32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/EmmyLuaLs/emmylua-analyzer-rust/releases/download/$version/emmylua_ls-win32-arm64.zip"
+            }
+        }
+    }
+}
