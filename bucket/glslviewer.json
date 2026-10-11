@@ -1,7 +1,7 @@
 {
     "version": "3.5.2",
     "description": "GlslViewer is a flexible console-base OpenGL Sandbox to display 2D/3D GLSL shaders without the need of an UI.",
-    "homepage": "https://github.com/patriciogonzalezvivo/glslViewer",
+    "homepage": "https://patriciogonzalezvivo.github.io/glslViewer/",
     "license": "BSD-3-Clause",
     "depends": "versions/ffmpeg-shared-4.4.1",
     "architecture": {
@@ -13,7 +13,9 @@
     },
     "bin": "bin\\glslViewer.exe",
     "post_install": "Copy-Item \"$(Join-Path (appdir 'ffmpeg-shared-4.4.1' $global) 'current\\bin')\\*.dll\" \"$dir\\bin\" -Force",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/patriciogonzalezvivo/glslViewer"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

@@ -1,0 +1,40 @@
+{
+    "version": "0.3.1",
+    "description": "Tiny, fast, and deployable AI assistant and agent framework in Go.",
+    "homepage": "https://picoclaw.io",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sipeed/picoclaw/releases/download/v0.3.1/picoclaw_Windows_x86_64.zip",
+            "hash": "c76e4b9f3f95137b8cb58229e756538b12ed0fee0e4301a01b531626bf740af1"
+        },
+        "arm64": {
+            "url": "https://github.com/sipeed/picoclaw/releases/download/v0.3.1/picoclaw_Windows_arm64.zip",
+            "hash": "2c3c99f65696e9dcf0726b0867b3857a378704f14b097dd0076e16967f54f1c3"
+        }
+    },
+    "env_set": {
+        "PICOCLAW_HOME": "$persist_dir\\data"
+    },
+    "bin": [
+        "picoclaw.exe",
+        "picoclaw-launcher.exe"
+    ],
+    "persist": "data",
+    "checkver": {
+        "github": "https://github.com/sipeed/picoclaw"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sipeed/picoclaw/releases/download/v$version/picoclaw_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/sipeed/picoclaw/releases/download/v$version/picoclaw_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/picoclaw_$version_checksums.txt"
+        }
+    }
+}

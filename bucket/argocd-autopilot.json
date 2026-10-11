@@ -1,7 +1,7 @@
 {
     "version": "0.4.20",
     "description": "A tool which offers an opinionated way of installing Argo-CD and managing GitOps repositories.",
-    "homepage": "https://github.com/argoproj-labs/argocd-autopilot",
+    "homepage": "https://argocd-autopilot.readthedocs.io/en/stable/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
@@ -11,7 +11,9 @@
     },
     "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'argocd-autopilot-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'argocd-autopilot.exe'",
     "bin": "argocd-autopilot.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/argoproj-labs/argocd-autopilot"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

@@ -1,26 +1,44 @@
 {
-    "version": "7.9.0+ec0fa4d",
-    "description": "A graph-relational database",
-    "homepage": "https://www.edgedb.com/",
+    "##": "Deprecate this manifest after 2027-01-01.",
+    "version": "7.10.2+e00c46c",
+    "description": "A graph-relational database (Deprecated, please use `main/gel` and `main/gel-arm64` instead).",
+    "homepage": "https://www.geldata.com",
     "license": "Apache-2.0|MIT",
+    "notes": [
+        "EdgeDB has rebranded as Gel. For more information, see:",
+        "https://www.geldata.com/blog/edgedb-is-now-gel-and-postgres-is-the-future",
+        "This manifest is deprecated and scheduled for removal on January 1, 2027. Please use `main/gel` and `main/gel-arm64` instead."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/gel-cli-7.9.0+ec0fa4d.exe#/edgedb.exe",
-            "hash": "91c5d00ac2e1b4be6572b582ebb8ee47663303f8c71d3eb5f2748aa6720b66e7"
+            "url": "https://packages.geldata.com/archive/x86_64-pc-windows-msvc/gel-cli-7.10.2+e00c46c.exe.zst",
+            "hash": "1e1da0cadc8cd079843e761ebd486b1384d4b5f5d4958615b78be89a60861d65"
         }
     },
-    "bin": "edgedb.exe",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'gel-cli*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'gel.exe'",
+    "bin": [
+        "gel.exe",
+        [
+            "gel.exe",
+            "edgedb"
+        ]
+    ],
     "checkver": {
-        "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
-        "jsonpath": "$..packages[-1:].version"
+        "script": [
+            "$url = 'https://packages.geldata.com/dist/x86_64-pc-windows-msvc/gel-cli.exe'",
+            "$request = [System.Net.HttpWebRequest]::Create($url)",
+            "$response = $request.GetResponse()",
+            "Write-Output $response.ResponseUri.AbsoluteUri"
+        ],
+        "regex": "gel-cli-(\\d+(?:\\.\\d+)+\\+(?:[a-f0-9]+))\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/gel-cli-$version.exe#/edgedb.exe",
+                "url": "https://packages.geldata.com/archive/x86_64-pc-windows-msvc/gel-cli-$version.exe.zst",
                 "hash": {
-                    "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
-                    "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256"
+                    "url": "https://packages.geldata.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
+                    "jsonpath": "$.packages[?(@.version=='$version')].installrefs[?(@.encoding=='zstd')].verification.sha256"
                 }
             }
         }

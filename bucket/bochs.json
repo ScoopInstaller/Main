@@ -1,12 +1,12 @@
 {
-    "version": "3.0",
+    "version": "3.1",
     "description": "IA-32 (x86) PC emulator",
     "homepage": "https://bochs.sourceforge.io/",
     "license": "LGPL-2.1-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/bochs/bochs/3.0/Bochs-win64-3.0.exe#/dl.7z",
-            "hash": "sha1:1b08609af86ad9744689068f0104fd8d0db491bb"
+            "url": "https://downloads.sourceforge.net/project/bochs/bochs/3.1/Bochs-win64-3.1.exe#/dl.7z",
+            "hash": "sha1:805ef4fbfb46aaba052d1f7bfb63b01761069826"
         }
     },
     "pre_install": "'$PLUGINSDIR', 'Uninstall.exe' | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force }",
@@ -18,8 +18,7 @@
         "sb16ctrl.exe"
     ],
     "checkver": {
-        "url": "http://bochs.sourceforge.net/getcurrent.html",
-        "regex": "<b>Latest release:<\\/b> Bochs ([\\d.]+)"
+        "sourceforge": "bochs"
     },
     "autoupdate": {
         "architecture": {
