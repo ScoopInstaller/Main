@@ -1,0 +1,42 @@
+{
+  "version": "0.62.3",
+  "description": "Proto is a pluggable version manager, a unified toolchain.",
+  "homepage": "https://moonrepo.dev/docs/proto",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/moonrepo/proto/releases/download/v0.62.3/proto_cli-x86_64-pc-windows-msvc.zip",
+      "hash": "6ea6c7edd7652d69c7b77ce7643d8e7b568bc9dfc1b83cbcdcbc210c8b6c8eee"
+    }
+  },
+  "persist": [
+    "bin",
+    "shims"
+  ],
+  "bin": [
+    "proto.exe",
+    "proto-shim.exe"
+  ],
+  "env_set": {
+    "PROTO_HOME": "$persist_dir"
+  },
+  "env_add_path": [
+    "shims",
+    "bin"
+  ],
+  "notes": "This Proto installation is managed by Scoop. Use 'scoop update proto' to update Proto itself, not 'proto upgrade'.",
+  "checkver": {
+    "github": "https://github.com/moonrepo/proto"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/moonrepo/proto/releases/download/v$version/proto_cli-x86_64-pc-windows-msvc.zip"
+      }
+    },
+    "hash": {
+      "url": "$url.sha256",
+      "regex": "(?i)\\b([a-f0-9]{64})\\b"
+    }
+  }
+}
