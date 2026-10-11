@@ -17,8 +17,9 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/tw93/Mole/releases?per_page=100",
-        "regex": "\"tag_name\":\\s*\"V([\\d.]+)-windows\""
+        "github": "https://api.github.com/repos/tw93/Mole/releases?per_page=100",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"V([\\d.]+)-windows\""
     },
     "autoupdate": {
         "architecture": {
