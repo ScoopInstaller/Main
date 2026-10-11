@@ -29,8 +29,9 @@
         "rga-preproc.exe"
     ],
     "checkver": {
-        "url": "https://github.com/phiresky/ripgrep-all/releases",
-        "regex": "tag/v([\\d.]+)\""
+        "github": "https://api.github.com/repos/phiresky/ripgrep-all/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /^ripgrep_all-v[\\d.]+-x86_64-pc-windows-msvc\\.zip$/)].browser_download_url",
+        "regex": "download/v([\\d.]+)/"
     },
     "autoupdate": {
         "architecture": {

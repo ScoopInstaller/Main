@@ -17,7 +17,9 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/stoplightio/prism"
+        "github": "https://api.github.com/repos/stoplightio/prism/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name == 'prism-cli-win.exe')].browser_download_url",
+        "regex": "download/v([\\d.]+)/"
     },
     "autoupdate": {
         "architecture": {
