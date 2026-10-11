@@ -1,0 +1,27 @@
+{
+    "version": "170.5.96.0",
+    "description": "Command-line utility that automates database development tasks by exposing Data-Tier Application Framework (DacFx) APIs",
+    "homepage": "https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://go.microsoft.com/fwlink/?linkid=2379708#/sqlpackage-win-x64-en-170.5.96.0.zip",
+            "hash": "8ce1afea3a7b0d552b9d3aaf1f24a3211a6e7e1fc60de00b625ad952cb8b895a"
+        }
+    },
+    "bin": "sqlpackage.exe",
+    "checkver": {
+        "url": "https://learn.microsoft.com/en-us/sql/tools/sqlpackage/release-notes-sqlpackage?view=sql-server-ver17",
+        "regex": "(?s)<h2[^>]*>(?<version>[\\d.]+)\\s+SqlPackage</h2>.*?Windows \\.NET 10.*?<a href=\"https://go\\.microsoft\\.com/fwlink/\\?linkid=(?<linkid>[\\d]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://go.microsoft.com/fwlink/?linkid=$matchLinkid#/sqlpackage-win-x64-en-$version.zip"
+            }
+        }
+    }
+}
