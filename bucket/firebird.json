@@ -1,0 +1,48 @@
+{
+    "version": "5.0.4",
+    "description": "Relational database offering ANSI SQL features that runs on Linux, Windows, and Unix",
+    "homepage": "https://firebirdsql.org/",
+    "license": {
+        "identifier": "IDPL-1.0",
+        "url": "https://www.firebirdsql.org/en/initial-developer-s-public-license-version-1-0/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/FirebirdSQL/firebird/releases/download/v5.0.4/Firebird-5.0.4.1812-0-windows-x64.zip",
+            "hash": "01e844fce4d5f53272a76205dbc3a1ba4b782ab8e8eadcd808cdbccd9ce13b72"
+        },
+        "32bit": {
+            "url": "https://github.com/FirebirdSQL/firebird/releases/download/v5.0.4/Firebird-5.0.4.1812-0-windows-x86.zip",
+            "hash": "e46747ee167fb0b305bf2a7cec70964fa2499f58a7e5f89e64ff0ebac8f4768a"
+        }
+    },
+    "bin": [
+        "firebird.exe",
+        "isql.exe",
+        "gbak.exe",
+        "gfix.exe",
+        "gstat.exe",
+        "fbsvcmgr.exe",
+        "fbtracemgr.exe",
+        "nbackup.exe",
+        "gsec.exe"
+    ],
+    "persist": [
+        "firebird.conf",
+        "databases.conf"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/FirebirdSQL/firebird/releases/latest",
+        "regex": "Firebird-([\\d.]+)\\.([\\d-]+)-windows-x64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/FirebirdSQL/firebird/releases/download/v$version/Firebird-$version.$match2-windows-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/FirebirdSQL/firebird/releases/download/v$version/Firebird-$version.$match2-windows-x86.zip"
+            }
+        }
+    }
+}
