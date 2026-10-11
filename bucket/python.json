@@ -111,6 +111,10 @@
             "arm64": {
                 "url": "https://www.python.org/ftp/python/$version/python-$version-arm64.exe#/setup.exe"
             }
+        },
+        "hash": {
+            "url": "$url.spdx.json",
+            "jsonpath": "$.packages[?(@.downloadLocation == '$url')].checksums[?(@.algorithm == 'SHA256')].checksumValue"
         }
     }
 }
