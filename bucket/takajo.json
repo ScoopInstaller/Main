@@ -1,0 +1,27 @@
+{
+    "version": "2.16.1",
+    "description": "Automated results analyzer for Hayabusa Windows event log timelines",
+    "homepage": "https://github.com/Yamato-Security/takajo",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Yamato-Security/takajo/releases/download/v2.16.1/takajo-2.16.1-win-x64.zip",
+            "hash": "28ac8c547190080dfc2e0dde8c59e0933b54e54738e3403af00cee6408f60a1c"
+        }
+    },
+    "pre_install": [
+        "Get-ChildItem \"$dir\\takajo-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'takajo.exe'",
+        "Set-Content -Value \"@echo off`r`npushd `\"$dir`\"`r`ntakajo.exe %*`r`npopd\" -Path \"$dir\\takajo.cmd\""
+    ],
+    "bin": "takajo.cmd",
+    "checkver": {
+        "github": "https://github.com/Yamato-Security/takajo"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Yamato-Security/takajo/releases/download/v$version/takajo-$version-win-x64.zip"
+            }
+        }
+    }
+}
