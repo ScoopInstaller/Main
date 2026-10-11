@@ -1,0 +1,24 @@
+{
+    "version": "1.2",
+    "description": "Command-line tool for installing, managing and unpacking MSIX packages.",
+    "homepage": "https://github.com/microsoft/msix-packaging",
+    "license": "MIT",
+    "url": "https://github.com/microsoft/msix-packaging/releases/download/MSIX-Core-1.2-release/msixmgr.zip",
+    "hash": "a10ae68673c5d6ebb0973905585f0d248765782f64c1b90b08da2ec42a496e19",
+    "architecture": {
+        "64bit": {
+            "extract_dir": "x64"
+        },
+        "32bit": {
+            "extract_dir": "x86"
+        }
+    },
+    "bin": "msixmgr.exe",
+    "checkver": {
+        "github": "https://github.com/microsoft/msix-packaging",
+        "regex": "MSIX-Core-([\\d.]+)-release"
+    },
+    "autoupdate": {
+        "url": "https://github.com/microsoft/msix-packaging/releases/download/MSIX-Core-$version-release/msixmgr.zip"
+    }
+}
