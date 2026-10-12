@@ -1,0 +1,40 @@
+{
+    "version": "0.22.1",
+    "description": "An interface for interacting with remote container registries (crane, gcrane, krane)",
+    "homepage": "https://github.com/google/go-containerregistry",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Windows_x86_64.tar.gz",
+            "hash": "0e073ea8192c3b8442ec8aaf44d53c1050a09084669fae3a6ceb0f2026cf8b21"
+        },
+        "arm64": {
+            "url": "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Windows_arm64.tar.gz",
+            "hash": "bec68b29b18d3f0fb1938739e241006960168c748166d0370111bdc730979584"
+        }
+    },
+    "bin": [
+        "crane.exe",
+        "gcrane.exe",
+        "krane.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/google/go-containerregistry/releases/download/v$version/go-containerregistry_Windows_x86_64.tar.gz",
+                "hash": {
+                    "url": "https://github.com/google/go-containerregistry/releases/download/v$version/checksums.txt",
+                    "regex": "(?im)^([a-fA-F0-9]{64})\\s+go-containerregistry_Windows_x86_64\\.tar\\.gz$"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/google/go-containerregistry/releases/download/v$version/go-containerregistry_Windows_arm64.tar.gz",
+                "hash": {
+                    "url": "https://github.com/google/go-containerregistry/releases/download/v$version/checksums.txt",
+                    "regex": "(?im)^([a-fA-F0-9]{64})\\s+go-containerregistry_Windows_arm64\\.tar\\.gz$"
+                }
+            }
+        }
+    }
+}
