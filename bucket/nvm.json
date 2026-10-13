@@ -27,6 +27,9 @@
         "nvm config set root=\"$persist_dir\\nodejs\""
     ],
     "env_add_path": ".",
+    "env_set": {
+        "NVM_HOME": "$dir"
+    },
     "pre_uninstall": [
         "if (($cmd -eq 'uninstall') -and $purge -and !(is_admin)) {",
         "    # Warn about required admin privileges during purge without aborting uninstallation.",
