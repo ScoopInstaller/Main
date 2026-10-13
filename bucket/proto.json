@@ -1,0 +1,46 @@
+{
+    "version": "0.63.1",
+    "description": "A pluggable multi-language version manager.",
+    "homepage": "https://moonrepo.dev/docs/proto",
+    "license": "MIT",
+    "notes": "This Proto installation is managed by Scoop. Use 'scoop update proto' to update Proto itself, not 'proto upgrade'.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/moonrepo/proto/releases/download/v0.63.1/proto_cli-x86_64-pc-windows-msvc.zip",
+            "hash": "07bf4669ac2157113280725bc023a7bce3d858bb818adf7c0911caf90185728f"
+        }
+    },
+    "post_install": [
+        "Add-Path -Path \"$persist_dir\\bin\" -Global:$global",
+        "Add-Path -Path \"$persist_dir\\shims\" -Global:$global"
+    ],
+    "env_set": {
+        "PROTO_HOME": "$persist_dir",
+        "PROTO_VERSION_CHECK": "false"
+    },
+    "bin": [
+        "proto-shim.exe",
+        "proto.exe"
+    ],
+    "persist": [
+        "bin",
+        "shims"
+    ],
+    "post_uninstall": [
+        "Remove-Path -Path \"$persist_dir\\bin\" -Global:$global",
+        "Remove-Path -Path \"$persist_dir\\shims\" -Global:$global"
+    ],
+    "checkver": {
+        "github": "https://github.com/moonrepo/proto"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/moonrepo/proto/releases/download/v$version/proto_cli-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
