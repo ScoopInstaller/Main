@@ -5,16 +5,22 @@
     "license": "Unlicense",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Y2Z/monolith/releases/download/v2.11.5/monolith.exe",
-            "hash": "d8322a2342cd6df6d661318203f931744d8ed8e29ed11275d88508b3b3390150"
+            "url": "https://github.com/Y2Z/monolith/releases/download/v2.11.5/monolith-cli.exe",
+            "hash": "d686e8a99ecc1c939d8ea173b5e725723d4e5bc38eae630b8983bbd8d9889886"
         }
     },
-    "bin": "monolith.exe",
+    "bin": [
+        "monolith-cli.exe",
+        [
+            "monolith-cli.exe",
+            "monolith"
+        ]
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Y2Z/monolith/releases/download/v$version/monolith.exe"
+                "url": "https://github.com/Y2Z/monolith/releases/download/v$version/monolith-cli.exe"
             }
         }
     }
