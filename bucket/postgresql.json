@@ -39,6 +39,7 @@
         "script": [
             "$url = ([xml]$page).SelectSingleNode('//table/tbody/tr[1]/td[5]/a').href",
             "$request = [System.Net.HttpWebRequest]::Create($url)",
+            "$request.UserAgent = (Get-UserAgent)",
             "$response = $request.GetResponse()",
             "Write-Output $response.ResponseUri.AbsoluteUri"
         ],
