@@ -22,7 +22,9 @@
     },
     "bin": "dua.exe",
     "checkver": {
-        "github": "https://github.com/Byron/dua-cli"
+        "github": "https://api.github.com/repos/Byron/dua-cli/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"v(\\d+(?:\\.\\d+)+)\""
     },
     "autoupdate": {
         "architecture": {
