@@ -1,0 +1,49 @@
+{
+    "version": "2026.10.14-941492e",
+    "description": "CLI for Cursor, allowing you to interact with AI agents directly from your terminal to write, review, and modify code.",
+    "homepage": "https://cursor.com/cli",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.cursor.com/terms-of-service"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.cursor.com/lab/2026.10.14-941492e/windows/x64/agent-cli-package.zip",
+            "hash": "d61e1a977fee1c951488aae6f5728e84adce44a63b7d5329c9ecd67a9f405011"
+        },
+        "arm64": {
+            "url": "https://downloads.cursor.com/lab/2026.10.14-941492e/windows/arm64/agent-cli-package.zip",
+            "hash": "c88cfdd63a13e5091028985e9c6457934a42b90995bae368c33b9b8933879c41"
+        }
+    },
+    "extract_dir": "dist-package",
+    "env_set": {
+        "CURSOR_CONFIG_DIR": "$persist_dir\\config",
+        "CURSOR_DATA_DIR": "$persist_dir\\data"
+    },
+    "bin": [
+        "cursor-agent.cmd",
+        [
+            "cursor-agent.cmd",
+            "agent"
+        ]
+    ],
+    "persist": [
+        "config",
+        "data"
+    ],
+    "checkver": {
+        "url": "https://cursor.com/install?win32=true",
+        "regex": "https://downloads\\.cursor\\.com/lab/(\\d+(?:\\.\\d+)+-[0-9a-f]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.cursor.com/lab/$version/windows/x64/agent-cli-package.zip"
+            },
+            "arm64": {
+                "url": "https://downloads.cursor.com/lab/$version/windows/arm64/agent-cli-package.zip"
+            }
+        }
+    }
+}
