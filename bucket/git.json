@@ -51,6 +51,9 @@
         "    $content = Get-Content -Path $_.FullName -Encoding utf8",
         "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE' }",
         "    $content -replace '{{git_dir}}', $git_path | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
+        "}",
+        "if ($global -and (Test-Path \"$dir\\etc\\post-install\")) {",
+        "    Get-ChildItem -Path \"$dir\\etc\\post-install\\*.post\" -ErrorAction SilentlyContinue | Remove-Item -Force",
         "}"
     ],
     "env_set": {
