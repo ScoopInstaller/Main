@@ -34,10 +34,6 @@
         ]
     },
     "env_add_path": ".cargo\\bin",
-    "env_set": {
-        "CARGO_HOME": "$persist_dir\\.cargo",
-        "RUSTUP_HOME": "$persist_dir\\.rustup"
-    },
     "persist": [
         ".cargo",
         ".rustup"
@@ -61,5 +57,13 @@
         "hash": {
             "url": "$url.sha256"
         }
-    }
+    },
+    "post_install": [
+        "if ($null -eq (Get-EnvVar -Name 'CARGO_HOME' -Global:$global)) {",
+        "    Set-EnvVar -Name 'CARGO_HOME' -Value \"$persist_dir\\.cargo\" -Global:$global",
+        "}",
+        "if ($null -eq (Get-EnvVar -Name 'RUSTUP_HOME' -Global:$global)) {",
+        "    Set-EnvVar -Name 'RUSTUP_HOME' -Value \"$persist_dir\\.rustup\" -Global:$global",
+        "}"
+    ]
 }
