@@ -1,26 +1,29 @@
 {
-    "version": "2025-08-13T08-35-41Z",
+    "version": "2026-09-19T15-24-59Z",
     "description": "A high performance, distributed object storage server, designed for large-scale data infrastructure. (client)",
     "homepage": "https://min.io/",
-    "license": "Apache-2.0",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.min.io/legal?platform=windows"
+    },
     "suggest": {
         "minio": "minio"
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.min.io/client/mc/release/windows-amd64/archive/mc.RELEASE.2025-08-13T08-35-41Z#/mc.exe",
-            "hash": "c8db13ebeda31497f354c0e950809db0ae9b2a2a69b8afee68c128c37300c157"
+            "url": "https://dl.min.io/aistor/mc/release/windows-amd64/archive/mc.exe.RELEASE.2026-09-19T15-24-59Z#/mc.exe",
+            "hash": "e3852ee80498034460bb9904e1c483d19172e8db10fa3a67141af131f9f1414b"
         }
     },
     "bin": "mc.exe",
     "checkver": {
-        "github": "https://github.com/minio/mc",
-        "regex": "RELEASE\\.([\\d-]+T[\\d-]+Z)"
+        "url": "https://dl.min.io/aistor/mc/release/notes/",
+        "regex": "release-notes-RELEASE\\.([\\d-]+T[\\d-]+Z)\\.md<"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.min.io/client/mc/release/windows-amd64/archive/mc.RELEASE.$version#/mc.exe"
+                "url": "https://dl.min.io/aistor/mc/release/windows-amd64/archive/mc.exe.RELEASE.$version#/mc.exe"
             }
         },
         "hash": {
