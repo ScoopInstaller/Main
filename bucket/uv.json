@@ -28,13 +28,6 @@
             "Add-Path -Path \"$persist_dir\\tools\\shims\" -Global:$global -Force"
         ]
     },
-    "env_set": {
-        "UV_CACHE_DIR": "$persist_dir\\cache",
-        "UV_PYTHON_BIN_DIR": "$persist_dir\\python\\shims",
-        "UV_PYTHON_INSTALL_DIR": "$persist_dir\\python\\versions",
-        "UV_TOOL_BIN_DIR": "$persist_dir\\tools\\shims",
-        "UV_TOOL_DIR": "$persist_dir\\tools\\versions"
-    },
     "bin": [
         "uv.exe",
         "uvx.exe",
@@ -64,5 +57,12 @@
         "hash": {
             "url": "$url.sha256"
         }
-    }
+    },
+    "post_install": [
+        "if ($null -eq (Get-EnvVar -Name 'UV_CACHE_DIR' -Global:$global)) { Set-EnvVar -Name 'UV_CACHE_DIR' -Value \"$persist_dir\\cache\" -Global:$global }",
+        "if ($null -eq (Get-EnvVar -Name 'UV_PYTHON_BIN_DIR' -Global:$global)) { Set-EnvVar -Name 'UV_PYTHON_BIN_DIR' -Value \"$persist_dir\\python\\shims\" -Global:$global }",
+        "if ($null -eq (Get-EnvVar -Name 'UV_PYTHON_INSTALL_DIR' -Global:$global)) { Set-EnvVar -Name 'UV_PYTHON_INSTALL_DIR' -Value \"$persist_dir\\python\\versions\" -Global:$global }",
+        "if ($null -eq (Get-EnvVar -Name 'UV_TOOL_BIN_DIR' -Global:$global)) { Set-EnvVar -Name 'UV_TOOL_BIN_DIR' -Value \"$persist_dir\\tools\\shims\" -Global:$global }",
+        "if ($null -eq (Get-EnvVar -Name 'UV_TOOL_DIR' -Global:$global)) { Set-EnvVar -Name 'UV_TOOL_DIR' -Value \"$persist_dir\\tools\\versions\" -Global:$global }"
+    ]
 }
