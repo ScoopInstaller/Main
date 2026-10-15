@@ -14,9 +14,6 @@
         }
     },
     "extract_dir": "WindowsPowerShell\\Modules",
-    "psmodule": {
-        "name": "AzureRM"
-    },
     "checkver": {
         "github": "https://api.github.com/repos/Azure/azure-powershell/releases",
         "jsonpath": "$..browser_download_url",
@@ -31,5 +28,23 @@
                 "url": "https://github.com/Azure/azure-powershell/releases/download/v$matchRelease/Az-Cmdlets-$version-x86.msi"
             }
         }
+    },
+    "post_install": [
+        "Get-ChildItem -Path \"$dir\" -Directory | ForEach-Object {",
+        "    $target = \"$modulesdir\\$($_.Name)\"",
+        "    if (!(Test-Path $target)) {",
+        "        New-Item -ItemType Junction -Path $target -Target $_.FullName | Out-Null",
+        "    }",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "Get-ChildItem -Path \"$dir\" -Directory | ForEach-Object {",
+            "    $target = \"$modulesdir\\$($_.Name)\"",
+            "    if (Test-Path $target) {",
+            "        Remove-Item $target -Force -Recurse -ErrorAction SilentlyContinue",
+            "    }",
+            "}"
+        ]
     }
 }
