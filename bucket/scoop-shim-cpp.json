@@ -1,0 +1,37 @@
+{
+    "version": "0.3.0",
+    "description": "A Scoop helper program for shimming executables (C++)",
+    "homepage": "https://github.com/ScoopInstaller/Shim/",
+    "license": "Unlicense|MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ScoopInstaller/Shim/releases/download/cpp/v0.3.0/shim-x64.zip",
+            "hash": "59d89d5895d9d2a0f4b1d3919d9e59b47e5ed6770a8cb3543618037d28e0fb27"
+        },
+        "32bit": {
+            "url": "https://github.com/ScoopInstaller/Shim/releases/download/cpp/v0.3.0/shim-x86.zip",
+            "hash": "6c8217a5434e929ce62fe125357eca94193cc81fffae11d5cbf2bf0a1bbdda8a"
+        },
+        "arm64": {
+            "url": "https://github.com/ScoopInstaller/Shim/releases/download/cpp/v0.3.0/shim-arm64.zip",
+            "hash": "829958242de93982454595bbaded7c7769a7d99ee2cfbc2093579f277df3d16b"
+        }
+    },
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/ScoopInstaller/Shim/refs/heads/main/cpp/version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ScoopInstaller/Shim/releases/download/cpp/v$version/shim-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/ScoopInstaller/Shim/releases/download/cpp/v$version/shim-x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/ScoopInstaller/Shim/releases/download/cpp/v$version/shim-arm64.zip"
+            }
+        }
+    }
+}

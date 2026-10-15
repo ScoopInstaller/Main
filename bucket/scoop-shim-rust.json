@@ -1,0 +1,37 @@
+{
+    "version": "0.3.0",
+    "description": "A Scoop helper program for shimming executables (Rust)",
+    "homepage": "https://github.com/ScoopInstaller/Shim/",
+    "license": "Unlicense|MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ScoopInstaller/Shim/releases/download/rust/v0.3.0/shim-x64.zip",
+            "hash": "2667bbdf3d84643ffe4491888fb1a4334df9f3b03d9a96817289ab5c6ffedeb4"
+        },
+        "32bit": {
+            "url": "https://github.com/ScoopInstaller/Shim/releases/download/rust/v0.3.0/shim-x86.zip",
+            "hash": "e38dd5a39b2b8cb19f72251da25c42a8d5e88b278977fac7d937cd740f4e28aa"
+        },
+        "arm64": {
+            "url": "https://github.com/ScoopInstaller/Shim/releases/download/rust/v0.3.0/shim-arm64.zip",
+            "hash": "e68640854a8f9af61557e1560183824be66cd718018ead611254270bbcc6c638"
+        }
+    },
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/ScoopInstaller/Shim/refs/heads/main/rust/version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ScoopInstaller/Shim/releases/download/rust/v$version/shim-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/ScoopInstaller/Shim/releases/download/rust/v$version/shim-x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/ScoopInstaller/Shim/releases/download/rust/v$version/shim-arm64.zip"
+            }
+        }
+    }
+}
