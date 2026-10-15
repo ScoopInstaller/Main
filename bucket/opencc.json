@@ -1,0 +1,28 @@
+{
+    "version": "1.4.2",
+    "description": "High-quality Chinese text conversion library and command-line utility",
+    "homepage": "https://github.com/BYVoid/OpenCC",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/BYVoid/OpenCC/releases/download/ver.1.4.2/OpenCC-1.4.2-windows-x64-portable.zip",
+            "hash": "dab0142ff6401219a5e556cee215323753eeac38752dde4cfddf8035746605f1"
+        }
+    },
+    "bin": [
+        "bin/opencc.exe",
+        "bin/opencc_dict.exe",
+        "bin/opencc_phrase_extract.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/BYVoid/OpenCC",
+        "regex": "releases/tag/ver\\.([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/BYVoid/OpenCC/releases/download/ver.$version/OpenCC-$version-windows-x64-portable.zip"
+            }
+        }
+    }
+}
