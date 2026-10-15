@@ -1,10 +1,14 @@
 {
-    "version": "3.1.0",
+    "version": "3.1.3",
     "description": "The next generation of APNG Assembler.",
     "homepage": "https://github.com/apngasm/apngasm",
     "license": "zlib-acknowledgement",
-    "url": "https://github.com/apngasm/apngasm/releases/download/3.1.1/apngasm_3.1-0_AMD64.exe#/dl.7z",
-    "hash": "692147D9BF4D5D1DB1043E44A38A8F9A5E97425CCA49C951FF58B37800B9851E",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/apngasm/apngasm/releases/download/3.1.3/apngasm_3.1-3_AMD64.exe#/dl.7z",
+            "hash": "59086b95474a36dd4c173cc6d97ee01b868727c00f721fa04d8ec3c1535f48cc"
+        }
+    },
     "pre_install": "'$PLUGINSDIR', 'Uninstall.exe' | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force }",
     "bin": [
         "bin\\apngasm.exe",
@@ -12,5 +16,17 @@
             "bin\\apngasm.exe",
             "apngasm-cli"
         ]
-    ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/apngasm/apngasm/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /^apngasm_[\\d.-]+_AMD64\\.exe$/i)].browser_download_url",
+        "regex": "download/(?<version>\\d+(?:\\.\\d+)+)/apngasm_(?<ver>[\\d.-]+)_AMD64\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/apngasm/apngasm/releases/download/$version/apngasm_$matchVer_AMD64.exe#/dl.7z"
+            }
+        }
+    }
 }
