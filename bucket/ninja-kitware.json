@@ -1,6 +1,6 @@
 {
     "version": "1.11.1.g95dee.kitware.jobserver-1",
-    "description": "A small build system with a focus on speed (Kitware fork with jobserver support).",
+    "description": "A small build system with a focus on speed (Kitware fork with jobserver support - Deprecated, please use 'main/ninja' instead).",
     "homepage": "https://github.com/Kitware/ninja",
     "license": "Apache-2.0",
     "architecture": {
@@ -16,16 +16,5 @@
         }
     },
     "bin": "ninja.exe",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Kitware/ninja/releases/download/v$version/ninja-$version_x86_64-pc-windows-msvc.zip",
-                "extract_dir": "ninja-$version_x86_64-pc-windows-msvc"
-            },
-            "arm64": {
-                "url": "https://github.com/Kitware/ninja/releases/download/v$version/ninja-$version_arm64-pc-windows-msvc.zip",
-                "extract_dir": "ninja-$version_arm64-pc-windows-msvc"
-            }
-        }
-    }
+    "notes": "ninja-kitware is deprecated as upstream ninja now supports the GNU make jobserver natively. Please migrate to 'ninja' ('scoop install ninja')."
 }
