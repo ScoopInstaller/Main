@@ -1,7 +1,7 @@
 {
     "version": "1.4.2",
-    "description": "High-quality Chinese text conversion library and command-line utility",
-    "homepage": "https://github.com/BYVoid/OpenCC",
+    "description": "A precise conversion engine for Traditional Chinese, Simplified Chinese, Japanese Kanji, variants, and regional wording across Mainland China, Taiwan, and Hong Kong.",
+    "homepage": "https://opencc.byvoid.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
@@ -10,19 +10,22 @@
         }
     },
     "bin": [
-        "bin/opencc.exe",
-        "bin/opencc_dict.exe",
-        "bin/opencc_phrase_extract.exe"
+        "bin\\opencc.exe",
+        "bin\\opencc_dict.exe",
+        "bin\\opencc_phrase_extract.exe"
     ],
     "checkver": {
         "github": "https://github.com/BYVoid/OpenCC",
-        "regex": "releases/tag/ver\\.([\\d.]+)"
+        "regex": "ver\\.(\\d+(?:\\.\\d+)+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/BYVoid/OpenCC/releases/download/ver.$version/OpenCC-$version-windows-x64-portable.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
