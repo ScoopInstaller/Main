@@ -19,5 +19,16 @@
             "cursor-agent.cmd",
             "agent"
         ]
-    ]
+    ],
+    "checkver": {
+        "url": "https://cursor.com/install?win32=true",
+        "regex": "https://downloads\\.cursor\\.com/lab/(\\d+(?:\\.\\d+)+-[0-9a-f]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.cursor.com/lab/$version/windows/x64/agent-cli-package.zip"
+            }
+        }
+    }
 }
