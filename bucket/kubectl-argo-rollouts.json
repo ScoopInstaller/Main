@@ -1,0 +1,23 @@
+{
+    "version": "1.10.1",
+    "description": "Kubectl plugin for Argo Rollouts progressive delivery engine",
+    "homepage": "https://argo-rollouts.readthedocs.io/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/argoproj/argo-rollouts/releases/download/v1.10.1/kubectl-argo-rollouts-windows-amd64#/kubectl-argo-rollouts.exe",
+            "hash": "ad8da0c9f1e9a67292c0019a906ef7e54157d598df90fa0b59839bc039a624b7"
+        }
+    },
+    "bin": "kubectl-argo-rollouts.exe",
+    "checkver": {
+        "github": "https://github.com/argoproj/argo-rollouts"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/argoproj/argo-rollouts/releases/download/v$version/kubectl-argo-rollouts-windows-amd64#/kubectl-argo-rollouts.exe"
+            }
+        }
+    }
+}
