@@ -28,13 +28,7 @@
         "    Copy-Item \"$env:LOCALAPPDATA\\Syncthing\\*\" \"$dir\\config\" -Exclude 'LOCK' -Recurse -Force",
         "}"
     ],
-    "bin": [
-        [
-            "syncthing.exe",
-            "syncthing",
-            "--home \"$dir\\config\" --no-upgrade"
-        ]
-    ],
+    "bin": "syncthing.exe",
     "persist": "config",
     "checkver": {
         "github": "https://github.com/syncthing/syncthing"
@@ -57,5 +51,9 @@
         "hash": {
             "url": "$baseurl/sha256sum.txt.asc"
         }
+    },
+    "env_set": {
+        "STHOMEDIR": "$dir\\config",
+        "STNOUPGRADE": "1"
     }
 }
