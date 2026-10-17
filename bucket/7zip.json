@@ -39,7 +39,7 @@
     },
     "post_install": [
         "$7zip_dir = $dir -replace '\\\\', '\\\\'",
-        "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\7-zip\" -Filter '*.reg' -File | ForEach-Object {",
+        "Get-ChildItem -Path \"$bucketsdir\\main\\scripts\\7-zip\" -Filter '*.reg' -File | ForEach-Object {",
         "    $content = Get-Content -Path $_.FullName -Encoding utf8",
         "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER(?=.+Classes)', 'HKEY_LOCAL_MACHINE' }",
         "    $content -replace '{{7zip_dir}}', $7zip_dir | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
