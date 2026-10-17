@@ -31,9 +31,10 @@
         ]
     ],
     "post_install": [
-        "pnpm config set storeDir \"$dir\\store\"",
-        "pnpm config set cacheDir \"$dir\\cache\"",
-        "pnpm config set stateDir \"$dir\\state\""
+        "# Specify the full binary path to avoid binary collision with executables in PATH",
+        "& \"$dir\\pnpm.exe\" config set storeDir \"$dir\\store\"",
+        "& \"$dir\\pnpm.exe\" config set cacheDir \"$dir\\cache\"",
+        "& \"$dir\\pnpm.exe\" config set stateDir \"$dir\\state\""
     ],
     "env_add_path": "bin",
     "env_set": {
