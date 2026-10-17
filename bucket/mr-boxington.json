@@ -1,0 +1,36 @@
+{
+    "version": "1.26.0",
+    "description": "A shared cache for Cargo builds that reuses compiler work across projects, worktrees, and CI.",
+    "homepage": "https://mr-boxington.jdx.dev",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jdx/mr-boxington/releases/download/v1.26.0/mbx-x86_64-pc-windows-msvc.zip",
+            "hash": "4a61b7c07323f3cd223761e548c32797cd2feef28f62d91ff2c9ac66eb7e3870"
+        },
+        "arm64": {
+            "url": "https://github.com/jdx/mr-boxington/releases/download/v1.26.0/mbx-aarch64-pc-windows-msvc.zip",
+            "hash": "bcb4f73590e8830c66f649c19abf0085f3dc984c171db3dcc20fb282eccfad83"
+        }
+    },
+    "bin": "mbx.exe",
+    "checkver": {
+        "github": "https://github.com/jdx/mr-boxington"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jdx/mr-boxington/releases/download/v$version/mbx-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/jdx/mr-boxington/releases/download/v$version/mbx-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}
