@@ -1,14 +1,17 @@
 {
-    "version": "8.0.0",
-    "description": "A tab-completion manager for PowerShell, powered by Rust engine and interactive menu",
+    "version": "8.0.1",
+    "description": "Powerful Shell Completions for PowerShell and other shells, powered by Rust and Lua",
     "homepage": "https://pscompletions.abgox.com",
     "license": "MIT",
     "notes": [
-        "Use the module by running: 'Import-Module PSCompletions'.",
-        "Add to $PROFILE to auto-import on startup."
+        "PowerShell: Import-Module PSCompletions  (add to $PROFILE to auto-import)",
+        "bash: source \"<dir>/PSCompletions.bash\"  (add to ~/.bashrc)",
+        "zsh: source \"<dir>/PSCompletions.zsh\"  (add to ~/.zshrc)",
+        "fish: ln -s \"<dir>/PSCompletions.fish\" ~/.config/fish/conf.d/PSCompletions.fish",
+        "Docs: https://pscompletions.abgox.com/docs/shells"
     ],
-    "url": "https://cdn.powershellgallery.com/packages/pscompletions.8.0.0.nupkg",
-    "hash": "f4ea41be81ed8387cd61f7a3f4b288b08dd757bb72d0bb01f198e03848ba3796",
+    "url": "https://cdn.powershellgallery.com/packages/pscompletions.8.0.1.nupkg",
+    "hash": "9b6128b4f2539b90ed16456b8ad8574f855c38226f2b40a3f6fe025892a9f9c1",
     "pre_install": "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*Content*.xml\" -Recurse",
     "env_set": {
         "PSCOMPLETIONS_DATA_DIR": "$dir\\data"
