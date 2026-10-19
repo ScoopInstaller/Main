@@ -1,0 +1,31 @@
+{
+    "version": "0.1",
+    "description": "Multi-cursor combinatoric modal editor.",
+    "homepage": "https://ki-editor.org",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ki-editor/ki-editor/releases/download/0.1/ki-win32-x64.exe#/ki.exe",
+            "hash": "29c0a1d3be61b7b9972d52aecdd8312fbaf9182e36a71bc019bfd8c1519f4df4"
+        }
+    },
+    "bin": [
+        "ki.exe",
+        [
+            "ki.exe",
+            "ki-editor"
+        ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/ki-editor/ki-editor/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"(\\d+(?:\\.\\d+)+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ki-editor/ki-editor/releases/download/$version/ki-win32-x64.exe#/ki.exe"
+            }
+        }
+    }
+}
