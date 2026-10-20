@@ -15,7 +15,9 @@
     },
     "bin": "listmonk.exe",
     "checkver": {
-        "github": "https://github.com/knadh/listmonk"
+        "github": "https://api.github.com/repos/knadh/listmonk/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"v?(\\d+(?:\\.\\d+)+)\""
     },
     "autoupdate": {
         "architecture": {
