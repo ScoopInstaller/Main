@@ -1,0 +1,37 @@
+{
+    "version": "0.2.12",
+    "description": "LLM-supervised persistent memory for AI agents",
+    "homepage": "https://mnemon.dev",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mnemon-dev/mnemon/releases/download/v0.2.12/mnemon_0.2.12_windows_amd64.zip",
+            "hash": "02428031ebad380c8fe3dac9371b5ba0640c071116af22405116985f30dd6e57"
+        },
+        "arm64": {
+            "url": "https://github.com/mnemon-dev/mnemon/releases/download/v0.2.12/mnemon_0.2.12_windows_arm64.zip",
+            "hash": "ece45adf27ecc77d56dd54f97c5bdb3898b7a4b415436948e6027b76768e4789"
+        }
+    },
+    "env_set": {
+        "MNEMON_DATA_DIR": "$persist_dir\\.mnemon"
+    },
+    "bin": "mnemon.exe",
+    "persist": ".mnemon",
+    "checkver": {
+        "github": "https://github.com/mnemon-dev/mnemon"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mnemon-dev/mnemon/releases/download/v$version/mnemon_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/mnemon-dev/mnemon/releases/download/v$version/mnemon_$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
