@@ -1,0 +1,30 @@
+{
+    "version": "2.14.0",
+    "description": "A blazingly fast secret scanner that detects leaked secrets, validates which credentials are live, maps their blast radius, and revokes exposed secrets.",
+    "homepage": "https://mongodb.github.io/kingfisher/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mongodb/kingfisher/releases/download/v2.14.0/kingfisher-windows-x64.zip",
+            "hash": "9f188b6fa16cec210203cb71439d3d661ab371a03305b3ada865f8defe601ffb"
+        },
+        "arm64": {
+            "url": "https://github.com/mongodb/kingfisher/releases/download/v2.14.0/kingfisher-windows-arm64.zip",
+            "hash": "1d2e813234422b4fad3bd57b890b741bb69dad74a548192e83e755a61331a57f"
+        }
+    },
+    "bin": "kingfisher.exe",
+    "checkver": {
+        "github": "https://github.com/mongodb/kingfisher"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mongodb/kingfisher/releases/download/v$version/kingfisher-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/mongodb/kingfisher/releases/download/v$version/kingfisher-windows-arm64.zip"
+            }
+        }
+    }
+}
