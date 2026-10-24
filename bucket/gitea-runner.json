@@ -1,0 +1,28 @@
+{
+    "version": "5.2.2",
+    "description": "Official runner for Gitea Actions",
+    "homepage": "https://gitea.com/gitea/runner",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gitea.com/gitea/runner/releases/download/v5.2.2/gitea-runner-5.2.2-windows-amd64.exe.xz",
+            "hash": "95affda548112f309f98841d9ddf99e3b21627db832f28940a1399c8463ed76e"
+        }
+    },
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'gitea-runner-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'gitea-runner.exe'",
+    "bin": "gitea-runner.exe",
+    "checkver": {
+        "url": "https://gitea.com/gitea/runner/releases/latest",
+        "regex": "/tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gitea.com/gitea/runner/releases/download/v$version/gitea-runner-$version-windows-amd64.exe.xz"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
