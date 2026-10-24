@@ -1,0 +1,35 @@
+{
+    "version": "0.1.0",
+    "description": "The rewritten Gitea command line client (successor of 'tea').",
+    "homepage": "https://gitea.com/gitea/cli",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gitea.com/gitea/cli/releases/download/v0.1.0/gitea-cli-0.1.0-windows-amd64.exe.xz",
+            "hash": "22bc3d61f513854cf37597d9ed3fbe9f2eccb8bfb577f6aad7e7d12a4b6f155f"
+        },
+        "arm64": {
+            "url": "https://gitea.com/gitea/cli/releases/download/v0.1.0/gitea-cli-0.1.0-windows-arm64.exe.xz",
+            "hash": "755860da64b8686484b106e2eff16441dcdf64372f0d9e5d0afd9845244046c0"
+        }
+    },
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'gitea-cli-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'gt.exe'",
+    "bin": "gt.exe",
+    "checkver": {
+        "url": "https://gitea.com/gitea/cli/releases/latest",
+        "regex": "/tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gitea.com/gitea/cli/releases/download/v$version/gitea-cli-$version-windows-amd64.exe.xz"
+            },
+            "arm64": {
+                "url": "https://gitea.com/gitea/cli/releases/download/v$version/gitea-cli-$version-windows-arm64.exe.xz"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
