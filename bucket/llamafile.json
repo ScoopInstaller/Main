@@ -11,8 +11,9 @@
     },
     "extract_dir": "llamafile-0.10.6",
     "pre_install": [
-        "$files = Get-ChildItem \"$dir\\bin\" -File | Where-Object { $_.Extension -eq '' }",
-        "if ($files) { $files | ForEach-Object { Rename-Item $_.FullName -NewName ($_.Name + '.exe') } }"
+        "Get-ChildItem -LiteralPath \"$dir\\bin\" -File | Where-Object { $_.Extension -eq '' } | ForEach-Object {",
+        "    Rename-Item $_.FullName -NewName \"$($_.Name).exe\"",
+        "}"
     ],
     "bin": [
         [
@@ -22,6 +23,10 @@
         [
             "bin\\llamafile.exe",
             "llamafile"
+        ],
+        [
+            "bin\\transcribefile.exe",
+            "transcribefile"
         ],
         [
             "bin\\whisperfile.exe",
