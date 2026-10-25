@@ -9,22 +9,31 @@
             "hash": "1d0aacce58bb2254adb8b80abf69e4dfbd7dfa530defc0fcca37ce239217e5dc"
         }
     },
-    "extract_dir": "home\\mala\\releases\\0.10.6\\llamafile-0.10.6",
+    "extract_dir": "llamafile-0.10.6",
+    "pre_install": [
+        "Get-ChildItem -LiteralPath \"$dir\\bin\" -File | Where-Object { $_.Extension -eq '' } | ForEach-Object {",
+        "    Rename-Item $_.FullName -NewName \"$($_.Name).exe\"",
+        "}"
+    ],
     "bin": [
         [
-            "bin\\diffusionfile",
+            "bin\\diffusionfile.exe",
             "diffusionfile"
         ],
         [
-            "bin\\llamafile",
+            "bin\\llamafile.exe",
             "llamafile"
         ],
         [
-            "bin\\whisperfile",
+            "bin\\transcribefile.exe",
+            "transcribefile"
+        ],
+        [
+            "bin\\whisperfile.exe",
             "whisperfile"
         ],
         [
-            "bin\\zipalign",
+            "bin\\zipalign.exe",
             "zipalign"
         ]
     ],
@@ -37,6 +46,6 @@
                 "url": "https://github.com/mozilla-ai/llamafile/releases/download/$version/llamafile-$version.zip"
             }
         },
-        "extract_dir": "home\\mala\\releases\\$version\\llamafile-$version"
+        "extract_dir": "llamafile-$version"
     }
 }
