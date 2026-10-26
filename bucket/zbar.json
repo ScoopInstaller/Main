@@ -1,0 +1,31 @@
+{
+    "version": "0.23.95",
+    "description": "Application and library for reading bar codes from various sources",
+    "homepage": "https://github.com/mchehab/zbar",
+    "license": "LGPL-2.1-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mchehab/zbar/releases/download/0.23.95/zbar-win_x86_64-DShow.zip",
+            "hash": "4351ec5abee3a38bb5cc062a37ca324ae5f6ea190d9f948d8c91700e5129490c"
+        },
+        "32bit": {
+            "url": "https://github.com/mchehab/zbar/releases/download/0.23.95/zbar-win_i686-DShow.zip",
+            "hash": "f4ad638213ae09c60e4e6dcaad1a24cad4eeb6c7034bd48501f7616790bb250e"
+        }
+    },
+    "bin": [
+        "bin\\zbarimg.exe",
+        "bin\\zbarcam.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mchehab/zbar/releases/download/$version/zbar-win_x86_64-DShow.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/mchehab/zbar/releases/download/$version/zbar-win_i686-DShow.zip"
+            }
+        }
+    }
+}

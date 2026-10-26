@@ -1,0 +1,32 @@
+{
+    "version": "1.5.0",
+    "description": "Bridge local AI coding agents to messaging platforms.",
+    "homepage": "https://github.com/chenhg5/cc-connect",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/chenhg5/cc-connect/releases/download/v1.5.0/cc-connect-v1.5.0-windows-amd64.zip",
+            "hash": "1d0fdeffa6118ab0a942a3c3918930685bd7d4caef5d7311b0d8f605fad95763"
+        },
+        "arm64": {
+            "url": "https://github.com/chenhg5/cc-connect/releases/download/v1.5.0/cc-connect-v1.5.0-windows-arm64.zip",
+            "hash": "5626d04b61b795b4a7a546adc955d043bb2be7e1f9c342e9b6cb3348ec5273fe"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\\cc-connect*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'cc-connect.exe'",
+    "bin": "cc-connect.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/chenhg5/cc-connect/releases/download/v$version/cc-connect-v$version-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/chenhg5/cc-connect/releases/download/v$version/cc-connect-v$version-windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "version": "3.9.5",
+    "description": "Windows version of tcpdump, the command-line network packet capture and analyzer tool.",
+    "homepage": "https://www.winpcap.org/windump/",
+    "license": "BSD-3-Clause",
+    "notes": "WinDump requires WinPcap or Npcap (with WinPcap API-compatible mode enabled) to run and capture network packets.",
+    "url": "https://www.winpcap.org/windump/install/bin/windump_3_9_5/WinDump.exe",
+    "hash": "2525041dca2bd37240cca59eb83fa1ec10a4a43716d324dc104dd39db98d358f",
+    "bin": "WinDump.exe",
+    "checkver": {
+        "url": "https://www.winpcap.org/windump/install/default.htm",
+        "regex": "latest WinDump version is ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.winpcap.org/windump/install/bin/windump_$underscoreVersion/WinDump.exe"
+    }
+}

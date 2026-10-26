@@ -1,30 +1,36 @@
 {
-    "version": "0.9.0",
-    "homepage": "https://sift-tool.org/",
+    "version": "0.9.2",
     "description": "A fast and powerful alternative to grep.",
-    "license": "GPL-3.0",
+    "homepage": "https://sift-tool.org",
+    "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://sift-tool.org/downloads/sift/sift_0.9.0_windows_amd64.zip",
-            "hash": "cd69d0c8dc5b6ef7911bc2bacdc329ec6ee703c72c5e81d91100cdd53fa33c13"
+            "url": "https://github.com/svent/sift/releases/download/v0.9.2/sift_0.9.2_Windows_x86_64.zip",
+            "hash": "3ddcc65ffb90381019e6bcf0f928ecc116f299aa6a45badfae2f44317f85381c"
         },
         "32bit": {
-            "url": "https://sift-tool.org/downloads/sift/sift_0.9.0_windows_386.zip",
-            "hash": "4602ccc73d661b211dafcf338f71cd0c8454e5d1b56bb01512661555baae8b91"
+            "url": "https://github.com/svent/sift/releases/download/v0.9.2/sift_0.9.2_Windows_x86_64.zip",
+            "hash": "3ddcc65ffb90381019e6bcf0f928ecc116f299aa6a45badfae2f44317f85381c"
+        },
+        "arm64": {
+            "url": "https://github.com/svent/sift/releases/download/v0.9.2/sift_0.9.2_Windows_arm64.zip",
+            "hash": "53963032dc69d54448d3225415746ad140638e4768db48805dac9005877bc333"
         }
     },
     "bin": "sift.exe",
     "checkver": {
-        "url": "https://sift-tool.org/download",
-        "regex": "sift_([\\d.]+)_*"
+        "github": "https://github.com/svent/sift"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://sift-tool.org/downloads/sift/sift_$version_windows_amd64.zip"
+                "url": "https://github.com/svent/sift/releases/download/v$version/sift_$version_Windows_x86_64.zip"
             },
             "32bit": {
-                "url": "https://sift-tool.org/downloads/sift/sift_$version_windows_386.zip"
+                "url": "https://github.com/svent/sift/releases/download/v$version/sift_$version_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/svent/sift/releases/download/v$version/sift_$version_Windows_arm64.zip"
             }
         }
     }

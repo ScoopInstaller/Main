@@ -1,18 +1,23 @@
 {
-    "version": "5.9.8",
+    "version": "6.2.4",
     "description": "UNIX-like reverse engineering framework and command-line toolset",
     "homepage": "https://www.radare.org/n/radare2.html",
     "license": "LGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/radareorg/radare2/releases/download/5.9.8/radare2-5.9.8-w64.zip",
-            "hash": "0f4fd96967ddf3747277e37bb93b23493b0cb875acdc8303ab7e285edbe178de",
-            "extract_dir": "radare2-5.9.8-w64"
+            "url": "https://github.com/radareorg/radare2/releases/download/6.2.4/radare2-6.2.4-w64.zip",
+            "hash": "aa3454fd89e8a4ead450caff35a1d3919065744e7091540d4913a9487241799d",
+            "extract_dir": "radare2-6.2.4-w64"
         },
         "32bit": {
-            "url": "https://github.com/radareorg/radare2/releases/download/5.9.8/radare2-5.9.8-w32.zip",
-            "hash": "9e869c067d6c9a551048add231ef8b38d705898056ae27f54333d2904bd8dc2c",
-            "extract_dir": "radare2-5.9.8-w32"
+            "url": "https://github.com/radareorg/radare2/releases/download/6.2.4/radare2-6.2.4-w32.zip",
+            "hash": "30a65b7ad8b37292345da185a708a4079158a1a5d94e434ad139e9a116a87518",
+            "extract_dir": "radare2-6.2.4-w32"
+        },
+        "arm64": {
+            "url": "https://github.com/radareorg/radare2/releases/download/6.2.4/radare2-6.2.4-w64-arm64.zip",
+            "hash": "6566f55452ebb98adf15b43fc5328ba2467d21597ff59db35f0544db161a2f14",
+            "extract_dir": "radare2-6.2.4-w64-arm64"
         }
     },
     "bin": [
@@ -21,6 +26,7 @@
             "r2"
         ],
         "bin\\r2agent.exe",
+        "bin\\r2pm.exe",
         "bin\\rabin2.exe",
         "bin\\radare2.exe",
         "bin\\radiff2.exe",
@@ -45,6 +51,10 @@
             "32bit": {
                 "url": "https://github.com/radareorg/radare2/releases/download/$version/radare2-$version-w32.zip",
                 "extract_dir": "radare2-$version-w32"
+            },
+            "arm64": {
+                "url": "https://github.com/radareorg/radare2/releases/download/$version/radare2-$version-w64-arm64.zip",
+                "extract_dir": "radare2-$version-w64-arm64"
             }
         }
     }

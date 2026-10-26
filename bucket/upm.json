@@ -1,7 +1,7 @@
 {
     "version": "1.0",
     "description": "Universal package manager for Python, Node.js, Ruby and Emacs Lisp.",
-    "homepage": "https://github.com/replit/upm",
+    "homepage": "https://repl.it",
     "license": "MIT",
     "architecture": {
         "64bit": {
@@ -14,7 +14,11 @@
         }
     },
     "bin": "upm.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/replit/upm/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "upm_([\\d.]+)_windows_amd64.tar.gz"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

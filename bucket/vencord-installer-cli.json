@@ -1,0 +1,27 @@
+{
+    "version": "1.4.2",
+    "description": "A CLI tool for installing Vencord, a Discord client mod",
+    "homepage": "https://github.com/Vencord/Installer",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "discord": "extras/discord"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Vencord/Installer/releases/download/v1.4.2/VencordInstallerCli.exe",
+            "hash": "15268aba25625797bf562187dd87ddadf42882e079c7b6192880ad3e83353ef5"
+        }
+    },
+    "bin": "VencordInstallerCli.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Vencord/Installer/releases/download/v$version/VencordInstallerCli.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.sha256"
+        }
+    }
+}

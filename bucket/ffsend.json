@@ -10,7 +10,11 @@
         }
     },
     "bin": "ffsend.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/timvisee/ffsend/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /windows/i)].browser_download_url",
+        "regex": "ffsend-v(?<version>[\\d.]+)-windows"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

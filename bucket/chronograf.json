@@ -1,15 +1,15 @@
 {
-    "version": "1.10.6",
+    "version": "1.11.6",
     "description": "Open source monitoring and visualization UI for the TICK stack.",
     "homepage": "https://www.influxdata.com/time-series-platform/chronograf/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/chronograf/releases/chronograf-1.10.6_windows_amd64.zip",
-            "hash": "b13a5ca0910b5a31aba8b49d23adbd2284fe5e47fc8596336ba83bb4aab3abea",
-            "extract_dir": "chronograf-1.10.6-1"
+            "url": "https://dl.influxdata.com/chronograf/releases/chronograf-1.11.6_windows_amd64.zip",
+            "hash": "749f609307cb6b24e4ca2255be83c7a4b3983dfa1f28aeb63fc665ba352b9b7d"
         }
     },
+    "extract_dir": "chronograf-1.11.6-1",
     "bin": [
         "chronoctl.exe",
         "chronograf.exe"
@@ -21,13 +21,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/chronograf/releases/chronograf-$version_windows_amd64.zip",
-                "hash": {
-                    "url": "https://portal.influxdata.com/downloads/",
-                    "regex": "$sha256.*\\s.*$basename"
-                },
-                "extract_dir": "chronograf-$version-1"
+                "url": "https://dl.influxdata.com/chronograf/releases/chronograf-$version_windows_amd64.zip"
             }
-        }
+        },
+        "hash": {
+            "url": "https://portal.influxdata.com/downloads/",
+            "regex": "\"sha256\"\\s*:\\s*\"$sha256\"[^}]*$basename"
+        },
+        "extract_dir": "chronograf-$version-1"
     }
 }

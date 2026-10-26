@@ -1,0 +1,26 @@
+{
+    "version": "0.16.3",
+    "description": "An open source command-line tool that offers safe and reversible schema migrations for PostgreSQL by serving multiple schema versions simultaneously.",
+    "homepage": "https://pgroll.com",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/xataio/pgroll/releases/download/v0.16.3/pgroll.win.amd64.exe#/pgroll.exe",
+            "hash": "691911916079f9c4343a2b8d107639949cc1de218d6907aeec900811bb48a47a"
+        }
+    },
+    "bin": "pgroll.exe",
+    "checkver": {
+        "github": "https://github.com/xataio/pgroll"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/xataio/pgroll/releases/download/v$version/pgroll.win.amd64.exe#/pgroll.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/pgroll_$version_checksums.txt"
+        }
+    }
+}

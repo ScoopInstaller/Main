@@ -1,36 +1,37 @@
 {
-    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
-    "##": "Rename download file because 7-zip can't decompress it as zip file.",
-    "version": "4.0.7030",
-    "description": "Microsoft Azure Functions Core Tools",
-    "homepage": "https://github.com/Azure/azure-functions-core-tools",
+    "##": "Rename download file because 7-Zip can't decompress it as zip file.",
+    "version": "4.16.0",
+    "description": "Command line tools for Azure Functions",
+    "homepage": "https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local",
     "license": "MIT",
     "architecture": {
-        "arm64": {
-            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/4.0.7030/Azure.Functions.Cli.win-arm64.4.0.7030.zip#/dl.7z",
-            "hash": "81b0610758e34de306875423ae53664df21ef3c19fd4e75fbb4d938437401e8d"
-        },
         "32bit": {
-            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/4.0.7030/Azure.Functions.Cli.win-x86.4.0.7030.zip#/dl.7z",
-            "hash": "18b552127b0eb17c2e5112b2a85cc79bc31a2ecaa3a69a9b26f455ab2ebfd8e3"
+            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/4.16.0/Azure.Functions.Cli.win-x86.4.16.0.zip#/dl.7z",
+            "hash": "d7e8dc126b322a538462e3fd6c225059c7293a1a4dc43ba872a93af829f865c6"
         },
         "64bit": {
-            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/4.0.7030/Azure.Functions.Cli.win-x64.4.0.7030.zip#/dl.7z",
-            "hash": "98cd34f63efe5a356f691861323b6b17dfafceccccf93ef06e2c3530ed8d3b38"
+            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/4.16.0/Azure.Functions.Cli.win-x64.4.16.0.zip#/dl.7z",
+            "hash": "5447017693611fe507edce98bb1d5ebc132e179297e67a49ad23f26b95b87dd1"
+        },
+        "arm64": {
+            "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/4.16.0/Azure.Functions.Cli.win-arm64.4.16.0.zip#/dl.7z",
+            "hash": "8e4bb22f45cebf0abdf51fd23a1adb918c50f1e8d5daebf0a5be2029d624c909"
         }
     },
     "bin": "func.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/Azure/azure-functions-core-tools"
+    },
     "autoupdate": {
         "architecture": {
-            "arm64": {
-                "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-arm64.$version.zip#/dl.7z"
-            },
             "32bit": {
                 "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-x86.$version.zip#/dl.7z"
             },
             "64bit": {
                 "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-x64.$version.zip#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-arm64.$version.zip#/dl.7z"
             }
         },
         "hash": {

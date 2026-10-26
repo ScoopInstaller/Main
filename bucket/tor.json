@@ -1,5 +1,5 @@
 {
-    "version": "0.4.8.16-14.5",
+    "version": "0.4.9.14-15.0.26",
     "description": "Enables anonymous communication over the onion network (expert mode).",
     "homepage": "https://www.torproject.org",
     "license": "BSD-3-Clause",
@@ -9,12 +9,12 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://archive.torproject.org/tor-package-archive/torbrowser/14.5/tor-expert-bundle-windows-x86_64-14.5.tar.gz",
-            "hash": "f51eefb31c4342a32050830a717e496d2c851e907bf155eb61ba1f15a436103c"
+            "url": "https://archive.torproject.org/tor-package-archive/torbrowser/15.0.26/tor-expert-bundle-windows-x86_64-15.0.26.tar.gz",
+            "hash": "c1988c701de2f24f7d098d1d6d7f507b58f27740d097f29c246e0524d639b252"
         },
         "32bit": {
-            "url": "https://archive.torproject.org/tor-package-archive/torbrowser/14.5/tor-expert-bundle-windows-i686-14.5.tar.gz",
-            "hash": "9300129d7a96ae61cd1e3a31420c7fac91fbc558ff0c734c7c63926d83ec078b"
+            "url": "https://archive.torproject.org/tor-package-archive/torbrowser/15.0.26/tor-expert-bundle-windows-i686-15.0.26.tar.gz",
+            "hash": "55a1e4c9b6df47c6e5fde1b3d755c858374d6cc0809c1dd1533a8622bb52de96"
         }
     },
     "pre_install": [
@@ -41,8 +41,8 @@
         "torrc"
     ],
     "checkver": {
-        "url": "https://www.torproject.org/download/tor/",
-        "regex": "windows-i686-[\\d.]+.tar.gz\">(?<browser>[\\d.]+) \\(tor (?<tor>[\\d.]+)\\)",
+        "url": "https://download.torproject.org/tor/",
+        "regex": "(?<browser>\\d+(?:\\.\\d+)+)[\\s\\u200F]*\\(tor\\s*(?<tor>\\d+(?:\\.\\d+)+)\\)",
         "replace": "${tor}-${browser}"
     },
     "autoupdate": {

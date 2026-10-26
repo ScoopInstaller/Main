@@ -1,21 +1,24 @@
 {
-    "version": "3.13.3",
+    "version": "3.15.2",
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
     "license": "Python-2.0",
-    "notes": "Allow applications and third-party installers to find python by running: \"$dir\\install-pep-514.reg\"",
+    "notes": [
+        "Allow applications and third-party installers to find python by running:",
+        "reg import \"$dir\\install-pep-514.reg\""
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://www.python.org/ftp/python/3.13.3/python-3.13.3-amd64.exe#/setup.exe",
-            "hash": "md5:be3264daeb8c5e08365492dd02908cfa"
+            "url": "https://www.python.org/ftp/python/3.15.2/python-3.15.2-amd64.exe#/setup.exe",
+            "hash": "06e225a228191b0f4d1dcf6905fbb21bf9f6970d13a2ec63137ab9bee76f15aa"
         },
         "32bit": {
-            "url": "https://www.python.org/ftp/python/3.13.3/python-3.13.3.exe#/setup.exe",
-            "hash": "md5:fd83ec01f90a1a051f856044b152fb72"
+            "url": "https://www.python.org/ftp/python/3.15.2/python-3.15.2.exe#/setup.exe",
+            "hash": "a1040151c8af7a31dcfa3d4da2648040806dfe86050622166cbebc7747f23027"
         },
         "arm64": {
-            "url": "https://www.python.org/ftp/python/3.13.3/python-3.13.3-arm64.exe#/setup.exe",
-            "hash": "md5:18bb07bd65e768ae1ab1e8a969d8224a"
+            "url": "https://www.python.org/ftp/python/3.15.2/python-3.15.2-arm64.exe#/setup.exe",
+            "hash": "a3957667a6305f0fa4c5ce6c73def927ddcad36190b9e27eb4a04e1a9a153c93"
         }
     },
     "pre_install": [
@@ -61,6 +64,8 @@
         ]
     },
     "post_install": [
+        "# pip moves the whole Scripts dir when upgrading itself if every file in it is pip's own, which breaks the persist junction",
+        "New-Item \"$persist_dir\\Scripts\\.keep\" -ItemType File -Force | Out-Null",
         "python -E -s -m ensurepip -U --default-pip | Out-Null",
         "Write-Output \"$([char]0x1b)[0m\" # Reset ansi to prevent color leak from installer"
     ],
@@ -108,8 +113,8 @@
             }
         },
         "hash": {
-            "url": "https://www.python.org/downloads/release/python-$cleanVersion/",
-            "regex": "(?sm)$basename.*?$md5"
+            "url": "$url.spdx.json",
+            "jsonpath": "$.packages[?(@.downloadLocation == '$url')].checksums[?(@.algorithm == 'SHA256')].checksumValue"
         }
     }
 }

@@ -1,13 +1,18 @@
 {
-    "version": "32.0.0",
+    "version": "50.0.0",
     "description": "Standalone JIT-style runtime for WebAssembly, using Cranelift",
     "homepage": "https://wasmtime.dev",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/bytecodealliance/wasmtime/releases/download/v32.0.0/wasmtime-v32.0.0-x86_64-windows.zip",
-            "hash": "9e3a4a8afc8b15b2a897f00a89c6f9a83541a2b55d38692cbcdd9f49cd127613",
-            "extract_dir": "wasmtime-v32.0.0-x86_64-windows"
+            "url": "https://github.com/bytecodealliance/wasmtime/releases/download/v50.0.0/wasmtime-v50.0.0-x86_64-windows.zip",
+            "hash": "cea9ccc700aaccb2b5507e96ac990ba60104bd7ab39284fb2e67cb64d58efcc4",
+            "extract_dir": "wasmtime-v50.0.0-x86_64-windows"
+        },
+        "arm64": {
+            "url": "https://github.com/bytecodealliance/wasmtime/releases/download/v50.0.0/wasmtime-v50.0.0-aarch64-windows.zip",
+            "hash": "938d84a71a7f36ca9151a906584386444e031169558aa2860ce0a9020f8fef23",
+            "extract_dir": "wasmtime-v50.0.0-aarch64-windows"
         }
     },
     "bin": "wasmtime.exe",
@@ -19,6 +24,10 @@
             "64bit": {
                 "url": "https://github.com/bytecodealliance/wasmtime/releases/download/v$version/wasmtime-v$version-x86_64-windows.zip",
                 "extract_dir": "wasmtime-v$version-x86_64-windows"
+            },
+            "arm64": {
+                "url": "https://github.com/bytecodealliance/wasmtime/releases/download/v$version/wasmtime-v$version-aarch64-windows.zip",
+                "extract_dir": "wasmtime-v$version-aarch64-windows"
             }
         }
     }

@@ -14,7 +14,11 @@
         }
     },
     "bin": "smimesign.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/github/smimesign/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"v([\\d.]+)\""
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

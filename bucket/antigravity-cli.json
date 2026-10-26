@@ -1,0 +1,49 @@
+{
+    "version": "1.4.7",
+    "description": "The terminal-first surface to interact with Antigravity agents.",
+    "homepage": "https://antigravity.google/product/antigravity-cli",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://antigravity.google/terms"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.4.7-5900205422411776/windows-x64/cli_windows_x64.exe#/antigravity-cli.exe",
+            "hash": "sha512:e9e69f036ef0a9c3329cd0608474711dfdbbf62df10a98e237c9fb528daf36be21b4ee65b796b07e0f10ec266f008bb9e40a9c59ba32e4d13ca87bfeb36d3c2a"
+        },
+        "arm64": {
+            "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.4.7-5900205422411776/windows-arm/cli_windows_arm64.exe#/antigravity-cli.exe",
+            "hash": "sha512:e37d62282995af8e86196bc5ec8756db53676f68867bb6c4e2061b1d45abc8fd2f88885ed33f8d33a5bc4b2c34419a43316e216c1b8ebcb1060d95c1c0eb4f36"
+        }
+    },
+    "bin": [
+        "antigravity-cli.exe",
+        [
+            "antigravity-cli.exe",
+            "agy"
+        ]
+    ],
+    "checkver": {
+        "url": "https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/windows_amd64.json",
+        "jsonpath": "$.url",
+        "regex": "antigravity-cli/(?<version>[\\d.]+)-(?<build>\\d+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/$version-$matchBuild/windows-x64/cli_windows_x64.exe#/antigravity-cli.exe",
+                "hash": {
+                    "url": "https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/windows_amd64.json",
+                    "jsonpath": "$.sha512"
+                }
+            },
+            "arm64": {
+                "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/$version-$matchBuild/windows-arm/cli_windows_arm64.exe#/antigravity-cli.exe",
+                "hash": {
+                    "url": "https://antigravity-cli-auto-updater-974169037036.us-central1.run.app/manifests/windows_arm64.json",
+                    "jsonpath": "$.sha512"
+                }
+            }
+        }
+    }
+}

@@ -1,36 +1,77 @@
 {
-    "version": "10.9.0",
+    "version": "12.15.0",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.9.0/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "d7dcdc1e67084a4ac2bbe396ca3af370abaa6bc4eb653c4b2d6c7ad83b719a74"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v12.15.0/pnpm-win32-x64.zip",
+            "hash": "84cf69db1be19e95bb4e5bef329291a046f2821b390d87e00f5690809d8a2ed7"
+        },
+        "arm64": {
+            "url": "https://github.com/pnpm/pnpm/releases/download/v12.15.0/pnpm-win32-arm64.zip",
+            "hash": "b4ad6a5141491911e9d0c8d61ab64eac4abf4cc56a24f6c126ac9de139a86d54"
         }
     },
-    "bin": "pnpm.exe",
+    "bin": [
+        "pnpm.exe",
+        [
+            "pnpm.exe",
+            "pn"
+        ],
+        [
+            "pnpm.exe",
+            "pnpx",
+            "dlx"
+        ],
+        [
+            "pnpm.exe",
+            "pnx",
+            "dlx"
+        ]
+    ],
+    "post_install": [
+        "# Specify the full binary path to avoid binary collision with executables in PATH",
+        "& \"$dir\\pnpm.exe\" config set storeDir \"$dir\\store\"",
+        "& \"$dir\\pnpm.exe\" config set cacheDir \"$dir\\cache\"",
+        "& \"$dir\\pnpm.exe\" config set stateDir \"$dir\\state\""
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "PNPM_HOME": "$dir"
+    },
+    "persist": [
+        "bin",
+        "global",
+        "store",
+        "cache",
+        "state"
+    ],
     "checkver": {
+        "github": "https://api.github.com/repos/pnpm/pnpm/releases",
         "script": [
             "# Using checkver script to check through all release tags",
-            "$auth = Get-GitHubToken",
-            "$head = @{}",
-            "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repositories/50565430/releases'",
+            "$releases = $page | ConvertFrom-Json -ErrorAction Ignore",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
-            "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
             "    if (!($_.tag_name -match '([\\d.]+)')) { return }",
             "    if ($_.prerelease) { return }",
             "    $ver = [Version]::new($matches[1])",
             "    if ($ver -gt $latest_ver) { $latest_ver = $ver }",
             "}",
-            "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; continue }",
+            "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; return }",
             "Write-Output $latest_ver"
         ],
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-arm64.zip"
+            }
+        }
     }
 }

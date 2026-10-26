@@ -1,16 +1,20 @@
 {
-    "version": "2.9.9",
+    "version": "3.1.2",
     "description": "A cross-platform build utility based on Lua",
     "homepage": "https://xmake.io",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/xmake-io/xmake/releases/download/v2.9.9/xmake-v2.9.9.win64.zip",
-            "hash": "1bdde27785faafc69a7a117996a932c73ca8ec8a612ce4d885ba71dfb48c2084"
+            "url": "https://github.com/xmake-io/xmake/releases/download/v3.1.2/xmake-v3.1.2.win64.zip",
+            "hash": "be1c5fd5abec08ac14004daca7bfb1ec6e1f2f2dea94877de8f44dc6e0aed1b1"
         },
         "32bit": {
-            "url": "https://github.com/xmake-io/xmake/releases/download/v2.9.9/xmake-v2.9.9.win32.zip",
-            "hash": "9003aa4e180e3986e7e485233572d3ef057cb4983668c42e19bbdb0bf17b6542"
+            "url": "https://github.com/xmake-io/xmake/releases/download/v3.1.2/xmake-v3.1.2.win32.zip",
+            "hash": "c292456adb37202c4c6a652804bd7d91342f9a0bfade780a2484ee87bcdd475d"
+        },
+        "arm64": {
+            "url": "https://github.com/xmake-io/xmake/releases/download/v3.1.2/xmake-v3.1.2.arm64.zip",
+            "hash": "5d34c1a20f0df6db1aa72e7f04ab1fa157620201b25a47946d81f42ff9339e46"
         }
     },
     "extract_dir": "xmake",
@@ -24,19 +28,18 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.win64.zip",
-                "hash": {
-                    "url": "$baseurl/xmake-v$version.win64.sha256",
-                    "regex": "$sha256.*?zip"
-                }
+                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.win64.zip"
             },
             "32bit": {
-                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.win32.zip",
-                "hash": {
-                    "url": "$baseurl/xmake-v$version.win32.sha256",
-                    "regex": "$sha256.*?zip"
-                }
+                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.win32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/xmake-io/xmake/releases/download/v$version/xmake-v$version.arm64.zip"
             }
+        },
+        "hash": {
+            "url": "$urlNoExt.sha256",
+            "regex": "$sha256.*?zip"
         }
     }
 }

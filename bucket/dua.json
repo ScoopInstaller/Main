@@ -1,22 +1,31 @@
 {
-    "version": "2.30.0",
+    "version": "2.46.0",
     "description": "Disk Usage Analyzer",
-    "homepage": "https://github.com/Byron/dua-cli",
+    "homepage": "https://lib.rs/crates/dua-cli",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Byron/dua-cli/releases/download/v2.30.0/dua-v2.30.0-x86_64-pc-windows-msvc.zip",
-            "hash": "03926d799703342d644ebe2c4aa7141b5a71cbdbafe4cc3e36c83de32ae3644c",
-            "extract_dir": "dua-v2.30.0-x86_64-pc-windows-msvc"
+            "url": "https://github.com/Byron/dua-cli/releases/download/v2.46.0/dua-v2.46.0-x86_64-pc-windows-msvc.zip",
+            "hash": "49616d1deb36109274f19c09dd70420d45bd0c58ea1441236b65b2fd0bdc89ff",
+            "extract_dir": "dua-v2.46.0-x86_64-pc-windows-msvc"
         },
         "32bit": {
-            "url": "https://github.com/Byron/dua-cli/releases/download/v2.30.0/dua-v2.30.0-i686-pc-windows-msvc.zip",
-            "hash": "6359ceb2b0eec50d1c77f8e95a8fbae8be27750fb0f9d8ef1308ad1442621080",
-            "extract_dir": "dua-v2.30.0-i686-pc-windows-msvc"
+            "url": "https://github.com/Byron/dua-cli/releases/download/v2.46.0/dua-v2.46.0-i686-pc-windows-msvc.zip",
+            "hash": "d072b4424ee84ca3bc9effe330e95a326baaddf7e1cb06819efe8d63b84f800c",
+            "extract_dir": "dua-v2.46.0-i686-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/Byron/dua-cli/releases/download/v2.46.0/dua-v2.46.0-aarch64-pc-windows-msvc.zip",
+            "hash": "dc95c37c8bc02d585b607fd8c67aaa148623717a7a500e70d5604193e1495806",
+            "extract_dir": "dua-v2.46.0-aarch64-pc-windows-msvc"
         }
     },
     "bin": "dua.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://api.github.com/repos/Byron/dua-cli/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"v(\\d+(?:\\.\\d+)+)\""
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -26,6 +35,10 @@
             "32bit": {
                 "url": "https://github.com/Byron/dua-cli/releases/download/v$version/dua-v$version-i686-pc-windows-msvc.zip",
                 "extract_dir": "dua-v$version-i686-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://github.com/Byron/dua-cli/releases/download/v$version/dua-v$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "dua-v$version-aarch64-pc-windows-msvc"
             }
         }
     }

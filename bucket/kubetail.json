@@ -1,0 +1,39 @@
+{
+    "version": "0.18.1",
+    "description": "Real-time logging dashboard for Kubernetes",
+    "homepage": "https://www.kubetail.com",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv0.18.1/kubetail-windows-amd64#/kubetail.exe",
+            "hash": "6e044344b098f5477f2392c6910306b594f76d8d557405d8480ffb6e8bdf5b3c"
+        },
+        "arm64": {
+            "url": "https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv0.18.1/kubetail-windows-arm64#/kubetail.exe",
+            "hash": "d9bdff336b4cd649c4da5c6ea934bf809e698bf61d253a7e1e1b9b0a1bb2eb49"
+        }
+    },
+    "bin": "kubetail.exe",
+    "checkver": {
+        "github": "https://github.com/kubetail-org/kubetail",
+        "regex": "cli/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv$version/kubetail-windows-amd64#/kubetail.exe",
+                "hash": {
+                    "url": "$baseurl/SHA256SUMS",
+                    "regex": "$sha256\\s+kubetail-windows-amd64(?:\\s|$)"
+                }
+            },
+            "arm64": {
+                "url": "https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv$version/kubetail-windows-arm64#/kubetail.exe",
+                "hash": {
+                    "url": "$baseurl/SHA256SUMS",
+                    "regex": "$sha256\\s+kubetail-windows-arm64(?:\\s|$)"
+                }
+            }
+        }
+    }
+}

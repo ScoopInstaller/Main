@@ -1,6 +1,6 @@
 {
     "##": "Rename from zip to 7z is needed due to 'invalid archive entry' error.",
-    "version": "3.5.4",
+    "version": "3.5.9",
     "description": "A Go based command line tool for exercism.io",
     "homepage": "https://exercism.org/",
     "license": "MIT",
@@ -8,12 +8,16 @@
     "notes": "To configure the CLI, follow the instructions at https://exercism.io/cli-walkthrough.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/exercism/cli/releases/download/v3.5.4/exercism-3.5.4-windows-x86_64.zip#/dl.7z",
-            "hash": "ea257d0cd9907baa6ad2018fd34fa4b6c9a218a34321ecbf3d02ecccb3ad3a25"
+            "url": "https://github.com/exercism/cli/releases/download/v3.5.9/exercism-3.5.9-windows-x86_64.zip#/dl.7z",
+            "hash": "6fd71c48b2b5b7404bda45811d14809204bf7f1dda54ae9be7639cdcd6c31edf"
         },
         "32bit": {
-            "url": "https://github.com/exercism/cli/releases/download/v3.5.4/exercism-3.5.4-windows-i386.zip#/dl.7z",
-            "hash": "94091501e7a82f9379f4d01cdc2967cac10acf86b48ef5e045013d518e431b84"
+            "url": "https://github.com/exercism/cli/releases/download/v3.5.9/exercism-3.5.9-windows-i386.zip#/dl.7z",
+            "hash": "f6007562fd719a8dc71025d8bc9edb67e88fb53d07dbbf165d682fb9f3818000"
+        },
+        "arm64": {
+            "url": "https://github.com/exercism/cli/releases/download/v3.5.9/exercism-3.5.9-windows-arm64.zip#/dl.7z",
+            "hash": "5430f3a423e6cb35d67c31eeae4e14d00f90c92190e807a3b250e21dfe04af27"
         }
     },
     "checkver": {
@@ -26,6 +30,9 @@
             },
             "32bit": {
                 "url": "https://github.com/exercism/cli/releases/download/v$version/exercism-$version-windows-i386.zip#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/exercism/cli/releases/download/v$version/exercism-$version-windows-arm64.zip#/dl.7z"
             }
         }
     }

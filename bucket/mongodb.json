@@ -1,5 +1,5 @@
 {
-    "version": "8.0.8",
+    "version": "9.0.4",
     "description": "A document database with the scalability and flexibility.",
     "homepage": "https://www.mongodb.org",
     "license": {
@@ -21,11 +21,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-8.0.8-signed.msi",
-            "hash": "4bf700912876c337697fa02bf4c38db0baed89604033b138e5e27d4e3eb743ee",
-            "extract_dir": "MongoDB\\Server\\8.0"
+            "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-9.0.4-signed.msi",
+            "hash": "914085f58aaa9699d3bee720ef660db6bf83c478f4afa2aa40909ea773e5d476"
         }
     },
+    "extract_dir": "MongoDB\\Server\\9.0",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\bin\\mongod.cfg\")) {",
         "    $cfg = Get-Content \"$dir\\bin\\mongod.cfg\"",
@@ -48,16 +48,16 @@
         "log"
     ],
     "checkver": {
-        "url": "http://downloads.mongodb.org/current.json",
+        "url": "https://downloads.mongodb.org/current.json",
         "regex": "\"version\"\\:\\s+\"([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-$version-signed.msi",
-                "extract_dir": "MongoDB\\Server\\$majorVersion.$minorVersion"
+                "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-$version-signed.msi"
             }
         },
+        "extract_dir": "MongoDB\\Server\\$majorVersion.$minorVersion",
         "hash": {
             "url": "$url.sha256",
             "regex": "$sha256"

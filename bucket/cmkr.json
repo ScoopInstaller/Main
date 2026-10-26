@@ -1,0 +1,26 @@
+{
+    "version": "0.2.47",
+    "description": "Modern build system based on CMake and TOML.",
+    "homepage": "https://cmkr.build",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/build-cpp/cmkr/releases/download/v0.2.47/cmkr-windows.zip",
+            "hash": "85d71c1b6d3afc55ebdf77dc7c723553a1fd8d35ab16caafd4a591d63cac2a3a"
+        }
+    },
+    "bin": "cmkr.exe",
+    "checkver": {
+        "github": "https://github.com/build-cpp/cmkr"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/build-cpp/cmkr/releases/download/v$version/cmkr-windows.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "version": "23.1.4-20261020",
+    "description": "LLVM toolchain based on mingw-w64. (MSVCRT, mstorsjo build)",
+    "homepage": "https://github.com/mstorsjo/llvm-mingw/",
+    "license": "GPL-3.0-or-later,ZPL-2.1,Apache-2.0 WITH LLVM-exception,ISC",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20261020/llvm-mingw-20261020-msvcrt-x86_64.zip",
+            "hash": "52a3e3f584a74c3cde8ceb0c6960549683178e03b36818cb02b7ed109a68ff67",
+            "extract_dir": "llvm-mingw-20261020-msvcrt-x86_64"
+        },
+        "32bit": {
+            "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/20261020/llvm-mingw-20261020-msvcrt-i686.zip",
+            "hash": "757fb14aa26fb03499f284eed8d069c4230f21b1b855d7f881149e2e2c9e92ec",
+            "extract_dir": "llvm-mingw-20261020-msvcrt-i686"
+        }
+    },
+    "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
+    "env_add_path": "bin",
+    "checkver": {
+        "github": "https://github.com/mstorsjo/llvm-mingw",
+        "jsonpath": "$..name",
+        "regex": "llvm-mingw\\s+(?<time>\\d+)\\swith\\s+LLVM\\s+(?<llvm>[\\d.]+)",
+        "replace": "${llvm}-${time}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-msvcrt-x86_64.zip",
+                "extract_dir": "llvm-mingw-$matchTime-msvcrt-x86_64"
+            },
+            "32bit": {
+                "url": "https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-msvcrt-i686.zip",
+                "extract_dir": "llvm-mingw-$matchTime-msvcrt-i686"
+            }
+        }
+    }
+}

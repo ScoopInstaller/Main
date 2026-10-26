@@ -1,0 +1,27 @@
+{
+    "version": "1.0.2115+e16833f284",
+    "description": "Provides developers secure tunnels to share local web services",
+    "homepage": "https://aka.ms/devtunnels",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://aka.ms/devtunnels/tos"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://tunnelsassetsprod.blob.core.windows.net/cli/1.0.2115+e16833f284/devtunnel.exe",
+            "hash": "f11c797e90397a0a8e9bee711d500473632be27839deeb4fb3d0f5dbc6ffd2dc"
+        }
+    },
+    "bin": "devtunnel.exe",
+    "checkver": {
+        "url": "https://tunnelsassetsprod.blob.core.windows.net/cli/cli-version.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://tunnelsassetsprod.blob.core.windows.net/cli/$version/devtunnel.exe"
+            }
+        }
+    }
+}

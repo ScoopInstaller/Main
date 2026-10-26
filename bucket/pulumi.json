@@ -1,19 +1,21 @@
 {
-    "version": "3.163.0",
+    "version": "3.272.0",
     "description": "Create, deploy, and manage infrastructure on any cloud using any language.",
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.163.0-windows-x64.zip",
-            "hash": "56fbaa015e1b7ed1331933b2c633b066f53c028cff61481dd93bdf8e4b0c5910"
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.272.0-windows-x64.zip",
+            "hash": "sha512:45def41583fd87dcdac0652ec5b6935cdbf2632446be59e51b781fcfe471b2d8cdffcf8b409553d618b305d46c35f7ea252f1566d081df7ee1ce370019cd09cd"
+        },
+        "arm64": {
+            "url": "https://get.pulumi.com/releases/sdk/pulumi-v3.272.0-windows-x64.zip",
+            "hash": "sha512:45def41583fd87dcdac0652ec5b6935cdbf2632446be59e51b781fcfe471b2d8cdffcf8b409553d618b305d46c35f7ea252f1566d081df7ee1ce370019cd09cd"
         }
     },
     "extract_dir": "Pulumi\\bin",
     "bin": [
         "pulumi.exe",
-        "pulumi-analyzer-policy-python.cmd",
-        "pulumi-analyzer-policy.cmd",
         "pulumi-language-dotnet.exe",
         "pulumi-language-go.exe",
         "pulumi-language-java.exe",
@@ -21,8 +23,6 @@
         "pulumi-language-python-exec",
         "pulumi-language-python.exe",
         "pulumi-language-yaml.exe",
-        "pulumi-python-shim.cmd",
-        "pulumi-python3-shim.cmd",
         "pulumi-resource-pulumi-nodejs.cmd",
         "pulumi-resource-pulumi-python.cmd",
         "pulumi-watch.exe"
@@ -35,7 +35,13 @@
         "architecture": {
             "64bit": {
                 "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://get.pulumi.com/releases/sdk/pulumi-v$version-windows-x64.zip"
             }
+        },
+        "hash": {
+            "url": "https://github.com/pulumi/pulumi/releases/download/v$version/SHA512SUMS"
         }
     }
 }

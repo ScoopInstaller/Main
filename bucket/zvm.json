@@ -1,18 +1,16 @@
 {
-    "homepage": "https://github.com/tristanisham/zvm",
-    "version": "0.8.6",
+    "version": "0.9.4",
     "description": "Zig Version Manager (zvm) is a tool for managing your Zig installs",
+    "homepage": "https://www.zvm.app",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/tristanisham/zvm/releases/download/v0.8.6/zvm-windows-amd64.zip",
-            "hash": "64398f5a8dc9af2e141a328c9b72dece962b9fde27fb8c3a865a8aa747605f94",
-            "extract_dir": "zvm-windows-amd64"
+            "url": "https://github.com/tristanisham/zvm/releases/download/v0.9.4/zvm-windows-amd64.zip",
+            "hash": "50a75206b9de8158e69c265122da630ea492616041d05cde9a5470bab218e874"
         },
         "arm64": {
-            "url": "https://github.com/tristanisham/zvm/releases/download/v0.8.6/zvm-windows-arm64.zip",
-            "hash": "576c2e203b7b2eb31e6bdf12b1df5701c2ffca12547da628036ac3f99a55b88c",
-            "extract_dir": "zvm-windows-arm64"
+            "url": "https://github.com/tristanisham/zvm/releases/download/v0.9.4/zvm-windows-arm64.zip",
+            "hash": "c5fd66233180400532b084b27797c80ef56a4dea08e8133349ce98dde4206c2a"
         }
     },
     "bin": "zvm.exe",
@@ -22,19 +20,17 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/tristanisham/zvm/releases/download/v$version/zvm-windows-amd64.zip",
-                "extract_dir": "zvm-windows-amd64"
+                "url": "https://github.com/tristanisham/zvm/releases/download/v$version/zvm-windows-amd64.zip"
             },
             "arm64": {
-                "url": "https://github.com/tristanisham/zvm/releases/download/v$version/zvm-windows-arm64.zip",
-                "extract_dir": "zvm-windows-arm64"
+                "url": "https://github.com/tristanisham/zvm/releases/download/v$version/zvm-windows-arm64.zip"
             }
         }
     },
     "post_install": [
         "if (Test-Path ~\\.zvm) {",
         "   if ($null -eq (Get-Item ~\\.zvm).LinkType) {",
-        "       Rename-Item -Path ~\\.zvm -NewName ~\\.zvm.old -Force",
+        "       Rename-Item -Path ~\\.zvm -NewName .zvm.old -Force",
         "   } else {",
         "       Remove-Item -Path ~\\.zvm -Force",
         "   }",

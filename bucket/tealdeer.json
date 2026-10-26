@@ -1,12 +1,16 @@
 {
-    "version": "1.7.2",
+    "version": "1.9.1",
     "description": "A very fast implementation of tldr in Rust.",
     "homepage": "https://tealdeer-rs.github.io/tealdeer/",
     "license": "Apache-2.0|MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/dbrgn/tealdeer/releases/download/v1.7.2/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
-            "hash": "8f27057e30f94d38334a0468701121ef4b305cbed01d88dffb1aba1f1c2b7b40"
+            "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.1/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
+            "hash": "f75a3e4b43e7b03d30bac88eccf928af90b8993cd354fe207aec1c643910736f"
+        },
+        "arm64": {
+            "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v1.9.1/tealdeer-windows-aarch64-msvc.exe#/tldr.exe",
+            "hash": "4063474c8bf3d5b2aa97994454cedfce5aaa1a33448f08cc256e6df8700a272a"
         }
     },
     "pre_install": [
@@ -31,16 +35,19 @@
         "custom-pages"
     ],
     "checkver": {
-        "github": "https://github.com/dbrgn/tealdeer"
+        "github": "https://github.com/tealdeer-rs/tealdeer"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/dbrgn/tealdeer/releases/download/v$version/tealdeer-windows-x86_64-msvc.exe#/tldr.exe",
-                "hash": {
-                    "url": "$url.sha256"
-                }
+                "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v$version/tealdeer-windows-x86_64-msvc.exe#/tldr.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/tealdeer-rs/tealdeer/releases/download/v$version/tealdeer-windows-aarch64-msvc.exe#/tldr.exe"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }

@@ -1,32 +1,30 @@
 {
-    "version": "0.34.1",
+    "version": "0.43.1",
     "description": "A peer-to-peer hypermedia protocol to make the web faster, safer, and more open.",
     "homepage": "https://ipfs.tech/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dist.ipfs.tech/kubo/v0.34.1/kubo_v0.34.1_windows-amd64.zip",
-            "hash": "sha512:b139c4bacee6bf7b0221dbee5c5dfe4bf5b2ac0d5c7daa1521b338a9b170276654392fde97feb49230f03dd157c8a72d617b1ee0ff7b2e7f58664cc6d17246f2"
+            "url": "https://github.com/ipfs/kubo/releases/download/v0.43.1/kubo_v0.43.1_windows-amd64.zip",
+            "hash": "sha512:e611cecef25cddb10b7f907145383608d9b31219ad7120041aeacfe2313882da1944f2897fda29bc2d959dd357e4950089ec8f2cbd52b29f2fc472bcae4356d0"
         },
         "arm64": {
-            "url": "https://dist.ipfs.tech/kubo/v0.34.1/kubo_v0.34.1_windows-arm64.zip",
-            "hash": "sha512:b2c132abf332542d0adb4708029a6f43a772d09b2adbf1b70548f266a5ef0292caee0e8e77d0c438ebc97bd83fd2975b8c3204b75aeac19ad7581d79fa34f978"
+            "url": "https://github.com/ipfs/kubo/releases/download/v0.43.1/kubo_v0.43.1_windows-arm64.zip",
+            "hash": "sha512:a6f2578ad3386a567c437eeebac1646293276b5fb44a26a33195f4310ed7b06cab9dfe0e02e17f33ce8ba1beb4f1ccef45375a861c8cc60192f46da7e0c02166"
         }
     },
     "extract_dir": "kubo",
     "bin": "ipfs.exe",
     "checkver": {
-        "url": "https://dist.ipfs.tech/kubo/versions",
-        "reverse": true,
-        "regex": "(?m)^v([\\d.]*)$"
+        "github": "https://github.com/ipfs/kubo"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dist.ipfs.tech/kubo/v$version/kubo_v$version_windows-amd64.zip"
+                "url": "https://github.com/ipfs/kubo/releases/download/v$version/kubo_v$version_windows-amd64.zip"
             },
             "arm64": {
-                "url": "https://dist.ipfs.tech/kubo/v$version/kubo_v$version_windows-arm64.zip"
+                "url": "https://github.com/ipfs/kubo/releases/download/v$version/kubo_v$version_windows-arm64.zip"
             }
         },
         "hash": {

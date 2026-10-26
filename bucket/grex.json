@@ -1,20 +1,29 @@
 {
-    "version": "1.4.5",
+    "version": "1.4.6",
     "description": "A regular expression generator",
-    "homepage": "https://github.com/pemistahl/grex",
+    "homepage": "https://pemistahl.github.io/grex-js/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pemistahl/grex/releases/download/v1.4.5/grex-v1.4.5-x86_64-pc-windows-msvc.zip",
-            "hash": "ffd6e41a78cf97fd5442b16a504102c229ce78e8a07b0fb89ba1e39ac3ff469e"
+            "url": "https://github.com/pemistahl/grex/releases/download/v1.4.6/grex-v1.4.6-x86_64-pc-windows-msvc.zip",
+            "hash": "7691dbb8e46339a15d8362b79b2456f508266cf00a55fe685ed69a6259577485"
+        },
+        "arm64": {
+            "url": "https://github.com/pemistahl/grex/releases/download/v1.4.6/grex-v1.4.6-aarch64-pc-windows-msvc.zip",
+            "hash": "bd25274005cc1e84abb2f7dd4d4ec251a267ec6fcf53b40de59ee71c26c5b1b7"
         }
     },
     "bin": "grex.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/pemistahl/grex"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/pemistahl/grex/releases/download/v$version/grex-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/pemistahl/grex/releases/download/v$version/grex-v$version-aarch64-pc-windows-msvc.zip"
             }
         }
     }

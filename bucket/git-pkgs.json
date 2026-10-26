@@ -1,0 +1,33 @@
+{
+    "version": "0.21.0",
+    "description": "Git subcommand for tracking package dependencies across git history. Analyzes your repository to show when dependencies were added, modified, or removed, who made those changes, and why.",
+    "homepage": "https://git-pkgs.dev/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/git-pkgs/git-pkgs/releases/download/v0.21.0/git-pkgs_0.21.0_windows_amd64.tar.gz",
+            "hash": "8f66f926e9a1494c64c1b5fa46333ce566455577efaec84ed4470b1d29ad1318"
+        },
+        "arm64": {
+            "url": "https://github.com/git-pkgs/git-pkgs/releases/download/v0.21.0/git-pkgs_0.21.0_windows_arm64.tar.gz",
+            "hash": "da63f023eaef183df024f7de8a54fc451795eeb39b51de7d322e50b8b47c106b"
+        }
+    },
+    "bin": "git-pkgs.exe",
+    "checkver": {
+        "github": "https://github.com/git-pkgs/git-pkgs"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/git-pkgs/git-pkgs/releases/download/v$version/git-pkgs_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/git-pkgs/git-pkgs/releases/download/v$version/git-pkgs_$version_windows_arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

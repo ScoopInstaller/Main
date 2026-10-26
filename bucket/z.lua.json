@@ -1,16 +1,22 @@
 {
-    "version": "1.8.20",
-    "description": "cd command replacement",
+    "version": "1.8.26",
+    "description": "A command-line cd replacement that accelerates directory navigation by learning user access patterns.",
     "homepage": "https://github.com/skywind3000/z.lua",
-    "license": "MIT",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/skywind3000/z.lua/blob/HEAD/LICENSE"
+    },
     "notes": "Configure accordingly to 'https://github.com/skywind3000/z.lua#install'",
     "depends": "lua",
-    "url": "https://github.com/skywind3000/z.lua/archive/1.8.20.zip",
-    "hash": "35530522d4328ad6a104538610e64f3e1a2ea9f7480037383263b1824a363d47",
-    "extract_dir": "z.lua-1.8.20",
-    "checkver": "github",
+    "url": "https://github.com/skywind3000/z.lua/archive/refs/tags/1.8.26.zip",
+    "hash": "c8f9a88657d88ec1c91c7a827ab3463935e3baca308029b72cd2f8d64792169a",
+    "extract_dir": "z.lua-1.8.26",
+    "checkver": {
+        "github": "https://api.github.com/repos/skywind3000/z.lua/releases/latest",
+        "regex": "(?i)(?<tag>v?([\\d.]+))"
+    },
     "autoupdate": {
-        "url": "https://github.com/skywind3000/z.lua/archive/$version.zip",
+        "url": "https://github.com/skywind3000/z.lua/archive/refs/tags/$matchTag.zip",
         "extract_dir": "z.lua-$version"
     }
 }

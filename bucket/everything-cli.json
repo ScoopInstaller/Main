@@ -1,17 +1,23 @@
 {
-    "version": "1.1.0.27",
-    "description": "Command line interface to Everything.",
+    "version": "1.1.1.39",
+    "description": "Command line interface to Everything (also known as ES).",
     "homepage": "https://www.voidtools.com/support/everything/command_line_interface/",
     "license": "MIT",
-    "depends": "extras/everything",
+    "suggest": {
+        "Everything": "extras/everything"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://www.voidtools.com/ES-1.1.0.27.x64.zip",
-            "hash": "16058ccaa225d2b40bf2fc67acf64fd2d928a4ba485def7277885d66b6dc8a6a"
+            "url": "https://github.com/voidtools/ES/releases/download/1.1.1.39/ES-1.1.1.39.x64.zip",
+            "hash": "f3a951f7d27843b128600f7213a97f77ea399be15c63d2a0bde703f1c28848b9"
         },
         "32bit": {
-            "url": "https://www.voidtools.com/ES-1.1.0.27.x86.zip",
-            "hash": "c8502d7c54a90340f3a1fdf6ca46783e3d548b6791f532ef98172d640a7b6449"
+            "url": "https://github.com/voidtools/ES/releases/download/1.1.1.39/ES-1.1.1.39.x86.zip",
+            "hash": "304d605385a71d6663ec6e23d8ae308b856d9cefff865dbc8e2e5a321d048c9a"
+        },
+        "arm64": {
+            "url": "https://github.com/voidtools/ES/releases/download/1.1.1.39/ES-1.1.1.39.ARM64.zip",
+            "hash": "04e8c0de3422ac664d02ee829119e518cd26976ea18f35d96dea3e8195a47e5b"
         }
     },
     "pre_install": [
@@ -22,16 +28,18 @@
     "bin": "es.exe",
     "persist": "es.ini",
     "checkver": {
-        "url": "https://www.voidtools.com/downloads/",
-        "regex": "ES-([\\d.]+)\\.x64\\.zip"
+        "github": "https://github.com/voidtools/ES"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.voidtools.com/ES-$version.x64.zip"
+                "url": "https://github.com/voidtools/ES/releases/download/$version/ES-$version.x64.zip"
             },
             "32bit": {
-                "url": "https://www.voidtools.com/ES-$version.x86.zip"
+                "url": "https://github.com/voidtools/ES/releases/download/$version/ES-$version.x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/voidtools/ES/releases/download/$version/ES-$version.ARM64.zip"
             }
         }
     }

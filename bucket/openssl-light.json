@@ -1,0 +1,55 @@
+{
+    "homepage": "https://slproweb.com/products/Win32OpenSSL.html",
+    "version": "4.1.0",
+    "license": "Apache-2.0",
+    "description": "TLS/SSL toolkit (Light)",
+    "architecture": {
+        "64bit": {
+            "url": "https://slproweb.com/download/Win64OpenSSL_Light-4_1_0.exe",
+            "hash": "7d1d4022eea9b89c5c6b691b01145f2e0f69aeaf6668635c8010a5f3f1c8c25d"
+        },
+        "32bit": {
+            "url": "https://slproweb.com/download/Win32OpenSSL_Light-4_1_0.exe",
+            "hash": "c09a9f04955e1b711424ec5b0236b064ce53bd20cd8c9ca7de1c9687ec8bd850"
+        },
+        "arm64": {
+            "url": "https://slproweb.com/download/Win64ARMOpenSSL_Light-4_1_0.exe",
+            "hash": "c8c78294710f7dced49f125d5f2d9b9892789c8dbab44aa41b32de9c9793b968"
+        }
+    },
+    "depends": "innounp",
+    "installer": {
+        "script": [
+            "Expand-InnoArchive -Path \"$dir\\$fname\"",
+            "Expand-InnoArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\\bin\" -ExtractDir '{cf}' -Removal",
+            "Rename-Item \"$dir\\bin\\SSL\" 'cnf' -Force"
+        ]
+    },
+    "bin": "bin\\openssl.exe",
+    "env_set": {
+        "OPENSSL_CONF": "$dir\\bin\\cnf\\openssl.cnf"
+    },
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
+        "jsonpath": "$.files..basever",
+        "regex": "([\\d.]+)",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://slproweb.com/download/Win64OpenSSL_Light-$underscoreVersion.exe"
+            },
+            "32bit": {
+                "url": "https://slproweb.com/download/Win32OpenSSL_Light-$underscoreVersion.exe"
+            },
+            "arm64": {
+                "url": "https://slproweb.com/download/Win64ARMOpenSSL_Light-$underscoreVersion.exe"
+            }
+        },
+        "hash": {
+            "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
+            "jsonpath": "$.files.['$basename'].sha256"
+        }
+    }
+}

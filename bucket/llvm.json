@@ -1,20 +1,16 @@
 {
-    "version": "20.1.3",
+    "version": "23.1.4",
     "description": "Collection of modular and reusable compiler and toolchain technologies.",
     "homepage": "https://www.llvm.org",
     "license": "NCSA",
     "notes": "Since upstream does NOT provide pre-compiled binary of arm64 for every release, LLVM arm64 is now a separate manifest: 'llvm-arm64'.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.3/LLVM-20.1.3-win64.exe#/dl.7z",
-            "hash": "0a18ea761147a7de69d6dd60ef81b70496e5255aec6caff22d45da85188614af"
-        },
-        "32bit": {
-            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.3/LLVM-20.1.3-win32.exe#/dl.7z",
-            "hash": "d76de655141ee5fdc31e043192e80d70a4b31e07a36be36e7257e70f03ee87ba"
+            "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.4/LLVM-23.1.4-win64.msi",
+            "hash": "15e49aca3540991a6f28a0e57babab67da82155c4f73f79dd5e8666a851f9127"
         }
     },
-    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
+    "extract_dir": "LLVM",
     "env_add_path": "bin",
     "env_set": {
         "LIBCLANG_PATH": "$dir\\bin",
@@ -22,15 +18,12 @@
     },
     "checkver": {
         "github": "https://github.com/llvm/llvm-project",
-        "regex": "tag/llvmorg-([\\d._]+)"
+        "regex": "llvmorg-([\\d._]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
+                "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.msi"
             }
         }
     }

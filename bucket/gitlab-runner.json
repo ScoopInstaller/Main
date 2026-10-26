@@ -1,5 +1,5 @@
 {
-    "version": "17.11.0",
+    "version": "19.5.1",
     "description": "Run your jobs and send the results back to GitLab",
     "homepage": "https://docs.gitlab.com/runner/",
     "license": "MIT",
@@ -16,12 +16,16 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v17.11.0/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
-            "hash": "a6895ae5a1030cd2104998cd492f641409f54e96166ea927e582e57a78da8308"
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v19.5.1/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
+            "hash": "09ca07cc2be4f1a6c6b60907049d231bc4f09aa05ef9a2e0dc5be36251e2bb3d"
         },
         "32bit": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v17.11.0/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
-            "hash": "6b8940887b044d76bfa033ef95c8337212dc4174ab6693319df30019cf3a0f67"
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v19.5.1/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
+            "hash": "f836d59dbbecc3d909f84c816c47817134ea77e9a282182e8e36dcf9959c0407"
+        },
+        "arm64": {
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v19.5.1/binaries/gitlab-runner-windows-arm64.exe#/gitlab-runner.exe",
+            "hash": "188f03707a5495928126884ec9e8762bc866555e384da233e0ab1ff4477bbe55"
         }
     },
     "bin": "gitlab-runner.exe",
@@ -36,6 +40,9 @@
             },
             "32bit": {
                 "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe"
+            },
+            "arm64": {
+                "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/binaries/gitlab-runner-windows-arm64.exe#/gitlab-runner.exe"
             }
         },
         "hash": {

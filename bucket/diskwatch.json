@@ -1,0 +1,25 @@
+{
+    "version": "0.7.0",
+    "description": "Single-host, read-only disk diagnostics TUI.",
+    "homepage": "https://github.com/matthart1983/diskwatch",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/matthart1983/diskwatch/releases/download/v0.7.0/diskwatch-windows-x86_64.tar.gz",
+            "hash": "0ef80f1f20c13b373e13b8ee0cda1f93520bd746a53e5b720f6c579ed9e4dedf"
+        }
+    },
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'diskwatch-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'diskwatch.exe'",
+    "bin": "diskwatch.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/matthart1983/diskwatch/releases/download/v$version/diskwatch-windows-x86_64.tar.gz"
+            }
+        }
+    }
+}

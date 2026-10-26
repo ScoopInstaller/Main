@@ -1,0 +1,26 @@
+{
+    "version": "0.4.0",
+    "description": "Lightweight Rust language server optimized for low memory usage and fast restarts.",
+    "homepage": "https://github.com/rust-glancer/rust-glancer",
+    "license": "MIT|Apache-2.0",
+    "notes": "Requires the rust-src component: rustup component add rust-src",
+    "suggest": {
+        "Rust": "rustup",
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rust-glancer/rust-glancer/releases/download/v0.4.0/rust-glancer-0.4.0-x86_64-pc-windows-msvc.tar.gz",
+            "hash": "baaecce8db372ba02deb50b3fd605f35b7119220efa90aa0d559533ea38fedc9"
+        }
+    },
+    "bin": "rust-glancer.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rust-glancer/rust-glancer/releases/download/v$version/rust-glancer-$version-x86_64-pc-windows-msvc.tar.gz"
+            }
+        }
+    }
+}

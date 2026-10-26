@@ -1,20 +1,29 @@
 {
-    "version": "3.88.25",
+    "version": "3.99.7",
     "description": "Find leaked credentials",
-    "homepage": "https://github.com/trufflesecurity/trufflehog",
+    "homepage": "https://trufflesecurity.com",
     "license": "AGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.88.25/trufflehog_3.88.25_windows_amd64.tar.gz",
-            "hash": "d10164b1dc3d9db0844e8dcda7a9b79a1ee37f6a43f89bdd28503fe544b1dcb8"
+            "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_windows_amd64.tar.gz",
+            "hash": "16e85ace8d7724774559d418e1bd876ae410a684321c1c44a34c499b03703d9d"
+        },
+        "arm64": {
+            "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_windows_arm64.tar.gz",
+            "hash": "7718dd78aabdbae63d534a88bdecdae0db92004f341395f540d6a03106c78099"
         }
     },
     "bin": "trufflehog.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/trufflesecurity/trufflehog"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v$version/trufflehog_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v$version/trufflehog_$version_windows_arm64.tar.gz"
             }
         },
         "hash": {

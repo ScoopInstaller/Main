@@ -1,15 +1,15 @@
 {
-    "version": "1.7.6",
+    "version": "1.8.8",
     "description": "Open source framework for processing, monitoring, and alerting on time series data.",
     "homepage": "https://www.influxdata.com/time-series-platform/kapacitor/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/kapacitor/releases/kapacitor-1.7.6_windows_amd64.zip",
-            "hash": "f3234a7096ac5f1f90c5062b8434bf40c5ef5c5039430c977f98ed26c936f904",
-            "extract_dir": "kapacitor-1.7.6-1"
+            "url": "https://dl.influxdata.com/kapacitor/releases/kapacitor-1.8.8_windows_amd64.zip",
+            "hash": "ccec65e4ee1b4ed7ae637df97f20200469988f59a50f0354a1d806a0e5fef9d9"
         }
     },
+    "extract_dir": "kapacitor-1.8.8-1",
     "bin": [
         "kapacitor.exe",
         "kapacitord.exe"
@@ -22,13 +22,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/kapacitor/releases/kapacitor-$version_windows_amd64.zip",
-                "hash": {
-                    "url": "https://portal.influxdata.com/downloads/",
-                    "regex": "$sha256.*\\s.*\\s.*$basename"
-                },
-                "extract_dir": "kapacitor-$version-1"
+                "url": "https://dl.influxdata.com/kapacitor/releases/kapacitor-$version_windows_amd64.zip"
             }
-        }
+        },
+        "hash": {
+            "url": "https://portal.influxdata.com/downloads/",
+            "regex": "\"sha256\"\\s*:\\s*\"$sha256\"[^}]*$basename"
+        },
+        "extract_dir": "kapacitor-$version-1"
     }
 }

@@ -1,0 +1,33 @@
+{
+    "version": "2.7.0",
+    "description": "A command line tool that allows searching and downloading app packages (known as ipa files) from the iOS App Store.",
+    "homepage": "https://github.com/majd/ipatool",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/majd/ipatool/releases/download/v2.7.0/ipatool-2.7.0-windows-amd64.tar.gz",
+            "hash": "b729608716908be287c2e6972f9e8cd05f879810ae5d182fc856c9e57cca0dd5"
+        },
+        "arm64": {
+            "url": "https://github.com/majd/ipatool/releases/download/v2.7.0/ipatool-2.7.0-windows-arm64.tar.gz",
+            "hash": "85ab35a268b47e1729412178063fe11621cae1135f33d3b9ab5233d436bf2562"
+        }
+    },
+    "extract_dir": "bin",
+    "pre_install": "Get-ChildItem \"$dir\\ipatool-*.exe\" | Select-Object -First 1 | Rename-Item -NewName \"ipatool.exe\"",
+    "bin": "ipatool.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/majd/ipatool/releases/download/v$version/ipatool-$version-windows-amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/majd/ipatool/releases/download/v$version/ipatool-$version-windows-arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
+        }
+    }
+}

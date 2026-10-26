@@ -1,0 +1,28 @@
+{
+    "version": "1.2.4",
+    "description": "Trigram-indexed grep with a client/server architecture for fast regex search in large codebases locally",
+    "homepage": "https://github.com/microsoft/tgrep",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/microsoft/tgrep/releases/download/v1.2.4/tgrep-v1.2.4-x86_64-pc-windows-msvc.zip",
+            "hash": "54eddd20771743e71e07c1e2ab09c580446c59adf1a1016ec1330b8e02a93a30"
+        },
+        "arm64": {
+            "url": "https://github.com/microsoft/tgrep/releases/download/v1.2.4/tgrep-v1.2.4-aarch64-pc-windows-msvc.zip",
+            "hash": "34fa937138aced769a88717b320efcaa39e2b735aac424ec4125239fe0d284c0"
+        }
+    },
+    "bin": "tgrep.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/tgrep/releases/download/v$version/tgrep-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/microsoft/tgrep/releases/download/v$version/tgrep-v$version-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

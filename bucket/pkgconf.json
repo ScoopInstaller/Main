@@ -1,0 +1,51 @@
+{
+    "version": "3.0.10",
+    "description": "Package compiler and linker metadata toolkit.",
+    "homepage": "https://github.com/pkgconf/pkgconf",
+    "license": "ISC",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/pkgconf/pkgconf/releases/download/pkgconf-3.0.10/pkgconf-x64-3.0.10.msi",
+            "hash": "28cc9e44473a3ef277260f3dac20f58e2a667760393bd47dc309b6426e9bd727",
+            "extract_dir": "PFiles64\\pkgconf-3.0.10"
+        },
+        "32bit": {
+            "url": "https://github.com/pkgconf/pkgconf/releases/download/pkgconf-3.0.10/pkgconf-x86-3.0.10.msi",
+            "hash": "20afcba858f3780fb377bd52ea54f3b108ecd1e686668cf7c5cad718944afaae",
+            "extract_dir": "PFiles\\pkgconf-3.0.10"
+        },
+        "arm64": {
+            "url": "https://github.com/pkgconf/pkgconf/releases/download/pkgconf-3.0.10/pkgconf-arm64-3.0.10.msi",
+            "hash": "6447773d59fca3260304aa8fe2f01c086ed93ee0e12f2c0e5c369fc86f588a7c",
+            "extract_dir": "PFiles64\\pkgconf-3.0.10"
+        }
+    },
+    "bin": [
+        "bomtool.exe",
+        "pccritic.exe",
+        "pkgconf.exe",
+        "pkg-config.exe",
+        "spdxtool.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/pkgconf/pkgconf",
+        "jsonpath": "$.tag_name",
+        "regex": "pkgconf-(?<version>[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pkgconf/pkgconf/releases/download/pkgconf-$version/pkgconf-x64-$version.msi",
+                "extract_dir": "PFiles64\\pkgconf-$version"
+            },
+            "32bit": {
+                "url": "https://github.com/pkgconf/pkgconf/releases/download/pkgconf-$version/pkgconf-x86-$version.msi",
+                "extract_dir": "PFiles\\pkgconf-$version"
+            },
+            "arm64": {
+                "url": "https://github.com/pkgconf/pkgconf/releases/download/pkgconf-$version/pkgconf-arm64-$version.msi",
+                "extract_dir": "PFiles64\\pkgconf-$version"
+            }
+        }
+    }
+}

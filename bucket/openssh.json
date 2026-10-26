@@ -1,18 +1,23 @@
 {
-    "version": "9.8.3.0p2",
+    "version": "10.4.0.0p1",
     "description": "The premier connectivity tool for remote login with the SSH protocol. (Microsoft build)",
     "homepage": "https://www.openssh.com",
     "license": "SSH-OpenSSH",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v9.8.3.0p2-Preview/OpenSSH-Win64.zip",
-            "hash": "0ca131f3a78f404dc819a6336606caec0db1663a692ccc3af1e90232706ada54",
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/10.4.0.0p1-Preview/OpenSSH-Win64.zip",
+            "hash": "b67ff8becd203502190ec42ac7787c24c2cd3325ed7700485fe7a1c83d2a7957",
             "extract_dir": "OpenSSH-Win64"
         },
         "32bit": {
-            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v9.8.3.0p2-Preview/OpenSSH-Win32.zip",
-            "hash": "de65a5cc1c43192bbc7e5fc527ba435c9d1668713f062eaf1298932e28995085",
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/10.4.0.0p1-Preview/OpenSSH-Win32.zip",
+            "hash": "4f7218ec8f1df9217ed17fbfaf16057d7d40559a04eeae710ce234feabbd618b",
             "extract_dir": "OpenSSH-Win32"
+        },
+        "arm64": {
+            "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/10.4.0.0p1-Preview/OpenSSH-ARM64.zip",
+            "hash": "d2b1928225479fec9e0c938f527fdb5ed676446cca1bbcc5af84aca1f272842e",
+            "extract_dir": "OpenSSH-ARM64"
         }
     },
     "bin": [
@@ -29,15 +34,18 @@
     ],
     "checkver": {
         "github": "https://github.com/PowerShell/Win32-OpenSSH",
-        "regex": "tag/v([\\d.]+p\\d)-Preview"
+        "regex": "(?:v)?([\\d.]+p\\d)-Preview"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v$version-Preview/OpenSSH-Win64.zip"
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/$version-Preview/OpenSSH-Win64.zip"
             },
             "32bit": {
-                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/v$version-Preview/OpenSSH-Win32.zip"
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/$version-Preview/OpenSSH-Win32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/PowerShell/Win32-OpenSSH/releases/download/$version-Preview/OpenSSH-ARM64.zip"
             }
         }
     },

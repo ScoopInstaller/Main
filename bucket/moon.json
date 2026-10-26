@@ -1,0 +1,26 @@
+{
+    "version": "2.6.4",
+    "description": "A task runner and monorepo management tool for the web ecosystem, written in Rust.",
+    "homepage": "https://moonrepo.dev/moon",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/moonrepo/moon/releases/download/v2.6.4/moon_cli-x86_64-pc-windows-msvc.zip",
+            "hash": "6cad1b7f3d10473da1d719da82f320ef2635b4a242873e01a16e73b7ef6c1b59"
+        }
+    },
+    "bin": "moon.exe",
+    "checkver": {
+        "github": "https://github.com/moonrepo/moon"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/moonrepo/moon/releases/download/v$version/moon_cli-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

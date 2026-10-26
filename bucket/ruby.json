@@ -1,5 +1,5 @@
 {
-    "version": "3.4.3-1",
+    "version": "4.0.9-1",
     "description": "A dynamic programming language with a focus on simplicity and productivity.",
     "homepage": "https://rubyinstaller.org",
     "license": "BSD-3-Clause",
@@ -9,14 +9,14 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.4.3-1/rubyinstaller-3.4.3-1-x64.7z",
-            "hash": "d4c26b729bad2351bb7403579e522a2a98d023a6a46c2a8698d3ac6004921013",
-            "extract_dir": "rubyinstaller-3.4.3-1-x64"
+            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.9-1/rubyinstaller-4.0.9-1-x64.7z",
+            "hash": "1dc0715916251a13c4f6a550a3da1f2c726bff869371fd573a65234c008f47b4",
+            "extract_dir": "rubyinstaller-4.0.9-1-x64"
         },
-        "32bit": {
-            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.4.3-1/rubyinstaller-3.4.3-1-x86.7z",
-            "hash": "c00f7a78d7484bae8b31de0f8c715d8feeb3e5cf5b3616da7396da217047fee7",
-            "extract_dir": "rubyinstaller-3.4.3-1-x86"
+        "arm64": {
+            "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-4.0.9-1/rubyinstaller-4.0.9-1-arm.7z",
+            "hash": "d13273600bff5ca349f3866a0492517b144510ceb916525e891e2e1a3f728b78",
+            "extract_dir": "rubyinstaller-4.0.9-1-arm"
         }
     },
     "post_install": "gem install rake",
@@ -25,8 +25,7 @@
         "gems\\bin"
     ],
     "env_set": {
-        "GEM_HOME": "$dir\\gems",
-        "GEM_PATH": "$dir\\gems"
+        "GEM_HOME": "$dir\\gems"
     },
     "persist": "gems",
     "checkver": {
@@ -39,9 +38,9 @@
                 "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x64.7z",
                 "extract_dir": "rubyinstaller-$version-x64"
             },
-            "32bit": {
-                "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x86.7z",
-                "extract_dir": "rubyinstaller-$version-x86"
+            "arm64": {
+                "url": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-arm.7z",
+                "extract_dir": "rubyinstaller-$version-arm"
             }
         },
         "hash": {

@@ -31,8 +31,19 @@
         ]
     ],
     "checkver": {
-        "url": "https://download.qt.io/official_releases/qt-installer-framework/?C=M;O=D",
-        "regex": "([\\d.]+)/\">[\\d.]+"
+        "url": "https://download.qt.io/official_releases/qt-installer-framework/",
+        "script": [
+            "$base = 'https://download.qt.io/official_releases/qt-installer-framework'",
+            "$versions = [regex]::Matches($page, 'href=\"([\\d.]+)/\"') | ForEach-Object { $_.Groups[1].Value } | Sort-Object { [version]$_ } -Descending -Unique",
+            "foreach ($version in $versions) {",
+            "    $release = Invoke-WebRequest \"$base/$version/\" -UseBasicParsing",
+            "    if ($release.Content -match 'href=\"QtInstallerFramework-windows-x64-([\\d.]+)\\.exe\"') {",
+            "        $Matches[1]",
+            "        break",
+            "    }",
+            "}"
+        ],
+        "regex": "^([\\d.]+)$"
     },
     "autoupdate": {
         "architecture": {
@@ -41,7 +52,7 @@
             }
         },
         "hash": {
-            "url": "$baseurl/md5sums.txt"
+            "url": "$url.sha256"
         }
     }
 }

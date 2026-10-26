@@ -1,0 +1,28 @@
+{
+    "version": "0.9.5",
+    "description": "agent multiplexer that lives in your terminal.",
+    "homepage": "https://herdr.dev",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.5/herdr-windows-x86_64.zip",
+            "hash": "d2c6c9c971c43a0bfdde8c692a9a1a7a45c3e4807cd01ae45662b4734fac1cbf"
+        }
+    },
+    "bin": "herdr.exe",
+    "checkver": {
+        "url": "https://herdr.dev/latest.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/herdrdev/herdr/releases/download/v$version/herdr-windows-x86_64.zip",
+                "hash": {
+                    "url": "https://herdr.dev/latest.json",
+                    "jsonpath": "$.releases['$version'].sha256.windows-x86_64"
+                }
+            }
+        }
+    }
+}

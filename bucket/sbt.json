@@ -1,10 +1,14 @@
 {
-    "version": "1.10.11",
+    "version": "2.0.11",
     "description": "A build tool for Scala, Java, and more",
     "homepage": "https://www.scala-sbt.org",
     "license": "BSD-3-Clause",
-    "url": "https://github.com/sbt/sbt/releases/download/v1.10.11/sbt-1.10.11.zip",
-    "hash": "d5f1c189b2cfce8e652cfd8273382b53890385b91f30beffc13521f1c73c3ece",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sbt/sbt/releases/download/v2.0.11/sbt-2.0.11.zip",
+            "hash": "3f05a41886c00e87adb81c8ca28c3aa3d430753a640e6c4e83642c0c7a8d59d9"
+        }
+    },
     "extract_dir": "sbt",
     "env_set": {
         "SBT_HOME": "$dir"
@@ -12,11 +16,14 @@
     "bin": "bin\\sbt.bat",
     "persist": "conf",
     "checkver": {
-        "url": "https://www.scala-sbt.org/download/",
-        "regex": "/sbt-([\\d.]+)\\.zip"
+        "github": "https://github.com/sbt/sbt"
     },
     "autoupdate": {
-        "url": "https://github.com/sbt/sbt/releases/download/v$version/sbt-$version.zip",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sbt/sbt/releases/download/v$version/sbt-$version.zip"
+            }
+        },
         "hash": {
             "url": "$url.sha256"
         }

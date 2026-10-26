@@ -1,0 +1,24 @@
+{
+    "version": "0.11.1",
+    "description": "Markdown renderer in the terminal.",
+    "homepage": "https://github.com/henriklovhaug/md-tui",
+    "license": "AGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/henriklovhaug/md-tui/releases/download/v0.11.1/md-tui-x86_64-pc-windows-msvc.zip",
+            "hash": "d35e7546a8f9d286bb16e44fbca7f2bd6c0d42e6d15e4f4dec5d66bedabe30b0"
+        }
+    },
+    "bin": "mdt.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/henriklovhaug/md-tui/releases/download/v$version/md-tui-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

@@ -1,25 +1,24 @@
 {
-    "version": "3.6.5",
+    "version": "4.1.6",
     "description": "Workflow engine for orchestrating parallel jobs on Kubernetes",
-    "homepage": "https://github.com/argoproj/argo-workflows",
+    "homepage": "https://argo-workflows.readthedocs.io/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/argoproj/argo-workflows/releases/download/v3.6.5/argo-windows-amd64.exe.gz",
-            "hash": "18afad1aed7a0f0606af97f8ce9848852b740817eb019ad37f3fb575e9c7a582"
+            "url": "https://github.com/argoproj/argo-workflows/releases/download/v4.1.6/argo-windows-amd64.exe.gz",
+            "hash": "7992cd5efe89622f9b466232019863d3b5be8b939866aeadb52c8dbdefa21bdf"
         }
     },
-    "pre_install": "Rename-Item $dir\\argo-windows-amd64.exe $dir\\argo.exe",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'argo-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'argo.exe'",
     "bin": "argo.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/argoproj/argo-workflows"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/argoproj/argo-workflows/releases/download/v$version/argo-windows-amd64.exe.gz"
             }
-        },
-        "hash": {
-            "url": "$url.sha256"
         }
     }
 }

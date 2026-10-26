@@ -1,12 +1,16 @@
 {
-    "version": "1.22.0",
+    "version": "1.55.0",
     "description": "A CLI tool and Go library for generating a Software Bill of Materials (SBOM) from container images and filesystems.",
     "homepage": "https://github.com/anchore/syft",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/anchore/syft/releases/download/v1.22.0/syft_1.22.0_windows_amd64.zip",
-            "hash": "656e1dd6007d24f1d276f789650bd014082b2fff5ff3708dda7fdd1d9b27c77b"
+            "url": "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_windows_amd64.zip",
+            "hash": "ada4c9b93af575f479ce80fce6629897272a2d41f300a14bc49bace020767ca2"
+        },
+        "arm64": {
+            "url": "https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_windows_arm64.zip",
+            "hash": "f52f7796e41e4d1ae511c228c99239fd09887077336dcb7a8c2aa7046ed7c816"
         }
     },
     "bin": "syft.exe",
@@ -15,10 +19,13 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/anchore/syft/releases/download/v$version/syft_$version_windows_amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/anchore/syft/releases/download/v$version/syft_$version_windows_arm64.zip"
             }
         },
         "hash": {
-            "url": "https://github.com/anchore/syft/releases/download/v$version/syft_$version_checksums.txt"
+            "url": "$baseurl/syft_$version_checksums.txt"
         }
     }
 }

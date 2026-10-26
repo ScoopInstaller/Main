@@ -1,24 +1,29 @@
 {
-    "version": "4.14.1",
+    "version": "5.3.2",
     "description": "Theorem prover from Microsoft Research.",
     "homepage": "https://github.com/Z3Prover/z3",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Z3Prover/z3/releases/download/z3-4.14.1/z3-4.14.1-x64-win.zip",
-            "hash": "a73cf13b6bef3b1b9902144747083651e1bf40af997732a123a86dda4e7abeb5",
-            "extract_dir": "z3-4.14.1-x64-win"
+            "url": "https://github.com/Z3Prover/z3/releases/download/z3-5.3.2/z3-5.3.2-x64-win.zip",
+            "hash": "a75aa2b0383a8ee355387a54daad796911d6a965076751eea18d21a27f38e983",
+            "extract_dir": "z3-5.3.2-x64-win"
         },
         "32bit": {
-            "url": "https://github.com/Z3Prover/z3/releases/download/z3-4.14.1/z3-4.14.1-x86-win.zip",
-            "hash": "30ee7ce422e1e6d5f9fa04d3af34cf24c1b021e00b898cfe371358a206629513",
-            "extract_dir": "z3-4.14.1-x64-win"
+            "url": "https://github.com/Z3Prover/z3/releases/download/z3-5.3.2/z3-5.3.2-x86-win.zip",
+            "hash": "55474d2a6ecf8d3f026a70d5ea785b60d363ad78d97a275a987eee1d4a90319e",
+            "extract_dir": "z3-5.3.2-x64-win"
+        },
+        "arm64": {
+            "url": "https://github.com/Z3Prover/z3/releases/download/z3-5.3.2/z3-5.3.2-arm64-win.zip",
+            "hash": "d5efd4a0dfe4bb5c4aef853452039e5a153d4ede21a93514126c2d8747b647d1",
+            "extract_dir": "z3-5.3.2-arm64-win"
         }
     },
     "bin": "bin\\z3.exe",
     "checkver": {
         "github": "https://github.com/Z3Prover/z3",
-        "regex": "tag/z3-([\\d.]+)"
+        "regex": "z3-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -29,6 +34,10 @@
             "32bit": {
                 "url": "https://github.com/Z3Prover/z3/releases/download/z3-$version/z3-$version-x86-win.zip",
                 "extract_dir": "z3-$version-x64-win"
+            },
+            "arm64": {
+                "url": "https://github.com/Z3Prover/z3/releases/download/z3-$version/z3-$version-arm64-win.zip",
+                "extract_dir": "z3-$version-arm64-win"
             }
         }
     }

@@ -9,7 +9,7 @@
             "hash": "4996f8d7d47487b31f16934cf78ddf780f2b63c67316e382eb564105c18e7dbc"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\keptn-$version-windows-amd64.exe\" keptn.exe",
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'keptn-*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'keptn.exe'",
     "bin": "keptn.exe",
     "checkver": {
         "github": "https://github.com/keptn/keptn"

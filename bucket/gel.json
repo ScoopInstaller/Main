@@ -1,0 +1,35 @@
+{
+    "version": "7.10.2+e00c46c",
+    "description": "A graph-relational database (Formerly known as EdgeDB).",
+    "homepage": "https://www.geldata.com",
+    "license": "Apache-2.0|MIT",
+    "notes": "For arm64 architecture, please use `main/gel-arm64`.",
+    "architecture": {
+        "64bit": {
+            "url": "https://packages.geldata.com/archive/x86_64-pc-windows-msvc/gel-cli-7.10.2+e00c46c.exe.zst",
+            "hash": "1e1da0cadc8cd079843e761ebd486b1384d4b5f5d4958615b78be89a60861d65"
+        }
+    },
+    "pre_install": "Get-ChildItem -LiteralPath $dir -Filter 'gel-cli*.exe' -File | Select-Object -First 1 | Rename-Item -NewName 'gel.exe'",
+    "bin": "gel.exe",
+    "checkver": {
+        "script": [
+            "$url = 'https://packages.geldata.com/dist/x86_64-pc-windows-msvc/gel-cli.exe'",
+            "$request = [System.Net.HttpWebRequest]::Create($url)",
+            "$response = $request.GetResponse()",
+            "Write-Output $response.ResponseUri.AbsoluteUri"
+        ],
+        "regex": "gel-cli-(\\d+(?:\\.\\d+)+\\+(?:[a-f0-9]+))\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://packages.geldata.com/archive/x86_64-pc-windows-msvc/gel-cli-$version.exe.zst",
+                "hash": {
+                    "url": "https://packages.geldata.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
+                    "jsonpath": "$.packages[?(@.version=='$version')].installrefs[?(@.encoding=='zstd')].verification.sha256"
+                }
+            }
+        }
+    }
+}

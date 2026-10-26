@@ -1,12 +1,12 @@
 {
-    "version": "1.16.1",
+    "version": "1.22.1",
     "description": "The Crystal Programming Language",
     "homepage": "https://www.crystal-lang.org/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/crystal-lang/crystal/releases/download/1.16.1/crystal-1.16.1-windows-x86_64-msvc-unsupported.zip",
-            "hash": "9e8e5785c0ef7dcb8e9a392f634563880869550b266e29c1bd84119659e7c6fa"
+            "url": "https://github.com/crystal-lang/crystal/releases/download/1.22.1/crystal-1.22.1-windows-x86_64-msvc-unsupported.zip",
+            "hash": "b544330c3bbca8fd1238af6f2552b2c89d50032274b2045bc1f0bc9ff55b058b"
         }
     },
     "bin": [
@@ -21,12 +21,14 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/crystal-lang/crystal"
+        "github": "https://github.com/crystal-lang/crystal",
+        "jsonpath": "$..browser_download_url",
+        "regex": "crystal-(?<version>[\\d.-]+)-windows-x86_64"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/crystal-lang/crystal/releases/download/$version/crystal-$version-windows-x86_64-msvc-unsupported.zip"
+                "url": "https://github.com/crystal-lang/crystal/releases/download/$matchHead/crystal-$version-windows-x86_64-msvc-unsupported.zip"
             }
         }
     }

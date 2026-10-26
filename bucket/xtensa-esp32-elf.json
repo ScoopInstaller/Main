@@ -46,25 +46,21 @@
         "bin\\xtensa-esp32-elf-strip.exe"
     ],
     "checkver": {
-        "url": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/tools/idf-tools.html",
+        "url": "https://docs.espressif.com/projects/esp-idf/en/release-v5.0/esp32/api-guides/tools/idf-tools.html",
         "regex": "xtensa-esp32-elf-gcc([\\d_]+-esp-([\\w-]+))-win64.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-$match2/xtensa-esp32-elf-gcc$version-win64.zip",
-                "hash": {
-                    "url": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/tools/idf-tools.html",
-                    "regex": "win64.zip.+\\s.+SHA256: $sha256"
-                }
+                "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-$match2/xtensa-esp32-elf-gcc$version-win64.zip"
             },
             "32bit": {
-                "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-$match2/xtensa-esp32-elf-gcc$version-win32.zip",
-                "hash": {
-                    "url": "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/tools/idf-tools.html",
-                    "regex": "win32.zip.+\\s.+SHA256: $sha256"
-                }
+                "url": "https://github.com/espressif/crosstool-NG/releases/download/esp-$match2/xtensa-esp32-elf-gcc$version-win32.zip"
             }
+        },
+        "hash": {
+            "url": "https://docs.espressif.com/projects/esp-idf/en/release-v5.0/esp32/api-guides/tools/idf-tools.html",
+            "regex": "$basename.+\\s.+SHA256: $sha256"
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "version": "2024.2-2697822",
+    "version": "2026.1-3089746",
     "description": "Provides access to versioned files in Helix Core through a command-line interface.",
     "homepage": "https://www.perforce.com/products/helix-core-apps/command-line-client",
     "license": {
@@ -8,20 +8,25 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://cdist2.perforce.com/perforce/r24.2/bin.ntx64/p4.exe",
-            "hash": "4b652629579193f12881e6c778e473d2e43234855d53cb74b6550b7c590aa1c6"
+            "url": "https://filehost.perforce.com/perforce/r26.1/bin.ntx64/p4.exe",
+            "hash": "f7962fec744cfc809f53338a19ebc9bb718bf76fb349a9eb0229f301f4b202a3"
         }
     },
     "bin": "p4.exe",
     "checkver": {
-        "url": "https://www.perforce.com/support/software-release-index",
-        "regex": "Helix Command-line Client.*?20(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.\\d+)*\\/(?<build>\\d+)",
+        "url": "https://www.perforce.com/perforce/doc.current/user/relnotes.txt",
+        "script": [
+            "[regex]::Matches($page, '\\(20(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.\\d+)*\\/(?<build>\\d+)\\)') | ForEach-Object {",
+            "    [version]('{0}.{1}.{2}' -f $_.Groups['major'].Value, $_.Groups['minor'].Value, $_.Groups['build'].Value)",
+            "} | Sort-Object -Descending | Select-Object -First 1"
+        ],
+        "regex": "(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<build>\\d+)",
         "replace": "20${major}.${minor}-${build}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdist2.perforce.com/perforce/r$matchMajor.$matchMinor/bin.ntx64/p4.exe"
+                "url": "https://filehost.perforce.com/perforce/r$matchMajor.$matchMinor/bin.ntx64/p4.exe"
             }
         },
         "hash": {

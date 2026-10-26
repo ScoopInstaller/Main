@@ -1,0 +1,34 @@
+{
+    "version": "2026.5.29",
+    "description": "Fastest, smallest, and fully autonomous AI assistant infrastructure written in Zig",
+    "homepage": "https://nullclaw.io",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/nullclaw/nullclaw/releases/download/v2026.5.29/nullclaw-windows-x86_64.zip",
+            "hash": "1cf762c049ca9f2c8694d0ae3837d481c9e2c8a89b506744bacb68d2f6791db3"
+        },
+        "arm64": {
+            "url": "https://github.com/nullclaw/nullclaw/releases/download/v2026.5.29/nullclaw-windows-aarch64.zip",
+            "hash": "80b5a0e20d895bd8da2ab31ba60a164d4a31617b10f071065a329813cdcc1351"
+        }
+    },
+    "env_set": {
+        "NULLCLAW_HOME": "$persist_dir\\data"
+    },
+    "bin": "nullclaw.exe",
+    "persist": "data",
+    "checkver": {
+        "github": "https://github.com/nullclaw/nullclaw"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nullclaw/nullclaw/releases/download/v$version/nullclaw-windows-x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/nullclaw/nullclaw/releases/download/v$version/nullclaw-windows-aarch64.zip"
+            }
+        }
+    }
+}

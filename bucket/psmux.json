@@ -1,0 +1,41 @@
+{
+    "version": "3.4.0",
+    "description": "Terminal multiplexer for Windows - tmux alternative for PowerShell and Windows Terminal",
+    "homepage": "https://psmux.pages.dev",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/psmux/psmux/releases/download/v3.4.0/psmux-v3.4.0-windows-x64.zip",
+            "hash": "a66b6be7c13c6fa0dc3660a267b9e34eaa91a4eb7f07fbd55a0468018bd0f721"
+        },
+        "32bit": {
+            "url": "https://github.com/psmux/psmux/releases/download/v3.4.0/psmux-v3.4.0-windows-x86.zip",
+            "hash": "b1d5f037befaa4dca94280bf0559531d9bbbc2d03e66cbb4f47961f82a8fc0c1"
+        },
+        "arm64": {
+            "url": "https://github.com/psmux/psmux/releases/download/v3.4.0/psmux-v3.4.0-windows-arm64.zip",
+            "hash": "b123398e3b37408032bc268b4da6e7a6eab5b56461e0c3414914513a57a7a5cf"
+        }
+    },
+    "bin": [
+        "psmux.exe",
+        "pmux.exe",
+        "tmux.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/psmux/psmux"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/psmux/psmux/releases/download/v$version/psmux-v$version-windows-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/psmux/psmux/releases/download/v$version/psmux-v$version-windows-x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/psmux/psmux/releases/download/v$version/psmux-v$version-windows-arm64.zip"
+            }
+        }
+    }
+}

@@ -1,19 +1,21 @@
 {
-    "version": "1.0.10",
+    "version": "1.0.13",
     "description": "A multi-platform command line tool to send mail via SMTP protocol.",
     "homepage": "https://github.com/muquit/mailsend-go",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/muquit/mailsend-go/releases/download/v1.0.10/mailsend-go_1.0.10_windows-64bit.zip",
-            "hash": "07f884229dd98b2268ab128c8a8ed894c071f4a51f2d2c3e35a788214848201e"
+            "url": "https://github.com/muquit/mailsend-go/releases/download/v1.0.13/mailsend-go-v1.0.13-windows-amd64.d.zip",
+            "hash": "d0f035fc9ae8f65cfaac6767d71e2f54d2b60fca8978037fcbd9ae0b594dadfa",
+            "extract_dir": "mailsend-go-v1.0.13-windows-amd64.d"
         },
         "32bit": {
-            "url": "https://github.com/muquit/mailsend-go/releases/download/v1.0.10/mailsend-go_1.0.10_windows-32bit.zip",
-            "hash": "4e4d4566f995cc203aa7d79c356a7c64b2f7aa4c766fd1b4521ca9abb4cff386"
+            "url": "https://github.com/muquit/mailsend-go/releases/download/v1.0.13/mailsend-go-v1.0.13-windows-386.d.zip",
+            "hash": "4445d5610fe42e774d895a1ec3642cda94cfca684729ae5d2f054701b8fd5f9e",
+            "extract_dir": "mailsend-go-v1.0.13-windows-386.d"
         }
     },
-    "extract_dir": "mailsend-go-dir",
+    "pre_install": "Move-Item \"$dir\\mailsend-go*.exe\" \"$dir\\mailsend-go.exe\"",
     "bin": [
         "mailsend-go.exe",
         [
@@ -25,14 +27,16 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/muquit/mailsend-go/releases/download/v$version/mailsend-go_$version_windows-64bit.zip"
+                "url": "https://github.com/muquit/mailsend-go/releases/download/v$version/mailsend-go-v$version-windows-amd64.d.zip",
+                "extract_dir": "mailsend-go-v$version-windows-amd64.d"
             },
             "32bit": {
-                "url": "https://github.com/muquit/mailsend-go/releases/download/v$version/mailsend-go_$version_windows-32bit.zip"
+                "url": "https://github.com/muquit/mailsend-go/releases/download/v$version/mailsend-go-v$version-windows-386.d.zip",
+                "extract_dir": "mailsend-go-v$version-windows-386.d"
             }
         },
         "hash": {
-            "url": "$baseurl/mailsend-go_$version_checksums.txt"
+            "url": "$baseurl/mailsend-go-v$version-checksums.txt"
         }
     }
 }

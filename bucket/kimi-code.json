@@ -1,0 +1,38 @@
+{
+    "version": "2.3.3",
+    "description": "AI coding agent built by Moonshot AI that runs in your terminal.",
+    "homepage": "https://www.kimi.com/code/",
+    "license": "MIT",
+    "notes": [
+        "Kimi Code CLI uses the bundled Git Bash as its shell environment.",
+        "If Git Bash is installed in a custom location, set KIMI_SHELL_PATH to the absolute path of bash.exe."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai%2Fkimi-code%402.3.3/kimi-code-win32-x64.zip",
+            "hash": "ed05701af76919f7e2d0acd732b05931de185cb32ec928b0a535bfbad553a543"
+        },
+        "arm64": {
+            "url": "https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai%2Fkimi-code%402.3.3/kimi-code-win32-arm64.zip",
+            "hash": "320f734eb95c2b459ed57140c4df017b8e85927af81b9fa1856eb41737b86f39"
+        }
+    },
+    "bin": "kimi.exe",
+    "checkver": {
+        "github": "https://github.com/MoonshotAI/kimi-code",
+        "regex": "@moonshot-ai/kimi-code@(\\d+(?:\\.\\d+)+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai%2Fkimi-code%40$version/kimi-code-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/MoonshotAI/kimi-code/releases/download/%40moonshot-ai%2Fkimi-code%40$version/kimi-code-win32-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

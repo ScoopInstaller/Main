@@ -10,7 +10,16 @@
             "hash": "db5b4babe00b93de5636c07df3d8c149972373a69f131e686b0c565051651bb9"
         }
     },
+    "pre_install": [
+        "# init config",
+        "$content = @('shell:', '  command: powershell')",
+        "if (!(Test-Path \"$persist_dir\\config.yaml\")) { Set-Content \"$dir\\config.yaml\" -Value $content -Encoding ascii }"
+    ],
+    "env_set": {
+        "NAVI_CONFIG": "$dir\\config.yaml"
+    },
     "bin": "navi.exe",
+    "persist": "config.yaml",
     "checkver": "github",
     "autoupdate": {
         "architecture": {

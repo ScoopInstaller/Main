@@ -1,31 +1,31 @@
 {
-    "version": "0.133.1",
+    "version": "26.0.0",
     "description": "A command line CSV data-wrangling toolkit",
-    "homepage": "https://github.com/jqnatividad/qsv",
+    "homepage": "https://qsv.dathere.com",
     "license": "Unlicense|MIT",
+    "notes": "Only the full featured \"qsv\" build is included",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/jqnatividad/qsv/releases/download/0.133.1/qsv-0.133.1-x86_64-pc-windows-msvc.zip",
-            "hash": "686174efb57f2dbeca9e7da7aa50ea0802a323a16fc503c044b04eb8ccea7733"
+            "url": "https://github.com/dathere/qsv/releases/download/26.0.0/qsv-26.0.0-x86_64-pc-windows-msvc.zip",
+            "hash": "db3a4dc21d445508dc1391a92e48d086a5af7a1a5f7c693629953fdf98769f22"
         },
-        "32bit": {
-            "url": "https://github.com/jqnatividad/qsv/releases/download/0.133.1/qsv-0.133.1-i686-pc-windows-msvc.zip",
-            "hash": "4f4036028b5e1bcdd4cefb7db5036d5bec49922d2cc8a1a71ce76122f12b85b9"
+        "arm64": {
+            "url": "https://github.com/dathere/qsv/releases/download/26.0.0/qsv-26.0.0-aarch64-pc-windows-msvc.zip",
+            "hash": "2417f6b324e2b9cd2bc27366a84e48325311bef96458cada49d4fc38608fd13b"
         }
     },
-    "bin": [
-        "qsv.exe",
-        "qsvdp.exe",
-        "qsvlite.exe"
-    ],
-    "checkver": "github",
+    "pre_install": "Get-ChildItem -Path \"$dir\" -Exclude README,qsv.exe | Remove-Item -Force",
+    "bin": "qsv.exe",
+    "checkver": {
+        "github": "https://github.com/dathere/qsv"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/jqnatividad/qsv/releases/download/$version/qsv-$version-x86_64-pc-windows-msvc.zip"
+                "url": "https://github.com/dathere/qsv/releases/download/$version/qsv-$version-x86_64-pc-windows-msvc.zip"
             },
-            "32bit": {
-                "url": "https://github.com/jqnatividad/qsv/releases/download/$version/qsv-$version-i686-pc-windows-msvc.zip"
+            "arm64": {
+                "url": "https://github.com/dathere/qsv/releases/download/$version/qsv-$version-aarch64-pc-windows-msvc.zip"
             }
         }
     }

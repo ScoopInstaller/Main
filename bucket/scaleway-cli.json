@@ -1,20 +1,26 @@
 {
-    "version": "2.39.0",
+    "version": "2.65.2",
     "description": "Manage BareMetal Servers from Command Line (as easily as with Docker).",
-    "homepage": "https://github.com/scaleway/scaleway-cli",
+    "homepage": "https://cli.scaleway.com",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/scaleway/scaleway-cli/releases/download/v2.39.0/scaleway-cli_2.39.0_windows_amd64.exe#/scw.exe",
-            "hash": "5d7b4f27565dcf3105c827d9ab1f39ba7918e02cde52ddd7ab6793a33acc8a5a"
+            "url": "https://github.com/scaleway/scaleway-cli/releases/download/v2.65.2/scaleway-cli_2.65.2_windows_amd64.exe#/scw.exe",
+            "hash": "b92450fff67ef493ef0208b8451ffcc9ad4e497e53e4423f8cba3afea5bdbf47"
         },
         "32bit": {
-            "url": "https://github.com/scaleway/scaleway-cli/releases/download/v2.39.0/scaleway-cli_2.39.0_windows_386.exe#/scw.exe",
-            "hash": "71d3d59bec0fc0e817b9dd88d0100c4682cb6e1d66700c466d86c8c2b9620094"
+            "url": "https://github.com/scaleway/scaleway-cli/releases/download/v2.65.2/scaleway-cli_2.65.2_windows_386.exe#/scw.exe",
+            "hash": "0a63b46744551606427172c8a60bf29ff343444ed21cc8c74b3250525dd3e40c"
+        },
+        "arm64": {
+            "url": "https://github.com/scaleway/scaleway-cli/releases/download/v2.65.2/scaleway-cli_2.65.2_windows_arm64.exe#/scw.exe",
+            "hash": "106d797d3ef6a2cbf7b21fb6eb72fcf75bf617724e98779b2095ac611ac2ad25"
         }
     },
     "bin": "scw.exe",
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/scaleway/scaleway-cli"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -22,6 +28,9 @@
             },
             "32bit": {
                 "url": "https://github.com/scaleway/scaleway-cli/releases/download/v$version/scaleway-cli_$version_windows_386.exe#/scw.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/scaleway/scaleway-cli/releases/download/v$version/scaleway-cli_$version_windows_arm64.exe#/scw.exe"
             }
         },
         "hash": {

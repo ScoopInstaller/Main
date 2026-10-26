@@ -9,10 +9,10 @@
             "hash": "23fc7814bdc77898c7fc5991e25676da01b7feca053e4067812b4c580f5ae558"
         }
     },
-    "bin": "gource.exe",
     "checkver": {
-        "github": "https://github.com/acaudwell/Gource",
-        "regex": "/releases/tag/(?:v|V|gource-)?([\\d.]+)"
+        "github": "https://api.github.com/repos/acaudwell/Gource/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "gource-([\\d.]+)\\.win64\\.zip"
     },
     "autoupdate": {
         "architecture": {

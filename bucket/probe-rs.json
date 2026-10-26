@@ -1,0 +1,40 @@
+{
+    "version": "0.32.0",
+    "description": "A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host.",
+    "homepage": "https://probe.rs",
+    "license": "Apache-2.0|MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/probe-rs/probe-rs/releases/download/v0.32.0/probe-rs-tools-x86_64-pc-windows-msvc.zip",
+                "https://github.com/probe-rs/probe-rs/releases/download/v0.32.0/target-gen-x86_64-pc-windows-msvc.zip"
+            ],
+            "hash": [
+                "56fc0564cc23d604b27dc2d57606194159c49f951999f3e47bd2cbffcba64103",
+                "d662225dd11a73e9b6a8812f163202d6ca7ba4229fc15c9091a5015178493196"
+            ]
+        }
+    },
+    "bin": [
+        "probe-rs.exe",
+        "cargo-embed.exe",
+        "cargo-flash.exe",
+        "target-gen.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/probe-rs/probe-rs"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/probe-rs/probe-rs/releases/download/v$version/probe-rs-tools-x86_64-pc-windows-msvc.zip",
+                    "https://github.com/probe-rs/probe-rs/releases/download/v$version/target-gen-x86_64-pc-windows-msvc.zip"
+                ]
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

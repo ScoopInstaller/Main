@@ -1,0 +1,33 @@
+{
+    "version": "0.15.2",
+    "description": "Beautiful and reliable typst code formatter.",
+    "homepage": "https://typstyle-rs.github.io/typstyle/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/typstyle-rs/typstyle/releases/download/v0.15.2/typstyle-x86_64-pc-windows-msvc.exe#/typstyle.exe",
+            "hash": "ec620da653e620968020768443bbe51acc96c65aa3fc15cd9f3a7610f2fbf782"
+        },
+        "arm64": {
+            "url": "https://github.com/typstyle-rs/typstyle/releases/download/v0.15.2/typstyle-aarch64-pc-windows-msvc.exe#/typstyle.exe",
+            "hash": "5eb62b46d1651cbcb8d504703995d07a02e7f9d57ade089de3988ae9246f5d24"
+        }
+    },
+    "bin": "typstyle.exe",
+    "checkver": {
+        "github": "https://github.com/typstyle-rs/typstyle"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/typstyle-rs/typstyle/releases/download/v$version/typstyle-x86_64-pc-windows-msvc.exe#/typstyle.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/typstyle-rs/typstyle/releases/download/v$version/typstyle-aarch64-pc-windows-msvc.exe#/typstyle.exe"
+            }
+        }
+    }
+}

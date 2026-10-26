@@ -1,0 +1,34 @@
+{
+    "version": "5.4.3",
+    "description": "Terminal-based HTTP/REST client.",
+    "homepage": "https://slumber.lucaspickering.me",
+    "license": "MIT",
+    "notes": "On first run, please run slumber new to generate a sample collection file.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/LucasPickering/slumber/releases/download/v5.4.3/slumber-x86_64-pc-windows-msvc.zip",
+            "hash": "b413981b1f0009b6bc0548a7e23b3cdfa1c9f7bb1d0104b3c9bdddafc19a4fdc"
+        },
+        "arm64": {
+            "url": "https://github.com/LucasPickering/slumber/releases/download/v5.4.3/slumber-aarch64-pc-windows-msvc.zip",
+            "hash": "0cf552ed3de94fea48f8751e454dcc76c22914f6445c08fe48a83137ec675e76"
+        }
+    },
+    "bin": "slumber.exe",
+    "checkver": {
+        "github": "https://github.com/LucasPickering/slumber"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/LucasPickering/slumber/releases/download/v$version/slumber-x86_64-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/LucasPickering/slumber/releases/download/v$version/slumber-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
