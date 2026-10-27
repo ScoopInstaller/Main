@@ -42,8 +42,9 @@
         ]
     ],
     "checkver": {
-        "url": "https://www.php.net/releases/branches.php",
-        "jsonpath": "$[0].latest"
+        "url": "https://downloads.php.net/~windows/releases/releases.json",
+        "regex": "\"version\"\\s*:\\s*\"(\\d+(?:\\.\\d+)+(?:-\\d+)?)\"",
+        "reverse": true
     },
     "autoupdate": {
         "architecture": {
