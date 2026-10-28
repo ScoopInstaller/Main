@@ -22,7 +22,14 @@
         "SCALA_HOME": "$dir"
     },
     "checkver": {
-        "github": "https://github.com/scala/scala3/"
+        "github": "https://api.github.com/repos/scala/scala3/releases",
+        "script": [
+            "# Scan all releases instead of relying on 'latest', so patches on older version lines are ignored",
+            "$releases = $page | ConvertFrom-Json -ErrorAction Ignore",
+            "if (-not $releases) { error 'No releases found'; return }",
+            "$versions = $releases | Where-Object { $_.prerelease -eq $false } | Select-Object -ExpandProperty tag_name",
+            "$versions | Sort-Object { [version]$_ } -Descending | Select-Object -First 1"
+        ]
     },
     "autoupdate": {
         "url": "https://github.com/scala/scala3/releases/download/$version/scala3-$version.msi",
