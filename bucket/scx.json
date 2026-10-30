@@ -9,5 +9,19 @@
             "hash": "7ff2d3aabcded8eb3640d5b34167ea451ed600343f1df4205355e4c6a16f9e58"
         }
     },
-    "bin": "scx.exe"
+    "bin": "scx.exe",
+    "checkver": {
+        "github": "https://github.com/spapient/scx"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/spapient/scx/releases/download/v$version/scx-$version-windows-x86_64.zip",
+                "hash": {
+                    "url": "https://github.com/spapient/scx/releases/download/v$version/SHA256SUMS-$version",
+                    "regex": "^([a-fA-F0-9]{64})\\s+scx-$version-windows-x86_64\\.zip$"
+                }
+            }
+        }
+    }
 }
