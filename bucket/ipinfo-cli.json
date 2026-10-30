@@ -1,20 +1,20 @@
 {
-    "version": "3.3.3",
+    "version": "3.3.4",
     "description": "This is the official CLI for the IPinfo.io IP address API",
     "license": "Apache-2.0",
     "homepage": "https://ipinfo.io/",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.3/ipinfo_3.3.3_windows_386.zip",
-            "hash": "7598d8bae4965d05bec89054d344d9f754bc6c8c3ea374bbe90122b5df6fd766"
+            "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.4/ipinfo_3.3.4_windows_386.zip",
+            "hash": "8e4537b64473c0e84afedea9aee3da03b23faa52922b0399d1811a45cf4352f6"
         },
         "64bit": {
-            "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.3/ipinfo_3.3.3_windows_amd64.zip",
-            "hash": "eacb84a828cae9a34bc524e8f9ed7eb629fd3567d5e4b32c15cac28e1fc9ad52"
+            "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.4/ipinfo_3.3.4_windows_amd64.zip",
+            "hash": "42f97562f6d0a4014b91e2d5ee7903e3fc1aa3b50b7a3268d9bf484882d1082a"
         },
         "arm64": {
-            "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.3/ipinfo_3.3.3_windows_arm64.zip",
-            "hash": "dc157a2db41fb902e3943a4dec3ca17ad8c664c5eb744e86d42f8bd9d9fbd338"
+            "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-3.3.4/ipinfo_3.3.4_windows_arm64.zip",
+            "hash": "42d19156d08aef8903c552c6e7253d02ddddb8bcd81193a593d2ac3af2f710da"
         }
     },
     "pre_install": [
@@ -23,9 +23,9 @@
     ],
     "bin": "ipinfo.exe",
     "checkver": {
-        "github": "https://api.github.com/repos/ipinfo/cli/releases/latest",
-        "jsonpath": "$.name",
-        "regex": "ipinfo-(?<version>.*)$"
+        "github": "https://api.github.com/repos/ipinfo/cli/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"ipinfo-(?<version>[\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
