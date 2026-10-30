@@ -29,8 +29,8 @@
     ],
     "checkver": {
         "url": "https://nodejs.org/dist/index.json",
-        "jsonpath": "$[0].version",
-        "regex": "v([\\d.]+)"
+        "jsonpath": "$[?(@.version =~ /^v(\\d+(?:\\.\\d+)+)$/)].version",
+        "regex": "\"v(\\d+(?:\\.\\d+)+)\""
     },
     "autoupdate": {
         "architecture": {
