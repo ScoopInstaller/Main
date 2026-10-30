@@ -1,0 +1,29 @@
+{
+    "version": "0.6.41",
+    "description": "Cross-platform (Windows/Ubuntu) system PATH & environment manager with an httpie-compatible HTTP client",
+    "homepage": "https://github.com/foxxxx001/sysenv",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/foxxxx001/sysenv/releases/download/0.6.41/sys-windows-x86_64.exe",
+            "hash": "4ac15be7f3ba91f4596a571a9dd29d8df99bbc3d28a8876766ea76c8295a4bc6"
+        }
+    },
+    "bin": [
+        [
+            "sys-windows-x86_64.exe",
+            "sys"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/foxxxx001/sysenv",
+        "regex": "/releases/tag/([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/foxxxx001/sysenv/releases/download/$version/sys-windows-x86_64.exe"
+            }
+        }
+    }
+}
