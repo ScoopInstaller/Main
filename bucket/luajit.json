@@ -1,23 +1,23 @@
 {
-    "version": "2.1.1791988261-1",
+    "version": "2.1.1793275035-1",
     "description": "Just-In-Time Compiler (JIT) for the Lua programming language.",
     "homepage": "https://luajit.org/luajit.html",
     "license": "MIT",
     "architecture": {
         "arm64": {
-            "url": "https://mirror.msys2.org/mingw/clangarm64/mingw-w64-clang-aarch64-luajit-2.1.1791988261-1-any.pkg.tar.zst",
-            "hash": "273e7903600926bd7cf7d7588980b766c08e2807a642bd50c557fc38e9389978",
+            "url": "https://mirror.msys2.org/mingw/clangarm64/mingw-w64-clang-aarch64-luajit-2.1.1793275035-1-any.pkg.tar.zst",
+            "hash": "b09e69ee408ccbe16fe855d2eb9fa45c934e302ad5ef9d99aea8eec8a2e34fd0",
             "extract_dir": "clangarm64"
         },
         "64bit": {
-            "url": "https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-luajit-2.1.1791988261-1-any.pkg.tar.zst",
-            "hash": "d559881bffc105af4482eab52a34fa57963047cf45e735a5c0f8daca605c68a1",
-            "extract_dir": "mingw64"
+            "url": "https://mirror.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-luajit-2.1.1793275035-1-any.pkg.tar.zst",
+            "hash": "fb9240d58ba413e3e6066618b7e797adb65c1b02ebb02b226e8bee4a5a03eba0",
+            "extract_dir": "ucrt64"
         }
     },
     "bin": "bin\\luajit.exe",
     "checkver": {
-        "url": "https://packages.msys2.org/api/search?query=mingw-w64-luajit",
+        "url": "https://packages.msys2.org/api/search?query=mingw-w64-ucrt-x86_64-luajit&qtype=binpkg",
         "jsonpath": "$.results.exact.version"
     },
     "autoupdate": {
@@ -26,7 +26,7 @@
                 "url": "https://mirror.msys2.org/mingw/clangarm64/mingw-w64-clang-aarch64-luajit-$version-any.pkg.tar.zst"
             },
             "64bit": {
-                "url": "https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-luajit-$version-any.pkg.tar.zst"
+                "url": "https://mirror.msys2.org/mingw/ucrt64/mingw-w64-ucrt-x86_64-luajit-$version-any.pkg.tar.zst"
             }
         }
     }
