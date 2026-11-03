@@ -1,0 +1,33 @@
+{
+    "version": "0.2.5",
+    "description": "Desktop Android leak auditor that maps app permissions and APK endpoints to data flows and generates rollback-safe remediations over adb.",
+    "homepage": "https://verlintas.dev/noir/",
+    "license": "MIT",
+    "depends": "adb",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Verlintas/NOIR/releases/download/v0.2.5/noir-v0.2.5-Windows-portable.zip",
+            "hash": "a4117f6060ff2ec96d04302cd25f66c705f788120590c359299f97e936bf8a94"
+        }
+    },
+    "bin": [
+        [
+            "Start NOIR.bat",
+            "noir"
+        ]
+    ],
+    "persist": "noir-out",
+    "checkver": {
+        "github": "https://github.com/Verlintas/NOIR"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Verlintas/NOIR/releases/download/v$version/noir-v$version-Windows-portable.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS.txt"
+        }
+    }
+}
