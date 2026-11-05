@@ -1,0 +1,40 @@
+{
+    "version": "0.3.0",
+    "description": "Local-first search across your workspace, built for humans and AI agents.",
+    "homepage": "https://zvec.org/en/docs/zvec-grep/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://registry.npmjs.org/@zvec/zvec-grep-win32-x64-msvc/-/zvec-grep-win32-x64-msvc-0.3.0.tgz",
+            "hash": "sha512:b3686a161a3401ae4e4f3ec8fd716b938b336bf5763e579d83a05c31c76e685da0cbd584b6659c07a54fd8753810998dd00aa6298f4a4c646009f8420afc2fdd"
+        },
+        "arm64": {
+            "url": "https://registry.npmjs.org/@zvec/zvec-grep-win32-arm64-msvc/-/zvec-grep-win32-arm64-msvc-0.3.0.tgz",
+            "hash": "sha512:9f57ed529b139532cd1870e3f0c4583cedb4c11e99a35e783ff5acd8d0752b566a3ad4187bcda713e548e1b76986709025331ded374a94c9595ac0beaf616b55"
+        }
+    },
+    "extract_dir": "package",
+    "bin": "bin\\zg.exe",
+    "checkver": {
+        "url": "https://registry.npmjs.org/@zvec/zvec-grep/latest",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://registry.npmjs.org/@zvec/zvec-grep-win32-x64-msvc/-/zvec-grep-win32-x64-msvc-$version.tgz",
+                "hash": {
+                    "url": "https://registry.npmjs.org/@zvec/zvec-grep-win32-x64-msvc/$version",
+                    "regex": "sha512-$base64"
+                }
+            },
+            "arm64": {
+                "url": "https://registry.npmjs.org/@zvec/zvec-grep-win32-arm64-msvc/-/zvec-grep-win32-arm64-msvc-$version.tgz",
+                "hash": {
+                    "url": "https://registry.npmjs.org/@zvec/zvec-grep-win32-arm64-msvc/$version",
+                    "regex": "sha512-$base64"
+                }
+            }
+        }
+    }
+}
