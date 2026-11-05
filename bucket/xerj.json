@@ -17,7 +17,7 @@
     },
     "pre_install": [
         "$dataDir = (Join-Path $persist_dir 'data').Replace('\\', '/')",
-        "if (!(Test-Path \"$persist_dir\\xerj.toml\")) { Set-Content \"$dir\\xerj.toml\" @('[server]', ('data_dir = \"' + $dataDir + '\"')) -Encoding Ascii }"
+        "if (!(Test-Path \"$persist_dir\\xerj.toml\")) { [System.IO.File]::WriteAllLines(\"$dir\\xerj.toml\", [string[]]@('[server]', ('data_dir = \"' + $dataDir + '\"')), [System.Text.UTF8Encoding]::new($false)) }"
     ],
     "bin": "xerj.exe",
     "env_set": {
@@ -29,7 +29,7 @@
     ],
     "checkver": {
         "github": "https://github.com/xerj-org/xerj",
-        "regex": "v([\\w.-]+)"
+        "regex": "(?:/releases/tag/|^)v([\\w.-]+)"
     },
     "autoupdate": {
         "architecture": {
