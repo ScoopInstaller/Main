@@ -1,0 +1,49 @@
+{
+    "version": "1.0.0-rc.100",
+    "description": "AI search engine and MCP server for bots and agents",
+    "homepage": "https://xerj.org",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.100/xerj-1.0.0-rc.100-x86_64-pc-windows-msvc.zip",
+            "hash": "a58f293c1002c4ce5ce1793afd6fa4d3e7a509916a34044c91a38d4a53937812",
+            "extract_dir": "xerj-1.0.0-rc.100-x86_64-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.100/xerj-1.0.0-rc.100-aarch64-pc-windows-msvc.zip",
+            "hash": "f81a92a34c114257abb427aa267240a9860e84bf9465a5e17422eaf8b19ed346",
+            "extract_dir": "xerj-1.0.0-rc.100-aarch64-pc-windows-msvc"
+        }
+    },
+    "pre_install": [
+        "$dataDir = (Join-Path $persist_dir 'data').Replace('\\', '/')",
+        "if (!(Test-Path \"$persist_dir\\xerj.toml\")) { Set-Content \"$dir\\xerj.toml\" @('[server]', ('data_dir = \"' + $dataDir + '\"')) -Encoding Ascii }"
+    ],
+    "bin": "xerj.exe",
+    "env_set": {
+        "XERJ_CONFIG": "$dir\\xerj.toml"
+    },
+    "persist": [
+        "data",
+        "xerj.toml"
+    ],
+    "checkver": {
+        "github": "https://github.com/xerj-org/xerj",
+        "regex": "v([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/xerj-org/xerj/releases/download/v$version/xerj-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "xerj-$version-x86_64-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://github.com/xerj-org/xerj/releases/download/v$version/xerj-$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "xerj-$version-aarch64-pc-windows-msvc"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
