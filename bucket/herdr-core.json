@@ -1,0 +1,34 @@
+{
+    "version": "0.1.18",
+    "description": "Persistent terminal runtime for coding agents that powers the Herdr App.",
+    "homepage": "https://herdr.dev/core/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://releases.herdr.dev/core/0.1.18/herdr-core-windows-x86_64.zip",
+            "hash": "2e54e0b1dcbd652a7e89b14c588178f8241b9732fdc4e5f2b27208829b0bfbbc"
+        }
+    },
+    "bin": [
+        "herdr-core.exe",
+        [
+            "herdr-core.exe",
+            "hc"
+        ]
+    ],
+    "checkver": {
+        "url": "https://releases.herdr.dev/core/latest.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://releases.herdr.dev/core/$version/herdr-core-windows-x86_64.zip",
+                "hash": {
+                    "url": "https://releases.herdr.dev/core/latest.json",
+                    "jsonpath": "$.targets['windows-x86_64'].sha256"
+                }
+            }
+        }
+    }
+}
