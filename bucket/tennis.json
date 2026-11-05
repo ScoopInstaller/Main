@@ -1,0 +1,26 @@
+{
+    "version": "0.8.0",
+    "description": "Stylish CSV tables in terminal.",
+    "homepage": "https://github.com/gurgeous/tennis",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gurgeous/tennis/releases/download/v0.8.0/tennis_0.8.0_windows_amd64.zip",
+            "hash": "b8b2baa90441726e326fe34681bca147cd64f78b2d0477d5f6b4f1ba681b2acf",
+            "extract_dir": "tennis_0.8.0_windows_amd64"
+        }
+    },
+    "bin": "tennis.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gurgeous/tennis/releases/download/v$version/tennis_$version_windows_amd64.zip",
+                "extract_dir": "tennis_$version_windows_amd64"
+            }
+        }
+    }
+}
