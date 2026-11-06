@@ -17,7 +17,7 @@
     },
     "pre_install": [
         "('cosmocc', 'cosmos').ForEach({",
-        "  $zip = Join-Path -Path $dir -ChildPath \"$_.zip_\"",
+        "  $zip = (Join-Path -Path $dir -ChildPath \"$_.zip_\" | Rename-Item -NewName \"$_.zip\" -PassThru)",
         "  Expand-Archive -Force -Path $zip -DestinationPath $dir",
         "  Remove-Item -Path $zip",
         "})",
@@ -28,7 +28,7 @@
         "  if ($file.Name -like 'git*') { Remove-Item -Path $file; continue }",
         "  $head = Get-Content -TotalCount 1 -LiteralPath $file",
         "  if ($head -notmatch '^(?:\\.\\./)?[\\w./_+$-]+$') { continue }",
-        "  $src = Get-Item -Path (Resolve-Path -Path $head -RelativeBasePath $file.DirectoryName)",
+        "  $src = Get-Item -Path (Join-Path -Path $file.DirectoryName -ChildPath $head)",
         "  if ($files.FullName -notcontains $src.FullName) {",
         "    $files.Add($src); $files.Add($file); continue",
         "  }",
