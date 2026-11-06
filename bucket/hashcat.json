@@ -12,12 +12,11 @@
     "extract_dir": "hashcat-8.0.0",
     "persist": "hashcat.potfile",
     "pre_install": [
-        "Set-Content -Value \"@echo off`r`npushd $dir`r`nhashcat.exe %*`r`npopd\" -Path \"$dir\\hashcat.cmd\"",
         "# potfile, https://hashcat.net/faq/potfile",
         "$pot = 'hashcat.potfile'",
         "if (!(Test-Path \"$persist_dir\\$pot\")) { New-Item \"$dir\\$pot\" }"
     ],
-    "bin": "hashcat.cmd",
+    "bin": "hashcat.exe",
     "checkver": {
         "github": "https://github.com/hashcat/hashcat"
     },
