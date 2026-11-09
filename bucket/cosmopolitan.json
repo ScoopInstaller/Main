@@ -33,7 +33,7 @@
         "    if ($files.FullName -notcontains $src.FullName) {",
         "        $files.Add($src); $files.Add($file); continue",
         "    }",
-        "    New-Item -Force -ItemType HardLink -LiteralPath $file.FullName -Target $src.FullName | Out-Null",
+        "    New-Item -Force -ItemType HardLink -Path $file.FullName -Target $src.FullName | Out-Null",
         "}"
     ],
     "installer": {
@@ -49,7 +49,10 @@
             "    }",
             "    $link = $target + '.com'",
             "    if (-not (Test-Path -LiteralPath $link)) {",
-            "        New-Item -ItemType HardLink -LiteralPath $link -Target $target | Out-Null",
+            "        if ($PSVersionTable.PSVersion.Major -le 5) {",
+            "            $target = [Management.Automation.WildcardPattern]::Escape($target)   # [ -> `[",
+            "        }",
+            "        New-Item -ItemType HardLink -Path $link -Target $target | Out-Null",
             "    }",
             "})"
         ]
