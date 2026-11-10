@@ -1,21 +1,34 @@
 {
-    "version": "20260214",
+    "version": "20261109",
     "description": "TCP/UDP port mapping for full-cone NAT",
     "homepage": "https://github.com/heiher/natmap",
     "license": "MIT",
     "architecture": {
+        "32bit": {
+            "url": "https://github.com/heiher/natmap/releases/download/20261109/natmap-win-x86.exe#/natmap.exe",
+            "hash": "0578ab8c611ca52d2386b4ba59683ada1ef356f84de4033ed962c8fb1d547e25"
+        },
         "64bit": {
-            "url": "https://github.com/heiher/natmap/releases/download/20260214/natmap-win64.zip",
-            "hash": "e2530e3a14a9f89388d72a28e524eabdfed3af62b826f2600ea7173ac930109c"
+            "url": "https://github.com/heiher/natmap/releases/download/20261109/natmap-win-x64.exe#/natmap.exe",
+            "hash": "fbaac52ef2fd90a21b1fefe025921bdcf861d902926addb7ffaca98ea71b0702"
+        },
+        "arm64": {
+            "url": "https://github.com/heiher/natmap/releases/download/20261109/natmap-win-arm64.exe#/natmap.exe",
+            "hash": "468506fbf729ecb6ca0bdd6da31c65b48ce9809065ed590b760136851266e1e6"
         }
     },
-    "extract_dir": "natmap",
     "bin": "natmap.exe",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
+            "32bit": {
+                "url": "https://github.com/heiher/natmap/releases/download/$version/natmap-win-x86.exe#/natmap.exe"
+            },
             "64bit": {
-                "url": "https://github.com/heiher/natmap/releases/download/$version/natmap-win64.zip"
+                "url": "https://github.com/heiher/natmap/releases/download/$version/natmap-win-x64.exe#/natmap.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/heiher/natmap/releases/download/$version/natmap-win-arm64.exe#/natmap.exe"
             }
         }
     }
