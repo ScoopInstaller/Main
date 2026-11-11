@@ -1,0 +1,49 @@
+{
+    "version": "1.0.0-rc.101",
+    "description": "AI search engine and MCP server for bots and agents",
+    "homepage": "https://xerj.org",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.101/xerj-1.0.0-rc.101-x86_64-pc-windows-msvc.zip",
+            "hash": "0d9c9be42e7607034789c63890f5910e6f7a1df2bcec5cae9753446815b49772",
+            "extract_dir": "xerj-1.0.0-rc.101-x86_64-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/xerj-org/xerj/releases/download/v1.0.0-rc.101/xerj-1.0.0-rc.101-aarch64-pc-windows-msvc.zip",
+            "hash": "9ada2bf498893653238c888591e3e6925331fa27f3f40bc01da42184542986ac",
+            "extract_dir": "xerj-1.0.0-rc.101-aarch64-pc-windows-msvc"
+        }
+    },
+    "pre_install": [
+        "$dataDir = (Join-Path $persist_dir 'data').Replace('\\', '/')",
+        "if (!(Test-Path \"$persist_dir\\xerj.toml\")) { [System.IO.File]::WriteAllLines(\"$dir\\xerj.toml\", [string[]]@('[server]', ('data_dir = \"' + $dataDir + '\"')), [System.Text.UTF8Encoding]::new($false)) }"
+    ],
+    "bin": "xerj.exe",
+    "env_set": {
+        "XERJ_CONFIG": "$dir\\xerj.toml"
+    },
+    "persist": [
+        "data",
+        "xerj.toml"
+    ],
+    "checkver": {
+        "github": "https://github.com/xerj-org/xerj",
+        "regex": "(?:/releases/tag/|^)v([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/xerj-org/xerj/releases/download/v$version/xerj-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "xerj-$version-x86_64-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://github.com/xerj-org/xerj/releases/download/v$version/xerj-$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "xerj-$version-aarch64-pc-windows-msvc"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

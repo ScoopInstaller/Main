@@ -1,16 +1,19 @@
 {
-    "version": "0.7.5",
+    "version": "0.8.2",
     "description": "A general version manager for thousands of SDKs with TUI inspired by lazygit.",
     "homepage": "https://vdocs.vmr.dpdns.org",
     "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/gvcgo/version-manager/releases/download/v0.7.5/vmr_windows-amd64.zip",
-            "hash": "8eee6c8b2e8af68184239cbc5fa3f2a49d1352b4e9e28a74206c5b374a42eef7"
+            "url": "https://github.com/gvcgo/version-manager/releases/download/v0.8.2/vmr-x86_64-pc-windows-msvc.zip",
+            "hash": "06e21a31cf6190c830a3f0a35d983839a45636fec1bbd9d4d0187d893c14b523"
         },
         "arm64": {
-            "url": "https://github.com/gvcgo/version-manager/releases/download/v0.7.5/vmr_windows-arm64.zip",
-            "hash": "3d9febab6a3bb68808f098a65fd26637d5b6fe402ece258d79fc124104c14725"
+            "url": "https://github.com/gvcgo/version-manager/releases/download/v0.8.2/vmr-aarch64-pc-windows-msvc.zip",
+            "hash": "c6743f05a9cb571fd65184da5dd364492882bf54aa5ecb75b6015e52a54e454f"
         }
     },
     "bin": "vmr.exe",
@@ -20,11 +23,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/gvcgo/version-manager/releases/download/v$version/vmr_windows-amd64.zip"
+                "url": "https://github.com/gvcgo/version-manager/releases/download/v$version/vmr-x86_64-pc-windows-msvc.zip"
             },
             "arm64": {
-                "url": "https://github.com/gvcgo/version-manager/releases/download/v$version/vmr_windows-arm64.zip"
+                "url": "https://github.com/gvcgo/version-manager/releases/download/v$version/vmr-aarch64-pc-windows-msvc.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }

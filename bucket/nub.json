@@ -1,0 +1,74 @@
+{
+    "version": "0.10.0",
+    "description": "The fast all-in-one Node.js toolkit",
+    "homepage": "https://nubjs.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/nubjs/nub/releases/download/v0.10.0/nub-win32-x64.zip",
+            "hash": "53fe2a1719d93e1fa209cd3737cc438690596ecfe1c867135b24f7f133c7a7f8"
+        },
+        "arm64": {
+            "url": "https://github.com/nubjs/nub/releases/download/v0.10.0/nub-win32-arm64.zip",
+            "hash": "5ce6906c25b113a06d1fdbaa2e69c0a24823f6712a9364c3a6ae46c928ecf86e"
+        }
+    },
+    "post_install": [
+        "$pmDir = if ($env:XDG_DATA_HOME) {",
+        "    Join-Path $env:XDG_DATA_HOME 'nub\\shims'",
+        "} elseif ($env:LOCALAPPDATA) {",
+        "    Join-Path $env:LOCALAPPDATA 'nub\\shims'",
+        "} else { $null }",
+        "$nodeDir = if ($env:XDG_DATA_HOME) {",
+        "    Join-Path $env:XDG_DATA_HOME 'nub\\node-shim'",
+        "} elseif ($env:LOCALAPPDATA) {",
+        "    Join-Path $env:LOCALAPPDATA 'nub\\node-shim'",
+        "} else { $null }",
+        "$nub = Join-Path $dir 'bin\\nub.exe'",
+        "if ($pmDir -and (Test-Path -LiteralPath $pmDir -PathType Container)) {",
+        "    try { & $nub pm shim | Out-Null } catch { }",
+        "}",
+        "if ($nodeDir -and (Test-Path -LiteralPath $nodeDir -PathType Container)) {",
+        "    try { & $nub node shim | Out-Null } catch { }",
+        "}"
+    ],
+    "pre_uninstall": [
+        "if ($cmd -eq 'update') { return }",
+        "$nub = Join-Path $dir 'bin\\nub.exe'",
+        "try { & $nub pm unshim | Out-Null } catch { }",
+        "try { & $nub node unshim | Out-Null } catch { }",
+        "$roots = @()",
+        "if ($env:XDG_DATA_HOME) {",
+        "    $roots += (Join-Path $env:XDG_DATA_HOME 'nub\\shims')",
+        "    $roots += (Join-Path $env:XDG_DATA_HOME 'nub\\node-shim')",
+        "}",
+        "if ($env:LOCALAPPDATA) {",
+        "    $roots += (Join-Path $env:LOCALAPPDATA 'nub\\shims')",
+        "    $roots += (Join-Path $env:LOCALAPPDATA 'nub\\node-shim')",
+        "}",
+        "foreach ($root in $roots) {",
+        "    try { Remove-Path -Path $root -Global:$global } catch { }",
+        "}"
+    ],
+    "bin": [
+        "bin\\nub.exe",
+        "bin\\nubr.exe",
+        "bin\\nubx.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/nubjs/nub"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nubjs/nub/releases/download/v$version/nub-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/nubjs/nub/releases/download/v$version/nub-win32-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

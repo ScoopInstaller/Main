@@ -1,5 +1,5 @@
 {
-    "version": "3.10.0",
+    "version": "3.10.1",
     "description": "A modern multi-paradigm programming language designed to express common programming patterns in a concise, elegant, and type-safe way.",
     "homepage": "https://www.scala-lang.org/",
     "license": "BSD-3-Clause",
@@ -10,8 +10,8 @@
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://github.com/scala/scala3/releases/download/3.10.0/scala3-3.10.0.msi",
-    "hash": "4100309910f900308ef6b6cfbbd975d5169bc013ebd45a5ab43c7600c2dca821",
+    "url": "https://github.com/scala/scala3/releases/download/3.10.1/scala3-3.10.1.msi",
+    "hash": "09257d133199d3513ef892aa34c745f9b33f5d6105fd1e9d5fd0cc398740b110",
     "extract_dir": "PFiles\\Scala",
     "bin": [
         "bin\\scala.bat",
@@ -22,7 +22,14 @@
         "SCALA_HOME": "$dir"
     },
     "checkver": {
-        "github": "https://github.com/scala/scala3/"
+        "github": "https://api.github.com/repos/scala/scala3/releases",
+        "script": [
+            "# Scan all releases instead of relying on 'latest', so patches on older version lines are ignored",
+            "$releases = $page | ConvertFrom-Json -ErrorAction Ignore",
+            "if (-not $releases) { error 'No releases found'; return }",
+            "$versions = $releases | Where-Object { $_.prerelease -eq $false } | Select-Object -ExpandProperty tag_name",
+            "$versions | Sort-Object { [version]$_ } -Descending | Select-Object -First 1"
+        ]
     },
     "autoupdate": {
         "url": "https://github.com/scala/scala3/releases/download/$version/scala3-$version.msi",

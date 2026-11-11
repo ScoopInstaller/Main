@@ -1,16 +1,16 @@
 {
-    "version": "1.13.0",
+    "version": "1.16.0",
     "description": "Force.com CLI tool",
     "homepage": "https://force-cli.herokuapp.com/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/ForceCLI/force/releases/download/v1.13.0/force_windows_amd64.zip",
-            "hash": "36cd144c0a804dc3fde518b966279e2d8004654f0f0d575210c9592f5e78cefc"
+            "url": "https://github.com/ForceCLI/force/releases/download/v1.16.0/force_windows_amd64_v1.16.0.zip",
+            "hash": "620dc6ec83e45dc4385e097786dfa59a0f9c4780f71c4cf896487d6c1ca1be6c"
         },
         "arm64": {
-            "url": "https://github.com/ForceCLI/force/releases/download/v1.13.0/force_windows_arm64.zip",
-            "hash": "16324c1a712ad73ff8033eaa3307844cac9947508766c6e79d06f87e47069c45"
+            "url": "https://github.com/ForceCLI/force/releases/download/v1.16.0/force_windows_arm64_v1.16.0.zip",
+            "hash": "84a5d0da0bcc3ad8da4af8ed35ba74b0e62ad7663bab4acd618a18056481c4f9"
         }
     },
     "bin": "force.exe",
@@ -20,11 +20,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/ForceCLI/force/releases/download/v$version/force_windows_amd64.zip"
+                "url": "https://github.com/ForceCLI/force/releases/download/v$version/force_windows_amd64_v$version.zip"
             },
             "arm64": {
-                "url": "https://github.com/ForceCLI/force/releases/download/v$version/force_windows_arm64.zip"
+                "url": "https://github.com/ForceCLI/force/releases/download/v$version/force_windows_arm64_v$version.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS-v$version"
         }
     }
 }

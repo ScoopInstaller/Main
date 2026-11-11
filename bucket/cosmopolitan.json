@@ -1,0 +1,84 @@
+{
+    "version": "4.0.2",
+    "description": "Cosmopolitan C/C++ toolchain + Cosmos POSIX userland",
+    "homepage": "https://github.com/jart/cosmopolitan",
+    "license": "ISC",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/jart/cosmopolitan/releases/download/4.0.2/cosmocc-4.0.2.zip#/cosmocc.zip_",
+                "https://github.com/jart/cosmopolitan/releases/download/4.0.2/cosmos-4.0.2.zip#/cosmos.zip_"
+            ],
+            "hash": [
+                "85b8c37a406d862e656ad4ec14be9f6ce474c1b436b9615e91a55208aced3f44",
+                "494ecbd87c2f2f622f91066d4fe5d9ffc1aaaa13de02db1714dd84d014ed398f"
+            ]
+        }
+    },
+    "pre_install": [
+        "('cosmocc', 'cosmos').ForEach({",
+        "    Join-Path -Path $dir -ChildPath \"$_.zip_\" |",
+        "    Rename-Item -NewName \"$_.zip\" -PassThru |",
+        "    ForEach-Object -MemberName FullName |",
+        "    Expand-ZipArchive -DestinationPath $dir -Removal",
+        "})",
+        "$paths = ('bin', 'libexec').ForEach({ Join-Path -Path $dir -ChildPath $_ })",
+        "$files = [Collections.Generic.List[IO.FileInfo]](Get-ChildItem -File -Path $paths -Recurse)",
+        "for ($i = 0; $i -lt $files.Count; $i++) {",
+        "    $file = $files[$i]",
+        "    if ($file.Name -like 'git*') { Remove-Item -LiteralPath $file.FullName; continue }",
+        "    $head = Get-Content -TotalCount 1 -LiteralPath $file.FullName",
+        "    if ($head -notmatch '^(?:\\.\\./)?[\\w./_+$-]+$') { continue }",
+        "    $src = Get-Item -LiteralPath (Join-Path -Path $file.DirectoryName -ChildPath $head)",
+        "    if ($files.FullName -notcontains $src.FullName) {",
+        "        $files.Add($src); $files.Add($file); continue",
+        "    }",
+        "    New-Item -Force -ItemType HardLink -Path $file.FullName -Target $src.FullName | Out-Null",
+        "}"
+    ],
+    "installer": {
+        "script": [
+            "$paths = ('bin', 'libexec').ForEach({ Join-Path -Path $dir -ChildPath $_ })",
+            "(Get-ChildItem -File -Path $paths -Recurse).Where({",
+            "    $_.Extension -in @('', '.ape') -and",
+            "    (Get-Content -TotalCount 1 -LiteralPath $_.FullName) -like 'MZ*'",
+            "}).ForEach({",
+            "    $target = Join-Path -Path $_.DirectoryName -ChildPath $_.BaseName",
+            "    if ($_.Extension -eq '.ape') {",
+            "        Move-Item -Force -LiteralPath $_.FullName -Destination $target",
+            "    }",
+            "    $link = $target + '.com'",
+            "    if (-not (Test-Path -LiteralPath $link)) {",
+            "        if ($PSVersionTable.PSVersion.Major -le 5) {",
+            "            $target = [Management.Automation.WildcardPattern]::Escape($target)   # [ -> `[",
+            "        }",
+            "        New-Item -ItemType HardLink -Path $link -Target $target | Out-Null",
+            "    }",
+            "})"
+        ]
+    },
+    "bin": [
+        [
+            "bin\\dash.com",
+            "cosmocc",
+            "$dir\\bin\\cosmocc"
+        ],
+        [
+            "bin\\dash.com",
+            "cosmoc++",
+            "$dir\\bin\\cosmoc++"
+        ]
+    ],
+    "env_add_path": "bin",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/jart/cosmopolitan/releases/download/$version/cosmocc-$version.zip#/cosmocc.zip_",
+                    "https://github.com/jart/cosmopolitan/releases/download/$version/cosmos-$version.zip#/cosmos.zip_"
+                ]
+            }
+        }
+    }
+}

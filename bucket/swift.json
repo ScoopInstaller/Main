@@ -1,8 +1,9 @@
 {
-    "version": "6.4.1",
+    "version": "6.4.2",
     "description": "A general-purpose programming language built using a modern approach to safety, performance, and software design patterns.",
     "homepage": "https://www.swift.org/",
     "license": "Apache-2.0",
+    "depends": "wixtoolset",
     "notes": [
         "* Known issue:",
         "  - 'swift.exe' may not working with Junction, check workaround: https://github.com/ScoopInstaller/Main/issues/6159",
@@ -11,32 +12,39 @@
         "Read https://www.swift.org/getting-started/#support-files for Supporting Files installation guide."
     ],
     "suggest": {
-        "python": "versions/python39",
+        "python": "versions/python310",
         "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.swift.org/swift-6.4.1-release/windows10/swift-6.4.1-RELEASE/swift-6.4.1-RELEASE-windows10.exe",
-            "hash": "9382e14919eeae5e7b5dbfe0575452fe2154178e089a595c8b44d03960d91d59"
+            "url": "https://download.swift.org/swift-6.4.2-release/windows10/swift-6.4.2-RELEASE/swift-6.4.2-RELEASE-windows10.exe",
+            "hash": "8fe5d31ca1153dfe6be3a76de0b93347fd42a27599671e9f9ade23a3648e7184"
         },
         "arm64": {
-            "url": "https://download.swift.org/swift-6.4.1-release/windows10-arm64/swift-6.4.1-RELEASE/swift-6.4.1-RELEASE-windows10-arm64.exe",
-            "hash": "faff6a12cdae099d76372ca971b0c83b13280ad704e1022faa599dbe0b146e64"
+            "url": "https://download.swift.org/swift-6.4.2-release/windows10-arm64/swift-6.4.2-RELEASE/swift-6.4.2-RELEASE-windows10-arm64.exe",
+            "hash": "e4e5fdb6ca88b18ac430fbce3de35dd80e2249a84a484a02272d82d89f2c7969"
         }
     },
     "pre_install": [
-        "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\extract_folder\" -Removal",
+        "# Explicitly use 'wixtoolset' for extraction, as 'dark' cannot extract multi-container WiX packages",
+        "$WixPath = Get-AppFilePath 'wixtoolset' 'wix.exe'",
+        "if (-not $WixPath) { throw 'WiX Toolset is required but not found.' }",
+        "$ArgList = @('burn', 'extract', \"$dir\\$fname\", '-out', \"$dir\\extract_folder\", '-outba', \"$dir\\extract_folder\\UX\")",
+        "$Status = Invoke-ExternalCommand -Path $WixPath -Args $ArgList -LogPath \"$dir\\extract_folder\\wix.log\"",
+        "Remove-Item \"$dir\\$fname\" -Force | Out-Null",
+        "if (!$Status) { throw \"Failed to extract files from '$dir\\$fname'.`nLog file: '$dir\\extract_folder\\wix.log'\" }",
+        "",
         "$xml = [xml](Get-Content -Raw \"$dir\\extract_folder\\UX\\manifest.xml\" -Encoding utf8)",
         "$xml.BurnManifest.Payload | Where-Object { $_.FilePath.EndsWith(\".msi\") } | ForEach-Object {",
-        "    if ($($_.FilePath) -eq \"rtl.msi\") {",
-        "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\\Runtimes\\usr\\bin\"",
+        "    if ($_.FilePath -like 'rtl.*.msi') {",
+        "        Expand-MsiArchive \"$dir\\extract_folder\\$($_.Container)\\$($_.FilePath)\" \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\\Runtimes\\usr\\bin\"",
         "    } else {",
-        "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\"",
+        "        Expand-MsiArchive \"$dir\\extract_folder\\$($_.Container)\\$($_.FilePath)\" \"$dir\\extract_folder\"",
         "    }",
         "}",
         "$ver = $xml.BurnManifest.Registration.Version",
         "Move-Item -Path \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\" -Destination \"$dir\"",
-        "Move-Item -Path \"$dir\\Swift\\Platforms\\$ver\\Windows.platform\" -Destination \"$dir\\Swift\\Platforms\"",
+        "Move-Item -Path \"$dir\\Swift\\Platforms\\$ver\\*.platform\" -Destination \"$dir\\Swift\\Platforms\"",
         "Move-Item -Path \"$dir\\Swift\\Toolchains\\$($ver)+Asserts\\usr\" -Destination \"$dir\\Swift\\Toolchains\"",
         "# Move-Item -Path \"$dir\\Swift\\Tools\\$ver\\*\" -Destination \"$dir\\Swift\\Tools\"",
         "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" -Recurse | Out-Null",
