@@ -1,18 +1,48 @@
 {
-    "version": "0.9.7",
+    "version": "0.10.0",
     "description": "The fast all-in-one Node.js toolkit",
     "homepage": "https://nubjs.com",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-win32-x64.zip",
-            "hash": "087dc9a0fcca2254bb9d799dc7435f3b88eb7ba7d365e66c43091bcf7c1f5886"
+            "url": "https://github.com/nubjs/nub/releases/download/v0.10.0/nub-win32-x64.zip",
+            "hash": "53fe2a1719d93e1fa209cd3737cc438690596ecfe1c867135b24f7f133c7a7f8"
         },
         "arm64": {
-            "url": "https://github.com/nubjs/nub/releases/download/v0.9.7/nub-win32-arm64.zip",
-            "hash": "325614b343d983b038932fb6554eaefb5838bdc127b8a05b722d1a0d3fd77e95"
+            "url": "https://github.com/nubjs/nub/releases/download/v0.10.0/nub-win32-arm64.zip",
+            "hash": "5ce6906c25b113a06d1fdbaa2e69c0a24823f6712a9364c3a6ae46c928ecf86e"
         }
     },
+    "post_install": [
+        "$shimDir = if ($env:XDG_DATA_HOME) { Join-Path $env:XDG_DATA_HOME 'nub\\shims' }",
+        "           elseif ($env:LOCALAPPDATA) { Join-Path $env:LOCALAPPDATA 'nub\\shims' }",
+        "           else { $null }",
+        "if ($shimDir -and (Test-Path -LiteralPath $shimDir -PathType Container)) {",
+        "    try { & (Join-Path $dir 'bin\\nub.exe') pm shim | Out-Null } catch { }",
+        "}"
+    ],
+    "pre_uninstall": [
+        "$src = Get-Item -LiteralPath (Join-Path $dir 'bin\\nub.exe') -ErrorAction SilentlyContinue",
+        "if (-not $src) { return }",
+        "$roots = @()",
+        "if ($env:XDG_DATA_HOME) { $roots += (Join-Path $env:XDG_DATA_HOME 'nub\\shims') }",
+        "if ($env:LOCALAPPDATA) { $roots += (Join-Path $env:LOCALAPPDATA 'nub\\shims') }",
+        "foreach ($root in $roots) {",
+        "    if (-not (Test-Path -LiteralPath $root -PathType Container)) { continue }",
+        "    foreach ($name in @('npm', 'npx', 'pnpm', 'pnpx', 'yarn', 'yarnpkg')) {",
+        "        $t = Join-Path $root \"$name.exe\"",
+        "        if (-not (Test-Path -LiteralPath $t -PathType Leaf)) { continue }",
+        "        $cur = Get-Item -LiteralPath $t",
+        "        if ($cur.Length -eq $src.Length -and $cur.LastWriteTimeUtc -eq $src.LastWriteTimeUtc) {",
+        "            Remove-Item -Force -LiteralPath $t -ErrorAction Stop",
+        "        }",
+        "    }",
+        "    if (-not (Get-ChildItem -LiteralPath $root -Force)) {",
+        "        Remove-Item -Force -LiteralPath $root -ErrorAction Stop",
+        "        Remove-Path -Path $root -Global:$global",
+        "    }",
+        "}"
+    ],
     "bin": [
         "bin\\nub.exe",
         "bin\\nubr.exe",
@@ -29,6 +59,9 @@
             "arm64": {
                 "url": "https://github.com/nubjs/nub/releases/download/v$version/nub-win32-arm64.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }
