@@ -1,0 +1,26 @@
+{
+    "version": "2.5.0",
+    "description": "Advanced PCB auto-router, command-line interface",
+    "homepage": "https://www.freerouting.app",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/freerouting/freerouting/releases/download/v2.5.0/freerouting-cli-2.5.0-windows-x64.zip",
+            "hash": "5750dc0bed261eefae29d79784301b478af978fd472407d77e01e85dbb794857"
+        }
+    },
+    "bin": "freerouting-cli.exe",
+    "checkver": {
+        "github": "https://github.com/freerouting/freerouting"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/freerouting/freerouting/releases/download/v$version/freerouting-cli-$version-windows-x64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/freerouting-cli-$version-checksums.txt"
+        }
+    }
+}
