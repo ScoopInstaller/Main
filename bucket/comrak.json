@@ -21,7 +21,9 @@
     },
     "bin": "comrak.exe",
     "checkver": {
-        "github": "https://github.com/kivikakk/comrak"
+        "github": "https://api.github.com/repos/kivikakk/comrak/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"(?:v|V)?(\\d+(?:\\.\\d+)+)\""
     },
     "autoupdate": {
         "architecture": {
