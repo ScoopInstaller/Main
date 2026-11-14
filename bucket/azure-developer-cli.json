@@ -32,8 +32,9 @@
         "}"
     ],
     "checkver": {
-        "github": "https://github.com/Azure/azure-dev",
-        "regex": "azure-dev-cli_([\\d.]+)"
+        "github": "https://api.github.com/repos/Azure/azure-dev/releases",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"azure-dev-cli_([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
