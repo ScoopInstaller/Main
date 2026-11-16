@@ -7,7 +7,7 @@
         "64bit": {
             "url": [
                 "https://github.com/vercel-labs/agent-browser/releases/download/v0.43.0/agent-browser-win32-x64.exe#/agent-browser.exe",
-                "https://github.com/vercel-labs/agent-browser/archive/refs/tags/v0.43.0.zip"
+                "https://github.com/vercel-labs/agent-browser/archive/refs/tags/v0.43.0.zip#/src.zip_"
             ],
             "hash": [
                 "ebcef5ebea93c7ccf0fe3f8c18eee908ae9174dfef8e52a3dda6f24a59f630dc",
@@ -18,9 +18,9 @@
     "post_install": [
         "# 'agent-browser skills' looks for skills/ and skill-data/ next to the executable,",
         "# the release executable does not embed them, so keep them from the source archive.",
-        "$src = \"$dir\\agent-browser-$version\"",
-        "Move-Item \"$src\\skills\", \"$src\\skill-data\" $dir",
-        "Remove-Item $src -Recurse -Force"
+        "# The archive contains symlinks, so the default extraction fails. Use a script to extract it manually.",
+        "Expand-7ZipArchive -Path \"$dir\\src.zip_\" -ExtractDir \"agent-browser-$version\\skills\" -DestinationPath \"$dir\\skills\"",
+        "Expand-7ZipArchive -Path \"$dir\\src.zip_\" -ExtractDir \"agent-browser-$version\\skill-data\" -DestinationPath \"$dir\\skill-data\" -Removal"
     ],
     "bin": "agent-browser.exe",
     "checkver": {
@@ -31,7 +31,7 @@
             "64bit": {
                 "url": [
                     "https://github.com/vercel-labs/agent-browser/releases/download/v$version/agent-browser-win32-x64.exe#/agent-browser.exe",
-                    "https://github.com/vercel-labs/agent-browser/archive/refs/tags/v$version.zip"
+                    "https://github.com/vercel-labs/agent-browser/archive/refs/tags/v$version.zip#/src.zip_"
                 ]
             }
         }
