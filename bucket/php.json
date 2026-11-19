@@ -1,5 +1,5 @@
 {
-    "version": "8.5.13",
+    "version": "8.6.0",
     "description": "A popular general-purpose scripting language that is especially suited to web development. (thread safe)",
     "homepage": "https://www.php.net/",
     "license": "PHP-3.01",
@@ -8,12 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://downloads.php.net/~windows/releases/archives/php-8.5.13-Win32-vs17-x64.zip",
-            "hash": "792fe1553895ee98f9bc3c9d50c539910f7d0066676a6523207ca91429d4d475"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.6.0-Win32-vs18-x64.zip",
+            "hash": "daf3639addc12197bfea7aff8797edc78939f5d8809e0cced49d899347c337b0"
         },
         "32bit": {
-            "url": "https://downloads.php.net/~windows/releases/archives/php-8.5.13-Win32-vs17-x86.zip",
-            "hash": "8d3adfc7411c7b1b8a6d283e0f456e01a70151665ee81c03178c1285efce62c2"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.6.0-Win32-vs18-x86.zip",
+            "hash": "7c6c141dfb7ed12b4ea834effa2ac2138161141980c993c32fbc4128e443d77c"
         }
     },
     "pre_install": [
@@ -43,16 +43,16 @@
     ],
     "checkver": {
         "url": "https://downloads.php.net/~windows/releases/releases.json",
-        "regex": "\"version\"\\s*:\\s*\"(\\d+(?:\\.\\d+)+(?:-\\d+)?)\"",
+        "regex": "(?i)php-(\\d+(?:\\.\\d+)+(?:-\\d+)?)-Win32-(?<vs>VS\\d+)-x64.zip",
         "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-vs17-x64.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-$matchVs-x64.zip"
             },
             "32bit": {
-                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-vs17-x86.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-$matchVs-x86.zip"
             }
         },
         "hash": {
