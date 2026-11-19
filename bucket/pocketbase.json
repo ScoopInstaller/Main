@@ -1,16 +1,16 @@
 {
-    "version": "0.40.6",
+    "version": "0.42.3",
     "description": "Open Source realtime backend in 1 file",
     "homepage": "https://pocketbase.io",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pocketbase/pocketbase/releases/download/v0.40.6/pocketbase_0.40.6_windows_amd64.zip",
-            "hash": "33a2a1d255cadded77346fc7f5de37dca21ba4bad0d9cae0235a50b3b703d6d9"
+            "url": "https://ganigeorgiev.com/meta/pocketbase/pocketbase/download/v0.42.3/pocketbase_0.42.3_windows_amd64.zip",
+            "hash": "c783fffb2ae6cf38e11d99eb995ea182c29f0a998f53a0d638111e687553c349"
         },
         "arm64": {
-            "url": "https://github.com/pocketbase/pocketbase/releases/download/v0.40.6/pocketbase_0.40.6_windows_arm64.zip",
-            "hash": "7ca50a72b768965f0da194b907d2a1e8865e614cdbebb27fa64ca7ff1d7f5182"
+            "url": "https://ganigeorgiev.com/meta/pocketbase/pocketbase/download/v0.42.3/pocketbase_0.42.3_windows_arm64.zip",
+            "hash": "16c4a92e810f80df39722cea46ee4cee372472c0a8eafef391cb5bf7033edce0"
         }
     },
     "bin": "pocketbase.exe",
@@ -19,15 +19,17 @@
         "pb_migrations"
     ],
     "checkver": {
-        "github": "https://github.com/pocketbase/pocketbase"
+        "url": "https://ganigeorgiev.com/api/collections/releases/records?page=1&perPage=30&filter=(channel.repository%3D%22zp5ouhdxhh8k2o0%22)&sort=-created&skipTotal=1&expand=channel",
+        "jsonpath": "$.items[0].tag",
+        "regex": "^v?(\\d+(?:\\.\\d+)+)$"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/pocketbase/pocketbase/releases/download/v$version/pocketbase_$version_windows_amd64.zip"
+                "url": "https://ganigeorgiev.com/meta/pocketbase/pocketbase/download/v$version/pocketbase_$version_windows_amd64.zip"
             },
             "arm64": {
-                "url": "https://github.com/pocketbase/pocketbase/releases/download/v$version/pocketbase_$version_windows_arm64.zip"
+                "url": "https://ganigeorgiev.com/meta/pocketbase/pocketbase/download/v$version/pocketbase_$version_windows_arm64.zip"
             }
         },
         "hash": {
