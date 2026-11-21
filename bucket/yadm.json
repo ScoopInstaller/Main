@@ -1,0 +1,29 @@
+{
+    "version": "3.5.0",
+    "description": "Yet Another Dotfiles Manager.",
+    "homepage": "https://yadm.io",
+    "license": "GPL-3.0-or-later",
+    "depends": "git",
+    "url": "https://raw.githubusercontent.com/yadm-dev/yadm/3.5.0/yadm",
+    "hash": "d8c2d661725b98e9910e4a59b58beed5cfb01f5196a825a08668ff0887f7441d",
+    "pre_install": [
+        "$wrapper = @(",
+        "'@setlocal'",
+        "'@set \"PATH=%GIT_INSTALL_ROOT%\\usr\\bin;%PATH%\"'",
+        "'@\"%GIT_INSTALL_ROOT%\\usr\\bin\\bash.exe\" --noprofile --norc \"%~dp0yadm\" %*'",
+        ")",
+        "Set-Content -LiteralPath \"$dir\\yadm.cmd\" -Value $wrapper"
+    ],
+    "bin": "yadm.cmd",
+    "checkver": {
+        "url": "https://github.com/yadm-dev/yadm/tags",
+        "regex": "/releases/tag/([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://raw.githubusercontent.com/yadm-dev/yadm/$version/yadm"
+    },
+    "notes": [
+        "By default, Git for Windows' MSYS2 environment uses winsymlinks:deepcopy, so symlinks are created as deep copies.",
+        "If symlink support is needed, please refer to https://www.msys2.org/docs/symlinks/"
+    ]
+}
