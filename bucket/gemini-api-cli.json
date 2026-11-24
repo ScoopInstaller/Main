@@ -1,0 +1,37 @@
+{
+    "version": "0.5.0",
+    "description": "CLI for the Gemini API",
+    "homepage": "https://aistudio.google.com/docs/cli",
+    "license": "Apache-2.0",
+    "notes": [
+        "Set the GEMINI_API_KEY environment variable or run 'gemini-api configure' to get started.",
+        "Get an API key from https://aistudio.google.com."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/google-gemini/gemini-api-cli/releases/download/v0.5.0/gemini-api_Windows_x86_64.zip",
+            "hash": "d2bc738fb8c83f663e1fca5e3382876dcbde54880c7375cfcb49351298b264ec"
+        },
+        "arm64": {
+            "url": "https://github.com/google-gemini/gemini-api-cli/releases/download/v0.5.0/gemini-api_Windows_arm64.zip",
+            "hash": "a64df8f4b0ec394de4a42b8be96831942ec850463aacc77d41c6b04f07af2963"
+        }
+    },
+    "bin": "gemini-api.exe",
+    "checkver": {
+        "github": "https://github.com/google-gemini/gemini-api-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/google-gemini/gemini-api-cli/releases/download/v$version/gemini-api_Windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/google-gemini/gemini-api-cli/releases/download/v$version/gemini-api_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
