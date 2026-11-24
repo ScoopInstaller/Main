@@ -16,7 +16,9 @@
     "pre_install": "Get-ChildItem -Path \"$dir\\jcode-windows-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'jcode.exe'",
     "bin": "jcode.exe",
     "checkver": {
-        "github": "https://github.com/1jehuang/jcode"
+        "github": "https://api.github.com/repos/1jehuang/jcode/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /Windows/i)].browser_download_url",
+        "regex": "(?i)download/v?([\\d.]+)/"
     },
     "autoupdate": {
         "architecture": {
