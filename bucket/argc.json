@@ -1,0 +1,35 @@
+{
+    "version": "1.25.0",
+    "description": "A bash CLI framework and command runner",
+    "homepage": "https://github.com/sigoden/argc",
+    "license": "MIT|Apache",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sigoden/argc/releases/download/v1.25.0/argc-v1.25.0-x86_64-pc-windows-msvc.zip",
+            "hash": "1f765f9755d932b89e7d16f9766a194b4a22c001133308e2528601ae106622c1"
+        },
+        "32bit": {
+            "url": "https://github.com/sigoden/argc/releases/download/v1.25.0/argc-v1.25.0-i686-pc-windows-msvc.zip",
+            "hash": "e312fee24c2877dacd321cd76a2687de5d8afbf3d0cb79574b852c5ed91787ee"
+        },
+        "arm64": {
+            "url": "https://github.com/sigoden/argc/releases/download/v1.25.0/argc-v1.25.0-aarch64-pc-windows-msvc.zip",
+            "hash": "ee23347ad9739658fa55a2e430cee479417c92cfd4536168929d082403bef663"
+        }
+    },
+    "bin": "argc.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sigoden/argc/releases/download/v$version/argc-v$version-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/sigoden/argc/releases/download/v$version/argc-v$version-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/sigoden/argc/releases/download/v$version/argc-v$version-aarch64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}
