@@ -1,0 +1,29 @@
+{
+    "version": "1.0.1",
+    "description": "A interactive tool that helps to find and kill process",
+    "homepage": "https://github.com/jacek-kurlit/pik",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/jacek-kurlit/pik/releases/download/1.0.1/pik-1.0.1-x86_64-pc-windows-msvc.zip",
+            "hash": "c00e381f7a57f1ea7771946386a050a082aa742e4d9b08e043904dcfd3eb8c93",
+            "extract_dir": "pik-1.0.1-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": "pik.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/jacek-kurlit/pik/releases/download/$version/pik-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "pik-$version-x86_64-pc-windows-msvc"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
