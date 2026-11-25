@@ -17,14 +17,14 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/facebook/sapling/releases/download/0.2.20261103-145137+6282ac56/sapling-0.2.20261103-145137+6282ac56-windows-x64.zip",
+            "url": "https://github.com/meta/sapling/releases/download/0.2.20261103-145137+6282ac56/sapling-0.2.20261103-145137+6282ac56-windows-x64.zip",
             "hash": "3f9283258ec8edbab3fe2d9e424318a7e496151578dbb620b97b11f3e04c06d6"
         }
     },
     "extract_dir": "Sapling",
     "bin": "sl.exe",
     "checkver": {
-        "github": "https://api.github.com/repos/facebook/sapling/releases/latest",
+        "github": "https://api.github.com/repos/meta/sapling/releases/latest",
         "jsonpath": "$.tag_name",
         "regex": "(?<tag>(?<ver>[\\d.]+)\\.(?<date>[\\d]{8})-(?<time>[\\d]{6})\\+(?<hash>[\\da-f]{8}))",
         "replace": "${ver}.${date}.${time}.${hash}"
@@ -32,7 +32,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/facebook/sapling/releases/download/$matchTag/sapling-$matchTag-windows-x64.zip"
+                "url": "https://github.com/meta/sapling/releases/download/$matchTag/sapling-$matchTag-windows-x64.zip"
             }
         }
     }

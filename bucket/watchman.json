@@ -5,7 +5,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/facebook/watchman/releases/download/v2026.11.23.00/watchman-v2026.11.23.00-windows.zip",
+            "url": "https://github.com/meta/watchman/releases/download/v2026.11.23.00/watchman-v2026.11.23.00-windows.zip",
             "hash": "c1fa4f93fec53a151e8e822d273db52b9be155819945067bc348225e0e5ba81e"
         }
     },
@@ -18,14 +18,14 @@
         "watchman.exe"
     ],
     "checkver": {
-        "github": "https://api.github.com/repos/facebook/watchman/releases?per_page=100",
+        "github": "https://api.github.com/repos/meta/watchman/releases?per_page=100",
         "jsonpath": "$..browser_download_url",
         "regex": "watchman-v([\\d.]+)-windows\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/facebook/watchman/releases/download/v$version/watchman-v$version-windows.zip"
+                "url": "https://github.com/meta/watchman/releases/download/v$version/watchman-v$version-windows.zip"
             }
         },
         "extract_dir": "watchman-v$version-windows\\bin"
