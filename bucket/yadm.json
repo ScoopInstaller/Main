@@ -6,15 +6,7 @@
     "depends": "git",
     "url": "https://raw.githubusercontent.com/yadm-dev/yadm/3.5.0/yadm",
     "hash": "d8c2d661725b98e9910e4a59b58beed5cfb01f5196a825a08668ff0887f7441d",
-    "pre_install": [
-        "$wrapper = @(",
-        "'@setlocal'",
-        "'@set \"PATH=%GIT_INSTALL_ROOT%\\usr\\bin;%PATH%\"'",
-        "'@\"%GIT_INSTALL_ROOT%\\usr\\bin\\bash.exe\" --noprofile --norc \"%~dp0yadm\" %*'",
-        ")",
-        "Set-Content -LiteralPath \"$dir\\yadm.cmd\" -Value $wrapper"
-    ],
-    "bin": "yadm.cmd",
+    "bin": "yadm",
     "checkver": {
         "url": "https://github.com/yadm-dev/yadm/tags",
         "regex": "/releases/tag/([\\d.]+)"
