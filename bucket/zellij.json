@@ -19,6 +19,11 @@
             "Zellij Terminal"
         ]
     ],
+    "pre_uninstall": [
+        "if ($cmd -eq 'uninstall') {",
+        "    & \"$dir\\zellij.exe\" setup --uninstall-desktop-entry",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/zellij-org/zellij"
     },
