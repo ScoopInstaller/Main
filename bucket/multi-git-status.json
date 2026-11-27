@@ -1,0 +1,19 @@
+{
+    "version": "2.3",
+    "description": "Show uncommitted, untracked and unpushed changes for multiple Git repos.",
+    "homepage": "https://github.com/fboender/multi-git-status",
+    "license": "MIT",
+    "suggest": {
+        "git": "main/git"
+    },
+    "url": "https://github.com/fboender/multi-git-status/archive/refs/tags/2.3.zip",
+    "hash": "b62b9dac64002e767c6229f0c6f7a51231dbe4475dc765ab3d1e5073d87588d3",
+    "extract_dir": "multi-git-status-2.3",
+    "pre_install": "Remove-Item -Path \"$dir\\*\" -Exclude 'mgitstatus', 'LICENSE.txt', 'README.md', 'mgitstatus.1.md' -Recurse -Force",
+    "bin": "mgitstatus",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/fboender/multi-git-status/archive/refs/tags/$version.zip",
+        "extract_dir": "multi-git-status-$version"
+    }
+}
