@@ -1,0 +1,16 @@
+{
+    "version": "1.4",
+    "description": "Refresh the environment inside CMD, Bash, Powershell.",
+    "homepage": "https://github.com/badrelmers/RefrEnv",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/badrelmers/RefrEnv/archive/refs/tags/v1.4.zip",
+    "hash": "a3a8a8eefc36a01f98fca8a843669bd5ee640f0d54d9d5be5cb058f7c136a826",
+    "extract_dir": "RefrEnv-1.4",
+    "pre_install": "Remove-Item -Path \"$dir\\*\" -Exclude 'refrenv.bat', 'refrenv.ps1', 'refrenv.sh', 'LICENSE', 'README.md' -Recurse -Force",
+    "env_add_path": ".",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/badrelmers/RefrEnv/archive/refs/tags/v$version.zip",
+        "extract_dir": "RefrEnv-$version"
+    }
+}
