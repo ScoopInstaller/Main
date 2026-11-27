@@ -1,0 +1,19 @@
+{
+    "version": "1.6.0",
+    "description": "Checks presence of various command line tools and their versions on the path.",
+    "homepage": "https://github.com/kdabir/has",
+    "license": "MIT",
+    "suggest": {
+        "git": "main/git"
+    },
+    "url": "https://github.com/kdabir/has/archive/refs/tags/v1.6.0.zip",
+    "hash": "a0a6cf6084f0aabb719bfc78cceeb9c58f5e71e6a1013362dfc6232ed496f43c",
+    "extract_dir": "has-1.6.0",
+    "pre_install": "Remove-Item -Path \"$dir\\*\" -Exclude 'has', 'LICENSE', 'README.md' -Recurse -Force",
+    "bin": "has",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/kdabir/has/archive/refs/tags/v$version.zip",
+        "extract_dir": "has-$version"
+    }
+}
