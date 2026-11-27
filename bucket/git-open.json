@@ -1,0 +1,19 @@
+{
+    "version": "2.1.0",
+    "description": "Open the GitHub page or website for a repository in your browser.",
+    "homepage": "https://github.com/paulirish/git-open",
+    "license": "MIT",
+    "suggest": {
+        "git": "main/git"
+    },
+    "url": "https://github.com/paulirish/git-open/archive/refs/tags/v2.1.0.zip",
+    "hash": "8fa1093cfb1f51031a904c70823764dd07ffdca24c42d0c8dd16367bbd9b2a06",
+    "extract_dir": "git-open-2.1.0",
+    "pre_install": "Remove-Item -Path \"$dir\\*\" -Exclude 'git-open', 'LICENSE.md', 'README.md', 'git-open.1.md' -Recurse -Force",
+    "bin": "git-open",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/paulirish/git-open/archive/refs/tags/v$version.zip",
+        "extract_dir": "git-open-$version"
+    }
+}
