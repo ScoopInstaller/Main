@@ -1,0 +1,25 @@
+{
+    "version": "0.7.0",
+    "description": "CLI application for interacting with Forgejo",
+    "homepage": "https://codeberg.org/forgejo-contrib/forgejo-cli",
+    "license": "Apache-2.0|MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v0.7.0/forgejo-cli-x86_64-windows.zip",
+            "hash": "4bdfdf83d6b01a3fa89cee87e36f5bd7a260689daed42b5f8264d8d45c43d87f"
+        }
+    },
+    "bin": "fj.exe",
+    "checkver": {
+        "url": "https://codeberg.org/api/v1/repos/forgejo-contrib/forgejo-cli/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://codeberg.org/forgejo-contrib/forgejo-cli/releases/download/v$version/forgejo-cli-x86_64-windows.zip"
+            }
+        }
+    }
+}
