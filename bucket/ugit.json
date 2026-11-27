@@ -1,0 +1,25 @@
+{
+    "version": "5.9",
+    "description": "Undo your last oopsie in git.",
+    "homepage": "https://bhupesh.me/undo-your-last-git-mistake-with-ugit/",
+    "license": "MIT",
+    "suggest": {
+        "git": "main/git",
+        "fzf": "main/fzf"
+    },
+    "notes": [
+        "Git's garbage collector prunes reflog entries —",
+        "increase the default expiry limits in your global .gitconfig:",
+        "'git config --global gc.reflogExpire 200'",
+        "'git config --global gc.reflogExpireUnreachable 90'"
+    ],
+    "url": "https://github.com/Bhupesh-V/ugit/releases/download/v5.9/ugit",
+    "hash": "bacb73e70c997a3790c6bdebcaa6253381aae6214eaceb1ffd797d989708699b",
+    "bin": "ugit",
+    "checkver": {
+        "github": "https://github.com/Bhupesh-V/ugit"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Bhupesh-V/ugit/releases/download/v$version/ugit"
+    }
+}
