@@ -20,8 +20,8 @@
     "bin": "kimi.exe",
     "checkver": {
         "github": "https://api.github.com/repos/MoonshotAI/kimi-code/releases",
-        "jsonpath": "$..tag_name",
-        "regex": "@moonshot-ai/kimi-code@(\\d+(?:\\.\\d+)+)\""
+        "jsonpath": "$[?(@.prerelease == false)].tag_name",
+        "regex": "\"@moonshot-ai/kimi-code@(\\d+(?:\\.\\d+)+)\""
     },
     "autoupdate": {
         "architecture": {
